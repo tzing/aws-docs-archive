@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv
+
+# Downloaded
+docs.aws.amazon.com/
+robots.txt
+urls.txt

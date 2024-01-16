@@ -1,0 +1,64 @@
+name: Download RedShift documents
+
+on:
+  schedule:
+    - cron: "50 18 * * 2"
+  workflow_dispatch:
+
+env:
+  DOC_DIRECTORY: ./docs.aws.amazon.com
+  BRANCH: docs/redshift/dg
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # Setup environment
+      - name: Get wget
+        run: |
+          sudo apt update
+          sudo apt install -y wget
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install lxml click
+
+      - uses: actions/checkout@v4
+
+      # Setup destination
+      - name: Checkout destination
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
+          path: ${{ env.DOC_DIRECTORY }}
+      - name: Clean destination
+        run: rm -r ${{ env.DOC_DIRECTORY }}/*
+
+      # Fetch data
+      - name: Fetch sitemap
+        run: |
+          wget https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+
+          wget https://docs.aws.amazon.com/de_de/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/es_es/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/id_id/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/it_it/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+
+      - name: Fetch documents
+        run: wget --recursive --no-parent --page-requisites --input-file=urls.txt
+
+      # Upload changes
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: ${{ env.DOC_DIRECTORY }}
+          branch: ${{ env.BRANCH }}
+          commit_message: Update RedShift documents
