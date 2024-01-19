@@ -1,0 +1,45 @@
+name: Download CloudFormation User Guide
+
+on:
+  schedule:
+    - cron: "43 5 * * 4"
+  workflow_dispatch:
+
+  pull_request:
+
+env:
+  DOC_DIRECTORY: ./docs.aws.amazon.com
+  BRANCH: docs/cloudformation/user-guide
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # Setup environment
+      - name: Get wget
+        run: |
+          sudo apt update
+          sudo apt install -y wget
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install git+https://github.com/tzing/dashify-aws-docs.git
+
+      - uses: actions/checkout@v4
+
+      # Setup destination
+      - name: Checkout destination
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
+          path: ${{ env.DOC_DIRECTORY }}
+      - name: Clean destination
+        run: rm -r ${{ env.DOC_DIRECTORY }}/*
+
+      # Fetch data
+      - name: Fetch sitemap
+        run: |
+          wget https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls
