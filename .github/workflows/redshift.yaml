@@ -1,4 +1,4 @@
-name: Download RedShift documents
+name: Download Redshift Database Developer Guide
 
 on:
   schedule:
@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: pip install lxml click
+        run: pip install git+https://github.com/tzing/dashify-aws-docs.git
 
       - uses: actions/checkout@v4
 
@@ -40,18 +40,18 @@ jobs:
       # Fetch data
       - name: Fetch sitemap
         run: |
-          wget https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
 
-          wget https://docs.aws.amazon.com/de_de/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/es_es/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/id_id/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/it_it/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
-          wget https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml -O- | ./extract-urls.py >> urls.txt
+          wget https://docs.aws.amazon.com/de_de/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/es_es/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/id_id/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/it_it/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
 
       - name: Fetch documents
         run: wget --recursive --no-parent --page-requisites --input-file=urls.txt
@@ -61,4 +61,4 @@ jobs:
         with:
           repository: ${{ env.DOC_DIRECTORY }}
           branch: ${{ env.BRANCH }}
-          commit_message: Update RedShift documents
+          commit_message: Update Redshift Database Developer Guide
