@@ -7,7 +7,7 @@ on:
 
 env:
   DOC_DIRECTORY: ./docs.aws.amazon.com
-  BRANCH: docs/redshift/dg
+  BRANCH: docs/redshift/developer-guide
 
 jobs:
   download:
