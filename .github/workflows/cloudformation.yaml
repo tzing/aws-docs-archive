@@ -5,8 +5,6 @@ on:
     - cron: "43 5 * * 4"
   workflow_dispatch:
 
-  pull_request:
-
 env:
   DOC_DIRECTORY: ./docs.aws.amazon.com
   BRANCH: docs/cloudformation/user-guide
@@ -42,4 +40,25 @@ jobs:
       # Fetch data
       - name: Fetch sitemap
         run: |
-          wget https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls
+          wget https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+
+          wget https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+          wget https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
+
+      - name: Fetch documents
+        run: wget --recursive --no-parent --page-requisites --input-file=urls.txt
+
+      # Upload changes
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: ${{ env.DOC_DIRECTORY }}
+          branch: ${{ env.BRANCH }}
+          commit_message: Update CloudFormation User Guide
