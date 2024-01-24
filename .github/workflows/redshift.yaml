@@ -58,7 +58,23 @@ jobs:
 
       # Upload changes
       - uses: stefanzweifel/git-auto-commit-action@v5
+        id: commit-changes
         with:
           repository: ${{ env.DOC_DIRECTORY }}
           branch: ${{ env.BRANCH }}
           commit_message: Update Redshift Database Developer Guide
+
+      - uses: actions-ecosystem/action-create-issue@v1
+        if: steps.commit-changes.outputs.changes_detected == 'true'
+        with:
+          github_token: ${{ secrets.CROSS_REPO_POSTER }}
+          repo: tzing/dashify-aws-docs
+          title: RedShift docs is updated
+          body: |
+            Auto generated issue from [aws-docs-archive].
+
+            Branch [${{ env.BRANCH }}] is updated to [${{ steps.commit-changes.outputs.commit_hash }}]
+
+            [aws-docs-archive]: https://github.com/tzing/aws-docs-archive
+            [${{ env.BRANCH }}]: https://github.com/tzing/aws-docs-archive/tree/${{ env.BRANCH }}
+            [${{ steps.commit-changes.outputs.commit_hash }}]: https://github.com/tzing/aws-docs-archive/commit/${{ steps.commit-changes.outputs.commit_hash }}
