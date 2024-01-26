@@ -1,0 +1,19 @@
+name: Setup environment
+description: Setup environment for the downloading workflows
+
+runs:
+  using: composite
+  steps:
+    - name: Get wget
+      shell: bash
+      run: |
+        sudo apt update
+        sudo apt install -y wget
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+
+    - name: Install dependencies
+      shell: bash
+      run: pip install git+https://github.com/tzing/dashify-aws-docs.git
