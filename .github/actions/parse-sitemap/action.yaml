@@ -21,4 +21,4 @@ runs:
         for url in "${URLS[@]}"; do
           wget $url --no-verbose -O- | dashify extract-sitemap-urls >> '${{ inputs.urls-file }}'
         done
-        echo "Found $(wc -l ${{ inputs.urls-file }}) urls" >> "$GITHUB_STEP_SUMMARY"
+        echo "Found $(wc -l < '${{ inputs.urls-file }}') urls" >> "$GITHUB_STEP_SUMMARY"
