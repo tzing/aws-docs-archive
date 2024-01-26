@@ -52,20 +52,22 @@ runs:
           ${{ inputs.sitemap-urls }}
         )
         for url in "${URLS[@]}"; do
-          wget $url -O- | dashify extract-sitemap-urls >> urls.txt
+          wget $url --no-verbose -O- | dashify extract-sitemap-urls >> "${{ runner.temp }}/site-urls.txt"
         done
+        echo "Found $(wc -l ${{ runner.temp }}/site-urls.txt) urls" >> "$GITHUB_STEP_SUMMARY"
 
     - name: Fetch documents
       shell: bash
-      run: >
-        wget
-          --content-on-error
-          --input-file=urls.txt
-          --no-parent
-          --no-verbose
-          --page-requisites
-          --recursive
-          --reject=pdf,zip
+      run: |
+        set +o pipefail
+        wget \
+          --content-on-error \
+          --input-file="${{ runner.temp }}/site-urls.txt" \
+          --no-parent \
+          --no-verbose \
+          --page-requisites \
+          --recursive \
+          --reject=pdf,zip \
         | true
 
     # Upload
