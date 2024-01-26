@@ -1,0 +1,20 @@
+name: Checkout branch
+description: Checkout branch for storing the downloaded contents
+
+inputs:
+  branch:
+    description: The branch to store the downloaded docs
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout destination
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.branch }}
+        path: ./docs.aws.amazon.com
+
+    - name: Clean up
+      shell: bash
+      run: rm -r docs.aws.amazon.com/*
