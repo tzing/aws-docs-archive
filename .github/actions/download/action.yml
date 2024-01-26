@@ -1,0 +1,92 @@
+name: Download docs
+description: Download files from given sitemap urls
+
+inputs:
+  branch:
+    description: The branch to store the downloaded docs
+    required: true
+  sitemap-urls:
+    description: List of sitemap urls to download
+    required: true
+  cross-repo-token:
+    description: Token to create issue in upstream repo
+    required: true
+  issue-title:
+    description: Title of the issue to create
+    required: true
+
+runs:
+  using: composite
+  steps:
+    # Setup environment
+    - name: Get wget
+      shell: bash
+      run: |
+        sudo apt update
+        sudo apt install -y wget
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+
+    - name: Install dependencies
+      shell: bash
+      run: pip install git+https://github.com/tzing/dashify-aws-docs.git
+
+    # Setup destination
+    - name: Checkout destination
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.branch }}
+        path: ./docs.aws.amazon.com
+
+    - name: Clean destination
+      shell: bash
+      run: rm -r docs.aws.amazon.com/*
+
+    # Fetch data
+    - name: Fetch sitemap
+      shell: bash
+      run: |
+        URLS=(
+          ${{ inputs.sitemap-urls }}
+        )
+        for url in "${URLS[@]}"; do
+          wget $url -O- | dashify extract-sitemap-urls >> urls.txt
+        done
+
+    - name: Fetch documents
+      shell: bash
+      run: >
+        wget
+          --content-on-error
+          --input-file=urls.txt
+          --no-parent
+          --no-verbose
+          --page-requisites
+          --recursive
+          --reject=pdf,zip
+        | true
+
+    # Upload
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      id: commit-changes
+      with:
+        repository: ./docs.aws.amazon.com
+        branch: ${{ inputs.branch }}
+        commit_message: Update docs
+
+    - uses: actions-ecosystem/action-create-issue@v1
+      if: steps.commit-changes.outputs.changes_detected == 'true'
+      with:
+        github_token: ${{ inputs.cross-repo-token }}
+        repo: tzing/dashify-aws-docs
+        title: ${{ inputs.issue-title }}
+        body: |
+          Auto created issue from [aws-docs-archive].
+
+          Branch [${{ inputs.branch }}] is updated to [${{ steps.commit-changes.outputs.commit_hash }}]
+
+          [aws-docs-archive]: https://github.com/tzing/aws-docs-archive
+          [${{ inputs.branch }}]: https://github.com/tzing/aws-docs-archive/tree/${{ inputs.branch }}
+          [${{ steps.commit-changes.outputs.commit_hash }}]: https://github.com/tzing/aws-docs-archive/commit/${{ steps.commit-changes.outputs.commit_hash }}
