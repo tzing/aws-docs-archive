@@ -5,76 +5,27 @@ on:
     - cron: "50 18 * * 2"
   workflow_dispatch:
 
-env:
-  DOC_DIRECTORY: ./docs.aws.amazon.com
-  BRANCH: docs/redshift/developer-guide
-
 jobs:
   download:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      # Setup environment
-      - name: Get wget
-        run: |
-          sudo apt update
-          sudo apt install -y wget
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.12"
-      - name: Install dependencies
-        run: pip install git+https://github.com/tzing/dashify-aws-docs.git
-
       - uses: actions/checkout@v4
-
-      # Setup destination
-      - name: Checkout destination
-        uses: actions/checkout@v4
+      - uses: ./.github/actions/download
         with:
-          ref: ${{ env.BRANCH }}
-          path: ${{ env.DOC_DIRECTORY }}
-      - name: Clean destination
-        run: rm -r ${{ env.DOC_DIRECTORY }}/*
-
-      # Fetch data
-      - name: Fetch sitemap
-        run: |
-          wget https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-
-          wget https://docs.aws.amazon.com/de_de/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/es_es/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/id_id/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/it_it/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-          wget https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml -O- | dashify extract-sitemap-urls >> urls.txt
-
-      - name: Fetch documents
-        run: wget --recursive --no-parent --page-requisites --input-file=urls.txt
-
-      # Upload changes
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        id: commit-changes
-        with:
-          repository: ${{ env.DOC_DIRECTORY }}
-          branch: ${{ env.BRANCH }}
-          commit_message: Update Redshift Database Developer Guide
-
-      - uses: actions-ecosystem/action-create-issue@v1
-        if: steps.commit-changes.outputs.changes_detected == 'true'
-        with:
-          github_token: ${{ secrets.CROSS_REPO_POSTER }}
-          repo: tzing/dashify-aws-docs
-          title: RedShift docs is updated
-          body: |
-            Auto generated issue from [aws-docs-archive].
-
-            Branch [${{ env.BRANCH }}] is updated to [${{ steps.commit-changes.outputs.commit_hash }}]
-
-            [aws-docs-archive]: https://github.com/tzing/aws-docs-archive
-            [${{ env.BRANCH }}]: https://github.com/tzing/aws-docs-archive/tree/${{ env.BRANCH }}
-            [${{ steps.commit-changes.outputs.commit_hash }}]: https://github.com/tzing/aws-docs-archive/commit/${{ steps.commit-changes.outputs.commit_hash }}
+          branch: docs/redshift/developer-guide
+          sitemap-urls: |
+            https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/de_de/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/es_es/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/id_id/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/it_it/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/sitemap.xml
+            https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml
+          cross-repo-token: ${{ secrets.CROSS_REPO_POSTER }}
+          issue-title: RedShift database developer guide is updated
