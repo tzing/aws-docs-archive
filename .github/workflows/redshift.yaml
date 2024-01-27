@@ -5,6 +5,9 @@ on:
     - cron: "50 18 * * 2"
   workflow_dispatch:
 
+env:
+  BRANCH: docs/redshift/developer-guide
+
 jobs:
   download:
     runs-on: ubuntu-latest
@@ -12,9 +15,12 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/download
+      - uses: ./.github/actions/setup-env
+      - uses: ./.github/actions/checkout-branch
         with:
-          branch: docs/redshift/developer-guide
+          branch: ${{ env.BRANCH }}
+      - uses: ./.github/actions/parse-sitemap
+        with:
           sitemap-urls: |
             https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml
             https://docs.aws.amazon.com/de_de/redshift/latest/dg/sitemap.xml
@@ -27,5 +33,9 @@ jobs:
             https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sitemap.xml
             https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/sitemap.xml
             https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml
+      - uses: ./.github/actions/fetch
+      - uses: ./.github/actions/upload
+        with:
+          branch: ${{ env.BRANCH }}
           cross-repo-token: ${{ secrets.CROSS_REPO_POSTER }}
           issue-title: RedShift database developer guide is updated
