@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>CloudFormation events detail reference - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="eventbridge-events" /><meta name="default_state" content="eventbridge-events" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" /><meta name="description" content="All events from AWS services have a common set of fields containing metadata about the event, such as the AWS service that is the source of the event, the time the event was generated, the account and region in which the event took place, and others. For definitions of these general fields, see" /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="CloudFormation events detail reference" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>CloudFormation events detail reference - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/eventbridge-events.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation Designer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
+{
+    "@context" : "https://schema.org",
+    "@type" : "BreadcrumbList",
+    "itemListElement" : [
+      {
+        "@type" : "ListItem",
+        "position" : 1,
+        "name" : "AWS",
+        "item" : "https://aws.amazon.com"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 2,
+        "name" : "AWS CloudFormation",
+        "item" : "https://docs.aws.amazon.com/cloudformation/index.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 3,
+        "name" : "User Guide",
+        "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 4,
+        "name" : "Working with stacks",
+        "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 5,
+        "name" : "Managing AWS CloudFormation events using Amazon EventBridge",
+        "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks-event-bridge.html"
+      },
+      {
+        "@type" : "ListItem",
+        "position" : 6,
+        "name" : "CloudFormation events detail reference",
+        "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks-event-bridge.html"
+      }
+    ]
+}
+</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#schema-resource-status-event">Resource status event detail</a><a href="#schema-stack-status-event">Stack status event detail</a><a href="#schema-stack-drift-detection">Stack drift detection event
+                    detail</a><a href="#schema-stackset-status">StackSet status event detail</a><a href="#schema-stackset-stack-instance-status">StackSet stack instance
+                    status event detail</a><a href="#schema-stackset-operation-status">StackSet operation status event
+                    detail</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="eventbridge-events">CloudFormation events detail reference</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>All events from AWS services have a common set of fields containing metadata about
+            the event, such as the AWS service that is the source of the event, the time the event
+            was generated, the account and region in which the event took place, and others. For
+            definitions of these general fields, see <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events-structure.html">Event structure
+                reference</a> in the <em>Amazon EventBridge User Guide</em>. </p><p>In addition, each event has a <code class="code">detail</code> field that contains data specific to
+            that particular event. The reference below defines the detail fields for the various
+            CloudFormation events.</p><p>When using EventBridge to select and manage CloudFormation events, it's useful to keep the
+            following in mind:</p><div class="itemizedlist">
+             
+             
+             
+        <ul class="itemizedlist"><li class="listitem">
+                <p>The <code class="code">source</code> field for all events from CloudFormation is set to
+                        <code class="code">aws.cloudformation</code>.</p>
+            </li><li class="listitem">
+                <p>The <code class="code">detail-type</code> field specifies the event type. </p>
+                <p>For example, <code class="code">CloudFormation Resource Status Change</code> or
+                        <code class="code">CloudFormation Drift Detection Status Change</code>.</p>
+            </li><li class="listitem">
+                <p>The <code class="code">detail</code> field contains the data that is specific to that
+                    particular event. </p>
+                <p>For example, the stack ID, the resources involved, status of various
+                    resources, and other data relevant to a particular type of events.</p>
+            </li></ul></div><p>For more information on events and how EventBridge processes them, see <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html">Amazon EventBridge
+                events</a> in the <em>Amazon EventBridge User Guide</em>.</p><div class="highlights" id="inline-topiclist"><h6>Topics</h6><ul><li><a href="#schema-resource-status-event">Resource status event detail</a></li><li><a href="#schema-stack-status-event">Stack status event detail</a></li><li><a href="#schema-stack-drift-detection">Stack drift detection event
+                    detail</a></li><li><a href="#schema-stackset-status">StackSet status event detail</a></li><li><a href="#schema-stackset-stack-instance-status">StackSet stack instance
+                    status event detail</a></li><li><a href="#schema-stackset-operation-status">StackSet operation status event
+                    detail</a></li></ul></div>
+            <h2 id="schema-resource-status-event">Resource status event detail</h2>
+            <p>Below are the detail fields for resource status events.</p>
+            <p>The <code class="code">source</code> and <code class="code">detail-type</code> fields are included because they contain specific values for CloudFormation events.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  . . .,
+  "detail-type": "CloudFormation Resource Status Change",
+  "source": "aws.cloudformation",
+  . . .,
+  "detail": <span>{</span>
+    "stack-id" : "string",
+    "logical-resource-id" : "string",
+    "physical-resource-id": "string",
+    "status-details": <span>{</span>
+        "status": "string",
+        "status-reason": "string"
+    },
+     "resource-type": "string",
+     "client-request-token": "string"
+  }
+}</code></pre>
+
+
+            <div class="variablelist">
+
+                 
+                 
+                 
+                 
+                 
+            <dl>
+                    <dt><span class="term"><code class="code">detail-type</code></span></dt>
+                    <dd>
+                        <p>Identifies the type of event.</p>
+                        <p>For resource status events, this value is <code class="code">CloudFormation Resource
+                                Status Change</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">source</code></span></dt>
+                    <dd>
+                        <p>Identifies the service that generated the event. For CloudFormation
+                            events, this value is <code class="code">aws.cloudformation</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">detail</code></span></dt>
+                    <dd>
+                        <p>A JSON object that contains information about the event. The service
+                            generating the event determines the content of this field.</p>
+                        <p>For resource status events, this data includes:</p>
+                        <div class="variablelist">
+                             
+                             
+                             
+                             
+                        <dl>
+                                <dt><span class="term"><code class="code">stack-id</code></span></dt>
+                                <dd>
+                                    <p>The unique stack ID that's associated with the
+                                        stack.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">logical-resource-id</code></span></dt>
+                                <dd>
+                                    <p>The logical name of the resource as specified in the
+                                        template.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">physical-resource-id</code></span></dt>
+                                <dd>
+                                    <p>The name or unique identifier that corresponds to a
+                                        physical instance ID of a resource supported by
+                                        CloudFormation.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">status-details</code></span></dt>
+
+                                <dd>
+                                    <div class="variablelist">
+                                         
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">status</code></span></dt>
+                                            <dd>
+                                                <p>Status of the resource.</p>
+                                            </dd>
+                                         
+                                            <dt><span class="term"><code class="code">status-reason</code></span></dt>
+                                            <dd>
+                                                <p>Status reason of the resource.</p>
+                                            </dd>
+                                        </dl></div>
+                                </dd>
+                            </dl></div>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">resource-type</code></span></dt>
+                    <dd>
+                        <p>Type of resource. For example, <code class="code">AWS::S3::Bucket</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">client-request-token</code></span></dt>
+                    <dd>
+                        <p>An access token used to call the API. All events that are initiated by
+                            a given stack operation are assigned the same client request token,
+                            which you can use to track operations. Stack operations that are
+                            initiated from the console use the token format <em>Console-StackOperation-ID</em>, which helps you to easily
+                            identify the stack operation. For example, if you create a stack using
+                            the console, each resulting stack event would be assigned the same token
+                            in the following format:
+                                <code class="code">Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002</code>.</p>
+                    </dd>
+                </dl></div>
+
+
+
+            <div class="example"><h6>Example: Resource status
+                    event</h6><div class="example-contents"><p>The following is an example resource status event. This event details that
+                    CloudFormation has successfully created the requested resource, an Amazon S3 bucket, in
+                    the specified stack.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+    "version":"0",
+    "id":"6a7e8feb-b491-4cf7-a9f1-bf3703467718",
+    "detail-type":"CloudFormation Resource Status Change",
+    "source":"aws.cloudformation",
+    "account":"111122223333",
+    "time":"2017-12-22T18:43:48Z",
+    "region":"us-west-1",
+    "resources":[
+        "arn:aws:cloudformation:us-west-1:111122223333:stack/teststack"
+    ],
+    "detail":<span>{</span>
+        "stack-id":"arn:aws:cloudformation:us-west-1:111122223333:stack/teststack",
+        "logical-resource-id":"my-s3-bucket",
+        "physical-resource-id":"arn:aws:s3:::my-s3-bucket-us-east-1",
+        "status-details":<span>{</span>
+            "status":"CREATE_COMPLETE",
+            "status-reason":""
+        },
+        "resource-type":"AWS::S3::Bucket",
+        "client-request-token":""
+    }
+}</code></pre></div></div>
+         
+            <h2 id="schema-stack-status-event">Stack status event detail</h2>
+            <p>Below are the detail fields for stack status events.</p>
+            <p>The <code class="code">source</code> and <code class="code">detail-type</code> fields are included because they contain specific values for CloudFormation events.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  . . .,
+  "detail-type":"CloudFormation Stack Status Change",
+  "source":"aws.cloudformation",
+  . . .,
+  "detail":<span>{</span>
+    "stack-id":"string",
+    "status-details":<span>{</span>
+      "status":"string",
+      "status-reason":"string"
+    },
+    "client-request-token":"string"
+  }
+}</code></pre>
+
+
+            <div class="variablelist">
+
+                 
+                 
+                 
+                 
+            <dl>
+                    <dt><span class="term"><code class="code">detail-type</code></span></dt>
+                    <dd>
+                        <p>Identifies the type of event.</p>
+                        <p>For stack status events, this value is <code class="code">CloudFormation Stack Status
+                                Change</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">source</code></span></dt>
+                    <dd>
+                        <p>Identifies the service that generated the event. For CloudFormation
+                            events, this value is <code class="code">aws.cloudformation</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">detail</code></span></dt>
+                    <dd>
+                        <p>A JSON object that contains information about the event. The service
+                            generating the event determines the content of this field.</p>
+                        <p>For stack status events, this data includes:</p>
+                        <div class="variablelist">
+                             
+                             
+                        <dl>
+                                <dt><span class="term"><code class="code">stack-id</code></span></dt>
+                                <dd>
+                                    <p>The unique stack ID associated with the stack.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">status-details</code></span></dt>
+                                <dd>
+                                    <div class="variablelist">
+                                         
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">status</code></span></dt>
+                                            <dd>
+                                                <p>Status of the stack.</p>
+                                                <p>For a complete list of stack status codes, see
+                                                  <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#cli-stack-status-codes">Stack status
+                                                  codes</a>.</p>
+                                            </dd>
+                                         
+                                            <dt><span class="term"><code class="code">status-reason</code></span></dt>
+                                            <dd>
+                                                <p>Status reason of the resource.</p>
+                                            </dd>
+                                        </dl></div>
+                                </dd>
+
+                            </dl></div>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">client-request-token</code></span></dt>
+                    <dd>
+                        <p>An access token used to call the API. All events that are initiated by
+                            a given stack operation are assigned the same client request token,
+                            which you can use to track operations. Stack operations that are
+                            initiated from the console use the token format <em>Console-StackOperation-ID</em>, which helps you to easily
+                            identify the stack operation. For example, if you create a stack using
+                            the console, each resulting stack event would be assigned the same token
+                            in the following format:
+                                <code class="code">Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002</code>.</p>
+                    </dd>
+                </dl></div>
+            <div class="example"><h6>Example: Stack status event </h6><div class="example-contents"><p>The following is an example stack status event, where CloudFormation has
+                    successfully created the requested stack, <code class="code">teststack</code>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+    "version":"0",
+    "id":"6a7e8feb-b491-4cf7-a9f1-bf3703467718",
+    "detail-type":"CloudFormation Stack Status Change",
+    "source":"aws.cloudformation",
+    "account":"111122223333",
+    "time":"2017-12-22T18:43:48Z",
+    "region":"us-west-1",
+    "resources":[
+        "arn:aws:cloudformation:us-west-1:111122223333:stack/teststack"
+    ],
+    "detail":<span>{</span>
+        "stack-id":"arn:aws:cloudformation:us-west-1:111122223333:stack/teststack",
+        "status-details":<span>{</span>
+            "status":"CREATE_COMPLETE",
+            "status-reason":""
+        },
+        "client-request-token":""
+    }
+}</code></pre></div></div>
+         
+            <h2 id="schema-stack-drift-detection">Stack drift detection event
+                    detail</h2>
+            <p>Below are the detail fields for stack drift detection events.</p>
+            <p>The <code class="code">source</code> and <code class="code">detail-type</code> fields are included because they contain specific values for CloudFormation events.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  . . .,
+  "detail-type":"CloudFormation Drift Detection Status Change",
+  "source":"aws.cloudformation",
+  . . .,
+  "detail":<span>{</span>
+    "stack-id":"string",
+    "stack-drift-detection-id":"string",
+    "status-details":<span>{</span>
+      "stack-drift-status":"string",
+      "detection-status":"string"
+    },
+      "drift-detection-details":<span>{</span>
+        "drifted-stack-resource-count":integer
+      },
+  "client-request-token":"string"
+  }
+}</code></pre>
+
+            <div class="variablelist">
+
+                 
+                 
+                 
+                 
+            <dl>
+                    <dt><span class="term"><code class="code">detail-type</code></span></dt>
+                    <dd>
+                        <p>Identifies the type of event.</p>
+                        <p>For stack drift detection events, this value is <code class="code">CloudFormation Drift
+                                Detection Status Change</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">source</code></span></dt>
+                    <dd>
+                        <p>Identifies the service that generated the event. For CloudFormation
+                            events, this value is <code class="code">aws.cloudformation</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">detail</code></span></dt>
+                    <dd>
+                        <p>A JSON object that contains information about the event. The service
+                            generating the event determines the content of this field.</p>
+                        <p>For stack drift detection events, this data includes:</p>
+                        <div class="variablelist">
+                             
+                             
+                             
+                             
+                        <dl>
+                                <dt><span class="term"><code class="code">stack-id</code></span></dt>
+                                <dd>
+                                    <p>The unique stack ID that's associated with the
+                                        stack.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">stack-drift-detection-id</code></span></dt>
+                                <dd>
+                                    <p>The stack drift detection Id.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">status-details</code></span></dt>
+                                <dd>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">stack-drift-status</code></span></dt>
+                                            <dd>
+                                                <p>Drift status of the stack.</p>
+                                            </dd>
+                                        </dl></div>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">detection-status</code></span></dt>
+                                            <dd>
+                                                <p>Status of drift detection operation.</p>
+                                            </dd>
+                                        </dl></div>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">drift-detection-details</code></span></dt>
+                                <dd>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">drifted-stack-resource-count</code></span></dt>
+                                            <dd>
+                                                <p>Number of resources drifted. When the value is
+                                                  <code class="code">-1</code>, the drift detection is in
+                                                  progress. All other non--negative integers
+                                                  represent the actual number of drifted
+                                                  resources.</p>
+                                            </dd>
+                                        </dl></div>
+                                </dd>
+                            </dl></div>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">client-request-token</code></span></dt>
+                    <dd>
+                        <p>An access token used to call the API. All events that are initiated by
+                            a given stack operation are assigned the same client request token,
+                            which you can use to track operations. Stack operations that are
+                            initiated from the console use the token format <em>Console-StackOperation-ID</em>, which helps you to easily
+                            identify the stack operation. For example, if you create a stack using
+                            the console, each resulting stack event would be assigned the same token
+                            in the following format:
+                                <code class="code">Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002</code>.</p>
+                    </dd>
+                </dl></div>
+
+            <div class="example"><h6>Example: Stack drift
+                    detection event</h6><div class="example-contents"><p>The following is an example stack drift detection event. This event details
+                    that CloudFormation has completed drift detection on the specified stack, and that
+                    the stack currently has a drift status of <code class="code">DRIFTED</code> due to one
+                    drifted resource.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+    "version":"0",
+    "id":"6a7e8feb-b491-4cf7-a9f1-bf3703467718",
+    "detail-type":"CloudFormation Drift Detection Status Change",
+    "source":"aws.cloudformation",
+    "account":"111122223333",
+    "time":"2017-12-22T18:43:48Z",
+    "region":"us-west-1",
+    "resources": ["string"],
+    "detail":<span>{</span>
+        "stack-id":"arn:aws:cloudformation:us-west-1:111122223333:stack/teststack",
+        "stack-drift-detection-id":"624af370-311a-11e8-b6b7-500cexample",
+        "status-details":<span>{</span>
+            "stack-drift-status":"DRIFTED",
+            "detection-status":"DETECTION_COMPLETE"
+        },
+        "drift-detection-details":<span>{</span>
+            "drifted-stack-resource-count":1
+        },
+    "client-request-token":""
+    }
+}</code></pre></div></div>
+         
+            <h2 id="schema-stackset-status">StackSet status event detail</h2>
+            <p>Below are the detail fields for StackSet status events.</p>
+            <p>The <code class="code">source</code> and <code class="code">detail-type</code> fields are included because they contain specific values for CloudFormation events.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  . . .,
+  "detail-type": "CloudFormation StackSet Status Change",
+  "source": "aws.cloudformation",
+  . . .,
+  "detail": <span>{</span>
+    "stack-set-arn" : "string",
+    "status-details": <span>{</span>
+        "status":"string"
+    }
+  }
+}</code></pre>
+
+
+            <div class="variablelist">
+
+                 
+                 
+                 
+            <dl>
+                    <dt><span class="term"><code class="code">detail-type</code></span></dt>
+                    <dd>
+                        <p>Identifies the type of event.</p>
+                        <p>For StackSet status event events, this value is <code class="code">CloudFormation
+                                StackSet Status Change</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">source</code></span></dt>
+                    <dd>
+                        <p>Identifies the service that generated the event. For CloudFormation
+                            events, this value is <code class="code">aws.cloudformation</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">detail</code></span></dt>
+                    <dd>
+                        <p>A JSON object that contains information about the event. The service
+                            generating the event determines the content of this field.</p>
+                        <p>For StackSet status event events, this data includes:</p>
+                        <div class="variablelist">
+                             
+                             
+                        <dl>
+                                <dt><span class="term"><code class="code">stack-set-arn</code></span></dt>
+                                <dd>
+                                    <p>The Amazon Resource Name (ARN) associated with the stack
+                                        set.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">status-details</code></span></dt>
+                                <dd>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">status</code></span></dt>
+                                            <dd>
+                                                <p>The StackSet status. </p>
+                                                <p><em>Valid values</em>:
+                                                  <code class="code">ACTIVE</code> | <code class="code">DELETED</code></p>
+                                            </dd>
+                                        </dl></div>
+                                </dd>
+                            </dl></div>
+                    </dd>
+                </dl></div>
+
+            <div class="example"><h6>Example: StackSet status
+                    event</h6><div class="example-contents"><p>The following is an example StackSet status event. This event details that
+                    CloudFormation has deleted the specified stack set.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  "version": "0",
+  "id": "42h6hb90-hg0w-11op-b01v-0xhnh0934z09",
+  "detail-type": "CloudFormation StackSet Status Change",
+  "source": "aws.cloudformation",
+  "account": "111122223333",
+  "time": "2021-09-23T17:06:18Z",
+  "region": "us-east-1",
+  "resources": [
+    "arn:aws:cloudformation:us-east-1:111122223333:stackset/test12345:3f3a3fbe-c937-4eb3-a87d-e36a0af3f663"
+  ],
+  "detail": <span>{</span>
+    "stack-set-arn" : "arn:aws:cloudformation:us-east-1:111122223333:stackset/test12345:3f3a3fbe-c937-4eb3-a87d-e36a0af3f663",
+    "status-details": <span>{</span>
+        "status":"DELETED"
+    }
+  }
+}</code></pre></div></div>
+         
+            <h2 id="schema-stackset-stack-instance-status">StackSet stack instance
+                    status event detail</h2>
+            <p>Below are the detail fields for StackSet stack instance status events.</p>
+            <p>The <code class="code">source</code> and <code class="code">detail-type</code> fields are included because they contain specific values for CloudFormation events.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  . . .,
+  "detail-type": "CloudFormation StackSet StackInstance Status Change",
+  "source": "aws.cloudformation",
+  . . .,
+  "detail": <span>{</span>
+    "stack-set-arn" : "string",
+    "stack-id" : "string",
+    "status-details": <span>{</span>
+        "status": "string"
+        "status-reason": "string"
+        "detaild-status": "string"
+      }
+    }
+  }
+}</code></pre>
+            <div class="variablelist">
+
+                 
+                 
+                 
+            <dl>
+                    <dt><span class="term"><code class="code">detail-type</code></span></dt>
+                    <dd>
+                        <p>Identifies the type of event.</p>
+                        <p>For StackSet stack instance status events, this value is
+                                <code class="code">CloudFormation StackSet StackInstance Status Change</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">source</code></span></dt>
+                    <dd>
+                        <p>Identifies the service that generated the event. For CloudFormation
+                            events, this value is <code class="code">aws.cloudformation</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">detail</code></span></dt>
+                    <dd>
+                        <p>A JSON object that contains information about the event. The service
+                            generating the event determines the content of this field.</p>
+                        <p>For StackSet stack instance status events, this data includes:</p>
+                        <div class="variablelist">
+                             
+                             
+                             
+                        <dl>
+                                <dt><span class="term"><code class="code">stack-set-arn</code></span></dt>
+                                <dd>
+                                    <p>The Amazon Resource Name (ARN) associated with the
+                                        StackSet.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">stack-id</code></span></dt>
+                                <dd>
+                                    <p>The unique stack ID that's associated with the stack
+                                        instance.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">status-details</code></span></dt>
+                                <dd>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">status</code></span></dt>
+                                            <dd>
+                                                <p>The StackSet instance status.</p>
+                                                <p>For more details, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stack-instance-status-codes">Stack instance status codes</a>.</p>
+                                                <p><em>Valid values</em>:
+                                                  <code class="code">CURRENT</code> | <code class="code">OUTDATED</code>|
+                                                  <code class="code">INOPERABLE</code></p>
+                                            </dd>
+                                        </dl></div>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">status-reason</code></span></dt>
+                                            <dd>
+                                                <p>Status reason of the StackSet instance.</p>
+                                            </dd>
+                                        </dl></div>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">detailed-status</code></span></dt>
+                                            <dd>
+                                                <p>The detailed StackSet instance detailed
+                                                  status.</p>
+                                                <p><em>Valid values</em>:
+                                                  <code class="code">CANCELLED</code> | <code class="code">FAILED</code> |
+                                                  <code class="code">INOPERABLE</code> | <code class="code">PENDING</code> |
+                                                  <code class="code">RUNNING</code> |
+                                                  <code class="code">SKIPPED_SUSPENDED_ACCOUNT</code> |
+                                                  <code class="code">SUCCEEDED</code></p>
+                                            </dd>
+                                        </dl></div>
+                                </dd>
+                            </dl></div>
+                    </dd>
+                </dl></div>
+
+            <div class="example"><h6>Example: StackSet
+                    stack instance status event</h6><div class="example-contents"><p>The following is an example StackSet stack instance status event. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  "version": "0",
+  "id": "42h6hb90-hg0w-11op-b01v-0xhnh0934z09",
+  "detail-type": "CloudFormation StackSet StackInstance Status Change",
+  "source": "aws.cloudformation",
+  "account": "111122223333",
+  "time": "2021-09-22T19:19:23Z",
+  "region": "us-east-1",
+  "resources": [
+    "arn:aws:cloudformation:us-east-1:111122223333:stackset/test1234:e5f54eea-d041-44ad-94f8-b8268aca1e59"
+  ],
+  "detail": <span>{</span>
+     "stack-set-arn": "arn:aws:cloudformation:us-east-1:111122223333:stackset/test1234:e5f54eea-d041-44ad-94f8-b8268aca1e59",
+    "stack-id": "arn:aws:cloudformation:us-west-1:111122223333:stack/teststack",
+    "status-details": <span>{</span>
+        "status": "OUTDATED",
+        "status-reason": "User Initiated",
+        "detailed-status": "PENDING"
+    }
+  }
+}</code></pre></div></div>
+         
+            <h2 id="schema-stackset-operation-status">StackSet operation status event
+                    detail</h2>
+            <p>Below are the detail fields for StackSet operation status events.</p>
+            <p>The <code class="code">source</code> and <code class="code">detail-type</code> fields are included because they contain specific values for CloudFormation events.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  . . .,
+  "detail-type": "CloudFormation StackSet Operation Status Change",
+  "source": "aws.cloudformation",
+  . . .,
+  "detail": <span>{</span>
+    "stack-set-arn" : "string",
+    "stack-set-operation-id" : "string",
+    "status-details": <span>{</span>
+        "status": "string"
+      }
+    }
+  }
+}</code></pre>
+
+            <div class="variablelist">
+
+                 
+                 
+                 
+            <dl>
+                    <dt><span class="term"><code class="code">detail-type</code></span></dt>
+                    <dd>
+                        <p>Identifies the type of event.</p>
+                        <p>For StackSet operation status events, this value is <code class="code">CloudFormation
+                                StackSet Operation Status Change</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">source</code></span></dt>
+                    <dd>
+                        <p>Identifies the service that generated the event. For CloudFormation
+                            events, this value is <code class="code">aws.cloudformation</code>.</p>
+                    </dd>
+                 
+                    <dt><span class="term"><code class="code">detail</code></span></dt>
+                    <dd>
+                        <p>A JSON object that contains information about the event. The service
+                            generating the event determines the content of this field.</p>
+                        <p>For StackSet operation status events, this data includes:</p>
+                        <div class="variablelist">
+                             
+                             
+                             
+                        <dl>
+                                <dt><span class="term"><code class="code">stack-set-arn</code></span></dt>
+                                <dd>
+                                    <p>The Amazon Resource Name (ARN) associated with the
+                                        StackSet.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">stack-set-operation-id</code></span></dt>
+                                <dd>
+                                    <p>The unique ID that's associated with the StackSet
+                                        operation.</p>
+                                </dd>
+                             
+                                <dt><span class="term"><code class="code">status-details</code></span></dt>
+                                <dd>
+                                    <div class="variablelist">
+                                         
+                                    <dl>
+                                            <dt><span class="term"><code class="code">status</code></span></dt>
+                                            <dd>
+                                                <p>The StackSet operation status.</p>
+                                                <p>For more details, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes">StackSet status codes</a>.</p>
+                                                <p><em>Valid values</em>:
+                                                  <code class="code">RUNNING</code> | <code class="code">SUCCEEDED</code> |
+                                                  <code class="code">FAILED</code> | <code class="code">STOPPING</code> |
+                                                  <code class="code">STOPPED</code> | <code class="code">QUEUED</code></p>
+                                            </dd>
+                                        </dl></div>
+                                </dd>
+                            </dl></div>
+                    </dd>
+                </dl></div>
+
+            <div class="example"><h6>Example: StackSet
+                    operation status event</h6><div class="example-contents"><p>The following is an example StackSet operation status event. The event details
+                    that CloudFormation has successfully completed the requested operation on the
+                    specified stack set.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  "version": "0",
+  "id": "4de89905-fd92-6a6b-9509-23c04bcb6a21",
+  "detail-type": "CloudFormation StackSet Operation Status Change",
+  "source": "aws.cloudformation",
+  "account": "111122223333",
+  "time": "2021-09-22T05:46:24Z",
+  "region": "us-east-1",
+  "resources": [
+    "arn:aws:cloudformation:us-east-1:111122223333:stackset/test1234:e5f54eea-d041-44ad-94f8-b8268aca1e59"
+  ],
+  "detail": <span>{</span>
+    "stack-set-arn": "arn:aws:cloudformation:us-east-1:111122223333:stackset/test1234:e5f54eea-d041-44ad-94f8-b8268aca1e59",
+    "stack-set-operation-id": "ce69adce-2221-4483-8c4b-c51f284f25e8",
+    "status-details": <span>{</span>
+        "status": "SUCCEEDED"
+    }
+  }
+}</code></pre></div></div>
+        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stacks-event-bridge.html">Managing events using EventBridge</div><div id="next" class="next-link" accesskey="n" href="./eventbridge-cfn-template-generation.html">Generating templates
+                for  buses, rules, and pipes</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/eventbridge-events.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/eventbridge-events.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
