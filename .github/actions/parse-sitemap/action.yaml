@@ -1,0 +1,24 @@
+name: Parse sitemap
+description: Parse sitemap and generate a list of URLs to download
+
+inputs:
+  sitemap-urls:
+    description: List of sitemap urls to be parsed
+    required: true
+  urls-file:
+    description: Path to store the list of urls to be downloaded
+    default: ${{ runner.temp }}/site-urls.txt
+
+runs:
+  using: composite
+  steps:
+    - name: Fetch sitemap
+      shell: bash
+      run: |
+        URLS=(
+          ${{ inputs.sitemap-urls }}
+        )
+        for url in "${URLS[@]}"; do
+          wget $url --no-verbose -O- | dashify extract-sitemap-urls >> '${{ inputs.urls-file }}'
+        done
+        echo "Found $(wc -l < '${{ inputs.urls-file }}') urls" >> "$GITHUB_STEP_SUMMARY"

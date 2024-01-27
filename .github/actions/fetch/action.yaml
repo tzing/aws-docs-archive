@@ -1,0 +1,24 @@
+name: Fetch
+description: Fetch data
+
+inputs:
+  urls-file:
+    description: List of urls to download
+    default: ${{ runner.temp }}/site-urls.txt
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        set +o pipefail
+        wget \
+          --adjust-extension \
+          --content-on-error \
+          --input-file='${{ inputs.urls-file }}' \
+          --mirror \
+          --no-parent \
+          --no-verbose \
+          --page-requisites \
+          --reject=pdf,zip \
+        | true

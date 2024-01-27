@@ -1,0 +1,27 @@
+name: Test actions
+
+on:
+  pull_request:
+
+jobs:
+  test-download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-env
+      - uses: ./.github/actions/checkout-branch
+        with:
+          # doesn't matter; the action will checkout the branch in another directory
+          branch: main
+      - uses: ./.github/actions/parse-sitemap
+        with:
+          sitemap-urls: |
+            https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sitemap.xml
+      # this workflow is just for testing; override the URL list with a single URL
+      - name: Override URL list
+        run: |
+          echo "https://example.com/" > '${{ runner.temp }}/site-urls.txt'
+      - uses: ./.github/actions/fetch
+      - name: Show downloaded files
+        run: |
+          find ./example.com -type f
