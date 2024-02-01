@@ -41,16 +41,16 @@
   "Type" : "AWS::Cognito::IdentityPoolRoleAttachment",
   "Properties" : <span>{</span>
       "<a href="#cfn-cognito-identitypoolroleattachment-identitypoolid">IdentityPoolId</a>" : <code class="replaceable">String</code>,
-      "<a href="#cfn-cognito-identitypoolroleattachment-rolemappings">RoleMappings</a>" : <code class="replaceable">Map</code>,
-      "<a href="#cfn-cognito-identitypoolroleattachment-roles">Roles</a>" : <code class="replaceable">Map</code>
+      "<a href="#cfn-cognito-identitypoolroleattachment-rolemappings">RoleMappings</a>" : <code class="replaceable"><a href="./aws-properties-cognito-identitypoolroleattachment-rolemapping.html">RoleMapping</a></code>,
+      "<a href="#cfn-cognito-identitypoolroleattachment-roles">Roles</a>" : <code class="replaceable">String</code>
     }
 }
 </code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h3 id="aws-resource-cognito-identitypoolroleattachment-syntax.yaml">YAML</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">Type: AWS::Cognito::IdentityPoolRoleAttachment
 Properties:
   <a href="#cfn-cognito-identitypoolroleattachment-identitypoolid">IdentityPoolId</a>: <code class="replaceable">String</code>
   <a href="#cfn-cognito-identitypoolroleattachment-rolemappings">RoleMappings</a>: <code class="replaceable">
-    Map</code>
-  <a href="#cfn-cognito-identitypoolroleattachment-roles">Roles</a>: <code class="replaceable">Map</code>
+    <a href="./aws-properties-cognito-identitypoolroleattachment-rolemapping.html">RoleMapping</a></code>
+  <a href="#cfn-cognito-identitypoolroleattachment-roles">Roles</a>: <code class="replaceable">String</code>
 </code></pre></div><h2 id="aws-resource-cognito-identitypoolroleattachment-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-cognito-identitypoolroleattachment-identitypoolid"><span class="term"><code class="code">IdentityPoolId</code></span></dt><dd>
     <p>An identity pool ID in the format <code class="code">REGION:GUID</code>.</p>
   <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-cognito-identitypoolroleattachment-rolemappings"><span class="term"><code class="code">RoleMappings</code></span></dt><dd>
@@ -61,10 +61,10 @@ Properties:
     <p>If the <code class="code">IdentityProvider</code> field isn't provided in this object, the string is
       used as the identity provider name.</p>
     <p>For more information, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cognito-identitypoolroleattachment-rolemapping.html">RoleMapping property</a>.</p>
-  <p><em>Required</em>: No</p><p><em>Type</em>: Map of <a href="./aws-properties-cognito-identitypoolroleattachment-rolemapping.html">RoleMapping</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-identitypoolroleattachment-roles"><span class="term"><code class="code">Roles</code></span></dt><dd>
+  <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-identitypoolroleattachment-rolemapping.html">RoleMapping</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-identitypoolroleattachment-roles"><span class="term"><code class="code">Roles</code></span></dt><dd>
     <p>The map of the roles associated with this pool. For a given role, the key is either
       "authenticated" or "unauthenticated". The value is the role ARN.</p>
-  <p><em>Required</em>: No</p><p><em>Type</em>: Map of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-cognito-identitypoolroleattachment-return-values">Return values</h2><h3 id="aws-resource-cognito-identitypoolroleattachment-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the <code class="code">IdentityPoolId</code>, such as
+  <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^.+$</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-cognito-identitypoolroleattachment-return-values">Return values</h2><h3 id="aws-resource-cognito-identitypoolroleattachment-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the <code class="code">IdentityPoolId</code>, such as
       <code class="code">us-east-2:0d01f4d7-1305-4408-b437-12345EXAMPLE</code>.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h3 id="aws-resource-cognito-identitypoolroleattachment-return-values-fn--getatt">Fn::GetAtt</h3><p>The <code class="code">Fn::GetAtt</code> intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.</p>
 <p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-cognito-identitypoolroleattachment-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="Id-fn::getatt"><span class="term"><code class="code">Id</code></span></dt><dd>
     <p>The resource ID.</p>

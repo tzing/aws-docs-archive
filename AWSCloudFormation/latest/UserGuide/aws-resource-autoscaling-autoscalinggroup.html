@@ -355,8 +355,7 @@ Properties:
           <p>For additional examples of Amazon EC2 launch templates, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html#aws-resource-ec2-launchtemplate--examples">Examples</a> section of the <code class="code">AWS::EC2::LaunchTemplate</code>
             resources.</p>
         </li></ul></div><h3 id="aws-resource-autoscaling-autoscalinggroup--examples--An_Auto_Scaling_group_and_a_launch_template_with_a_parameters_section">An Auto Scaling group and a launch template with a parameters section</h3><p>The following example shows an Auto Scaling group. You specify values for the
-            <code class="code">MaxSize</code>, <code class="code">MinSize</code>, and <code class="code">DesiredCapacity</code>
-          properties.</p><p>It also shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource that contains the instance configuration
+            <code class="code">MaxSize</code> and <code class="code">MinSize</code> properties.</p><p>It also shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource that contains the instance configuration
           information for the group, which uses the <code class="code">LaunchTemplate</code> property to specify
           the launch template. The <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html">Ref</a> intrinsic function gets the ID of the <code class="code">AWS::EC2::LaunchTemplate</code>
           resource <code class="code">myLaunchTemplate</code>. The <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html">GetAtt</a> function gets the latest version number (for example, <code class="code">1</code>) of
@@ -408,8 +407,7 @@ Properties:
                     "Version": <span>{</span> "Fn::GetAtt": [ "myLaunchTemplate", "LatestVersionNumber" ] }
                 },
                 "MaxSize": "1",
-                "MinSize": "0",
-                "DesiredCapacity": "1",
+                "MinSize": "1",
                 "VPCZoneIdentifier": <span>{</span> "Ref": "Subnets" }
             }
         }
@@ -446,8 +444,7 @@ Resources:
         LaunchTemplateId: !Ref myLaunchTemplate
         Version: !GetAtt myLaunchTemplate.LatestVersionNumber
       MaxSize: '1'
-      MinSize: '0'
-      DesiredCapacity: '1'
+      MinSize: '1'
       VPCZoneIdentifier: !Ref Subnets</code></pre></div><h3 id="aws-resource-autoscaling-autoscalinggroup--examples--Auto_Scaling_group_with_CloudWatch_monitoring_enabled_and_custom_tags">Auto Scaling group with CloudWatch monitoring enabled and custom tags</h3><p>The following snippet shows an Auto Scaling group with CloudWatch monitoring enabled
           and custom tags. The <code class="code">LaunchTemplate</code> property references an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource with the logical name
             <code class="code">myLaunchTemplate</code> that is defined elsewhere in your template.</p><p>You specify the CloudWatch metrics to monitor using the <code class="code">MetricsCollection</code>
@@ -456,8 +453,8 @@ Resources:
           keep the provided tags, the first tag, <code class="code">Environment</code>=<code class="code">Production</code>,
           is assigned to the Auto Scaling group and to any EC2 instances launched as part of the
           Auto Scaling group. The second tag, <code class="code">Purpose</code>=<code class="code">WebServerGroup</code>, is
-          assigned only to the Auto Scaling group itself.</p><p>You also specify values for the <code class="code">MaxSize</code>, <code class="code">MinSize</code>,
-            <code class="code">DesiredCapacity</code>, and <code class="code">VPCZoneIdentifier</code> properties.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-autoscaling-autoscalinggroup--examples--Auto_Scaling_group_with_CloudWatch_monitoring_enabled_and_custom_tags--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+          assigned only to the Auto Scaling group itself.</p><p>You also specify values for the <code class="code">MaxSize</code>, <code class="code">MinSize</code>, and
+            <code class="code">VPCZoneIdentifier</code> properties.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-autoscaling-autoscalinggroup--examples--Auto_Scaling_group_with_CloudWatch_monitoring_enabled_and_custom_tags--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
     "Resources": <span>{</span>
         "myASG": <span>{</span>
             "Type": "AWS::AutoScaling::AutoScalingGroup",
@@ -467,8 +464,7 @@ Resources:
                     "Version": <span>{</span> "Fn::GetAtt": [ "myLaunchTemplate", "LatestVersionNumber" ] }
                 },
                 "MaxSize": "1",
-                "MinSize": "0",
-                "DesiredCapacity": "1",
+                "MinSize": "1",
                 "VPCZoneIdentifier": [
                     "subnetIdAz1",
                     "subnetIdAz2",
@@ -507,8 +503,7 @@ Resources:
         LaunchTemplateId: !Ref myLaunchTemplate
         Version: !GetAtt myLaunchTemplate.LatestVersionNumber
       MaxSize: '1'
-      MinSize: '0'
-      DesiredCapacity: '1'
+      MinSize: '1'
       VPCZoneIdentifier:   
         - subnetIdAz1
         - subnetIdAz2

@@ -121,15 +121,15 @@
          <p>A collection of settings that configure the <code class="code">RSessionGateway</code> app.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-sagemaker-domain-rsessionappsettings.html">RSessionAppSettings</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sagemaker-domain-usersettings-rstudioserverproappsettings"><span class="term"><code class="code">RStudioServerProAppSettings</code></span></dt><dd>
          <p>A collection of settings that configure user interaction with the
-                <code class="code">RStudioServerPro</code> app.</p>
+      <code class="code">RStudioServerPro</code> app.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-sagemaker-domain-rstudioserverproappsettings.html">RStudioServerProAppSettings</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sagemaker-domain-usersettings-securitygroups"><span class="term"><code class="code">SecurityGroups</code></span></dt><dd>
          <p>The security groups for the Amazon Virtual Private Cloud (VPC) that the domain uses for communication.</p>
          <p>Optional when the <code class="code">CreateDomain.AppNetworkAccessType</code> parameter is set to
-         <code class="code">PublicInternetOnly</code>.</p>
+      <code class="code">PublicInternetOnly</code>.</p>
          <p>Required when the <code class="code">CreateDomain.AppNetworkAccessType</code> parameter is set to
-          <code class="code">VpcOnly</code>, unless specified as part of the <code class="code">DefaultUserSettings</code> for the domain.</p>
+      <code class="code">VpcOnly</code>, unless specified as part of the <code class="code">DefaultUserSettings</code> for the domain.</p>
          <p>Amazon SageMaker adds a security group to allow NFS traffic from Amazon SageMaker Studio. Therefore, the
-         number of security groups that you can specify is one less than the maximum number shown.</p>
+      number of security groups that you can specify is one less than the maximum number shown.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Minimum</em>: <code class="code">0</code></p><p><em>Maximum</em>: <code class="code">32 | 5</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sagemaker-domain-usersettings-sharingsettings"><span class="term"><code class="code">SharingSettings</code></span></dt><dd>
          <p>Specifies options for sharing Amazon SageMaker Studio notebooks.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-sagemaker-domain-sharingsettings.html">SharingSettings</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sagemaker-domain-usersettings-spacestoragesettings"><span class="term"><code class="code">SpaceStorageSettings</code></span></dt><dd>

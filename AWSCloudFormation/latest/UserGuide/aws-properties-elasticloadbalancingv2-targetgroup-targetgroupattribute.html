@@ -192,6 +192,7 @@
              
              
              
+             
          <ul class="itemizedlist"><li class="listitem">
                <p>
                   <code class="code">deregistration_delay.connection_termination.enabled</code> - Indicates whether
@@ -215,6 +216,14 @@
                   <code class="code">target_health_state.unhealthy.connection_termination.enabled</code> - Indicates whether 
           the load balancer terminates connections to unhealthy targets. The value is <code class="code">true</code> 
           or <code class="code">false</code>. The default is <code class="code">true</code>.</p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">target_health_state.unhealthy.draining_interval_seconds</code> - The amount of time 
+          for Elastic Load Balancing to wait before changing the state of an unhealthy target from 
+          <code class="code">unhealthy.draining</code> to <code class="code">unhealthy</code>. The range is 0-360000 seconds. 
+          The default value is 0 seconds.</p>
+               <p>Note: This attribute can only be configured when 
+          <code class="code">target_health_state.unhealthy.connection_termination.enabled</code> is <code class="code">false</code>.</p>
             </li></ul></div>
          <p>The following attributes are supported only by Gateway Load Balancers:</p>
          <div class="itemizedlist">

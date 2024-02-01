@@ -41,7 +41,7 @@
   "Type" : "AWS::Cognito::UserPoolIdentityProvider",
   "Properties" : <span>{</span>
       "<a href="#cfn-cognito-userpoolidentityprovider-attributemapping">AttributeMapping</a>" : <code class="replaceable">Json</code>,
-      "<a href="#cfn-cognito-userpoolidentityprovider-idpidentifiers">IdpIdentifiers</a>" : <code class="replaceable">List</code>,
+      "<a href="#cfn-cognito-userpoolidentityprovider-idpidentifiers">IdpIdentifiers</a>" : <code class="replaceable">[ String, ... ]</code>,
       "<a href="#cfn-cognito-userpoolidentityprovider-providerdetails">ProviderDetails</a>" : <code class="replaceable">Json</code>,
       "<a href="#cfn-cognito-userpoolidentityprovider-providername">ProviderName</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-cognito-userpoolidentityprovider-providertype">ProviderType</a>" : <code class="replaceable">String</code>,
@@ -51,7 +51,8 @@
 </code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h3 id="aws-resource-cognito-userpoolidentityprovider-syntax.yaml">YAML</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">Type: AWS::Cognito::UserPoolIdentityProvider
 Properties:
   <a href="#cfn-cognito-userpoolidentityprovider-attributemapping">AttributeMapping</a>: <code class="replaceable">Json</code>
-  <a href="#cfn-cognito-userpoolidentityprovider-idpidentifiers">IdpIdentifiers</a>: <code class="replaceable">List</code>
+  <a href="#cfn-cognito-userpoolidentityprovider-idpidentifiers">IdpIdentifiers</a>: <code class="replaceable">
+    - String</code>
   <a href="#cfn-cognito-userpoolidentityprovider-providerdetails">ProviderDetails</a>: <code class="replaceable">Json</code>
   <a href="#cfn-cognito-userpoolidentityprovider-providername">ProviderName</a>: <code class="replaceable">String</code>
   <a href="#cfn-cognito-userpoolidentityprovider-providertype">ProviderType</a>: <code class="replaceable">String</code>
@@ -60,132 +61,152 @@ Properties:
          <p>A mapping of IdP attributes to standard and custom user pool attributes.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Json</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-idpidentifiers"><span class="term"><code class="code">IdpIdentifiers</code></span></dt><dd>
          <p>A list of IdP identifiers.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: List of String</p><p><em>Maximum</em>: <code class="code">50</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-providerdetails"><span class="term"><code class="code">ProviderDetails</code></span></dt><dd>
-         <p>The IdP details. The following list describes the provider detail keys for each IdP
-            type.</p>
-         <div class="itemizedlist">
+      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Minimum</em>: <code class="code">0</code></p><p><em>Maximum</em>: <code class="code">50</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-providerdetails"><span class="term"><code class="code">ProviderDetails</code></span></dt><dd>
+         <p>The scopes, URLs, and identifiers for your external identity provider. The following
+examples describe the provider detail keys for each IdP type. These values and their
+schema are subject to change. Social IdP <code class="code">authorize_scopes</code> values must match
+the values listed here.</p>
+         <div class="variablelist">
              
              
              
              
              
-         <ul class="itemizedlist"><li class="listitem">
-               <p>For Google and Login with Amazon:</p>
-               <div class="itemizedlist">
-                   
-                   
-                   
-               <ul class="itemizedlist"><li class="listitem">
-                     <p>client_id</p>
-                  </li><li class="listitem">
-                     <p>client_secret</p>
-                  </li><li class="listitem">
-                     <p>authorize_scopes</p>
-                  </li></ul></div>
-            </li><li class="listitem">
-               <p>For Facebook:</p>
-               <div class="itemizedlist">
-                   
-                   
-                   
-                   
-               <ul class="itemizedlist"><li class="listitem">
-                     <p>client_id</p>
-                  </li><li class="listitem">
-                     <p>client_secret</p>
-                  </li><li class="listitem">
-                     <p>authorize_scopes</p>
-                  </li><li class="listitem">
-                     <p>api_version</p>
-                  </li></ul></div>
-            </li><li class="listitem">
-               <p>For Sign in with Apple:</p>
-               <div class="itemizedlist">
-                   
-                   
-                   
-                   
-                   
-               <ul class="itemizedlist"><li class="listitem">
-                     <p>client_id</p>
-                  </li><li class="listitem">
-                     <p>team_id</p>
-                  </li><li class="listitem">
-                     <p>key_id</p>
-                  </li><li class="listitem">
-                     <p>private_key</p>
-                  </li><li class="listitem">
-                     <p>authorize_scopes</p>
-                  </li></ul></div>
-            </li><li class="listitem">
-               <p>For OpenID Connect (OIDC) providers:</p>
-               <div class="itemizedlist">
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-               <ul class="itemizedlist"><li class="listitem">
-                     <p>client_id</p>
-                  </li><li class="listitem">
-                     <p>client_secret</p>
-                  </li><li class="listitem">
-                     <p>attributes_request_method</p>
-                  </li><li class="listitem">
-                     <p>oidc_issuer</p>
-                  </li><li class="listitem">
-                     <p>authorize_scopes</p>
-                  </li><li class="listitem">
-                     <p>The following keys are only present if Amazon Cognito didn't discover them at
-                            the <code class="code">oidc_issuer</code> URL.</p>
-                     <div class="itemizedlist">
-                         
-                         
-                         
-                         
-                     <ul class="itemizedlist"><li class="listitem">
-                           <p>authorize_url </p>
-                        </li><li class="listitem">
-                           <p>token_url </p>
-                        </li><li class="listitem">
-                           <p>attributes_url </p>
-                        </li><li class="listitem">
-                           <p>jwks_uri </p>
-                        </li></ul></div>
-                  </li><li class="listitem">
-                     <p>Amazon Cognito sets the value of the following keys automatically. They are
-                            read-only.</p>
-                     <div class="itemizedlist">
-                         
-                     <ul class="itemizedlist"><li class="listitem">
-                           <p>attributes_url_add_attributes </p>
-                        </li></ul></div>
-                  </li></ul></div>
-            </li><li class="listitem">
-               <p>For SAML providers:</p>
-               <div class="itemizedlist">
-                   
-                   
-               <ul class="itemizedlist"><li class="listitem">
-                     <p>MetadataFile or MetadataURL</p>
-                  </li><li class="listitem">
-                     <p>IDPSignout <em>optional</em>
-                     </p>
-                  </li></ul></div>
-            </li></ul></div>
+             
+         <dl>
+               <dt><span class="term">OpenID Connect (OIDC)</span></dt>
+               <dd>
+                  <p>Amazon Cognito accepts the following elements when it can't discover endpoint
+                URLs from <code class="code">oidc_issuer</code>: <code class="code">attributes_url</code>,
+                    <code class="code">authorize_url</code>, <code class="code">jwks_uri</code>,
+                    <code class="code">token_url</code>.</p>
+                  <p>Create or update request: <code class="code">"ProviderDetails": <span>{</span>
+                    "attributes_request_method": "GET", "attributes_url":
+                    "https://auth.example.com/userInfo", "authorize_scopes": "openid profile
+                    email", "authorize_url": "https://auth.example.com/authorize",
+                    "client_id": "1example23456789", "client_secret":
+                    "provider-app-client-secret", "jwks_uri":
+                    "https://auth.example.com/.well-known/jwks.json", "oidc_issuer":
+                    "https://auth.example.com", "token_url": "https://example.com/token"
+                    }</code>
+                  </p>
+                  <p>Describe response: <code class="code">"ProviderDetails": <span>{</span> "attributes_request_method":
+                    "GET", "attributes_url": "https://auth.example.com/userInfo",
+                    "attributes_url_add_attributes": "false", "authorize_scopes": "openid
+                    profile email", "authorize_url": "https://auth.example.com/authorize",
+                    "client_id": "1example23456789", "client_secret":
+                    "provider-app-client-secret", "jwks_uri":
+                    "https://auth.example.com/.well-known/jwks.json", "oidc_issuer":
+                    "https://auth.example.com", "token_url": "https://example.com/token"
+                    }</code>
+                  </p>
+               </dd>
+             
+               <dt><span class="term">SAML</span></dt>
+               <dd>
+                  <p>Create or update request with Metadata URL: <code class="code">"ProviderDetails": <span>{</span> "IDPInit": "true",
+                    "IDPSignout": "true", "EncryptedResponses" : "true", "MetadataURL":
+                    "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm":
+                    "rsa-sha256" }</code>
+                  </p>
+                  <p>Create or update request with Metadata file: <code class="code">"ProviderDetails": <span>{</span> "IDPInit": "true",
+                    "IDPSignout": "true", "EncryptedResponses" : "true",  
+                    "MetadataFile": "[metadata XML]", "RequestSigningAlgorithm":
+                    "rsa-sha256" }</code>
+                  </p>
+                  <p>The value of <code class="code">MetadataFile</code> must be the plaintext metadata document with all 
+                quote (") characters escaped by backslashes.</p>
+                  <p>Describe response: <code class="code">"ProviderDetails": <span>{</span> "IDPInit": "true",
+                    "IDPSignout": "true", "EncryptedResponses" : "true", "ActiveEncryptionCertificate": "[certificate]",
+                    "MetadataURL": "https://auth.example.com/sso/saml/metadata", "RequestSigningAlgorithm":
+                    "rsa-sha256", "SLORedirectBindingURI":
+                    "https://auth.example.com/slo/saml", "SSORedirectBindingURI":
+                    "https://auth.example.com/sso/saml" }</code>
+                  </p>
+               </dd>
+             
+               <dt><span class="term">LoginWithAmazon</span></dt>
+               <dd>
+                  <p>Create or update request: <code class="code">"ProviderDetails": <span>{</span> "authorize_scopes":
+                    "profile postal_code", "client_id":
+                    "amzn1.application-oa2-client.1example23456789", "client_secret":
+                    "provider-app-client-secret"</code>
+                  </p>
+                  <p>Describe response: <code class="code">"ProviderDetails": <span>{</span> "attributes_url":
+                    "https://api.amazon.com/user/profile", "attributes_url_add_attributes":
+                    "false", "authorize_scopes": "profile postal_code", "authorize_url":
+                    "https://www.amazon.com/ap/oa", "client_id":
+                    "amzn1.application-oa2-client.1example23456789", "client_secret":
+                    "provider-app-client-secret", "token_request_method": "POST",
+                    "token_url": "https://api.amazon.com/auth/o2/token" }</code>
+                  </p>
+               </dd>
+             
+               <dt><span class="term">Google</span></dt>
+               <dd>
+                  <p>Create or update request: <code class="code">"ProviderDetails": <span>{</span> "authorize_scopes":
+                    "email profile openid", "client_id":
+                    "1example23456789.apps.googleusercontent.com", "client_secret":
+                    "provider-app-client-secret" }</code>
+                  </p>
+                  <p>Describe response: <code class="code">"ProviderDetails": <span>{</span> "attributes_url":
+                    "https://people.googleapis.com/v1/people/me?personFields=",
+                    "attributes_url_add_attributes": "true", "authorize_scopes": "email
+                    profile openid", "authorize_url":
+                    "https://accounts.google.com/o/oauth2/v2/auth", "client_id":
+                    "1example23456789.apps.googleusercontent.com", "client_secret":
+                    "provider-app-client-secret", "oidc_issuer":
+                    "https://accounts.google.com", "token_request_method": "POST",
+                    "token_url": "https://www.googleapis.com/oauth2/v4/token"
+                }</code>
+                  </p>
+               </dd>
+             
+               <dt><span class="term">SignInWithApple</span></dt>
+               <dd>
+                  <p>Create or update request: <code class="code">"ProviderDetails": <span>{</span> "authorize_scopes":
+                    "email name", "client_id": "com.example.cognito", "private_key": "1EXAMPLE", 
+                    "key_id": "2EXAMPLE", "team_id": "3EXAMPLE" }</code>
+                  </p>
+                  <p>Describe response: <code class="code">"ProviderDetails": <span>{</span>
+                    "attributes_url_add_attributes": "false", "authorize_scopes": "email
+                    name", "authorize_url": "https://appleid.apple.com/auth/authorize",
+                    "client_id": "com.example.cognito", "key_id": "1EXAMPLE", "oidc_issuer":
+                    "https://appleid.apple.com", "team_id": "2EXAMPLE",
+                    "token_request_method": "POST", "token_url":
+                    "https://appleid.apple.com/auth/token" }</code>
+                  </p>
+               </dd>
+             
+               <dt><span class="term">Facebook</span></dt>
+               <dd>
+                  <p>Create or update request: <code class="code">"ProviderDetails": <span>{</span> "api_version": "v17.0", 
+            "authorize_scopes": "public_profile, email", "client_id": "1example23456789", 
+            "client_secret": "provider-app-client-secret" }</code>
+                  </p>
+                  <p>Describe response: <code class="code">"ProviderDetails": 
+            <span>{</span> "api_version": "v17.0", "attributes_url": "https://graph.facebook.com/v17.0/me?fields=", 
+            "attributes_url_add_attributes": "true", "authorize_scopes": "public_profile, email", 
+            "authorize_url": "https://www.facebook.com/v17.0/dialog/oauth", "client_id": 
+            "1example23456789", "client_secret": "provider-app-client-secret", "token_request_method": 
+            "GET", "token_url": "https://graph.facebook.com/v17.0/oauth/access_token" }</code>
+                  </p>
+               </dd>
+            </dl></div>
       <p><em>Required</em>: No</p><p><em>Type</em>: Json</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-providername"><span class="term"><code class="code">ProviderName</code></span></dt><dd>
          <p>The IdP name.</p>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">32</code></p><p><em>Pattern</em>: <code class="code">[^_\p<span>{</span>Z}][\p<span>{</span>L}\p<span>{</span>M}\p<span>{</span>S}\p<span>{</span>N}\p<span>{</span>P}][^_\p<span>{</span>Z}]+</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-providertype"><span class="term"><code class="code">ProviderType</code></span></dt><dd>
+      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">[^_\p<span>{</span>Z}][\p<span>{</span>L}\p<span>{</span>M}\p<span>{</span>S}\p<span>{</span>N}\p<span>{</span>P}][^_\p<span>{</span>Z}]+</code></p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">32</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-providertype"><span class="term"><code class="code">ProviderType</code></span></dt><dd>
          <p>The IdP type.</p>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">OIDC | Google | Facebook | SignInWithApple | LoginWithAmazon | SAML</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-userpoolid"><span class="term"><code class="code">UserPoolId</code></span></dt><dd>
+      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">SAML | Facebook | Google | LoginWithAmazon | SignInWithApple | OIDC</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-cognito-userpoolidentityprovider-userpoolid"><span class="term"><code class="code">UserPoolId</code></span></dt><dd>
          <p>The user pool ID.</p>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">55</code></p><p><em>Pattern</em>: <code class="code">[\w-]+_[0-9a-zA-Z]+</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd></dl></div><h2 id="aws-resource-cognito-userpoolidentityprovider-return-values">Return values</h2><h3 id="aws-resource-cognito-userpoolidentityprovider-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns physicalResourceId, which is “ProviderName". For
+      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">[\w-]+_[0-9a-zA-Z]+</code></p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">55</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd></dl></div><h2 id="aws-resource-cognito-userpoolidentityprovider-return-values">Return values</h2><h3 id="aws-resource-cognito-userpoolidentityprovider-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns physicalResourceId, which is “ProviderName". For
       example:</p><p>
       <code class="code"><span>{</span> "Ref": "testProvider" }</code>
     </p><p>For the Amazon Cognito identity provider <code class="code">testProvider</code>, Ref returns the name
-      of the identity provider.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h2 id="aws-resource-cognito-userpoolidentityprovider--examples">Examples</h2><p></p><h3 id="aws-resource-cognito-userpoolidentityprovider--examples--Creating_a_new_Login_with_Amazon_identity_provider">Creating a new Login with Amazon identity provider</h3><p>The following example creates a Login with Amazon identity provider in the referenced
+      of the identity provider.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h3 id="aws-resource-cognito-userpoolidentityprovider-return-values-fn--getatt">Fn::GetAtt</h3><p>The <code class="code">Fn::GetAtt</code> intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.</p>
+<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-cognito-userpoolidentityprovider-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="Id-fn::getatt"><span class="term"><code class="code">Id</code></span></dt><dd>
+    <p>The resource ID.</p>
+  </dd></dl></div><h2 id="aws-resource-cognito-userpoolidentityprovider--examples">Examples</h2><p></p><h3 id="aws-resource-cognito-userpoolidentityprovider--examples--Creating_a_new_Login_with_Amazon_identity_provider">Creating a new Login with Amazon identity provider</h3><p>The following example creates a Login with Amazon identity provider in the referenced
           user pool.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-cognito-userpoolidentityprovider--examples--Creating_a_new_Login_with_Amazon_identity_provider--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "UserPoolIdentityProvider": <span>{</span>
     "Type": "AWS::Cognito::UserPoolIdentityProvider",

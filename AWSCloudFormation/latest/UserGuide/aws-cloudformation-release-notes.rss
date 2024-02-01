@@ -7,7 +7,28 @@
       <atom:link href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss"
                  rel="self"
                  type="application/rss+xml"/>
-      <lastBuildDate>Sat, 27 Jan 2024 02:49:34 GMT</lastBuildDate>
+      <lastBuildDate>Thu, 1 Feb 2024 02:07:31 GMT</lastBuildDate>
+      <item>
+         <title>Updated resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resource was updated: AWS::AutoScaling::AutoScalingGroup.</description>
+         <pubDate>Mon, 29 Jan 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-01-29</guid>
+      </item>
+      <item>
+         <title>New resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resource was added: AWS::RDS::Integration</description>
+         <pubDate>Mon, 29 Jan 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2024-01-29</guid>
+      </item>
+      <item>
+         <title>New resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resource was added: AWS::InspectorV2::CisScanConfiguration.</description>
+         <pubDate>Tue, 23 Jan 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2024-01-23</guid>
+      </item>
       <item>
          <title>Updated resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
@@ -1185,7 +1206,7 @@
       <item>
          <title>New resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resources were added AWS::RDS::CustomDBEngineVersion</description>
+         <description>The following resource was added: AWS::RDS::CustomDBEngineVersion</description>
          <pubDate>Thu, 15 Jun 2023 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2023-06-15</guid>
       </item>

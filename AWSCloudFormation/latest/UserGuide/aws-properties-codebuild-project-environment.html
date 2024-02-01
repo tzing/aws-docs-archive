@@ -49,6 +49,7 @@
   "<a href="#cfn-codebuild-project-environment-certificate">Certificate</a>" : <code class="replaceable">String</code>,
   "<a href="#cfn-codebuild-project-environment-computetype">ComputeType</a>" : <code class="replaceable">String</code>,
   "<a href="#cfn-codebuild-project-environment-environmentvariables">EnvironmentVariables</a>" : <code class="replaceable">[ <a href="./aws-properties-codebuild-project-environmentvariable.html">EnvironmentVariable</a>, ... ]</code>,
+  "<a href="#cfn-codebuild-project-environment-fleet:"><span>Fleet:</span></a>" : <code class="replaceable"><a href="./aws-properties-codebuild-project-projectfleet.html">ProjectFleet</a></code>,
   "<a href="#cfn-codebuild-project-environment-image">Image</a>" : <code class="replaceable">String</code>,
   "<a href="#cfn-codebuild-project-environment-imagepullcredentialstype">ImagePullCredentialsType</a>" : <code class="replaceable">String</code>,
   "<a href="#cfn-codebuild-project-environment-privilegedmode">PrivilegedMode</a>" : <code class="replaceable">Boolean</code>,
@@ -59,6 +60,8 @@
   <a href="#cfn-codebuild-project-environment-computetype">ComputeType</a>: <code class="replaceable">String</code>
   <a href="#cfn-codebuild-project-environment-environmentvariables">EnvironmentVariables</a>: <code class="replaceable">
     - <a href="./aws-properties-codebuild-project-environmentvariable.html">EnvironmentVariable</a></code>
+  <a href="#cfn-codebuild-project-environment-fleet:"><span>Fleet:</span></a>: <code class="replaceable">
+    <a href="./aws-properties-codebuild-project-projectfleet.html">ProjectFleet</a></code>
   <a href="#cfn-codebuild-project-environment-image">Image</a>: <code class="replaceable">String</code>
   <a href="#cfn-codebuild-project-environment-imagepullcredentialstype">ImagePullCredentialsType</a>: <code class="replaceable">String</code>
   <a href="#cfn-codebuild-project-environment-privilegedmode">PrivilegedMode</a>: <code class="replaceable">Boolean</code>
@@ -97,7 +100,7 @@
       <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-codebuild-project-environment-environmentvariables"><span class="term"><code class="code">EnvironmentVariables</code></span></dt><dd>
          <p>A set of environment variables to make available to builds for this build
             project.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-codebuild-project-environmentvariable.html">EnvironmentVariable</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-codebuild-project-environment-image"><span class="term"><code class="code">Image</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-codebuild-project-environmentvariable.html">EnvironmentVariable</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-codebuild-project-environment-fleet:"><span class="term"><code class="code">Fleet:</code></span></dt><dd><p>Property description not available.</p><p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-codebuild-project-projectfleet.html">ProjectFleet</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-codebuild-project-environment-image"><span class="term"><code class="code">Image</code></span></dt><dd>
          <p>The image tag or image digest that identifies the Docker image to use for this build
             project. Use the following formats:</p>
          <div class="itemizedlist">

@@ -44,27 +44,27 @@
   "Properties" : <span>{</span>
       "<a href="#cfn-cognito-userpool-accountrecoverysetting">AccountRecoverySetting</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-accountrecoverysetting.html">AccountRecoverySetting</a></code>,
       "<a href="#cfn-cognito-userpool-admincreateuserconfig">AdminCreateUserConfig</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-admincreateuserconfig.html">AdminCreateUserConfig</a></code>,
-      "<a href="#cfn-cognito-userpool-aliasattributes">AliasAttributes</a>" : <code class="replaceable">List</code>,
-      "<a href="#cfn-cognito-userpool-autoverifiedattributes">AutoVerifiedAttributes</a>" : <code class="replaceable">List</code>,
+      "<a href="#cfn-cognito-userpool-aliasattributes">AliasAttributes</a>" : <code class="replaceable">[ String, ... ]</code>,
+      "<a href="#cfn-cognito-userpool-autoverifiedattributes">AutoVerifiedAttributes</a>" : <code class="replaceable">[ String, ... ]</code>,
       "<a href="#cfn-cognito-userpool-deletionprotection">DeletionProtection</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-cognito-userpool-deviceconfiguration">DeviceConfiguration</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-deviceconfiguration.html">DeviceConfiguration</a></code>,
       "<a href="#cfn-cognito-userpool-emailconfiguration">EmailConfiguration</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-emailconfiguration.html">EmailConfiguration</a></code>,
       "<a href="#cfn-cognito-userpool-emailverificationmessage">EmailVerificationMessage</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-cognito-userpool-emailverificationsubject">EmailVerificationSubject</a>" : <code class="replaceable">String</code>,
-      "<a href="#cfn-cognito-userpool-enabledmfas">EnabledMfas</a>" : <code class="replaceable">List</code>,
+      "<a href="#cfn-cognito-userpool-enabledmfas">EnabledMfas</a>" : <code class="replaceable">[ String, ... ]</code>,
       "<a href="#cfn-cognito-userpool-lambdaconfig">LambdaConfig</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-lambdaconfig.html">LambdaConfig</a></code>,
       "<a href="#cfn-cognito-userpool-mfaconfiguration">MfaConfiguration</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-cognito-userpool-policies">Policies</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-policies.html">Policies</a></code>,
-      "<a href="#cfn-cognito-userpool-schema">Schema</a>" : <code class="replaceable">List</code>,
+      "<a href="#cfn-cognito-userpool-schema">Schema</a>" : <code class="replaceable">[ <a href="./aws-properties-cognito-userpool-schemaattribute.html">SchemaAttribute</a>, ... ]</code>,
       "<a href="#cfn-cognito-userpool-smsauthenticationmessage">SmsAuthenticationMessage</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-cognito-userpool-smsconfiguration">SmsConfiguration</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-smsconfiguration.html">SmsConfiguration</a></code>,
       "<a href="#cfn-cognito-userpool-smsverificationmessage">SmsVerificationMessage</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-cognito-userpool-userattributeupdatesettings">UserAttributeUpdateSettings</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-userattributeupdatesettings.html">UserAttributeUpdateSettings</a></code>,
-      "<a href="#cfn-cognito-userpool-usernameattributes">UsernameAttributes</a>" : <code class="replaceable">List</code>,
+      "<a href="#cfn-cognito-userpool-usernameattributes">UsernameAttributes</a>" : <code class="replaceable">[ String, ... ]</code>,
       "<a href="#cfn-cognito-userpool-usernameconfiguration">UsernameConfiguration</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-usernameconfiguration.html">UsernameConfiguration</a></code>,
       "<a href="#cfn-cognito-userpool-userpooladdons">UserPoolAddOns</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-userpooladdons.html">UserPoolAddOns</a></code>,
       "<a href="#cfn-cognito-userpool-userpoolname">UserPoolName</a>" : <code class="replaceable">String</code>,
-      "<a href="#cfn-cognito-userpool-userpooltags">UserPoolTags</a>" : <code class="replaceable">Map</code>,
+      "<a href="#cfn-cognito-userpool-userpooltags">UserPoolTags</a>" : <code class="replaceable"><span>{</span><code class="replaceable">Key</code>: <code class="replaceable">Value</code>, ...}</code>,
       "<a href="#cfn-cognito-userpool-verificationmessagetemplate">VerificationMessageTemplate</a>" : <code class="replaceable"><a href="./aws-properties-cognito-userpool-verificationmessagetemplate.html">VerificationMessageTemplate</a></code>
     }
 }
@@ -74,8 +74,10 @@ Properties:
     <a href="./aws-properties-cognito-userpool-accountrecoverysetting.html">AccountRecoverySetting</a></code>
   <a href="#cfn-cognito-userpool-admincreateuserconfig">AdminCreateUserConfig</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-admincreateuserconfig.html">AdminCreateUserConfig</a></code>
-  <a href="#cfn-cognito-userpool-aliasattributes">AliasAttributes</a>: <code class="replaceable">List</code>
-  <a href="#cfn-cognito-userpool-autoverifiedattributes">AutoVerifiedAttributes</a>: <code class="replaceable">List</code>
+  <a href="#cfn-cognito-userpool-aliasattributes">AliasAttributes</a>: <code class="replaceable">
+    - String</code>
+  <a href="#cfn-cognito-userpool-autoverifiedattributes">AutoVerifiedAttributes</a>: <code class="replaceable">
+    - String</code>
   <a href="#cfn-cognito-userpool-deletionprotection">DeletionProtection</a>: <code class="replaceable">String</code>
   <a href="#cfn-cognito-userpool-deviceconfiguration">DeviceConfiguration</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-deviceconfiguration.html">DeviceConfiguration</a></code>
@@ -83,26 +85,30 @@ Properties:
     <a href="./aws-properties-cognito-userpool-emailconfiguration.html">EmailConfiguration</a></code>
   <a href="#cfn-cognito-userpool-emailverificationmessage">EmailVerificationMessage</a>: <code class="replaceable">String</code>
   <a href="#cfn-cognito-userpool-emailverificationsubject">EmailVerificationSubject</a>: <code class="replaceable">String</code>
-  <a href="#cfn-cognito-userpool-enabledmfas">EnabledMfas</a>: <code class="replaceable">List</code>
+  <a href="#cfn-cognito-userpool-enabledmfas">EnabledMfas</a>: <code class="replaceable">
+    - String</code>
   <a href="#cfn-cognito-userpool-lambdaconfig">LambdaConfig</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-lambdaconfig.html">LambdaConfig</a></code>
   <a href="#cfn-cognito-userpool-mfaconfiguration">MfaConfiguration</a>: <code class="replaceable">String</code>
   <a href="#cfn-cognito-userpool-policies">Policies</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-policies.html">Policies</a></code>
-  <a href="#cfn-cognito-userpool-schema">Schema</a>: <code class="replaceable">List</code>
+  <a href="#cfn-cognito-userpool-schema">Schema</a>: <code class="replaceable">
+    - <a href="./aws-properties-cognito-userpool-schemaattribute.html">SchemaAttribute</a></code>
   <a href="#cfn-cognito-userpool-smsauthenticationmessage">SmsAuthenticationMessage</a>: <code class="replaceable">String</code>
   <a href="#cfn-cognito-userpool-smsconfiguration">SmsConfiguration</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-smsconfiguration.html">SmsConfiguration</a></code>
   <a href="#cfn-cognito-userpool-smsverificationmessage">SmsVerificationMessage</a>: <code class="replaceable">String</code>
   <a href="#cfn-cognito-userpool-userattributeupdatesettings">UserAttributeUpdateSettings</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-userattributeupdatesettings.html">UserAttributeUpdateSettings</a></code>
-  <a href="#cfn-cognito-userpool-usernameattributes">UsernameAttributes</a>: <code class="replaceable">List</code>
+  <a href="#cfn-cognito-userpool-usernameattributes">UsernameAttributes</a>: <code class="replaceable">
+    - String</code>
   <a href="#cfn-cognito-userpool-usernameconfiguration">UsernameConfiguration</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-usernameconfiguration.html">UsernameConfiguration</a></code>
   <a href="#cfn-cognito-userpool-userpooladdons">UserPoolAddOns</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-userpooladdons.html">UserPoolAddOns</a></code>
   <a href="#cfn-cognito-userpool-userpoolname">UserPoolName</a>: <code class="replaceable">String</code>
-  <a href="#cfn-cognito-userpool-userpooltags">UserPoolTags</a>: <code class="replaceable">Map</code>
+  <a href="#cfn-cognito-userpool-userpooltags">UserPoolTags</a>: <code class="replaceable">
+    <code class="replaceable">Key</code>: <code class="replaceable">Value</code></code>
   <a href="#cfn-cognito-userpool-verificationmessagetemplate">VerificationMessageTemplate</a>: <code class="replaceable">
     <a href="./aws-properties-cognito-userpool-verificationmessagetemplate.html">VerificationMessageTemplate</a></code>
 </code></pre></div><h2 id="aws-resource-cognito-userpool-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-cognito-userpool-accountrecoverysetting"><span class="term"><code class="code">AccountRecoverySetting</code></span></dt><dd>
@@ -117,17 +123,17 @@ Properties:
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-userpool-admincreateuserconfig.html">AdminCreateUserConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-aliasattributes"><span class="term"><code class="code">AliasAttributes</code></span></dt><dd>
     <p>Attributes supported as an alias for this user pool. Possible values: <b>phone_number</b>, <b>email</b>, or <b>preferred_username</b>.</p>
     <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This user pool property cannot be updated.</p></div></div>
-  <p><em>Required</em>: No</p><p><em>Type</em>: List of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-autoverifiedattributes"><span class="term"><code class="code">AutoVerifiedAttributes</code></span></dt><dd>
+  <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-autoverifiedattributes"><span class="term"><code class="code">AutoVerifiedAttributes</code></span></dt><dd>
          <p>The attributes to be auto-verified. Possible values: <b>email</b>, <b>phone_number</b>.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: List of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-deletionprotection"><span class="term"><code class="code">DeletionProtection</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-deletionprotection"><span class="term"><code class="code">DeletionProtection</code></span></dt><dd>
          <p>When active, <code class="code">DeletionProtection</code> prevents accidental deletion of your user
-        pool. Before you can delete a user pool that you have protected against deletion, you
-        must deactivate this feature.</p>
+pool. Before you can delete a user pool that you have protected against deletion, you
+must deactivate this feature.</p>
          <p>When you try to delete a protected user pool in a <code class="code">DeleteUserPool</code> API request, 
-        Amazon Cognito returns an <code class="code">InvalidParameterException</code> error. To delete a protected user pool, 
-        send a new <code class="code">DeleteUserPool</code> request after you deactivate deletion protection in an 
-        <code class="code">UpdateUserPool</code> API request.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">INACTIVE | ACTIVE</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-deviceconfiguration"><span class="term"><code class="code">DeviceConfiguration</code></span></dt><dd>
+Amazon Cognito returns an <code class="code">InvalidParameterException</code> error. To delete a protected user pool, 
+send a new <code class="code">DeleteUserPool</code> request after you deactivate deletion protection in an 
+<code class="code">UpdateUserPool</code> API request.</p>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">ACTIVE | INACTIVE</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-deviceconfiguration"><span class="term"><code class="code">DeviceConfiguration</code></span></dt><dd>
          <p>The device-remembering configuration for a user pool. A null value indicates that you
             have deactivated device remembering in your user pool.</p>
          <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>When you provide a value for any <code class="code">DeviceConfiguration</code> field, you
@@ -138,9 +144,9 @@ Properties:
             pool.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-userpool-emailconfiguration.html">EmailConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-emailverificationmessage"><span class="term"><code class="code">EmailVerificationMessage</code></span></dt><dd>
          <p>This parameter is no longer used. See <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html">VerificationMessageTemplateType</a>.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">6</code></p><p><em>Maximum</em>: <code class="code">20000</code></p><p><em>Pattern</em>: <code class="code">[\p<span>{</span>L}\p<span>{</span>M}\p<span>{</span>S}\p<span>{</span>N}\p<span>{</span>P}\s*]*\<span>{</span>####\}[\p<span>{</span>L}\p<span>{</span>M}\p<span>{</span>S}\p<span>{</span>N}\p<span>{</span>P}\s*]*</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-emailverificationsubject"><span class="term"><code class="code">EmailVerificationSubject</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">6</code></p><p><em>Maximum</em>: <code class="code">20000</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-emailverificationsubject"><span class="term"><code class="code">EmailVerificationSubject</code></span></dt><dd>
          <p>This parameter is no longer used. See <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html">VerificationMessageTemplateType</a>.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">140</code></p><p><em>Pattern</em>: <code class="code">[\p<span>{</span>L}\p<span>{</span>M}\p<span>{</span>S}\p<span>{</span>N}\p<span>{</span>P}\s]+</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-enabledmfas"><span class="term"><code class="code">EnabledMfas</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">140</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-enabledmfas"><span class="term"><code class="code">EnabledMfas</code></span></dt><dd>
     <p>Enables MFA on a specified user pool. To disable all MFAs after it has been enabled, set
       MfaConfiguration to “OFF” and remove EnabledMfas. MFAs can only be all disabled if
       MfaConfiguration is OFF. Once SMS_MFA is enabled, SMS_MFA can only be disabled by setting
@@ -155,7 +161,7 @@ Properties:
         <p><code class="code">SOFTWARE_TOKEN_MFA</code> - Enables software token MFA for the user pool.</p>
       </li></ul></div>
     <p>Allowed values: <code class="code">SMS_MFA</code> | <code class="code">SOFTWARE_TOKEN_MFA</code></p>
-  <p><em>Required</em>: No</p><p><em>Type</em>: List of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-lambdaconfig"><span class="term"><code class="code">LambdaConfig</code></span></dt><dd>
+  <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-lambdaconfig"><span class="term"><code class="code">LambdaConfig</code></span></dt><dd>
          <p>The Lambda trigger configuration information for the new user pool.</p>
          <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>In a push model, event sources (such as Amazon S3 and custom applications) need
                 permission to invoke a function. So you must make an extra call to add permission
@@ -179,23 +185,23 @@ Properties:
                   <code class="code">OPTIONAL</code> MFA will be required only for individual users who have
                     an MFA factor activated.</p>
             </li></ul></div>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">OPTIONAL | ON | OFF</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-policies"><span class="term"><code class="code">Policies</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">OFF | ON | OPTIONAL</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-policies"><span class="term"><code class="code">Policies</code></span></dt><dd>
          <p>The policy associated with a user pool.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-userpool-policies.html">Policies</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-schema"><span class="term"><code class="code">Schema</code></span></dt><dd>
     <p>The schema attributes for the new user pool. These attributes can be standard or custom
       attributes.</p>
     <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p> During a user pool update, you can add new schema attributes but you cannot modify or
         delete an existing schema attribute.</p></div></div>
-  <p><em>Required</em>: No</p><p><em>Type</em>: List of <a href="./aws-properties-cognito-userpool-schemaattribute.html">SchemaAttribute</a></p><p><em>Maximum</em>: <code class="code">50</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-smsauthenticationmessage"><span class="term"><code class="code">SmsAuthenticationMessage</code></span></dt><dd>
+  <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-cognito-userpool-schemaattribute.html">SchemaAttribute</a></p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">50</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-smsauthenticationmessage"><span class="term"><code class="code">SmsAuthenticationMessage</code></span></dt><dd>
          <p>A string representing the SMS authentication message.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">6</code></p><p><em>Maximum</em>: <code class="code">140</code></p><p><em>Pattern</em>: <code class="code">.*\<span>{</span>####\}.*</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-smsconfiguration"><span class="term"><code class="code">SmsConfiguration</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">6</code></p><p><em>Maximum</em>: <code class="code">140</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-smsconfiguration"><span class="term"><code class="code">SmsConfiguration</code></span></dt><dd>
          <p>The SMS configuration with the settings that your Amazon Cognito user pool must use to send an
             SMS message from your AWS account through Amazon Simple Notification Service. To send SMS messages
             with Amazon SNS in the AWS Region that you want, the Amazon Cognito user pool uses an AWS Identity and Access Management
             (IAM) role in your AWS account.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-userpool-smsconfiguration.html">SmsConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-smsverificationmessage"><span class="term"><code class="code">SmsVerificationMessage</code></span></dt><dd>
          <p>This parameter is no longer used. See <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html">VerificationMessageTemplateType</a>.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">6</code></p><p><em>Maximum</em>: <code class="code">140</code></p><p><em>Pattern</em>: <code class="code">.*\<span>{</span>####\}.*</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-userattributeupdatesettings"><span class="term"><code class="code">UserAttributeUpdateSettings</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">6</code></p><p><em>Maximum</em>: <code class="code">140</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-userattributeupdatesettings"><span class="term"><code class="code">UserAttributeUpdateSettings</code></span></dt><dd>
          <p>The settings for updates to user attributes. These settings include the property <code class="code">AttributesRequireVerificationBeforeUpdate</code>,
 a user-pool setting that tells Amazon Cognito how to handle changes to the value of your users' email address and phone number attributes. For
 more information, see <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html#user-pool-settings-verifications-verify-attribute-updates">
@@ -204,7 +210,7 @@ Verifying updates to email addresses and phone numbers</a>.</p>
     <p>Determines whether email addresses or phone numbers can be specified as user names when a
       user signs up. Possible values: <code class="code">phone_number</code> or <code class="code">email</code>.</p>
     <p>This user pool property cannot be updated.</p>
-  <p><em>Required</em>: No</p><p><em>Type</em>: List of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-usernameconfiguration"><span class="term"><code class="code">UsernameConfiguration</code></span></dt><dd>
+  <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-usernameconfiguration"><span class="term"><code class="code">UsernameConfiguration</code></span></dt><dd>
     
     <p>You can choose to set case sensitivity on the username input for the selected sign-in
       option. For example, when this is set to <code class="code">False</code>, users will be able to sign in
@@ -212,17 +218,17 @@ Verifying updates to email addresses and phone numbers</a>.</p>
       set.</p>
   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-userpool-usernameconfiguration.html">UsernameConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-userpooladdons"><span class="term"><code class="code">UserPoolAddOns</code></span></dt><dd>
          <p>User pool add-ons. Contains settings for activation of advanced security features. To
-            log user security information but take no action, set to <code class="code">AUDIT</code>. To
-            configure automatic security responses to risky traffic to your user pool, set to
-                <code class="code">ENFORCED</code>.</p>
+    log user security information but take no action, set to <code class="code">AUDIT</code>. To
+    configure automatic security responses to risky traffic to your user pool, set to
+        <code class="code">ENFORCED</code>.</p>
          <p>For more information, see <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html">Adding advanced security to a user pool</a>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-userpool-userpooladdons.html">UserPoolAddOns</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-userpoolname"><span class="term"><code class="code">UserPoolName</code></span></dt><dd>
          <p>A string used to name the user pool.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">128</code></p><p><em>Pattern</em>: <code class="code">[\w\s+=,.@-]+</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-userpooltags"><span class="term"><code class="code">UserPoolTags</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">128</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-userpooltags"><span class="term"><code class="code">UserPoolTags</code></span></dt><dd>
          <p>The tag keys and values to assign to the user pool. A tag is a label that you can use
             to categorize and manage user pools in different ways, such as by purpose, owner,
             environment, or other criteria.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Map of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-verificationmessagetemplate"><span class="term"><code class="code">VerificationMessageTemplate</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Object of String</p><p><em>Pattern</em>: <code class="code">^([\p<span>{</span>L}\p<span>{</span>Z}\p<span>{</span>N}_.:/=+\-@]*)$</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-cognito-userpool-verificationmessagetemplate"><span class="term"><code class="code">VerificationMessageTemplate</code></span></dt><dd>
          <p>The template for the verification message that the user sees when the app requests
             permission to access the user's information.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-cognito-userpool-verificationmessagetemplate.html">VerificationMessageTemplate</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-cognito-userpool-return-values">Return values</h2><h3 id="aws-resource-cognito-userpool-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns a generated ID, such as

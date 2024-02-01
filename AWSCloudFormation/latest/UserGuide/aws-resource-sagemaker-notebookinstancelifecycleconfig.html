@@ -59,10 +59,10 @@ Properties:
          <p>The name of the lifecycle configuration.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[a-zA-Z0-9](-*[a-zA-Z0-9])*</code></p><p><em>Maximum</em>: <code class="code">63</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-sagemaker-notebookinstancelifecycleconfig-oncreate"><span class="term"><code class="code">OnCreate</code></span></dt><dd>
          <p>A shell script that runs only once, when you create a notebook instance. The shell
-            script must be a base64-encoded string.</p>
+         script must be a base64-encoded string.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-sagemaker-notebookinstancelifecycleconfig-notebookinstancelifecyclehook.html">NotebookInstanceLifecycleHook</a></p><p><em>Maximum</em>: <code class="code">1</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sagemaker-notebookinstancelifecycleconfig-onstart"><span class="term"><code class="code">OnStart</code></span></dt><dd>
          <p>A shell script that runs every time you start a notebook instance, including when you
-            create the notebook instance. The shell script must be a base64-encoded string.</p>
+         create the notebook instance. The shell script must be a base64-encoded string.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-sagemaker-notebookinstancelifecycleconfig-notebookinstancelifecyclehook.html">NotebookInstanceLifecycleHook</a></p><p><em>Maximum</em>: <code class="code">1</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-sagemaker-notebookinstancelifecycleconfig-return-values">Return values</h2><h3 id="aws-resource-sagemaker-notebookinstancelifecycleconfig-return-values-ref">Ref</h3><p>
             When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the Amazon Resource Name (ARN) of the endpoint
             configuration, such as

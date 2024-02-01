@@ -33,7 +33,41 @@
 </script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#release-history-earlier-updates">Earlier updates</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ReleaseHistory">Release history</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>The following table describes important changes in each release of the AWS CloudFormation User Guide
       after May 2018. For notification about updates to this documentation, you can subscribe to an
          <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss">RSS
-         feed</a>.</p><div class="table-container"><div class="table-contents"><table id="w1330ab1c42b5"><tr><th>Change</th><th>Description</th><th>Date</th></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_ECS">Updated resource</a></p></td><td tabindex="-1"><p>The following resources were updated: AWS::ECS::ServiceConnectService.</p><div class="variablelist">
+         feed</a>.</p><div class="table-container"><div class="table-contents"><table id="w1333ab1c42b5"><tr><th>Change</th><th>Description</th><th>Date</th></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_AutoScaling">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::AutoScaling::AutoScalingGroup.</p><div class="variablelist">
+           
+        <dl>
+            <dt><span class="term">
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-instancerequirements.html">AWS::AutoScaling::AutoScalingGroup InstanceRequirements</a>
+            </span></dt>
+            <dd>
+              <p>Use the <code class="code">MaxSpotPriceAsPercentageOfOptimalOnDemandPrice</code> property
+                when using attribute-based instance type selection.</p>
+            </dd>
+          </dl></div></td><td tabindex="-1"><p>January 29, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_RDS">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::RDS::Integration</p><div class="variablelist">
+                     
+                <dl>
+                        <dt><span class="term">
+                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-integration.html">AWS::RDS::Integration</a>
+                        </span></dt>
+                        <dd>
+                            <p>Use the <code class="code">AdditionalEncryptionContext</code> property for an optional set of non-secret key–value pairs that contain additional contextual information about the data.</p>
+                            <p>Use the <code class="code">IntegrationName</code> property for the name of the integration.</p>
+                            <p>Use the <code class="code">KMSKeyId</code> property for the AWS KMS key identifier for the key to use to encrypt the integration.</p>
+                            <p>Use the <code class="code">SourceArn</code> property for the ARN of the database to use as the source for replication.</p>
+                            <p>Use the <code class="code">Tags</code> property for a list of tags.</p>
+                            <p>Use the <code class="code">TargetArn</code> property for the ARN of the Redshift data warehouse to use as the target for replication.</p>
+                        </dd>
+                    </dl></div></td><td tabindex="-1"><p>January 29, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_InspectorV2">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::InspectorV2::CisScanConfiguration.</p><div class="variablelist">
+           
+        <dl>
+            <dt><span class="term">
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-inspectorv2-cisscanconfiguration.html">AWS::InspectorV2::CisScanConfiguration</a>
+            </span></dt>
+            <dd>
+              <p>Use the <code class="code">AWS::InspectorV2::CisScanConfiguration</code> resource to specify
+                a CIS scan configuration.</p>
+            </dd>
+          </dl></div></td><td tabindex="-1"><p>January 23, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_ECS">Updated resource</a></p></td><td tabindex="-1"><p>The following resources were updated: AWS::ECS::ServiceConnectService.</p><div class="variablelist">
           
        <dl>
            <dt><span class="term">
@@ -89,7 +123,7 @@
            
         <dl>
             <dt><span class="term">
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/aws-resource-datazone-datasource.html">AWS::DataZone::DataSource</a>
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-datasource.html">AWS::DataZone::DataSource</a>
             </span></dt>
             <dd>
               <p>Use the <code class="code">AWS::DataZone::DataSource</code> resource to specify an Amazon
@@ -98,7 +132,7 @@
             </dd>
            
             <dt><span class="term">
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/aws-resource-datazone-domain.html">AWS::DataZone::Domain</a>
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-domain.html">AWS::DataZone::Domain</a>
             </span></dt>
             <dd>
               <p>Use the <code class="code">AWS::DataZone::Domain</code> resource to specify an Amazon
@@ -107,7 +141,7 @@
             </dd>
            
             <dt><span class="term">
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/aws-resource-datazone-environment.html">AWS::DataZone::Environment</a>
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-environment.html">AWS::DataZone::Environment</a>
             </span></dt>
             <dd>
               <p>Use the <code class="code">AWS::DataZone::Environment</code> resource to specify an Amazon
@@ -116,7 +150,7 @@
             </dd>
            
             <dt><span class="term">
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/aws-resource-datazone-environmentblueprintconfiguration.html">AWS::DataZone::EnvironmentBlueprintConfiguration</a>
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-environmentblueprintconfiguration.html">AWS::DataZone::EnvironmentBlueprintConfiguration</a>
             </span></dt>
             <dd>
               <p>Use the <code class="code">AWS::DataZone::EnvironmentBlueprintConfiguration</code> resource
@@ -124,7 +158,7 @@
             </dd>
            
             <dt><span class="term">
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/aws-resource-datazone-environmentprofile.html">AWS::DataZone::EnvironmentProfile</a>
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-environmentprofile.html">AWS::DataZone::EnvironmentProfile</a>
             </span></dt>
             <dd>
               <p>Use the <code class="code">AWS::DataZone::EnvironmentProfile</code> resource to specify the
@@ -132,7 +166,7 @@
             </dd>
            
             <dt><span class="term">
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/aws-resource-datazone-project.html">AWS::DataZone::Project</a>
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-project.html">AWS::DataZone::Project</a>
             </span></dt>
             <dd>
               <p>Use the <code class="code">AWS::DataZone::Project</code> resource to specify an Amazon
@@ -144,7 +178,7 @@
             </dd>
            
             <dt><span class="term">
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/aws-resource-datazone-subscriptiontarget.html">AWS::DataZone::SubscriptionTarget</a>
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-datazone-subscriptiontarget.html">AWS::DataZone::SubscriptionTarget</a>
             </span></dt>
             <dd>
               <p>Use the <code class="code">AWS::DataZone::SubscriptionTarget</code> resource to specify an
@@ -764,7 +798,7 @@
                             <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html">AWS::RDS::DBInstance</a>
                         </span></dt>
                         <dd>
-                            <p>Use <code class="code">AutomaticBackupReplicationRegion</code> property for the destination region for the backup replication of the DB instance.</p>
+                            <p>Use the <code class="code">AutomaticBackupReplicationRegion</code> property for the destination Region for the backup replication of the DB instance.</p>
                         </dd>
                     </dl></div></td><td tabindex="-1"><p>November 9, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_EC2">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::EC2::IPAM.</p><div class="variablelist">
                 	
@@ -1174,10 +1208,10 @@
                             <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html">AWS::RDS::DBInstance</a>
                         </span></dt>
                         <dd>
-                            <p>Use <code class="code">DomainAuthSecretArn</code> property to find the ARN for the Secrets Manager with the details for the user joining the domain.</p>
-                            <p>Use <code class="code">DomainDnsIps</code> property for the IP addresses of the Active Directory domain controllers.</p>
-                            <p>Use <code class="code">DomainFqdn</code> property for the fully qualified domain name (FQDN) of an Active Directory domain.</p>
-                            <p>Use <code class="code">DomainOu</code> property for the Active Directory organizational unit for your DB instance to join.</p>
+                            <p>Use the <code class="code">DomainAuthSecretArn</code> property to find the ARN for the Secrets Manager with the details for the user joining the domain.</p>
+                            <p>Use the <code class="code">DomainDnsIps</code> property for the IP addresses of the Active Directory domain controllers.</p>
+                            <p>Use the <code class="code">DomainFqdn</code> property for the fully qualified domain name (FQDN) of an Active Directory domain.</p>
+                            <p>Use the <code class="code">DomainOu</code> property for the Active Directory organizational unit for your DB instance to join.</p>
                         </dd>
                     </dl></div></td><td tabindex="-1"><p>September 21, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Connect">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::Connect::SecurityProfile</p><div class="variablelist">
                 
@@ -2177,7 +2211,7 @@
                             <p>Use the <code class="code">AWS::MediaConnect::Gateway</code> resource to
                                 create a gateway. The gateway is a logical grouping of Instances and Bridges. Each gateway utilizes user-defined IP information for communication between data centers and the cloud. </p>
                         </dd>
-                    </dl></div></td><td tabindex="-1"><p>June 15, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_RDS">New resource</a></p></td><td tabindex="-1"><p>The following resources were added AWS::RDS::CustomDBEngineVersion</p><div class="variablelist">
+                    </dl></div></td><td tabindex="-1"><p>June 15, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_RDS">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::RDS::CustomDBEngineVersion</p><div class="variablelist">
                      
                 <dl>
                         <dt><span class="term">
@@ -2188,10 +2222,10 @@
                                 Amazon S3 bucket that contains database installation files for your CEV.</p>
                             <p>The <code class="code">DatabaseInstallationFilesS3Prefix</code> property is the Amazon S3 
                                 directory that contains the database installation files for your CEV.</p>
-                            <p>Use <code class="code">Description</code> property to provide an optional description of your CEV.</p>
-                            <p>Use <code class="code">Engine</code> property to indicate the database engine to use for your custom engine version (CEV).</p>
-                            <p>Use <code class="code">EngineVersion</code> property to indicate the name of your CEV in the format <code class="code">19.customized_string</code>.</p>
-                            <p>Use <code class="code">KMSKeyId</code> property for the AWS KMS key identifier for an encrypted CEV.</p>
+                            <p>Use the <code class="code">Description</code> property to provide an optional description of your CEV.</p>
+                            <p>Use the <code class="code">Engine</code> property to indicate the database engine to use for your custom engine version (CEV).</p>
+                            <p>Use the <code class="code">EngineVersion</code> property to indicate the name of your CEV in the format <code class="code">19.customized_string</code>.</p>
+                            <p>Use the <code class="code">KMSKeyId</code> property for the AWS KMS key identifier for an encrypted CEV.</p>
                             <p>The <code class="code">Manifest</code> property is the CEV manifest, which is a JSON document that describes the installation .zip files stored in Amazon S3.</p>
                             <p>The <code class="code">Status</code> property provides the status of a custom engine version (CEV).</p>
                             <p>The <code class="code">Tags</code> property allows you to add metadata to your RDS resource.</p>
@@ -2896,7 +2930,7 @@
                             <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html">AWS::RDS::DBInstance</a>
                         </span></dt>
                         <dd>
-                            <p>Use <code class="code">SourceDBClusterIdentifier</code> property as the identifier of the Multi-AZ DB cluster that will act as the source for the read replica.</p>
+                            <p>Use the <code class="code">SourceDBClusterIdentifier</code> property as the identifier of the Multi-AZ DB cluster that will act as the source for the read replica.</p>
                         </dd>
                     </dl></div></td><td tabindex="-1"><p>April 13, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_QuickSight">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::QuickSight::RefreshSchedule.</p><div class="variablelist">
          
@@ -2971,7 +3005,7 @@
                             <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html">AWS::RDS::DBCluster</a>
                         </span></dt>
                         <dd>
-                            <p>Use <code class="code">RestoreToTime</code> property for the date and time to restore the DB cluster to.</p>
+                            <p>Use the <code class="code">RestoreToTime</code> property for the date and time to restore the DB cluster to.</p>
                         </dd>
                     </dl></div></td><td tabindex="-1"><p>April 6, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_SSMContacts">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::SSMContacts::Plan and
                 AWS::SSMContacts::Rotation</p><div class="variablelist">
@@ -3466,7 +3500,7 @@
                             <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html">AWS::RDS::DBInstance</a>
                         </span></dt>
                         <dd>
-                            <p>Use <code class="code">CertificateDetails</code> property for the details of the DB instance's 
+                            <p>Use the <code class="code">CertificateDetails</code> property for the details of the DB instance's 
                                 server certificate.</p>
                         </dd>
                     </dl></div></td><td tabindex="-1"><p>February 2, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_SageMaker">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::SageMaker::ModelCard.</p><div class="variablelist">
@@ -7145,15 +7179,16 @@
                      <p>Use the <code class="code">AWS::Lightsail::LoadBalancerTlsCertificate</code> resource to specify a certificate that you can use with an Amazon Lightsail load balancer that is in the same AWS Region and Availability Zone.</p>
                   </dd>
                </dl></div></td><td tabindex="-1"><p>January 6, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_InspectorV2">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::InspectorV2::Filter.</p><div class="variablelist">
-                     
-                <dl>
-                        <dt><span class="term">
-                          <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-inspectorv2-filter.html">AWS::InspectorV2::Filter</a>
-                        </span></dt>
-                        <dd>
-                            <p>Use the <code class="code">AWS::InspectorV2::Filter</code> resource to specify a filter.</p>
-                        </dd>
-                    </dl></div></td><td tabindex="-1"><p>January 6, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_IoT">New resource</a></p></td><td tabindex="-1"><p>The following resource is new: AWS::IoT::JobTemplate</p><div class="variablelist">
+           
+        <dl>
+            <dt><span class="term">
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-inspectorv2-filter.html">AWS::InspectorV2::Filter</a>
+            </span></dt>
+            <dd>
+              <p>Use the <code class="code">AWS::InspectorV2::Filter</code> resource to specify a
+                filter.</p>
+            </dd>
+          </dl></div></td><td tabindex="-1"><p>January 6, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_IoT">New resource</a></p></td><td tabindex="-1"><p>The following resource is new: AWS::IoT::JobTemplate</p><div class="variablelist">
                 
             <dl>
                   <dt><span class="term">
@@ -20577,7 +20612,7 @@
 
       <p>The following table describes important changes in each release of the AWS CloudFormation User Guide
          before May 2018.</p>
-      <div class="table-container"><div class="table-contents disable-scroll"><table id="w1330ab1c42b9b5"><thead>
+      <div class="table-container"><div class="table-contents disable-scroll"><table id="w1333ab1c42b9b5"><thead>
                <tr>
                   <th>Change</th>
                   <th>Release Date</th>

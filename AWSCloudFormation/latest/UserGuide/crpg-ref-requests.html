@@ -51,8 +51,7 @@
 </script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#crpg-ref-request-properties">Template developer request properties</a><a href="#crpg-ref-request-fields">Custom resource provider request fields</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="crpg-ref-requests">Custom resource request objects</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><h2 id="crpg-ref-request-properties">Template developer request properties</h2>
       
 
-      <p>The template developer uses the AWS CloudFormation resource, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cfn-customresource.html">AWS::CloudFormation::CustomResource</a>, to specify a custom
-         resource in a template.</p>
+    <p>The template developer uses the AWS CloudFormation resource, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-customresource.html"><code class="code">AWS::CloudFormation::CustomResource</code></a>, to specify a custom resource in a template.</p>
 
       <p>In <code class="code">AWS::CloudFormation::CustomResource</code>, all properties are defined by the custom resource provider. There is
          only one required property: <code class="code">ServiceToken</code>.</p>
@@ -151,7 +150,7 @@
    for that provider.</p><p>The value returned for a <code class="code">PhysicalResourceId</code> can change custom resource update operations. 
    If the value returned is the same, it is considered a normal update. If the value returned is different, AWS CloudFormation recognizes the update 
    as a replacement and sends a delete request to the old resource. For more information, 
-   see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cfn-customresource.html">AWS::CloudFormation::CustomResource</a>.</p>
+   see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-customresource.html"><code class="code">AWS::CloudFormation::CustomResource</code></a>.</p>
                <p><em>Required</em>: Always sent with <code class="code">Update</code> and <code class="code">Delete</code> requests; never sent
                   with <code class="code">Create</code>.</p>
                <p><em>Type</em>: String</p>
