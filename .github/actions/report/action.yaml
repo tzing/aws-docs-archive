@@ -19,7 +19,6 @@ runs:
   using: composite
   steps:
     - uses: actions-ecosystem/action-create-issue@v1
-      if: steps.commit-changes.outputs.changes_detected == 'true'
       with:
         github_token: ${{ inputs.cross-repo-token }}
         repo: tzing/dashify-aws-docs
