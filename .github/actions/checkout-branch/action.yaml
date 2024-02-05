@@ -17,4 +17,4 @@ runs:
 
     - name: Clean up
       shell: bash
-      run: rm -r docs.aws.amazon.com/*
+      run: rm -rf docs.aws.amazon.com/*
