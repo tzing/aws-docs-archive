@@ -1,0 +1,69 @@
+name: Download CloudFormation User Guide
+
+on:
+  schedule:
+    - cron: "43 21 * * 4"
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      max-parallel: 4
+      matrix:
+        include:
+          - lang: en_us
+            sitemap: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          - lang: zh_tw
+            sitemap: https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/sitemap.xml
+
+          # https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/sitemap.xml
+          # https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/sitemap.xml
+
+    env:
+      BRANCH: data/cloudformation/user-guide/${{ matrix.lang }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up environment
+        uses: ./.github/actions/setup-env
+
+      - name: Checkout branch
+        uses: ./.github/actions/checkout-branch
+        with:
+          branch: ${{ env.BRANCH }}
+
+      - name: Parse sitemap
+        uses: ./.github/actions/parse-sitemap
+        with:
+          sitemap-urls: ${{ matrix.sitemap }}
+
+      - name: Fetch data
+        uses: ./.github/actions/fetch
+
+      - name: Commit changes
+        uses: ./.github/actions/commit
+        id: commit-changes
+        with:
+          branch: ${{ env.BRANCH }}
+
+      - name: Report changes
+        if: >
+          matrix.lang == 'en_us'
+          && steps.commit-changes.outputs.changed == 'true'
+        uses: ./.github/actions/report
+        with:
+          branch: ${{ env.BRANCH }}
+          cross-repo-token: ${{ secrets.CROSS_REPO_TOKEN }}
+          issue-title: CloudFormation user guide is updated
+          commit-id: ${{ steps.commit-changes.outputs.commit-id }}

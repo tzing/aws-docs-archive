@@ -16,6 +16,24 @@ jobs:
         include:
           - lang: en_us
             sitemap: https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml
+          - lang: de_de
+            sitemap: https://docs.aws.amazon.com/de_de/redshift/latest/dg/sitemap.xml
+          - lang: es_es
+            sitemap: https://docs.aws.amazon.com/es_es/redshift/latest/dg/sitemap.xml
+          - lang: fr_fr
+            sitemap: https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/sitemap.xml
+          - lang: id_id
+            sitemap: https://docs.aws.amazon.com/id_id/redshift/latest/dg/sitemap.xml
+          - lang: it_it
+            sitemap: https://docs.aws.amazon.com/it_it/redshift/latest/dg/sitemap.xml
+          - lang: ja_jp
+            sitemap: https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/sitemap.xml
+          - lang: ko_kr
+            sitemap: https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/sitemap.xml
+          - lang: pt_br
+            sitemap: https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sitemap.xml
+          - lang: zh_cn
+            sitemap: https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/sitemap.xml
           - lang: zh_tw
             sitemap: https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml
     env:
@@ -40,21 +58,19 @@ jobs:
       - name: Fetch data
         uses: ./.github/actions/fetch
 
-      - name: Upload data
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Commit changes
+        uses: ./.github/actions/commit
         id: commit-changes
         with:
-          repository: ./docs.aws.amazon.com
           branch: ${{ env.BRANCH }}
-          commit_message: Update docs
 
       - name: Report changes
         if: >
           matrix.lang == 'en_us'
-          && steps.commit-changes.outputs.changes_detected == 'true'
+          && steps.commit-changes.outputs.changed == 'true'
         uses: ./.github/actions/report
         with:
           branch: ${{ env.BRANCH }}
           cross-repo-token: ${{ secrets.CROSS_REPO_TOKEN }}
           issue-title: RedShift database developer guide is updated
-          commit-id: ${{ steps.commit-changes.outputs.commit_hash }}
+          commit-id: ${{ steps.commit-changes.outputs.commit-id }}

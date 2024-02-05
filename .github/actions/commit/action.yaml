@@ -1,0 +1,26 @@
+name: Commit changes
+description: Commit changes to the target branch
+
+inputs:
+  branch:
+    description: The branch to commit changes to
+    required: true
+
+outputs:
+  changed:
+    description: Whether changes were detected
+    value: ${{ steps.main.outputs.changes_detected }}
+  commit-id:
+    description: The commit hash of the commit
+    value: ${{ steps.main.outputs.commit_hash }}
+
+runs:
+  using: composite
+  steps:
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      id: main
+      with:
+        repository: ./docs.aws.amazon.com
+        branch: ${{ inputs.branch }}
+        commit_message: Update docs
+        commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
