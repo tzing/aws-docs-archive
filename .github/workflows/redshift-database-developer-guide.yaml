@@ -1,0 +1,60 @@
+name: Download Redshift Database Developer Guide
+
+on:
+  schedule:
+    - cron: "50 18 * * 2"
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      max-parallel: 4
+      matrix:
+        include:
+          - lang: en_us
+            sitemap: https://docs.aws.amazon.com/redshift/latest/dg/sitemap.xml
+          - lang: zh_tw
+            sitemap: https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/sitemap.xml
+    env:
+      BRANCH: data/redshift/developer-guide/${{ matrix.lang }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up environment
+        uses: ./.github/actions/setup-env
+
+      - name: Checkout branch
+        uses: ./.github/actions/checkout-branch
+        with:
+          branch: ${{ env.BRANCH }}
+
+      - name: Parse sitemap
+        uses: ./.github/actions/parse-sitemap
+        with:
+          sitemap-urls: ${{ matrix.sitemap }}
+
+      - name: Fetch data
+        uses: ./.github/actions/fetch
+
+      - name: Upload data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        id: commit-changes
+        with:
+          repository: ./docs.aws.amazon.com
+          branch: ${{ env.BRANCH }}
+          commit_message: Update docs
+
+      - name: Report changes
+        if: >
+          matrix.lang == 'en_us'
+          && steps.commit-changes.outputs.changes_detected == 'true'
+        uses: ./.github/actions/report
+        with:
+          branch: ${{ env.BRANCH }}
+          cross-repo-token: ${{ secrets.CROSS_REPO_TOKEN }}
+          issue-title: RedShift database developer guide is updated
+          commit-id: ${{ steps.commit-changes.outputs.commit_hash }}
