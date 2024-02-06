@@ -64,6 +64,6 @@ jobs:
         uses: ./.github/actions/report
         with:
           branch: ${{ env.BRANCH }}
-          cross-repo-token: ${{ secrets.CROSS_REPO_TOKEN }}
+          cross-repo-token: ${{ secrets.CROSS_REPO_POSTER }}
           issue-title: CloudFormation user guide is updated
           commit-id: ${{ steps.commit-changes.outputs.commit-id }}
