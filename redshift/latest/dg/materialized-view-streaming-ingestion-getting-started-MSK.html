@@ -168,7 +168,13 @@
                                     directs it to use port 9094 for unauthenticated access. However, this will fail because the port is being used by mTLS authentication. Because of this, we 
                                     recommend that you switch to AUTHENTICATION IAM when you use mTLS.</p>    
                             </li><li><p>Enable enhanced VPC routing on your Amazon Redshift cluster or Amazon Redshift Serverless workgroup. For more information, 
-                                see <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-enabling-cluster.html">Enabling enhanced VPC routing</a>.</p></li><li><p>In Amazon Redshift, create an external schema to map to the Amazon MSK cluster. </p>
+                                see <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-enabling-cluster.html">Enabling enhanced VPC routing</a>.</p>
+                                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>In order to retrieve the Amazon MSK bootstrap brokers URL, Amazon Redshift makes a <a href="https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-bootstrap-brokers.html#GetBootstrapBrokers">GetBootstrapBrokers</a> API call, using 
+                                    permissions provided by the attached IAM role. Note that in order for this request to succeed when enhanced VPC routing is enabled, the 
+                                    subnet for your Amazon Redshift provisioned cluster or Amazon Redshift Serverless workgroup must have a NAT gateway or internet gateway. Your network ACLs and security-group 
+                                    outbound rules for the aforementioned subnet must also allow access to the Amazon MSK API service endpoints. For more information, 
+                                    see <a href="https://docs.aws.amazon.com/general/latest/gr/msk.html">Amazon Managed Streaming for Apache Kafka endpoints and quotas</a>.</p></div></div>
+                            </li><li><p>In Amazon Redshift, create an external schema to map to the Amazon MSK cluster. </p>
                                 
                                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL SCHEMA MySchema
 FROM MSK
