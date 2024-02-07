@@ -16,8 +16,10 @@ jobs:
         include:
           - lang: en_us
             sitemap: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sitemap.xml
+            title: AWS CloudFormation User Guide
           - lang: zh_tw
             sitemap: https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/sitemap.xml
+            title: AWS CloudFormation 使用者指南
 
           # https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/sitemap.xml
           # https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/sitemap.xml
@@ -56,6 +58,22 @@ jobs:
         id: commit-changes
         with:
           branch: ${{ env.BRANCH }}
+
+      - name: Build docset
+        if: steps.commit-changes.outputs.changed == 'true'
+        run: |
+          site_url=$(dirname '${{ matrix.sitemap }}')
+          dashify cloudformation \
+            --site-url "$site_url" \
+            --docset-path 'cloudformation-${{ matrix.lang }}.docset' \
+            --title '${{ matrix.title }}'
+
+      - name: Upload artifact
+        if: steps.commit-changes.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudformation-${{ matrix.lang }}
+          path: cloudformation-${{ matrix.lang }}.docset/
 
       - name: Report changes
         if: >
