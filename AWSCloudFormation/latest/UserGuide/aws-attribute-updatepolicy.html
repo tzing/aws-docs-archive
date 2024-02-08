@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>UpdatePolicy attribute - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="aws-attribute-updatepolicy" /><meta name="default_state" content="aws-attribute-updatepolicy" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="description" content="Specify how to handle updates for the following resources with the UpdatePolicy attribute: AWS::AutoScaling::AutoScalingGroup, AWS::AutoScaling::AutoScalingGroup, AWS::ElastiCache::ReplicationGroup, AWS::OpenSearchService::Domain, AWS::Elasticsearch::Domain, or AWS::Lambda::Alias." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="UpdatePolicy attribute" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>UpdatePolicy attribute - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation Designer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>UpdatePolicy attribute - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="aws-attribute-updatepolicy" /><meta name="default_state" content="aws-attribute-updatepolicy" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="description" content="Specify how to handle updates for the following resources with the UpdatePolicy attribute: AWS::AutoScaling::AutoScalingGroup, AWS::AutoScaling::AutoScalingGroup, AWS::ElastiCache::ReplicationGroup, AWS::OpenSearchService::Domain, AWS::Elasticsearch::Domain, or AWS::Lambda::Alias." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="UpdatePolicy attribute" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>UpdatePolicy attribute - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -266,6 +266,7 @@
         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"UpdatePolicy" : <span>{</span>
   "<a href="#cfn-attributes-updatepolicy-rollingupdate">AutoScalingRollingUpdate</a>" : <span>{</span>
     "<a href="#cfn-attributes-updatepolicy-rollingupdate-maxbatchsize">MaxBatchSize</a>" : <code class="replaceable">Integer</code>,
+    "<a href="#cfn-attributes-updatepolicy-rollingupdate-minactiveinstancespercent">MinActiveInstancesPercent</a>" : <code class="replaceable">Integer</code>,
     "<a href="#cfn-attributes-updatepolicy-rollingupdate-mininstancesinservice">MinInstancesInService</a>" : <code class="replaceable">Integer</code>,
     "<a href="#cfn-attributes-updatepolicy-rollingupdate-minsuccessfulinstancespercent">MinSuccessfulInstancesPercent</a>" : <code class="replaceable">Integer</code>,
     "<a href="#cfn-attributes-updatepolicy-rollingupdate-pausetime">PauseTime</a>" : <code class="replaceable">String</code>,
@@ -280,6 +281,7 @@
         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">UpdatePolicy:
   <a href="#cfn-attributes-updatepolicy-rollingupdate">AutoScalingRollingUpdate</a>:
     <a href="#cfn-attributes-updatepolicy-rollingupdate-maxbatchsize">MaxBatchSize</a>: <code class="replaceable">Integer</code>
+    <a href="#cfn-attributes-updatepolicy-rollingupdate-minactiveinstancespercent">MinActiveInstancesPercent</a>: <code class="replaceable">Integer</code>
     <a href="#cfn-attributes-updatepolicy-rollingupdate-mininstancesinservice">MinInstancesInService</a>: <code class="replaceable">Integer</code>
     <a href="#cfn-attributes-updatepolicy-rollingupdate-minsuccessfulinstancespercent">MinSuccessfulInstancesPercent</a>: <code class="replaceable">Integer</code>
     <a href="#cfn-attributes-updatepolicy-rollingupdate-pausetime">PauseTime</a>: <code class="replaceable">String</code>
@@ -290,9 +292,9 @@
      
      
       <h3 id="aws-attribute-updatepolicy-rollingupdate-properties">Properties</h3>
-
       <div class="variablelist">
          
+        
          
          
          
@@ -301,17 +303,38 @@
       <dl>
           <dt id="cfn-attributes-updatepolicy-rollingupdate-maxbatchsize"><span class="term"><code class="code">MaxBatchSize</code></span></dt>
           <dd>
-            <p>Specifies the maximum number of instances that CloudFormation updates.</p>
+            <p>Specifies the maximum number of instances that can be replaced simultaneously.</p>
             <p><em>Default</em>: <code class="code">1</code></p>
             <p><em>Maximum</em>: <code class="code">100</code></p>
             <p><em>Type</em>: Integer</p>
             <p><em>Required</em>: No</p>
           </dd>
          
+     <dt id="cfn-attributes-updatepolicy-rollingupdate-minactiveinstancespercent"><span class="term"><code class="code">MinActiveInstancesPercent</code></span></dt>
+     <dd>
+      <p>Specifies the percentage of an instances in an Auto Scaling group which must be in the <code class="code">InService</code> state
+       relative to that groups desired capacity during a rolling update for an update to succeed. You can specify a
+       value from 0 to 100. CloudFormation rounds to the nearest tenth of a percent. For example, if you update five
+       instances with a minimum <code class="code">InService</code> percentage of 50, at least three instances must be in the
+       <code class="code">InService</code> state.</p>
+      <p>If an instance doesn't transition to the <code class="code">InService</code> state within a fixed time of 1 hour,
+       CloudFormation assumes that the instance wasn't updated.</p>
+      <p>If you specify this property, you must also enable the <code class="code">PauseTime</code> property.</p>
+      <p>The <code class="code">MinActiveInstancesPercent</code> parameter applies only to instances only for stabilization
+       purpose. To specify the number of instances in your Auto Scaling group, see the <code class="code">MinSize</code>, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-as-group-maxsize"><code class="code">MaxSize</code></a>, and <code class="code">DesiredCapacity</code> properties for the
+       <code class="code">AWS::AutoScaling::AutoScalingGroup</code> resource.</p>
+      <p>Setting <code class="code">MinActiveInstancesPercent</code> in your <code class="code">UpdatePolicy</code> will also affect instances
+       launched in response to the <code class="code">DesiredCapacity</code> property in the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource being higher than the current desired capacity
+       of that Auto Scaling group.</p>
+      <p><em>Default</em>: <code class="code">100</code></p>
+      <p><em>Type</em>: Integer</p>
+      <p><em>Required</em>: No</p>
+     </dd>
+     
           <dt id="cfn-attributes-updatepolicy-rollingupdate-mininstancesinservice"><span class="term"><code class="code">MinInstancesInService</code></span></dt>
           <dd>
-            <p>Specifies the minimum number of instances that must be in service within the Auto Scaling
-              group while CloudFormation updates old instances. This value must be less than the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-as-group-maxsize">MaxSize</a> of the Auto Scaling group.</p>
+            <p>Specifies the minimum number of instances that must be in service within the Auto Scaling group while
+       CloudFormation updates old instances. This value must be less than the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html#cfn-as-group-maxsize"><code class="code">MaxSize</code></a> of the Auto Scaling group.</p>
             <p><em>Default</em>: <code class="code">0</code></p>
             <p><em>Type</em>: Integer</p>
             <p><em>Required</em>: No</p>
@@ -329,10 +352,9 @@
               updated.</p>
             <p>If you specify this property, you must also enable the
                 <code class="code">WaitOnResourceSignals</code> and <code class="code">PauseTime</code> properties.</p>
-            <p>The <code class="code">MinSuccessfulInstancesPercent</code> parameter applies only to instances
-              only for signaling purpose. To specify the number of instances in your autoscaling
-              group, see the <code class="code">MinSize</code>, <code class="code">MaxSize</code>, and
-                <code class="code">DesiredCapacity</code> properties for the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource.</p>
+            <p>The <code class="code">MinSuccessfulInstancesPercent</code> parameter applies only to instances only for signaling
+       purpose. To specify the number of instances in your autoscaling group, see the <code class="code">MinSize</code>,
+       <code class="code">MaxSize</code>, and <code class="code">DesiredCapacity</code> properties for the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource.</p>
             <p><em>Default</em>: <code class="code">100</code></p>
             <p><em>Type</em>: Integer</p>
             <p><em>Required</em>: No</p>
@@ -666,7 +688,7 @@
     <p>The following examples show how to add an update policy to an Auto Scaling group and how to
       maintain availability when updating metadata.</p>
      
-      <h3 id="w9ab1c34c23c23c23b5">Add an <code class="code">UpdatePolicy</code> to an Auto Scaling group</h3>
+      <h3 id="w9aac34c23c23c23b5">Add an <code class="code">UpdatePolicy</code> to an Auto Scaling group</h3>
 
       <p>The following example shows how to add an update policy. During an update, the Auto Scaling
         group updates instances in batches of two and keeps a minimum of one instance in service.
@@ -745,7 +767,7 @@ ScheduledAction:
       </div>
      
      
-      <h3 id="w9ab1c34c23c23c23b7">AutoScalingReplacingUpdate policy</h3>
+      <h3 id="w9aac34c23c23c23b7">AutoScalingReplacingUpdate policy</h3>
 
       <p>The following example declares a policy that forces an associated Auto Scaling group to be
         replaced during an update. For the update to succeed, a percentage of instances (specified
@@ -784,7 +806,7 @@ CreationPolicy:
       </div>
      
      
-      <h3 id="w9ab1c34c23c23c23b9">Maintain availability when updating the metadata for the cfn-init helper
+      <h3 id="w9aac34c23c23c23b9">Maintain availability when updating the metadata for the cfn-init helper
           script</h3>
 
       <p>When you install software applications on your instances, you might use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html"><code class="code">AWS::CloudFormation::Init</code></a>
@@ -805,7 +827,7 @@ CreationPolicy:
         all instances.</p>
      
      
-      <h3 id="w9ab1c34c23c23c23c11">Original template</h3>
+      <h3 id="w9aac34c23c23c23c11">Original template</h3>
 
       <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"LaunchConfig": <span>{</span>
   "Type" : "AWS::AutoScaling::LaunchConfiguration",
@@ -818,7 +840,7 @@ CreationPolicy:
 }</code></pre>
      
      
-      <h3 id="w9ab1c34c23c23c23c13">Updated logical ID</h3>
+      <h3 id="w9aac34c23c23c23c13">Updated logical ID</h3>
 
       <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"<b>LaunchConfigUpdateRubygemsPkg</b>": <span>{</span>
   "Type" : "AWS::AutoScaling::LaunchConfiguration",

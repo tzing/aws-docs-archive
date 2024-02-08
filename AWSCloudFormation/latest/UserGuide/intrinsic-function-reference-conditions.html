@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Condition functions - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="intrinsic-function-reference-conditions" /><meta name="default_state" content="intrinsic-function-reference-conditions" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="description" content="Use intrinsic functions to conditionally create stack resources." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Condition functions" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Condition functions - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation Designer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Condition functions - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="intrinsic-function-reference-conditions" /><meta name="default_state" content="intrinsic-function-reference-conditions" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="description" content="Use intrinsic functions to conditionally create stack resources." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Condition functions" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Condition functions - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#associating-a-condition">Associating a condition</a><a href="#intrinsic-function-reference-conditions-and">Fn::And</a><a href="#intrinsic-function-reference-conditions-equals">Fn::Equals</a><a href="#intrinsic-function-reference-conditions-if">Fn::If</a><a href="#intrinsic-function-reference-conditions-not">Fn::Not</a><a href="#intrinsic-function-reference-conditions-or">Fn::Or</a><a href="#w9ab1c34c28c21c29">Supported functions</a></div><div id="page-filters" style="display:none"><filter label="All" id="All"></filter><filter label="JSON" id="JSON"></filter><filter label="YAML" id="YAML"></filter></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="intrinsic-function-reference-conditions">Condition functions</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>You can use intrinsic functions, such as <code class="code">Fn::If</code>, <code class="code">Fn::Equals</code>, and
+</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#associating-a-condition">Associating a condition</a><a href="#intrinsic-function-reference-conditions-and">Fn::And</a><a href="#intrinsic-function-reference-conditions-equals">Fn::Equals</a><a href="#intrinsic-function-reference-conditions-if">Fn::If</a><a href="#intrinsic-function-reference-conditions-not">Fn::Not</a><a href="#intrinsic-function-reference-conditions-or">Fn::Or</a><a href="#w9aac34c28c21c29">Supported functions</a></div><div id="page-filters" style="display:none"><filter label="All" id="All"></filter><filter label="JSON" id="JSON"></filter><filter label="YAML" id="YAML"></filter></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="intrinsic-function-reference-conditions">Condition functions</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>You can use intrinsic functions, such as <code class="code">Fn::If</code>, <code class="code">Fn::Equals</code>, and
       <code class="code">Fn::Not</code>, to conditionally create stack resources. These conditions are evaluated
     based on input parameters that you declare when you create or update a stack. After you define
     all your conditions, you can associate them with resources or resource properties in the
@@ -57,7 +57,7 @@
     environment, you want to use less capabilities to save costs. With conditions, you can define
     which resources are created and how they're configured for each environment type.</p><p>For more information about the Conditions section, see <a href="./conditions-section-structure.html">Conditions</a>.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>You can only reference other conditions and values from the Parameters and Mappings
       sections of a template. For example, you can reference a value from an input parameter, but
-      you can't reference the logical ID of a resource in a condition.</p></div></div><div class="highlights"><h6>Topics</h6><ul><li><a href="#associating-a-condition">Associating a condition</a></li><li><a href="#intrinsic-function-reference-conditions-and">Fn::And</a></li><li><a href="#intrinsic-function-reference-conditions-equals">Fn::Equals</a></li><li><a href="#intrinsic-function-reference-conditions-if">Fn::If</a></li><li><a href="#intrinsic-function-reference-conditions-not">Fn::Not</a></li><li><a href="#intrinsic-function-reference-conditions-or">Fn::Or</a></li><li><a href="#w9ab1c34c28c21c29">Supported functions</a></li><li><a href="./conditions-sample-templates.html">Sample templates</a></li><li><a href="./intrinsic-function-reference-condition.html">Condition</a></li></ul></div>
+      you can't reference the logical ID of a resource in a condition.</p></div></div><div class="highlights"><h6>Topics</h6><ul><li><a href="#associating-a-condition">Associating a condition</a></li><li><a href="#intrinsic-function-reference-conditions-and">Fn::And</a></li><li><a href="#intrinsic-function-reference-conditions-equals">Fn::Equals</a></li><li><a href="#intrinsic-function-reference-conditions-if">Fn::If</a></li><li><a href="#intrinsic-function-reference-conditions-not">Fn::Not</a></li><li><a href="#intrinsic-function-reference-conditions-or">Fn::Or</a></li><li><a href="#w9aac34c28c21c29">Supported functions</a></li><li><a href="./conditions-sample-templates.html">Sample templates</a></li><li><a href="./intrinsic-function-reference-condition.html">Condition</a></li></ul></div>
     <h2 id="associating-a-condition">Associating a condition</h2>
 
     <p>To conditionally create resources, resource properties, or outputs, you must associate a
@@ -188,7 +188,7 @@
       </div>
      
      
-      <h3 id="w9ab1c34c28c21c17b7">Parameters</h3>
+      <h3 id="w9aac34c28c21c17b7">Parameters</h3>
 
       <div class="variablelist">
          
@@ -200,7 +200,7 @@
         </dl></div>
      
      
-      <h3 id="w9ab1c34c28c21c17b9">Example</h3>
+      <h3 id="w9aac34c28c21c17b9">Example</h3>
 
       <p>The following <code class="code">MyAndCondition</code> evaluates to true if the referenced security
         group name is equal to <code class="code">sg-mysggroup</code> and if <code class="code">SomeOtherCondition</code>
@@ -244,7 +244,7 @@
       </div>
      
      
-      <h3 id="w9ab1c34c28c21c19b7">Parameters</h3>
+      <h3 id="w9aac34c28c21c19b7">Parameters</h3>
 
       <div class="variablelist">
          
@@ -256,7 +256,7 @@
         </dl></div>
      
      
-      <h3 id="w9ab1c34c28c21c19b9">Example</h3>
+      <h3 id="w9aac34c28c21c19b9">Example</h3>
 
       <p>The following <code class="code">UseProdCondition</code> condition evaluates to true if the value for
         the <code class="code">EnvironmentType</code> parameter is equal to <code class="code">prod</code>:</p>
@@ -302,7 +302,7 @@
       </div>
      
      
-      <h3 id="w9ab1c34c28c21c23b7">Parameters</h3>
+      <h3 id="w9aac34c28c21c23b7">Parameters</h3>
 
       <div class="variablelist">
          
@@ -329,11 +329,11 @@
         </dl></div>
      
      
-      <h3 id="w9ab1c34c28c21c23b9">Examples</h3>
+      <h3 id="w9aac34c28c21c23b9">Examples</h3>
 
       <p>To view additional samples, see <a href="./conditions-sample-templates.html">Sample templates</a>.</p>
        
-        <h4 id="w9ab1c34c28c21c23b9b5">Example 1</h4>
+        <h4 id="w9aac34c28c21c23b9b5">Example 1</h4>
 
         <p>The following snippet uses an <code class="code">Fn::If</code> function in the
             <code class="code">SecurityGroups</code> property for an Amazon EC2 resource. If the
@@ -360,7 +360,7 @@
         </div>
        
        
-        <h4 id="w9ab1c34c28c21c23b9b7">Example 2</h4>
+        <h4 id="w9aac34c28c21c23b9b7">Example 2</h4>
 
         <p>In the Output section of a template, you can use the <code class="code">Fn::If</code> function to
           conditionally output information. In the following snippet, if the
@@ -394,7 +394,7 @@
         </div>
        
        
-        <h4 id="w9ab1c34c28c21c23b9b9">Example 3</h4>
+        <h4 id="w9aac34c28c21c23b9b9">Example 3</h4>
 
         <p>The following snippet uses the <code class="code">AWS::NoValue</code> pseudo parameter in an
             <code class="code">Fn::If</code> function. The condition uses a snapshot for an Amazon RDS DB instance
@@ -443,7 +443,7 @@
         </div>
        
        
-        <h4 id="w9ab1c34c28c21c23b9c11">Example 4</h4>
+        <h4 id="w9aac34c28c21c23b9c11">Example 4</h4>
 
         <p>The following snippet provides an Auto Scaling update policy only if the
             <code class="code">RollingUpdates</code> condition evaluates to true. If the condition evaluates to
@@ -504,7 +504,7 @@
       </div>
      
      
-      <h3 id="w9ab1c34c28c21c25b7">Parameters</h3>
+      <h3 id="w9aac34c28c21c25b7">Parameters</h3>
 
       <div class="variablelist">
          
@@ -517,7 +517,7 @@
         </dl></div>
      
      
-      <h3 id="w9ab1c34c28c21c25b9">Example</h3>
+      <h3 id="w9aac34c28c21c25b9">Example</h3>
 
       <p>The following <code class="code">EnvCondition</code> condition evaluates to true if the value for the
           <code class="code">EnvironmentType</code> parameter isn't equal to <code class="code">prod</code>:</p>
@@ -563,7 +563,7 @@
       </div>
      
      
-      <h3 id="w9ab1c34c28c21c27b7">Parameters</h3>
+      <h3 id="w9aac34c28c21c27b7">Parameters</h3>
 
       <div class="variablelist">
          
@@ -575,7 +575,7 @@
         </dl></div>
      
      
-      <h3 id="w9ab1c34c28c21c27b9">Example</h3>
+      <h3 id="w9aac34c28c21c27b9">Example</h3>
 
       
       <p>The following <code class="code">MyOrCondition</code> evaluates to true if the referenced security
@@ -600,7 +600,7 @@
 
      
    
-    <h2 id="w9ab1c34c28c21c29">Supported functions</h2>
+    <h2 id="w9aac34c28c21c29">Supported functions</h2>
 
     <p>You can use the following functions in the <code class="code">Fn::If</code> condition:</p>
     <div class="itemizedlist">

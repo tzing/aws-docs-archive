@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Configure Amazon EC2 Auto Scaling resources with AWS CloudFormation - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="quickref-ec2-auto-scaling" /><meta name="default_state" content="quickref-ec2-auto-scaling" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="description" content="Use these example template snippets to configure Amazon EC2 Auto Scaling resources with AWS CloudFormation." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Configure Amazon EC2 Auto Scaling resources with AWS CloudFormation" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Configure Amazon EC2 Auto Scaling resources with AWS CloudFormation - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation Designer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Configure Amazon EC2 Auto Scaling resources with AWS CloudFormation - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="quickref-ec2-auto-scaling" /><meta name="default_state" content="quickref-ec2-auto-scaling" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="description" content="Use these example template snippets to configure Amazon EC2 Auto Scaling resources with AWS CloudFormation." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="Configure Amazon EC2 Auto Scaling resources with AWS CloudFormation" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Configure Amazon EC2 Auto Scaling resources with AWS CloudFormation - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -63,12 +63,11 @@
       <h2 id="scenario-single-instance-as-group">Create a single instance Auto Scaling
           group</h2>
 
-      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource with a single instance to help you
-        get started. The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list
-        of existing subnets in three different Availability Zones. You must specify the applicable
-        subnet IDs from your account before you create your stack. The <code class="code">LaunchTemplate</code>
-        property references an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource with the logical name
-          <code class="code">myLaunchTemplate</code> that is defined elsewhere in your template.</p>
+      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource with a single instance to help you get started.
+    The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of existing subnets in three
+    different Availability Zones. You must specify the applicable subnet IDs from your account before you create your
+    stack. The <code class="code">LaunchTemplate</code> property references an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html"><code class="code">AWS::EC2::LaunchTemplate</code></a> resource with the logical name <code class="code">myLaunchTemplate</code> that is
+    defined elsewhere in your template.</p>
       <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>For examples of launch templates, see <a href="./quickref-ec2-launch-templates.html">Create launch templates with
                 AWS CloudFormation</a> in the Amazon EC2 snippets section and the
             <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html#aws-resource-ec2-launchtemplate--examples">Examples</a> section in the <code class="code">AWS::EC2::LaunchTemplate</code> resource.</p></div></div>
@@ -115,25 +114,22 @@
       <h2 id="scenario-as-group">Create an Auto Scaling group with an attached load
           balancer</h2>
 
-      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource for load balancing over multiple
-        servers. It specifies the logical names of AWS resources declared elsewhere in the same
-        template.</p>
+      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource for load balancing over multiple servers. It
+    specifies the logical names of AWS resources declared elsewhere in the same template.</p>
       <div class="orderedlist">
          
          
          
       <ol><li>
-          <p>The <code class="code">VPCZoneIdentifier</code> property specifies the logical names of two
-              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html">AWS::EC2::Subnet</a> resources where the Auto Scaling group's EC2 instances will be
-            created: <code class="code">myPublicSubnet1</code> and <code class="code">myPublicSubnet2</code>.</p>
+          <p>The <code class="code">VPCZoneIdentifier</code> property specifies the logical names of two <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html"><code class="code">AWS::EC2::Subnet</code></a> resources where the Auto Scaling group's EC2 instances will be created:
+      <code class="code">myPublicSubnet1</code> and <code class="code">myPublicSubnet2</code>.</p>
         </li><li>
-          <p>The <code class="code">LaunchTemplate</code> property specifies an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource with the logical name
-              <code class="code">myLaunchTemplate</code>.</p>
+          <p>The <code class="code">LaunchTemplate</code> property specifies an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html"><code class="code">AWS::EC2::LaunchTemplate</code></a> resource with the logical name
+      <code class="code">myLaunchTemplate</code>.</p>
         </li><li>
-          <p>The <code class="code">TargetGroupARNs</code> property lists the target groups for an Application Load Balancer or
-            Network Load Balancer used to route traffic to the Auto Scaling group. In this example, one target group is
-            specified, an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html">AWS::ElasticLoadBalancingV2::TargetGroup</a> resource with the logical name
-              <code class="code">myTargetGroup</code>.</p>
+          <p>The <code class="code">TargetGroupARNs</code> property lists the target groups for an Application Load Balancer or Network Load Balancer used to route
+      traffic to the Auto Scaling group. In this example, one target group is specified, an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html"><code class="code">AWS::ElasticLoadBalancingV2::TargetGroup</code></a> resource with the logical name
+      <code class="code">myTargetGroup</code>.</p>
         </li></ol></div>
       <div id="JSON" name="JSON" class="section langfilter">
         <h3 id="quickref-autoscaling-example-2.json">JSON</h3>
@@ -188,17 +184,15 @@
      
       <h2 id="scenario-as-notification">Create an Auto Scaling group with notifications</h2>
 
-      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource that sends Amazon SNS notifications when
-        the specified events take place. The <code class="code">NotificationConfigurations</code> property
-        specifies the SNS topic where AWS CloudFormation sends a notification and the events that will cause
-        AWS CloudFormation to send notifications. When the events specified by <code class="code">NotificationTypes</code>
-        occur, AWS CloudFormation will send a notification to the SNS topic specified by <code class="code">TopicARN</code>.
-        When you launch the stack, AWS CloudFormation creates an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html">AWS::SNS::Subscription</a> resource (<code class="code">snsTopicForAutoScalingGroup</code>) that's
-        declared within the same template.</p>
-      <p>The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of
-        existing subnets in three different Availability Zones. You must specify the applicable
-        subnet IDs from your account before you create your stack. The <code class="code">LaunchTemplate</code>
-        property references the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource declared elsewhere in the same template.</p>
+      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource that sends Amazon SNS notifications when the specified
+    events take place. The <code class="code">NotificationConfigurations</code> property specifies the SNS topic where AWS CloudFormation sends a
+    notification and the events that will cause AWS CloudFormation to send notifications. When the events specified by
+    <code class="code">NotificationTypes</code> occur, AWS CloudFormation will send a notification to the SNS topic specified by
+    <code class="code">TopicARN</code>. When you launch the stack, AWS CloudFormation creates an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-subscription.html"><code class="code">AWS::SNS::Subscription</code></a> resource (<code class="code">snsTopicForAutoScalingGroup</code>) that's declared
+    within the same template.</p>
+      <p>The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of existing subnets in three
+    different Availability Zones. You must specify the applicable subnet IDs from your account before you create your
+    stack. The <code class="code">LaunchTemplate</code> property references the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html"><code class="code">AWS::EC2::LaunchTemplate</code></a> resource declared elsewhere in the same template.</p>
       <div id="JSON" name="JSON" class="section langfilter">
         <h3 id="quickref-autoscaling-example-3.json">JSON</h3>
 
@@ -266,8 +260,7 @@
       <h2 id="scenario-as-updatepolicy">Create an Auto Scaling group that uses a
             <code class="code">CreationPolicy</code> and an <code class="code">UpdatePolicy</code></h2>
 
-      <p>The following example shows how to add <a href="./aws-attribute-creationpolicy.html">CreationPolicy attribute</a> and <a href="./aws-attribute-updatepolicy.html">UpdatePolicy</a>
-        attributes to an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource.</p>
+      <p>The following example shows how to add <a href="./aws-attribute-creationpolicy.html">CreationPolicy attribute</a> and <a href="./aws-attribute-updatepolicy.html">UpdatePolicy</a> attributes to an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource.</p>
       <p>The sample creation policy prevents the Auto Scaling group from reaching
           <code class="code">CREATE_COMPLETE</code> status until AWS CloudFormation receives <code class="code">Count</code> number of
         success signals when the group is ready. To signal that the Auto Scaling group is ready, a <a href="./cfn-signal.html">cfn-signal</a> helper script added to the launch
@@ -290,10 +283,9 @@
           <code class="code">Terminate</code>, or <code class="code">AddToLoadBalancer</code> (if the Auto Scaling group is being used
         with Elastic Load Balancing) process types because doing so can prevent the rolling update from functioning
         properly.</p>
-      <p>The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of
-        existing subnets in three different Availability Zones. You must specify the applicable
-        subnet IDs from your account before you create your stack. The <code class="code">LaunchTemplate</code>
-        property references the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource declared elsewhere in the same template.</p>
+      <p>The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of existing subnets in three
+    different Availability Zones. You must specify the applicable subnet IDs from your account before you create your
+    stack. The <code class="code">LaunchTemplate</code> property references the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html"><code class="code">AWS::EC2::LaunchTemplate</code></a> resource declared elsewhere in the same template.</p>
       <div id="JSON" name="JSON" class="section langfilter">
         <h3 id="quickref-autoscaling-example-4.json">JSON</h3>
         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
@@ -378,18 +370,14 @@ Resources:
      
       <h2 id="scenario-step-scaling-policy">Create a step scaling policy</h2>
 
-      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-scalingpolicy.html">AWS::AutoScaling::ScalingPolicy</a> resource that scales out the Auto Scaling group using a
-        step scaling policy. The <code class="code">AdjustmentType</code> property specifies
-          <code class="code">ChangeInCapacity</code>, which means that the <code class="code">ScalingAdjustment</code>
-        represents the number of instances to add (if <code class="code">ScalingAdjustment</code> is positive) or
-        delete (if it is negative). In this example, <code class="code">ScalingAdjustment</code> is 1; therefore,
-        the policy increments the number of EC2 instances in the group by 1 when the alarm threshold
-        is breached.</p>
-      <p>The <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a> resource <code class="code">CPUAlarmHigh</code> specifies the scaling
-        policy <code class="code">ASGScalingPolicyHigh</code> as the action to run when the alarm is in an ALARM
-        state (<code class="code">AlarmActions</code>). The <code class="code">Dimensions</code> property references the
-        logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource declared elsewhere in the same
-        template.</p>
+      <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-scalingpolicy.html"><code class="code">AWS::AutoScaling::ScalingPolicy</code></a> resource that scales out the Auto Scaling group using a step scaling
+    policy. The <code class="code">AdjustmentType</code> property specifies <code class="code">ChangeInCapacity</code>, which means that the
+    <code class="code">ScalingAdjustment</code> represents the number of instances to add (if <code class="code">ScalingAdjustment</code> is
+    positive) or delete (if it is negative). In this example, <code class="code">ScalingAdjustment</code> is 1; therefore, the policy
+    increments the number of EC2 instances in the group by 1 when the alarm threshold is breached.</p>
+      <p>The <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html"><code class="code">AWS::CloudWatch::Alarm</code></a> resource <code class="code">CPUAlarmHigh</code> specifies the scaling policy
+    <code class="code">ASGScalingPolicyHigh</code> as the action to run when the alarm is in an ALARM state
+    (<code class="code">AlarmActions</code>). The <code class="code">Dimensions</code> property references the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource declared elsewhere in the same template.</p>
       <div id="JSON" name="JSON" class="section langfilter">
         <h3 id="quickref-autoscaling-example-5.json">JSON</h3>
         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
@@ -479,16 +467,13 @@ Resources:
         <h3 id="scenario-mixed-instances-group-instance-requirements">Create an Auto Scaling
             group using attribute-based instance type selection</h3>
 
-        <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource that contains the information to
-          launch a mixed instances group using attribute-based instance type selection. You specify
-          the minimum and maximum values for the <code class="code">VCpuCount</code> property and the minimum
-          value for the <code class="code">MemoryMiB</code> property. Any instance types used by the Auto Scaling group
-          must match your required instance attributes. </p>
-        <p>The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of
-          existing subnets in three different Availability Zones. You must specify the applicable
-          subnet IDs from your account before you create your stack. The <code class="code">LaunchTemplate</code>
-          property references the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource declared elsewhere in the same
-          template.</p>
+        <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource that contains the information to launch a mixed
+     instances group using attribute-based instance type selection. You specify the minimum and maximum values for the
+     <code class="code">VCpuCount</code> property and the minimum value for the <code class="code">MemoryMiB</code> property. Any instance types
+     used by the Auto Scaling group must match your required instance attributes. </p>
+        <p>The <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of existing subnets in
+     three different Availability Zones. You must specify the applicable subnet IDs from your account before you create
+     your stack. The <code class="code">LaunchTemplate</code> property references the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html"><code class="code">AWS::EC2::LaunchTemplate</code></a> resource declared elsewhere in the same template.</p>
         <div id="JSON" name="JSON" class="section langfilter">
           <h4 id="quickref-mixed-instances-group-example-2.json">JSON</h4>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
@@ -569,11 +554,10 @@ Resources:
        
         <h3 id="scenario-as-launch-config">Create a launch configuration</h3>
 
-        <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-launchconfiguration.html">AWS::AutoScaling::LaunchConfiguration</a> resource for an Auto Scaling group where you
-          specify values for the <code class="code">ImageId</code>, <code class="code">InstanceType</code>, and
-            <code class="code">SecurityGroups</code> properties. The <code class="code">SecurityGroups</code> property
-          specifies both the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html">AWS::EC2::SecurityGroup</a> resource that's specified elsewhere in the template,
-          and an existing EC2 security group named <code class="code">myExistingEC2SecurityGroup</code>.</p>
+        <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-launchconfiguration.html"><code class="code">AWS::AutoScaling::LaunchConfiguration</code></a> resource for an Auto Scaling group where you specify values for
+     the <code class="code">ImageId</code>, <code class="code">InstanceType</code>, and <code class="code">SecurityGroups</code> properties. The
+     <code class="code">SecurityGroups</code> property specifies both the logical name of an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html"><code class="code">AWS::EC2::SecurityGroup</code></a> resource that's specified elsewhere in the template, and an existing
+     EC2 security group named <code class="code">myExistingEC2SecurityGroup</code>.</p>
         <div id="JSON" name="JSON" class="section langfilter">
           <h4 id="quickref-launch-config-example-1.json">JSON</h4>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
@@ -603,12 +587,11 @@ Resources:
         <h3 id="scenario-single-instance-as-group-launch-configuration">Create an Auto Scaling
             group that uses a launch configuration</h3>
 
-        <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html">AWS::AutoScaling::AutoScalingGroup</a> resource with a single instance. The
-            <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of existing
-          subnets in three different Availability Zones. You must specify the applicable subnet IDs
-          from your account before you create your stack. The <code class="code">LaunchConfigurationName</code>
-          property references an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-launchconfiguration.html">AWS::AutoScaling::LaunchConfiguration</a> resource with the logical name
-            <code class="code">mySimpleConfig</code> that is defined in your template.</p>
+        <p>This example shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-as-group.html"><code class="code">AWS::AutoScaling::AutoScalingGroup</code></a> resource with a single instance. The
+     <code class="code">VPCZoneIdentifier</code> property of the Auto Scaling group specifies a list of existing subnets in three different
+     Availability Zones. You must specify the applicable subnet IDs from your account before you create your stack. The
+     <code class="code">LaunchConfigurationName</code> property references an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-launchconfiguration.html"><code class="code">AWS::AutoScaling::LaunchConfiguration</code></a> resource with the logical name
+     <code class="code">mySimpleConfig</code> that is defined in your template.</p>
         <div id="JSON" name="JSON" class="section langfilter">
           <h4 id="quickref-launch-config-example-2.json">JSON</h4>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">

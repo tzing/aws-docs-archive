@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="aws-resource-init" /><meta name="default_state" content="aws-resource-init" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="description" content="Include metadata on an Amazon EC2 instance for the cfn-init helper script by using the AWS::CloudFormation::Init resource type." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="AWS::CloudFormation::Init" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation Designer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="aws-resource-init" /><meta name="default_state" content="aws-resource-init" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="description" content="Include metadata on an Amazon EC2 instance for the cfn-init helper script by using the AWS::CloudFormation::Init resource type." /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="User Guide" /><meta name="abstract" content="Create and manage AWS infrastructure deployments predictably and repeatedly using AWS CloudFormation with this User Guide." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="User Guide" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="User Guide" /><meta id="panorama-serviceConsolePage" value="AWS::CloudFormation::Init" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,resource provisioning,resource configuration,infrastructure management,CloudFormer,CloudFormation stack,CloudFormation stackset,CloudFormation template,change set" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -143,7 +143,7 @@
          specific order, create a configset that contains the config keys in the desired
          order.</p>
        
-         <h3 id="w9ab1c23c15c15c23c13b5">Single configset</h3>
+         <h3 id="w9aac23c15c15c23c13b5">Single configset</h3>
 
          <p>The following template snippet creates configsets named <code class="code">ascending</code> and
                <code class="code">descending</code> that each contain two config keys.</p>
@@ -202,7 +202,7 @@
         cwd: "~"</code></pre>
          </div>
           
-            <h4 id="w9ab1c23c15c15c23c13b5b9">Related cfn-init calls</h4>
+            <h4 id="w9aac23c15c15c23c13b5b9">Related cfn-init calls</h4>
 
             <p>The following example calls to cfn-init refer to the preceding example configsets.
                The example calls are abbreviated for clarity, see <a href="./cfn-init.html">cfn-init</a> for the complete syntax.</p>
@@ -226,7 +226,7 @@
           
        
        
-         <h3 id="w9ab1c23c15c15c23c13b7">Multiple configsets</h3>
+         <h3 id="w9aac23c15c15c23c13b7">Multiple configsets</h3>
 
          <p>You can create multiple configsets, and call a series of them using your cfn-init
             script. Each configset can contain a list of config keys or references to other
@@ -294,7 +294,7 @@
         ConfigSet: "test2"</code></pre>
          </div>
           
-            <h4 id="w9ab1c23c15c15c23c13b7b9">Related cfn-init calls</h4>
+            <h4 id="w9aac23c15c15c23c13b7b9">Related cfn-init calls</h4>
 
             <p>The following calls to cfn-init refer to the configSets declared in the preceding
                template snippet. The example calls are abbreviated for clarity, see <a href="./cfn-init.html">cfn-init</a> for the complete syntax.</p>
@@ -325,7 +325,7 @@
 
       <p>You can use the commands key to run commands on the EC2 instance. The commands are
          processed in alphabetical order by name.</p>
-      <div class="table-container"><div class="table-contents"><table id="w1333ab1c23c15c15c23c15b5"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1337aac23c15c15c23c15b5"><thead>
                <tr>
                   <th>Key</th>
                   <th>Required</th>
@@ -408,7 +408,7 @@
                </tr>
             </table></div></div>
        
-         <h3 id="w9ab1c23c15c15c23c15b7">Example</h3>
+         <h3 id="w9aac23c15c15c23c15b7">Example</h3>
 
          <p>The following example snippet calls the echo command if the <code class="code">~/test.txt</code>
             file doesn't exist.</p>
@@ -459,7 +459,7 @@
          can be either inline in the template or the content can be pulled from a URL. The files are
          written to disk in lexicographic order. The following table lists the supported
          keys.</p>
-      <div class="table-container"><div class="table-contents"><table id="w1333ab1c23c15c15c23c17b5"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1337aac23c15c15c23c17b5"><thead>
                <tr>
                   <th>Key</th>
                   <th>Description</th>
@@ -553,7 +553,7 @@
                </tr>
             </table></div></div>
        
-         <h3 id="w9ab1c23c15c15c23c17b7">Examples</h3>
+         <h3 id="w9aac23c15c15c23c17b7">Examples</h3>
 
          <p>The following example snippet creates a file named setup.mysql as part of a larger
             installation.</p>
@@ -657,7 +657,7 @@
       <p>To create a group, add a new key-value pair that maps a new group name to an optional
          group ID. The groups key can contain one or more group names. The following table lists the
          available keys.</p>
-      <div class="table-container"><div class="table-contents"><table id="w1333ab1c23c15c15c23c19b7"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1337aac23c15c15c23c19b7"><thead>
                <tr>
                   <th>Key</th>
                   <th>Description</th>
@@ -734,7 +734,7 @@
          <h3 id="aws-resource-init-packages-snippet">Example snippets</h3>
 
           
-            <h4 id="w9ab1c23c15c15c23c21b9b3">RPM, yum, Rubygems, and Zypper</h4>
+            <h4 id="w9aac23c15c15c23c21b9b3">RPM, yum, Rubygems, and Zypper</h4>
 
             <p>The following snippet specifies a version URL for rpm, requests the latest
                versions from yum and Zypper, and version 0.10.2 of chef from rubygems:</p>
@@ -773,7 +773,7 @@ zypper:
             </div>
           
           
-            <h4 id="w9ab1c23c15c15c23c21b9b5">MSI package</h4>
+            <h4 id="w9aac23c15c15c23c21b9b5">MSI package</h4>
 
             <p>The following snippet specifies a URL for an MSI package:</p>
             <div id="JSON" name="JSON" class="section langfilter">
@@ -805,7 +805,7 @@ zypper:
          creation process, the update won't take effect unless the Apache server is restarted. You
          can use the services key to ensure that the Apache HTTP service is restarted.</p>
       <p>The following table lists the supported keys.</p>
-      <div class="table-container"><div class="table-contents"><table id="w1333ab1c23c15c15c23c23b9"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1337aac23c15c15c23c23b9"><thead>
                <tr>
                   <th>Key</th>
                   <th>Description</th>
@@ -873,10 +873,10 @@ zypper:
                </tr>
             </table></div></div>
        
-         <h3 id="w9ab1c23c15c15c23c23c11">Examples</h3>
+         <h3 id="w9aac23c15c15c23c23c11">Examples</h3>
 
           
-            <h4 id="w9ab1c23c15c15c23c23c11b3">Linux</h4>
+            <h4 id="w9aac23c15c15c23c23c11b3">Linux</h4>
 
             <p>The following Linux snippet configures the services as follows:</p>
             <div class="itemizedlist">
@@ -1013,20 +1013,18 @@ ExecStart=/usr/local/bin/cfn-hup -v</code></pre>
           
           
       <ul class="itemizedlist"><li class="listitem">
-            <p>tar</p>
+            <p><code class="code">tar</code></p>
          </li><li class="listitem">
-            <p>tar+gzip</p>
+            <p><code class="code">tar+gzip</code></p>
          </li><li class="listitem">
-            <p>tar+bz2</p>
+            <p><code class="code">tar+bz2</code></p>
          </li><li class="listitem">
-            <p>zip</p>
+            <p><code class="code">zip</code></p>
          </li></ul></div>
-       
-         <h3 id="w9ab1c23c15c15c23c25b9">Examples</h3>
-
-          
-            <h4 id="w9ab1c23c15c15c23c25b9b3">GitHub</h4>
-
+     
+         <h3 id="aws-resource-init-sources-examples">Examples</h3>
+      
+            <h4 id="aws-resource-init-sources-examples-github">GitHub</h4>
             <p>If you use GitHub as a source control system, you can use cfn-init and the sources
                package mechanism to pull a specific version of your application. GitHub allows you
                to create a .zip or a .tar from a specific version through a URL as follows:</p>
@@ -1047,9 +1045,8 @@ ExecStart=/usr/local/bin/cfn-hup -v</code></pre>
   /etc/puppet: "https://github.com/user1/cfn-demo/tarball/main"</code></pre>
             </div>
           
-          
-            <h4 id="w9ab1c23c15c15c23c25b9b5">S3 Bucket</h4>
-
+      
+            <h4 id="aws-resource-init-sources-examples-s3">S3 Bucket</h4>
             <p>The following example downloads a tarball from an S3 bucket and unpacks it into
                   <code class="code">/etc/myapp</code>:</p>
             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>You can use authentication credentials for a source. However, you can't put an
@@ -1086,7 +1083,7 @@ ExecStart=/usr/local/bin/cfn-hup -v</code></pre>
       <p>You can use the users key to create Linux/UNIX users on the EC2 instance. The users key
          isn't supported for Windows systems.</p>
       <p>The following table lists the supported keys.</p>
-      <div class="table-container"><div class="table-contents"><table id="w1333ab1c23c15c15c23c27b7"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1337aac23c15c15c23c27b7"><thead>
                <tr>
                   <th>Key</th>
                   <th>Description</th>

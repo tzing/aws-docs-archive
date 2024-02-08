@@ -7,7 +7,23 @@
       <atom:link href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss"
                  rel="self"
                  type="application/rss+xml"/>
-      <lastBuildDate>Thu, 1 Feb 2024 02:07:31 GMT</lastBuildDate>
+      <lastBuildDate>Thu, 8 Feb 2024 02:07:06 GMT</lastBuildDate>
+      <item>
+         <title>Updated resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resource was updated: &lt;code class="code"&gt;AWS::Cassandra::Table&lt;/code&gt;.</description>
+         <pubDate>Fri, 2 Feb 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-02-02</guid>
+      </item>
+      <item>
+         <title>Generate AWS CloudFormation templates and AWS CDK applications from existing AWS resources</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/generate-IaC.html</link>
+         <description>With the CloudFormation IaC generator, you can generate a template using resources provisioned in your account
+     that are not already managed by CloudFormation. Use the template to import resources into CloudFormation or replicate
+     resources in a new account or Region.</description>
+         <pubDate>Fri, 2 Feb 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Generate_AWS_CloudFormation_templates_and_AWS_CDK_applications_from_existing_AWS_resources_2024-02-02</guid>
+      </item>
       <item>
          <title>Updated resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
