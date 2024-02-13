@@ -36,7 +36,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#cm-c-wlm-system-tables-and-views" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#wlm-service-class-ids">ID classe di servizio WLM</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="cm-c-wlm-system-tables-and-views">Tabelle e viste di sistema di WLM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>WLM configura le code delle query secondo le classi di servizio WLM, definite internamente. Amazon Redshift crea diverse code interne in base a queste classi di servizio insieme alle code definite nella configurazione WLM. I termini <em>coda</em> e <em>classe di servizio</em> sono spesso utilizzati in modo intercambiabile nelle tabelle di sistema. La coda dell'utente con privilegi avanzati utilizza la classe di servizio 5. Le code definite dall'utente utilizzano la classe di servizio 6 e successive.</p><p>Puoi visualizzare lo stato delle query, le code e le classi di servizio utilizzando le tabelle di sistema specifiche di WLM. Esegui le query sulle seguenti tabelle di sistema per effettuare quanto segue:</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#cm-c-wlm-system-tables-and-views" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#wlm-service-class-ids">ID classe di servizio WLM</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="cm-c-wlm-system-tables-and-views">Tabelle e viste di sistema di WLM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>WLM configura le code delle query secondo le classi di servizio WLM, definite internamente. Amazon Redshift crea diverse code interne in base a queste classi di servizio insieme alle code definite nella configurazione WLM. I termini <em>coda</em> e <em>classe di servizio</em> sono spesso utilizzati in modo intercambiabile nelle tabelle di sistema. La coda dell'utente con privilegi avanzati utilizza la classe di servizio 5. Le code definite dall'utente utilizzano la classe di servizio 6 e successive.</p><p>Puoi visualizzare lo stato delle query, le code e le classi di servizio utilizzando le tabelle di sistema specifiche di WLM. Esegui le query sulle seguenti tabelle di sistema per effettuare quanto segue:</p><div class="itemizedlist">
           
           
           
@@ -46,7 +46,7 @@
             <p>Vedere a quale coda è stata assegnata una query.</p>
          </li><li class="listitem">
             <p>Visualizzare lo stato di una query che viene attualmente monitorata dal gestore del carico di lavoro.</p>
-         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w317aac41c59b9"><thead>
+         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w319aac43c59b9"><thead>
                <tr>
                   <th>Nome tabella </th>
                   <th>Descrizione </th>
@@ -100,7 +100,19 @@
                   <td tabindex="-1">
                      <a href="./r_STV_WLM_SERVICE_CLASS_STATE.html">STV_WLM_SERVICE_CLASS_STATE</a>
                   </td>
-                  <td tabindex="-1">Contiene lo stato corrente delle classi di servizio. </td>
+                  <td tabindex="-1">Contiene lo stato corrente delle classi di servizio.</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STL_WLM_RULE_ACTION.html">STL_WLM_RULE_ACTION</a>
+                  </td>
+                  <td tabindex="-1">Registra i dettagli sulle operazioni derivanti dalle regole di monitoraggio di query WLM associate alle code definite dall'utente.</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STV_WLM_QMR_CONFIG.html">STV_WLM_QMR_CONFIG</a>
+                  </td>
+                  <td tabindex="-1">Registra la configurazione per le regole di monitoraggio di query WLM (QMR).</td>
                </tr>
             </table></div></div><p> Utilizzi l'ID attività per tenere traccia di una query nelle tabelle di sistema. L'esempio seguente illustra come ottenere l'ID attività della query utente inviata più di recente: </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select task from stl_wlm_query where exec_start_time =(select max(exec_start_time) from stl_wlm_query); 
 
@@ -124,7 +136,7 @@ xid |task|query|service_| wlm_start_  |  state  |queue_ | exec_
          
        <p>La tabella seguente elena gli ID assegnati alle classi di servizio.</p>  
          
-         <div class="table-container"><div class="table-contents"><table id="w317aac41c59c19b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac43c59c19b5"><thead>
                   <tr>
                      <th>ID </th>
                      <th>Classe di servizio </th>

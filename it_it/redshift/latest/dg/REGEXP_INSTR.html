@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_INSTR" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#REGEXP_INSTR-synopsis">Sintassi</a><a href="#REGEXP_INSTR-arguments">Argomenti</a><a href="#REGEXP_INSTR-return-type">Tipo restituito</a><a href="#REGEXP_INSTR-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="REGEXP_INSTR">Funzione REGEXP_INSTR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Cerca una stringa per un modello di espressione regolare e restituisce un integer che indica la posizione iniziale o finale della sottostringa corrispondente. Se non viene trovata alcuna corrispondenza, la funzione restituisce <code class="code">0</code>. REGEXP_INSTR è simile alla funzione <a href="./r_POSITION.html">POSITION</a>, ma consente di cercare una stringa per un modello di espressione regolare. Per ulteriori informazioni sulle espressioni regolari, consultare <a href="./pattern-matching-conditions-posix.html">Operatori POSIX</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_INSTR" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#REGEXP_INSTR-synopsis">Sintassi</a><a href="#REGEXP_INSTR-arguments">Argomenti</a><a href="#REGEXP_INSTR-return-type">Tipo restituito</a><a href="#REGEXP_INSTR-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="REGEXP_INSTR">Funzione REGEXP_INSTR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Cerca una stringa per un modello di espressione regolare e restituisce un integer che indica la posizione iniziale o finale della sottostringa corrispondente. Se non viene trovata alcuna corrispondenza, la funzione restituisce <code class="code">0</code>. REGEXP_INSTR è simile alla funzione <a href="./r_POSITION.html">POSITION</a>, ma consente di cercare una stringa per un modello di espressione regolare. Per ulteriori informazioni sulle espressioni regolari, consultare <a href="./pattern-matching-conditions-posix.html">Operatori POSIX</a>.</p>
             <h2 id="REGEXP_INSTR-synopsis">Sintassi</h2>
 
 
@@ -73,7 +73,7 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>Un valore letterale di stringa che rappresenta un modello di espressione regolare. Per ulteriori informazioni, consulta <a href="./pattern-matching-conditions-posix.html">Operatori POSIX</a>.</p>
+                     <p>Una stringa letterale UTF-8 che rappresenta un modello di espressione regolare. Per ulteriori informazioni, consulta <a href="./pattern-matching-conditions-posix.html">Operatori POSIX</a>.</p>
                   </dd>
                 
                   <dt><span class="term"> <em>posizione</em> </span></dt>
@@ -88,7 +88,7 @@
                 
                   <dt><span class="term"> <em>option</em> </span></dt>
                   <dd>
-                     <p>(Facoltativo) Un valore che indica se restituire la posizione del primo carattere della corrispondenza (<code class="code">0</code>) o la posizione del primo carattere dopo la fine della corrispondenza (<code class="code">1</code>). Un valore diverso da zero equivale a <code class="code">1</code>. Il valore di default è <code class="code">0</code>. </p>
+                     <p>(Facoltativo) Un valore che indica se restituire la posizione del primo carattere della corrispondenza (<code class="code">0</code>) o la posizione del primo carattere dopo la fine della corrispondenza (<code class="code">1</code>). Un valore diverso da zero equivale a <code class="code">1</code>. Il valore predefinito è <code class="code">0</code>. </p>
                   </dd>
                 
                   <dt><span class="term"> <em>parameters</em> </span></dt>

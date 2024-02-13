@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_EXPLAIN" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_EXPLAIN-synopsis">Sintassi</a><a href="#r_EXPLAIN-parameters">Parametri</a><a href="#r_EXPLAIN-usage-notes">Note per l'utilizzo</a><a href="#r_EXPLAIN-query-planning-and-execution-steps">Pianificazione di query e fasi di esecuzione</a><a href="#r_EXPLAIN-RLS">Utilizzo di EXPLAIN per RLS </a><a href="#r_EXPLAIN-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_EXPLAIN">EXPLAIN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Mostra il piano di esecuzione per l'istruzione di una query senza eseguire la query. Per informazioni sul flusso di lavoro di analisi delle query, consulta <a href="./c-query-analysis-process.html">Flusso di lavoro dell'analisi di query</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_EXPLAIN" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_EXPLAIN-synopsis">Sintassi</a><a href="#r_EXPLAIN-parameters">Parametri</a><a href="#r_EXPLAIN-usage-notes">Note per l'utilizzo</a><a href="#r_EXPLAIN-query-planning-and-execution-steps">Pianificazione di query e fasi di esecuzione</a><a href="#r_EXPLAIN-RLS">Utilizzo di EXPLAIN per RLS </a><a href="#r_EXPLAIN-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_EXPLAIN">EXPLAIN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Mostra il piano di esecuzione per l'istruzione di una query senza eseguire la query. Per informazioni sul flusso di lavoro di analisi delle query, consulta <a href="./c-query-analysis-process.html">Flusso di lavoro dell'analisi di query</a>.</p>
          <h2 id="r_EXPLAIN-synopsis">Sintassi</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">EXPLAIN [ VERBOSE ] <em>query</em>
                   </code></pre>
@@ -93,7 +93,7 @@
          <h2 id="r_EXPLAIN-query-planning-and-execution-steps">Pianificazione di query e fasi di esecuzione</h2>
          <p>Il piano di esecuzione per una istruzione di query Amazon Redshift specifica suddivide l'esecuzione e il calcolo di una query in una sequenza discreta di fasi e operazioni di tabella che alla fine produce un set di risultati finali per la query. Per informazioni sulla pianificazione di query, consultare <a href="./c-query-processing.html">Elaborazione query</a>.</p>
             <p>La seguente tabella fornisce un riepilogo delle fasi che Amazon Redshift può utilizzare nello sviluppo di un piano di esecuzione per qualsiasi query inviata dall'utente per l'esecuzione.</p>
-         <div class="table-container"><div class="table-contents"><table id="w317aac45b9d155c11b7"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac47b9d163c11b7"><thead>
                   <tr>
                      <th>Operatori EXPLAIN </th>
                      <th>Fasi di esecuzione di query </th>
@@ -161,7 +161,7 @@
                      <td colspan="3" style="vertical-align: top;" tabindex="-1"><b>Operazioni EXCEPT, INTERSECT e UNION:</b> </td>
                   </tr>
                   <tr>
-                     <td style="vertical-align: top;" tabindex="-1">SetOp Except [Distinct] </td>
+                     <td style="vertical-align: top;" tabindex="-1">SetOp Tranne [Distinct] </td>
                      <td style="vertical-align: top;" tabindex="-1">hjoin </td>
                      <td tabindex="-1">Utilizzato per eseguire le query EXCEPT. Può operare dal disco in virtù del fatto che l'hash di input può essere basato su disco. </td>
                   </tr>
@@ -256,7 +256,7 @@
                   </tr>
                   <tr>
                      <td style="vertical-align: top;" tabindex="-1">Delete (Scan + Filter) </td>
-                     <td style="vertical-align: top;" tabindex="-1">elimina </td>
+                     <td style="vertical-align: top;" tabindex="-1">Elimina </td>
                      <td tabindex="-1">Elimina i dati. Può operare dal disco. </td>
                   </tr>
                   <tr>
@@ -268,8 +268,8 @@
        
          <h2 id="r_EXPLAIN-RLS">Utilizzo di EXPLAIN per RLS </h2>
         
-         <p>Se una query contiene una tabella soggetta a policy di sicurezza a livello di riga (RLS), EXPLAIN visualizza uno speciale nodo RLS SecureScan. Amazon Redshift registra anche lo stesso tipo di nodo nella tabella di sistema STL_EXPLAIN. EXPLAIN non rivela il predicato RLS che si applica a dim_tbl. Il tipo di nodo RLS SecureScan serve come indicatore del fatto che il piano di esecuzione contiene operazioni aggiuntive non visibili all'utente corrente.</p>
-         <p>L'esempio seguente mostra un nodo RLS SecureScan.</p>
+         <p>Se una query contiene una tabella soggetta a politiche di sicurezza a livello di riga (RLS), EXPLAIN visualizza un nodo RLS speciale.  SecureScan  Amazon Redshift registra anche lo stesso tipo di nodo nella tabella di sistema STL_EXPLAIN. EXPLAIN non rivela il predicato RLS che si applica a dim_tbl. Il tipo di  SecureScan  nodo RLS serve da indicatore del fatto che il piano di esecuzione contiene operazioni aggiuntive invisibili all'utente corrente.</p>
+         <p>L'esempio seguente illustra un nodo RLS SecureScan .</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">EXPLAIN
 SELECT D.cint
 FROM fact_tbl F INNER JOIN dim_tbl D ON F.k_dim = D.k
@@ -285,7 +285,7 @@ WHERE F.k_dim / 10 &gt; 0;
                Filter: (("k" / 10) &gt; 0)</code></pre>
 
          <p>Per consentire un'analisi completa dei piani di query soggetti a RLS, Amazon Redshift offre le autorizzazioni di sistema EXPLAIN RLS. Gli utenti a cui è stata concessa questa autorizzazione possono esaminare piani di query completi che includono anche predicati RLS. </p>
-         <p>L'esempio seguente illustra una ulteriore Seq Scan sotto il nodo RLS SecureScan che include anche il predicato di policy RLS (k_dim &gt; 1).</p>
+         <p>L'esempio seguente illustra un Seq Scan aggiuntivo sotto il  SecureScan  nodo RLS che include anche il predicato della policy RLS (k_dim &gt; 1).</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">EXPLAIN SELECT D.cint
 FROM fact_tbl F INNER JOIN dim_tbl D ON F.k_dim = D.k
 WHERE F.k_dim / 10 &gt; 0;
@@ -304,7 +304,7 @@ WHERE F.k_dim / 10 &gt; 0;
 
           
             <h3 id="r_EXPLAIN_RLS-LF">Relazioni Redshift protette da AWS Lake Formation-RLS</h3>
-            <p>L'esempio seguente mostra un nodo LF SecureScan, che è possibile utilizzare per visualizzare le relazioni Lake Formation-RLS.</p>
+            <p>L'esempio seguente illustra un  SecureScan  nodo LF, che è possibile utilizzare per visualizzare le relazioni Lake Formation-RLS.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">EXPLAIN
 SELECT *
 FROM lf_db.public.t_share

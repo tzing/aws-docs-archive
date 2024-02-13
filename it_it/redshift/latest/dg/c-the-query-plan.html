@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-the-query-plan" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#EXPLAIN-operators">Operatori EXPLAIN</a><a href="#joins-in-EXPLAIN">Combinazioni su EXPLAIN</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="c-the-query-plan">Piano di query</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Per ottenere informazioni sulle operazioni individuali necessarie per eseguire una query, puoi utilizzare il piano di query. Prima di lavorare con il piano di query, consigliamo di capire in che modo Amazon Redshift gestisce l'elaborazione delle query e crea piani di query. Per ulteriori informazioni, consultare <a href="./c-query-planning.html">Pianificazione di query e flusso di lavoro di esecuzione</a>.</p><p>Per creare un piano di query, esegui il comando <a href="./r_EXPLAIN.html">EXPLAIN</a> seguito dal testo di query corrente. Il piano di query rende le seguenti informazioni:</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-the-query-plan" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#EXPLAIN-operators">Operatori EXPLAIN</a><a href="#joins-in-EXPLAIN">Combinazioni su EXPLAIN</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="c-the-query-plan">Piano di query</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Per ottenere informazioni sulle operazioni individuali necessarie per eseguire una query, puoi utilizzare il piano di query. Prima di lavorare con il piano di query, consigliamo di capire in che modo Amazon Redshift gestisce l'elaborazione delle query e crea piani di query. Per ulteriori informazioni, consultare <a href="./c-query-planning.html">Pianificazione di query e flusso di lavoro di esecuzione</a>.</p><p>Per creare un piano di query, esegui il comando <a href="./r_EXPLAIN.html">EXPLAIN</a> seguito dal testo di query corrente. Il piano di query rende le seguenti informazioni:</p><div class="itemizedlist">
              
              
              
@@ -70,12 +70,12 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
          <dl>
                <dt><b><span class="term">Costo</span></b></dt>
                <dd>
-                  <p>Un valore relativo utile per il confronto delle operazioni all'interno di un piano. Il costo è costituito da due valori decimali separati da due punti, ad esempio <code class="code">cost=131.97..133.41</code>. Il primo valore, in questo caso 131.97, fornisce il costo relativo della restituzione della prima riga per questa operazione. Il secondo valore, in questo caso 133.41, fornisce il costo relativo del completamento dell'operazione. I costi nel piano di query si accumulano mentre leggi il piano, quindi il costo HashAggregate di questo esempio (131.97..133.41) include il costo del Seq Scan sotto di esso (0.00..87.98).</p>
+                  <p>Un valore relativo utile per il confronto delle operazioni all'interno di un piano. Il costo è costituito da due valori decimali separati da due punti, ad esempio <code class="code">cost=131.97..133.41</code>. Il primo valore, in questo caso 131.97, fornisce il costo relativo della restituzione della prima riga per questa operazione. Il secondo valore, in questo caso 133.41, fornisce il costo relativo del completamento dell'operazione. I costi del piano di query sono cumulativi man mano che si legge il piano, quindi il  HashAggregate  costo in questo esempio (131,97.. 133.41) include il costo del Seq Scan sottostante (0,00.. 87,98).</p>
                </dd>
             
                <dt><b><span class="term">Righe</span></b></dt>
                <dd>
-                  <p>Il numero di righe previsto da restituire. In questo esempio, si prevede che la scansione restituisca 8798 righe. Si prevede che lo stesso operatore HashAggregate restituisca 576 righe (dopo che i nomi degli eventi duplicati vengono scartati dall'insieme dei risultati).</p>
+                  <p>Il numero di righe previsto da restituire. In questo esempio, si prevede che la scansione restituisca 8798 righe. L' HashAggregate operatore da solo dovrebbe restituire 576 righe (dopo che i nomi di eventi duplicati sono stati eliminati dal set di risultati).</p>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Nota</h6></div><div class="awsdocs-note-text"><p>La stima delle righe si basa sulle statistiche disponibili generate dal comando ANALYZE. Se il comando ANALYZE non è stato eseguito di recente, la stima sarà meno affidabile.</p></div></div>
                </dd>
             
@@ -97,6 +97,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                    
                    
                    
+                   
                <ul class="itemizedlist"><li class="listitem">
                      <p><span class="topcom">Loop nidificato</span></p>
                      <p>La combinazione meno ottimale è un loop nidificato, utilizzato principalmente per le combinazioni incrociate (prodotti cartesiano) e per alcune combinazioni di disuguaglianza.</p>
@@ -106,6 +107,9 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                   </li><li class="listitem">
                      <p><span class="topcom">Merge join</span></p>
                      <p>Un merge join, generalmente la combinazione più veloce, viene utilizzato per le inner join e le outer join. Merge join non si utilizza per le full join. Questo operatore viene utilizzato nel caso cui le tabelle combinate in cui si trovano le colonne di combinazione siano chiavi di distribuzione <em>e</em> chiavi di ordinamento; inoltre viene utilizzato quando meno del 20 percento delle tabelle combinate non viene ordinato. Legge due tabelle ordinate e trova le righe corrispondenti. Per visualizzare la percentuale delle righe non ordinate, eseguire una query della tabella di sistema <a href="./r_SVV_TABLE_INFO.html">SVV_TABLE_INFO</a>.</p>
+                  </li><li class="listitem"> 
+                     <p><span class="topcom">Spatial Join</span></p>
+                     <p>In genere un join rapido basato sulla prossimità dei dati spaziali, utilizzati per i tipi di dati <code class="code">GEOMETRY</code> e <code class="code">GEOGRAPHY</code>.</p>
                   </li></ul></div>
              
             <h3 id="aggregate-operators">Operatori di aggregazione</h3>
@@ -154,7 +158,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                      <p><span class="topcom">Hash Intersect Distinct </span></p>
                      <p>Utilizzato per eseguire query INTERSECT .</p>
                   </li><li class="listitem">
-                     <p><span class="topcom">Operatore SetOp Except</span></p>
+                     <p><span class="topcom">SetOp Eccetto</span></p>
                      <p>Utilizzato per eseguire le query EXCEPT (o MINUS).</p>
                   </li></ul></div>
              

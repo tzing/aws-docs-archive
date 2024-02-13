@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_DATABASE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ALTER_DATABASE-privileges">Privilegi richiesti</a><a href="#r_ALTER_DATABASE-synopsis">Sintassi</a><a href="#r_ALTER_DATABASE-parameters">Parametri</a><a href="#r_ALTER_DATABASE-usage-notes">Note per l'utilizzo</a><a href="#r_ALTER_DATABASE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_DATABASE">ALTER DATABASE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Cambia gli attributi di un database.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_DATABASE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ALTER_DATABASE-privileges">Privilegi richiesti</a><a href="#r_ALTER_DATABASE-synopsis">Sintassi</a><a href="#r_ALTER_DATABASE-parameters">Parametri</a><a href="#r_ALTER_DATABASE-usage-notes">Note per l'utilizzo</a><a href="#r_ALTER_DATABASE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_ALTER_DATABASE">ALTER DATABASE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Cambia gli attributi di un database.</p>
          <h2 id="r_ALTER_DATABASE-privileges">Privilegi richiesti</h2>
          <p>Per utilizzare ALTER DATABASE, è richiesto uno dei seguenti privilegi.</p>
          <div class="itemizedlist">
@@ -53,11 +53,13 @@
        
          <h2 id="r_ALTER_DATABASE-synopsis">Sintassi</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER DATABASE <em>database_name</em>
-[ RENAME TO <em>new_name</em>
+<span>{</span> RENAME TO <em>new_name</em>
 | OWNER TO <em>new_owner</em>
 | CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED }
-| COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ]
-[ ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT } ]</code></pre>
+| COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE }
+| ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT }
+| INTEGRATION REFRESH <span>{</span><span>{</span> ALL | INERROR } TABLES [IN SCHEMA <em>schema</em> [, ...]] | TABLE <em>schema.table</em> [, ...]}
+}</code></pre>
          
        
          <h2 id="r_ALTER_DATABASE-parameters">Parametri</h2>
@@ -73,7 +75,9 @@
              
 
              
-
+            
+            
+             
 
          <dl>
                <dt><span class="term"> <em>database_name</em> </span></dt>
@@ -85,7 +89,7 @@ ERROR:  current database may not be renamed</code></pre>
              
                <dt><span class="term">RENAME TO </span></dt>
                <dd>
-                  <p>Rinomina il database specificato. Per ulteriori informazioni sui nomi validi, consultare <a href="./r_names.html">Nomi e identificatori</a>. Non puoi rinominare i database dev, padb_harvest, template0 o template1 e non puoi rinominare il database corrente. Solo il proprietario del database o un <a href="./r_superusers.html#def_superusers">superuser</a> può rinominare un database; i proprietari che non sono utenti con privilegi avanzati devono inoltre avere il privilegio CREATEDB.</p>
+                  <p>Rinomina il database specificato. Per ulteriori informazioni sui nomi validi, consultare <a href="./r_names.html">Nomi e identificatori</a>. Non puoi rinominare i database dev, padb_harvest, template0, template1 o sys:internal e non puoi rinominare il database corrente. Solo il proprietario del database o un <a href="./r_superusers.html#def_superusers">superuser</a> può rinominare un database; i proprietari che non sono utenti con privilegi avanzati devono inoltre avere il privilegio CREATEDB.</p>
                </dd>
              
                <dt><span class="term"> <em>new_name</em> </span></dt>
@@ -138,6 +142,11 @@ ERROR:  current database may not be renamed</code></pre>
                   <ul class="itemizedlist"><li class="listitem"><p>Per modificare il livello di isolamento del database, è necessario disporre del privilegio utente con privilegi avanzati o del privilegio CREATE DATABASE per il database corrente.</p></li><li class="listitem"><p>Non è possibile modificare il livello di isolamento del database <code class="code">dev</code>. </p></li><li class="listitem"><p>Non è possibile modificare il livello di isolamento all'interno di un blocco di transazioni.</p></li><li class="listitem"><p>Il comando alter isolation level non riesce se altri utenti sono connessi al database.</p></li><li class="listitem"><p>Il comando alter isolation level può modificare le impostazioni del livello di isolamento della sessione corrente.</p></li></ul></div>
 
                </dd>
+             
+               <dt><span class="term">INTEGRATION REFRESH <span>{</span><span>{</span> ALL | INERROR } TABLES [IN SCHEMA <em>schema</em> [, ...]] | TABLE <em>schema.table</em> [, ...]}</span></dt>
+               <dd><p>Una clausola che specifica se Amazon Redshift aggiorna tutte le tabelle o le tabelle con errori nello schema o nella tabella specificati. L'aggiornamento attiverà la replica completa delle tabelle nello schema o nella tabella specificati dal database di origine.</p>
+               <p>Per ulteriori informazioni, consulta <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/zero-etl-using.html">Utilizzo delle integrazioni Zero-ETL</a> nella <em>Guida alla gestione di Amazon Redshift</em>. Per ulteriori informazioni sugli stati di integrazione, consulta <a href="./r_SVV_INTEGRATION_TABLE_STATE.html">SVV_INTEGRATION_TABLE_STATE</a> e <a href="./r_SVV_INTEGRATION.html">SVV_INTEGRATION</a>.</p>
+               </dd>
             </dl></div>
        
          <h2 id="r_ALTER_DATABASE-usage-notes">Note per l'utilizzo</h2>
@@ -155,4 +164,13 @@ ERROR:  current database may not be renamed</code></pre>
          
          <p>Nell'esempio seguente viene modificato un database denominato <code class="userinput">sampledb</code> con livello di isolamento SNAPSHOT.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER DATABASE sampledb ISOLATION LEVEL SNAPSHOT;</code></pre>
+      
+         <p>L'esempio seguente aggiorna le tabelle <code class="userinput">sample_table1</code> e <code class="userinput">sample_table2</code> del database <code class="userinput">sample_integration_db</code> nell'integrazione Zero-ETL.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE sample_integration_db INTEGRATION REFRESH TABLES sample_table1, sample_table2;</code></pre>
+         
+         <p>L'esempio seguente aggiorna tutte le tabelle sincronizzate e non riuscite nell'integrazione Zero-ETL.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE sample_integration_db INTEGRATION REFRESH ALL tables;</code></pre>
+         
+         <p>L'esempio seguente aggiorna tutte le tabelle con <code class="computeroutput">ErrorState</code> presenti nello schema <code class="userinput">sample_schema</code>.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE INTEGRATION REFRESH IN ERROR TABLES in SCHEMA sample_schema;</code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Avvertimento" /> <strong>JavaScript è disabilitato o non è disponibile nel tuo browser.</strong></p><p>Per usare la documentazione AWS, JavaScript deve essere abilitato. Consulta le pagine della guida del browser per le istruzioni.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenzioni dei documenti</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ABORT.html">ABORT</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Questa pagina ti è stata utile? - Sì</div><div class="content"><p>Grazie per averci comunicato che stiamo facendo un buon lavoro!</p><p>Se hai un momento, ti invitiamo a dirci che cosa abbiamo fatto che ti è piaciuto così possiamo offrirti altri contenuti simili.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_ALTER_DATABASE.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Questa pagina ti è stata utile? - No</div><div class="content"><p>Grazie per averci comunicato che questa pagina ha bisogno di essere modificata. Siamo spiacenti di non aver soddisfatto le tue esigenze.</p><p>Se hai un momento, ti invitiamo a dirci come possiamo migliorare la documentazione.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_ALTER_DATABASE.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

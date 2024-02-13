@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_create_model_use_cases" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_simple_create_model">CREATE MODEL semplice </a><a href="#r_user_guidance_create_model">CREATE MODEL con guida per l'utente</a><a href="#r_auto_off_create_model">Modelli CREATE XGBoost con AUTO OFF</a><a href="#r_byom_create_model">Bring your own model (BYOM) - inferenza locale</a><a href="#r_byom_create_model_remote">Bring your own model (BYOM) - inferenza remota</a><a href="#r_k-means_create_model">CREA MODELLO con K-MEANS</a><a href="#r_forecast_model">CREATE MODEL with Forecast</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_create_model_use_cases">Casi d'uso</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>I seguenti casi d'uso dimostrano come utilizzare CREATE MODEL in base alle proprie esigenze.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_create_model_use_cases" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_simple_create_model">CREATE MODEL semplice </a><a href="#r_user_guidance_create_model">CREATE MODEL con guida per l'utente</a><a href="#r_auto_off_create_model">Modelli CREATE XGBoost con AUTO OFF</a><a href="#r_byom_create_model">Bring your own model (BYOM) - inferenza locale</a><a href="#r_byom_create_model_remote">Bring your own model (BYOM) - inferenza remota</a><a href="#r_k-means_create_model">CREA MODELLO con K-MEANS</a><a href="#r_forecast_model">CREATE MODEL with Forecast</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_create_model_use_cases">Casi d'uso</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>I seguenti casi d'uso dimostrano come utilizzare CREATE MODEL in base alle proprie esigenze.</p>
         <h2 id="r_simple_create_model">CREATE MODEL semplice</h2>
         <p>Di seguito viene riportato un riepilogo delle opzioni di base della sintassi di CREATE MODEL.</p>
 
@@ -106,7 +106,7 @@
                  
                     <dt><span class="term"> <em>S3_BUCKET <em>'bucket'</em></em> </span></dt>
                     <dd>
-                        <p>Il nome del bucket Amazon S3 creato in precedenza per condividere i dati di addestramento e gli artefatti tra Amazon Redshift e SageMaker. Amazon Redshift crea una sottocartella in questo bucket prima di scaricare i dati di addestramento. Una volta completato l'addestramento, Amazon Redshift elimina la sottocartella creata e il relativo contenuto. </p>
+                        <p>Il nome del bucket Amazon S3 creato in precedenza è stato utilizzato per condividere dati e artefatti di addestramento tra Amazon Redshift e.  SageMaker Amazon Redshift crea una sottocartella in questo bucket prima di scaricare i dati di addestramento. Una volta completato l'addestramento, Amazon Redshift elimina la sottocartella creata e il relativo contenuto. </p>
                     </dd>
                  
                     <dt><span class="term">MAX_CELLS integer </span></dt>
@@ -121,7 +121,7 @@
      
         <h2 id="r_user_guidance_create_model">CREATE MODEL con guida per l'utente</h2>
         <p>Di seguito, è possibile trovare una descrizione delle opzioni per CREATE MODEL in aggiunta alle opzioni descritte in <a href="#r_simple_create_model">CREATE MODEL semplice</a>.</p>
-        <p>Per impostazione predefinita, CREATE MODEL cerca la migliore combinazione di preelaborazione e modello per il set di dati specifico. Potrebbe essere necessario un controllo aggiuntivo o introdurre ulteriori informazioni sul dominio (ad esempio il tipo di problema o l'obiettivo) sul modello. In uno scenario di abbandono del cliente, se il risultato "il cliente non è attivo" è raro, l'obiettivo F1 è spesso preferito all'obiettivo Precisione. Poiché i modelli ad alta precisione potrebbero prevedere "il cliente è attivo" per tutto il tempo, ciò si traduce in un'elevata precisione ma poco valore aziendale. Per informazioni sugli obiettivi F1, consultare <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html">AutoMLJobObjective</a> nella <em>Documentazione di riferimento delle API di Amazon SageMaker</em>.</p>
+        <p>Per impostazione predefinita, CREATE MODEL cerca la migliore combinazione di preelaborazione e modello per il set di dati specifico. Potrebbe essere necessario un controllo aggiuntivo o introdurre ulteriori informazioni sul dominio (ad esempio il tipo di problema o l'obiettivo) sul modello. In uno scenario di abbandono del cliente, se il risultato "il cliente non è attivo" è raro, l'obiettivo F1 è spesso preferito all'obiettivo Precisione. Poiché i modelli ad alta precisione potrebbero prevedere "il cliente è attivo" per tutto il tempo, ciò si traduce in un'elevata precisione ma poco valore aziendale. Per informazioni sull'obiettivo F1, consulta <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html">JobObjectiveAutoML</a> nell'<em> SageMaker Amazon</em> API Reference.</p>
         <p>Quindi il CREATE MODEL segue i suggerimenti sugli aspetti specificati, come l'obiettivo. Allo stesso tempo, CREATE MODEL rileva automaticamente i migliori preprocessori e i migliori iperparametri. </p>
 
 
@@ -160,7 +160,7 @@
             <dl>
                     <dt><span class="term"> <em>MODEL_TYPE <span>{</span> XGBOOST | MLP | LINEAR_LEARNER }</em> </span></dt>
                     <dd>
-                        <p>(Facoltativo) Specifica il tipo di modello. È possibile specificare se si desidera addestrare un modello di un tipo specifico, ad esempio XGBoost, percezione multistrato (MLP) o Linear Learner, che sono tutti algoritmi supportati da Amazon SageMaker Autopilot. Se non si specifica il parametro, durante l'addestramento vengono ricercati tutti i tipi di modello supportati per trovare il modello migliore.</p>
+                        <p>(Facoltativo) Specifica il tipo di modello. Puoi specificare se desideri addestrare un modello di un tipo specifico, come XGBoost, perceptron multistrato (MLP) o Linear Learner, che sono tutti algoritmi supportati da Amazon Autopilot.  SageMaker  Se non si specifica il parametro, durante l'addestramento vengono ricercati tutti i tipi di modello supportati per trovare il modello migliore.</p>
                     </dd>
                  
                     <dt><span class="term"> <em>PROBLEM_TYPE ( REGRESSION | BINARY_CLASSIFICATION | MULTICLASS_CLASSIFICATION )</em> </span></dt>
@@ -170,7 +170,7 @@
                  
                     <dt><span class="term">OBIETTIVO ('MSE' | 'Precisione' | 'F1' | 'F1Macro' | 'AUC')</span></dt>
                     <dd>
-                        <p>(Facoltativo) Specifica il nome del parametro dell'obiettivo utilizzato per misurare la qualità predittiva di un sistema di machine learning. Questo parametro è ottimizzato durante l'addestramento per fornire la migliore stima per i valori dei parametri del modello dai dati. Se non si specifica esplicitamente un parametro, il comportamento di default consiste nell'utilizzare automaticamente MSE: per la regressione, F1: per la classificazione binaria, Accuracy: per la classificazione multiclass. Per informazioni sugli obiettivi, consultare <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html">AutoMLJobObjective</a> nella <em>Documentazione di riferimento delle API di Amazon SageMaker</em>.</p>
+                        <p>(Facoltativo) Specifica il nome del parametro dell'obiettivo utilizzato per misurare la qualità predittiva di un sistema di machine learning. Questo parametro è ottimizzato durante l'addestramento per fornire la migliore stima per i valori dei parametri del modello dai dati. Se non si specifica esplicitamente un parametro, il comportamento di default consiste nell'utilizzare automaticamente MSE: per la regressione, F1: per la classificazione binaria, Accuracy: per la classificazione multiclass. Per ulteriori informazioni sugli obiettivi, consulta <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html">AutoML JobObjective</a> nell'<em>Amazon  SageMaker  API</em> Reference.</p>
                     </dd>
                  
                     <dt><span class="term">MAX_CELLS integer </span></dt>
@@ -195,7 +195,7 @@
                  
                     <dt><span class="term"> <em>PREPROCESSORS 'string' </em> </span></dt>
                     <dd>
-                        <p>(Facoltativo) Specifica alcune combinazioni di preprocessori per determinati set di colonne. Il formato è un elenco di columnSets e le trasformazioni appropriate da applicare a ciascun set di colonne. Amazon Redshift applica tutti i trasformatori in un elenco di trasformatori specifico a tutte le colonne del set di colonne corrispondente. Ad esempio, per applicare OneHotEncoder con Imputer sulle colonne t1 e t2, utilizzare il comando di esempio seguente.</p>
+                        <p>(Facoltativo) Specifica alcune combinazioni di preprocessori per determinati set di colonne. Il formato è un elenco di columnSets e le trasformazioni appropriate da applicare a ciascun set di colonne. Amazon Redshift applica tutti i trasformatori di uno specifico elenco di trasformatori a tutte le colonne dell'elenco corrispondente.  ColumnSet Ad esempio, per applicare  OneHotEncoder  con Imputer alle colonne t1 e t2, usa il comando di esempio seguente.</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL customer_churn
 FROM customer_data
 TARGET 'Churn'
@@ -246,7 +246,7 @@ S3_BUCKET 'bucket'
                  
                  
                  
-            <ul class="itemizedlist"><li class="listitem"><p>OneHotEncoder: utilizzato di solito per codificare un valore discreto in un vettore binario con un valore diverso da zero. Questo trasformatore è adatto per numerosi modelli di machine learning. </p></li><li class="listitem"><p>OrdinalEncoder: codifica i valori discreti in un unico numero intero. Questo trasformatore è adatto per modelli di machine learning specifici, come MLP e Linear Learner. </p></li><li class="listitem"><p>NumericPassthrough: consente di passare l'input così come è nel modello.</p></li><li class="listitem"><p>Imputer: riempie i valori mancanti e non i valori numerici (NaN).</p></li><li class="listitem"><p>ImputerWithIndicator: riempie i valori mancanti e i valori NaN. Questo trasformatore crea anche un indicatore di eventuali valori mancanti e compilati.</p></li><li class="listitem"><p>Normalizzatore: normalizza i valori, il che può migliorare le prestazioni di molti algoritmi di machine learning.</p></li><li class="listitem"><p>DateTimeVectorizer: crea un incorporamento vettoriale, che rappresenta una colonna di tipo di dati datetime che può essere utilizzata nei modelli di machine learning.</p></li><li class="listitem"><p>PCA: proietta i dati in uno spazio dimensionale inferiore per ridurre il numero di funzioni mantenendo al contempo il maggior numero di informazioni possibile.</p></li><li class="listitem"><p>StandardScaler — Standardizza le funzionalità rimuovendo la media e il ridimensionamento della varianza dell'unità. </p></li><li class="listitem"><p>MinMax - Trasforma le funzioni ridimensionando ogni funzione in un determinato intervallo.</p></li></ul></div>
+            <ul class="itemizedlist"><li class="listitem"><p>OneHotEncoder — In genere viene utilizzato per codificare un valore discreto in un vettore binario con un valore diverso da zero. Questo trasformatore è adatto per numerosi modelli di machine learning. </p></li><li class="listitem"><p>OrdinalEncoder — Codifica i valori discreti in un unico numero intero. Questo trasformatore è adatto per modelli di machine learning specifici, come MLP e Linear Learner. </p></li><li class="listitem"><p>NumericPassthrough — Trasmette l'input così com'è nel modello.</p></li><li class="listitem"><p>Imputer: riempie i valori mancanti e non i valori numerici (NaN).</p></li><li class="listitem"><p>ImputerWithIndicator — Compila i valori mancanti e i valori NaN. Questo trasformatore crea anche un indicatore di eventuali valori mancanti e compilati.</p></li><li class="listitem"><p>Normalizzatore: normalizza i valori, il che può migliorare le prestazioni di molti algoritmi di machine learning.</p></li><li class="listitem"><p>DateTimeVectorizer — Crea un incorporamento vettoriale, che rappresenta una colonna di tipo di dati datetime che può essere utilizzata nei modelli di machine learning.</p></li><li class="listitem"><p>PCA: proietta i dati in uno spazio dimensionale inferiore per ridurre il numero di funzioni mantenendo al contempo il maggior numero di informazioni possibile.</p></li><li class="listitem"><p>StandardScaler — Standardizza le funzionalità rimuovendo la media e scalando alla varianza unitaria. </p></li><li class="listitem"><p>MinMax — Trasforma le funzionalità ridimensionando ciascuna funzionalità in base a un determinato intervallo.</p></li></ul></div>
 
             <p>Amazon Redshift ML memorizza i trasformatori addestrati e li applica automaticamente come parte della query di previsione. Non è necessario specificarli quando si generano le previsioni dal modello. </p>
          
@@ -310,7 +310,7 @@ S3_BUCKET 'bucket'
                     <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value' (,..) ) }</span></dt>
                     <dd>
                         <p>Specifica se i parametri XGBoost di default vengono utilizzati o sostituiti dai valori specificati dall'utente. I valori devono essere racchiusi tra virgolette singole. Di seguito sono riportati esempi di parametri per XGBoost e le loro impostazioni di default.</p>
-                        <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c17b9b9b3b7b3b3"><thead>
+                        <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c17b9b9b3b7b3b3"><thead>
                                     <tr>
                                         <th>Nome del parametro</th>
                                         <th>Valore del parametro </th>
@@ -377,13 +377,13 @@ S3_BUCKET 'bucket'
                                         <td tabindex="-1">alpha (alfa)</td>
                                         <td tabindex="-1">Float</td>
                                         <td tabindex="-1">0</td>
-                                        <td tabindex="-1">MinValue: 0, MaxValue: 1000</td>
+                                        <td tabindex="-1">MinValue: 0, MaxValue: 100</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">eta</td>
                                         <td tabindex="-1">Float</td>
                                         <td tabindex="-1">0.3</td>
-                                        <td tabindex="-1">MinValue: 0,1, MaxValue: 0,5</td>
+                                        <td tabindex="-1">MinValue: 0,1,  MaxValue 0,5</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">colsample_byleve</td>
@@ -407,7 +407,7 @@ S3_BUCKET 'bucket'
                                         <td tabindex="-1">lambda</td>
                                         <td tabindex="-1">Float</td>
                                         <td tabindex="-1">1</td>
-                                        <td tabindex="-1">MinValue: 0, MaxValue: 1000</td>
+                                        <td tabindex="-1">MinValue: 0, MaxValue: 100</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">max_delta_step</td>
@@ -472,7 +472,7 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
      
         <h2 id="r_byom_create_model">Bring your own model (BYOM) - inferenza locale</h2>
         <p>Amazon Redshift ML supporta l'utilizzo dell'approccio bring your own model (BYOM) nell'inferenza locale.</p>
-        <p>Di seguito viene riportato un riepilogo delle opzioni per la sintassi di CREATE MODEL per BYOM. È possibile utilizzare un modello addestrato al di fuori di Amazon Redshift con Amazon SageMaker per l'inferenza nel database locale in Amazon Redshift.</p>
+        <p>Di seguito viene riportato un riepilogo delle opzioni per la sintassi di CREATE MODEL per BYOM. Puoi utilizzare un modello addestrato all'esterno di Amazon Redshift con Amazon  SageMaker  per l'inferenza nel database a livello locale in Amazon Redshift.</p>
 
          
             <h3 id="r_local-create-model">Sintassi di CREATE MODEL per l'inferenza locale </h3>
@@ -486,7 +486,7 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
       S3_BUCKET <em>'bucket'</em>, | --required
       KMS_KEY_ID <em>'kms_string'</em>) --optional
     ];</code></pre>
-            <p>Amazon Redshift attualmente supporta solo i modelli XGBoost e MLP e Linear Learner preaddestrati per BYOM. È possibile importare SageMaker Autopilot e i modelli addestrati direttamente in Amazon SageMaker per l'inferenza locale utilizzando questo percorso. </p>
+            <p>Amazon Redshift attualmente supporta solo i modelli XGBoost e MLP e Linear Learner preaddestrati per BYOM. Puoi importare  SageMaker  Autopilot e modelli addestrati direttamente in Amazon  SageMaker  per l'inferenza locale utilizzando questo percorso. </p>
 
              
                 <h4 id="r_local-create-model-parameters">Parametri di CREATE MODEL per l'inferenza locale</h4>
@@ -505,7 +505,7 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                      
                         <dt><span class="term">FROM (<em>'nome_processo'</em> | <em>'percorso_s3'</em> )</span></dt>
                         <dd>
-                            <p><em>nome_processo</em> utilizza come input il nome di un processo Amazon SageMaker. Il nome del processo può essere il nome di un processo di addestramento di Amazon SageMaker o il nome di un processo di Amazon SageMaker Autopilot. Il processo deve essere creato nello stesso account AWS proprietario del cluster Amazon Redshift. Per trovare il nome del processo, avviare Amazon SageMaker. Nel menu a discesa <b>Training</b> (Addestramento), scegliere <b>Training jobs</b> (Processi di addestramento).</p>
+                            <p>Il <em>job_name utilizza un nome</em> di  SageMaker  lavoro Amazon come input. Il nome del lavoro può essere un nome di lavoro di  SageMaker  formazione Amazon o un nome di lavoro Amazon  SageMaker  Autopilot. Il processo deve essere creato nello stesso account AWS proprietario del cluster Amazon Redshift. Per trovare il nome del lavoro, avvia Amazon SageMaker. Nel menu a discesa <b>Training</b> (Addestramento), scegliere <b>Training jobs</b> (Processi di addestramento).</p>
                             <p><em>'percorso_s3'</em> specifica la posizione S3 del file di artefatti del modello .tar.gz da utilizzare durante la creazione del modello.</p>
                         </dd>
                      
@@ -537,7 +537,7 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
 
              
                 <h4 id="r_local-create-model-example">Esempio di CREATE MODEL per l'inferenza locale</h4>
-                <p>Nell'esempio seguente viene creato un modello precedentemente addestrato in Amazon SageMaker, al di fuori di Amazon Redshift. Poiché il tipo di modello è supportato da Amazon Redshift ML per l'inferenza locale, il seguente CREATE MODEL crea una funzione che può essere utilizzata in locale in Amazon Redshift. È possibile fornire un nome per il processo di addestramento SageMaker.</p>
+                <p>L'esempio seguente crea un modello che è stato precedentemente addestrato in Amazon SageMaker, al di fuori di Amazon Redshift. Poiché il tipo di modello è supportato da Amazon Redshift ML per l'inferenza locale, il seguente CREATE MODEL crea una funzione che può essere utilizzata in locale in Amazon Redshift. Puoi fornire il nome di un lavoro  SageMaker  di formazione.</p>
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE MODEL customer_churn
     FROM 'training-job-customer-churn-v4'
     FUNCTION customer_churn_predict (varchar, int, float, float)
@@ -551,6 +551,24 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
           <h2 id="r_byom_create_model_remote">Bring your own model (BYOM) - inferenza remota</h2>
           <p>Amazon Redshift ML supporta anche l'utilizzo dell'approccio bring your own model (BYOM) per l'inferenza remota.</p>
           <p>Di seguito viene riportato un riepilogo delle opzioni per la sintassi di CREATE MODEL per BYOM.</p>
+          <div class="awsdocs-note awsdocs-sticky-note awsdocs-warning"><div class="awsdocs-note-icon"><awsui-icon name="status-warning" variant="error"></awsui-icon></div><div class="awsdocs-note-text"><p><em><b>Questa è la documentazione non definitiva per il tipo di dati SUPER per l'input nei modelli BYOM in Amazon Redshift ML, che è in versione di anteprima. La documentazione e la funzionalità sono soggette a modifiche. Consigliamo di utilizzare questa funzione solo con cluster di test e non in ambienti di produzione. Per i termini e le condizioni dell'anteprima, consulta <em>Beta and Previews</em> in <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS Service Terms</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. </b></em> </p></div></div>
+          
+          <p>Se si specifica di utilizzare il tipo di dati SUPER come dati di input e il tipo di dati restituito, si indica che si desidera creare un modello di linguaggio di grandi dimensioni (LLM) ospitato in Amazon.  SageMaker  JumpStart La creazione di LLM è attualmente disponibile solo come funzionalità di anteprima. Questa anteprima è disponibile nelle seguenti Regioni AWS.</p>
+          <div class="itemizedlist">
+              
+              
+              
+              
+              
+          <ul class="itemizedlist"><li class="listitem"><p>Stati Uniti orientali (Ohio) (us-east-2)</p></li><li class="listitem"><p>Stati Uniti orientali (Virginia settentrionale) (us-east-1)</p></li><li class="listitem"><p>Asia Pacifico (Tokyo) (ap-northeast-1)</p></li><li class="listitem"><p>Europa (Irlanda) (eu-west-1)</p></li><li class="listitem"><p>Europa (Stoccolma) (eu-north-1)</p></li></ul></div>
+          <p>È possibile creare un cluster Amazon Redshift di <b>anteprima</b> per testare nuove funzionalità di Amazon Redshift. Non è possibile utilizzare queste funzionalità in produzione o spostare il cluster di <b>anteprima</b> in un cluster di produzione o in un cluster su un'altra traccia. Per i termini e le condizioni dell'anteprima, consulta la sezione relativa a <em>beta e anteprime</em> nei <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>termini del servizio AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>            
+            <div class="procedure"><h6>Come creare un cluster di <b>anteprima</b></h6><ol><li><p>Accedere alla AWS Management Console e aprire la console Amazon Redshift all'indirizzo <a href="https://console.aws.amazon.com/redshift/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/redshift/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p> </li><li><p>Dal menu di navigazione, scegli <b>Provisioned clusters dashboard</b> (Pannello di controllo dei cluster con provisioning) e seleziona <b>Clusters</b> (Cluster). Vengono elencati i cluster associati al tuo account nella Regione AWS corrente. Nelle colonne dell'elenco è visualizzato un sottoinsieme delle proprietà di ciascun cluster.</p></li><li><p>Nella pagina dell'elenco dei <b>cluster</b> viene visualizzato un banner che introduce l'anteprima. Scegli il pulsante <b>Create preview cluster</b> (Crea cluster di anteprima) per aprire la pagina di creazione del cluster.</p></li><li><p>Inserisci le proprietà del cluster. Scegli la <b>traccia di anteprima</b> che contiene le funzionalità che desideri testare. Consigliamo di assegnare al cluster un nome che indichi che si trova in una traccia di anteprima. Scegli le opzioni per il cluster, tra cui quelle contrassegnate come <b>-anteprima</b>, per le funzionalità che desideri testare. Per informazioni generali sulla creazione di cluster, consulta <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#create-cluster">Creazione di un cluster</a> nella <em>Guida alla gestione di Amazon Redshift</em>.</p></li><li><p>Per creare un cluster di anteprima, scegli <b>Crea cluster</b>.</p>
+                       <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Nota</h6></div><div class="awsdocs-note-text"><p>La traccia <code class="code">preview_2023</code> è la traccia di anteprima più recente disponibile. Questa traccia supporta la creazione di cluster solo con tipi di nodo RA3. I tipi di nodi DC2 e DS2 e qualsiasi tipo di nodo precedente non sono supportati.</p></div></div></li><li><p>Quando il cluster di anteprima è disponibile, utilizza il client SQL per caricare ed eseguire query sui dati.</p></li></ol></div>
+          
+          <p>Puoi anche creare un gruppo di lavoro di anteprima per creare un LLM. Non è possibile utilizzare queste funzionalità in produzione o trasferire il gruppo di lavoro in un altro gruppo di lavoro. Per i termini e le condizioni dell'anteprima, consulta Beta and Previews in <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS Service Terms</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. Per istruzioni su come creare un gruppo di lavoro di anteprima, consulta <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">Creazione di un gruppo di lavoro di anteprima</a>.</p>
+            
+             
+          
          
             <h3 id="r_remote-create-model">Sintassi di CREATE MODEL per l'inferenza remota </h3>
             <p>Di seguito viene descritta la sintassi di CREATE MODEL per l'inferenza remota.</p>
@@ -577,18 +595,21 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                      
                         <dt><span class="term">FUNCTION <em>nome_fn</em> ( [<em>tipo_dati</em>] [, ...] )</span></dt>
                         <dd>
-                            <p>Il nome della funzione e i tipi di dati degli argomenti di input. È possibile fornire un nome dello schema.</p>
+                           <p>Il nome della funzione e i tipi di dati degli argomenti di input. Consulta <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">Tipi di dati</a> per l'elenco di tutti i tipi di dati supportati. <code class="code">Geography</code>, <code class="code">geometry</code> e <code class="code">hllsketch</code> non sono supportati. Se si specifica di utilizzare il tipo di dati SUPER come dati di input e il tipo di dati restituito, si indica che si desidera creare un modello di linguaggio di grandi dimensioni (LLM) ospitato in Amazon.  SageMaker  JumpStart</p>
+                           <p>In alternativa, puoi specificare di utilizzare solo il tipo di dati SUPER come dati di input senza utilizzarlo anche come tipo di dati restituito. L'utilizzo del tipo di dati SUPER come input è disponibile solo come funzionalità di anteprima.</p>
+                           <p>È inoltre possibile fornire un nome di schema anziché il nome di una funzione.</p>
                         </dd>
                      
                         <dt><span class="term">RETURNS <em>data_type</em></span></dt>
                         <dd>
-                            <p>Il tipo di dati del valore restituito dalla funzione.</p>
+                            <p>Il tipo di dati del valore restituito dalla funzione. Consulta <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">Tipi di dati</a> per l'elenco di tutti i tipi di dati supportati. <code class="code">Geography</code>, <code class="code">geometry</code> e <code class="code">hllsketch</code> non sono supportati. Se si specifica di utilizzare il tipo di dati SUPER come dati di input e il tipo di dati restituito, si indica che si desidera creare un modello di linguaggio di grandi dimensioni (LLM) ospitato in Amazon.  SageMaker  JumpStart</p>
+                           <p>In alternativa, puoi specificare di utilizzare solo il tipo di dati SUPER come tipo di dati restituito senza utilizzarlo anche come dati di input.</p>
                         </dd>
                      
                         <dt><span class="term">SAGEMAKER <em>'nome_endpoint'</em>[:<em>'nome_modello'</em>] </span></dt>
                         <dd>
 
-                            <p>Il nome dell'endpoint Amazon SageMaker. Se il nome dell'endpoint punta a un endpoint multimodello, aggiungere il nome del modello da utilizzare. L'endpoint deve trovarsi nella stessa regione AWS del cluster Amazon Redshift. Per trovare l'endpoint, avviare Amazon SageMaker. Nel menu a discesa <b>Inference</b> (Inferenza), scegliere <b>Endpoints</b> (Endpoint).</p>
+                            <p>Il nome dell' SageMaker endpoint Amazon. Se il nome dell'endpoint punta a un endpoint multimodello, aggiungere il nome del modello da utilizzare. L'endpoint deve trovarsi nella stessa regione AWS del cluster Amazon Redshift. Per trovare il tuo endpoint, avvia Amazon SageMaker. Nel menu a discesa <b>Inference</b> (Inferenza), scegliere <b>Endpoints</b> (Endpoint).</p>
                         </dd>
                      
                        <dt><span class="term">IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;'}</span></dt>
@@ -597,30 +618,55 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
 
                         </dd>
                     </dl></div>
-                <p>Quando il modello viene implementato su un endpoint SageMaker, SageMaker crea le informazioni del modello in Amazon Redshift. Esegue quindi l'inferenza attraverso la funzione esterna. È possibile utilizzare il comando SHOW MODEL per visualizzare le informazioni sul modello sul cluster Amazon Redshift.</p>
+                <p>Quando il modello viene distribuito su un  SageMaker  endpoint,  SageMaker  crea le informazioni del modello in Amazon Redshift. Esegue quindi l'inferenza attraverso la funzione esterna. È possibile utilizzare il comando SHOW MODEL per visualizzare le informazioni sul modello sul cluster Amazon Redshift.</p>
              
              
                 <h4 id="r_remote-create-model-usage-notes">Note di utilizzo di CREATE MODEL per l'inferenza remota</h4>
                 <p>Prima di utilizzare CREATE MODEL per l'inferenza remota, considerare quanto segue:</p>
                 <div class="itemizedlist">
+                    
+                     
+   
+                     
+                     
+                     
+   
+                     
+                    
+                    
+                  
+                   
 
-                     
-
-                     
-                     
-                     
-
-                     
-
-                <ul class="itemizedlist"><li class="listitem"><p>Il modello deve accettare input nel formato di valori separati da virgole (CSV) attraverso un tipo di contenuto di testo/CSV in SageMaker.</p></li><li class="listitem"><p>L'endpoint deve essere ospitato nello stesso account AWS proprietario del cluster Amazon Redshift.</p></li><li class="listitem"><p>Gli output dei modelli devono essere un singolo valore del tipo specificato al momento della creazione della funzione, nel formato dei valori separati da virgole (CSV) attraverso un tipo di contenuto di testo/CSV in SageMaker. I tipi di dati Varchar non devono essere tra virgolette e ogni output deve essere in una nuova riga. </p></li><li class="listitem"><p>I modelli accettano valori null come stringhe vuote.</p></li><li class="listitem"><p>Assicurarsi che l'endpoint Amazon SageMaker disponga di risorse sufficienti per gestire le chiamate di inferenza da Amazon Redshift o che l'endpoint Amazon SageMaker possa essere ridimensionato automaticamente. </p></li></ul></div>
+                <ul class="itemizedlist"><li class="listitem">
+                      <p>I modelli BYOM possono supportare un solo argomento con il tipo di dati SUPER come dati di input e output restituito.</p>
+                   </li><li class="listitem"><p>Il modello deve accettare input nel formato di valori separati da virgole (CSV) tramite un tipo di contenuto di testo/CSV in.  SageMaker Applicabile solo se non si utilizza il tipo di dati SUPER come input.</p>
+                    </li><li class="listitem">
+                       <p>L'endpoint deve essere ospitato nello stesso account AWS proprietario del cluster Amazon Redshift.</p>
+                    </li><li class="listitem">
+                       <p>Gli output dei modelli devono essere un singolo valore del tipo specificato durante la creazione della funzione, nel formato di valori separati da virgole (CSV) tramite un tipo di contenuto testo/CSV in.  SageMaker I tipi di dati Varchar non devono essere tra virgolette e ogni output deve essere in una nuova riga. Applicabile solo se hai specificato che il modello non deve restituire il tipo di dati SUPER. </p>
+                    </li><li class="listitem">
+                       <p>I modelli accettano valori null come stringhe vuote.</p>
+                    </li><li class="listitem">
+                       <p>Assicurati che l' SageMaker endpoint Amazon disponga di risorse sufficienti per accogliere le chiamate di inferenza da Amazon Redshift o che l'endpoint  SageMaker  Amazon possa essere ridimensionato automaticamente.</p>
+                    </li><li class="listitem">
+                      <p>Quando il tipo restituito è SUPER, l'output del modello deve essere JSON e il tipo di contenuto <code class="code">application/jsonlines</code>.</p>
+                   </li><li class="listitem">
+                      <p>Quando entrambi i tipi di input e output sono SUPER, il modello deve accettare e restituire JSON tramite il tipo di contenuto <code class="code">application/json</code>.</p>
+                   </li></ul></div>
                  
                     <h5 id="r_remote-create-model-example">Esempio di CREATE MODEL per l'inferenza remota</h5>
-                    <p>L'esempio seguente crea un modello che utilizza un endpoint SageMaker per fare previsioni. Assicurarsi che l'endpoint sia in esecuzione per effettuare previsioni e specificarne il nome nel comando CREATE MODEL.</p>
+                    <p>L'esempio seguente crea un modello che utilizza un  SageMaker  endpoint per fare previsioni. Assicurarsi che l'endpoint sia in esecuzione per effettuare previsioni e specificarne il nome nel comando CREATE MODEL.</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE MODEL remote_customer_churn
     FUNCTION remote_fn_customer_churn_predict (varchar, int, float, float)
     RETURNS int
     SAGEMAKER 'customer-churn-endpoint'
     IAM_ROLE default;</code></pre>
+                   <p>L'esempio seguente crea un modello linguistico di grandi dimensioni (LLM) utilizzando il tipo di dati SUPER come dati di input e output restituito. I LLM sono ospitati in Jumpstart.  SageMaker  </p>
+                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL sample_super_data_model
+FUNCTION sample_super_data_model_predict(super)
+RETURNS super
+SAGEMAKER 'sample_super_data_model_endpoint'
+IAM_ROLE default;</code></pre>
                  
              
          
@@ -670,13 +716,13 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                  
                     <dt><span class="term">PREPROCESSORS 'string'</span></dt>
                     <dd>
-                        <p>Specifica alcune combinazioni di preprocessori per determinati set di colonne. Il formato è un elenco di columnSets e le trasformazioni appropriate da applicare a ciascun set di colonne. Amazon Redshift supporta 3 preprocessori K-Means, ovvero StandardScaler, MinMax e NumericPassthrough. Se non vuoi applicare alcuna preelaborazione per K-Means, scegli NumericPassthrough esplicitamente come trasformatore. Per ulteriori informazioni sulla funzionalità di trasformazione delle proprietà, consultare <a href="#r_user_guidance-create-model-parameters">Parametri di CREATE MODEL con guida per l'utente</a>.</p>
+                        <p>Specifica alcune combinazioni di preprocessori per determinati set di colonne. Il formato è un elenco di columnSets e le trasformazioni appropriate da applicare a ciascun set di colonne. Amazon Redshift supporta 3 preprocessori K-Means, vale a dire StandardScaler, e.  MinMax  NumericPassthrough Se non desideri applicare alcuna preelaborazione per K-Means, scegli  NumericPassthrough  esplicitamente come trasformatore. Per ulteriori informazioni sulla funzionalità di trasformazione delle proprietà, consultare <a href="#r_user_guidance-create-model-parameters">Parametri di CREATE MODEL con guida per l'utente</a>.</p>
                         <p>L'algoritmo K-Means utilizza la distanza eucliidea per calcolare la somiglianza. La preelaborazione dei dati garantisce che le caratteristiche del modello rimangano sulla stessa scala e producano risultati affidabili.</p>
                     </dd>
                  
                     <dt><span class="term">HYPERPARAMETERS DEFAULT ECCETTO (K 'val' [,...])</span></dt>
                     <dd>
-                        <p>Specifica se vengono utilizzati i parametri K-Means. È necessario specificare il parametro <code class="code">K</code> quando usi l'algoritmo K-Means. Per ulteriori informazioni, consultare <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/k-means-api-config.html">Iperparametri k-means</a> nella <em>Guida per sviluppatori di Amazon SageMaker</em></p>
+                        <p>Specifica se vengono utilizzati i parametri K-Means. È necessario specificare il parametro <code class="code">K</code> quando usi l'algoritmo K-Means. Per ulteriori informazioni, consulta <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/k-means-api-config.html">K-Means Hyperparameters</a> nella <em>Amazon  SageMaker </em> Developer Guide</p>
                     </dd>
                 </dl></div>
 
@@ -723,7 +769,7 @@ customer_id | customers_cluster
           
            
            
-       <ul class="itemizedlist"><li class="listitem"><p>Stati Uniti orientali (Ohio): us-east-2</p></li><li class="listitem"><p>Stati Uniti orientali (Virginia settentrionale): us-east-1</p></li><li class="listitem"><p>Stati Uniti occidentali (Oregon): us-west-2</p></li><li class="listitem"><p>Asia Pacifico (Mumbai): ap-south-1</p></li><li class="listitem"><p>Asia Pacifico (Seoul): ap-northeast-2</p></li><li class="listitem"><p>Asia Pacifico (Singapore): ap-southeast-1</p></li><li class="listitem"><p>Asia Pacifico (Sydney): ap-southeast-2</p></li><li class="listitem"><p>Asia Pacifico (Tokyo): ap-northeast-1</p></li><li class="listitem"><p>Europa (Francoforte) (eu-central-1)</p></li><li class="listitem"><p>Europa (Irlanda) (eu-west-1)</p></li></ul></div>
+       <ul class="itemizedlist"><li class="listitem"><p>Stati Uniti orientali (Ohio) (us-east-2)</p></li><li class="listitem"><p>Stati Uniti orientali (Virginia settentrionale) (us-east-1)</p></li><li class="listitem"><p>Stati Uniti occidentali (Oregon) (us-west-2)</p></li><li class="listitem"><p>Asia Pacifico (Mumbai) (ap-south-1)</p></li><li class="listitem"><p>Asia Pacifico (Seoul) (ap-northeast-2)</p></li><li class="listitem"><p>Asia Pacifico (Singapore) (ap-southeast-1)</p></li><li class="listitem"><p>Asia Pacifico (Sydney) (ap-southeast-2)</p></li><li class="listitem"><p>Asia Pacifico (Tokyo) (ap-northeast-1)</p></li><li class="listitem"><p>Europa (Francoforte) (eu-central-1)</p></li><li class="listitem"><p>Europa (Irlanda) (eu-west-1)</p></li></ul></div>
         
           <h3 id="r_forecast_model-synopsis">CREATE MODEL con sintassi Forecast</h3>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE [ OR REPLACE ] MODEL forecast_model_name 
@@ -774,7 +820,7 @@ SETTINGS (
               
                 <dt><span class="term">AUTO ON</span></dt>
                 <dd>
-                   <p>Attiva il rilevamento automatico CREATE MODEL della selezione di algoritmo e iperparametri. Specificare l'attivazione quando si crea un modello di previsione indica l'utilizzo di un predittore automatico delle previsioni (Forecast AutoPredictor), in cui Amazon Forecast applica le combinazioni ottimali di algoritmi a ciascuna serie temporale del set di dati.</p>
+                   <p>Attiva il rilevamento automatico CREATE MODEL della selezione di algoritmo e iperparametri. Specificare on quando si crea un modello Forecast indica di utilizzare un Forecast AutoPredictor, in cui Amazon Forecast applica le combinazioni ottimali di algoritmi a ogni serie temporale del set di dati.</p>
                 </dd>
               
                 <dt><span class="term">MODEL_TYPE FORECAST</span></dt>

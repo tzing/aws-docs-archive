@@ -48,21 +48,27 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#CAN_JSON_PARSE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#CAN_JSON_PARSE-synopsis">Sintassi</a><a href="#CAN_JSON_PARSE-arguments">Argomenti</a><a href="#CAN_JSON_PARSE-return">Tipo restituito</a><a href="#CAN_JSON_PARSE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="CAN_JSON_PARSE">Funzione CAN_JSON_PARSE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>La funzione CAN_JSON_PARSE analizza i dati in formato JSON e restituisce <code class="code">true</code> se il risultato può essere convertito in un valore <code class="code">SUPER</code> utilizzando le funzione JSON_PARSE.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#CAN_JSON_PARSE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#CAN_JSON_PARSE-synopsis">Sintassi</a><a href="#CAN_JSON_PARSE-arguments">Argomenti</a><a href="#CAN_JSON_PARSE-return">Tipo restituito</a><a href="#CAN_JSON_PARSE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="CAN_JSON_PARSE">Funzione CAN_JSON_PARSE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>La funzione CAN_JSON_PARSE analizza i dati in formato JSON e restituisce <code class="code">true</code> se il risultato può essere convertito in un valore <code class="code">SUPER</code> utilizzando le funzione JSON_PARSE.</p>
             <h2 id="CAN_JSON_PARSE-synopsis">Sintassi</h2>
             
             
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CAN_JSON_PARSE(<em>json_string</em>)</code></pre>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CAN_JSON_PARSE( <span>{</span><em>json_string</em> | <em>binary_value</em>} )</code></pre>
           
             <h2 id="CAN_JSON_PARSE-arguments">Argomenti</h2>
             
             
             <div class="variablelist">
                 
+                
             <dl>
                   <dt><span class="term"> <em>json_string</em></span></dt>
                   <dd>
                      <p>Un'espressione che restituisce JSON serializzato nel formato <code class="code">VARBYTE</code> o <code class="code">VARCHAR</code>. </p>
+                  </dd>
+                
+                  <dt><span class="term"> <em>binary_value</em></span></dt>
+                  <dd>
+                     <p>Un valore binario di tipo VARBYTE.</p>
                   </dd>
                </dl></div>
           

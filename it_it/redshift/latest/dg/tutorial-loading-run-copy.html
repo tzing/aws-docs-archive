@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#tutorial-loading-run-copy" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#tutorial-loading-data-copy-syntax">Sintassi del comando COPY</a><a href="#tutorial-loading-run-copy-load-tables">Caricamento delle tabelle SSB</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="tutorial-loading-run-copy">Fase 5: esecuzione dei comandi COPY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>In questa fase, esegui i comandi COPY per caricare ognuna della tabelle nello schema SSB. Gli esempi relativi al comando COPY illustrano il caricamento da differenti formati di file mediante varie opzioni del comando COPY nonché la risoluzione degli errori di caricamento.</p><div class="highlights" id="inline-topiclist"><h6>Argomenti</h6><ul><li><a href="#tutorial-loading-data-copy-syntax">Sintassi del comando COPY</a></li><li><a href="#tutorial-loading-run-copy-load-tables">Caricamento delle tabelle SSB</a></li></ul></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#tutorial-loading-run-copy" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#tutorial-loading-data-copy-syntax">Sintassi del comando COPY</a><a href="#tutorial-loading-run-copy-load-tables">Caricamento delle tabelle SSB</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="tutorial-loading-run-copy">Fase 5: esecuzione dei comandi COPY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>In questa fase, esegui i comandi COPY per caricare ognuna della tabelle nello schema SSB. Gli esempi relativi al comando COPY illustrano il caricamento da differenti formati di file mediante varie opzioni del comando COPY nonché la risoluzione degli errori di caricamento.</p><div class="highlights" id="inline-topiclist"><h6>Argomenti</h6><ul><li><a href="#tutorial-loading-data-copy-syntax">Sintassi del comando COPY</a></li><li><a href="#tutorial-loading-run-copy-load-tables">Caricamento delle tabelle SSB</a></li></ul></div>
             <h2 id="tutorial-loading-data-copy-syntax">Sintassi del comando COPY</h2>
 
 
@@ -71,7 +71,7 @@
                 </li></ul></div>
              
                 <h6>Credenziali</h6>
-                <p>Per accedere alle risorse AWS contenenti i dati da caricare, è necessario fornire le credenziali di accesso AWS per un utente con sufficienti privilegi. Queste credenziali includono un ruolo IAM (ARN) Amazon Resource Name (ARN). Per caricare dati da Amazon S3, le credenziali devono includere le autorizzazioni ListBucket e GetObject. Ulteriori credenziali sono necessarie se i dati sono crittografati. Per ulteriori informazioni, consultare <a href="./copy-parameters-authorization.html">Parametri di autorizzazione</a> nel riferimento del comando COPY. Per ulteriori informazioni sulla gestione degli accessi, consultare <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Gestione delle autorizzazioni di accesso alle risorse Amazon S3</a>. </p>
+                <p>Per accedere alle risorse AWS contenenti i dati da caricare, è necessario fornire le credenziali di accesso AWS per un utente con sufficienti privilegi. Queste credenziali includono un ruolo IAM (ARN) Amazon Resource Name (ARN). Per caricare dati da Amazon S3, le credenziali devono includere  ListBucket  e autorizzazioni.  GetObject Ulteriori credenziali sono necessarie se i dati sono crittografati. Per ulteriori informazioni, consultare <a href="./copy-parameters-authorization.html">Parametri di autorizzazione</a> nel riferimento del comando COPY. Per ulteriori informazioni sulla gestione degli accessi, consultare <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Gestione delle autorizzazioni di accesso alle risorse Amazon S3</a>. </p>
              
             <p><span class="topcon">Opzioni</span></p>
             <p>Puoi specificare vari parametri con il comando COPY per definire formati di file, gestire formati di dati, gestire errori e controllare altre funzionalità. In questo tutorial, utilizzi le seguenti opzioni e funzionalità del comando COPY: </p>
@@ -174,10 +174,10 @@ options;</code></pre>
                      
                      
                 <ol><li>
-                        <p>Sostituire <code class="replaceable">&lt;your-bucket-name&gt;</code> con il nome di un bucket nella stessa regione del cluster. </p>
+                        <p>Sostituisci <code class="replaceable">&lt; your-bucket-name &gt;</code> con il nome di un bucket nella stessa regione del cluster. </p>
                         <p>Questa fase presuppone che il bucket e il cluster siano nella stessa regione. In alternativa, è possibile specificare regione utilizzando l'opzione <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> con il comando COPY. </p>
                     </li><li>
-                        <p>Sostituisci <code class="replaceable">&lt;aws-account-id&gt;</code> e <code class="replaceable">&lt;role-name&gt;</code> con il proprio Account AWS e ruolo IAM. Il segmento della stringa delle credenziali racchiuso tra virgolette singole non deve contenere spazi o interruzioni di riga. Tieni presente che l'ARN potrebbe differire leggermente nel formato rispetto all'esempio. È consigliabile copiare l'ARN per il ruolo dalla console IAM, per assicurarsi che sia accurato, quando esegui i comandi COPY. </p>
+                        <p>Sostituisci <code class="replaceable">&lt; aws-account-id &gt;</code> e<code class="replaceable"></code> &lt;role-name&gt;con il tuo ruolo Account AWS e quello di IAM. Il segmento della stringa delle credenziali racchiuso tra virgolette singole non deve contenere spazi o interruzioni di riga. Tieni presente che l'ARN potrebbe differire leggermente nel formato rispetto all'esempio. È consigliabile copiare l'ARN per il ruolo dalla console IAM, per assicurarsi che sia accurato, quando esegui i comandi COPY. </p>
                         
                     </li></ol></div>
              
@@ -437,9 +437,9 @@ limit 10;
                 <div class="procedure"><h6>Per caricare i dati per la tabella CUSTOMER mediante un file manifest</h6><ol><li>
                         <p>Aprire il file <code class="code">customer-fw-manifest</code> in un editor di testo.</p>
                     </li><li>
-                        <p>Sostituire <code class="replaceable">&lt;your-bucket-name&gt;</code> con il nome del bucket.</p>
+                        <p>Sostituisci <code class="replaceable">&lt; your-bucket-name &gt;</code> con il nome del tuo bucket.</p>
                     </li><li>
-                        <p>Salva il file.</p>
+                        <p>Salvare il file.</p>
                     </li><li>
                         <p>Caricare il file nella cartella di caricamento del bucket.</p>
                     </li><li>

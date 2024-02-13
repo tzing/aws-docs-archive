@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CTAS_usage_notes" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_CTAS_usage_notes-limits">Limiti</a><a href="#r_CTAS_usage_notes-inheritance-of-column-and-table-attributes">Ereditarietà di attributi di colonna e tabella</a><a href="#r_CTAS_usage_notes_encoding">Codifica di compressione</a><a href="#r_CTAS_usage_notes-distribution-of-incoming-data">Distribuzione dei dati in arrivo</a><a href="#r_CTAS_usage_notes-automatic-analyze-operations">Operazioni ANALYZE automatiche</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CTAS_usage_notes">Note per l'utilizzo di CTAS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CTAS_usage_notes" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_CTAS_usage_notes-limits">Limiti</a><a href="#r_CTAS_usage_notes-inheritance-of-column-and-table-attributes">Ereditarietà di attributi di colonna e tabella</a><a href="#r_CTAS_usage_notes_encoding">Codifica di compressione</a><a href="#r_CTAS_usage_notes-distribution-of-incoming-data">Distribuzione dei dati in arrivo</a><a href="#r_CTAS_usage_notes-automatic-analyze-operations">Operazioni ANALYZE automatiche</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_CTAS_usage_notes">Note per l'utilizzo di CTAS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
             <h2 id="r_CTAS_usage_notes-limits">Limiti</h2>
 
 
@@ -79,12 +79,12 @@
                </li><li class="listitem">
                   <p>Le colonne definite come CHAR, VARCHAR o VARBYTE sono assegnate alla compressione LZO.</p>
                </li></ul></div>
-            <p>Per ulteriori informazioni, consulta <a href="./c_Compression_encodings.html">Codifiche di compressione</a> e <a href="./c_Supported_data_types.html">Tipi di dati</a>. </p>
+            <p>Per ulteriori informazioni, consultare <a href="./c_Compression_encodings.html">Codifiche di compressione</a> e <a href="./c_Supported_data_types.html">Tipi di dati</a>. </p>
             <p>Per assegnare esplicitamente le codifiche di colonna, utilizza <a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a>.</p>
             <p>CTAS determina lo stile di distribuzione e la chiave di ordinamento per la nuova tabella in base al piano di query per la clausola SELECT. </p>
             <p>Per le query complesse, come le query che includono join, aggregazioni, una clausola order by o una clausola limit, CTAS tenta di scegliere al meglio lo stile di distribuzione ottimale e la chiave di ordinamento in base al piano di query. </p>
             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Nota</h6></div><div class="awsdocs-note-text"><p>Per le prestazioni ottimali con set di dati di grandi dimensioni o query complesse, consigliamo di eseguire il test utilizzando set di dati tipici.</p></div></div>
-            <p>Spesso puoi prevedere quale chiave di distribuzione e chiave di ordinamento viene scelta da CTAS esaminando il piano di query per vedere quali colonne, se presenti, l'ottimizzatore di query sceglie per l'ordinamento e la distribuzione dei dati. Se il nodo superiore del piano di query è una semplice scansione sequenziale da una singola tabella (XN Seq Scan), in genere CTAS utilizza lo stile di distribuzione e la chiave di ordinamento della tabella di origine. Se il nodo superiore del piano di query non è una scansione sequenziale (come XN Limit, XN Sort, XN HashAggregate e così via), CTAS tenta di scegliere al meglio lo stile di distribuzione ottimale e la chiave di ordinamento in base al piano di query.</p>
+            <p>Spesso puoi prevedere quale chiave di distribuzione e chiave di ordinamento viene scelta da CTAS esaminando il piano di query per vedere quali colonne, se presenti, l'ottimizzatore di query sceglie per l'ordinamento e la distribuzione dei dati. Se il nodo superiore del piano di query è una semplice scansione sequenziale da una singola tabella (XN Seq Scan), in genere CTAS utilizza lo stile di distribuzione e la chiave di ordinamento della tabella di origine. Se il nodo principale del piano di query è qualcosa di diverso da una scansione sequenziale (come XN Limit, XN Sort, XN e così via) HashAggregate, CTAS fa del suo meglio per scegliere lo stile di distribuzione e la chiave di ordinamento ottimali in base al piano di query.</p>
             <p>Ad esempio, supponiamo di creare cinque tabelle utilizzando i seguenti tipi di clausole SELECT:</p>
             <div class="itemizedlist">
                 
@@ -176,7 +176,7 @@ explain create table sales5_groupby as select listid, dateid, sum(qtysold) from 
  sales5_groupby       | sum        | f       |       0
             </code></pre>
             <p>La tabella seguente riepiloga i risultati. Per semplicità, vengono omessi i dettagli relativi a costi, righe e larghezza dal piano explain.</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45b9c99c13b5c35"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47b9d105c13b5c35"><thead>
                      <tr>
                         <th>
                            <p>Tabella</p>
@@ -191,7 +191,7 @@ explain create table sales5_groupby as select listid, dateid, sum(qtysold) from 
                            <p>Chiave distribuzione</p>
                         </th>
                         <th>
-                           <p>Chiave ordinamento</p>
+                           <p>Chiave di ordinamento</p>
                         </th>
                      </tr>
                   </thead>

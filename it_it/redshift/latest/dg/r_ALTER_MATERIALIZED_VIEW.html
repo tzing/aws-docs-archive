@@ -42,12 +42,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_MATERIALIZED_VIEW" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ALTER_MATERIALIZED_VIEW-synopsis">Sintassi</a><a href="#r_ALTER_MATERIALIZED_VIEW-parameters">Parametri</a><a href="#r_ALTER_MATERIALIZED_VIEW-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_MATERIALIZED_VIEW">ALTER MATERIALIZED VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Consente l'aggiornamento automatico di una vista materializzata </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_MATERIALIZED_VIEW" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ALTER_MATERIALIZED_VIEW-synopsis">Sintassi</a><a href="#r_ALTER_MATERIALIZED_VIEW-parameters">Parametri</a><a href="#r_ALTER_MATERIALIZED_VIEW-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_ALTER_MATERIALIZED_VIEW">ALTER MATERIALIZED VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Consente l'aggiornamento automatico di una vista materializzata </p>
          <h2 id="r_ALTER_MATERIALIZED_VIEW-synopsis">Sintassi</h2>
 
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER MATERIALIZED VIEW <em>mv_name</em>
 [ AUTO REFRESH <span>{</span> YES | NO } ]
-[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [FOR DATASHARES] ];</code></pre>
+[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [FOR DATASHARES] ];</code></pre>
 
         
 
@@ -56,6 +56,7 @@
 
          <div class="variablelist">
              
+             
     
              
              
@@ -63,18 +64,29 @@
 
 
          <dl>
+               <dt><span class="term"><em>mv_name</em></span></dt>
+               <dd><p>Il nome della vista materializzata da modificare.</p></dd>
+             
                <dt><span class="term">AUTO REFRESH <span>{</span> YES | NO }</span></dt>
                <dd>
                   <p>Una clausola che attiva o disattiva l'aggiornamento automatico di una vista materializzata. Per informazioni sull'aggiornamento automatico delle viste materializzate, consultare <a href="./materialized-view-refresh.html">Aggiornamento di una vista materializzata</a>.</p></dd>
              
-               <dt><span class="term">SICUREZZA A LIVELLO DI RIGA <span>{</span> ON | OFF }</span></dt>
-               <dd>
-                  <p>Una clausola che attiva o disattiva la sicurezza a livello di riga per una vista materializzata. Quando è attivata la protezione a livello di riga, è possibile leggere solo le righe al livello di riga a cui la policy consente l'accesso. Quando non ci sono policy che autorizzano un accesso utente alla tabella o alla vista, l'utente non può visualizzare alcun record. Solo gli utenti con privilegi avanzati e gli utenti o i ruoli che hanno il ruolo <code class="code">sys:secadmin</code> possono impostare la clausola ROW LEVEL SECURITY. Per ulteriori informazioni, consulta <a href="./r_CREATE_RLS_POLICY.html">CREATE RLS POLICY</a>.</p></dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>Una clausola che determina se una vista materializzata è protetta da RLS (sicurezza a livello di riga) rispetto alle unità di condivisione dati. Per impostazione predefinita, una vista materializzata è anche protetta da RLS (sicurezza a livello di riga) rispetto alle unità di condivisione dati.</p>
-
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+               <dd><p>Una clausola che attiva o disattiva la sicurezza a livello di riga per una relazione.</p>
+                  <p>Quando per una relazione è attivata la protezione a livello di riga, è possibile leggere solo le righe al livello di riga a cui la policy di sicurezza consente l'accesso. Quando non ci sono policy che consentono l'accesso alla relazione, non è possibile visualizzare alcuna riga dalla relazione. Solo gli utenti con privilegi avanzati e gli utenti o i ruoli che hanno il ruolo <code class="code">sys:secadmin</code> possono impostare la clausola ROW LEVEL SECURITY. Per ulteriori informazioni, consulta <a href="./t_rls.html">Sicurezza a livello di riga</a>.</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>Una clausola che consente di scegliere il tipo di congiunzione della policy di sicurezza a livello di riga per una relazione. Quando a una relazione sono associate più policy di sicurezza a livello di riga, è possibile combinare le policy con la clausola AND oppure OR. Per impostazione predefinita, Amazon Redshift combina le policy RLS con la clausola AND. Gli utenti con privilegi avanzati, gli utenti o i ruoli che hanno il ruolo <code class="code">sys:secadmin</code> possono utilizzare questa clausola per definire il tipo di combinazione della policy di sicurezza a livello di riga per una relazione. Per ulteriori informazioni, consulta <a href="./t_rls_combine_policies.html">Combinazione di più policy per utente</a>. </p></li><li class="listitem">
+                        <p>FOR DATASHARES</p>
+                        <p> Una clausola che determina se è possibile accedere a una relazione protetta da RLS in un'unità di condivisione dati. Per impostazione predefinita, non è possibile accedere a una relazione protetta da RLS in un'unità di condivisione dati. Il comando ALTER MATERIALIZED VIEW ROW LEVEL SECURITY eseguito con questa clausola influisce solo sulla proprietà di accessibilità dell'unità di condivisione dati della relazione. La proprietà ROW LEVEL SECURITY non viene modificata.</p>
+                        <p> Se rendi accessibile una relazione protetta da RLS nelle unità di condivisione dati, la relazione non dispone di una sicurezza a livello di riga nel database con unità di condivisione dati sul lato consumer. La relazione mantiene la proprietà RLS sul lato producer. </p>
+                     </li></ul></div>
                </dd>
+             
+               <dt><span class="term">SPECTRUM MAX ERRORS <em>number_of_errors</em></span></dt>
+               <dd><p> Una clausola che specifica il numero massimo di errori da accettare prima di annullare una query nella vista materializzata. <em>number_of_errors</em> accetta numeri interi. Un valore negativo disattiva la gestione del numero massimo di errori. I risultati sono registrati in <a href="./r_SVL_SPECTRUM_SCAN_ERROR.html">SVL_SPECTRUM_SCAN_ERROR</a>. </p> </dd>
             </dl></div>
 
        

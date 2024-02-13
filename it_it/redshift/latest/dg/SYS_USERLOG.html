@@ -42,16 +42,16 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_USERLOG" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#SYS_USERLOG-table-columns">Colonne di tabella</a><a href="#SYS_USERLOG-sample-queries">Query di esempio</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_USERLOG">SYS_USERLOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra i dettagli per le seguenti modifiche a un utente di database:</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_USERLOG" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#SYS_USERLOG-table-columns">Colonne di tabella</a><a href="#SYS_USERLOG-sample-queries">Query di esempio</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="SYS_USERLOG">SYS_USERLOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra i dettagli per le seguenti modifiche a un utente di database:</p><div class="itemizedlist">
              
              
              
              
-        <ul class="itemizedlist"><li class="listitem"><p>Create user (Crea utente)</p></li><li class="listitem"><p>Rimozione dell'utente</p></li><li class="listitem"><p>Modifica di un utente (assegnazione di un nuovo nome)</p></li><li class="listitem"><p>Modifica di un utente (modifica delle proprietà)</p></li></ul></div><p>È possibile eseguire una query su questa visualizzazione per visualizzare informazioni sui gruppi di lavoro serverless e sui cluster predisposti.</p><p>Questa visualizzazione è visibile solo per gli utenti con privilegi avanzati. Per ulteriori informazioni, consultare <a href="https://docs.aws.amazon.com/redshift/latest/dg/cm_chap_system-tables.html#c_visibility-of-data">Visibilità dei dati nelle tabelle e nelle viste di sistema</a>.</p>
+        <ul class="itemizedlist"><li class="listitem"><p>Create user (Crea utente)</p></li><li class="listitem"><p>Rimozione dell'utente</p></li><li class="listitem"><p>Modifica di un utente (assegnazione di un nuovo nome)</p></li><li class="listitem"><p>Modifica di un utente (modifica delle proprietà)</p></li></ul></div><p>È possibile eseguire una query su questa visualizzazione per visualizzare informazioni sui gruppi di lavoro serverless e sui cluster predisposti.</p><p>SYS_USERLOG è visibile solo agli utenti con privilegi avanzati. Per ulteriori informazioni, consulta <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilità dei dati nelle tabelle e nelle viste di sistema</a>.</p>
             <h2 id="SYS_USERLOG-table-columns">Colonne di tabella</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c77c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c81c11b3"><thead>
                         <tr>
                             <th>Nome colonna </th>
                             <th>Tipo di dati </th>
@@ -74,7 +74,7 @@
                             <td tabindex="-1">Il nome utente originale in un'operazione di assegnazione di un nuovo nome. Per tutte le altre operazioni, questo campo è vuoto.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">operazione</td>
+                            <td tabindex="-1">action</td>
                             <td tabindex="-1">character(10)</td>
                             <td tabindex="-1">Operazione che si è verificata. I valori validi sono alter, create, drop e rename.</td>
                         </tr>

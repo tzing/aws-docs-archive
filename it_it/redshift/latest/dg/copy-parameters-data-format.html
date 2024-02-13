@@ -54,7 +54,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#copy-parameters-data-format" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#copy-json-data-file">File di dati JSON</a><a href="#copy-json-jsonpaths">File JSONPath</a><a href="#copy-json-jsonpath-expressions">Espressioni JSONPath</a><a href="#using-jsonpath-with-avro">Utilizzo di JSONPath con dati Avro</a><a href="#copy-parameters-columnar-data">Parametri del formato dei dati a colonna</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="copy-parameters-data-format">Parametri del formato dei dati</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Per impostazione predefinita, il comando COPY prevede che i dati di origine siano testi UTF-8 delimitati da caratteri. Il delimitatore predefinito è una barra verticale ( | ). Se i dati di origine sono in un altro formato, utilizza i seguenti parametri per specificare il formato dei dati: </p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#copy-parameters-data-format" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#copy-json-data-file">File di dati JSON</a><a href="#copy-json-jsonpaths">File JSONPath</a><a href="#copy-json-jsonpath-expressions">Espressioni JSONPath</a><a href="#using-jsonpath-with-avro">Utilizzo di JSONPath con dati Avro</a><a href="#copy-parameters-columnar-data">Parametri del formato dei dati a colonna</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="copy-parameters-data-format">Parametri del formato dei dati</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Per impostazione predefinita, il comando COPY prevede che i dati di origine siano testi UTF-8 delimitati da caratteri. Il delimitatore predefinito è una barra verticale ( | ). Se i dati di origine sono in un altro formato, utilizza i seguenti parametri per specificare il formato dei dati: </p><div class="itemizedlist">
              
              
              
@@ -466,7 +466,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
         <span>{</span>"name": "randomArrayItem", "type": "string"}
     ]
 }</code></pre>
-            <p>L'esempio seguente mostra un file JSONPath che utilizza espressioni AvroPath per fare riferimento allo schema precedente. </p>
+            <p>L'esempio seguente mostra un file JSONPaths che utilizza espressioni per fare riferimento allo schema precedente.  AvroPath  </p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "jsonpaths": [
         "$.id",
@@ -485,7 +485,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
             <dl>
                   <dt><span class="term">jsonpath</span></dt>
                   <dd>
-                     <p>Il nome dell'oggetto JSON che contiene le espressioni AvroPath.</p>
+                     <p>Il nome dell'oggetto JSON che contiene le espressioni.  AvroPath</p>
                   </dd>
                 
                   <dt><span class="term">[ … ]</span></dt>
@@ -500,7 +500,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
                 
                   <dt><span class="term">"$.id",</span></dt>
                   <dd>
-                     <p>La destinazione dell'espressione AvroPath. In questa istanza, la destinazione è l'elemento nell'array <code class="code">"fields"</code> con il nome <code class="code">"id"</code>. Le espressioni sono separate da virgole.</p>
+                     <p>L'obiettivo dell' AvroPath espressione. In questa istanza, la destinazione è l'elemento nell'array <code class="code">"fields"</code> con il nome <code class="code">"id"</code>. Le espressioni sono separate da virgole.</p>
                   </dd>
                 
                   <dt><span class="term">"$.friends[0].id"</span></dt>
@@ -508,7 +508,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
                      <p>Le parentesi indicano un indice dell'array. Le espressioni JSONPath utilizzano un'indicizzazione a base zero, quindi questa espressione fa riferimento al primo elemento nell'array <code class="code">"friends"</code> con il nome <code class="code">"id"</code>.</p>
                   </dd>
                </dl></div>
-            <p>La sintassi dello schema Avro richiede l'utilizzo di <em>campi interni</em> per definire la struttura dei tipi di dati record e array. I campi interni sono ignorati dalle espressioni AvroPath. Per esempio, il campo <code class="code">"friends"</code> definisce un array chiamato <code class="code">"inner_friends"</code>, che a sua volta definisce un record chiamato <code class="code">"friends_record"</code>. L'espressione AvroPath che fa riferimento al campo <code class="code">"id"</code> può ignorare i campi extra per fare riferimento direttamente al campo di destinazione. Le seguenti espressioni AvroPath fanno riferimento ai due campi che appartengono all'array <code class="code">"friends"</code>.</p>
+            <p>La sintassi dello schema Avro richiede l'utilizzo di <em>campi interni</em> per definire la struttura dei tipi di dati record e array. I campi interni vengono ignorati dalle  AvroPath  espressioni. Per esempio, il campo <code class="code">"friends"</code> definisce un array chiamato <code class="code">"inner_friends"</code>, che a sua volta definisce un record chiamato <code class="code">"friends_record"</code>. L' AvroPath espressione che fa riferimento al campo <code class="code">"id"</code> può ignorare i campi aggiuntivi per fare riferimento direttamente al campo di destinazione. Le  AvroPath  espressioni seguenti fanno riferimento ai due campi che appartengono all'<code class="code">"friends"</code>array.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">"$.friends[0].id"
 "$.friends[0].name"</code></pre>
           

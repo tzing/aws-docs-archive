@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#Examples__compression_encodings_in_CREATE_TABLE_statements" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="Examples__compression_encodings_in_CREATE_TABLE_statements">Esempio: scelta di codifiche di compressione per la tabella CUSTOMER</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>La seguente dichiarazione crea una tabella CUSTOMER che dispone di colonne con diversi tipi di dati. Questa dichiarazione CREATE TABLE mostra una delle possibili combinazioni delle codifiche di compressione per queste colonne. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create table customer(
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#Examples__compression_encodings_in_CREATE_TABLE_statements" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="Examples__compression_encodings_in_CREATE_TABLE_statements">Esempio: scelta di codifiche di compressione per la tabella CUSTOMER</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>La seguente dichiarazione crea una tabella CUSTOMER che dispone di colonne con diversi tipi di dati. Questa dichiarazione CREATE TABLE mostra una delle possibili combinazioni delle codifiche di compressione per queste colonne. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create table customer(
 custkey int encode delta,
 custname varchar(30) encode raw,
 gender varchar(7) encode text255,
@@ -50,7 +50,7 @@ address varchar(200) encode text255,
 city varchar(30) encode text255,
 state char(2) encode raw,
 zipcode char(5) encode bytedict,
-start_date date encode delta32k);</code></pre><p>La tabella seguente mostra le codifiche della colonna che sono state scelte per la tabella CUSTOMER e fornisce una spiegazione della scelta:</p><div class="table-container"><div class="table-contents"><table id="w317aac11c19c35b9"><thead>
+start_date date encode delta32k);</code></pre><p>La tabella seguente mostra le codifiche della colonna che sono state scelte per la tabella CUSTOMER e fornisce una spiegazione della scelta:</p><div class="table-container"><div class="table-contents"><table id="w319aac11c19c35b9"><thead>
                         <tr>
                             <th>Colonna</th>
                             <th>Tipo di dati</th>
@@ -102,7 +102,7 @@ start_date date encode delta32k);</code></pre><p>La tabella seguente mostra le c
                         </tr>
                         <tr>
                             <td tabindex="-1">START_DATE</td>
-                            <td tabindex="-1">date</td>
+                            <td tabindex="-1">data</td>
                             <td tabindex="-1">delta32k</td>
                             <td tabindex="-1">Le codifiche delta sono molto utili per le colonne date time, in particolare quando le righe vengono caricate nell'ordine di data.</td>
                         </tr>

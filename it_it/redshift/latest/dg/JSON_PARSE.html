@@ -48,21 +48,27 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#JSON_PARSE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#JSON_PARSE-synopsis">Sintassi</a><a href="#JSON_PARSE-arguments">Argomenti</a><a href="#JSON_PARSE-return">Tipo restituito</a><a href="#JSON_PARSE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="JSON_PARSE">Funzione JSON_PARSE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>La funzione JSON_PARSE analizza i dati in formato JSON e li converte nella rappresentazione <code class="code">SUPER</code>. </p><p>Per importare nel tipo di dati <code class="code">SUPER</code> utilizzando il comando INSERT o UPDATE, utilizza la funzione JSON_PARSE. Quando utilizzi JSON_PARSE() per analizzare le stringhe JSON in valori <code class="code">SUPER</code>, si applicano alcune restrizioni. Per ulteriori informazioni, consulta <a href="./super-configurations.html#parsing-options-super">Opzioni di analisi per SUPER</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#JSON_PARSE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#JSON_PARSE-synopsis">Sintassi</a><a href="#JSON_PARSE-arguments">Argomenti</a><a href="#JSON_PARSE-return">Tipo restituito</a><a href="#JSON_PARSE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="JSON_PARSE">Funzione JSON_PARSE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>La funzione JSON_PARSE analizza i dati in formato JSON e li converte nella rappresentazione <code class="code">SUPER</code>. </p><p>Per importare nel tipo di dati <code class="code">SUPER</code> utilizzando il comando INSERT o UPDATE, utilizza la funzione JSON_PARSE. Quando utilizzi JSON_PARSE() per analizzare le stringhe JSON in valori <code class="code">SUPER</code>, si applicano alcune restrizioni. Per ulteriori informazioni, consulta <a href="./super-configurations.html#parsing-options-super">Opzioni di analisi per SUPER</a>.</p>
             <h2 id="JSON_PARSE-synopsis">Sintassi</h2>
             
             
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">JSON_PARSE(<em>json_string</em>)</code></pre>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">JSON_PARSE( <span>{</span><em>json_string</em> | <em>binary_value</em>} )</code></pre>
           
             <h2 id="JSON_PARSE-arguments">Argomenti</h2>
             
             
             <div class="variablelist">
                 
+                
             <dl>
                   <dt><span class="term"> <em>json_string</em></span></dt>
                   <dd>
                      <p>Un'espressione che restituisce JSON serializzato come tipo <code class="code">VARBYTE</code> o <code class="code">VARCHAR</code>. </p>
+                  </dd>
+                
+                  <dt><span class="term"> <em>binary_value</em></span></dt>
+                  <dd>
+                     <p>Un valore binario di tipo VARBYTE.</p>
                   </dd>
                </dl></div>
           
@@ -84,7 +90,7 @@
 | [10001,10002,"abc"] |
 +---------------------+</code></code></pre>
             
-            <p>Per assicurare che la funzione abbia convertito l'array JSON nel tipo di dati <code class="code">SUPER</code>, utilizza l'esempio seguente. Per ulteriori informazioni, consulta <a href="./r_json_typeof.html">Funzione JSON_TYPEOF</a></p>
+            <p>Per assicurare che la funzione abbia convertito l'array JSON nel tipo di dati <code class="code">SUPER</code>, utilizza l'esempio seguente. Per ulteriori informazioni, consultare <a href="./r_json_typeof.html">Funzione JSON_TYPEOF</a></p>
 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT JSON_TYPEOF(JSON_PARSE('[10001,10002,"abc"]'));</code>
 
 <code class="computeroutput" copy="false">+-------------+

@@ -42,17 +42,23 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SHOW_EXTERNAL_TABLE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_SHOW_EXTERNAL_TABLE-synopsis">Sintassi</a><a href="#r_SHOW_EXTERNAL_TABLE-parameters">Parametri</a><a href="#r_SHOW_EXTERNAL_TABLE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SHOW_EXTERNAL_TABLE">SHOW EXTERNAL TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Mostra la definizione di una tabella esterna, inclusi gli attributi delle tabelle e gli attributi delle colonne. È possibile utilizzare l'output dell'istruzione SHOW EXTERNAL TABLE per ricreare la tabella. </p><p>Per ulteriori informazioni sulla creazione delle tabelle esterne, consultare <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SHOW_EXTERNAL_TABLE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_SHOW_EXTERNAL_TABLE-synopsis">Sintassi</a><a href="#r_SHOW_EXTERNAL_TABLE-parameters">Parametri</a><a href="#r_SHOW_EXTERNAL_TABLE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_SHOW_EXTERNAL_TABLE">SHOW EXTERNAL TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Mostra la definizione di una tabella esterna, inclusi gli attributi delle tabelle e gli attributi delle colonne. È possibile utilizzare l'output dell'istruzione SHOW EXTERNAL TABLE per ricreare la tabella. </p><p>Per ulteriori informazioni sulla creazione delle tabelle esterne, consultare <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>. </p>
          <h2 id="r_SHOW_EXTERNAL_TABLE-synopsis">Sintassi</h2>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">SHOW EXTERNAL TABLE <em>external_schema</em>.<em>table_name</em> [ PARTITION ]</code></pre>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">SHOW EXTERNAL TABLE [<em>external_database</em>].<em>external_schema</em>.<em>table_name</em> [ PARTITION ]</code></pre>
        
          <h2 id="r_SHOW_EXTERNAL_TABLE-parameters">Parametri</h2>
          <div class="variablelist">
+             
              
 
              
              
          <dl>
+               <dt><span class="term"> <em>external_database</em> </span></dt>
+               <dd>
+                  <p>Il nome del database esterno associato. Questo parametro è facoltativo.</p>
+               </dd>
+             
                <dt><span class="term"> <em>external_schema</em> </span></dt>
                <dd>
                   <p>Il nome dello schema esterno associato. </p>
@@ -92,7 +98,7 @@ LOCATION 's3://mybucket-test-copy/alldatatypes_parquet_partitioned';
 
          <p>Di seguito è riportato un esempio del comando SHOW EXTERNAL TABLE e l'output per la tabella <code class="code">my_schema.alldatatypes_parquet_test_partitioned</code>.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SHOW EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned;</code></pre>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
+         <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
     csmallint smallint,
     cint int,
     cbigint bigint,
@@ -112,9 +118,32 @@ STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFo
 OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
 LOCATION 's3://mybucket-test-copy/alldatatypes_parquet_partitioned';"</code></pre>
 
+         <p>Di seguito è riportato un esempio del comando SHOW EXTERNAL TABLE e dell'output per la stessa tabella, ma con il database specificato anche nel parametro.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SHOW EXTERNAL TABLE my_database.my_schema.alldatatypes_parquet_test_partitioned;</code></pre>
+         <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_database.my_schema.alldatatypes_parquet_test_partitioned (
+    csmallint smallint,
+    cint int,
+    cbigint bigint,
+    cfloat float4,
+    cdouble float8,
+    cchar char(10),
+    cvarchar varchar(255),
+    cdecimal_small decimal(18,9),
+    cdecimal_big decimal(30,15),
+    ctimestamp timestamp,
+    cboolean boolean,
+    cstring varchar(16383)
+)
+PARTITIONED BY (cdate date, ctime timestamp)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION 's3://mybucket-test-copy/alldatatypes_parquet_partitioned';"</code></pre>
+         
+
          <p>Di seguito è riportato un esempio del comando SHOW EXTERNAL TABLE e l'output quando si utilizza il parametro <code class="code">PARTITION</code>. L'output contiene istruzioni ALTER TABLE per aggiungere le partizioni alla definizione della tabella.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SHOW EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned PARTITION;</code></pre>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
+         <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
     csmallint smallint,
     cint int,
     cbigint bigint,

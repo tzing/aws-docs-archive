@@ -42,67 +42,49 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#nested-data-use-cases" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#ingesting-nested-data">Inserimento di dati nidificati</a><a href="#aggregating-with-subquery"> Aggregazione di dati nidificati con query secondarie </a><a href="#joining-redshift-data"> Unione dei dati di Amazon Redshift e dei dati nidificati </a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="nested-data-use-cases">Casi d'uso dei dati nidificati </h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Puoi combinare le estensioni descritte in precedenza con le consuete caratteristiche di SQL. I casi d'uso seguenti presentano alcune combinazioni comuni. Questi esempi offrono una dimostrazione dell'utilizzo dei dati nidificati. Non fanno parte del tutorial.</p><div class="highlights" id="inline-topiclist"><h6>Argomenti</h6><ul><li><a href="#ingesting-nested-data">Inserimento di dati nidificati</a></li><li><a href="#aggregating-with-subquery"> Aggregazione di dati nidificati con query secondarie </a></li><li><a href="#joining-redshift-data"> Unione dei dati di Amazon Redshift e dei dati nidificati </a></li></ul></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#nested-data-use-cases" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#ingesting-nested-data">Inserimento di dati nidificati</a><a href="#aggregating-with-subquery"> Aggregazione di dati nidificati con query secondarie </a><a href="#joining-redshift-data"> Unione dei dati di Amazon Redshift e dei dati nidificati </a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="nested-data-use-cases">Casi d'uso dei dati nidificati </h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Puoi combinare le estensioni descritte in precedenza con le consuete caratteristiche di SQL. I casi d'uso seguenti presentano alcune combinazioni comuni. Questi esempi offrono una dimostrazione dell'utilizzo dei dati nidificati. Non fanno parte del tutorial.</p><div class="highlights" id="inline-topiclist"><h6>Argomenti</h6><ul><li><a href="#ingesting-nested-data">Inserimento di dati nidificati</a></li><li><a href="#aggregating-with-subquery"> Aggregazione di dati nidificati con query secondarie </a></li><li><a href="#joining-redshift-data"> Unione dei dati di Amazon Redshift e dei dati nidificati </a></li></ul></div>
                       <h2 id="ingesting-nested-data">Inserimento di dati nidificati</h2>
                       <p>Puoi utilizzare l'istruzione <code class="code">CREATE TABLE AS</code> per inserire dati da una tabella esterna contenente tipi di dati complessi. La query seguente estrae tutti i clienti e i relativi numeri di telefono dalla tabella esterna mediante <code class="code">LEFT
                     JOIN</code> e li archivia nella tabella <code class="code">CustomerPhones</code> di Amazon Redshift. </p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE CustomerPhones AS
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE CustomerPhones AS
 SELECT  c.name.given, c.name.family, p AS phone
-FROM    spectrum.customers c LEFT JOIN c.phones p ON true                      
-                    </code></pre>
+FROM    spectrum.customers c LEFT JOIN c.phones p ON true;     </code></pre>
                   
                
                       <h2 id="aggregating-with-subquery"> Aggregazione di dati nidificati con query secondarie </h2>
                       <p>Puoi utilizzare una query secondaria per aggregare dati nidificati. Questo approccio viene descritto nell'esempio seguente. </p>
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
-FROM   spectrum.customers c
-                     
-                      </code></pre>
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
+FROM   spectrum.customers c;</code></pre>
             <p>Vengono restituiti i seguenti dati.</p>   
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-given   |  family  |  ordercount
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">given   |  family  |  ordercount
 --------|----------|--------------
  Jenny  |  Doe     |       0
  John   |  Smith   |       2
  Andy   |  Jones   |       1
- (3 rows)                              
-                          </code></pre>
+ (3 rows)              </code></pre>
                      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Nota</h6></div><div class="awsdocs-note-text"><p>Quando aggreghi dati nidificati raggruppandoli in base alla riga padre, il modo più efficiente di procedere è quello illustrato nell'esempio precedente. Nell'esempio in questione, le righe nidificate di <code class="code">c.orders</code> sono raggruppate in base alla riga padre <code class="code">c</code>. In alternativa, se sai che l'<code class="code">id</code> è univoco per ciascun <code class="code">customer</code> e <code class="code">o.shipdate</code> non è mai null, puoi eseguire l'aggregazione come illustrato nell'esempio seguente. Tuttavia, in genere questo approccio è meno efficiente rispetto a quello dell'esempio precedente. </p></div></div>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
 FROM      spectrum.customers c LEFT JOIN c.orders o ON true 
-GROUP BY  c.id, c.name.given, c.name.family
-            </code></pre>
-                      <p>Puoi inoltre scrivere la query utilizzando una query secondaria nella clausola FROM che fa riferimento a un alias (<code class="code">c</code>) della query con predecessore e che estrae i dati della matrice. L'esempio seguente mostra questo approccio.</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, s.count AS ordercount
-FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s                       
-                      </code></pre>
+GROUP BY  c.id, c.name.given, c.name.family;</code></pre>
+                      <p>Puoi inoltre scrivere la query utilizzando una query secondaria nella clausola <code class="code">FROM</code> che fa riferimento a un alias (<code class="code">c</code>) della query con predecessore e che estrae i dati della matrice. L'esempio seguente mostra questo approccio.</p>
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, s.count AS ordercount
+FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s;    </code></pre>
                    
                       <h2 id="joining-redshift-data"> Unione dei dati di Amazon Redshift e dei dati nidificati </h2>
                       <p>È possibile unire i dati di Amazon Redshift e i dati nidificati in una tabella esterna. Ad esempio, si supponga di avere i seguenti dati nidificati in Amazon S3. </p>    
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers2 (
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE EXTERNAL TABLE spectrum.customers2 (
   id      int,
   name    struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones  array&lt;varchar(20)&gt;,
   orders  array&lt;struct&lt;shipdate:timestamp, item:int&gt;&gt;
-)
-                       </code></pre>
+);</code></pre>
                       <p>Si supponga inoltre di avere la seguente tabella in Amazon Redshift.</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE prices (
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE prices (
   id int,
   price double precision
-)
-                       </code></pre>
+);</code></pre>
                       <p>La query riportata di seguito restituisce il numero totale e l'importo degli acquisti di ciascun cliente sulla base di quanto indicato in precedenza. L'esempio seguente viene utilizzato soltanto a scopo illustrativo. Restituisce dati solo se hai creato le tabelle descritte in precedenza. </p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
 FROM     spectrum.customers2 c, c.orders o, prices p ON o.item = p.id  
-GROUP BY c.id, c.name.given, c.name.family
-            
-                  </code></pre>
-                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Avvertimento" /> <strong>JavaScript è disabilitato o non è disponibile nel tuo browser.</strong></p><p>Per usare la documentazione AWS, JavaScript deve essere abilitato. Consulta le pagine della guida del browser per le istruzioni.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenzioni dei documenti</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">Tutorial: Esecuzione di query su dati nidificati con Amazon Redshift Spectrum </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">Limitazioni dei dati nidificati</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Questa pagina ti è stata utile? - Sì</div><div class="content"><p>Grazie per averci comunicato che stiamo facendo un buon lavoro!</p><p>Se hai un momento, ti invitiamo a dirci che cosa abbiamo fatto che ti è piaciuto così possiamo offrirti altri contenuti simili.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Questa pagina ti è stata utile? - No</div><div class="content"><p>Grazie per averci comunicato che questa pagina ha bisogno di essere modificata. Siamo spiacenti di non aver soddisfatto le tue esigenze.</p><p>Se hai un momento, ti invitiamo a dirci come possiamo migliorare la documentazione.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+GROUP BY c.id, c.name.given, c.name.family;</code></pre>
+                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Avvertimento" /> <strong>JavaScript è disabilitato o non è disponibile nel tuo browser.</strong></p><p>Per usare la documentazione AWS, JavaScript deve essere abilitato. Consulta le pagine della guida del browser per le istruzioni.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenzioni dei documenti</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">Tutorial: Esecuzione di query su dati nidificati con Amazon Redshift Spectrum </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">Limitazioni relative ai dati annidati (anteprima)</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Questa pagina ti è stata utile? - Sì</div><div class="content"><p>Grazie per averci comunicato che stiamo facendo un buon lavoro!</p><p>Se hai un momento, ti invitiamo a dirci che cosa abbiamo fatto che ti è piaciuto così possiamo offrirti altri contenuti simili.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Questa pagina ti è stata utile? - No</div><div class="content"><p>Grazie per averci comunicato che questa pagina ha bisogno di essere modificata. Siamo spiacenti di non aver soddisfatto le tue esigenze.</p><p>Se hai un momento, ti invitiamo a dirci come possiamo migliorare la documentazione.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

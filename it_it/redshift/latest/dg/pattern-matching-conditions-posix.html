@@ -54,7 +54,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#pattern-matching-conditions-posix" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#pattern-matching-conditions-posix-synopsis">Sintassi</a><a href="#pattern-matching-conditions-posix-arguments">Argomenti</a><a href="#pattern-matching-conditions-posix-synopsis-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="pattern-matching-conditions-posix">Operatori POSIX</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Un'espressione regolare POSIX è una sequenza di caratteri che specifica uno schema di corrispondenza. Una stringa corrisponde a un'espressione regolare se è un membro del set regolare descritto dall'espressione regolare.</p><p>Le espressioni regolari POSIX forniscono un mezzo più potente per la corrispondenza di modelli rispetto agli operatori <a href="./r_patternmatching_condition_like.html">LIKE</a> e <a href="./pattern-matching-conditions-similar-to.html">SIMILAR TO</a>. I modelli di espressioni regolari POSIX possono corrispondere a qualsiasi porzione di una stringa, a differenza dell'operatore SIMILAR TO che restituisce true solo se il modello corrisponde all'intera stringa.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Nota</h6></div><div class="awsdocs-note-text"><p>La corrispondenza di espressioni regolari usando operatori POSIX è costosa in termini di calcolo. Consigliamo di usare LIKE quando possibile, soprattutto se si elaborano grandi quantità di righe. Ad esempio, le query seguenti sono identiche dal punto di vista funzionale, ma la query che usa LIKE viene eseguita molto più velocemente rispetto alla query che usa un'espressione regolare:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*) from event where eventname ~ '.*(Ring|Die).*'; 
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#pattern-matching-conditions-posix" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#pattern-matching-conditions-posix-synopsis">Sintassi</a><a href="#pattern-matching-conditions-posix-arguments">Argomenti</a><a href="#pattern-matching-conditions-posix-synopsis-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="pattern-matching-conditions-posix">Operatori POSIX</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Un'espressione regolare POSIX è una sequenza di caratteri che specifica uno schema di corrispondenza. Una stringa corrisponde a un'espressione regolare se è un membro del set regolare descritto dall'espressione regolare.</p><p>Le espressioni regolari POSIX forniscono un mezzo più potente per la corrispondenza di modelli rispetto agli operatori <a href="./r_patternmatching_condition_like.html">LIKE</a> e <a href="./pattern-matching-conditions-similar-to.html">SIMILAR TO</a>. I modelli di espressioni regolari POSIX possono corrispondere a qualsiasi porzione di una stringa, a differenza dell'operatore SIMILAR TO che restituisce true solo se il modello corrisponde all'intera stringa.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Nota</h6></div><div class="awsdocs-note-text"><p>La corrispondenza di espressioni regolari usando operatori POSIX è costosa in termini di calcolo. Consigliamo di usare LIKE quando possibile, soprattutto se si elaborano grandi quantità di righe. Ad esempio, le query seguenti sono identiche dal punto di vista funzionale, ma la query che usa LIKE viene eseguita molto più velocemente rispetto alla query che usa un'espressione regolare:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*) from event where eventname ~ '.*(Ring|Die).*'; 
 select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die%';   </code></pre></div></div>
                   <h2 id="pattern-matching-conditions-posix-synopsis">Sintassi</h2>
 
@@ -101,7 +101,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                   <p>Entrambe le espressioni di caratteri possono essere tipi di dati CHAR o VARCHAR. Se differiscono, Amazon Redshift converte il <em>modello</em> al tipo di dati dell'<em>espressione</em>. </p>
                   <p>Tutte le espressioni di caratteri possono essere tipi di dati CHAR o VARCHAR. Se l'espressione differisce per tipo di dati, Amazon Redshift la converte nel tipo di dati dell'<em>espressione</em>. </p>
                   <p>La corrispondenza di modelli POSIX supporta i seguenti metacaratteri: </p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c11c15"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c11c15"><thead>
                            <tr>
                               <th>POSIX </th>
                               <th>Descrizione </th>
@@ -129,11 +129,11 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                            </tr>
                            <tr>
                               <td tabindex="-1"><code class="code">^</code></td>
-                              <td tabindex="-1">Associa il carattere all'inizio della riga.</td>
+                              <td tabindex="-1">Corrisponde al personaggio.  beginning-of-line </td>
                            </tr>
                            <tr>
                               <td tabindex="-1"><code class="code">$ </code></td>
-                              <td tabindex="-1">Associa il carattere alla fine della riga.</td>
+                              <td tabindex="-1">Corrisponde al  end-of-line  personaggio.</td>
                            </tr>
                            <tr>
                               <td tabindex="-1"><code class="code">$ </code></td>
@@ -165,7 +165,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                            </tr>
                         </table></div></div>
                   <p>Amazon Redshift supporta le seguenti classi di caratteri POSIX. </p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c11c19"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c11c19"><thead>
                            <tr>
                               <th>Classe di caratteri </th>
                               <th>Descrizione </th>
@@ -213,7 +213,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                            </tr>
                         </table></div></div>
                   <p> Amazon Redshift supporta i seguenti operatori influenzati da Perl in espressioni regolari. Esegui l'escape dell'operatore usando due barre rovesciate (‘<code class="code">\\</code>').   </p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c11c23"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c11c23"><thead>
                            <tr>
                               <th>Operatore</th>
                               <th>Descrizione </th>
@@ -250,15 +250,20 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                               <td tabindex="-1">Un carattere di spazio non vuoto</td>
                               <td tabindex="-1"><code class="code">[^[:space:]]</code></td>
                            </tr>
+                           <tr> 
+                              <td tabindex="-1"><code class="code">\\b</code></td>
+                              <td tabindex="-1">Una parola limite</td>
+                              <td tabindex="-1"> </td>
+                           </tr>
                         </table></div></div>
                 
                   <h2 id="pattern-matching-conditions-posix-synopsis-examples">Esempi</h2>
 
 
                   <p>La tabella riportata di seguito mostra esempi di corrispondenza di modelli usando operatori POSIX:</p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c13b5"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c13b5"><thead>
                            <tr>
-                              <th>Espressione </th>
+                              <th>Expression </th>
                               <th>Valori restituiti </th>
                            </tr>
                         </thead>

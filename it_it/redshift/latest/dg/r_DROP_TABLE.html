@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DROP_TABLE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_DROP_TABLE-privileges">Privilegi richiesti</a><a href="#r_DROP_TABLE-synopsis">Sintassi</a><a href="#r_DROP_TABLE-parameters">Parametri</a><a href="#r_DROP_TABLE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_DROP_TABLE">DROP TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Rimuove una tabella da un database. </p><p>Se stai tentando di svuotare una tabella di righe, senza rimuovere la tabella, utilizza il comando DELETE o TRUNCATE. </p><p>DROP TABLE rimuove i vincoli esistenti sulla tabella di destinazione. È possibile rimuovere più tabelle con un singolo comando DROP TABLE. </p><p>Non è possibile eseguire DROP TABLE con una tabella esterna all'interno di una transazione (BEGIN … END). Per ulteriori informazioni sulle transazioni, consultare <a href="./c_serial_isolation.html">Isolamento serializzabile</a>.</p><p>Per trovare un esempio in cui il privilegio DROP è concesso a un gruppo, consultare GRANT <a href="./r_GRANT-examples.html">Esempi</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DROP_TABLE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_DROP_TABLE-privileges">Privilegi richiesti</a><a href="#r_DROP_TABLE-synopsis">Sintassi</a><a href="#r_DROP_TABLE-parameters">Parametri</a><a href="#r_DROP_TABLE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_DROP_TABLE">DROP TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Rimuove una tabella da un database. </p><p>Se stai tentando di svuotare una tabella di righe, senza rimuovere la tabella, utilizza il comando DELETE o TRUNCATE. </p><p>DROP TABLE rimuove i vincoli esistenti sulla tabella di destinazione. È possibile rimuovere più tabelle con un singolo comando DROP TABLE. </p><p>Non è possibile eseguire DROP TABLE con una tabella esterna all'interno di una transazione (BEGIN … END). Per ulteriori informazioni sulle transazioni, consultare <a href="./c_serial_isolation.html">Isolamento serializzabile</a>.</p><p>Per trovare un esempio in cui il privilegio DROP è concesso a un gruppo, consultare GRANT <a href="./r_GRANT-examples.html">Esempi</a>.</p>
          <h2 id="r_DROP_TABLE-privileges">Privilegi richiesti</h2>
          <p>Di seguito sono riportati i privilegi richiesti per DROP TABLE:</p>
          <div class="itemizedlist">
@@ -75,7 +75,7 @@
              
                <dt><span class="term">CASCADE</span></dt>
                <dd>
-                  <p>Clausola che indica di rimuovere automaticamente gli oggetti che dipendono dalla vista, come altre viste.</p>
+                  <p>Clausola che indica di rimuovere automaticamente gli oggetti che dipendono dalla tabella, come le viste.</p>
                   <p>Per creare una vista che non dipende da altri oggetti del database, come viste e tabelle, includi la clausola WITH NO SCHEMA BINDING nella definizione della vista. Per ulteriori informazioni, consulta <a href="./r_CREATE_VIEW.html">CREATE VIEW</a>.</p>
                </dd>
              
@@ -110,39 +110,55 @@ drop table feedback, buyers;
          <p> L'esempio seguente rimuove la tabella FEEDBACK e rimuove anche la vista FEEDBACK_VIEW, perché FEEDBACK_VIEW dipende dalla tabella FEEDBACK: </p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">drop table feedback cascade;</code></pre>
          <p> <b>Visualizzazione delle dipendenze per una tabella</b> </p>
-         <p>Puoi creare una vista che contenga le informazioni sulle dipendenze per tutte le tabelle in un database. Prima di rimuovere una tabella, eseguire una query su questa vista per determinare se la tabella ha dipendenze. </p>
-         <p>Digita il comando seguente per creare una vista FIND_DEPEND che unisce le dipendenze con i riferimenti agli oggetti: </p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create view find_depend as
-select distinct c_p.oid as tbloid,
-n_p.nspname as schemaname, c_p.relname as name,
-n_c.nspname as refbyschemaname, c_c.relname as refbyname,
-c_c.oid as viewoid
-from pg_catalog.pg_class c_p
-join pg_catalog.pg_depend d_p
-on c_p.relfilenode = d_p.refobjid
-join pg_catalog.pg_depend d_c
-on d_p.objid = d_c.objid
-join pg_catalog.pg_class c_c
-on d_c.refobjid = c_c.relfilenode
-left outer join pg_namespace n_p
-on c_p.relnamespace = n_p.oid
-left outer join pg_namespace n_c
-on c_c.relnamespace = n_c.oid
-where d_c.deptype = 'i'::"char"
-and c_c.relkind = 'v'::"char";</code></pre>
-         <p>Ora crea una SALES_VIEW dalla tabella SALES: </p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create view sales_view as select * from sales;</code></pre>
-         <p>Ora eseguire una query sulla vista FIND_DEPEND per visualizzare le dipendenze nel database. Limita l'ambito della query allo schema PUBLIC, come mostrato nel codice seguente: </p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from find_depend
-where refbyschemaname='public'
-order by name;</code></pre>
-         <p>Questa query restituisce le seguenti dipendenze, mostrando che anche la vista SALES_VIEW viene eliminata utilizzando l'opzione CASCADE quando si rimuove la tabella SALES: </p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class=""> tbloid | schemaname |    name     | viewoid | refbyschemaname |  refbyname
---------+------------+-------------+---------+-----------------+-------------
-100241 | public     | find_depend |  100241 | public          | find_depend
-100203 | public     | sales       |  100245 | public          | sales_view
-100245 | public     | sales_view  |  100245 | public          | sales_view
-(3 rows)</code></pre>
+         
+            
+         
+         <p>Per restituire le dipendenze per la tabella, utilizza l'esempio seguente. Sostituisci <code class="replaceable">my_schema</code> e <code class="replaceable">my_table</code> con il tuo schema e la tua tabella. </p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT dependent_ns.nspname as dependent_schema
+, dependent_view.relname as dependent_view 
+, source_ns.nspname as source_schema
+, source_table.relname as source_table
+, pg_attribute.attname as column_name
+FROM pg_depend 
+JOIN pg_rewrite ON pg_depend.objid = pg_rewrite.oid 
+JOIN pg_class as dependent_view ON pg_rewrite.ev_class = dependent_view.oid 
+JOIN pg_class as source_table ON pg_depend.refobjid = source_table.oid 
+JOIN pg_attribute ON pg_depend.refobjid = pg_attribute.attrelid 
+    AND pg_depend.refobjsubid = pg_attribute.attnum 
+JOIN pg_namespace dependent_ns ON dependent_ns.oid = dependent_view.relnamespace
+JOIN pg_namespace source_ns ON source_ns.oid = source_table.relnamespace
+WHERE 
+source_ns.nspname = 'my_schema'
+AND source_table.relname = 'my_table'
+AND pg_attribute.attnum &gt; 0 
+ORDER BY 1,2
+LIMIT 10;</code></code></pre>
+         <p>Per rilasciare <code class="replaceable">my_table</code> e le sue dipendenze, usa il seguente esempio. Questo esempio restituisce anche tutte le dipendenze per la tabella che è stata rilasciata.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">DROP TABLE my_table CASCADE;
+         
+SELECT dependent_ns.nspname as dependent_schema
+, dependent_view.relname as dependent_view 
+, source_ns.nspname as source_schema
+, source_table.relname as source_table
+, pg_attribute.attname as column_name
+FROM pg_depend 
+JOIN pg_rewrite ON pg_depend.objid = pg_rewrite.oid 
+JOIN pg_class as dependent_view ON pg_rewrite.ev_class = dependent_view.oid 
+JOIN pg_class as source_table ON pg_depend.refobjid = source_table.oid 
+JOIN pg_attribute ON pg_depend.refobjid = pg_attribute.attrelid 
+    AND pg_depend.refobjsubid = pg_attribute.attnum 
+JOIN pg_namespace dependent_ns ON dependent_ns.oid = dependent_view.relnamespace
+JOIN pg_namespace source_ns ON source_ns.oid = source_table.relnamespace
+WHERE 
+source_ns.nspname = 'my_schema'
+AND source_table.relname = 'my_table'
+AND pg_attribute.attnum &gt; 0 
+ORDER BY 1,2
+LIMIT 10;</code>
+
+<code class="computeroutput" copy="false">+------------------+----------------+---------------+--------------+-------------+
+| dependent_schema | dependent_view | source_schema | source_table | column_name |
++------------------+----------------+---------------+--------------+-------------+</code></code></pre>
          <p> <b>Rimozione di una tabella utilizzando IF EXISTS</b> </p>
          <p>L'esempio seguente rimuove la tabella FEEDBACK se esiste oppure non esegue nulla e restituisce un messaggio se non esiste: </p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">drop table if exists feedback;</code></pre>

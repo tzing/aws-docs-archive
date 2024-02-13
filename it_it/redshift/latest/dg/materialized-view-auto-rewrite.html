@@ -36,7 +36,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#materialized-view-auto-rewrite" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#mv_auto-rewrite_usage">Note per l'utilizzo</a><a href="#mv_auto-rewrite_limitations">Restrizioni</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="materialized-view-auto-rewrite">Riscrittura automatica delle query per utilizzare le viste materializzate</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>È possibile utilizzare la riscrittura automatica delle query delle viste materializzate in Amazon Redshift per consentire ad Amazon Redshift di riscrivere le query per utilizzare le viste materializzate. Questa operazione consente di accelerare i carichi di lavoro delle query anche per le query che non fanno riferimento esplicitamente a una vista materializzata. Quando Amazon Redshift riscrive le query, utilizza solo viste materializzate aggiornate   .</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#materialized-view-auto-rewrite" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#mv_auto-rewrite_usage">Note per l'utilizzo</a><a href="#mv_auto-rewrite_limitations">Limitazioni</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="materialized-view-auto-rewrite">Riscrittura automatica delle query per utilizzare le viste materializzate</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>È possibile utilizzare la riscrittura automatica delle query delle viste materializzate in Amazon Redshift per consentire ad Amazon Redshift di riscrivere le query per utilizzare le viste materializzate. Questa operazione consente di accelerare i carichi di lavoro delle query anche per le query che non fanno riferimento esplicitamente a una vista materializzata. Quando Amazon Redshift riscrive le query, utilizza solo viste materializzate aggiornate   .</p>
             <h2 id="mv_auto-rewrite_usage">Note per l'utilizzo</h2>
           
      
@@ -69,7 +69,7 @@ EXPLAIN
                 
                 
                 
-                <p>Per la riscrittura automatica delle query vengono prese in considerazione solo le viste materializzate aggiornate (nuove), indipendentemente dalla strategia di aggiornamento, ad esempio automatica, pianificata o manuale. Quindi, la query originale restituisce risultati aggiornati. Quando nelle query viene esplicitamente fatto riferimento a una vista materializzata, Amazon Redshift accede ai dati attualmente memorizzati nella vista materializzata. Questi dati potrebbero non riflettere le ultime modifiche delle tabelle di base della vista materializzata.</p>
+                <p>Per la riscrittura automatica delle query vengono prese in considerazione solo le  up-to-date  (nuove) viste materializzate, indipendentemente dalla strategia di aggiornamento, ad esempio automatica, pianificata o manuale. Pertanto, la query originale restituisce risultati.  up-to-date  Quando nelle query viene esplicitamente fatto riferimento a una vista materializzata, Amazon Redshift accede ai dati attualmente memorizzati nella vista materializzata. Questi dati potrebbero non riflettere le ultime modifiche delle tabelle di base della vista materializzata.</p>
             <p>È possibile utilizzare la riscrittura automatica delle query delle viste materializzate create nella versione del cluster 1.0.20949 o successiva.</p>
             <p>È possibile arrestare la riscrittura automatica delle query a livello di sessione utilizzando SET mv_enable_aqmv_for_session impostato su FALSE.</p>
                
@@ -78,7 +78,7 @@ EXPLAIN
           
             
          
-            <h2 id="mv_auto-rewrite_limitations">Restrizioni</h2>
+            <h2 id="mv_auto-rewrite_limitations">Limitazioni</h2>
             <p>Di seguito sono riportate le limitazioni per l'utilizzo della riscrittura automatica delle query delle viste materializzate:</p>
             <div class="itemizedlist">
                  

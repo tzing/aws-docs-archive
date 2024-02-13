@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_TABLE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ALTER_TABLE-privileges">Privilegi richiesti</a><a href="#r_ALTER_TABLE-synopsis">Sintassi</a><a href="#r_ALTER_TABLE-parameters">Parametri</a><a href="#r_ALTER_TABLE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_TABLE">ALTER TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Questo comando modifica la definizione di una tabella del database Amazon Redshift o la tabella esterna di Amazon Redshift Spectrum. Questo comando aggiorna i valori e le proprietà impostati da <a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a> o <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>.</p><p>Non è possibile eseguire ALTER TABLE su una tabella esterna all'interno di un blocco di transazione (BEGIN ... END). Per ulteriori informazioni sulle transazioni, consultare <a href="./c_serial_isolation.html">Isolamento serializzabile</a>. </p><p>ALTER TABLE blocca le operazioni di lettura e scrittura della tabella fino al completamento della transazione che contiene l'operazione ALTER TABLE, a meno che nella documentazione non sia specificamente indicato che è possibile eseguire query sui dati o eseguire altre operazioni sulla tabella durante la modifica.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_TABLE" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ALTER_TABLE-privileges">Privilegi richiesti</a><a href="#r_ALTER_TABLE-synopsis">Sintassi</a><a href="#r_ALTER_TABLE-parameters">Parametri</a><a href="#r_ALTER_TABLE-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_ALTER_TABLE">ALTER TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Questo comando modifica la definizione di una tabella del database Amazon Redshift o la tabella esterna di Amazon Redshift Spectrum. Questo comando aggiorna i valori e le proprietà impostati da <a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a> o <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>.</p><p>Non è possibile eseguire ALTER TABLE su una tabella esterna all'interno di un blocco di transazione (BEGIN ... END). Per ulteriori informazioni sulle transazioni, consultare <a href="./c_serial_isolation.html">Isolamento serializzabile</a>. </p><p>ALTER TABLE blocca le operazioni di lettura e scrittura della tabella fino al completamento della transazione che contiene l'operazione ALTER TABLE, a meno che nella documentazione non sia specificamente indicato che è possibile eseguire query sui dati o eseguire altre operazioni sulla tabella durante la modifica.</p>
          <h2 id="r_ALTER_TABLE-privileges">Privilegi richiesti</h2>
          <p>L'utente che modifica una tabella deve disporre del privilegio appropriato affinché il comando venga eseguito correttamente. A seconda del comando ALTER TABLE, è richiesto uno dei seguenti privilegi.</p>
          <div class="itemizedlist">
@@ -84,7 +84,7 @@ ADD <em>table_constraint</em>
   [ NOT NULL | NULL ]
   [ COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ] |
 | DROP [ COLUMN ] <em>column_name</em> [ RESTRICT | CASCADE ] 
-| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ FOR DATASHARES ]}
+| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]}
 
 where <em>table_constraint</em> is:
 
@@ -172,7 +172,7 @@ ALTER TABLE <em>tablename</em> ALTER DISTSTYLE ALL, ALTER SORTKEY (<em>column_li
          <dl>
                <dt><span class="term"> <em>table_name</em> </span></dt>
                <dd>
-                  <p>Nome della tabella da modificare. Specifica solo il nome della tabella o utilizzare il formato <em>schema_name.table_name</em> per utilizzare uno schema specifico. Le tabelle esterne devono essere qualificate da un nome di schema esterno. Inoltre puoi specificare un nome vista se utilizzi l'istruzione ALTER TABLE per rinominare una vista o cambiare il proprietario. La lunghezza massima per il nome della tabella è 127 byte; i nomi più lunghi vengono troncati a 127 byte. Puoi utilizzare caratteri multibyte UTF-8 fino a un massimo di quattro byte. Per ulteriori informazioni sui nomi validi, consultare <a href="./r_names.html">Nomi e identificatori</a>.</p>
+                  <p>Nome della tabella da modificare. Specifica solo il nome della tabella o utilizzare il formato <em>schema_name.table_name</em> per utilizzare uno schema specifico. Le tabelle esterne devono essere qualificate da un nome di schema esterno. Inoltre puoi specificare un nome di vista se utilizzi l'istruzione ALTER TABLE per rinominare una vista o cambiare il proprietario. La lunghezza massima per il nome della tabella è 127 byte; i nomi più lunghi vengono troncati a 127 byte. Puoi utilizzare caratteri multibyte UTF-8 fino a un massimo di quattro byte. Per ulteriori informazioni sui nomi validi, consultare <a href="./r_names.html">Nomi e identificatori</a>.</p>
                </dd>
              
                <dt><span class="term">ADD <em>table_constraint</em> </span></dt>
@@ -661,8 +661,6 @@ from information_schema.table_constraints;</code></pre>
 
              
 
-             
-
 
 
 
@@ -738,13 +736,17 @@ from information_schema.table_constraints;</code></pre>
                   <p>Clausola che rimuove la partizione specificata. La rimozione di una partizione altera solo i metadati della tabella esterna. I dati su Amazon S3 non sono interessati.</p>
                </dd>
              
-               <dt><span class="term">SICUREZZA A LIVELLO DI RIGA <span>{</span> ON | OFF } </span></dt>
-               <dd><p>Una clausola che attiva o disattiva la sicurezza a livello di riga per una tabella.</p>
-                  <p>Quando per una tabella è attivata la protezione a livello di riga, è possibile leggere solo le righe al livello di riga a cui la policy di sicurezza consente l'accesso. Quando non ci sono policy che consentono l'accesso alla tabella, non è possibile visualizzare alcuna riga dalla tabella. Solo gli utenti con privilegi avanzati e gli utenti o i ruoli che hanno il ruolo <code class="code">sys:secadmin</code> possono impostare la clausola ROW LEVEL SECURITY. Per ulteriori informazioni, consulta <a href="./t_rls.html">Sicurezza a livello di riga</a>.</p>
-               </dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>Una clausola che determina se una tabella è protetta da RLS (sicurezza a livello di riga)rispetto alle unità di condivisione dati. Per impostazione predefinita, una tabella anche protetta da RLS (sicurezza a livello di riga) rispetto alle unità di condivisione dati.</p>
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+                     <dd><p>Una clausola che attiva o disattiva la sicurezza a livello di riga per una relazione.</p>
+                        <p>Quando per una relazione è attivata la protezione a livello di riga, è possibile leggere solo le righe al livello di riga a cui la policy di sicurezza consente l'accesso. Quando non ci sono policy che consentono l'accesso alla relazione, non è possibile visualizzare alcuna riga dalla relazione. Solo gli utenti con privilegi avanzati e gli utenti o i ruoli che hanno il ruolo <code class="code">sys:secadmin</code> possono impostare la clausola ROW LEVEL SECURITY. Per ulteriori informazioni, consulta <a href="./t_rls.html">Sicurezza a livello di riga</a>.</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>Una clausola che consente di scegliere il tipo di congiunzione della policy di sicurezza a livello di riga per una relazione. Quando a una relazione sono associate più policy di sicurezza a livello di riga, è possibile combinare le policy con la clausola AND oppure OR. Per impostazione predefinita, Amazon Redshift combina le policy RLS con la clausola AND. Gli utenti con privilegi avanzati, gli utenti o i ruoli che hanno il ruolo <code class="code">sys:secadmin</code> possono utilizzare questa clausola per definire il tipo di combinazione della policy di sicurezza a livello di riga per una relazione. Per ulteriori informazioni, consulta <a href="./t_rls_combine_policies.html">Combinazione di più policy per utente</a>. </p></li><li class="listitem"><p>FOR DATASHARES</p>
+                        <p>Una clausola che determina se è possibile accedere a una relazione protetta da RLS in un'unità di condivisione dati. Per impostazione predefinita, non è possibile accedere a una relazione protetta da RLS in un'unità di condivisione dati. Il comando ALTER TABLE ROW LEVEL SECURITY eseguito con questa clausola influisce solo sulla proprietà di accessibilità dell'unità di condivisione dati della relazione. La proprietà ROW LEVEL SECURITY non viene modificata. </p>
+                        <p> Se rendi accessibile una relazione protetta da RLS nelle unità di condivisione dati, la relazione non dispone di una sicurezza a livello di riga nel database con unità di condivisione dati sul lato consumer. La relazione mantiene la proprietà RLS sul lato producer. </p>
+                     </li></ul></div>
                </dd>
             </dl></div>
        

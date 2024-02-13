@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_TO_CHAR" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_TO_CHAR-synopsis">Sintassi</a><a href="#r_TO_CHAR-arguments">Argomenti</a><a href="#r_TO_CHAR-return-type">Tipo restituito</a><a href="#r_TO_CHAR-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_TO_CHAR">TO_CHAR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>TO_CHAR converte un timestamp o un'espressione numerica in un formato di dati carattere-stringa. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_TO_CHAR" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_TO_CHAR-synopsis">Sintassi</a><a href="#r_TO_CHAR-arguments">Argomenti</a><a href="#r_TO_CHAR-return-type">Tipo restituito</a><a href="#r_TO_CHAR-examples">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_TO_CHAR">TO_CHAR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>TO_CHAR converte un timestamp o un'espressione numerica in un formato di dati carattere-stringa. </p>
             <h2 id="r_TO_CHAR-synopsis">Sintassi</h2>
 
 
@@ -85,44 +85,46 @@
             <p>VARCHAR</p>
           
             <h2 id="r_TO_CHAR-examples">Esempi</h2>
+            
+            
 
             <p>Nell'esempio seguente un timestamp viene convertito in un valore con la data e l'ora in un formato con il nome del mese a nove caratteri, il nome del giorno della settimana e il numero del giorno del mese.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2009-12-31 23:15:59', 'MONTH-DY-DD-YYYY HH12:MIPM');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2009-12-31 23:15:59', 'MONTH-DY-DD-YYYY HH12:MIPM');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 DECEMBER -THU-31-2009 11:15PM	
-</code></pre>
+</code></code></pre>
             
             <p>Nell'esempio seguente un timestamp viene convertito in un valore con il numero di giorno dell'anno.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2009-12-31 23:15:59', 'DDD');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2009-12-31 23:15:59', 'DDD');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 365	
-</code></pre>
+</code></code></pre>
             
             <p>Nell'esempio seguente un timestamp viene convertito in un numero di giorno ISO della settimana.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2022-05-16 23:15:59', 'ID');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2022-05-16 23:15:59', 'ID');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 1
-</code></pre>
+</code></code></pre>
             
             <p>L'esempio seguente estrae il nome del mese da un valore di data.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(date '2009-12-31', 'MONTH');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(date '2009-12-31', 'MONTH');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 DECEMBER	
-</code></pre>
+</code></code></pre>
             
             <p>Nell'esempio seguente viene convertito ogni valore STARTTIME nella tabella EVENT in una stringa composta da ore, minuti e secondi.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(starttime, 'HH12:MI:SS')
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(starttime, 'HH12:MI:SS')
 from event where eventid between 1 and 5
-order by eventid;
-
+order by eventid;</code>
+<code class="computeroutput" copy="false">
 to_char
 ----------
 02:30:00
@@ -130,70 +132,135 @@ to_char
 02:30:00
 02:30:00
 07:00:00
-(5 rows)</code></pre>
+</code></code></pre>
             <p>L'esempio seguente converte un intero valore timestamp in un formato diverso.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select starttime, to_char(starttime, 'MON-DD-YYYY HH12:MIPM')
-from event where eventid=1;
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select starttime, to_char(starttime, 'MON-DD-YYYY HH12:MIPM')
+from event where eventid=1;</code>
+<code class="computeroutput" copy="false">
       starttime      |       to_char
 ---------------------+---------------------
  2008-01-25 14:30:00 | JAN-25-2008 02:30PM
-(1 row)</code></pre>
+</code></code></pre>
+            
+            
+ 
             <p>L'esempio seguente converte un letterale di timestamp in una stringa di caratteri.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2009-12-31 23:15:59','HH24:MI:SS');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2009-12-31 23:15:59','HH24:MI:SS');</code>
+<code class="computeroutput" copy="false">
 to_char
 ----------
 23:15:59
-(1 row)</code></pre>
+</code></code></pre>
+            <p>L'esempio seguente converte un numero decimale in una stringa di caratteri.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '999.99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+125.80
+</code></code></pre>
+            <p>L'esempio seguente converte un numero decimale in una stringa di caratteri.</p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '999D99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+125.80
+</code></code></pre>
+            <p>L'esempio seguente converte un numero in una stringa di caratteri con uno zero iniziale.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '0999D99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+0125.80
+</code></code></pre>
             <p>L'esempio seguente converte un numero in una stringa di caratteri con il segno negativo alla fine.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(-125.8, '999D99S');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.8, '999D99S');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
 125.80-
-(1 row)
-</code></pre>
+</code></code></pre>
+            <p>L'esempio seguente converte un numero in una stringa di caratteri con il segno positivo o negativo nella posizione specificata.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '999D99SG');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+125.80+
+</code></code></pre>
+            <p>L'esempio seguente converte un numero in una stringa di caratteri con il segno positivo nella posizione specificata.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, 'PL999D99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
++ 125.80
+</code></code></pre>
             <p>L'esempio seguente converte un numero in una stringa di caratteri con il simbolo di valuta.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(-125.88, '$S999D99');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.88, '$S999D99');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
 $-125.88
-(1 row)
-</code></pre>
+</code></code></pre>
+            <p>L'esempio seguente converte un numero in una stringa di caratteri con il simbolo di valuta nella posizione specificata.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.88, 'S999D99L');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+-125.88$
+</code></code></pre>
+            <p>L'esempio seguente converte un numero in una stringa di caratteri utilizzando un separatore di migliaia (virgole).</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(1125.8, '9,999.99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+1,125.80
+</code></code></pre>
             <p>L'esempio seguente converte un numero in una stringa di caratteri con parentesi angolari per i numeri negativi.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(-125.88, '$999D99PR');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.88, '$999D99PR');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
 $&lt;125.88&gt;	
-(1 row)
-</code></pre>
+</code></code></pre>
             <p>L'esempio seguente converte un numero in una stringa di numeri romani.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(125, 'RN');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125, 'RN');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
-CXXV	
-(1 row)
-</code></pre>
+   CXXV	
+</code></code></pre>
+            <p>L'esempio seguente converte una data in un codice centenario.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(date '2020-12-31', 'CC');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+21	
+</code></code></pre>
+            
+            
+            
             
             <p>L'esempio seguente mostra il giorno della settimana.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT to_char(current_timestamp, 'FMDay, FMDD HH12:MI:SS');</code>
-               <code class="computeroutput" copy="false">to_char
+<code class="computeroutput" copy="false">
+to_char
 -----------------------
 Wednesday, 31 09:34:26</code></code></pre>
             
             <p>L'esempio seguente visualizza il suffisso numerico ordinale per un numero.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT to_char(482, '999th');</code>
-               <code class="computeroutput" copy="false">to_char
+<code class="computeroutput" copy="false">
+to_char
 -----------------------
  482nd</code></code></pre>
             
             
             
             <p>L'esempio seguente sottrae la commissione dal prezzo pagato nella tabella delle vendite. La differenza viene quindi arrotondata e convertita in un numero romano, mostrato nella colonna to_char: </p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, pricepaid, commission, (pricepaid - commission)
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select salesid, pricepaid, commission, (pricepaid - commission)
 as difference, to_char(pricepaid - commission, 'rn') from sales
 group by sales.pricepaid, sales.commission, salesid
-order by salesid limit 10;
-
+order by salesid limit 10;</code>
+<code class="computeroutput" copy="false">
  salesid | pricepaid | commission | difference |     to_char
 ---------+-----------+------------+------------+-----------------
        1 |    728.00 |     109.20 |     618.80 |           dcxix
@@ -206,13 +273,14 @@ order by salesid limit 10;
        8 |    197.00 |      29.55 |     167.45 |          clxvii
        9 |    591.00 |      88.65 |     502.35 |             dii
       10 |     65.00 |       9.75 |      55.25 |              lv
-(10 rows)</code></pre>
+</code></code></pre>
             <p>L'esempio seguente aggiunge il simbolo di valuta ai valori di differenza mostrati nella colonna to_char: </p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, pricepaid, commission, (pricepaid - commission)
+            
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select salesid, pricepaid, commission, (pricepaid - commission)
 as difference, to_char(pricepaid - commission, 'l99999D99') from sales
 group by sales.pricepaid, sales.commission, salesid
-order by salesid limit 10;
-
+order by salesid limit 10;</code>
+<code class="computeroutput" copy="false">
 salesid | pricepaid | commission | difference |  to_char
 --------+-----------+------------+------------+------------
       1 |    728.00 |     109.20 |     618.80 | $   618.80
@@ -225,12 +293,12 @@ salesid | pricepaid | commission | difference |  to_char
       8 |    197.00 |      29.55 |     167.45 | $   167.45
       9 |    591.00 |      88.65 |     502.35 | $   502.35
      10 |     65.00 |       9.75 |      55.25 | $    55.25
-(10 rows)
-</code></pre>
+</code></code></pre>
+            
             <p>L'esempio seguente elenca il secolo in cui è stata effettuata ciascuna vendita. </p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, saletime, to_char(saletime, 'cc') from sales
-order by salesid limit 10;
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select salesid, saletime, to_char(saletime, 'cc') from sales
+order by salesid limit 10;</code>
+<code class="computeroutput" copy="false">
  salesid |      saletime       | to_char
 ---------+---------------------+---------
        1 | 2008-02-18 02:36:48 | 21
@@ -243,12 +311,12 @@ order by salesid limit 10;
        8 | 2008-07-10 02:12:36 | 21
        9 | 2008-07-22 02:23:17 | 21
       10 | 2008-08-06 02:51:55 | 21
-(10 rows)</code></pre>
+</code></code></pre>
             <p>Nell'esempio seguente viene convertito ogni valore STARTTIME nella tabella EVENT in una stringa composta da ore, minuti, secondi e fuso orario. </p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(starttime, 'HH12:MI:SS TZ')
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(starttime, 'HH12:MI:SS TZ')
 from event where eventid between 1 and 5
-order by eventid;
-
+order by eventid;</code>
+<code class="computeroutput" copy="false">
 to_char
 ----------
 02:30:00 UTC
@@ -256,17 +324,16 @@ to_char
 02:30:00 UTC
 02:30:00 UTC
 07:00:00 UTC
-(5 rows)
-
-(10 rows)</code></pre>
+</code></code></pre>
             
             <p>L'esempio seguente mostra la formattazione per secondi, millisecondi e microsecondi.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select sysdate,
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select sysdate,
 to_char(sysdate, 'HH24:MI:SS') as seconds,
 to_char(sysdate, 'HH24:MI:SS.MS') as milliseconds,
-to_char(sysdate, 'HH24:MI:SS:US') as microseconds;
-
+to_char(sysdate, 'HH24:MI:SS:US') as microseconds;</code>
+<code class="computeroutput" copy="false">
 timestamp           | seconds  | milliseconds | microseconds   
 --------------------+----------+--------------+----------------
-2015-04-10 18:45:09 | 18:45:09 | 18:45:09.325 | 18:45:09:325143</code></pre>
+2015-04-10 18:45:09 | 18:45:09 | 18:45:09.325 | 18:45:09:325143
+</code></code></pre>
          <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Avvertimento" /> <strong>JavaScript è disabilitato o non è disponibile nel tuo browser.</strong></p><p>Per usare la documentazione AWS, JavaScript deve essere abilitato. Consulta le pagine della guida del browser per le istruzioni.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenzioni dei documenti</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_CONVERT_function.html">CONVERT</div><div id="next" class="next-link" accesskey="n" href="./r_TO_DATE_function.html">TO_DATE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Questa pagina ti è stata utile? - Sì</div><div class="content"><p>Grazie per averci comunicato che stiamo facendo un buon lavoro!</p><p>Se hai un momento, ti invitiamo a dirci che cosa abbiamo fatto che ti è piaciuto così possiamo offrirti altri contenuti simili.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_TO_CHAR.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Questa pagina ti è stata utile? - No</div><div class="content"><p>Grazie per averci comunicato che questa pagina ha bisogno di essere modificata. Siamo spiacenti di non aver soddisfatto le tue esigenze.</p><p>Se hai un momento, ti invitiamo a dirci come possiamo migliorare la documentazione.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_TO_CHAR.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

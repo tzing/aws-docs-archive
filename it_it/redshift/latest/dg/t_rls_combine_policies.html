@@ -42,7 +42,39 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_rls_combine_policies" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_rls_combine_policies">Combinazione di più policy per utente</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>RLS in Amazon Redshift supporta il collegamento di più policy per utente e oggetto, dato che tutte le policy associate hanno lo stesso alias di tabella. Se sono state definite più policy per un utente, Amazon Redshift le applica tutte con la sintassi AND. Più policy su una tabella possono essere associate alla tua utenza. Le policy possono essere collegate direttamente a te o puoi appartenere a più ruoli e i ruoli hanno policy diverse associate. </p><p>Poiché tutte le policy RLS associate a un utente sono attive contemporaneamente, è possibile applicare policy RLS che si escludono a vicenda che impediscono di visualizzare dati che non intendevi nascondere. Considera il seguente esempio:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_rls_combine_policies" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="t_rls_combine_policies">Combinazione di più policy per utente</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>RLS in Amazon Redshift supporta il collegamento di più policy per utente e oggetto. Quando sono definite più policy per un utente, Amazon Redshift applica tutte le policy con la sintassi AND o OR a seconda dell'impostazione RLS CONJUNCTION TYPE per la tabella. Per ulteriori informazioni sui tipi di combinazione, consulta <a href="./r_ALTER_TABLE.html">ALTER TABLE</a>. </p><p>Più policy su una tabella possono essere associate alla tua utenza. Le policy possono essere collegate direttamente a te o puoi appartenere a più ruoli e i ruoli hanno policy diverse associate. </p><p>Quando più policy devono limitare l'accesso alle righe in una determinata relazione, puoi impostare RLS CONJUNCTION TYPE della relazione su AND. Analizza l'esempio seguente. Alice può vedere solo gli eventi sportivi che hanno il "catname" NBA, come specificato nella policy.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
+CREATE ROLE analyst;
+CREATE USER alice WITH PASSWORD 'Name_is_alice_1';
+GRANT ROLE analyst TO alice;
+
+-- Create an RLS policy that only lets the user see sports.
+CREATE RLS POLICY policy_sports
+WITH (catgroup VARCHAR(10))
+USING (catgroup = 'Sports');
+
+-- Create an RLS policy that only lets the user see NBA.
+CREATE RLS POLICY policy_nba
+WITH (catname VARCHAR(10))
+USING (catname = 'NBA');
+
+-- Attach both to the analyst role.
+ATTACH RLS POLICY policy_sports ON category TO ROLE analyst;
+ATTACH RLS POLICY policy_nba ON category TO ROLE analyst;
+
+-- Activate RLS on the category table with AND CONJUNCTION TYPE. 
+ALTER TABLE category ROW LEVEL SECURITY ON CONJUNCTION TYPE AND;
+
+-- Change session to Alice.
+SET SESSION AUTHORIZATION alice;
+
+-- Select all from the category table.
+SELECT catgroup, catname
+FROM category;
+
+ catgroup | catname 
+---------+---------
+ Sports   | NBA
+(1 row)</code></pre><p>Quando più policy devono permettere agli utenti di vedere più righe in una determinata relazione, l'utente può impostare RLS CONJUNCTION TYPE della relazione su OR. Analizza l'esempio seguente. Alice può vedere solo "Concerts" e "Sports", come specificato nella policy.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
 CREATE ROLE analyst;
 CREATE USER alice WITH PASSWORD 'Name_is_alice_1';
 GRANT ROLE analyst TO alice;
@@ -59,11 +91,10 @@ USING (catgroup = 'Sports');
 
 -- Attach both to the analyst role.
 ATTACH RLS POLICY policy_concerts ON category TO ROLE analyst;
-
 ATTACH RLS POLICY policy_sports ON category TO ROLE analyst;
 
--- Activate RLS on the category table. 
-ALTER TABLE category ROW LEVEL SECURITY ON;
+-- Activate RLS on the category table with OR CONJUNCTION TYPE. 
+ALTER TABLE category ROW LEVEL SECURITY ON CONJUNCTION TYPE OR;
 
 -- Change session to Alice.
 SET SESSION AUTHORIZATION alice;
@@ -71,4 +102,10 @@ SET SESSION AUTHORIZATION alice;
 -- Select all from the category table.
 SELECT catgroup, count(*)
 FROM category
-GROUP BY catgroup ORDER BY catgroup;</code></pre><p>Poiché al ruolo di analista sono associate due policy RLS in conflitto, gli utenti con il ruolo RLS non vedranno alcun risultato quando eseguono una query sulla tabella delle categorie.</p><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Avvertimento" /> <strong>JavaScript è disabilitato o non è disponibile nel tuo browser.</strong></p><p>Per usare la documentazione AWS, JavaScript deve essere abilitato. Consulta le pagine della guida del browser per le istruzioni.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenzioni dei documenti</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_rls_statements.html">Utilizzo di policy RLS nelle istruzioni SQL</div><div id="next" class="next-link" accesskey="n" href="./t_rls_ownership.html">Proprietà e gestione delle policy RLS</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Questa pagina ti è stata utile? - Sì</div><div class="content"><p>Grazie per averci comunicato che stiamo facendo un buon lavoro!</p><p>Se hai un momento, ti invitiamo a dirci che cosa abbiamo fatto che ti è piaciuto così possiamo offrirti altri contenuti simili.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Questa pagina ti è stata utile? - No</div><div class="content"><p>Grazie per averci comunicato che questa pagina ha bisogno di essere modificata. Siamo spiacenti di non aver soddisfatto le tue esigenze.</p><p>Se hai un momento, ti invitiamo a dirci come possiamo migliorare la documentazione.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+GROUP BY catgroup ORDER BY catgroup;
+
+ catgroup | count 
+---------+-------
+ Concerts |  3
+ Sports   |  5
+(2 rows)</code></pre><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Avvertimento" /> <strong>JavaScript è disabilitato o non è disponibile nel tuo browser.</strong></p><p>Per usare la documentazione AWS, JavaScript deve essere abilitato. Consulta le pagine della guida del browser per le istruzioni.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenzioni dei documenti</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_rls_statements.html">Utilizzo di policy RLS nelle istruzioni SQL</div><div id="next" class="next-link" accesskey="n" href="./t_rls_ownership.html">Proprietà e gestione delle policy RLS</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Questa pagina ti è stata utile? - Sì</div><div class="content"><p>Grazie per averci comunicato che stiamo facendo un buon lavoro!</p><p>Se hai un momento, ti invitiamo a dirci che cosa abbiamo fatto che ti è piaciuto così possiamo offrirti altri contenuti simili.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Questa pagina ti è stata utile? - No</div><div class="content"><p>Grazie per averci comunicato che questa pagina ha bisogno di essere modificata. Siamo spiacenti di non aver soddisfatto le tue esigenze.</p><p>Se hai un momento, ti invitiamo a dirci come possiamo migliorare la documentazione.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/it_it/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

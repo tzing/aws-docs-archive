@@ -42,14 +42,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_MODEL" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_create_model_prereqs">Prerequisiti</a><a href="#r_simple_create_model-privileges">Privilegi richiesti</a><a href="#r_create_model_cost">Controllo dei costi</a><a href="#r_full_create_model">CREATE MODEL completo </a><a href="#r_create_model_parameters">Parametri</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_MODEL">CREATE MODEL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="highlights"><h6>Argomenti</h6><ul><li><a href="#r_create_model_prereqs">Prerequisiti</a></li><li><a href="#r_simple_create_model-privileges">Privilegi richiesti</a></li><li><a href="#r_create_model_cost">Controllo dei costi</a></li><li><a href="#r_full_create_model">CREATE MODEL completo</a></li><li><a href="#r_create_model_parameters">Parametri</a></li><li><a href="./r_create_model_usage_notes.html">Note per l'utilizzo</a></li><li><a href="./r_create_model_use_cases.html">Casi d'uso</a></li></ul></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_MODEL" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_create_model_prereqs">Prerequisiti</a><a href="#r_simple_create_model-privileges">Privilegi richiesti</a><a href="#r_create_model_cost">Controllo dei costi</a><a href="#r_full_create_model">CREATE MODEL completo </a><a href="#r_create_model_parameters">Parametri</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_CREATE_MODEL">CREATE MODEL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="highlights"><h6>Argomenti</h6><ul><li><a href="#r_create_model_prereqs">Prerequisiti</a></li><li><a href="#r_simple_create_model-privileges">Privilegi richiesti</a></li><li><a href="#r_create_model_cost">Controllo dei costi</a></li><li><a href="#r_full_create_model">CREATE MODEL completo</a></li><li><a href="#r_create_model_parameters">Parametri</a></li><li><a href="./r_create_model_usage_notes.html">Note per l'utilizzo</a></li><li><a href="./r_create_model_use_cases.html">Casi d'uso</a></li></ul></div>
        <h2 id="r_create_model_prereqs">Prerequisiti</h2>
         <p>Prima di utilizzare l'istruzione CREATE MODEL, completare i prerequisiti descritti in <a href="./admin-setup.html#cluster-setup">Configurazione del cluster per l'utilizzo di Amazon Redshift ML</a>. Di seguito è riportato un riepilogo approfondito dei prerequisiti.</p>
         <div class="itemizedlist">
              
              
              
-        <ul class="itemizedlist"><li class="listitem"><p>Creazione di un cluster Amazon Redshift con la Console di gestione di AWS o l'interfaccia a riga di comando di AWS (AWS CLI).</p></li><li class="listitem"><p>Collegare la policy AWS Identity and Access Management (IAM) durante la creazione del cluster.</p></li><li class="listitem"><p>Per consentire ad Amazon Redshift e SageMaker di assumere il ruolo per interagire con altri servizi, aggiungere la seguente policy di attendibilità al ruolo IAM.</p></li></ul></div>
+        <ul class="itemizedlist"><li class="listitem"><p>Creazione di un cluster Amazon Redshift con la Console di gestione di AWS o l'interfaccia a riga di comando di AWS (AWS CLI).</p></li><li class="listitem"><p>Collegare la policy AWS Identity and Access Management (IAM) durante la creazione del cluster.</p></li><li class="listitem"><p>Per consentire ad Amazon Redshift e  SageMaker  assumere il ruolo di interagire con altri servizi, aggiungi la policy di fiducia appropriata al ruolo IAM.</p></li></ul></div>
         <p>Per maggiori dettagli sul ruolo IAM, sulla policy di attendibilità e su altri prerequisiti, consultare <a href="./admin-setup.html#cluster-setup">Configurazione del cluster per l'utilizzo di Amazon Redshift ML</a>.</p>
         <p>Di seguito, è possibile trovare diversi casi d'uso per l'istruzione CREATE MODEL.</p>
         <div class="itemizedlist">
@@ -70,7 +70,7 @@
         <ul class="itemizedlist"><li class="listitem"><p>Superuser</p></li><li class="listitem"><p>Utenti con il privilegio CREATE MODEL</p></li><li class="listitem"><p>Ruoli con il privilegio GRANT CREATE MODEL</p></li></ul></div>
      
        <h2 id="r_create_model_cost">Controllo dei costi</h2>
-       <p> Amazon Redshift ML utilizza le risorse cluster esistenti per creare modelli di previsione, quindi non sono previsti costi aggiuntivi. Tuttavia, si potrebbero avere costi aggiuntivi se si deve ridimensionare il cluster o se si desidera addestrare i propri modelli. Amazon Redshift ML utilizza Amazon SageMaker per l'addestramento dei modelli, che ha un costo aggiuntivo associato. Esistono modi per controllare i costi aggiuntivi, come la limitazione della quantità massima di tempo che l'addestramento può richiedere o limitando il numero di esempi di addestramento utilizzati per addestrare il modello. Per ulteriori informazioni consulta <a href="https://docs.aws.amazon.com/redshift/latest/dg/cost.html">Costi per l'utilizzo di Amazon Redshift ML</a>. </p>
+       <p> Amazon Redshift ML utilizza le risorse cluster esistenti per creare modelli di previsione, quindi non sono previsti costi aggiuntivi. Tuttavia, si potrebbero avere costi aggiuntivi se si deve ridimensionare il cluster o se si desidera addestrare i propri modelli. Amazon Redshift ML utilizza Amazon  SageMaker per addestrare i modelli, il che comporta un costo aggiuntivo associato. Esistono modi per controllare i costi aggiuntivi, come la limitazione della quantità massima di tempo che l'addestramento può richiedere o limitando il numero di esempi di addestramento utilizzati per addestrare il modello. Per ulteriori informazioni consulta <a href="https://docs.aws.amazon.com/redshift/latest/dg/cost.html">Costi per l'utilizzo di Amazon Redshift ML</a>. </p>
      
         <h2 id="r_full_create_model">CREATE MODEL completo</h2>
         <p>Di seguito viene riportato un riepilogo delle opzioni di base della sintassi di CREATE MODEL.</p>
@@ -84,6 +84,7 @@
     FROM <span>{</span> table_name | ( select_statement )  | 'job_name' }
     [ TARGET column_name ]
     FUNCTION function_name ( data_type [, ...] ) 
+    [ RETURNS super ]
     IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }
     [ AUTO ON / OFF ]
       -- default is AUTO ON
@@ -135,6 +136,7 @@
              
              
              
+            
              
              
              
@@ -161,9 +163,14 @@
              
                 <dt><span class="term">FUNCTION <em>nome_funzione</em> ( <em>tipo_dati</em> [, ...] )</span></dt>
                 <dd>
-                    <p>Il nome della funzione da creare e i tipi di dati degli argomenti di input. È possibile fornire un nome dello schema.</p>
+                    <p>Il nome della funzione da creare e i tipi di dati degli argomenti di input. Puoi fornire il nome dello schema di uno schema nel tuo database anziché il nome di una funzione.</p>
                 </dd>
              
+              <dt><span class="term">RETURNS <em>SUPER</em> (anteprima)</span></dt>
+              <dd>
+                 <p>Il tipo di dati del modello da restituire. Il tipo di dati SUPER restituito è applicabile solo ai modelli BYOM remoto.</p>
+              </dd>
+            
                <dt><span class="term">IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }</span></dt>
                 <dd>
                     <p> Utilizzare la parola chiave predefinita per fare in modo che Amazon Redshift utilizzi il ruolo IAM impostato come predefinito e associato al cluster quando viene eseguito il comando CREAT MODEL. In alternativa, è possibile specificare un ARN di un ruolo IAM per utilizzare quel ruolo.</p>
@@ -171,12 +178,12 @@
              
                 <dt><span class="term">[ AUTO ON / OFF ]</span></dt>
                 <dd>
-                    <p> Attiva o disattiva il rilevamento automatico CREATE MODEL della selezione di preprocessore, algoritmo e iperparametri. Specificare l'attivazione quando si crea un modello di previsione indica l'utilizzo di un AutoPredictor, in cui Amazon Forecast applica le combinazioni ottimali di algoritmi a ciascuna serie temporale del set di dati. </p>
+                    <p> Attiva o disattiva il rilevamento automatico CREATE MODEL della selezione di preprocessore, algoritmo e iperparametri. Specificare on quando si crea un modello Forecast indica di utilizzare un AutoPredictor, in cui Amazon Forecast applica le combinazioni ottimali di algoritmi a ogni serie temporale del set di dati. </p>
                 </dd>
              
                 <dt><span class="term"> <em>MODEL_TYPE <span>{</span> XGBOOST | MLP | LINEAR_LEARNER | KMEANS | FORECAST }</em> </span></dt>
                 <dd>
-                    <p>(Facoltativo) Specifica il tipo di modello. È possibile specificare se si desidera addestrare un modello di un tipo specifico, ad esempio XGBoost, percezione multistrato (MLP), KMEANS o Linear Learner, che sono tutti algoritmi supportati da pilota automatico Amazon SageMaker. Se non si specifica il parametro, durante l'addestramento vengono ricercati tutti i tipi di modello supportati per trovare il modello migliore. Puoi anche creare un modello di previsione in Redshift ML per creare previsioni accurate di serie temporali.</p>
+                    <p>(Facoltativo) Specifica il tipo di modello. Puoi specificare se desideri addestrare un modello di un tipo specifico, come XGBoost, perceptron multistrato (MLP), KMEANS o Linear Learner, che sono tutti algoritmi supportati da Amazon Autopilot.  SageMaker  Se non si specifica il parametro, durante l'addestramento vengono ricercati tutti i tipi di modello supportati per trovare il modello migliore. Puoi anche creare un modello di previsione in Redshift ML per creare previsioni accurate di serie temporali.</p>
                 </dd>
              
                 <dt><span class="term"> <em>PROBLEM_TYPE ( REGRESSION | BINARY_CLASSIFICATION | MULTICLASS_CLASSIFICATION )</em> </span></dt>
@@ -184,14 +191,14 @@
                     <p>(Facoltativo) Specifica il tipo di problema. Se si conosce il tipo di problema, è possibile limitare Amazon Redshift alla ricerca solo del modello migliore di quel tipo di modello specifico. Se non si specifica questo parametro, durante l'addestramento viene rilevato un tipo di problema in base ai dati.</p>
                 </dd>
              
-               <dt><span class="term">OBJECTIVE ( 'MSE' | 'Accuracy' | 'F1' | 'F1Macro' | 'AUC' | 'reg:squarederror' | 'reg:squaredlogerror' | 'reg:logistic' | 'reg:pseudohubererror' | 'reg:tweedie' | 'binary:logistic' | 'binary:hinge' | 'multi:softmax' | 'RMSE' | 'WAPE' | 'MAPE' | 'MASE' | 'AverageWeightedQuantileLoss' )</span></dt>
+               <dt><span class="term">OBIETTIVO ('MSE' | 'Precisione' | 'F1' | 'F1Macro' | 'AUC' | 'reg:squarederror' | 'reg:squaredlogerror' | 'reg:logistic' | 'reg:pseudohubererror' | 'reg:tweedie' | 'binary:logistic' | 'binary:hinge' | 'multi:softmax' | 'RMSE' | 'WAPE' | 'MAPE' | 'MASS' | '') AverageWeightedQuantileLoss</span></dt>
                 <dd>
-                    <p>(Facoltativo) Specifica il nome del parametro dell'obiettivo utilizzato per misurare la qualità predittiva di un sistema di machine learning. Questo parametro è ottimizzato durante l'addestramento per fornire la migliore stima per i valori dei parametri del modello dai dati. Se non si specifica esplicitamente un parametro, il comportamento di default consiste nell'utilizzare automaticamente MSE: per la regressione, F1: per la classificazione binaria, Accuracy: per la classificazione multiclass. Per informazioni sugli obiettivi, consulta <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html">AutoMLJobObjective</a> nella <em>Documentazione di riferimento delle API di Amazon SageMaker</em> e <a href="https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters" rel="noopener noreferrer" target="_blank"><span>Learning task parameters</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> (Parametri di apprendimento delle attività) nella documentazione XGBOOST. I valori RMSE, WAPE, MAPE, MASE e AverageWeightedQuantileLoss sono applicabili solo ai modelli Forecast. Per ulteriori informazioni, consultare l'operazione API <a href="https://docs.aws.amazon.com/forecast/latest/dg/API_CreateAutoPredictor.html#forecast-CreateAutoPredictor-request-OptimizationMetric">CreateAutoPredictor</a>.</p>
+                    <p>(Facoltativo) Specifica il nome del parametro dell'obiettivo utilizzato per misurare la qualità predittiva di un sistema di machine learning. Questo parametro è ottimizzato durante l'addestramento per fornire la migliore stima per i valori dei parametri del modello dai dati. Se non si specifica esplicitamente un parametro, il comportamento di default consiste nell'utilizzare automaticamente MSE: per la regressione, F1: per la classificazione binaria, Accuracy: per la classificazione multiclass. Per ulteriori informazioni sugli obiettivi, consulta <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html">AutoML JobObjective</a> nei <a href="https://xgboost.readthedocs.io/en/latest/parameter.html#learning-task-parameters" rel="noopener noreferrer" target="_blank"><span>parametri delle attività <em>Amazon  SageMaker  API Reference</em> e Learning</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> nella documentazione di XGBOOST. I valori RMSE, WAPE, MAPE, MASE e sono applicabili  AverageWeightedQuantileLoss  solo ai modelli Forecast. Per ulteriori informazioni, consulta l'operazione API <a href="https://docs.aws.amazon.com/forecast/latest/dg/API_CreateAutoPredictor.html#forecast-CreateAutoPredictor-request-OptimizationMetric">CreateAutoPredictor</a>.</p>
                 </dd>
              
                 <dt><span class="term"> <em>PREPROCESSORS 'string' </em> </span></dt>
                 <dd>
-                    <p>(Facoltativo) Specifica alcune combinazioni di preprocessori per determinati set di colonne. Il formato è un elenco di columnSets e le trasformazioni appropriate da applicare a ciascun set di colonne. Amazon Redshift applica tutti i trasformatori in un elenco di trasformatori specifico a tutte le colonne del set di colonne corrispondente. Ad esempio, per applicare OneHotEncoder con Imputer sulle colonne t1 e t2, utilizzare il comando di esempio seguente.</p>
+                    <p>(Facoltativo) Specifica alcune combinazioni di preprocessori per determinati set di colonne. Il formato è un elenco di columnSets e le trasformazioni appropriate da applicare a ciascun set di colonne. Amazon Redshift applica tutti i trasformatori di uno specifico elenco di trasformatori a tutte le colonne dell'elenco corrispondente.  ColumnSet Ad esempio, per applicare  OneHotEncoder  con Imputer alle colonne t1 e t2, usa il comando di esempio seguente.</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL customer_churn
 FROM customer_data
 TARGET 'Churn'
@@ -234,7 +241,7 @@ SETTINGS (
                 <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value' (,..) ) }</span></dt>
                 <dd>
                     <p>Specifica se i parametri XGBoost di default vengono utilizzati o sostituiti dai valori specificati dall'utente. I valori devono essere racchiusi tra virgolette singole. Di seguito sono riportati esempi di parametri per XGBoost e le loro impostazioni di default.</p>
-                    <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c13b3c21b3b3"><thead>
+                    <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c13b3c23b3b3"><thead>
                                 <tr>
                                     <th>Nome del parametro</th>
                                     <th>Valore del parametro </th>
@@ -283,7 +290,7 @@ SETTINGS (
                                     <td tabindex="-1">min_child_weight</td>
                                     <td tabindex="-1">Float</td>
                                     <td tabindex="-1">1</td>
-                                    <td tabindex="-1">MinValue: 0, MaxValue: 120</td>
+                                    <td tabindex="-1">MinValue: 0,: 120  MaxValue</td>
                                 </tr>
                                 <tr>
                                     <td tabindex="-1">subsample</td>
@@ -301,13 +308,13 @@ SETTINGS (
                                     <td tabindex="-1">alpha (alfa)</td>
                                     <td tabindex="-1">Float</td>
                                     <td tabindex="-1">0</td>
-                                    <td tabindex="-1">MinValue: 0, MaxValue: 1000</td>
+                                    <td tabindex="-1">MinValue: 0, MaxValue: 100</td>
                                 </tr>
                                 <tr>
                                     <td tabindex="-1">eta</td>
                                     <td tabindex="-1">Float</td>
                                     <td tabindex="-1">0.3</td>
-                                    <td tabindex="-1">MinValue: 0,1, MaxValue: 0,5</td>
+                                    <td tabindex="-1">MinValue: 0,1,  MaxValue 0,5</td>
                                 </tr>
                                 <tr>
                                     <td tabindex="-1">colsample_byleve</td>
@@ -331,7 +338,7 @@ SETTINGS (
                                     <td tabindex="-1">lambda</td>
                                     <td tabindex="-1">Float</td>
                                     <td tabindex="-1">1</td>
-                                    <td tabindex="-1">MinValue: 0, MaxValue: 1000</td>
+                                    <td tabindex="-1">MinValue: 0, MaxValue: 100</td>
                                 </tr>
                                 <tr>
                                     <td tabindex="-1">max_delta_step</td>
@@ -346,7 +353,7 @@ SETTINGS (
 
                 <dd>
                     <p>La clausola S3_BUCKET specifica la posizione Amazon S3 utilizzata per archiviare i risultati intermedi.</p>
-                   <p>(Facoltativo) Il parametro TAGS è un elenco separato da virgole di coppie chiave-valore che puoi utilizzare per etichettare le risorse create in Amazon SageMaker e Amazon Forecast. I tag consentono di organizzare le risorse e allocare i costi. I valori nella coppia sono opzionali, quindi puoi creare tag utilizzando il formato <code class="code">key=value</code> o semplicemente creando una chiave. Per ulteriori informazioni sui tag in Amazon Redshift, consulta <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-tagging.html">Panoramica dei tag</a>.</p>
+                   <p>(Facoltativo) Il parametro TAGS è un elenco separato da virgole di coppie chiave-valore che puoi utilizzare per etichettare le risorse create in Amazon e  SageMaker Amazon Forecast. I tag consentono di organizzare le risorse e allocare i costi. I valori nella coppia sono opzionali, quindi puoi creare tag utilizzando il formato <code class="code">key=value</code> o semplicemente creando una chiave. Per ulteriori informazioni sui tag in Amazon Redshift, consulta <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-tagging.html">Panoramica dei tag</a>.</p>
                    <p>(Facoltativo) KMS_KEY_ID specifica se Amazon Redshift utilizza la crittografia lato server con una chiave AWS KMS per proteggere i dati a riposo. I dati in transito sono protetti con Secure Sockets Layer (SSL). </p>
                    <p>(Facoltativo) S3_GARBAGE_COLLECT <span>{</span> ON | OFF } specifica se Amazon Redshift esegue la rimozione di oggetti inutili (garbage collection) sui set di dati risultanti utilizzati per addestrare i modelli e i modelli stessi. Se impostato su OFF, i set di dati risultanti utilizzati per addestrare i modelli e i modelli stessi rimangono in Amazon S3 e possono essere utilizzati per altri scopi. Se impostato su ON, Amazon Redshift elimina gli artefatti in Amazon S3 al termine dell'addestramento. Il valore di default è ON.</p>
                    <p>(Facoltativo) MAX_CELLS specifica il numero di celle nei dati di addestramento. Questo valore è il prodotto del numero di record (nella query di addestramento o nella tabella) moltiplicato per il numero di colonne. Il valore di default è 1.000.000.</p>

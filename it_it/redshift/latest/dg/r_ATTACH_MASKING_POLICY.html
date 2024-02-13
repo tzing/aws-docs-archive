@@ -42,19 +42,22 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ATTACH_MASKING_POLICY" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ATTACH_MASKING_POLICY-synopsis">Sintassi</a><a href="#r_ATTACH_MASKING_POLICY-parameters">Parametri</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ATTACH_MASKING_POLICY">ATTACH MASKING POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Collega una policy di mascheramento dinamico dei dati esistente a una colonna. Per ulteriori informazioni sul mascheramento dinamico dei dati, consulta <a href="./t_ddm.html">Mascheramento dinamico dei dati</a>.</p><p>Una policy di mascheramento può essere collegata da utenti con privilegi avanzati e da utenti o ruoli che dispongono del ruolo sys:secadmin.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ATTACH_MASKING_POLICY" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_ATTACH_MASKING_POLICY-synopsis">Sintassi</a><a href="#r_ATTACH_MASKING_POLICY-parameters">Parametri</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_ATTACH_MASKING_POLICY">ATTACH MASKING POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Collega una policy di mascheramento dinamico dei dati esistente a una colonna. Per ulteriori informazioni sul mascheramento dinamico dei dati, consulta <a href="./t_ddm.html">Mascheramento dinamico dei dati</a>.</p><p>Una policy di mascheramento può essere collegata da utenti con privilegi avanzati e da utenti o ruoli che dispongono del ruolo sys:secadmin.</p>
          <h2 id="r_ATTACH_MASKING_POLICY-synopsis">Sintassi</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ATTACH MASKING POLICY <em>policy_name</em>
-   ON <span>{</span> <em>table_name</em> }
-   ( <em>output_columns_names</em> ) [ USING ( <em>input_column_names</em> ) ]
+   ON <span>{</span> <em>relation_name</em> }
+   ( <span>{</span><em>output_columns_names</em> | <em>output_path</em>} ) [ USING ( <span>{</span><em>input_column_names</em> | <em>input_path</em> )} ]
    TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC }
    [ PRIORITY <em>priority</em> ];</code></pre>
        
          <h2 id="r_ATTACH_MASKING_POLICY-parameters">Parametri</h2>
+         
          <div class="variablelist">
              
              
             
+             
+             
              
              
              
@@ -68,9 +71,9 @@
 
                </dd>
              
-               <dt><span class="term"> <em>table_name</em> </span></dt>
+               <dt><span class="term"> <em>relation_name</em> </span></dt>
                <dd>
-                  <p>Nome della tabella a cui collegare la policy di mascheramento.</p>
+                  <p>Il nome della relazione a cui collegare la politica di mascheramento.</p>
 
                </dd>
              
@@ -79,14 +82,24 @@
                   <p>INmi delle colonne a cui verrà applicata la policy di mascheramento.</p>
                </dd>
              
+               <dt><span class="term"><em>output_paths</em> </span></dt>
+               <dd>
+                  <p>Il percorso completo dell'oggetto SUPER a cui viene applicata la politica di mascheramento, incluso il nome della colonna. Ad esempio, per una relazione con una colonna di tipo SUPER denominata <code class="code">person</code>, <em>output_path</em> può essere <code class="code">person.name.first_name</code>. </p>
+               </dd>
+             
                <dt><span class="term"><em>input_column_names</em> </span></dt>
                <dd>
-                  <p>Nomi delle colonne che la policy di mascheramento utilizzerà come input. Questo parametro è facoltativo. Se non specificato, la policy di mascheramento utilizza come input output_column_names.</p>
+                  <p>Nomi delle colonne che la policy di mascheramento utilizzerà come input. Questo parametro è facoltativo. Se non specificato, la politica di mascheramento utilizza come input <em>output_column_names</em>.</p>
+               </dd>
+             
+               <dt><span class="term"><em>input_paths</em> </span></dt>
+               <dd>
+                  <p>Il percorso completo dell'oggetto SUPER che la politica di mascheramento utilizza come input. Questo parametro è facoltativo. Se non specificato, la politica di mascheramento utilizza come input <em>output_path</em>.</p>
                </dd>
              
                <dt><span class="term"><em>user_name</em> </span></dt>
                <dd>
-                  <p>Nome dell'utente a cui verrà collegata la policy di mascheramento. Non è possibile collegare due policy alla stessa coppia colonna/utente. È possibile collegare una policy a un utente e un'altra policy al ruolo dell'utente. In questo caso, si applica la policy con la priorità più alta.</p>
+                  <p>Nome dell'utente a cui verrà collegata la policy di mascheramento. Non è possibile collegare due politiche alla stessa combinazione di utente e colonna oppure ruolo e colonna. È possibile collegare una policy a un utente e un'altra policy al ruolo dell'utente. In questo caso, si applica la policy con la priorità più alta.</p>
                   <p>È possibile impostare solo uno tra user_name, role_name e PUBLIC in un singolo comando ATTACH MASKING POLICY. </p>
                </dd>
              
@@ -105,6 +118,7 @@
                <dt><span class="term"><em>priority</em> </span></dt>
                <dd>
                   <p>La priorità della policy di mascheramento. Quando si applicano più policy di mascheramento alla query di un determinato utente, si applica la policy con la massima priorità.</p>
+                  <p>Non è possibile collegare due politiche diverse alla stessa colonna con la medesima priorità, anche se sono collegate a utenti o ruoli diversi. È possibile collegare la stessa politica più volte allo stesso set di tabella, colonna di output, colonna di input e parametri di priorità, purché l'utente o il ruolo a cui si riferisce la politica ogni volta sia diverso. </p>
                   <p>Non è possibile applicare una policy a una colonna con la stessa priorità di un'altra policy associato a quella colonna, anche se si tratta di ruoli diversi. Questo campo è facoltativo. Se non si specifica una priorità, per impostazione predefinita la policy di mascheramento prevede l'associazione con una priorità pari a 0.</p>
                </dd>
             </dl></div>

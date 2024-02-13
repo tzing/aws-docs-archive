@@ -42,7 +42,25 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">Sintassi</a><a href="#r_GRANT-parameters">Parametri</a><a href="#r_GRANT-usage-notes-link">Note per l'utilizzo</a><a href="#r_GRANT-examples-link">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Definisce le autorizzazioni di accesso per un utente o un gruppo di utenti.</p><p>Le autorizzazioni includono opzioni di accesso come la possibilità di leggere i dati in tabelle e viste, scrivere dati, creare ed eliminare tabelle. Utilizza questo comando per assegnare autorizzazioni specifiche per una tabella, un database, uno schema, una funzione, una procedura, una lingua o una colonna. Per revocare le autorizzazioni da un oggetto di database, utilizzare il comando <a href="./r_REVOKE.html">REVOKE</a>. </p><p>Le autorizzazioni includono inoltre opzioni di accesso come la possibilità di aggiungere oggetti o consumer o rimuovere oggetti o consumer da una unità di condivisione dati. Per aggiungere o rimuovere oggetti di database da una unità di condivisione dati per un utente o un gruppo di utenti, utilizza l'autorizzazione ALTER. Allo stesso modo, per aggiungere o rimuovere i consumer da una unità di condivisione dati, utilizza l'autorizzazione SHARE. Per revocare le autorizzazioni da un oggetto di database, utilizzare il comando <a href="./r_REVOKE.html">REVOKE</a>. ALTER e SHARE sono le uniche autorizzazioni che è possibile concedere a utenti e gruppi di utenti. </p><p>È anche possibile assegnare ruoli per gestire le autorizzazioni del database e controllare cosa possono fare gli utenti in relazione ai propri dati. Definendo i ruoli e assegnando ruoli agli utenti, è possibile limitare le operazioni che tali utenti possono intraprendere, ad esempio limitando gli utenti ai soli comandi CREATE TABLE e INSERT. Per ulteriori informazioni sul comando CREATE ROLE, consulta <a href="./r_CREATE_ROLE.html">CREATE ROLE</a>. Amazon Redshift ha alcuni ruoli definiti dal sistema che è possibile utilizzare anche per concedere autorizzazioni specifiche ai propri utenti. Per ulteriori informazioni, consulta <a href="./r_roles-default.html">Ruoli definiti dal sistema di Amazon Redshift</a>.</p><p>Per quanto riguarda e autorizzazioni, è possibile solo GRANT o REVOKE USAGE in uno schema esterno per gli utenti di database e gruppi di utenti che utilizzano la sintassi ON SCHEMA. Quando si utilizza ON EXTERNAL SCHEMA con AWS Lake Formation, è possibile solo concedere o revocare (GRANT e REVOKE) le autorizzazioni per un ruolo AWS Identity and Access Management (IAM). Per un elenco delle autorizzazioni richieste, consulta la sintassi.</p><p>Per le procedure archiviate, l'unica autorizzazione che si può concedere è EXECUTE.</p><p>Non è possibile eseguire GRANT (su una risorsa esterna) all'interno di un blocco di transazione (BEGIN ... END). Per ulteriori informazioni sulle transazioni, consultare <a href="./c_serial_isolation.html">Isolamento serializzabile</a>. </p><p>Per vedere quali autorizzazioni sono state concesse agli utenti per un database, usa <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>. Per vedere quali autorizzazioni sono state concesse agli utenti per uno schema, usa <a href="./r_HAS_SCHEMA_PRIVILEGE.html">PRIVILEGIO DELLO SCHEMA HAS</a>. Per vedere quali autorizzazioni sono state concesse agli utenti per una tabella, usa <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="Apri PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentazione</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guida per sviluppatori di database</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">Sintassi</a><a href="#r_GRANT-parameters">Parametri</a><a href="#r_GRANT-usage-notes-link">Note per l'utilizzo</a><a href="#r_GRANT-examples-link">Esempi</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Le traduzioni sono generate tramite traduzione automatica. In caso di conflitto tra il contenuto di una traduzione e la versione originale in Inglese, quest'ultima prevarrà.</p></awsui-alert><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Definisce le autorizzazioni di accesso per un utente o un ruolo.</p><p>Le autorizzazioni includono opzioni di accesso come la possibilità di leggere i dati in tabelle e viste, scrivere dati, creare ed eliminare tabelle. Utilizza questo comando per assegnare autorizzazioni specifiche per una tabella, un database, uno schema, una funzione, una procedura, una lingua o una colonna. Per revocare le autorizzazioni da un oggetto di database, utilizzare il comando <a href="./r_REVOKE.html">REVOKE</a>. </p><p>Le autorizzazioni includono anche le seguenti opzioni di accesso producer dell'unità di condivisione dati:</p><div class="itemizedlist">
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p> Assegnazione dell'accesso dell'unità di condivisione dati agli spazi dei nomi e agli account consumer. </p>
+         </li><li class="listitem">
+            <p> Assegnazione dell'autorizzazione a modificare un'unità di condivisione dati aggiungendo o rimuovendo oggetti dell'unità di condivisione dati. </p>
+         </li><li class="listitem">
+            <p> Assegnazione dell'autorizzazione a condividere un'unità di condivisione dati aggiungendo o rimuovendo spazi dei nomi consumer dell'unità di condivisione dati. </p>
+         </li></ul></div><p>Le opzioni di accesso consumer dell'unità di condivisione dati sono le seguenti:</p><div class="itemizedlist">
+          
+         
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>Assegnazione dell'accesso completo degli utenti ai database creati da un'unità di condivisione dati o a schemi esterni che fanno riferimento a tali database.</p>
+         </li><li class="listitem">
+            <p>Assegnazione delle autorizzazioni degli utenti a livello di oggetto per i database creati da un'unità di condivisione dati, come avviene per gli oggetti di database locali. Per assegnare questo livello di autorizzazione, è necessario utilizzare la clausola WITH PERMISSIONS durante la creazione di un database dall'unità di condivisione dati. Per ulteriori informazioni, consulta <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>.</p>
+         </li></ul></div><p>Per ulteriori informazioni sulle autorizzazioni dell'unità di condivisione dati, consulta <a href="./share_datashare.html">Condivisione di unità di condivisione dati</a>.</p><p>È anche possibile assegnare ruoli per gestire le autorizzazioni del database e controllare cosa possono fare gli utenti in relazione ai propri dati. Definendo i ruoli e assegnando ruoli agli utenti, è possibile limitare le operazioni che tali utenti possono intraprendere, ad esempio limitando gli utenti ai soli comandi CREATE TABLE e INSERT. Per ulteriori informazioni sul comando CREATE ROLE, consulta <a href="./r_CREATE_ROLE.html">CREATE ROLE</a>. Amazon Redshift ha alcuni ruoli definiti dal sistema che è possibile utilizzare anche per concedere autorizzazioni specifiche ai propri utenti. Per ulteriori informazioni, consulta <a href="./r_roles-default.html">Ruoli definiti dal sistema di Amazon Redshift</a>.</p><p>Per quanto riguarda e autorizzazioni, è possibile solo GRANT o REVOKE USAGE in uno schema esterno per gli utenti di database e gruppi di utenti che utilizzano la sintassi ON SCHEMA. Quando si utilizza ON EXTERNAL SCHEMA con AWS Lake Formation, è possibile solo concedere o revocare (GRANT e REVOKE) le autorizzazioni per un ruolo AWS Identity and Access Management (IAM). Per un elenco delle autorizzazioni richieste, consulta la sintassi.</p><p>Per le procedure archiviate, l'unica autorizzazione che si può concedere è EXECUTE.</p><p>Non è possibile eseguire GRANT (su una risorsa esterna) all'interno di un blocco di transazione (BEGIN ... END). Per ulteriori informazioni sulle transazioni, consultare <a href="./c_serial_isolation.html">Isolamento serializzabile</a>. </p><p>Per vedere quali autorizzazioni sono state concesse agli utenti per un database, usa <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>. Per vedere quali autorizzazioni sono state concesse agli utenti per uno schema, usa <a href="./r_HAS_SCHEMA_PRIVILEGE.html">PRIVILEGIO DELLO SCHEMA HAS</a>. Per vedere quali autorizzazioni sono state concesse agli utenti per una tabella, usa <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>. </p>
          <h2 id="r_GRANT-synopsis">Sintassi</h2>
          <p></p>
          
@@ -87,11 +105,46 @@ GRANT <span>{</span> <span>{</span> SELECT | ALTER | DROP | DELETE | INSERT }  [
 
 GRANT <span>{</span> <span>{</span> CREATE | ALTER | DROP }  [, ...] | ALL [ PRIVILEGES ] }
     ON EXTERNAL SCHEMA <em>schema_name</em> [, ...]
-    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Concessione delle autorizzazioni per l'unità di condivisione dati" id="grant-datashare-syntax" expanded="false"><p>Di seguito è riportata la sintassi per l'utilizzo di GRANT per le autorizzazioni per l'unità di condivisione dati su Amazon Redshift. ALTER e SHARE sono le uniche autorizzazioni che è possibile concedere in questo caso a utenti e gruppi di utenti.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
+    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Concessione delle autorizzazioni per l'unità di condivisione dati" id="grant-datashare-syntax" expanded="false">
+               <h6>Autorizzazioni dell'unità di condivisione dati sul lato producer</h6>
+               <p>Di seguito è riportata la sintassi per l'utilizzo di GRANT per assegnare le autorizzazioni ALTER o SHARE a un utente o un ruolo. L'utente può modificare l'unità di condivisione dati con l'autorizzazione ALTER o assegnare l'utilizzo a un consumer con l'autorizzazione SHARE. ALTER e SHARE sono le uniche autorizzazioni che è possibile assegnare a utenti e gruppi di utenti per un'unità di condivisione dati.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <code class="code" copy="true">group_name</code> | PUBLIC } [, ...]</code></pre><p>Di seguito è riportata la sintassi per l'utilizzo di GRANT per le autorizzazioni per l'utilizzo dell'unità di condivisione dati su Amazon Redshift. Si concede l'accesso a una unità di condivisione dati a un consumer utilizzando l'autorizzazione USAGE. Non è possibile concedere questa autorizzazione agli utenti o ai gruppi di utenti. Questa autorizzazione inoltre non supporta WITH GRANT OPTION per l'istruzione GRANT. Solo gli utenti o i gruppi di utenti con autorizzazione SHARE precedentemente concessa loro PER l'unità di condivisione dati possono eseguire questo tipo di istruzione GRANT.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE
     ON DATASHARE <em>datashare_name</em>
-    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>Di seguito è riportato un esempio di come concedere l'autorizzazione per l'utilizzo di un'unità di condivisione dati a un account Lake Formation.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre><p>Di seguito è riportata la sintassi per le autorizzazioni di utilizzo per la condivisione dei dati GRANT per un database o uno schema specifico creato da una unità di condivisione dati. Questa autorizzazione USAGE non concede l'autorizzazione di utilizzo ai database non creati dall'unità di condivisione dati specificata. È possibile utilizzare le autorizzazioni GRANT o REVOKE ALTER o SHARE solo su una unità di condivisione dati per utenti e gruppi di utenti.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
-    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Concessione delle autorizzazioni di machine learning" id="grant-model-syntax" expanded="false"><p>Di seguito è riportata la sintassi per le autorizzazioni per il modello di machine learning su Amazon Redshift.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
+    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>Di seguito è riportato un esempio di come concedere l'autorizzazione per l'utilizzo di un'unità di condivisione dati a un account Lake Formation.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>            
+               <h6>Autorizzazioni dell'unità di condivisione dati sul lato consumer</h6>
+               <p>Di seguito è riportata la sintassi per le autorizzazioni di utilizzo per la condivisione dei dati GRANT per un database o uno schema specifico creato da una unità di condivisione dati. </p><p>Le ulteriori autorizzazioni richieste per l'accesso dei consumer a un database creato da un'unità di condivisione dati variano a seconda che il comando CREATE DATABASE utilizzato per creare il database dall'unità di condivisione dati includa o meno la clausola WITH PERMISSIONS. Per ulteriori informazioni sul comando CREATE DATABASE con la clausola WITH PERMISSIONS, consulta <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>.</p>
+               <h6>Database creati senza la clausola WITH PERMISSIONS</h6>
+               <p>Quando assegni l'autorizzazione USAGE per un database creato da un'unità di condivisione dati senza la clausola WITH PERMISSIONS, non è necessario fornire separatamente le autorizzazioni per gli oggetti nel database condiviso. Le entità a cui è fornito l'utilizzo dei database creati dall'unità di condivisione dati senza la clausola WITH PERMISSIONS hanno automaticamente accesso a tutti gli oggetti del database.</p>
+             
+               <h6>Database creati con la clausola WITH PERMISSIONS</h6>
+               <p>Quando assegni USAGE per un database condiviso che è stato creato da un'unità di condivisione dati con la clausola WITH PERMISSIONS, alle identità lato consumer devono comunque essere fornite le autorizzazioni pertinenti per gli oggetti del database condiviso per potervi accedere, proprio come si farebbe per le autorizzazioni degli oggetti del database locale. Per assegnare le autorizzazioni agli oggetti di un database creato da un'unità di condivisione dati, utilizza la sintassi in tre parti <code class="code">database_name.schema_name.object_name</code>. Per assegnare le autorizzazioni agli oggetti in uno schema esterno che fa riferimento a uno schema condiviso del database condiviso, utilizza la sintassi in due parti <code class="code">schema_name.object_name</code>.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
+    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Assegnazione delle autorizzazioni con ambito " id="grant-scoped-syntax" expanded="false"><p>Usa le autorizzazioni con ambito per modificare le autorizzazioni per un utente o un ruolo in un ambito di database o schema. </p><p>Le autorizzazioni con ambito si applicano agli oggetti dell'ambito selezionato quando si assegna o si revoca l'autorizzazione, nonché ai nuovi oggetti creati dopo l'assegnazione o la revoca dell'autorizzazione. Ad esempio, l'assegnazione di un'autorizzazione con ambito per un ruolo per selezionare nelle tabelle di un database consente agli utenti con quel ruolo di selezionare nelle tabelle che verranno create in futuro e nelle tabelle attualmente esistenti nel database. </p><p>È possibile utilizzare le autorizzazioni con ambito per impostare le autorizzazioni predefinite di un database condiviso creato da un'unità di condivisione dati. Un utente dell'unità di condivisione dati sul lato consumer a cui sono concesse le autorizzazioni con ambito su un database condiviso ottiene automaticamente le autorizzazioni per qualsiasi nuovo oggetto aggiunto all'unità di condivisione dati sul lato producer.</p><p>Di seguito è riportata la sintassi per assegnare a utenti e ruoli le autorizzazioni con ambito. Per ulteriori informazioni sulle autorizzazioni con ambito, vedere. <a href="./t_scoped-permissions.html">Autorizzazioni con ambito </a></p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT <span>{</span> CREATE | USAGE | ALTER } [,...] | ALL [ PRIVILEGES ] }
+FOR SCHEMAS IN
+DATABASE db_name 
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]
+
+GRANT 
+<span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | ALTER | TRUNCATE | REFERENCES } [, ...] } | ALL [PRIVILEGES] } }
+FOR TABLES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name} [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR FUNCTIONS IN 
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR PROCEDURES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT USAGE
+FOR LANGUAGES IN
+<span>{</span>DATABASE db_name}
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]  </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Concessione delle autorizzazioni di machine learning" id="grant-model-syntax" expanded="false"><p>Di seguito è riportata la sintassi per le autorizzazioni per il modello di machine learning su Amazon Redshift.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copia"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
 
 GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
@@ -102,6 +155,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     <span>{</span> CREATE USER | DROP USER | ALTER USER |
     CREATE SCHEMA | DROP SCHEMA |
     ALTER DEFAULT PRIVILEGES |
+    ACCESS CATALOG | 
     CREATE TABLE | DROP TABLE | ALTER TABLE |
     CREATE OR REPLACE FUNCTION | CREATE OR REPLACE EXTERNAL FUNCTION |
     DROP FUNCTION |
@@ -110,7 +164,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     CREATE MODEL | DROP MODEL |
     CREATE DATASHARE | ALTER DATASHARE | DROP DATASHARE |
     CREATE LIBRARY | DROP LIBRARY |
-    CREATE ROLE | DROP ROLE
+    CREATE ROLE | DROP ROLE |
     TRUNCATE TABLE
     VACUUM | ANALYZE | CANCEL }[, ...]
   }
@@ -182,8 +236,13 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
 
                    
             
+            
+    
+            
              
 
+             
+            
              
 
             
@@ -218,21 +277,14 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>Concede l'autorizzazione a eliminare una riga di dati da una tabella. Le operazioni DELETE richiedono anche il privilegio SELECT, perché devono fare riferimento alle colonne della tabella per determinare quali righe eliminare.</p>
                </dd>
              
+               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dd>
+                  <p>Concede l'autorizzazione a eliminare una tabella. Questa autorizzazione si applica in Amazon Redshift e in un AWS Glue Data Catalog che è abilitato per Lake Formation.</p>
+               </dd>
+             
                <dt id="grant-references"><span class="term">REFERENCES </span></dt>
                <dd>
                   <p>Concede l'autorizzazione a creare un vincolo di chiave esterna. È necessario concedere questa autorizzazione sia sulla tabella a cui si fa riferimento sia sulla tabella che fa riferimento; in caso contrario, l'utente non può creare il vincolo. </p>
-               </dd>
-             
-               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
-               <dd>
-                  <p>Concede l'autorizzazione a troncare una tabella. Senza questa autorizzazione, solo il proprietario di una tabella o un utente con privilegi avanzati può troncare una tabella. Per ulteriori informazioni sul comando TRUNCATE, consulta <a href="./r_TRUNCATE.html">TRUNCATE</a>.</p>
-               </dd>
-             
-               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
-               <dd>
-                  <p>Concede tutte le autorizzazioni disponibili contemporaneamente all'utente o al gruppo di utenti specificato. La parola chiave PRIVILEGES è facoltativa.</p>
-                  <p>GRANT ALL ON SCHEMA non concede le autorizzazioni CREATE per gli schemi esterni.</p>
-                  <p>È possibile concedere l'autorizzazione ALL a una tabella in AWS Glue Data Catalog con abilitazione per Lake Formation. In questo caso, le singole autorizzazioni (come SELECT, ALTER e così via) sono registrate nel catalogo dati. </p>
                </dd>
              
                <dt id="grant-alter"><span class="term">ALTER</span></dt>
@@ -253,12 +305,19 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                      </li><li class="listitem">
                         <p>Per le tabelle esterne, ALTER concede l'autorizzazione a modificare una tabella in un AWS Glue Data Catalog abilitato per Lake Formation. Questa autorizzazione si applica solo quando si utilizza Lake Formation.</p>
                      </li></ul></div>
-
+                  
                </dd>
              
-               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
                <dd>
-                  <p>Concede l'autorizzazione a eliminare una tabella. Questa autorizzazione si applica in Amazon Redshift e in un AWS Glue Data Catalog che è abilitato per Lake Formation.</p>
+                  <p>Concede l'autorizzazione a troncare una tabella. Senza questa autorizzazione, solo il proprietario di una tabella o un utente con privilegi avanzati può troncare una tabella. Per ulteriori informazioni sul comando TRUNCATE, consulta <a href="./r_TRUNCATE.html">TRUNCATE</a>.</p>
+               </dd>
+             
+               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
+               <dd>
+                  <p>Concede tutte le autorizzazioni disponibili contemporaneamente all'utente o al gruppo di utenti specificato. La parola chiave PRIVILEGES è facoltativa.</p>
+                  <p>GRANT ALL ON SCHEMA non concede le autorizzazioni CREATE per gli schemi esterni.</p>
+                  <p>È possibile concedere l'autorizzazione ALL a una tabella in AWS Glue Data Catalog con abilitazione per Lake Formation. In questo caso, le singole autorizzazioni (come SELECT, ALTER e così via) sono registrate nel catalogo dati. </p>
                </dd>
              
                <dt id="assumerole"><span class="term">ASSUMEROLE</span></dt>
@@ -443,12 +502,23 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                         <p>Concede le autorizzazioni per lo schema specificato creato nell'unità di condivisione dati specificata.</p>
                      </dd>
                    
+               <dt><span class="term">FOR <span>{</span> SCHEMAS | TABLES | FUNCTIONS | PROCEDURES | LANGUAGES } IN </span></dt>
+               <dd>
+                  <p>Specifica gli oggetti del database a cui assegnare l'autorizzazione. I parametri successivi a IN definiscono l'ambito dell'autorizzazione assegnata.</p>
+               </dd>
+             
                <dt><span class="term">CREATE MODEL</span></dt>
                <dd><p>Concede l'autorizzazione CREATE MODEL a utenti o gruppi di utenti specifici.</p></dd>
              
                <dt><span class="term">ON MODEL <em>nome_modello</em></span></dt>
 
                <dd><p>Concede l'autorizzazione EXECUTE su un modello specifico. </p></dd>
+             
+               <dt><span class="term">ACCESS CATALOG</span></dt>
+               <dd>
+                  <p>Assegna l'autorizzazione a visualizzare i metadati pertinenti degli oggetti a cui il ruolo ha accesso.</p>
+               </dd>
+             
                <dt><span class="term"><span>{</span> role } [, ...]</span></dt>
                <dd><p>Il ruolo da concedere a un altro ruolo, un utente o PUBLIC.</p>
                   <p>PUBLIC rappresenta un gruppo che include sempre tutti gli utenti. Le autorizzazioni di un singolo utente consistono nella somma delle autorizzazioni concesse a PUBLIC, delle autorizzazioni concesse a tutti i gruppi a cui l'utente appartiene e di tutte le autorizzazioni concesse all'utente singolarmente.</p>
