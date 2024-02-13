@@ -192,6 +192,16 @@ current_user | current_namespace
 -------------+--------------------------------------
 dwuser       | 86b5169f-01dc-4a6f-9fbb-e2e24359e9a8
 (1 row)</code></pre>
+         
+          
+            <h3 id="mv_incremental_datashare">Incremental refresh for materialized views in a datashare</h3>
+            <p>
+               Amazon Redshift supports incremental refresh for materialized views in a consumer datashare when the base tables are shared. Incremental refresh is an operation where 
+               Amazon Redshift identifies changes in the base table or tables that happened after the previous refresh and updates only the corresponding 
+               records in the materialized view. For more information about this behavior, 
+               see <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MARTERIALIZED_VIEW_datashare">CREATE MATERIALIZED VIEW</a>.
+            </p>
+          
        
          <h2 id="iam-policy">Managing access to data sharing API operations with IAM
                policies</h2>

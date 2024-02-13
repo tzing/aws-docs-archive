@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#materialized-view-refresh-sql-command" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="page-toc-src"><a href="#mv_REFRESH_MATERIALIZED_VIEW-synopsis">Syntax</a><a href="#mv_REFRESH_MATERIALIZED_VIEW-parameters">Parameters</a><a href="#mv_REFRESH_MARTERIALIZED_VIEW_usage">Usage notes</a><a href="#mv_REFRESH_MARTERIALIZED_VIEW_limitations">Limitations for incremental
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#materialized-view-refresh-sql-command" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="page-toc-src"><a href="#mv_REFRESH_MATERIALIZED_VIEW-synopsis">Syntax</a><a href="#mv_REFRESH_MATERIALIZED_VIEW-parameters">Parameters</a><a href="#mv_REFRESH_MARTERIALIZED_VIEW_usage">Usage notes</a><a href="#mv_REFRESH_MARTERIALIZED_VIEW_datashare">Incremental refresh for materialized views in a datashare</a><a href="#mv_REFRESH_MARTERIALIZED_VIEW_limitations">Limitations for incremental
                refresh</a><a href="#mv_REFRESH_MARTERIALIZED_VIEW_examples">Examples</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="materialized-view-refresh-sql-command">REFRESH MATERIALIZED VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Refreshes a materialized view.</p><p>When you create a materialized view, its contents reflect the state of the underlying
          database table or tables at that time. The data in the materialized view remains unchanged,
          even when applications make changes to the data in the underlying tables. To update the
@@ -120,6 +120,13 @@
                   operation, an ALTER SORTKEY operation, and a truncate operation. For more
                   information about events and state changes, see <a href="./r_STL_MV_STATE.html">STL_MV_STATE</a>. </p>
             </li></ul></div>
+       
+         <h2 id="mv_REFRESH_MARTERIALIZED_VIEW_datashare">Incremental refresh for materialized views in a datashare</h2>
+         <p>
+            Amazon Redshift supports automatic and incremental refresh for materialized views in a consumer datashare when the base tables are shared. Incremental refresh is an operation where 
+            Amazon Redshift identifies changes in the base table or tables that happened after the previous refresh and updates only the corresponding records in the materialized 
+            view. For more information about this behavior, see <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-create-sql-command.html#mv_CREATE_MARTERIALIZED_VIEW_datashare">CREATE MATERIALIZED VIEW</a>.
+         </p>
        
          <h2 id="mv_REFRESH_MARTERIALIZED_VIEW_limitations">Limitations for incremental
                refresh</h2>

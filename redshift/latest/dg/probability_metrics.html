@@ -57,7 +57,7 @@
                Redshift automatically creates a second inference function that you can use to output probabilities relative to each
                label. This second inference function's name is your specified inference function name followed by the string <code class="code">_prob</code>. 
                For example, if you name your inference function as <code class="code">customer_churn_predict</code>, then the second inference function's name
-               is <code class="code">customer_churn_predict_prob</code>. You can then query this function to get the probabilities of each label.
+               is <code class="code">customer_churn_predict_probabilities</code>. You can then query this function to get the probabilities of each label.
             </p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL customer_churn_model
 FROM customer_activity

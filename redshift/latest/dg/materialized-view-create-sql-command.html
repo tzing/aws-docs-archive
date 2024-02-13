@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#materialized-view-create-sql-command" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="page-toc-src"><a href="#mv_CREATE_MATERIALIZED_VIEW-synopsis">Syntax</a><a href="#mv_CREATE_MATERIALIZED_VIEW-parameters">Parameters</a><a href="#mv_CREATE_MARTERIALIZED_VIEW_usage">Usage notes</a><a href="#materialized-view-ddl">DDL updates to materialized views or base
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#materialized-view-create-sql-command" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="page-toc-src"><a href="#mv_CREATE_MATERIALIZED_VIEW-synopsis">Syntax</a><a href="#mv_CREATE_MATERIALIZED_VIEW-parameters">Parameters</a><a href="#mv_CREATE_MARTERIALIZED_VIEW_usage">Usage notes</a><a href="#mv_CREATE_MARTERIALIZED_VIEW_datashare">Incremental refresh for materialized views in a datashare</a><a href="#materialized-view-ddl">DDL updates to materialized views or base
                tables</a><a href="#mv_CREATE_MATERIALIZED_VIEW-limitations">Limitations</a><a href="#mv_CREATE_MARTERIALIZED_VIEW_examples">Examples</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="materialized-view-create-sql-command">CREATE MATERIALIZED VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Creates a materialized view based on one or more Amazon Redshift tables. You can also base 
          materialized views on external tables created using Spectrum or federated query. 
          For information about Spectrum, see <a href="./c-using-spectrum.html">Querying external data using Amazon Redshift Spectrum</a>. For information about
@@ -142,6 +142,24 @@ AS query </pre>
                <p>Table-level or column-level SELECT privilege on the base tables to create a
                   materialized view. If you have column-level privileges on specific columns, you can create a materialized view on only those columns.</p>
             </li></ul></div>
+       
+         <h2 id="mv_CREATE_MARTERIALIZED_VIEW_datashare">Incremental refresh for materialized views in a datashare</h2>
+         <p>
+            Amazon Redshift supports automatic and incremental refresh for materialized views in a consumer datashare when the base tables are shared. Incremental refresh is an operation where 
+            Amazon Redshift identifies changes in the base table or tables that happened after the previous refresh and updates only the corresponding records in the materialized 
+            view. This runs more quickly than a full refresh and improves workload performance. You don't have to change your materialized-view definition to take 
+            advantage of incremental refresh.
+         </p>
+         <p>There are a couple limitations to note for taking advantage of incremental refresh with a materialized view:
+         </p>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem"><p>The materialized view must reference only one database, either local or remote. </p></li><li class="listitem"><p>Incremental refresh is available only on new materialized views. Therefore, you must drop existing materialized views and recreate 
+               them for incremental refresh to occur.</p></li></ul></div>
+         <p>For more information about creating materialized views in a datashare, 
+            see <a href="https://docs.aws.amazon.com/redshift/latest/dg/share_datashare.html#datashare-views">Working with views in Amazon Redshift data sharing</a>, which contains 
+            several query examples.</p>
        
          <h2 id="materialized-view-ddl">DDL updates to materialized views or base
                tables</h2>

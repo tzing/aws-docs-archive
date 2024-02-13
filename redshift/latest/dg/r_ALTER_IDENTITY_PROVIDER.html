@@ -46,10 +46,14 @@
          parameter values are deleted before the new values are assigned. Only a superuser can alter an identity provider.</p>
          <h2 id="r_ALTER_IDENTITY_PROVIDER-synopsis">Syntax</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER IDENTITY PROVIDER <em>identity_provider_name</em>
- PARAMETERS <em>parameter_string</em></code></pre>
+[PARAMETERS <em>parameter_string</em>]
+[NAMESPACE <em>namespace</em>]
+[IAM_ROLE <em>iam_role</em>]</code></pre>
        
          <h2 id="r_ALTER_IDENTITY_PROVIDER-parameters">Parameters</h2>
          <div class="variablelist">
+             
+             
              
              
          <dl>
@@ -67,9 +71,23 @@
                <dd>
                   <p>A string containing a properly formatted JSON object that contains parameters and values required for the specific identity provider.</p>
                </dd>
+             
+               <dt><span class="term">
+                  <em>namespace</em>
+               </span></dt>
+               <dd>
+                  <p>The organization namespace.</p>
+               </dd>
+             
+               <dt><span class="term">
+                  <em>iam_role</em>
+               </span></dt>
+               <dd>
+                  <p>The IAM role that provides permissions for the connection to IAM Identity Center. This parameter is applicable only when the identity-provider type is AWSIDC.</p>
+               </dd>
             </dl></div>
        
-         <h2 id="r_ALTER_IDENTITY_PROVIDER-examples">Example</h2>
+         <h2 id="r_ALTER_IDENTITY_PROVIDER-examples">Examples</h2>
          <p>The following example alters an identity provider named <em>oauth_standard</em>.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER IDENTITY PROVIDER oauth_standard
 PARAMETERS '<span>{</span>"issuer":"https://sts.windows.net/2sdfdsf-d475-420d-b5ac-667adad7c702/",
@@ -77,4 +95,14 @@ PARAMETERS '<span>{</span>"issuer":"https://sts.windows.net/2sdfdsf-d475-420d-b5
 "client_secret":"BUAH~ewrqewrqwerUUY^%tHe1oNZShoiU7",
 "audience":["https://analysis.windows.net/powerbi/connector/AmazonRedshift"]
 }'</code></pre>
+         
+         <p>The following sample statements show how to connect an existing Redshift provisioned cluster or workgroup to IAM Identity Center, if you have a connection set up through a 
+            managed application. You would have to provide values applicable to your resources.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER IDENTITY PROVIDER "my-redshift-idc-application"
+NAMESPACE 'myorgnamespace';
+
+ALTER IDENTITY PROVIDER "my-redshift-idc-application"
+IAM_ROLE 'arn:aws:iam::123456789012:role/myadministratorrole';</code></pre>
+         <p>For more information about setting up a connection to IAM Identity Center from Redshift, see <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-idp-connect.html">Connect Redshift with IAM Identity Center to give users a single 
+            sign-on experience</a>.</p>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ALTER_GROUP.html">ALTER GROUP</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_MASKING_POLICY.html">ALTER MASKING POLICY</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/en_us/redshift/latest/dg/r_ALTER_IDENTITY_PROVIDER.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/en_us/redshift/latest/dg/r_ALTER_IDENTITY_PROVIDER.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
