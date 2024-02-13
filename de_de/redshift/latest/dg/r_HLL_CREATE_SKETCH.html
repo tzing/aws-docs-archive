@@ -37,7 +37,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "HyperLogLog-Funktionen",
+        "name" : "HyperLogLog -Funktionen",
         "item" : "https://docs.aws.amazon.com/de_de/redshift/latest/dg/hyperloglog-functions.html"
       },
       {
@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_HLL_CREATE_SKETCH" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_HLL_CREATE_SKETCH-synopsis">Syntax</a><a href="#r_HLL_CREATE_SKETCH-argument">Argument</a><a href="#r_HLL_CREATE_SKETCH-return-type">Rückgabetyp</a><a href="#r_HLL_CREATE_SKETCH-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_HLL_CREATE_SKETCH">Funktion HLL_CREATE_SKETCH</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Die HLL_CREATE_SKETCH-Funktion gibt einen HLLSKETCH-Datentyp zurück, der die Eingabeausdruckswerte kapselt. Die HLL_CREATE_SKETCH-Funktion funktioniert mit jedem Datentyp und ignoriert NULL-Werte. Wenn keine Zeilen in einer Tabelle vorhanden sind oder alle Zeilen NULL sind, enthält die resultierende Skizze keine Index-Wert-Paare wie zum Beispiel <code class="code"><span>{</span>"version":1,"logm":15,"sparse":<span>{</span>"indices":[],"values":[]}}</code>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_HLL_CREATE_SKETCH" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_HLL_CREATE_SKETCH-synopsis">Syntax</a><a href="#r_HLL_CREATE_SKETCH-argument">Argument</a><a href="#r_HLL_CREATE_SKETCH-return-type">Rückgabetyp</a><a href="#r_HLL_CREATE_SKETCH-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_HLL_CREATE_SKETCH">Funktion HLL_CREATE_SKETCH</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Die HLL_CREATE_SKETCH-Funktion gibt einen HLLSKETCH-Datentyp zurück, der die Eingabeausdruckswerte kapselt. Die HLL_CREATE_SKETCH-Funktion funktioniert mit jedem Datentyp und ignoriert NULL-Werte. Wenn keine Zeilen in einer Tabelle vorhanden sind oder alle Zeilen NULL sind, enthält die resultierende Skizze keine Index-Wert-Paare wie zum Beispiel <code class="code"><span>{</span>"version":1,"logm":15,"sparse":<span>{</span>"indices":[],"values":[]}}</code>.</p>
           <h2 id="r_HLL_CREATE_SKETCH-synopsis">Syntax</h2>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">HLL_CREATE_SKETCH (<em>aggregate_expression</em>)</code></pre>
         
@@ -67,7 +67,7 @@
           <p>Die HLL_CREATE_SKETCH-Funktion gibt einen HLLSKETCH-Wert zurück.</p>
         
           <h2 id="r_HLL_CREATE_SKETCH-examples">Beispiele</h2>
-          <p>Im folgenden Beispiel wird der Typ HLLSKETCH für die Spalte <code class="code">an_int</code> in der Tabelle <code class="code">a_table</code> zurückgegeben. Ein JSON-Objekt wird verwendet, um eine rudimentäre HyperLogLog-Skizze beim Importieren, Exportieren oder Drucken von Skizzen darzustellen. Eine Zeichenfolgendarstellung (im Base64-Format) wird verwendet, um eine ausführliche HyperLogLog-Skizze darzustellen.</p>
+          <p>Im folgenden Beispiel wird der Typ HLLSKETCH für die Spalte <code class="code">an_int</code> in der Tabelle <code class="code">a_table</code> zurückgegeben. Ein JSON-Objekt wird verwendet, um eine spärliche HyperLogLog Skizze beim Importieren, Exportieren oder Drucken von Skizzen darzustellen. Eine Zeichenfolgendarstellung (im Base64-Format) wird verwendet, um eine ausführliche  HyperLogLog Skizze darzustellen.</p>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE a_table(an_int INT);
 INSERT INTO a_table VALUES (1), (2), (3), (4);
 

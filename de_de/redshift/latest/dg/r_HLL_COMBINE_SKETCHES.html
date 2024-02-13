@@ -37,7 +37,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "HyperLogLog-Funktionen",
+        "name" : "HyperLogLog -Funktionen",
         "item" : "https://docs.aws.amazon.com/de_de/redshift/latest/dg/hyperloglog-functions.html"
       },
       {
@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_HLL_COMBINE_SKETCHES" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_HLL_COMBINE_SKETCHES-synopsis">Syntax</a><a href="#r_HLL_COMBINE_SKETCHES-argument">Argument</a><a href="#r_HLL_COMBINE_SKETCHES-return-type">Rückgabetyp</a><a href="#r_HLL_COMBINE_SKETCHES-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_HLL_COMBINE_SKETCHES">HLL_COMBINE_SKETCHES-Funktion</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Die HLL_COMBINE_SKETCHES ist eine skalare Funktion, die zwei HLLLSKETCH-Werte als Eingabe verwendet und zu einem einzigen HLSKETCH kombiniert.</p><p>Bei der Kombination von zwei oder mehr HyperLogLog-Skizzen handelt es sich um eine neue HLLSKETCH, die Informationen über die Vereinigung der einzelnen Werte, die jede Eingabeskizze darstellt, kapselt.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_HLL_COMBINE_SKETCHES" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_HLL_COMBINE_SKETCHES-synopsis">Syntax</a><a href="#r_HLL_COMBINE_SKETCHES-argument">Argument</a><a href="#r_HLL_COMBINE_SKETCHES-return-type">Rückgabetyp</a><a href="#r_HLL_COMBINE_SKETCHES-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_HLL_COMBINE_SKETCHES">HLL_COMBINE_SKETCHES-Funktion</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Die HLL_COMBINE_SKETCHES ist eine skalare Funktion, die zwei HLLLSKETCH-Werte als Eingabe verwendet und zu einem einzigen HLSKETCH kombiniert.</p><p>Die Kombination von zwei oder mehr  HyperLogLog Skizzen ist eine neue HLLSKETCH, die Informationen über die Vereinigung der verschiedenen Werte kapselt, die jede Eingabeskizze darstellt.</p>
           <h2 id="r_HLL_COMBINE_SKETCHES-synopsis">Syntax</h2>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">HLL_COMBINE_SKETCHES (<em>hllsketch_expression1</em>, <em>hllsketch_expression2</em>)</code></pre>
         
@@ -66,7 +66,7 @@
           <p>Die HLL_COMBINE_SKETCHES-Funktion gibt einen HLLSKETCH-Typ zurück.</p>
         
           <h2 id="r_HLL_COMBINE_SKETCHES-examples">Beispiele</h2>
-          <p>Im folgenden Beispiel werden die kombinierten HLLSKETCH-Werte in der Tabelle <code class="code">hll_table</code> zurückgegeben.</p>
+          <p>Im folgenden Beispiel werden die kombinierten HLLSKETCH-Werte in der Tabelle  zurückgegeben <code class="code">hll_table</code>.</p>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">WITH tbl1(x, y)
      AS (SELECT Hll_create_sketch(1),
                 Hll_create_sketch(2)

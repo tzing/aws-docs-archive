@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">Tabellenspalten</a><a href="#SYS_QUERY_DETAIL-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SYS_QUERY_DETAIL, um Details für Abfragen auf Schrittebene anzuzeigen. Jede Zeile stellt einen Schritt aus einer bestimmten WLM-Abfrage mit Details dar. Diese Ansicht enthält viele Arten von Abfragen wie DDL-, DML- und Dienstprogrammbefehle (z. B. copy und unload). Einige Spalten sind je nach Abfragetyp möglicherweise nicht relevant. Beispielsweise ist external_scanned_bytes für interne Tabellen nicht relevant.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Eine Abfrage, die keine entsprechende umgeschriebene Abfrage hat, hat nur einen Eintrag in der Ansicht SYS_QUERY_HISTORY, nicht in der Ansicht SYS_QUERY_DETAIL.</p></div></div><p>SYS_QUERY_DETAIL ist für alle Benutzer sichtbar. Superuser können alle Zeilen anzeigen, während normale Benutzer nur die Metadaten anzeigen können, auf die sie Zugriff haben.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">Tabellenspalten</a><a href="#SYS_QUERY_DETAIL-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SYS_QUERY_DETAIL, um Details für Abfragen auf Schrittebene anzuzeigen. Jede Zeile stellt einen Schritt aus einer bestimmten WLM-Abfrage mit Details dar. Diese Ansicht enthält viele Arten von Abfragen wie DDL-, DML- und Dienstprogrammbefehle (z. B. copy und unload). Einige Spalten sind je nach Abfragetyp möglicherweise nicht relevant. Beispielsweise ist external_scanned_bytes für interne Tabellen nicht relevant.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Eine Abfrage, die keine entsprechende umgeschriebene Abfrage hat, hat nur einen Eintrag in der Ansicht SYS_QUERY_HISTORY, nicht in der Ansicht SYS_QUERY_DETAIL.</p></div></div><p>SYS_QUERY_DETAIL ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p>
             <h2 id="SYS_QUERY_DETAIL-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c49b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c51b9b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -65,17 +65,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">child_query_sequence</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Reihenfolge der neu geschriebenen Benutzerabfrage, beginnend mit 1.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">stream_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Stream-Kennung des Abfrage-Streams.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Segmentkennung des Abfrageausführungssegments.</td>
                         </tr>
                         <tr>
@@ -85,7 +85,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">step_name</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Schrittname in einem Segment. Zum Beispiel <code class="code">scan</code>, <code class="code">hash</code>, <code class="code">agg</code> und andere.</td>
                         </tr>
                         <tr>
@@ -99,18 +99,18 @@
                             <td tabindex="-1">Der Tabellenname des Schritts, der ausgeführt wird.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">is_rrsscan</td>
+                            <td tabindex="-1">is_rrscan</td>
                             <td tabindex="-1">character</td>
                             <td tabindex="-1">Ein Wert, der angibt, ob ein Schritt ein Scanschritt ist. „True“ (t) zeigt an, dass für diesen Schritt ein Scan mit Bereichseinschränkung durchgeführt wurde.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">start_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Der Zeitpunkt, zu dem der Abfrageschritt begann. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">end_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Der Zeitpunkt, an dem der Abfrageschritt abgeschlossen wurde.</td>
                         </tr>
                         <tr>
@@ -120,7 +120,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">Warnung</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Die Beschreibung des Warnungsereignisses.</td>
                         </tr>
                         <tr>
@@ -166,18 +166,18 @@
                         
                         <tr>
                             <td tabindex="-1">Quelle</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Typ des Datenbankobjekts, das gescannt wurde. Diese Spalte hat nur dann einen Wert, wenn die Zeile <em>Schrittname</em> den Wert <code class="code">scan</code> hat.</td>
                         </tr>
                         
                         <tr>
                             <td tabindex="-1">data_skewness</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Schiefe der Verteilung der Ausgabezeilen auf alle Schritte. Eine Zahl im Bereich von 0 bis 100 %. Je größer die Zahl ist, desto unausgewogener ist die Verteilung.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">time_skewness</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Schiefe der Verteilung der Ausführungszeiten auf alle Schritte. Eine Zahl im Bereich von 0 bis 100 %. Je größer die Zahl ist, desto unausgewogener ist die Verteilung.</td>
                         </tr>
                         
@@ -196,6 +196,12 @@
                             <td tabindex="-1">spilled_block_remote_disk</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">Die Anzahl der Blöcke, die an Amazon Simple Storage Service weitergegeben wurden.</td>
+                        </tr>
+                        <tr>
+                            
+                            <td tabindex="-1">step_attribute</td>
+                            <td tabindex="-1">character(64)</td>
+                            <td tabindex="-1">Enthält Informationen zum zugehörigen Schritt. Mögliche Werte für Scan-Schritte: <code class="code">multi-dimensional</code>.</td>
                         </tr>
                         
      

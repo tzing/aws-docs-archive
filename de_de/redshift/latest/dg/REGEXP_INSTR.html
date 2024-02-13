@@ -37,7 +37,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "Zeichenfolgefunktionen",
+        "name" : "Zeichenfolgenfunktionen",
         "item" : "https://docs.aws.amazon.com/de_de/redshift/latest/dg/String_functions_header.html"
       },
       {
@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_INSTR" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#REGEXP_INSTR-synopsis">Syntax</a><a href="#REGEXP_INSTR-arguments">Argumente</a><a href="#REGEXP_INSTR-return-type">Rückgabetyp</a><a href="#REGEXP_INSTR-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="REGEXP_INSTR">Die Funktion REGEXP_INSTR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Durchsucht eine Zeichenfolge nach einem regulären Ausdrucksmuster und gibt eine Ganzzahl zurück, die die Anfangs- oder Endposition der übereinstimmenden Unterzeichenfolge angibt. Wenn keine Übereinstimmung gefunden wird, gibt die Funktion <code class="code">0</code> zurück. REGEXP_INSTR ist der Funktion <a href="./r_POSITION.html">POSITION</a> ähnlich. Sie können damit jedoch eine Zeichenfolge nach einem regulären Ausdrucksmuster durchsuchen. Weitere Informationen zu regulären Ausdrücken finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_INSTR" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#REGEXP_INSTR-synopsis">Syntax</a><a href="#REGEXP_INSTR-arguments">Argumente</a><a href="#REGEXP_INSTR-return-type">Rückgabetyp</a><a href="#REGEXP_INSTR-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="REGEXP_INSTR">Die Funktion REGEXP_INSTR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Durchsucht eine Zeichenfolge nach einem regulären Ausdrucksmuster und gibt eine Ganzzahl zurück, die die Anfangs- oder Endposition der übereinstimmenden Unterzeichenfolge angibt. Wenn keine Übereinstimmung gefunden wird, gibt die Funktion <code class="code">0</code> zurück. REGEXP_INSTR ist der Funktion <a href="./r_POSITION.html">POSITION</a> ähnlich. Sie können damit jedoch eine Zeichenfolge nach einem regulären Ausdrucksmuster durchsuchen. Weitere Informationen zu regulären Ausdrücken finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p>
             <h2 id="REGEXP_INSTR-synopsis">Syntax</h2>
 
 
@@ -73,7 +73,7 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>Ein Zeichenfolgenliteral, das ein Muster für reguläre Ausdrücke darstellt. Weitere Informationen finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p>
+                     <p>Ein UTF-8-Zeichenfolgenliteral, das ein reguläres Ausdrucksmuster darstellt. Weitere Informationen finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p>
                   </dd>
                 
                   <dt><span class="term"> <em>position</em> </span></dt>

@@ -36,13 +36,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#tutorial-query-nested-data" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#tutorial-nested-data-overview">Übersicht</a><a href="#tutorial-nested-data-create-table">Schritt 1: Erstellen einer externen Tabelle mit verschachtelten Daten</a><a href="#tutorial-query-nested-data-sqlextensions">Schritt 2: Abfragen Ihrer verschachtelten Daten in Amazon S3 mit SQL-Erweiterungen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="tutorial-query-nested-data">Tutorial: Abfragen verschachtelter Daten mit Amazon Redshift Spectrum</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#tutorial-query-nested-data" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#tutorial-nested-data-overview">Übersicht</a><a href="#tutorial-nested-data-create-table">Schritt 1: Erstellen einer externen Tabelle mit verschachtelten Daten</a><a href="#tutorial-query-nested-data-sqlextensions">Schritt 2: Abfragen Ihrer verschachtelten Daten in Amazon S3 mit SQL-Erweiterungen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="tutorial-query-nested-data">Tutorial: Abfragen verschachtelter Daten mit Amazon Redshift Spectrum</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
         <h2 id="tutorial-nested-data-overview">Übersicht</h2>
                 
         <p>Amazon Redshift Spectrum unterstützt das Abfragen verschachtelter Daten in den Dateiformaten ORC, JSON und Ion. Redshift Spectrum greift mittels externer Tabellen auf die Daten zu. Sie können externe Tabellen erstellen, die die komplexen Datentypen <code class="code">struct</code>, <code class="code">array</code> und <code class="code">map</code> verwenden.</p>
         <p>Angenommen, Ihre Datendatei enthält die folgenden Daten in Amazon S3 in einem Ordner mit dem Namen <code class="code">customers</code>. Obwohl kein einziges Stammelement vorhanden ist, stellt jedes JSON-Objekt in diesen Stichprobendaten eine Zeile in einer Tabelle dar. </p>
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
-<span>{</span>"id": 1,
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>"id": 1,
  "name": <span>{</span>"given": "John", "family": "Smith"},
  "phones": ["123-457789"],
  "orders": [<span>{</span>"shipdate": "2018-03-01T11:59:59.000Z", "price": 100.50},
@@ -57,10 +56,10 @@
  "name": <span>{</span>"given": "Andy", "family": "Jones"},
  "phones": [],
  "orders": [<span>{</span>"shipdate": "2018-03-02T08:02:15.000Z", "price": 13.50}]
-}    
-</code></pre>        
-         
-        <p>Sie können diese Daten mit Redshift Spectrum abfragen. Das folgende Tutorial veranschaulicht die Vorgehensweise.</p>
+}  </code></pre>        
+   
+        
+        <p>Sie können mithilfe von Amazon Redshift Spectrum verschachtelte Daten in Dateien abfragen. Das folgende Tutorial veranschaulicht die Vorgehensweise hierfür mit Apache-Parquet-Daten.</p> 
         <p>Voraussetzungen für das Tutorial, Verfahrensschritte und Anwendungsfälle verschachtelter Daten finden Sie in den folgenden Themen:</p>
         <div class="itemizedlist">
              
@@ -78,7 +77,7 @@
             </li><li class="listitem">
                 <p><a href="./nested-data-use-cases.html">Anwendungsfälle für verschachtelte Daten </a></p>
             </li><li class="listitem">
-                <p><a href="./nested-data-restrictions.html">Einschränkungen für verschachtelte Daten</a></p>
+                <p><a href="./nested-data-restrictions.html">Einschränkungen bei verschachtelten Daten (Vorschau)</a></p>
             </li><li class="listitem">
                 <p><a href="./serializing-complex-JSON.html">Serialisieren komplexer verschachtelter JSON-Datentypen</a></p>
             </li></ul></div>
@@ -104,34 +103,28 @@ create external database if not exists;</code></pre>
         <p>Sie können die <a href="https://s3.amazonaws.com/redshift-downloads/tickit/spectrum/customers/customer_file1" rel="noopener noreferrer" target="_blank"><span>Quelldaten</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> anzeigen, indem Sie sie von Amazon S3 herunterladen. </p>
 
         <p>Um die externe Tabelle für dieses Tutorial zu erstellen, führen Sie den folgenden Befehl aus. </p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers (
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones array&lt;varchar(20)&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';            
-        </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';     </code></pre>
         
-        <p>Im voranstehenden Beispiel verwendet die externe Tabelle <code class="code">spectrum.customers</code> die Datentypen <code class="code">struct</code> und <code class="code">array</code>, um Spalten mit verschachtelten Daten zu definieren. Amazon Redshift Spectrum unterstützt das Abfragen verschachtelter Daten in den Dateiformaten ORC, JSON und Ion. Der Parameter <code class="code">LOCATION</code> muss auf den Amazon S3-Ordner verweisen, der die verschachtelten Daten oder Dateien enthält. </p>
+        <p>Im voranstehenden Beispiel verwendet die externe Tabelle <code class="code">spectrum.customers</code> die Datentypen <code class="code">struct</code> und <code class="code">array</code>, um Spalten mit verschachtelten Daten zu definieren. Amazon Redshift Spectrum unterstützt das Abfragen verschachtelter Daten in den Dateiformaten ORC, JSON und Ion. Der Parameter <code class="code">STORED AS</code> für Apache-Parquet-Dateien lautet <code class="code">PARQUET</code>. Der Parameter <code class="code">LOCATION</code> muss auf den Amazon S3-Ordner verweisen, der die verschachtelten Daten oder Dateien enthält. Weitere Informationen finden Sie unter <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>.</p>
         
-        <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Amazon Redshift unterstützt keine komplexen Datentypen in Amazon-Redshift-Datenbanktabellen. Sie können komplexe Datentypen nur bei externen Redshift Spectrum-Tabellen verwenden.</p></div></div>
+        
         <p>Sie können die Typen <code class="code">array</code> und <code class="code">struct</code> auf jeder beliebigen Ebene verschachteln. So können Sie z. B. eine Spalte mit dem Namen <code class="code">toparray</code> definieren; siehe folgendes Beispiel.</p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-toparray array&lt;struct&lt;nestedarray:
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">toparray array&lt;struct&lt;nestedarray:
          array&lt;struct&lt;morenestedarray: 
-         array&lt;string&gt;&gt;&gt;&gt;&gt;                
-            </code></pre>
+         array&lt;string&gt;&gt;&gt;&gt;&gt;</code></pre>
         <p>Außerdem können Sie wie für Spalte <code class="code">struct</code> im folgenden Beispiel veranschaulicht auch <code class="code">x</code>-Typen verschachteln.</p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-x struct&lt;a: string,
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">x struct&lt;a: string,
          b: struct&lt;c: integer,
                    d: struct&lt;e: string&gt;
                   &gt;
-        &gt;
-            </code></pre>
+        &gt;</code></pre>
    
      
                 <h2 id="tutorial-query-nested-data-sqlextensions">Schritt 2: Abfragen Ihrer verschachtelten Daten in Amazon S3 mit SQL-Erweiterungen</h2>
@@ -139,143 +132,112 @@ x struct&lt;a: string,
                  
                     <h3 id="nested-data-sqlextension1">Erweiterung 1: Zugriff auf Structs-Spalten</h3>
                     <p>Sie können Daten aus <code class="code">struct</code>-Spalten extrahieren. Dazu verwenden Sie eine punktierte Schreibweise, die Feldnamen in Pfade verkettet. Die folgende Abfrage gibt z. B. Vor- und Nachnamen von Kunden zurück. Auf den Vornamen wird über den langen Pfad <code class="code">c.name.given</code> zugegriffen. Auf den Nachnamen wird über den langen Pfad <code class="code">c.name.family</code> zugegriffen. </p>    
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, c.name.given, c.name.family
-FROM   spectrum.customers c;
-          
-                    </code></pre>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, c.name.given, c.name.family
+FROM   spectrum.customers c;</code></pre>
                     <p>Die vorhergehende Abfrage gibt die folgenden Daten zurück.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id | given | family
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id | given | family
 ---|-------|-------
 1  | John  | Smith
 2  | Jenny | Doe
 3  | Andy  | Jones
-(3 rows)
-</code></pre>
+(3 rows)</code></pre>
                     <p>Ein <code class="code">struct</code>-Element kann eine Spalte eines anderen <code class="code">struct</code>-Elements sein, das wiederum auf einer beliebigen anderen Ebene eine Spalte eines anderen <code class="code">struct</code>-Elements sein kann. Die Pfade, die auf Spalten in solchen tief verschachtelten <code class="code">struct</code>-Elementen zugreifen können willkürlich lang sein. Betrachten Sie sich z. B. die Definition der Spalte <code class="code">x</code> im folgenden Beispiel.</p>     
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-x struct&lt;a: string,
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">x struct&lt;a: string,
          b: struct&lt;c: integer, 
                       d: struct&lt;e: string&gt;
                   &gt;
-        &gt;
-</code></pre>        
+        &gt;</code></pre>        
         <p>Sie können auf die Daten in <code class="code">e</code> als <code class="code">x.b.d.e</code> zugreifen.</p>
     
-    
-                    <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p><code class="code">struct</code>-Elemente dienen nur zur Beschreibung des Pfades zu den Feldern, die sie enthalten. Sie können in einer Abfrage nicht direkt auf sie zugreifen oder ihren Inhalt mit einer Abfrage zurückgeben.</p></div></div>    
+                    
                     
                    
                  
                     <h3 id="nested-data-sqlextension2">Erweiterung 2: Übergreifende Arrays in einer FROM-Klausel</h3>
-                    <p>Sie können Daten aus <code class="code">array</code>-Spalten (und damit auch aus <code class="code">map</code>-Spalten) extrahieren, indem Sie die <code class="code">array</code>-Spalten in einer <code class="code">FROM</code>-Klausel anstelle von Tabellennamen angeben. Die Erweiterung gilt für die <code class="code">FROM</code>-Klausel der Hauptabfrage sowie auch für die <code class="code">FROM</code>-Klauseln von Unterabfragen. Sie können auf <code class="code">array</code>-Elemente nicht nach Position, wie z. B. <code class="code">c.orders[0]</code>, verweisen. </p>
+                    <p>Sie können Daten aus <code class="code">array</code>-Spalten (und damit auch aus <code class="code">map</code>-Spalten) extrahieren, indem Sie die <code class="code">array</code>-Spalten in einer <code class="code">FROM</code>-Klausel anstelle von Tabellennamen angeben. Die Erweiterung gilt für die <code class="code">FROM</code>-Klausel der Hauptabfrage sowie auch für die <code class="code">FROM</code>-Klauseln von Unterabfragen.</p>
+                        
+                <p>Sie können auf <code class="code">array</code>-Elemente nach Position verweisen, also beispielsweise <code class="code">c.orders[0]</code> angeben (Vorschau).</p>
                     <p>Durch das Kombinieren von übergreifenden <code class="code">arrays</code> mit Joins können Sie die Verschachtelung auf verschiedene Weise aufheben, wie in den folgenden Anwendungsfällen beschrieben. </p>
                      
                         <h4 id="unnest-inner-joins">Aufheben der Verschachtelung mit Inner Joins</h4>
                         <p>Die folgende Abfrage wählt Kunden-IDs und Auftragslieferdaten für Kunden aus, für die Aufträgen vorhanden sind. Die SQL-Erweiterung in der FROM-Klausel <code class="code">c.orders
                         o</code> ist vom Alias <code class="code">c</code> abhängig.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, o.shipdate
-FROM   spectrum.customers c, c.orders o 
-
-                    </code></pre> 
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, o.shipdate
+FROM   spectrum.customers c, c.orders o </code></pre> 
                         <p>Für jeden Kunden <code class="code">c</code>, für den Aufträge vorhanden sind, gibt die <code class="code">FROM</code>-Klausel für jeden Auftrag <code class="code">o</code> des Kunden <code class="code">c</code> eine Zeile zurück. Diese Zeile kombiniert die Kundenzeile <code class="code">c</code> und die Auftragszeile <code class="code">o</code>. Die <code class="code">SELECT</code>-Klausel behält dann nur <code class="code">c.id</code> und <code class="code">o.shipdate</code> bei. Dies führt zu folgendem Ergebnis.</p>
-                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id|      shipdate
+                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id|      shipdate
 --|----------------------
 1 |2018-03-01  11:59:59
 1 |2018-03-01  09:10:00
 3 |2018-03-02  08:02:15
-(3 rows)
-                         </code></pre>   
+(3 rows) </code></pre>   
                         <p>Der Alias <code class="code">c</code> bietet Zugriff auf die Kundenfelder, und der Alias <code class="code">o</code> bietet Zugriff auf die Auftragsfelder. </p>
                         <p>Die Semantik ist mit Standard-SQL vergleichbar. Sie können sich die <code class="code">FROM</code>-Klausel so vorstellen, als würde die folgende verschachtelte Schleife ausgeführt werden, gefolgt von <code class="code">SELECT</code> zur Auswahl der auszugebenden Felder. </p>
-                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-for each customer c in spectrum.customers
+                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">for each customer c in spectrum.customers
   for each order o in c.orders
-     output c.id and o.shipdate
-                        </code></pre>
+     output c.id and o.shipdate </code></pre>
                         <p>Daher erscheinen Kunden, für die keine Aufträge vorhanden sind, nicht im Ergebnis.</p>
                         <p>Sie können sich das auch so vorstellen, als ob die <code class="code">FROM</code>-Klausel einen <code class="code">JOIN</code> mit der <code class="code">customers</code>-Tabelle und dem <code class="code">orders</code>-Array durchführen wurde. Sie können die Abfrage daher auch wie im folgenden Beispiel veranschaulicht schreiben.</p>
-                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, o.shipdate
-FROM   spectrum.customers c INNER JOIN c.orders o ON true
-                        </code></pre>
+                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, o.shipdate
+FROM   spectrum.customers c INNER JOIN c.orders o ON true </code></pre>
                         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Wenn ein Schema mit dem Namen <code class="code">c</code> mit einer Tabelle mit dem Namen <code class="code">orders</code> vorhanden ist, dann bezieht sich <code class="code">c.orders</code> auf die Tabelle <code class="code">orders</code> und nicht auf die Array-Spalte von <code class="code">customers</code>.</p></div></div>
                  
                  
                     <h4 id="unnest-left-joins">Aufheben der Verschachtelung mit Left Joins</h4>
                     <p>Die folgende Abfrage gibt alle Kundennamen und deren Aufträge aus. Für Kunden, die keinen Auftrag erteilt haben, wird dennoch der Kundenname zurückgegeben. In diesem Fall ist der Wert der Auftragsspalten jedoch NULL, wie im folgenden Beispiel für Jenny Doe veranschaulicht.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, c.name.given, c.name.family, o.shipdate, o.price
-FROM   spectrum.customers c LEFT JOIN c.orders o ON true
-                    </code></pre>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, c.name.given, c.name.family, o.shipdate, o.price
+FROM   spectrum.customers c LEFT JOIN c.orders o ON true</code></pre>
                     
                     <p>Die vorhergehende Abfrage gibt die folgenden Daten zurück.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id  |  given  | family  |    shipdate          | price
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id  |  given  | family  |    shipdate          | price
 ----|---------|---------|----------------------|--------
  1  |  John   | Smith   | 2018-03-01  11:59:59 | 100.5
  1  |  John   | Smith   | 2018-03-01  09:10:00 |  99.12
  2  |  Jenny  | Doe     |                      |
  3  |  Andy   | Jones   | 2018-03-02  08:02:15 |  13.5
- (4 rows)
-                    </code></pre>
+ (4 rows)</code></pre>
                  
                 
                  
                     <h3 id="nested-data-sqlextension3">Erweiterung 3: Direkter Zugriff auf ein Array von Skalaren über einen Alias </h3>
-                    <p>Wenn sich der Alias <code class="code">p</code> in einer <code class="code">FROM</code>-Klausel über ein Array von Skalaren erstreckt, bezeichnet die Abfrage die <code class="code">p</code>-Werte einfach als <code class="code">p</code>. Die folgende Abfrage ergibt z. B. Paare aus Kundennamen und Telefonnummern.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.name.given, c.name.family, p AS phone
-FROM   spectrum.customers c LEFT JOIN c.phones p ON true                        
-                    </code></pre>
+                    <p>Wenn sich der Alias <code class="code">p</code> in einer <code class="code">FROM</code>-Klausel über ein Array von Skalaren erstreckt, bezeichnet die Abfrage die <code class="code">p</code>-Werte als <code class="code">p</code>. Die folgende Abfrage ergibt z. B. Paare aus Kundennamen und Telefonnummern.</p>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.name.given, c.name.family, p AS phone
+FROM   spectrum.customers c LEFT JOIN c.phones p ON true  </code></pre>
                     <p>Die vorhergehende Abfrage gibt die folgenden Daten zurück.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-given  |  family  |  phone
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">given  |  family  |  phone
 -------|----------|-----------
 John   | Smith    | 123-4577891
 Jenny  | Doe      | 858-8675309
 Jenny  | Doe      | 415-9876543
 Andy   | Jones    | 
-(4 rows)
-                    </code></pre>
+(4 rows) </code></pre>
                      
                  
                     <h3 id="nested-data-sqlextension4">Erweiterung 4: Zugriff auf Zuordnungselemente </h3>
                     <p>Redshift Spectrum verarbeitet den <code class="code">map</code>-Datentyp als einen <code class="code">array</code>-Typ, der <code class="code">struct</code>-Typen mit einer <code class="code">key</code>-Spalte und einer <code class="code">value</code>-Spalte enthält. <code class="code">key</code> muss vom Typ <code class="code">scalar</code> sein; der Wert kann ein beliebiger Datentyp sein. </p>
                     <p>Der folgende Code erstellt z. B. eine externe Tabelle mit einem <code class="code">map</code>-Element zum Speichern von Telefonnummern.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-
-CREATE EXTERNAL TABLE spectrum.customers2 (
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers2 (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones map&lt;varchar(20), varchar(20)&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';
-                    </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';</code></pre>
                     <p>Da sich ein <code class="code">map</code>-Typ wie ein <code class="code">array</code>-Typ mit den Spalten <code class="code">key</code> und <code class="code">value</code> verhält, können Sie sich die vorhergehenden Schemen so vorstellen, als wären sie die folgenden Schemen.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers3 (
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers3 (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones array&lt;struct&lt;key:varchar(20), value:varchar(20)&gt;&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';  
-                    </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';   </code></pre>
                     
                     <p>Die folgende Abfrage gibt die Namen von Kunden mit Mobiltelefonnummer und die Nummer für jeden Namen zurück. Die Zuordnungsabfrage wird genauso wie die Abfrage eines verschachtelten <code class="code">array</code> aus <code class="code">struct</code>-Typen verarbeitet. Die folgende Abfrage gibt nur Daten zurück, wenn Sie die externe Tabelle wie zuvor beschrieben erstellt haben. </p>   
-                     <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, p.value 
+                     <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, p.value 
 FROM   spectrum.customers c, c.phones p 
-WHERE  p.key = 'mobile'                    
-                         
-                     </code></pre>   
+WHERE  p.key = 'mobile';  </code></pre>   
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Der <code class="code">key</code>-Wert für ein <code class="code">map</code>-Element ist bei den Dateitypen Ion und JSON vom Typ <code class="code">string</code>.</p></div></div>      
                     
                     

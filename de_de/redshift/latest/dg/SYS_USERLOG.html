@@ -42,16 +42,16 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_USERLOG" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_USERLOG-table-columns">Tabellenspalten</a><a href="#SYS_USERLOG-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_USERLOG">SYS_USERLOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Zeichnet die Details der folgenden Änderungen an einem Datenbankbenutzer auf:</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_USERLOG" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_USERLOG-table-columns">Tabellenspalten</a><a href="#SYS_USERLOG-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="SYS_USERLOG">SYS_USERLOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Zeichnet die Details der folgenden Änderungen an einem Datenbankbenutzer auf:</p><div class="itemizedlist">
              
              
              
              
-        <ul class="itemizedlist"><li class="listitem"><p>Benutzer erstellen</p></li><li class="listitem"><p>Benutzer entfernen</p></li><li class="listitem"><p>Benutzer ändern (umbenennen)</p></li><li class="listitem"><p>Benutzer ändern (Eigenschaften ändern)</p></li></ul></div><p>Sie können diese Ansicht abfragen, um Informationen zu Serverless-Arbeitsgruppen und bereitgestellten Clustern einzusehen.</p><p>Diese Ansicht ist nur für Superuser sichtbar. Weitere Informationen finden Sie unter <a href="https://docs.aws.amazon.com/redshift/latest/dg/cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit von Daten in Systemtabellen und Ansichten</a>.</p>
+        <ul class="itemizedlist"><li class="listitem"><p>Benutzer erstellen</p></li><li class="listitem"><p>Benutzer entfernen</p></li><li class="listitem"><p>Benutzer ändern (umbenennen)</p></li><li class="listitem"><p>Benutzer ändern (Eigenschaften ändern)</p></li></ul></div><p>Sie können diese Ansicht abfragen, um Informationen zu Serverless-Arbeitsgruppen und bereitgestellten Clustern einzusehen.</p><p>SYS_USERLOG ist nur für Superuser sichtbar. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p>
             <h2 id="SYS_USERLOG-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c77c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c81c11b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -80,27 +80,27 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">has_create_db_privs</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">„True“ (der Wert 1) zeigt an, dass der Benutzer über Berechtigungen zum Erstellen von Datenbanken verfügt.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">is_superuser</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Wenn „True“ (der Wert 1) gilt, kann der Benutzer Systemkataloge aktualisieren.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">has_update_catalog_privs</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Wenn „True“ (der Wert 1) gilt, kann der Benutzer Systemkataloge aktualisieren.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">password_expiration</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Das Ablaufdatum des Passworts.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Prozess-ID.</td>
                         </tr>
                         <tr>
@@ -110,7 +110,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">record_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Zeitpunkt des Beginns der Abfrage, nach UTC.</td>
                         </tr>
                     </table></div></div>

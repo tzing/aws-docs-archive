@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_EXTERNAL_TABLE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_EXTERNAL_TABLE-privileges">Erforderliche Berechtigungen</a><a href="#r_CREATE_EXTERNAL_TABLE-synopsis">Syntax</a><a href="#r_CREATE_EXTERNAL_TABLE-parameters">Parameter</a><a href="#r_CREATE_EXTERNAL_TABLE_examples_link">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_EXTERNAL_TABLE">CREATE EXTERNAL TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Erstellt eine neue externe Tabelle im angegebenen Schema. Alle externen Tabellen müssen in einem externen Schema erstellt werden. Externe Schemata und externe Tabellen unterstützen keine Suchpfade. Weitere Informationen finden Sie unter <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>.</p><p>Zusätzlich zu externen Tabellen, die mittels des Befehls CREATE EXTERNAL TABLE erstellt werden, kann Amazon Redshift externe Tabellen referenzieren, die in einem AWS Glue- oder AWS Lake Formation-Katalog oder in einem Apache-Hive-Metastore definiert sind. Verwenden Sie den Befehl <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>, um eine externe Datenbank zu registrieren, die im externen Katalog definiert ist, und um die externen Tabellen für die Verwendung in Amazon Redshift zur Verfügung zu stellen. Wenn die externe Tabelle in einem AWS Glue- oder AWS Lake Formation-Katalog oder Hive-Metastore vorhanden ist, müssen Sie die Tabelle nicht mit CREATE EXTERNAL TABLE erstellen. Um externe Tabellen anzuzeigen, führen Sie eine Abfrage für die Systemansicht <a href="./r_SVV_EXTERNAL_TABLES.html">SVV_EXTERNAL_TABLES</a> aus. </p><p>Durch das Ausführen des Befehls CREATE EXTERNAL TABLE AS können Sie eine externe Tabelle basierend auf der Spaltendefinition aus einer Abfrage erstellen und die Ergebnisse dieser Abfrage in Amazon S3 schreiben. Die Ergebnisse liegen im Apache Parquet- oder im Textformat mit Trennzeichen vor. Wenn die externe Tabelle über mindestens einen Partitionsschlüssel verfügt, partitioniert Amazon Redshift neue Dateien entsprechend diesen Partitionsschlüsseln und registriert neue Partitionen automatisch im externen Katalog. Weitere Hinweise zu CREATE EXTERNAL TABLE AS finden Sie unter <a href="./r_CREATE_EXTERNAL_TABLE_usage.html">Nutzungshinweise</a>. </p><p>Sie können eine externe Tabelle mit der gleichen SELECT-Syntax abfragen, die Sie auch für andere Amazon-Redshift-Tabellen verwenden. Sie können auch die INSERT-Syntax verwenden, um neue Dateien in den Speicherort der externen Tabelle auf Amazon S3 zu schreiben. Weitere Informationen finden Sie unter <a href="./r_INSERT_external_table.html">INSERT (externe Tabelle)</a>.</p><p>Zum Erstellen einer Ansicht mit einer externen Tabelle fügen Sie die Klausel WITH NO SCHEMA BINDING in die <a href="./r_CREATE_VIEW.html">CREATE VIEW</a>-Aussage ein.</p><p>CREATE EXTERNAL TABLE kann nicht innerhalb einer Transaktion (BEGIN … END) ausgeführt werden. Weitere Informationen Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_EXTERNAL_TABLE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_EXTERNAL_TABLE-privileges">Erforderliche Berechtigungen</a><a href="#r_CREATE_EXTERNAL_TABLE-synopsis">Syntax</a><a href="#r_CREATE_EXTERNAL_TABLE-parameters">Parameter</a><a href="#r_CREATE_EXTERNAL_TABLE_examples_link">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_CREATE_EXTERNAL_TABLE">CREATE EXTERNAL TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Erstellt eine neue externe Tabelle im angegebenen Schema. Alle externen Tabellen müssen in einem externen Schema erstellt werden. Externe Schemata und externe Tabellen unterstützen keine Suchpfade. Weitere Informationen finden Sie unter <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>.</p><p>Zusätzlich zu externen Tabellen, die mittels des Befehls CREATE EXTERNAL TABLE erstellt werden, kann Amazon Redshift externe Tabellen referenzieren, die in einem AWS Glue- oder AWS Lake Formation-Katalog oder in einem Apache-Hive-Metastore definiert sind. Verwenden Sie den Befehl <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>, um eine externe Datenbank zu registrieren, die im externen Katalog definiert ist, und um die externen Tabellen für die Verwendung in Amazon Redshift zur Verfügung zu stellen. Wenn die externe Tabelle in einem AWS Glue- oder AWS Lake Formation-Katalog oder Hive-Metastore vorhanden ist, müssen Sie die Tabelle nicht mit CREATE EXTERNAL TABLE erstellen. Um externe Tabellen anzuzeigen, führen Sie eine Abfrage für die Systemansicht <a href="./r_SVV_EXTERNAL_TABLES.html">SVV_EXTERNAL_TABLES</a> aus. </p><p>Durch das Ausführen des Befehls CREATE EXTERNAL TABLE AS können Sie eine externe Tabelle basierend auf der Spaltendefinition aus einer Abfrage erstellen und die Ergebnisse dieser Abfrage in Amazon S3 schreiben. Die Ergebnisse liegen im Apache Parquet- oder im Textformat mit Trennzeichen vor. Wenn die externe Tabelle über mindestens einen Partitionsschlüssel verfügt, partitioniert Amazon Redshift neue Dateien entsprechend diesen Partitionsschlüsseln und registriert neue Partitionen automatisch im externen Katalog. Weitere Hinweise zu CREATE EXTERNAL TABLE AS finden Sie unter <a href="./r_CREATE_EXTERNAL_TABLE_usage.html">Nutzungshinweise</a>. </p><p>Sie können eine externe Tabelle mit der gleichen SELECT-Syntax abfragen, die Sie auch für andere Amazon-Redshift-Tabellen verwenden. Sie können auch die INSERT-Syntax verwenden, um neue Dateien in den Speicherort der externen Tabelle auf Amazon S3 zu schreiben. Weitere Informationen finden Sie unter <a href="./r_INSERT_external_table.html">INSERT (externe Tabelle)</a>.</p><p>Zum Erstellen einer Ansicht mit einer externen Tabelle fügen Sie die Klausel WITH NO SCHEMA BINDING in die <a href="./r_CREATE_VIEW.html">CREATE VIEW</a>-Aussage ein.</p><p>CREATE EXTERNAL TABLE kann nicht innerhalb einer Transaktion (BEGIN … END) ausgeführt werden. Weitere Informationen Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p>
          <h2 id="r_CREATE_EXTERNAL_TABLE-privileges">Erforderliche Berechtigungen</h2>
          <p>Zum Erstellen externer Tabellen müssen Sie der Eigentümer des externen Schemas oder ein Superuser sein. Mit dem Befehl ALTER SCHEMA können Sie den Besitzer eines externen Schemas ändern. Der Zugriff auf externe Tabellen wird durch den Zugriff auf die externen Schemata gesteuert. Sie können für eine externe Tabelle keine Berechtigungen gewähren (<a href="./r_GRANT.html">GRANT</a>) oder widerrufen (<a href="./r_REVOKE.html">REVOKE</a>). Sie gewähren oder widerrufen stattdessen das Recht USAGE für das externe Schema.</p>
          <p>Die <a href="./r_CREATE_EXTERNAL_TABLE_usage.html">Nutzungshinweise</a> enthalten zusätzliche Informationen zu spezifischen Berechtigungen für externe Tabellen.</p>
@@ -90,7 +90,7 @@ LOCATION <span>{</span> 's3://<em>bucket/folder</em>/' }
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum_db.spectrum_schema.test (c1 int)
 stored as parquet
 location 's3://mybucket/myfolder/';</code></pre>
-                  <p>Wenn die angegebene Datenbank oder das angegebene Schema nicht vorhanden sind, wird die Tabelle nicht erstellt, und die Anweisung gibt einen Fehler zurück. Sie können in den Systemdatenbanken <code class="code">template0</code>, <code class="code">template1</code> und <code class="code">padb_harvest</code> keine Tabellen oder Ansichten erstellen.</p>
+                  <p>Wenn die angegebene Datenbank oder das angegebene Schema nicht vorhanden sind, wird die Tabelle nicht erstellt, und die Anweisung gibt einen Fehler zurück. Sie können in den Systemdatenbanken <code class="code">template0</code>, <code class="code">template1</code>, <code class="code">padb_harvest</code> oder <code class="code">sys:internal</code> keine Tabellen oder Ansichten erstellen.</p>
                   <p>Der Tabellenname muss für das angegebene Schema eindeutig sein. </p>
                   <p>Weitere Informationen zu gültigen Namen finden Sie unter <a href="./r_names.html">Namen und Kennungen</a>.</p>
                </dd>
@@ -151,7 +151,7 @@ location 's3://mybucket/myfolder/';</code></pre>
 
                         <p>DATE – kann nur mit Text-, Parquet- oder ORC-Datendateien oder als Partitionsspalte verwendet werden.</p>
                      </li><li class="listitem">
-                        <p>TIMESTAMP</p>
+                        <p>TIMESTAMP (ZEITSTEMPEL)</p>
                      </li></ul></div>
                   
                   <p></p>
@@ -229,7 +229,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                   <dl>
                         <dt><span class="term">'<em>serde_name</em>'</span></dt>
                         <dd>
-                           <p>Der Name von SerDe. Sie können die folgenden Formate angeben:</p>
+                           <p>Der Name der  SerDe. Sie können die folgenden Formate angeben:</p>
                            <div class="itemizedlist">
                                
                                
@@ -244,7 +244,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                  <p>com.amazonaws.glue.serde.GrokSerDe </p>
                               </li><li class="listitem">
                                  <p>org.apache.hadoop.hive.serde2.OpenCSVSerde </p>
-                                 <p>Dieser Parameter unterstützt die folgende SerDe-Eigenschaft für OpenSvSerde: </p>
+                                 <p>Dieser Parameter unterstützt die folgende  SerDe Eigenschaft für OpenCSVSerde : </p>
                                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">'wholeFile' = 'true' </code></pre>
                                  <p>Setzen Sie die Eigenschaft <code class="code">wholeFile</code> auf <code class="code">true</code>, um Neue-Zeile-Zeichen (\n) innerhalb von Zeichenfolgen in Anführungszeichen für OpenCSV-Anforderungen richtig zu parsen. </p>
 
@@ -264,7 +264,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                     </li><li class="listitem">
                                        <p>Zeitstempel in Ion und JSON müssen sich im Format ISO8601 befinden.</p>
                                     </li><li class="listitem">
-                                       <p>Dieser Parameter unterstützt die folgende SerDe-Eigenschaft für JsonSerDe: </p>
+                                       <p>Dieser Parameter unterstützt die folgende  SerDe Eigenschaft für  JsonSerDe: </p>
                                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">'strip.outer.array'='true' </code></pre>
                                        <p>Verarbeitet Ion/JSON-Dateien mit einem sehr großen Array in äußeren Klammern ( [ … ] ) so, als ob mehrere JSON-Datensätze innerhalb des Arrays enthalten sind. </p>
                                     </li></ul></div>
@@ -302,11 +302,11 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                   <ul class="itemizedlist"><li class="listitem">
                         <p>PARQUET</p>
                      </li><li class="listitem">
-                        <p>RCFILE (nur für Daten, die ColumnarSerDe und nicht LazyBinaryColumnarSerDe verwenden)</p>
+                        <p>RCFILE ( ColumnarSerDe nur für Daten, die verwenden, nicht  LazyBinaryColumnarSerDe)</p>
                      </li><li class="listitem">
                         <p>SEQUENCEFILE</p>
                      </li><li class="listitem">
-                        <p>TEXTFILE </p>
+                        <p>TEXTFILE (für Textdateien, einschließlich JSON-Dateien).</p> 
                      </li><li class="listitem">
                         <p>ORC </p>
                      </li><li class="listitem">
@@ -433,7 +433,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                
 
                            <dl>
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DISABLED (DEAKTIVIERT)</span></dt>
                                  <dd><p>Führt keine ungültige Zeichenbehandlung durch.</p></dd>
                                
                                  <dt><span class="term">FEHLER</span></dt>
@@ -464,7 +464,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                
                                
                            <dl>
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DISABLED (DEAKTIVIERT)</span></dt>
                                  <dd><p>Die ungültige Zeichenbehandlung ist deaktiviert.</p></dd>
                                
                                  <dt><span class="term">FEHLER</span></dt>
@@ -495,7 +495,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                  <dt><span class="term">SET_TO_NULL</span></dt>
                                  <dd><p>Ersetzt Daten, die die Spaltenbreite überschreiten, durch null.</p></dd>
                                
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DISABLED (DEAKTIVIERT)</span></dt>
                                  <dd><p>Führt keine Behandlung für überschüssige Bytes durch.</p></dd>
                                
                                  <dt><span class="term">FEHLER</span></dt>
@@ -523,7 +523,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                  <dt><span class="term">SET_TO_NULL</span></dt>
                                  <dd><p>Ersetzt Daten, die die Spaltenbreite überschreiten, durch null.</p></dd>
                                
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DISABLED (DEAKTIVIERT)</span></dt>
                                  <dd><p>Führt keine überzählige Zeichenbehandlung durch.</p></dd>
                                
                                  <dt><span class="term">FEHLER</span></dt>
@@ -547,7 +547,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                
                                
                            <dl>
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DISABLED (DEAKTIVIERT)</span></dt>
                                  <dd><p>Die Eigenschaft zum Umgang mit nicht übereinstimmenden Spalten ist deaktiviert.</p></dd>
                                
                                  <dt><span class="term">FEHLER</span></dt>

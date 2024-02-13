@@ -54,7 +54,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#copy-parameters-data-format" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#copy-json-data-file">JSON-Datendatei</a><a href="#copy-json-jsonpaths">JSONPaths-Datei</a><a href="#copy-json-jsonpath-expressions">JSONPath-Ausdrücke</a><a href="#using-jsonpath-with-avro">Verwenden von JSONPaths mit Avro-Daten</a><a href="#copy-parameters-columnar-data">Spaltendatenformat-Parameter</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="copy-parameters-data-format">Datenformatparameter</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Standardmäßig geht der COPY-Befehl davon aus, dass es sich bei den Quelldaten um UTF-8-Text mit Trennzeichen handelt. Das Standardtrennzeichen ist der senkrechte Strich (|). Wenn sich die Quelldaten in einem anderen Format befinden, verwenden Sie die folgenden Parameter, um das Datenformat anzugeben: </p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#copy-parameters-data-format" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#copy-json-data-file">JSON-Datendatei</a><a href="#copy-json-jsonpaths">JSONPaths-Datei</a><a href="#copy-json-jsonpath-expressions">JSONPath-Ausdrücke</a><a href="#using-jsonpath-with-avro">Verwenden von JSONPaths mit Avro-Daten</a><a href="#copy-parameters-columnar-data">Spaltendatenformat-Parameter</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="copy-parameters-data-format">Datenformatparameter</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Standardmäßig geht der COPY-Befehl davon aus, dass es sich bei den Quelldaten um UTF-8-Text mit Trennzeichen handelt. Das Standardtrennzeichen ist der senkrechte Strich (|). Wenn sich die Quelldaten in einem anderen Format befinden, verwenden Sie die folgenden Parameter, um das Datenformat anzugeben: </p><div class="itemizedlist">
              
              
              
@@ -466,7 +466,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
         <span>{</span>"name": "randomArrayItem", "type": "string"}
     ]
 }</code></pre>
-            <p>Im folgenden Beispiel wird eine JSONPaths-Datei gezeigt, die AvroPath-Ausdrücke verwendet, um das vorherige Schema zu referenzieren. </p>
+            <p>Das folgende Beispiel zeigt eine JSONPaths-Datei, die  AvroPath Ausdrücke verwendet, um auf das vorherige Schema zu verweisen. </p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "jsonpaths": [
         "$.id",
@@ -485,7 +485,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
             <dl>
                   <dt><span class="term">jsonpaths</span></dt>
                   <dd>
-                     <p>Der Name des JSON-Objekts, das die AvroPath-Ausdrücke enthält.</p>
+                     <p>Der Name des JSON-Objekts, das die AvroPath Ausdrücke enthält.</p>
                   </dd>
                 
                   <dt><span class="term">[ … ]</span></dt>
@@ -500,7 +500,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
                 
                   <dt><span class="term">"$.id",</span></dt>
                   <dd>
-                     <p>Das Ziel des AvroPath-Ausdrucks. In diesem Fall ist das Ziel das Element im <code class="code">"fields"</code>-Array mit dem Namen <code class="code">"id"</code>. Die Ausdrücke werden durch Kommas getrennt.</p>
+                     <p>Das Ziel des  AvroPath Ausdrucks. In diesem Fall ist das Ziel das Element im <code class="code">"fields"</code>-Array mit dem Namen <code class="code">"id"</code>. Die Ausdrücke werden durch Kommas getrennt.</p>
                   </dd>
                 
                   <dt><span class="term">"$.friends[0].id"</span></dt>
@@ -508,7 +508,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
                      <p>Eckige Klammern zeigen einen Array-Index an. JSONPath-Ausdrücke verwenden eine nullbasierte Indizierung. Daher referenziert dieser Ausdruck das erste Element im <code class="code">"friends"</code>-Array mit dem Namen <code class="code">"id"</code>.</p>
                   </dd>
                </dl></div>
-            <p>Die Avro-Schemasyntax erfordert die Verwendung von <em>internen Feldern</em>, um die Struktur der Datensatz- und Array-Datentypen zu definieren. Die internen Felder werden von den AvroPath-Ausdrücken ignoriert. Beispielsweise definiert das Feld <code class="code">"friends"</code> ein Array namens <code class="code">"inner_friends"</code>, das wiederum einen Datensatz namens <code class="code">"friends_record"</code> definiert. Der AvroPath-Ausdruck, der das Feld <code class="code">"id"</code> referenziert, kann die zusätzlichen Felder ignorieren, um das Zielfeld direkt zu referenzieren. Die folgenden AvroPath-Ausdrücke referenzieren die beiden Felder, die zum <code class="code">"friends"</code>-Array gehören.</p>
+            <p>Die Avro-Schemasyntax erfordert die Verwendung von <em>internen Feldern</em>, um die Struktur der Datensatz- und Array-Datentypen zu definieren. Die inneren Felder werden von den  AvroPath Ausdrücken ignoriert. Beispielsweise definiert das Feld <code class="code">"friends"</code> ein Array namens <code class="code">"inner_friends"</code>, das wiederum einen Datensatz namens <code class="code">"friends_record"</code> definiert. Der  AvroPath Ausdruck, der auf das Feld verweist, <code class="code">"id"</code> kann die zusätzlichen Felder ignorieren, um direkt auf das Zielfeld zu verweisen. Die folgenden  AvroPath Ausdrücke verweisen auf die beiden Felder, die zum <code class="code">"friends"</code>Array gehören.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">"$.friends[0].id"
 "$.friends[0].name"</code></pre>
           

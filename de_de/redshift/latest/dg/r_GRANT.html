@@ -42,7 +42,25 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">Syntax</a><a href="#r_GRANT-parameters">Parameter</a><a href="#r_GRANT-usage-notes-link">Nutzungshinweise</a><a href="#r_GRANT-examples-link">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Definiert die Zugriffsberechtigungen für einen Benutzer oder eine Benutzergruppe.</p><p>Zu den Berechtigungen gehören Zugriffsoptionen wie die Möglichkeit zum Lesen von Daten in Tabellen und Ansichten, zum Schreiben von Daten, zum Erstellen von Tabellen sowie zum Entfernen von Tabellen. Verwenden Sie diesen Befehl, um bestimmte Berechtigungen für eine Tabelle, eine Datenbank, ein Schema, eine Funktion, eine Prozedur, eine Sprache oder eine Spalte zu erteilen. Um Berechtigungen für ein Datenbankobjekt zu widerrufen, verwenden Sie den Befehl <a href="./r_REVOKE.html">REVOKE</a>. </p><p>Zu den Berechtigungen gehören auch Zugriffsoptionen wie die Möglichkeit zum Hinzufügen von Objekten oder Konsumenten zu einem Datashare oder zum Entfernen von Objekten oder Konsumenten aus einem Datashare. Um Datenbankobjekte zu einem Datashare für einen Benutzer oder eine Benutzergruppe hinzuzufügen oder daraus zu entfernen, verwenden Sie die Berechtigung ALTER. Um Konsumenten zu einem Datashare hinzuzufügen oder daraus zu entfernen, verwenden Sie die Berechtigung SHARE. Um Berechtigungen für ein Datenbankobjekt zu widerrufen, verwenden Sie den Befehl <a href="./r_REVOKE.html">REVOKE</a>. ALTER und SHARE sind die einzigen Berechtigungen, die Sie Benutzern und Benutzergruppen erteilen können. </p><p>Sie können auch Rollen zuweisen, um die Datenbankberechtigungen zu verwalten und zu kontrollieren, welche Aktionen Benutzer in Bezug auf Ihre Daten durchführen können. Durch die Definition von Rollen und die Zuweisung von Rollen für Benutzer können Sie die Aktionen beschränken, die diese Benutzer ausführen können. So können Sie beispielsweise die Aktionen der Benutzer auf die Befehle CREATE TABLE und INSERT beschränken. Weitere Informationen zum Befehl CREATE ROLE finden Sie unter <a href="./r_CREATE_ROLE.html">CREATE ROLE</a>. In Amazon Redshift gibt es systemdefinierte Rollen, die Sie ebenfalls verwenden können, um Ihren Benutzern bestimmte Berechtigungen zu erteilen. Weitere Informationen finden Sie unter <a href="./r_roles-default.html">Systemdefinierte Amazon-Redshift-Rollen</a>.</p><p>Sie können Nutzungsberechtigungen in einem externen Schema nur Datenbankbenutzern und Benutzergruppen gewähren oder entziehen, die die ON SCHEMA-Syntax verwenden. Bei Verwendung von ON EXTERNAL SCHEMA mit AWS Lake Formation können Berechtigungen nur AWS Identity and Access Management (IAM)-Rollen gewährt oder entzogen werden (GRANT und REVOKE). Eine Liste der Berechtigungen finden Sie in der Syntax.</p><p>Für gespeicherte Prozeduren kann nur die Berechtigung EXECUTE erteilt werden.</p><p>GRANT (auf einer externen Ressource) kann nicht innerhalb eines Transaktionsblocks (BEGIN ... END) ausgeführt werden. Weitere Informationen Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p><p>Wenn Sie sehen möchten, welche Berechtigungen Benutzern für eine Datenbank erteilt wurden, verwenden Sie <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>. Wenn Sie sehen möchten, welche Berechtigungen Benutzern für ein Schema erteilt wurden, verwenden Sie <a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a>. Wenn Sie sehen möchten, welche Berechtigungen Benutzern für eine Tabelle erteilt wurden, verwenden Sie <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">Syntax</a><a href="#r_GRANT-parameters">Parameter</a><a href="#r_GRANT-usage-notes-link">Nutzungshinweise</a><a href="#r_GRANT-examples-link">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Definiert die Zugriffsberechtigungen für einen Benutzer oder eine Rolle.</p><p>Zu den Berechtigungen gehören Zugriffsoptionen wie die Möglichkeit zum Lesen von Daten in Tabellen und Ansichten, zum Schreiben von Daten, zum Erstellen von Tabellen sowie zum Entfernen von Tabellen. Verwenden Sie diesen Befehl, um bestimmte Berechtigungen für eine Tabelle, eine Datenbank, ein Schema, eine Funktion, eine Prozedur, eine Sprache oder eine Spalte zu erteilen. Um Berechtigungen für ein Datenbankobjekt zu widerrufen, verwenden Sie den Befehl <a href="./r_REVOKE.html">REVOKE</a>. </p><p>Zu den Berechtigungen gehören auch die folgenden Zugriffsoptionen für Datashare-Produzenten:</p><div class="itemizedlist">
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p> Gewährung von Datashare-Zugriff auf Konsumenten-Namespaces und -Konten. </p>
+         </li><li class="listitem">
+            <p> Gewähren der Berechtigung zum Ändern eines Datashares durch Hinzufügen oder Entfernen von Objekten aus dem Datashare. </p>
+         </li><li class="listitem">
+            <p> Gewähren der Berechtigung zum Freigeben eines Datashares durch Hinzufügen oder Entfernen von Konsumenten-Namespaces aus dem Datashare. </p>
+         </li></ul></div><p>Die Optionen für den Datashare-Zugriff für Konsumenten sind wie folgt:</p><div class="itemizedlist">
+          
+         
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>Gewähren des vollen Zugriffs für Benutzer auf Datenbanken, die aus einem Datashare erstellt wurden, oder auf externe Schemata, die auf solche Datenbanken verweisen.</p>
+         </li><li class="listitem">
+            <p>Gewähren von Berechtigungen auf Objektebene für Benutzer für Datenbanken, die aus einem Datashare erstellt wurden, wie dies für lokale Datenbankobjekte möglich ist. Um diese Berechtigungsebene zu gewähren, müssen Sie die WITH PERMISSIONS-Klausel verwenden, wenn Sie eine Datenbank aus dem Datashare erstellen. Weitere Informationen finden Sie unter <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>.</p>
+         </li></ul></div><p>Weitere Informationen zu Datashare-Berechtigungen finden Sie unter <a href="./share_datashare.html">Freigeben von Datashares</a>.</p><p>Sie können auch Rollen zuweisen, um die Datenbankberechtigungen zu verwalten und zu kontrollieren, welche Aktionen Benutzer in Bezug auf Ihre Daten durchführen können. Durch die Definition von Rollen und die Zuweisung von Rollen für Benutzer können Sie die Aktionen beschränken, die diese Benutzer ausführen können. So können Sie beispielsweise die Aktionen der Benutzer auf die Befehle CREATE TABLE und INSERT beschränken. Weitere Informationen zum Befehl CREATE ROLE finden Sie unter <a href="./r_CREATE_ROLE.html">CREATE ROLE</a>. In Amazon Redshift gibt es systemdefinierte Rollen, die Sie ebenfalls verwenden können, um Ihren Benutzern bestimmte Berechtigungen zu erteilen. Weitere Informationen finden Sie unter <a href="./r_roles-default.html">Systemdefinierte Amazon-Redshift-Rollen</a>.</p><p>Sie können Nutzungsberechtigungen in einem externen Schema nur Datenbankbenutzern und Benutzergruppen gewähren oder entziehen, die die ON SCHEMA-Syntax verwenden. Bei Verwendung von ON EXTERNAL SCHEMA mit AWS Lake Formation können Berechtigungen nur AWS Identity and Access Management (IAM)-Rollen gewährt oder entzogen werden (GRANT und REVOKE). Eine Liste der Berechtigungen finden Sie in der Syntax.</p><p>Für gespeicherte Prozeduren kann nur die Berechtigung EXECUTE erteilt werden.</p><p>GRANT (auf einer externen Ressource) kann nicht innerhalb eines Transaktionsblocks (BEGIN ... END) ausgeführt werden. Weitere Informationen Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p><p>Wenn Sie sehen möchten, welche Berechtigungen Benutzern für eine Datenbank erteilt wurden, verwenden Sie <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>. Wenn Sie sehen möchten, welche Berechtigungen Benutzern für ein Schema erteilt wurden, verwenden Sie <a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a>. Wenn Sie sehen möchten, welche Berechtigungen Benutzern für eine Tabelle erteilt wurden, verwenden Sie <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>. </p>
          <h2 id="r_GRANT-synopsis">Syntax</h2>
          <p></p>
          
@@ -87,11 +105,46 @@ GRANT <span>{</span> <span>{</span> SELECT | ALTER | DROP | DELETE | INSERT }  [
 
 GRANT <span>{</span> <span>{</span> CREATE | ALTER | DROP }  [, ...] | ALL [ PRIVILEGES ] }
     ON EXTERNAL SCHEMA <em>schema_name</em> [, ...]
-    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Erteilen von Datashare-Berechtigungen" id="grant-datashare-syntax" expanded="false"><p>Im Folgenden finden Sie die Syntax für die Verwendung von GRANT für Datashare-Berechtigungen in Amazon Redshift. ALTER und SHARE sind die einzigen Berechtigungen, die Sie Benutzern und Benutzergruppen in diesem Fall erteilen können.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
+    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Erteilen von Datashare-Berechtigungen" id="grant-datashare-syntax" expanded="false">
+               <h6>Produzentenseitige Datashare-Berechtigungen</h6>
+               <p>Im Folgenden finden Sie die Syntax zur Verwendung von GRANT zum Gewähren von ALTER- oder SHARE-Berechtigungen für einen Benutzer oder eine Rolle. Der Benutzer kann den Datashare mit der ALTER-Berechtigung ändern oder einem Konsumenten mit der SHARE-Berechtigung die Nutzung gestatten. ALTER und SHARE sind die einzigen Berechtigungen, die Sie Benutzern und Rollen für Datashares erteilen können.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <code class="code" copy="true">group_name</code> | PUBLIC } [, ...]</code></pre><p>Im Folgenden finden Sie die Syntax für die Verwendung von GRANT für Datashare-Nutzungsberechtigungen in Amazon Redshift. Mit der Berechtigung USAGE gewähren Sie einem Konsumenten Zugriff auf ein Datashare. Sie können diese Berechtigung nicht an Benutzer oder Benutzergruppen erteilen. Diese Berechtigung unterstützt auch nicht die WITH GRANT OPTION für die GRANT-Anweisung. Nur Benutzer oder Benutzergruppen, denen zuvor die Berechtigung SHARE für das Datashare erteilt wurde, können diese Art von GRANT-Anweisung ausführen.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE
     ON DATASHARE <em>datashare_name</em>
-    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>Im Folgenden finden Sie ein Beispiel dafür, wie Sie einem Lake-Formation-Konto die Berechtigung zur Nutzung eines Datashares gewähren können.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre><p>Im Folgenden finden Sie die Syntax für die GRANT-Datashare-Nutzungsberechtigungen für eine bestimmte Datenbank oder ein bestimmtes Schema, die auf einem Datashare erstellt wurden. Diese USAGE-Berechtigung erteilt Datenbanken, die nicht auf dem angegebenen Datashare erstellt werden, keine Nutzungsberechtigung. Sie können Benutzern und Gruppen nur die Berechtigungen GRANT, REVOKE, ALTER oder SHARE für ein Datashare gewähren.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
-    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Erteilen von Machine-Learning-Berechtigungen" id="grant-model-syntax" expanded="false"><p>Im Folgenden finden Sie die Syntax für Berechtigungen für Machine-Learning-Modelle in Amazon Redshift.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
+    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>Im Folgenden finden Sie ein Beispiel dafür, wie Sie einem Lake-Formation-Konto die Berechtigung zur Nutzung eines Datashares gewähren können.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>            
+               <h6>Konsumentenseitige Datashare-Berechtigungen</h6>
+               <p>Im Folgenden finden Sie die Syntax für die GRANT-Datashare-Nutzungsberechtigungen für eine bestimmte Datenbank oder ein bestimmtes Schema, die auf einem Datashare erstellt wurden. </p><p>Weitere Berechtigungen, die Konsumenten für den Zugriff auf eine aus einem Datashare erstellte Datenbank benötigen, hängen davon ab, ob der CREATE DATABASE-Befehl, mit dem die Datenbank aus dem Datashare erstellt wurde, die WITH PERMISSIONS-Klausel verwendet hat oder nicht. Weitere Informationen über den CREATE DATABASE-Befehl und die WITH PERMISSIONS-Klausel finden Sie unter <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>.</p>
+               <h6>Ohne die WITH PERMISSIONS-Klausel erstellte Datenbanken</h6>
+               <p>Wenn Sie die USAGE-Berechtigung für eine Datenbank gewähren, die aus einem Datashare ohne die WITH PERMISSIONS-Klausel erstellt wurde, müssen Sie Berechtigungen für die Objekte in der gemeinsam genutzten Datenbank nicht separat gewähren. Entitäten, denen die Verwendung für Datenbanken gewährt wurde, die aus Datashares ohne die WITH PERMISSIONS-Klausel erstellt wurden, haben automatisch Zugriff auf alle Objekte in der Datenbank.</p>
+             
+               <h6>Mit der WITH PERMISSIONS-Klausel erstellte Datenbanken</h6>
+               <p>Wenn Sie die USAGE-Berechtigung für eine Datenbank gewähren, wobei die gemeinsam genutzte Datenbank mit der WITH PERMISSIONS-Klausel aus einem Datashare erstellt wurde, müssen konsumentenseitigen Identitäten dennoch die entsprechenden Berechtigungen für Datenbankobjekte in der gemeinsam genutzten Datenbank erteilt werden, um auf sie zugreifen zu können, genauso wie Sie Berechtigungen für lokale Datenbankobjekte gewähren würden. Verwenden Sie die dreiteilige Syntax <code class="code">database_name.schema_name.object_name</code>, um Objekten in einer Datenbank, die aus einem Datashare erstellt wurde, Berechtigungen zu gewähren. Verwenden Sie die zweiteilige Syntax <code class="code">schema_name.object_name</code>, um Objekten in einem externen Schema, das auf ein gemeinsam genutztes Schema innerhalb der gemeinsam genutzten Datenbank verweist, Berechtigungen zu gewähren.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
+    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Gewähren von bereichsbezogenen Berechtigungen " id="grant-scoped-syntax" expanded="false"><p>Verwenden Sie bereichsbezogene Berechtigungen, um die Berechtigungen für einen Benutzer oder eine Rolle in einem Datenbank- oder Schemabereich zu ändern. </p><p>Bereichsbezogene Berechtigungen gelten für Objekte im ausgewählten Bereich, wenn Sie die Berechtigung erteilen oder widerrufen, sowie für neue Objekte, die nach der Erteilung oder dem Widerruf der Berechtigung erstellt wurden. Wenn Sie beispielsweise einer Rolle die Berechtigung gewähren, aus Tabellen in einer Datenbank auszuwählen, können Benutzer mit dieser Rolle aus Tabellen auswählen, die in der Zukunft erstellt werden, sowie aus Tabellen, die derzeit in der Datenbank vorhanden sind. </p><p>Sie können bereichsbezogene Berechtigungen verwenden, um die Standardberechtigungen für eine gemeinsam genutzte Datenbank festzulegen, die aus einem Datashare erstellt wurde. Ein verbraucherseitiger Datashare-Benutzer, dem bereichsbezogene Berechtigungen für eine gemeinsam genutzte Datenbank gewährt werden, erhält diese Berechtigungen automatisch für jedes neue Objekt, das dem Datashare auf der Produzentenseite hinzugefügt wird.</p><p>Im Folgenden sehen Sie die Syntax zum Erteilen bereichsbezogener Berechtigungen für Benutzer oder Rollen. Weitere Informationen zu Berechtigungen finden Sie unter <a href="./t_scoped-permissions.html">Bereichsbeschränkte Berechtigungen </a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT <span>{</span> CREATE | USAGE | ALTER } [,...] | ALL [ PRIVILEGES ] }
+FOR SCHEMAS IN
+DATABASE db_name 
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]
+
+GRANT 
+<span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | ALTER | TRUNCATE | REFERENCES } [, ...] } | ALL [PRIVILEGES] } }
+FOR TABLES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name} [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR FUNCTIONS IN 
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR PROCEDURES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT USAGE
+FOR LANGUAGES IN
+<span>{</span>DATABASE db_name}
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]  </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Erteilen von Machine-Learning-Berechtigungen" id="grant-model-syntax" expanded="false"><p>Im Folgenden finden Sie die Syntax für Berechtigungen für Machine-Learning-Modelle in Amazon Redshift.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
 
 GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
@@ -102,6 +155,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     <span>{</span> CREATE USER | DROP USER | ALTER USER |
     CREATE SCHEMA | DROP SCHEMA |
     ALTER DEFAULT PRIVILEGES |
+    ACCESS CATALOG | 
     CREATE TABLE | DROP TABLE | ALTER TABLE |
     CREATE OR REPLACE FUNCTION | CREATE OR REPLACE EXTERNAL FUNCTION |
     DROP FUNCTION |
@@ -110,7 +164,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     CREATE MODEL | DROP MODEL |
     CREATE DATASHARE | ALTER DATASHARE | DROP DATASHARE |
     CREATE LIBRARY | DROP LIBRARY |
-    CREATE ROLE | DROP ROLE
+    CREATE ROLE | DROP ROLE |
     TRUNCATE TABLE
     VACUUM | ANALYZE | CANCEL }[, ...]
   }
@@ -182,8 +236,13 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
 
                    
             
+            
+    
+            
              
 
+             
+            
              
 
             
@@ -208,7 +267,7 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>Erteilt die Berechtigung, Daten in eine Tabelle mittels einer INSERT- oder COPY-Anweisung zu laden. </p>
                </dd>
              
-               <dt id="grant-update"><span class="term">AKTUALISIERUNG </span></dt>
+               <dt id="grant-update"><span class="term">UPDATE </span></dt>
                <dd>
                   <p>Erteilt die Berechtigung, eine Tabellenspalte mittels einer UPDATE-Anweisung zu aktualisieren. UPDATE-Operationen erfordern ebenfalls die Berechtigung SELECT, da sie Tabellenspalten referenzieren müssen, um zu ermitteln, welche Zeilen aktualisiert werden sollen, oder um neue Werte für Spalten zu berechnen.</p>
                </dd>
@@ -218,21 +277,14 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>Erteilt die Berechtigung, eine Datenzeile aus einer Tabelle zu löschen. DELETE-Operationen erfordern ebenfalls die Berechtigung SELECT, da sie Tabellenspalten referenzieren müssen, um zu ermitteln, welche Zeilen gelöscht werden sollen.</p>
                </dd>
              
+               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dd>
+                  <p>Erteilt die Berechtigung zum Entfernen einer Tabelle Diese Berechtigung gilt in Amazon Redshift und in einem AWS Glue Data Catalog, der für Lake Formation aktiviert ist.</p>
+               </dd>
+             
                <dt id="grant-references"><span class="term">REFERENCES </span></dt>
                <dd>
                   <p>Erteilt die Berechtigung, eine Fremdschlüsseleinschränkung zu erstellen. Sie müssen diese Berechtigung sowohl für die referenzierte als auch für die referenzierende Tabelle erteilen. Andernfalls kann der Benutzer die Einschränkung nicht erstellen. </p>
-               </dd>
-             
-               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
-               <dd>
-                  <p>Gewährt die Berechtigung zum Kürzen einer Tabelle. Ohne diese Berechtigung kann nur der Eigentümer einer Tabelle oder ein Superuser eine Tabelle kürzen. Weitere Informationen zur Verwendung des TRUNCATE-Befehls finden Sie unter <a href="./r_TRUNCATE.html">TRUNCATE</a>.</p>
-               </dd>
-             
-               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
-               <dd>
-                  <p>Erteilt dem angegebenen Benutzer oder der angegebenen Benutzergruppe alle verfügbaren Berechtigungen auf einmal. Das Schlüsselwort PRIVILEGES ist optional.</p>
-                  <p>GRANT ALL ON SCHEMA erteilt keine Berechtigungen CREATE für externe Schemata.</p>
-                  <p>Sie können die Berechtigung ALL für eine Tabelle in einem AWS Glue Data Catalog erteilen, der für Lake Formation aktiviert ist. In diesem Fall werden die einzelnen Berechtigungen (wie SELECT, ALTER usw.) im Datenkatalog aufgezeichnet. </p>
                </dd>
              
                <dt id="grant-alter"><span class="term">ALTER</span></dt>
@@ -253,12 +305,19 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                      </li><li class="listitem">
                         <p>Für externe Tabellen erteilt ALTER t die Berechtigung zum Ändern einer Tabelle in einem AWS Glue Data Catalog, der für Lake Formation aktiviert ist. Diese Berechtigung gilt nur bei Verwendung von Lake Formation.</p>
                      </li></ul></div>
-
+                  
                </dd>
              
-               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
                <dd>
-                  <p>Erteilt die Berechtigung zum Entfernen einer Tabelle Diese Berechtigung gilt in Amazon Redshift und in einem AWS Glue Data Catalog, der für Lake Formation aktiviert ist.</p>
+                  <p>Gewährt die Berechtigung zum Kürzen einer Tabelle. Ohne diese Berechtigung kann nur der Eigentümer einer Tabelle oder ein Superuser eine Tabelle kürzen. Weitere Informationen zur Verwendung des TRUNCATE-Befehls finden Sie unter <a href="./r_TRUNCATE.html">TRUNCATE</a>.</p>
+               </dd>
+             
+               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
+               <dd>
+                  <p>Erteilt dem angegebenen Benutzer oder der angegebenen Benutzergruppe alle verfügbaren Berechtigungen auf einmal. Das Schlüsselwort PRIVILEGES ist optional.</p>
+                  <p>GRANT ALL ON SCHEMA erteilt keine Berechtigungen CREATE für externe Schemata.</p>
+                  <p>Sie können die Berechtigung ALL für eine Tabelle in einem AWS Glue Data Catalog erteilen, der für Lake Formation aktiviert ist. In diesem Fall werden die einzelnen Berechtigungen (wie SELECT, ALTER usw.) im Datenkatalog aufgezeichnet. </p>
                </dd>
              
                <dt id="assumerole"><span class="term">ASSUMEROLE</span></dt>
@@ -443,12 +502,23 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                         <p>Erteilt die angegebenen Berechtigungen für das angegebene Schema, das im angegebenen Datashare erstellt wird.</p>
                      </dd>
                    
+               <dt><span class="term">FOR <span>{</span> SCHEMAS | TABLES | FUNCTIONS | PROCEDURES | LANGUAGES } IN </span></dt>
+               <dd>
+                  <p>Gibt die Datenbankobjekte an, für die Berechtigungen gewährt werden sollen. Die Parameter nach IN definieren den Bereich der gewährten Berechtigung.</p>
+               </dd>
+             
                <dt><span class="term">CREATE MODEL</span></dt>
                <dd><p>Erteilt bestimmten Benutzern oder Benutzergruppen die Berechtigung CREATE MODEL.</p></dd>
              
                <dt><span class="term">ON MODEL <em>model_name</em></span></dt>
 
                <dd><p>Erteilt die Berechtigung EXECUTE für ein spezifisches Modell. </p></dd>
+             
+               <dt><span class="term">ACCESS CATALOG</span></dt>
+               <dd>
+                  <p>Gewährt die Berechtigung, relevante Metadaten von Objekten anzuzeigen, auf die die Rolle Zugriff hat.</p>
+               </dd>
+             
                <dt><span class="term"><span>{</span> role } [, ...]</span></dt>
                <dd><p>Die Rolle, die einer anderen Rolle, einem Benutzer oder PUBLIC gewährt werden soll.</p>
                   <p>PUBLIC stellt eine Gruppe dar, die stets alle Benutzer enthält. Die Berechtigungen eines einzelnen Benutzers sind die Summe der Berechtigungen, die PUBLIC gewährt werden, der Berechtigungen, die Gruppen gewährt werden, zu denen der Benutzer gehört, und der Berechtigungen, die dem einzelnen Benutzer gewährt werden.</p>

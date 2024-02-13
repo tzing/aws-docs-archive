@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_DATABASE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_DATABASE-synopsis">Syntax</a><a href="#r_CREATE_DATABASE-parameters">Parameter</a><a href="#r_CREATE_DATABASE-datashare-synopsis">Syntax zur Verwendung mit einem Datashare</a><a href="#r_CREATE_DATABASE-usage">Verwendungshinweise für CREATE DATABASE in Verbindung mit Datashares</a><a href="#r_CREATE_DATABASE_data-catalog">CREATE DATABASE über AWS Glue Data Catalog</a><a href="#r_CREATE_DATABASE-create-database-limits">Limits für CREATE DATABASE</a><a href="#r_CREATE_DATABASE-collation">Datenbanksortierung für CREATE DATABASE</a><a href="#r_CREATE_DATABASE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_DATABASE">CREATE DATABASE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Erstellt eine neue Datenbank.</p><p>Sie müssen ein Superuser sein oder über die CREATEDB-Berechtigung verfügen, um eine Datenbank zu erstellen.</p><p>CREATE DATABASE kann nicht innerhalb eines Transaktionsblocks (BEGIN ... END). Weitere Informationen Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_DATABASE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_DATABASE-synopsis">Syntax</a><a href="#r_CREATE_DATABASE-parameters">Parameter</a><a href="#r_CREATE_DATABASE-datashare-synopsis">Syntax zur Verwendung mit einem Datashare</a><a href="#r_CREATE_DATABASE-usage">Verwendungshinweise für CREATE DATABASE in Verbindung mit Datashares</a><a href="#r_CREATE_DATABASE_data-catalog">CREATE DATABASE über AWS Glue Data Catalog</a><a href="#r_CREATE_DATABASE-create-database-limits">Limits für CREATE DATABASE</a><a href="#r_CREATE_DATABASE-collation">Datenbanksortierung für CREATE DATABASE</a><a href="#r_CREATE_DATABASE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_CREATE_DATABASE">CREATE DATABASE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Erstellt eine neue Datenbank.</p><p>Sie müssen ein Superuser sein oder über die CREATEDB-Berechtigung verfügen, um eine Datenbank zu erstellen.</p><p>CREATE DATABASE kann nicht innerhalb eines Transaktionsblocks (BEGIN ... END). Weitere Informationen Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p>
          <h2 id="r_CREATE_DATABASE-synopsis">Syntax</h2>
 
 
@@ -51,7 +51,7 @@
 [ CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED } ]
 [ COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ]
 [ ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT } ]
-[ FROM DATASHARE datashare_name OF [ ACCOUNT account_id ] NAMESPACE namespace_guid ]
+[ [ WITH PERMISSIONS ] FROM DATASHARE datashare_name ] OF [ ACCOUNT account_id ] NAMESPACE namespace_guid 
 | [ FROM ARN '&lt;arn&gt;' <span>{</span> WITH DATA CATALOG SCHEMA '&lt;schema&gt;' | WITH NO DATA CATALOG SCHEMA } 
 [ IAM_ROLE  default | 'SESSION' | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' ] ]</code></pre>
 
@@ -102,7 +102,7 @@
              
                <dt><span class="term">CONNECTION LIMIT <span>{</span> <em>Limit</em> | UNLIMITED } </span></dt>
                <dd>
-                  <p>Redshift unterstützt das Schreiben von verschachteltem JSON-Code, wenn das Abfrageergebnis SUPER-Spalten enthält. Das Limit wird für Superuser nicht durchgesetzt. Mithilfe des Schlüsselworts UNLIMITED können Sie die maximale Zahl gleichzeitiger Verbindungen festlegen. Möglicherweise gilt auch ein Limit für die Zahl der Verbindungen für die einzelnen Benutzer. Weitere Informationen finden Sie unter <a href="./r_CREATE_USER.html">CREATE USER</a>. Der Standardwert ist UNLIMITED. Um die aktuellen Verbindungen anzuzeigen, führen Sie eine Abfrage für die Systemansicht <a href="./r_STV_SESSIONS.html">STV_SESSIONS</a> aus.</p>
+                  <p>Die maximale Zahl von Datenbankverbindungen, die Benutzer gleichzeitig geöffnet haben dürfen. Das Limit wird für Superuser nicht durchgesetzt. Mithilfe des Schlüsselworts UNLIMITED können Sie die maximale Zahl gleichzeitiger Verbindungen festlegen. Möglicherweise gilt auch ein Limit für die Zahl der Verbindungen für die einzelnen Benutzer. Weitere Informationen finden Sie unter <a href="./r_CREATE_USER.html">CREATE USER</a>. Der Standardwert ist UNLIMITED. Um die aktuellen Verbindungen anzuzeigen, führen Sie eine Abfrage für die Systemansicht <a href="./r_STV_SESSIONS.html">STV_SESSIONS</a> aus.</p>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Wenn sowohl für Benutzer- als auch für Datenbankverbindungen Limits gelten, muss ein ungenutzter Verbindungsplatz verfügbar sein, der sich innerhalb beider Grenzen befindet, wenn ein Benutzer versucht, eine Verbindung herzustellen.</p></div></div>
                </dd>
              
@@ -134,7 +134,7 @@
                   <p>In Amazon-Redshift-Datenbanken stellen sowohl die SERIALIZABLE-Isolation (serialisierbare Isolation) als auch die SNAPSHOT-Isolation Arten serialisierbarer Isolationsstufen dar. Dies bedeutet, dass ungültige Lesevorgänge, nicht wiederholbare Lesevorgänge und Phantomlesevorgänge gemäß dem SQL-Standard verhindert werden. Beide Isolationsstufen stellen sicher, dass eine Transaktion mit einem Snapshot der Daten arbeitet, wie er zu Beginn der Transaktion existiert, und dass keine andere Transaktion diesen Snapshot ändern kann. Die SNAPSHOT-Isolation bietet jedoch keine vollständige Serialisierbarkeit, da Schreibverzerrungen (Write Skew) bei Einfügungen und Aktualisierungen für verschiedene Tabellenzeilen nicht verhindert werden.</p>
                   <p>Das folgende Szenario veranschaulicht Aktualisierungen von Schreibverzerrungen (Write Skew) unter Verwendung der SNAPSHOT-Isolationsstufe. Eine Tabelle namens <code class="code">Numbers</code> enthält eine Spalte namens <code class="code">digits</code> mit den Werten <code class="code">0</code> und <code class="code">1</code>. Die UPDATE-Anweisungen der Benutzer überschneiden sich nicht mit den Anweisungen des jeweils anderen Benutzers. Allerdings sind die Werte <code class="code">0</code> und <code class="code">1</code> vertauscht. Die SQL, die sie ausführen, folgt dieser Zeitleiste und kommt zu diesen Ergebnissen:</p>
                   
-                  <div class="table-container"><div class="table-contents disable-scroll"><table id="w317aac45b9c65c11b3c15b3c13"><thead>
+                  <div class="table-container"><div class="table-contents disable-scroll"><table id="w319aac47b9c69c11b3c15b3c13"><thead>
                            <tr>
                               <th>Zeit </th>
                               <th>Aktion von Benutzer 1 </th>
@@ -305,17 +305,18 @@ digits
 
                <p>Die folgende Syntax beschreibt den CREATE DATABASE-Befehl, der zum Erstellen von Datenbanken aus einem Datashare verwendet wird, um Daten innerhalb desselben AWS-Kontos freizugeben.</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CREATE DATABASE <em>database_name</em>
-FROM DATASHARE <em>datashare_name</em> OF [ ACCOUNT account_id ] NAMESPACE <em>namespace_guid</em></code></pre>
+[ [ WITH PERMISSIONS ] FROM DATASHARE <em>datashare_name</em> ] OF [ ACCOUNT account_id ] NAMESPACE <em>namespace_guid</em></code></pre>  
                <p>Die folgende Syntax beschreibt den CREATE DATABASE-Befehl, der zum Erstellen von Datenbanken aus einem Datashare verwendet wird, um Daten unterschiedlicher AWS-Konten freizugeben.</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CREATE DATABASE <em>database_name</em>
-FROM DATASHARE <em>datashare_name</em> OF ACCOUNT <em>account_id</em> NAMESPACE <em>namespace_guid</em></code></pre>
-               
+[ [ WITH PERMISSIONS ] FROM DATASHARE <em>datashare_name</em> ] OF ACCOUNT <em>account_id</em> NAMESPACE <em>namespace_guid</em></code></pre>
 
                 
                   <h3 id="r_CREATE_DATABASE-parameters-datashare">Parameter für die Verwendung von CREATE DATABASE mit einem Datashare</h3>
                   <div class="variablelist">
                    
              
+                     
+                        
                       
              
          <dl>
@@ -329,6 +330,13 @@ FROM DATASHARE <em>datashare_name</em> OF ACCOUNT <em>account_id</em> NAMESPACE 
                   <p>Der Name des Datashares, auf dem die Verbraucherdatenbank erstellt wird.</p>
                </dd>
              
+                        <dt><span class="term">WITH PERMISSIONS</span></dt>
+
+                        <dd>
+                           <p>Gibt an, dass für die aus dem Datashare erstellte Datenbank für den Zugriff auf einzelne Datenbankobjekte Berechtigungen auf Objektebene erforderlich sind. Ohne diese Klausel haben Benutzer oder Rollen, denen die USAGE-Berechtigung für die Datenbank erteilt wurde, automatisch Zugriff auf alle Datenbankobjekte in der Datenbank.</p>
+                           
+                        </dd>
+                      
                         <dt><span class="term"> NAMESPACE <em>namespace_guid</em> </span></dt>
                         <dd>
                            <p>Ein Wert, der den Produzenten-Namespace angibt, zu dem das Datashare gehört.</p>

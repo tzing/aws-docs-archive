@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_correlated_subqueries" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_correlated_subqueries-correlated-subquery-patterns-that-are-not-supported">Muster für korrelierte Unterabfragen, die nicht unterstützt werden</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_correlated_subqueries">Korrelierte Unterabfragen</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Das folgende Beispiel enthält eine <em>korrelierte Unterabfrage</em> in der WHERE-Klausel. Diese Art von Unterabfrage enthält mindestens eine Korrelation zwischen ihren Spalten und den Spalten, die von der umschließenden Abfrage produziert werden. In diesem Fall ist die Korrelation <code class="code">where s.listid=l.listid</code>. Die Unterabfrage wird für jede Zeile ausgeführt, die die umschließende Abfrage produziert, um die Zeile zu qualifizieren oder zu disqualifizieren. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, listid, sum(pricepaid) from sales s
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_correlated_subqueries" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_correlated_subqueries-correlated-subquery-patterns-that-are-not-supported">Muster für korrelierte Unterabfragen, die nicht unterstützt werden</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_correlated_subqueries">Korrelierte Unterabfragen</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Das folgende Beispiel enthält eine <em>korrelierte Unterabfrage</em> in der WHERE-Klausel. Diese Art von Unterabfrage enthält mindestens eine Korrelation zwischen ihren Spalten und den Spalten, die von der umschließenden Abfrage produziert werden. In diesem Fall ist die Korrelation <code class="code">where s.listid=l.listid</code>. Die Unterabfrage wird für jede Zeile ausgeführt, die die umschließende Abfrage produziert, um die Zeile zu qualifizieren oder zu disqualifizieren. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, listid, sum(pricepaid) from sales s
 where qtysold=
 (select max(numtickets) from listing l
 where s.listid=l.listid)
@@ -89,7 +89,7 @@ on category.catid=event.catid and eventid =
 (select max(eventid) from sales where sales.eventid=event.eventid);</code></pre>
                   <p>Die ON-Klausel enthält eine Korrelierungsreferenz aus SALES in der Unterabfrage für EVENT in der umschließenden Abfrage. </p>
                </li><li class="listitem">
-                  <p>Null-sensible Korrelierungsreferenzen für eine Amazon-Redshift-Systemtabelle. Beispiele: </p>
+                  <p>Null-sensible Korrelierungsreferenzen für eine Amazon-Redshift-Systemtabelle. Beispiel: </p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select attrelid
 from stv_locks sl, pg_attribute
 where sl.table_id=pg_attribute.attrelid and 1 not in
@@ -101,13 +101,13 @@ from sales s
 where qtysold not in
 (select sum(numtickets) over() from listing l where s.listid=l.listid);</code></pre>
                </li><li class="listitem">
-                  <p>Referenzen in einer GROUP BY-Spalte zu den Ergebnissen einer korrelierten Unterabfrage. Beispiele: </p>
+                  <p>Referenzen in einer GROUP BY-Spalte zu den Ergebnissen einer korrelierten Unterabfrage. Beispiel: </p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select listing.listid,
 (select count (sales.listid) from sales where sales.listid=listing.listid) as list
 from listing
 group by list, listing.listid;</code></pre>
                </li><li class="listitem">
-                  <p>Korrelierungsreferenzen aus einer Unterabfrage mit einer Aggregationsfunktion und einer GROUP BY-Klausel, die durch ein IN-Prädikat mit der umschließenden Abfrage verbunden sind. (Diese Einschränkung gilt nicht für die Aggregationsfunktionen MIN und MAX.) Beispiele: </p>
+                  <p>Korrelierungsreferenzen aus einer Unterabfrage mit einer Aggregationsfunktion und einer GROUP BY-Klausel, die durch ein IN-Prädikat mit der umschließenden Abfrage verbunden sind. (Diese Einschränkung gilt nicht für die Aggregationsfunktionen MIN und MAX.) Beispiel: </p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from listing where listid in
 (select sum(qtysold)
 from sales

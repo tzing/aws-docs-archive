@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_TABLE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_ALTER_TABLE-privileges">Erforderliche Berechtigungen</a><a href="#r_ALTER_TABLE-synopsis">Syntax</a><a href="#r_ALTER_TABLE-parameters">Parameter</a><a href="#r_ALTER_TABLE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_TABLE">ALTER TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Dieser Befehl ändert die Definition einer Amazon-Redshift-Tabelle oder einer externen Amazon-Redshift-Spectrum-Tabelle. Dieser Befehl aktualisiert die von <a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a> oder <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> festgelegten Werte und Eigenschaften.</p><p>Sie können ALTER TABLE nicht für eine externe Tabelle innerhalb eines Transaktionsblocks (BEGIN ... END) ausführen. Weitere Informationen Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p><p>ALTER TABLE sperrt die Tabelle für Lese- und Schreibvorgänge, bis die die Operation ALTER TABLE umschließende Transaktion abgeschlossen ist, es sei denn, in der Dokumentation ist ausdrücklich angegeben, dass Sie Daten abfragen oder andere Operationen an der Tabelle ausführen können, während sie geändert wird.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_TABLE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_ALTER_TABLE-privileges">Erforderliche Berechtigungen</a><a href="#r_ALTER_TABLE-synopsis">Syntax</a><a href="#r_ALTER_TABLE-parameters">Parameter</a><a href="#r_ALTER_TABLE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_ALTER_TABLE">ALTER TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Dieser Befehl ändert die Definition einer Amazon-Redshift-Tabelle oder einer externen Amazon-Redshift-Spectrum-Tabelle. Dieser Befehl aktualisiert die von <a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a> oder <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> festgelegten Werte und Eigenschaften.</p><p>Sie können ALTER TABLE nicht für eine externe Tabelle innerhalb eines Transaktionsblocks (BEGIN ... END) ausführen. Weitere Informationen zu Transaktionen finden Sie unter <a href="./c_serial_isolation.html">Serialisierbare Isolierung</a>. </p><p>ALTER TABLE sperrt die Tabelle für Lese- und Schreibvorgänge, bis die die Operation ALTER TABLE umschließende Transaktion abgeschlossen ist, es sei denn, in der Dokumentation ist ausdrücklich angegeben, dass Sie Daten abfragen oder andere Operationen an der Tabelle ausführen können, während sie geändert wird.</p>
          <h2 id="r_ALTER_TABLE-privileges">Erforderliche Berechtigungen</h2>
          <p>Der Benutzer, der eine Tabelle ändert, benötigt die entsprechenden Berechtigungen, damit der Befehl erfolgreich ausgeführt werden kann. Je nach verwendetem Befehl ALTER TABLE ist eine der folgenden Berechtigungen erforderlich.</p>
          <div class="itemizedlist">
@@ -84,7 +84,7 @@ ADD <em>table_constraint</em>
   [ NOT NULL | NULL ]
   [ COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ] |
 | DROP [ COLUMN ] <em>column_name</em> [ RESTRICT | CASCADE ] 
-| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ FOR DATASHARES ]}
+| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]}
 
 where <em>table_constraint</em> is:
 
@@ -172,7 +172,7 @@ ALTER TABLE <em>tablename</em> ALTER DISTSTYLE ALL, ALTER SORTKEY (<em>column_li
          <dl>
                <dt><span class="term"> <em>table_name</em> </span></dt>
                <dd>
-                  <p>Der Name der Tabelle, die geändert werden soll. Geben Sie einfach den Namen der Tabelle an oder verwenden Sie das Format <em>schema_name.table_name</em>, um ein spezifisches Schema zu verwenden. Externe Tabellen müssen durch einen externen Schemanamen qualifiziert werden. Sie können auch einen Anzeigenamen angeben, wenn Sie die Anweisung ALTER TABLE verwenden, um eine Ansicht umzubenennen oder den Besitzer zu ändern. Die maximale Länge des Tabellennamens beträgt 127 Bytes; längere Namen werden bei 127 Bytes abgeschnitten. Sie können UTF-8-Multibyte-Zeichen bis zu einer Länge von vier Bytes verwenden. Weitere Informationen zu gültigen Namen finden Sie unter <a href="./r_names.html">Namen und Kennungen</a>.</p>
+                  <p>Der Name der Tabelle, die geändert werden soll. Geben Sie einfach den Namen der Tabelle an oder verwenden Sie das Format <em>schema_name.table_name</em>, um ein spezifisches Schema zu verwenden. Externe Tabellen müssen durch einen externen Schemanamen qualifiziert werden. Sie können auch einen Anzeigenamen angeben, wenn Sie die Anweisung ALTER TABLE verwenden, um eine Ansicht umzubenennen oder ihren Eigentümer zu ändern. Die maximale Länge des Tabellennamens beträgt 127 Bytes; längere Namen werden bei 127 Bytes abgeschnitten. Sie können UTF-8-Multibyte-Zeichen bis zu einer Länge von vier Bytes verwenden. Weitere Informationen zu gültigen Namen finden Sie unter <a href="./r_names.html">Namen und Kennungen</a>.</p>
                </dd>
              
                <dt><span class="term">ADD <em>table_constraint</em> </span></dt>
@@ -661,8 +661,6 @@ from information_schema.table_constraints;</code></pre>
 
              
 
-             
-
 
 
 
@@ -738,13 +736,17 @@ from information_schema.table_constraints;</code></pre>
                   <p>Eine Klausel, die die angegebene Partition entfernt. Durch die Entfernung einer Partition werden nur die Metadaten der externen Tabelle geändert. Die Daten auf Amazon S3 sind nicht betroffen.</p>
                </dd>
              
-               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } </span></dt>
-               <dd><p>Eine Klausel, die die Sicherheit auf Zeilenebene für eine Tabelle aktiviert oder deaktiviert.</p>
-                  <p>Wenn die Sicherheit auf Zeilenebene für eine Tabelle aktiviert ist, können Sie nur die Zeilen lesen, für die Ihnen die Richtlinie auf Zeilenebene Zugriff gewährt. Wenn es keine Richtlinie gibt, die Ihnen Zugriff auf die Tabelle gewährt, können Sie keine Zeilen aus der Tabelle sehen. Nur Superuser und Benutzer oder Rollen, denen die <code class="code">sys:secadmin</code>-Rolle zugewiesen ist, können die Klausel ROW LEVEL SECURITY festlegen. Weitere Informationen finden Sie unter <a href="./t_rls.html">Sicherheit auf Zeilenebene</a>.</p>
-               </dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>Eine Klausel, die festlegt, ob eine Tabelle über Datashares RLS-geschützt ist. Standardmäßig ist eine RLS-geschützte Tabelle auch über Datashares RLS-geschützt.</p>
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+                     <dd><p>Eine Klausel, die die Sicherheit auf Zeilenebene für eine Relation aktiviert oder deaktiviert.</p>
+                        <p>Wenn die Sicherheit auf Zeilenebene für eine Relation aktiviert ist, können Sie nur die Zeilen lesen, für die Ihnen die Richtlinie auf Zeilenebene Zugriff gewährt. Wenn es keine Richtlinie gibt, die Ihnen Zugriff auf die Relation gewährt, können Sie keine Zeilen aus der Relation sehen. Nur Superuser und Benutzer oder Rollen, denen die <code class="code">sys:secadmin</code>-Rolle zugewiesen ist, können die Klausel ROW LEVEL SECURITY festlegen. Weitere Informationen finden Sie unter <a href="./t_rls.html">Sicherheit auf Zeilenebene</a>.</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>Eine Klausel, mit der Sie den Verbindungstyp einer Sicherheitsrichtlinie auf Zeilenebene für eine Relation auswählen können. Wenn einer Relation mehrere Sicherheitsrichtlinien auf Zeilenebene zugeordnet sind, können Sie die Richtlinien mit der AND- oder OR-Klausel kombinieren. Standardmäßig kombiniert Amazon Redshift RLS-Richtlinien mit der AND-Klausel. Superuser, Benutzer oder Rollen, denen diese <code class="code">sys:secadmin</code>-Rolle zugewiesen wurde, können diese Klausel verwenden, um den Verbindungstyp der Sicherheitsrichtlinie auf Zeilenebene für eine Relation zu definieren. Weitere Informationen finden Sie unter <a href="./t_rls_combine_policies.html">Kombinieren mehrerer Richtlinien pro Benutzer</a>. </p></li><li class="listitem"><p>FOR DATASHARES</p>
+                        <p>Eine Klausel, die festlegt, ob auf eine RLS-geschützte Relation über Datashares zugegriffen werden kann. Standardmäßig kann auf eine RLS-geschützte Relation nicht über ein Datashare zugegriffen werden. Ein ALTER TABLE ROW LEVEL SECURITY-Befehl, der mit dieser Klausel ausgeführt wird, wirkt sich nur auf die Zugänglichkeitseigenschaft des Datashares aus. Die Eigenschaft ROW LEVEL SECURITY wird nicht geändert. </p>
+                        <p> Wenn Sie eine RLS-geschützte Relation über Datashares zugänglich machen, bietet die Relation in der verbraucherseitigen, gemeinsam genutzten Datenbank keine Sicherheit auf Zeilenebene. Die Relation behält ihre RLS-Eigenschaft auf der Produzentenseite. </p>
+                     </li></ul></div>
                </dd>
             </dl></div>
        

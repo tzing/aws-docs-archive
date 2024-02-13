@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_VIEW" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_VIEW-privileges">Erforderliche Berechtigungen</a><a href="#r_CREATE_VIEW-synopsis">Syntax</a><a href="#r_CREATE_VIEW-parameters">Parameter</a><a href="#r_CREATE_VIEW_usage_notes">Nutzungshinweise</a><a href="#r_CREATE_VIEW-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_VIEW">CREATE VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Erstellt eine Ansicht in einer Datenbank. Die Ansicht wird nicht physisch umgesetzt; die Abfrage, mit der die Ansicht definiert wird, wird jedes Mal ausgeführt, wenn die Ansicht in einer Abfrage referenziert wird. Zum Erstellen einer Ansicht mit einer externen Tabelle fügen Sie die Klausel WITH NO SCHEMA BINDING ein.</p><p>Um eine Standardansicht erstellen zu können, benötigen Sie Zugriff auf die zugrunde liegenden Tabellen oder Ansichten. Zum Abfragen einer Standardansicht benötigen Sie Auswahlsonderrechte für die Ansicht selbst, jedoch nicht für die zugrundeliegenden Tabellen. (Wenn Sie eine Ansicht erstellen, die auf eine Tabelle oder Ansicht in einem anderen Schema oder die auf eine materialisierte Ansicht verweist, benötigen Sie möglicherweise zusätzliche Berechtigungen.) Zum Abfragen einer Ansicht mit später Bindung benötigen Sie Auswahlsonderrechte für die Ansicht mit später Bindung. Sie sollten sicherstellen, dass der Eigentümer der Ansicht mit später Bindung über Auswahlsonderrechte auf die verwiesenen Objekte (Tabellen, Ansichten oder benutzerdefinierte Funktionen) verfügt. Weitere Informationen zu Ansichten mit später Bindung finden Sie unter <a href="#r_CREATE_VIEW_usage_notes">Nutzungshinweise</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_VIEW" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_VIEW-privileges">Erforderliche Berechtigungen</a><a href="#r_CREATE_VIEW-synopsis">Syntax</a><a href="#r_CREATE_VIEW-parameters">Parameter</a><a href="#r_CREATE_VIEW_usage_notes">Nutzungshinweise</a><a href="#r_CREATE_VIEW-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_CREATE_VIEW">CREATE VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Erstellt eine Ansicht in einer Datenbank. Die Ansicht wird nicht physisch umgesetzt; die Abfrage, mit der die Ansicht definiert wird, wird jedes Mal ausgeführt, wenn die Ansicht in einer Abfrage referenziert wird. Zum Erstellen einer Ansicht mit einer externen Tabelle fügen Sie die Klausel WITH NO SCHEMA BINDING ein.</p><p>Um eine Standardansicht erstellen zu können, benötigen Sie Zugriff auf die zugrunde liegenden Tabellen oder Ansichten. Zum Abfragen einer Standardansicht benötigen Sie ausgewählte Berechtigungen für die Ansicht selbst, jedoch nicht für die zugrundeliegenden Tabellen. Wenn Sie eine Ansicht erstellen, die auf eine Tabelle oder Ansicht in einem anderen Schema oder auf eine materialisierte Ansicht verweist, benötigen Sie Nutzungsberechtigungen. Zum Abfragen einer Late-Binding-Ansicht benötigen Sie SELECT-Berechtigungen für die Late-Binding-Ansicht selbst. Sie sollten sicherstellen, dass der Eigentümer der Ansicht mit später Bindung über Auswahlsonderrechte auf die verwiesenen Objekte (Tabellen, Ansichten oder benutzerdefinierte Funktionen) verfügt. Weitere Informationen zu Late-Binding-Ansichten finden Sie unter <a href="#r_CREATE_VIEW_usage_notes">Nutzungshinweise</a>.</p>
          <h2 id="r_CREATE_VIEW-privileges">Erforderliche Berechtigungen</h2>
          <p>Für CREATE VIEW sind folgende Berechtigungen erforderlich:</p>
          <div class="itemizedlist">
@@ -85,7 +85,7 @@
                   <p>Der Name der Ansicht. Wenn ein Schemaname angegeben ist (wie <code class="code">myschema.myview</code>), wird die Ansicht mithilfe des angegebenen Schemas erstellt. Andernfalls wird die Ansicht im aktuellen Schema erstellt. Der Name der Ansicht muss sich von den Namen anderer Ansichten oder Tabellen im selben Schema unterscheiden. </p>
                   <p>Wenn Sie einen Ansichtnamen angeben, der mit „#“ beginnt, wird die Ansicht als temporäre Ansicht erstellt, die nur in der aktuellen Sitzung angezeigt wird.</p>
 
-                  <p>Weitere Informationen zu gültigen Namen finden Sie unter <a href="./r_names.html">Namen und Kennungen</a>. Sie können in den Systemdatenbanken template0, template1 und padb_harvest keine Tabellen oder Ansichten erstellen.</p>
+                  <p>Weitere Informationen zu gültigen Namen finden Sie unter <a href="./r_names.html">Namen und Kennungen</a>. Sie können in den Systemdatenbanken template0, template1, padb_harvest oder sys:internal keine Tabellen oder Ansichten erstellen.</p>
 
                </dd>
              
@@ -101,7 +101,7 @@
              
                <dt><span class="term"> WITH NO SCHEMA BINDING </span></dt>
                <dd>
-                  <p>Klausel, die angibt, dass die Ansicht nicht an die zugrunde liegenden Datenbankobjekte gebunden ist, wie etwa Tabellen und benutzerdefinierte Funktionen. Deshalb besteht keine Abhängigkeit zwischen der Ansicht und den Objekten, auf die sie verweist. Sie können sogar eine Ansicht erstellen, wenn die referenzierten Objekte nicht vorhanden sind. Da keine Abhängigkeit besteht, können Sie ein referenziertes Objekt entfernen oder ändern, ohne die Ansicht zu beeinflussen. Amazon Redshift sucht erst nach Abhängigkeiten, wenn die Ansicht abgefragt wird. Um Details über Ansichten mit später Bindung anzuzeigen, führen Sie die Funktion <a href="./PG_GET_LATE_BINDING_VIEW_COLS.html">PG_GET_LATE_BINDING_VIEW_COLS</a> aus.</p>
+                  <p>Klausel, die angibt, dass die Ansicht nicht an die zugrunde liegenden Datenbankobjekte gebunden ist, wie etwa Tabellen und benutzerdefinierte Funktionen. Deshalb besteht keine Abhängigkeit zwischen der Ansicht und den Objekten, auf die sie verweist. Sie können sogar eine Ansicht erstellen, wenn die referenzierten Objekte nicht vorhanden sind. Da keine Abhängigkeit besteht, können Sie ein referenziertes Objekt entfernen oder ändern, ohne die Ansicht zu beeinflussen. Amazon Redshift sucht erst nach Abhängigkeiten, wenn die Ansicht abgefragt wird. Um Details über Late-Binding-Ansichten anzuzeigen, führen Sie die Funktion <a href="./PG_GET_LATE_BINDING_VIEW_COLS.html">PG_GET_LATE_BINDING_VIEW_COLS</a> aus.</p>
 
                   <p>Wenn Sie die WITH NO SCHEMA BINDING-Klausel einbeziehen, müssen Tabellen und Ansichten, die in der SELECT-Anweisung referenziert werden, mit einem Schemanamen qualifiziert werden. Das Schema muss vorhanden sein, wenn die Ansicht erstellt wird, auch wenn die referenzierte Tabelle nicht vorhanden ist. Die folgende Anweisung gibt beispielsweise einen Fehler zurück. </p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create view myevent as select eventname from event
@@ -142,7 +142,30 @@ select * from spectrum.sales
 with no schema binding;</code></pre>
 
             <p>Weitere Informationen zum Erstellen externer Redshift Spectrum-Tabellen, einschließlich der <code class="code">SPECTRUM.SALES</code>-Tabelle finden Sie unter <a href="./c-getting-started-using-spectrum.html">Erste Schritte mit Amazon Redshift Spectrum</a>.</p>
+            <p>Wenn Sie eine Standardansicht aus einer Late-Binding-Ansicht erstellen, enthält die Definition der Standardansicht die Definition der Late-Binding-Ansicht zu dem Zeitpunkt, an dem die Standardansicht erstellt wurde. Die Abhängigkeit der Late-Binding-Ansicht wird nicht nachverfolgt, so dass Änderungen an der Late-Binding-Ansicht in der Standardansicht nicht nachverfolgt werden.</p>
+               
+               <p>Um die Standardansicht so zu aktualisieren, dass sie auf die neueste Definition der Late-Binding-Ansicht verweist, führen Sie CREATE OR REPLACE VIEW mit der ursprünglichen Ansichtsdefinition aus, mit der Sie die Standardansicht erstellt haben.</p>
+               
+               <p>Im folgenden Beispiel sehen Sie das Erstellen einer Standardansicht aus einer Late-Binding-Ansicht.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">create view sales_vw_lbv as 
+select * from public.sales 
+with no schema binding;
 
+show view sales_vw_lbv;
+                            Show View DDL statement
+--------------------------------------------------------------------------------
+ create view sales_vw_lbv as select * from public.sales with no schema binding;
+(1 row)
+
+create view sales_vw as 
+select * from sales_vw_lbv;
+
+show view sales_vw;
+                                               Show View DDL statement
+---------------------------------------------------------------------------------------------------------------------
+ SELECT sales_vw_lbv.price, sales_vw_lbv."region" FROM (SELECT sales.price, sales."region" FROM sales) sales_vw_lbv;
+(1 row)</code></pre>
+            <p>Beachten Sie, dass die Late-Binding-Ansicht, wie sie in der DDL-Anweisung für die Standardansicht gezeigt wird, beim Erstellen der Standardansicht definiert und nicht aktualisiert wird, wenn Sie danach Änderungen an der Late-Binding-Ansicht vornehmen.</p>
           
        
          <h2 id="r_CREATE_VIEW-examples">Beispiele</h2>

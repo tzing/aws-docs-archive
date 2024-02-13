@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_EXTERNAL_TABLE_examples" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_EXTERNAL_TABLE_examples-partitioning">Beispiele für Partitionierungen</a><a href="#r_CREATE_EXTERNAL_TABLE_examples-row-format">Beispiele für Zeilenformate</a><a href="#r_CREATE_EXTERNAL_TABLE_examples-data-handling">Beispiele für die Datenverarbeitung</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_EXTERNAL_TABLE_examples">Beispiele</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Im folgenden Beispiel wird eine Tabelle namens SALES im externen Amazon-Redshift-Schema namens  erstellt <code class="code">spectrum</code>. Die Daten befinden sich in Textdateien, die Tabulatoren als Trennzeichen verwenden. Die Klausel TABLE PROPERTIES legt die Eigenschaft numRows auf 170.000 Zeilen fest.</p><p>Abhängig von der Identität, die Sie zum Ausführen von CREATE EXTERNAL TABLE verwenden, müssen Sie möglicherweise IAM-Berechtigungen konfigurieren. Als bewährte Methode empfehlen wir, einer IAM-Rolle Berechtigungsrichtlinien anzufügen und sie dann nach Bedarf Benutzern und Gruppen zuzuweisen. Weitere Informationen finden Sie unter <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-authentication-access-control.html">Identity and Access Management in Amazon Redshift</a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.sales(
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_EXTERNAL_TABLE_examples" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_CREATE_EXTERNAL_TABLE_examples-partitioning">Beispiele für Partitionierungen</a><a href="#r_CREATE_EXTERNAL_TABLE_examples-row-format">Beispiele für Zeilenformate</a><a href="#r_CREATE_EXTERNAL_TABLE_examples-data-handling">Beispiele für die Datenverarbeitung</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_CREATE_EXTERNAL_TABLE_examples">Beispiele</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Im folgenden Beispiel wird eine Tabelle namens SALES im externen Amazon-Redshift-Schema namens  erstellt <code class="code">spectrum</code>. Die Daten befinden sich in Textdateien, die Tabulatoren als Trennzeichen verwenden. Die Klausel TABLE PROPERTIES legt die Eigenschaft numRows auf 170.000 Zeilen fest.</p><p>Abhängig von der Identität, die Sie zum Ausführen von CREATE EXTERNAL TABLE verwenden, müssen Sie möglicherweise IAM-Berechtigungen konfigurieren. Als bewährte Methode empfehlen wir, einer IAM-Rolle Berechtigungsrichtlinien anzufügen und sie dann nach Bedarf Benutzern und Gruppen zuzuweisen. Weitere Informationen finden Sie unter <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-authentication-access-control.html">Identity and Access Management in Amazon Redshift</a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.sales(
 salesid integer,
 listid integer,
 sellerid integer,
@@ -62,8 +62,8 @@ saletime timestamp)
 row format delimited
 fields terminated by '\t'
 stored as textfile
-location 's3://awssampledbuswest2/tickit/spectrum/sales/'
-table properties ('numRows'='170000');</code></pre><p>Im folgenden Beispiel wird eine Tabelle erstellt, die JsonSerDe verwendet, um auf Daten im JSON-Format zu verweisen.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.cloudtrail_json (
+location 's3://redshift-downloads/tickit/spectrum/sales/'
+table properties ('numRows'='170000');</code></pre><p>Im folgenden Beispiel wird eine Tabelle erstellt, die die verwendet,  JsonSerDe um auf Daten im JSON-Format zu verweisen.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.cloudtrail_json (
 event_version int,
 event_id bigint,
 event_time timestamp,
@@ -92,8 +92,8 @@ AS SELECT l_orderkey, l_shipmode, l_shipdate, l_partkey FROM local_table;</code>
      1 | spectrumdb   | <span>{</span>"REGION":"us-west-2","IAM_ROLE":"arn:aws:iam::123456789012:role/mySpectrumRole"}
 </code></pre><p>Um Details zu externen Tabellen anzuzeigen, führen Sie eine Abfrage für die Systemansichten <a href="./r_SVV_EXTERNAL_TABLES.html">SVV_EXTERNAL_TABLES</a> und <a href="./r_SVV_EXTERNAL_COLUMNS.html">SVV_EXTERNAL_COLUMNS</a> aus.</p><p>Im folgenden Beispiel wird eine Abfrage für die Ansicht SVV_EXTERNAL_TABLES ausgeführt.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select schemaname, tablename, location from svv_external_tables;</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename            | location
 -----------+----------------------+--------------------------------------------------------
-spectrum   | sales                | s3://awssampledbuswest2/tickit/spectrum/sales
-spectrum   | sales_part           | s3://awssampledbuswest2/tickit/spectrum/sales_partition</code></pre><p>Im folgenden Beispiel wird eine Abfrage für die Ansicht SVV_EXTERNAL_COLUMNS ausgeführt. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from svv_external_columns where schemaname like 'spectrum%' and tablename ='sales';</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename | columnname | external_type | columnnum | part_key
+spectrum   | sales                | s3://redshift-downloads/tickit/spectrum/sales
+spectrum   | sales_part           | s3://redshift-downloads/tickit/spectrum/sales_partition</code></pre><p>Im folgenden Beispiel wird eine Abfrage für die Ansicht SVV_EXTERNAL_COLUMNS ausgeführt. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from svv_external_columns where schemaname like 'spectrum%' and tablename ='sales';</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename | columnname | external_type | columnnum | part_key
 -----------+-----------+------------+---------------+-----------+---------
 spectrum   | sales     | salesid    | int           |         1 |        0
 spectrum   | sales     | listid     | int           |         2 |        0
@@ -108,25 +108,25 @@ spectrum   | sales     | saletime   | timestamp     |        10 |        0</code
 from svv_external_partitions
 where tablename = 'sales_part';</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename  | values         | location
 -----------+------------+----------------+-------------------------------------------------------------------------
-spectrum   | sales_part | ["2008-01-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01
-spectrum   | sales_part | ["2008-02-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02
-spectrum   | sales_part | ["2008-03-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-03
-spectrum   | sales_part | ["2008-04-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-04
-spectrum   | sales_part | ["2008-05-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-05
-spectrum   | sales_part | ["2008-06-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-06
-spectrum   | sales_part | ["2008-07-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-07
-spectrum   | sales_part | ["2008-08-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-08
-spectrum   | sales_part | ["2008-09-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-09
-spectrum   | sales_part | ["2008-10-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-10
-spectrum   | sales_part | ["2008-11-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-11
-spectrum   | sales_part | ["2008-12-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-12</code></pre><p>Das folgende Beispiel gibt die Gesamtgröße der entsprechenden Datendateien für eine externe Tabelle zurück.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select distinct "$path", "$size"
+spectrum   | sales_part | ["2008-01-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01
+spectrum   | sales_part | ["2008-02-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02
+spectrum   | sales_part | ["2008-03-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03
+spectrum   | sales_part | ["2008-04-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-04
+spectrum   | sales_part | ["2008-05-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-05
+spectrum   | sales_part | ["2008-06-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-06
+spectrum   | sales_part | ["2008-07-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-07
+spectrum   | sales_part | ["2008-08-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-08
+spectrum   | sales_part | ["2008-09-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-09
+spectrum   | sales_part | ["2008-10-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-10
+spectrum   | sales_part | ["2008-11-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-11
+spectrum   | sales_part | ["2008-12-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-12</code></pre><p>Das folgende Beispiel gibt die Gesamtgröße der entsprechenden Datendateien für eine externe Tabelle zurück.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select distinct "$path", "$size"
    from spectrum.sales_part;
 
  $path                                                                    | $size
 --------------------------------------------------------------------------+-------
-s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01/ |  1616
-s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
-s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
+s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01/ |  1616
+s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
+s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
 </code></pre>
             <h2 id="r_CREATE_EXTERNAL_TABLE_examples-partitioning">Beispiele für Partitionierungen</h2>
             <p>Führen Sie zur Erstellung einer nach Datum partitionierten Tabelle den folgenden Befehl aus.</p>
@@ -145,45 +145,45 @@ partitioned by (saledate date)
 row format delimited
 fields terminated by '|'
 stored as textfile
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/'
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/'
 table properties ('numRows'='170000');</code></pre>
             <p>Führen Sie zum Hinzufügen der Partitionen die folgenden ALTER TABLE-Befehle aus.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter table spectrum.sales_part
 add if not exists partition (saledate='2008-01-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-02-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-03-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-03/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-04-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-04/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-04/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-05-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-05/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-05/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-06-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-06/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-06/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-07-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-07/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-07/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-08-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-08/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-08/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-09-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-09/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-09/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-10-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-10/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-10/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-11-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-11/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-11/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-12-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-12/';</code></pre>
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-12/';</code></pre>
             <p>Führen Sie die folgende Abfrage aus, um Daten aus der partitionierten Tabelle auszuwählen.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select top 10 spectrum.sales_part.eventid, sum(spectrum.sales_part.pricepaid)
 from spectrum.sales_part, event
@@ -209,18 +209,18 @@ order by 2 desc;</code></pre>
 where tablename = 'sales_part';</code></pre>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename  | values         | location
 -----------+------------+----------------+--------------------------------------------------
-spectrum   | sales_part | ["2008-01-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01
-spectrum   | sales_part | ["2008-02-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02
-spectrum   | sales_part | ["2008-03-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-03
-spectrum   | sales_part | ["2008-04-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-04
-spectrum   | sales_part | ["2008-05-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-05
-spectrum   | sales_part | ["2008-06-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-06
-spectrum   | sales_part | ["2008-07-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-07
-spectrum   | sales_part | ["2008-08-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-08
-spectrum   | sales_part | ["2008-09-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-09
-spectrum   | sales_part | ["2008-10-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-10
-spectrum   | sales_part | ["2008-11-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-11
-spectrum   | sales_part | ["2008-12-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-12</code></pre>
+spectrum   | sales_part | ["2008-01-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01
+spectrum   | sales_part | ["2008-02-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02
+spectrum   | sales_part | ["2008-03-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03
+spectrum   | sales_part | ["2008-04-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-04
+spectrum   | sales_part | ["2008-05-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-05
+spectrum   | sales_part | ["2008-06-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-06
+spectrum   | sales_part | ["2008-07-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-07
+spectrum   | sales_part | ["2008-08-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-08
+spectrum   | sales_part | ["2008-09-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-09
+spectrum   | sales_part | ["2008-10-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-10
+spectrum   | sales_part | ["2008-11-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-11
+spectrum   | sales_part | ["2008-12-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-12</code></pre>
           
             <h2 id="r_CREATE_EXTERNAL_TABLE_examples-row-format">Beispiele für Zeilenformate</h2>
             <p>Nachfolgend sehen Sie ein Beispiel der Angabe von ROW FORMAT SERDE-Parametern für Datendateien, die im AVRO-Format gespeichert sind.</p>
@@ -236,7 +236,7 @@ WITH SERDEPROPERTIES ('avro.schema.literal'='<span>{</span>\"namespace\": \"dory
 <span>{</span>\"name\":\"pricepaid\", \"type\": <span>{</span>\"type\": \"bytes\", \"logicalType\": \"decimal\", \"precision\": 8, \"scale\": 2}}, <span>{</span>\"name\":\"comment\",\"type\":\"string\"}]}')
 STORED AS AVRO
 location 's3://mybucket/avro/sales' ;</code></pre>
-            <p>Nachfolgend sehen Sie ein Beispiel der Angabe von ROW FORMAT SERDE-Parametern mit RegEx.</p>
+            <p>Im Folgenden finden Sie ein Beispiel für die Angabe der Parameter ROW FORMAT SERDE mit  RegEx.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.types(
 cbigint bigint,
 cbigint_null bigint,
@@ -384,4 +384,4 @@ league_rank   club_name         league_name            league_nspi
 10            Paris Saint-Ger   French Ligue 1         30929
 </code></pre>
 
-         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warnung" /> <strong>JavaScript ist in Ihrem Browser nicht verfügbar oder deaktiviert.</strong></p><p>Zur Nutzung der AWS-Dokumentation muss JavaScript aktiviert sein. Weitere Informationen finden auf den Hilfe-Seiten Ihres Browsers.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Dokumentkonventionen</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_CREATE_EXTERNAL_TABLE_usage.html">Nutzungshinweise</div><div id="next" class="next-link" accesskey="n" href="./r_CREATE_FUNCTION.html">CREATE FUNCTION</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Ja</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass wir gute Arbeit geleistet haben!</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, was wir richtig gemacht haben, damit wir noch besser werden?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Nein</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass diese Seite überarbeitet werden muss. Es tut uns Leid, dass wir Ihnen nicht weiterhelfen konnten.</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, wie wir die Dokumentation verbessern können?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warnung" /> <strong>JavaScript ist in Ihrem Browser nicht verfügbar oder deaktiviert.</strong></p><p>Zur Nutzung der AWS-Dokumentation muss JavaScript aktiviert sein. Weitere Informationen finden auf den Hilfe-Seiten Ihres Browsers.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Dokumentkonventionen</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_CREATE_EXTERNAL_TABLE_usage.html">Nutzungshinweise</div><div id="next" class="next-link" accesskey="n" href="./r_CREATE_EXTERNAL_VIEW.html">CREATE EXTERNAL VIEW (Vorschau)</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Ja</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass wir gute Arbeit geleistet haben!</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, was wir richtig gemacht haben, damit wir noch besser werden?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Nein</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass diese Seite überarbeitet werden muss. Es tut uns Leid, dass wir Ihnen nicht weiterhelfen konnten.</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, wie wir die Dokumentation verbessern können?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

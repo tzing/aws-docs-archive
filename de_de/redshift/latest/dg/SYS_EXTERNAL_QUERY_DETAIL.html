@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_EXTERNAL_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_EXTERNAL_QUERY_DETAIL-table-columns">Tabellenspalten</a><a href="#SYS_EXTERNAL_QUERY_DETAIL-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SYS_QUERY_DETAIL, um Details für Abfragen auf Segmentebene anzuzeigen. Jede Zeile repräsentiert ein Segment aus einer bestimmten WLM-Abfrage mit Details wie der Anzahl der verarbeiteten Zeilen, der Anzahl der verarbeiteten Bytes und Partitionsinformationen externer Tabellen in Amazon S3. Jede Zeile in dieser Ansicht hat auch einen entsprechenden Eintrag in der Ansicht SYS_QUERY_DETAIL, außer dass diese Ansicht detailliertere Informationen zur externen Abfrageverarbeitung enthält. </p><p>SYS_EXTERNAL_QUERY_DETAIL ist für alle Benutzer sichtbar. Superuser können alle Zeilen anzeigen, während normale Benutzer nur die Metadaten anzeigen können, auf die sie Zugriff haben.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_EXTERNAL_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_EXTERNAL_QUERY_DETAIL-table-columns">Tabellenspalten</a><a href="#SYS_EXTERNAL_QUERY_DETAIL-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SYS_QUERY_DETAIL, um Details für Abfragen auf Segmentebene anzuzeigen. Jede Zeile repräsentiert ein Segment aus einer bestimmten WLM-Abfrage mit Details wie der Anzahl der verarbeiteten Zeilen, der Anzahl der verarbeiteten Bytes und Partitionsinformationen externer Tabellen in Amazon S3. Jede Zeile in dieser Ansicht hat auch einen entsprechenden Eintrag in der Ansicht SYS_QUERY_DETAIL, außer dass diese Ansicht detailliertere Informationen zur externen Abfrageverarbeitung enthält. </p><p>SYS_EXTERNAL_QUERY_DETAIL ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p>
             <h2 id="SYS_EXTERNAL_QUERY_DETAIL-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c29b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c29b7b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -125,17 +125,17 @@
                         </tr> 
                         <tr>
                             <td tabindex="-1">file_format</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Das Dateiformat von Amazon-S3-Dateien.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">file_location</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Amazon-S3-Speicherort der externen Tabelle.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">external_query_text</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Abfragetext auf Segmentebene für eine Verbundabfrage.</td>
                         </tr>                   
                         <tr>

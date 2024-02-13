@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">Tabellenspalten</a><a href="#SYS_PROCEDURE_CALL-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie die Ansicht SYS_PROCEDURE_CALL zum Abruf von Informationen zu Aufrufen gespeicherter Prozeduren, einschließlich Startzeit, Endzeit, Status des gespeicherten Prozeduraufrufs und Aufrufhierarchie für verschachtelte Aufrufe gespeicherter Prozeduren. Jeder Aufruf einer gespeicherten Prozedur erhält eine Abfrage-ID.</p><p>SYS_STORED_PROC_CALL ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">Tabellenspalten</a><a href="#SYS_PROCEDURE_CALL-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie die Ansicht SYS_PROCEDURE_CALL zum Abruf von Informationen zu Aufrufen gespeicherter Prozeduren, einschließlich Startzeit, Endzeit, Status des gespeicherten Prozeduraufrufs und Aufrufhierarchie für verschachtelte Aufrufe gespeicherter Prozeduren. Jeder Aufruf einer gespeicherten Prozedur erhält eine Abfrage-ID.</p><p>SYS_STORED_PROC_CALL ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p>
             <h2 id="SYS_PROCEDURE_CALL-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c45b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c47b7b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -55,17 +55,17 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">session_user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die ID des Benutzers, der die Sitzung erstellt hat und der Aufrufer des Aufrufs der gespeicherten Prozedur auf oberster Ebene ist.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">security_user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die ID des Benutzers, dessen Berechtigungen zum Ausführen der Anweisung in der gespeicherten Prozedur benutzt wurden. Wenn es sich bei der gespeicherten Prozedur um DEFINER handelt, ist dies die Benutzer-ID des Eigentümers der gespeicherten Prozedur.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">query_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Abfrage-ID des gespeicherten Prozeduraufrufs.</td>
                         </tr> 
                         
@@ -77,22 +77,22 @@
                         
                         <tr>
                             <td tabindex="-1">start_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Zeitpunkt des Beginns der Abfrage, in UTC. Der Zeitstempel nutzt eine Genauigkeit von sechs Ziffern für Sekundenbruchteile, zum Beispiel 2009-06-12 11:29:19.131358.</td>
                         </tr> 
                         <tr>
                             <td tabindex="-1">end_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Zeitpunkt der Beendigung der Abfrage, in UTC. Der Zeitstempel nutzt eine Genauigkeit von sechs Ziffern für Sekundenbruchteile, zum Beispiel: 2009-06-12 11:29:19.131358.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">status</td>
+                            <td tabindex="-1">Status</td>
                             <td tabindex="-1">char(10)</td>
                             <td tabindex="-1">Der Status des Aufrufs der gespeicherten Prozedur. Wenn die gespeicherte Prozedur vom System angehalten oder vom Benutzer abgebrochen wurde, wird der Wert „abgebrochen“. Wenn der Aufruf der gespeicherten Prozedur abgeschlossen wurde, ist der Wert „erfolgreich“.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">caller_procedure_query_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Wenn die Prozedur von einem anderen Prozeduraufruf aufgerufen wurde, enthält diese Spalte die Abfrage-ID des externen Aufrufs. Andernfalls ist das Feld NULL.</td>
                         </tr>
                         

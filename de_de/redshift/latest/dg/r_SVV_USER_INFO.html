@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_USER_INFO" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SVV_USER_INFO-table-columns">Tabellenspalten</a><a href="#SVV_USER_INFO-sample-queries">Beispielabfrage</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_USER_INFO">SVV_USER_INFO</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>In der Ansicht SVV_USER_INFO können Sie Daten zu Benutzern der Amazon-Redshift-Datenbank abrufen.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_USER_INFO" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SVV_USER_INFO-table-columns">Tabellenspalten</a><a href="#SVV_USER_INFO-sample-queries">Beispielabfrage</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_SVV_USER_INFO">SVV_USER_INFO</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>In der Ansicht SVV_USER_INFO können Sie Daten zu Benutzern der Amazon-Redshift-Datenbank abrufen.</p><p>SVV_USER_INFO ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p>
                 <h2 id="SVV_USER_INFO-table-columns">Tabellenspalten</h2>
                 
                 
-                <div class="table-container"><div class="table-contents"><table id="w317aac47c11d119b5b3"><thead>
+                <div class="table-container"><div class="table-contents"><table id="w319aac49c11d121b7b3"><thead>
                             <tr>
                                 <th>Spaltenname </th>
                                 <th>Datentyp </th>
@@ -55,52 +55,52 @@
                         </thead>
                             <tr>
                                 <td tabindex="-1">user_name </td>
-                                <td tabindex="-1">Text </td>
+                                <td tabindex="-1">text </td>
                                 <td tabindex="-1">Der Benutzernamen für die Rolle. </td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">user_id</td>
-                                <td tabindex="-1">integer</td>
+                                <td tabindex="-1">Ganzzahl</td>
                                 <td tabindex="-1">Die Benutzer-ID für den Benutzer.</td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">createdb</td>
-                                <td tabindex="-1">Boolean</td>
+                                <td tabindex="-1">boolesch</td>
                                 <td tabindex="-1">Ein Wert, der angibt, ob der Benutzer zum Erstellen von Datenbanken berechtigt ist. </td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">superuser</td>
-                                <td tabindex="-1">Boolean</td>
+                                <td tabindex="-1">boolesch</td>
                                 <td tabindex="-1">Ein Wert, der angibt, ob der Benutzer ein Superuser ist.</td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">catalog_update</td>
-                                <td tabindex="-1">Boolean</td>
+                                <td tabindex="-1">boolesch</td>
                                 <td tabindex="-1">Ein Wert, der angibt, ob der Benutzer Systemkataloge aktualisieren kann. </td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">connection_limit</td>
-                                <td tabindex="-1">Text </td>
+                                <td tabindex="-1">text </td>
                                 <td tabindex="-1">Die Anzahl der Verbindungen, die der Benutzer öffnen kann.</td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">syslog_access </td>
-                                <td tabindex="-1">Text </td>
+                                <td tabindex="-1">text </td>
                                 <td tabindex="-1">Ein Wert, der angibt, ob der Benutzer Zugriff auf die Systemprotokolle hat. Die beiden möglichen Werte sind <code class="code">RESTRICTED</code> und <code class="code">UNRESTRICTED</code>. <code class="code">RESTRICTED</code> bedeutet, dass Benutzer, die keine Superuser sind, ihre eigenen Datensätze anzeigen können. <code class="code">UNRESTRICTED</code> bedeutet, dass Benutzer, die keine Superuser sind, alle Datensätze in den Systemansichten und -tabellen anzeigen können, für die sie <code class="code">SELECT</code>-Berechtigungen besitzen. </td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">last_ddl_timestamp</td>
-                                <td tabindex="-1">timestamp</td>
+                                <td tabindex="-1">Zeitstempel</td>
                                 <td tabindex="-1">Der Zeitstempel für die letzte Data Definition Language (DDL)-Erstellungsanweisung, die vom Benutzer ausgeführt wurde. </td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">session_timeout</td>
-                                <td tabindex="-1">integer</td>
+                                <td tabindex="-1">Ganzzahl</td>
                                 <td tabindex="-1">Die maximale Zeit in Sekunden, die eine Sitzung ohne Timeout inaktiv oder untätig bleibt. 0 bedeutet, dass kein Timeout eingestellt ist. Informationen zur Einstellung für den Leerlauf oder den Timeout bei Inaktivität des Clusters finden Sie unter <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Kontingente und Limits in Amazon Redshift</a> im <em>Amazon-Redshift-Verwaltungshandbuch</em>.</td>
                             </tr>
                             <tr>
                                 <td tabindex="-1">external_user_id</td>
-                                <td tabindex="-1">Text</td>
+                                <td tabindex="-1">text</td>
                                 <td tabindex="-1">Die eindeutige Kennung des Benutzers beim externen Identitätsanbieter.</td>
                             </tr>
                         </table></div></div>
@@ -111,4 +111,4 @@
                 <p>Mit dem folgenden Befehl werden Benutzerinformationen aus SVV_USER_INFO abgerufen.</p>
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT * FROM SVV_USER_INFO;
 </code></pre>
-            <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warnung" /> <strong>JavaScript ist in Ihrem Browser nicht verfügbar oder deaktiviert.</strong></p><p>Zur Nutzung der AWS-Dokumentation muss JavaScript aktiviert sein. Weitere Informationen finden auf den Hilfe-Seiten Ihres Browsers.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Dokumentkonventionen</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_SVV_TRANSACTIONS.html">SVV_TRANSACTIONS</div><div id="next" class="next-link" accesskey="n" href="./r_SVV_USER_GRANTS.html">SVV_USER_GRANTS</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Ja</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass wir gute Arbeit geleistet haben!</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, was wir richtig gemacht haben, damit wir noch besser werden?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_SVV_USER_INFO.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Nein</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass diese Seite überarbeitet werden muss. Es tut uns Leid, dass wir Ihnen nicht weiterhelfen konnten.</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, wie wir die Dokumentation verbessern können?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_SVV_USER_INFO.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+            <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warnung" /> <strong>JavaScript ist in Ihrem Browser nicht verfügbar oder deaktiviert.</strong></p><p>Zur Nutzung der AWS-Dokumentation muss JavaScript aktiviert sein. Weitere Informationen finden auf den Hilfe-Seiten Ihres Browsers.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Dokumentkonventionen</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_SVV_USER_GRANTS.html">SVV_USER_GRANTS</div><div id="next" class="next-link" accesskey="n" href="./r_SVV_VACUUM_PROGRESS.html">SVV_VACUUM_PROGRESS</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Ja</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass wir gute Arbeit geleistet haben!</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, was wir richtig gemacht haben, damit wir noch besser werden?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_SVV_USER_INFO.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Nein</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass diese Seite überarbeitet werden muss. Es tut uns Leid, dass wir Ihnen nicht weiterhelfen konnten.</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, wie wir die Dokumentation verbessern können?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_SVV_USER_INFO.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

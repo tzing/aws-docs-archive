@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-reviewing-query-alerts" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="c-reviewing-query-alerts">Überprüfen von Abfragewarnungen</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie die Systemtabelle <a href="./r_STL_ALERT_EVENT_LOG.html">STL_ALERT_EVENT_LOG</a> wie folgt, um mögliche Performanceprobleme bei Ihrer Abfrage zu identifizieren und zu korrigieren.</p><div class="orderedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-reviewing-query-alerts" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="c-reviewing-query-alerts">Überprüfen von Abfragewarnungen</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie die Systemtabelle <a href="./r_STL_ALERT_EVENT_LOG.html">STL_ALERT_EVENT_LOG</a> wie folgt, um mögliche Performanceprobleme bei Ihrer Abfrage zu identifizieren und zu korrigieren.</p><div class="orderedlist">
              
              
              
@@ -65,7 +65,7 @@ desc limit 5;               </code></pre>
             </li><li>
                <p>Werten Sie die Ergebnisse für Ihre Abfrage aus. Verwenden Sie die folgende Tabelle, um mögliche Lösungen für die identifizierten Probleme zu finden.</p>
                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>In STL_ALERT_EVENT_LOG sind nur Abfragen mit erkannten Problemen aufgeführt.</p></div></div>
-               <div class="table-container"><div class="table-contents"><table id="w317aac39c15b9b5b5b5"><thead>
+               <div class="table-container"><div class="table-contents"><table id="w319aac41c15b9b5b5b5"><thead>
                         <tr>
                            <th>Problem</th>
                            <th>Ereigniswert</th>
@@ -94,7 +94,7 @@ desc limit 5;               </code></pre>
                         </tr>
                         <tr>
                            <td tabindex="-1">Für einen Hash-Join oder eine Aggregierung wurden mehr als 1.000.000 Zeilen umverteilt. </td>
-                           <td tabindex="-1">Es wurden sehr viele Zeilen über das Netzwerk verteilt: Für die Aggregierung wurden RowCount Zeilen verteilt.</td>
+                           <td tabindex="-1">Es wurde eine große Anzahl von Zeilen über das Netzwerk verteilt: RowCount Zeilen wurden verteilt, um die Aggregation zu verarbeiten</td>
                            <td tabindex="-1">Überprüfen Sie die Auswahl des Verteilungsschlüssels, mit dem die Join- oder Aggregat-Operation zusammengefasst werden. </td>
                            <td tabindex="-1"> Siehe <a href="./query-performance-improvement-opportunities.html#suboptimal-data-distribution">Suboptimale Datenverteilung</a>. </td>
                         </tr>

@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_LOAD_HISTORY" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_LOAD_HISTORY-table-columns">Tabellenspalten</a><a href="#SYS_LOAD_HISTORY-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SYS_LOAD_HISTORY, um Details zu COPY-Befehlen anzuzeigen. Jede Zeile stellt einen COPY-Befehl mit akkumulierten Statistiken für einige der Felder dar. Sie enthält sowohl ausgeführte als auch abgeschlossene COPY-Befehle.</p><p>SYS_LOAD_HISTORY ist für alle Benutzer sichtbar. Superuser können alle Zeilen anzeigen, während normale Benutzer nur die Metadaten anzeigen können, auf die sie Zugriff haben.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_LOAD_HISTORY" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SYS_LOAD_HISTORY-table-columns">Tabellenspalten</a><a href="#SYS_LOAD_HISTORY-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SYS_LOAD_HISTORY, um Details zu COPY-Befehlen anzuzeigen. Jede Zeile stellt einen COPY-Befehl mit akkumulierten Statistiken für einige der Felder dar. Sie enthält sowohl ausgeführte als auch abgeschlossene COPY-Befehle.</p><p>SYS_LOAD_HISTORY ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p>
             <h2 id="SYS_LOAD_HISTORY-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c39b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c41b7b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -75,17 +75,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">database_name</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name der Datenbank, mit der der Benutzer verbunden war, als der Vorgang ausgegeben wurde.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">status</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">Status</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Status der Kopie. Gültige Werte sind <code class="code">running</code>, <code class="code">completed</code>, <code class="code">aborted</code>.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">table_name</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name der Tabelle, die Informationen kopiert hat.</td>
                         </tr>
                         <tr>
@@ -105,12 +105,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">data_source</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Amazon-S3-Speicherort der zu kopierenden Dateien.</td>
                         </tr> 
                         <tr>
                             <td tabindex="-1">file_format</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Das Format der Quelldatei. Zu den Formaten gehören csv, txt, json, avro, orc oder parquet.</td>
                         </tr> 
 
@@ -136,7 +136,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">file_count_scanned</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die Anzahl der gescannten Dateien von Amazon S3.</td>
                         </tr> 
                         <tr>

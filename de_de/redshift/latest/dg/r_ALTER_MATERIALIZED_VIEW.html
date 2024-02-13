@@ -42,12 +42,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_MATERIALIZED_VIEW" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_ALTER_MATERIALIZED_VIEW-synopsis">Syntax</a><a href="#r_ALTER_MATERIALIZED_VIEW-parameters">Parameter</a><a href="#r_ALTER_MATERIALIZED_VIEW-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_MATERIALIZED_VIEW">ALTER MATERIALIZED VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Aktiviert das automatische Aktualisieren einer materialisierten Ansicht. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_MATERIALIZED_VIEW" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_ALTER_MATERIALIZED_VIEW-synopsis">Syntax</a><a href="#r_ALTER_MATERIALIZED_VIEW-parameters">Parameter</a><a href="#r_ALTER_MATERIALIZED_VIEW-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_ALTER_MATERIALIZED_VIEW">ALTER MATERIALIZED VIEW</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Aktiviert das automatische Aktualisieren einer materialisierten Ansicht. </p>
          <h2 id="r_ALTER_MATERIALIZED_VIEW-synopsis">Syntax</h2>
 
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER MATERIALIZED VIEW <em>mv_name</em>
 [ AUTO REFRESH <span>{</span> YES | NO } ]
-[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [FOR DATASHARES] ];</code></pre>
+[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [FOR DATASHARES] ];</code></pre>
 
         
 
@@ -56,6 +56,7 @@
 
          <div class="variablelist">
              
+             
     
              
              
@@ -63,18 +64,29 @@
 
 
          <dl>
+               <dt><span class="term"><em>mv_name</em></span></dt>
+               <dd><p>Der Name der materialisierten Ansicht, der geändert werden soll.</p></dd>
+             
                <dt><span class="term">AUTO REFRESH <span>{</span> YES | NO }</span></dt>
                <dd>
                   <p>Eine Klausel, die das automatische Aktualisieren einer materialisierten Ansicht aktiviert oder deaktiviert. Weitere Informationen zur automatischen Aktualisierung von materialisierten Ansichten finden Sie unter <a href="./materialized-view-refresh.html">Aktualisieren einer materialisierten Ansicht</a>.</p></dd>
              
-               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF }</span></dt>
-               <dd>
-                  <p>Eine Klausel, die die Sicherheit auf Zeilenebene für eine materialisierte Ansicht aktiviert oder deaktiviert. Wenn die Sicherheit auf Zeilenebene aktiviert ist, können Sie nur die Zeilen lesen, für die die Richtlinie auf Zeilenebene den Zugriff zulässt. Wenn es keine Richtlinie gibt, die einem Benutzer Zugriff auf die Tabelle oder Ansicht gewährt, kann der Benutzer keine Datensätze sehen. Nur Superuser und Benutzer oder Rollen, denen die <code class="code">sys:secadmin</code>-Rolle zugewiesen ist, können die Klausel ROW LEVEL SECURITY festlegen. Weitere Informationen finden Sie unter <a href="./r_CREATE_RLS_POLICY.html">CREATE RLS POLICY</a>.</p></dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>Eine Klausel, die festlegt, ob eine materialisierte Ansicht über Datashares RLS-geschützt ist. Standardmäßig ist eine RLS-geschützte materialisierte Ansicht auch über Datashares RLS-geschützt.</p>
-
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+               <dd><p>Eine Klausel, die die Sicherheit auf Zeilenebene für eine Relation aktiviert oder deaktiviert.</p>
+                  <p>Wenn die Sicherheit auf Zeilenebene für eine Relation aktiviert ist, können Sie nur die Zeilen lesen, für die Ihnen die Richtlinie auf Zeilenebene Zugriff gewährt. Wenn es keine Richtlinie gibt, die Ihnen Zugriff auf die Relation gewährt, können Sie keine Zeilen aus der Relation sehen. Nur Superuser und Benutzer oder Rollen, denen die <code class="code">sys:secadmin</code>-Rolle zugewiesen ist, können die Klausel ROW LEVEL SECURITY festlegen. Weitere Informationen finden Sie unter <a href="./t_rls.html">Sicherheit auf Zeilenebene</a>.</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>Eine Klausel, mit der Sie den Verbindungstyp einer Sicherheitsrichtlinie auf Zeilenebene für eine Relation auswählen können. Wenn einer Relation mehrere Sicherheitsrichtlinien auf Zeilenebene zugeordnet sind, können Sie die Richtlinien mit der AND- oder OR-Klausel kombinieren. Standardmäßig kombiniert Amazon Redshift RLS-Richtlinien mit der AND-Klausel. Superuser, Benutzer oder Rollen, denen diese <code class="code">sys:secadmin</code>-Rolle zugewiesen wurde, können diese Klausel verwenden, um den Verbindungstyp der Sicherheitsrichtlinie auf Zeilenebene für eine Relation zu definieren. Weitere Informationen finden Sie unter <a href="./t_rls_combine_policies.html">Kombinieren mehrerer Richtlinien pro Benutzer</a>. </p></li><li class="listitem">
+                        <p>FOR DATASHARES</p>
+                        <p> Eine Klausel, die festlegt, ob auf eine RLS-geschützte Relation über Datashares zugegriffen werden kann. Standardmäßig kann auf eine RLS-geschützte Relation nicht über ein Datashare zugegriffen werden. Ein ALTER MATERIALIZED VIEW ROW LEVEL SECURITY-Befehl, der mit dieser Klausel ausgeführt wird, wirkt sich nur auf die Zugänglichkeitseigenschaft des Datashares der Relation aus. Die Eigenschaft ROW LEVEL SECURITY wird nicht geändert.</p>
+                        <p> Wenn Sie eine RLS-geschützte Relation über Datashares zugänglich machen, bietet die Relation in der verbraucherseitigen, gemeinsam genutzten Datenbank keine Sicherheit auf Zeilenebene. Die Relation behält ihre RLS-Eigenschaft auf der Produzentenseite. </p>
+                     </li></ul></div>
                </dd>
+             
+               <dt><span class="term">SPECTRUM MAX ERRORS <em>number_of_errors</em></span></dt>
+               <dd><p> Eine Klausel, die die maximale Anzahl von zu akzeptierenden Fehlern angibt, bevor eine Abfrage in der materialisierten Ansicht abgebrochen wird. <em>number_of_errors</em> akzeptiert ganze Zahlen. Negative Werte schalten die Funktion für maximale Fehlerbehandlung aus. Die Ergebnisse werden protokolliert in <a href="./r_SVL_SPECTRUM_SCAN_ERROR.html">SVL_SPECTRUM_SCAN_ERROR</a>. </p> </dd>
             </dl></div>
 
        

@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_EXPLAIN" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_EXPLAIN-synopsis">Syntax</a><a href="#r_EXPLAIN-parameters">Parameter</a><a href="#r_EXPLAIN-usage-notes">Nutzungshinweise</a><a href="#r_EXPLAIN-query-planning-and-execution-steps">Abfrageplanung und Ausführungsschritte</a><a href="#r_EXPLAIN-RLS">Verwendung von EXPLAIN für RLS </a><a href="#r_EXPLAIN-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_EXPLAIN">EXPLAIN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Zeigt den Ausführungsplan für eine Abfrageanweisung an, ohne die Abfrage auszuführen. Informationen zum Arbeitsablauf für die Abfrageanalyse finden Sie unter <a href="./c-query-analysis-process.html">Workflow zur Analyse von Abfragen</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_EXPLAIN" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_EXPLAIN-synopsis">Syntax</a><a href="#r_EXPLAIN-parameters">Parameter</a><a href="#r_EXPLAIN-usage-notes">Nutzungshinweise</a><a href="#r_EXPLAIN-query-planning-and-execution-steps">Abfrageplanung und Ausführungsschritte</a><a href="#r_EXPLAIN-RLS">Verwendung von EXPLAIN für RLS </a><a href="#r_EXPLAIN-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_EXPLAIN">EXPLAIN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Zeigt den Ausführungsplan für eine Abfrageanweisung an, ohne die Abfrage auszuführen. Informationen zum Arbeitsablauf für die Abfrageanalyse finden Sie unter <a href="./c-query-analysis-process.html">Workflow zur Analyse von Abfragen</a>.</p>
          <h2 id="r_EXPLAIN-synopsis">Syntax</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">EXPLAIN [ VERBOSE ] <em>query</em>
                   </code></pre>
@@ -93,7 +93,7 @@
          <h2 id="r_EXPLAIN-query-planning-and-execution-steps">Abfrageplanung und Ausführungsschritte</h2>
          <p>Der Ausführungsplan für eine bestimmte Amazon-Redshift-Abfrageanweisung unterteilt Ausführung und Berechnung einer Abfrage in eine definierte Abfolge von Schritten und Tabellenoperationen, die schließlich einen endgültigen Ergebnissatz für die Abfrage zurückgeben. Informationen zur Abfrageplanung finden Sie unter <a href="./c-query-processing.html">Verarbeitung von Abfragen</a>.</p>
             <p>In der folgenden Tabelle wird eine Übersicht über die Schritte bereitgestellt, die Amazon Redshift für die Entwicklung eines Ausführungsplans für eine Abfrage verwenden kann, die von einem Benutzer zur Ausführung abgesendet wird.</p>
-         <div class="table-container"><div class="table-contents"><table id="w317aac45b9d155c11b7"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac47b9d163c11b7"><thead>
                   <tr>
                      <th>EXPLAIN-Operatoren </th>
                      <th>Abfrageausführungsschritte </th>
@@ -161,7 +161,7 @@
                      <td colspan="3" style="vertical-align: top;" tabindex="-1"><b>EXCEPT-, INTERSECT- und UNION-Operationen:</b> </td>
                   </tr>
                   <tr>
-                     <td style="vertical-align: top;" tabindex="-1">SetOp Except [Distinct] </td>
+                     <td style="vertical-align: top;" tabindex="-1">SetOp Ausnahme [Eindeutig] </td>
                      <td style="vertical-align: top;" tabindex="-1">hjoin </td>
                      <td tabindex="-1">Wird für EXCEPT-Abfragen verwendet. Kann über die Festplatte ausgeführt werden, da der Eingabe-Hash festplattenbasiert sein kann. </td>
                   </tr>
@@ -219,7 +219,7 @@
                      <td tabindex="-1">Wird für bestimmte Unterabfragen verwendet. </td>
                   </tr>
                   <tr>
-                     <td style="vertical-align: top;" tabindex="-1">Eindeutig </td>
+                     <td style="vertical-align: top;" tabindex="-1">Unique </td>
                      <td style="vertical-align: top;" tabindex="-1">eindeutig </td>
                      <td tabindex="-1">Beseitigt Duplikate aus SELECT DISTINCT- und UNION-Abfragen. </td>
                   </tr>
@@ -268,8 +268,8 @@
        
          <h2 id="r_EXPLAIN-RLS">Verwendung von EXPLAIN für RLS </h2>
         
-         <p>Wenn eine Abfrage eine Tabelle enthält, die Richtlinien für die Sicherheit auf Zeilenebene (RLS) unterliegt, zeigt EXPLAIN einen speziellen RLS-SecureScan-Knoten an. Amazon Redshift protokolliert denselben Knotentyp auch in der STL_EXPLAIN-Systemtabelle. EXPLAIN enthüllt nicht das RLS-Prädikat, das für dim_tbl gilt. Der RLS-SecureScan-Knotentyp dient als Indikator dafür, dass der Ausführungsplan zusätzliche Operationen enthält, die für den aktuellen Benutzer unsichtbar sind.</p>
-         <p>Das folgende Beispiel veranschaulicht einen RLS-SecureScan-Knoten.</p>
+         <p>Wenn eine Abfrage eine Tabelle enthält, die den Richtlinien für Sicherheit auf Zeilenebene (RLS) unterliegt, zeigt EXPLAIN einen speziellen RLS- SecureScan Knoten an. Amazon Redshift protokolliert denselben Knotentyp auch in der STL_EXPLAIN-Systemtabelle. EXPLAIN enthüllt nicht das RLS-Prädikat, das für dim_tbl gilt. Der RLS- SecureScan Knotentyp dient als Indikator dafür, dass der Ausführungsplan zusätzliche Operationen enthält, die für den aktuellen Benutzer nicht sichtbar sind.</p>
+         <p>Das folgende Beispiel veranschaulicht einen RLS- SecureScan Knoten.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">EXPLAIN
 SELECT D.cint
 FROM fact_tbl F INNER JOIN dim_tbl D ON F.k_dim = D.k
@@ -285,7 +285,7 @@ WHERE F.k_dim / 10 &gt; 0;
                Filter: (("k" / 10) &gt; 0)</code></pre>
 
          <p>Um eine vollständige Untersuchung von Abfrageplänen zu ermöglichen, die RLS unterliegen, bietet Amazon Redshift die EXPLAIN-RLS-Systemberechtigungen an. Benutzer, denen diese Berechtigung erteilt wurde, können vollständige Abfragepläne prüfen, die auch RLS-Prädikate enthalten. </p>
-         <p>Das folgende Beispiel veranschaulicht einen zusätzlichen Seq-Scan unterhalb des RLS-SecureScan-Knotens, der auch das RLS-Richtlinienprädikat (k_dim &gt; 1) enthält.</p>
+         <p>Das folgende Beispiel veranschaulicht einen zusätzlichen Seq Scan unter dem RLS- SecureScan Knoten, der auch das RLS-Richtlinienprädikat enthält (k_dim &gt; 1).</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">EXPLAIN SELECT D.cint
 FROM fact_tbl F INNER JOIN dim_tbl D ON F.k_dim = D.k
 WHERE F.k_dim / 10 &gt; 0;
@@ -304,7 +304,7 @@ WHERE F.k_dim / 10 &gt; 0;
 
           
             <h3 id="r_EXPLAIN_RLS-LF">AWS Lake Formation-RLS-geschützte Redshift-Relationen</h3>
-            <p>Das folgende Beispiel veranschaulicht einen LF-SecureScan-Knoten, den Sie zum Anzeigen von Lake-Formation-RLS-Relationen verwenden können.</p>
+            <p>Das folgende Beispiel zeigt einen LF- SecureScan Knoten, mit dem Sie Lake-Formation-RLS-Beziehungen anzeigen können.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">EXPLAIN
 SELECT *
 FROM lf_db.public.t_share

@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_QUERY_STATE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_QUERY_STATE-table-columns">Tabellenspalten</a><a href="#r_SVV_QUERY_STATE-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_QUERY_STATE">SVV_QUERY_STATE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p> Verwenden Sie SVV_QUERY_STATE zur Anzeige von Informationen zur Laufzeit derzeit laufender Abfragen.</p><p>Die Ansicht SVV_QUERY_STATE enthält einen Teil der Daten der Tabelle STV_EXEC_STATE.</p><p>SVV_QUERY_STATE ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p><p>Einige oder alle Spalten in dieser Tabelle sind auch in der SYS-Überwachungsansicht <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> definiert. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Diese Ansicht ist nur verfügbar, wenn bereitgestellte Cluster abgefragt werden.</p></div></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_QUERY_STATE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_QUERY_STATE-table-columns">Tabellenspalten</a><a href="#r_SVV_QUERY_STATE-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_SVV_QUERY_STATE">SVV_QUERY_STATE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p> Verwenden Sie SVV_QUERY_STATE zur Anzeige von Informationen zur Laufzeit derzeit laufender Abfragen.</p><p>Die Ansicht SVV_QUERY_STATE enthält einen Teil der Daten der Tabelle STV_EXEC_STATE.</p><p>SVV_QUERY_STATE ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p><p>Einige oder alle Daten in dieser Tabelle sind auch in der SYS-Überwachungsansicht <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> zu finden. Die Daten in der SYS-Überwachungsansicht sind so formatiert, dass sie leichter verwendbar und besser verständlich sind. Wir empfehlen Ihnen, für Ihre Abfragen die SYS-Überwachungsansicht zu verwenden.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Diese Ansicht ist nur verfügbar, wenn bereitgestellte Cluster abgefragt werden.</p></div></div>
             <h2 id="r_SVV_QUERY_STATE-table-columns">Tabellenspalten</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c79c13b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c79c13b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -65,12 +65,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">seg </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">Ganzzahl </td>
                             <td tabindex="-1">Nummer des derzeit ausgeführten Abfragesegments. Eine Abfrage besteht aus mehreren Segmenten, und jedes Segment besteht aus einem oder mehreren Schritten. Abfragesegmente können parallel ausgeführt werden. Jedes Segment wird in einem einzelnen Prozess ausgeführt. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">Schritt </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">Ganzzahl </td>
                             <td tabindex="-1">Nummer des derzeit ausgeführten Abfrageschrittes. Ein Schritt ist die kleinste Einheit der Abfragelaufzeit. Jeder Schritt steht für eine diskrete Arbeitseinheit, etwa das Scannen einer Tabelle, die Ausgabe von Ergebnissen oder das Sortieren von Daten. </td>
                         </tr>
                         <tr>
@@ -107,15 +107,15 @@
                         <tr>
                             <td tabindex="-1">rate_row </td>
                             <td tabindex="-1">double precision </td>
-                            <td tabindex="-1">Zeilen-pro-Sekunde-Rate seit dem Beginn der Abfrage, berechnet durch die Summierung der Zeilen und die Division dieses Werts durch die Anzahl der Sekunden zwischen dem Beginn der Abfrage und dem aktuellen Zeitpunkt. </td>
+                            <td tabindex="-1">R-ows-per-second Rate seit Beginn der Abfrage, berechnet durch Summierung der Zeilen und Dividieren durch die Anzahl der Sekunden ab dem Beginn der Abfrage bis zum aktuellen Zeitpunkt. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">rate_byte </td>
                             <td tabindex="-1">double precision </td>
-                            <td tabindex="-1">Bytes-pro-Sekunde-Rate seit dem Beginn der Abfrage, berechnet durch die Summierung der Bytes und die Division dieses Werts durch die Anzahl der Sekunden zwischen dem Beginn der Abfrage und dem aktuellen Zeitpunkt. </td>
+                            <td tabindex="-1">B-ytes-per-second Rate seit dem Start der Abfrage, berechnet durch Summieren der Bytes und Dividieren durch die Anzahl der Sekunden ab dem Start der Abfrage bis zum aktuellen Zeitpunkt. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">label </td>
+                            <td tabindex="-1">Bezeichnung </td>
                             <td tabindex="-1">character(25) </td>
                             <td tabindex="-1">Abfragebeschriftung: ein Name für den Schritt, wie etwa <code class="code">scan</code> oder <code class="code">sort</code>. </td>
                         </tr>

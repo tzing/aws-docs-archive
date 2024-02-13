@@ -42,11 +42,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_FUNCTION_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_FUNCTION_PRIVILEGES-table-columns">Tabellenspalten</a><a href="#r_SVV_FUNCTION_PRIVILEGES-sample-query">Beispielabfrage</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_FUNCTION_PRIVILEGES">SVV_FUNCTION_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SVV_FUNCTION_PRIVILEGES, um die Funktionsberechtigungen anzuzeigen, die Benutzern, Rollen und Gruppen in der aktuellen Datenbank explizit gewährt werden.</p><p>SVV_FUNCTION_PRIVILEGES ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen. Reguläre Benutzer mit der Berechtigung ACCESS SYSTEM TABLE können alle Zeilen sehen. Reguläre Benutzer können nur Identitäten sehen, auf die sie Zugriff haben oder deren Identitätsinhaber sie sind.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_FUNCTION_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_FUNCTION_PRIVILEGES-table-columns">Tabellenspalten</a><a href="#r_SVV_FUNCTION_PRIVILEGES-sample-query">Beispielabfrage</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_SVV_FUNCTION_PRIVILEGES">SVV_FUNCTION_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SVV_FUNCTION_PRIVILEGES, um die Funktionsberechtigungen anzuzeigen, die Benutzern, Rollen und Gruppen in der aktuellen Datenbank explizit gewährt werden.</p><p>SVV_FUNCTION_PRIVILEGES ist für die folgenden Benutzer sichtbar:</p><div class="itemizedlist">
+             
+             
+        <ul class="itemizedlist"><li class="listitem"><p>Superuser</p></li><li class="listitem"><p>Benutzer mit der Berechtigung ACCESS SYSTEM TABLE</p></li></ul></div><p>Andere Benutzer können nur Identitäten sehen, auf die sie Zugriff haben oder die sie besitzen.</p>
             <h2 id="r_SVV_FUNCTION_PRIVILEGES-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c49b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c49c11b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -55,42 +58,42 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">namespace_name</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name des Namespace, in dem eine angegebene Funktion vorhanden ist.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">function_name</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name der Funktion.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">argument_types</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der String, der den Typ des Eingabearguments einer Funktion darstellt.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">privilegege_type</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Typ der Berechtigung. Der mögliche Wert ist EXECUTE.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die ID der Identität. Mögliche Werte sind die Benutzer-ID, Rollen-ID und Gruppen-ID.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_name</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name der Identität.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_type</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Die Art der Identität. Mögliche Werte sind der Benutzer, die Rolle, die Gruppe und „Öffentlich“.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">admin_option</td>
-                            <td tabindex="-1">Boolean</td>
+                            <td tabindex="-1">boolesch</td>
                             <td tabindex="-1">Ein Wert, der angibt, ob der Benutzer anderen Benutzern und Rollen die Berechtigung erteilen kann. Für den Rollen- und Gruppenidentitätstyp ist dies immer „false“.</td>
                         </tr>
                     </table></div></div>

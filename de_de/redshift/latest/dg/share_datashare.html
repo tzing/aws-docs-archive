@@ -36,12 +36,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#share_datashare" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#manage-permissions">Verwalten von Berechtigungen für Datashare</a><a href="#datashare-views">Arbeiten mit Ansichten in der Amazon-Redshift-Datenfreigabe</a><a href="#iam-policy">Verwalten des Zugriffs auf Datenfreigabe-API-Vorgänge mit IAM-Richtlinien</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="share_datashare">Freigeben von Datashares</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Sie benötigen Datashares nur, wenn Sie Daten zwischen verschiedenen von Amazon Redshift bereitgestellten Clustern oder Serverless-Arbeitsgruppen freigeben. Innerhalb desselben Clusters können Sie eine andere Datenbank mithilfe der einfachen dreiteiligen Notation <code class="code">database.schema.table</code> abfragen, sofern Sie über die erforderlichen Rechte für die Objekte in der anderen Datenbank verfügen.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#share_datashare" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#manage-permissions">Verwalten von Berechtigungen für Datashare</a><a href="#datashare-views">Arbeiten mit Ansichten in der Amazon-Redshift-Datenfreigabe</a><a href="#iam-policy">Verwalten des Zugriffs auf Datenfreigabe-API-Vorgänge mit IAM-Richtlinien</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="share_datashare">Freigeben von Datashares</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Sie benötigen Datashares nur, wenn Sie Daten zwischen verschiedenen von Amazon Redshift bereitgestellten Clustern oder Serverless-Arbeitsgruppen freigeben. Innerhalb desselben Clusters können Sie eine andere Datenbank mithilfe der einfachen dreiteiligen Notation <code class="code">database.schema.table</code> abfragen, sofern Sie über die erforderlichen Berechtigungen für die Objekte in der anderen Datenbank verfügen.</p>
          <h2 id="manage-permissions">Verwalten von Berechtigungen für Datashares in Amazon Redshift</h2>
          
          <p>Als Administrator eines Produzenten-Clusters behalten Sie die Kontrolle über die Datensätze, die Sie freigeben. Sie können neue Objekte hinzufügen oder sie aus dem Datashare entfernen. Sie können Zugriff auf Datashares für Konsumenten-Cluster, AWS-Konten oder AWS-Regionen allgemein gewähren oder aufheben. Wenn Berechtigungen aufgehoben werden, verlieren Konsumenten-Cluster umgehend den Zugriff auf freigegebene Objekte. Sie sehen diese auch nicht mehr in der Liste EINGEHENDER Datashares in SVV_DATASHARES.</p>
-         <p>Im folgenden Beispiel wird ein Datashare <code class="code">salesshare</code> erstellt und eine Tabelle <code class="code">public.tickit_sales_redshift</code> zu <code class="code">salesshare</code> hinzugefügt. Es gewährt auch Nutzungsberechtigungen für <code class="code">salesshare</code> zu einem Cluster-Namespace.</p>
+         <p>Im folgenden Beispiel wird das Datashare erstellt<code class="code">salesshare</code>, das Schema hinzugefügt <code class="code">public</code>und die Tabelle <code class="code">public.tickit_sales_redshift</code> zu hinzugefügt<code class="code">salesshare</code>. Außerdem werden dem angegebenen Cluster<code class="code">salesshare</code>-Namespace Nutzungsberechtigungen für erteilt.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE DATASHARE salesshare;
+            
+ALTER DATASHARE salesshare ADD SCHEMA public;
 
 ALTER DATASHARE salesshare ADD TABLE public.tickit_sales_redshift; 
 
@@ -49,20 +51,34 @@ GRANT USAGE ON DATASHARE salesshare TO NAMESPACE '13b8833d-17c6-4f16-8fe4-1a018f
          <p>Für CREATE DATASHARE können Superuser und Datenbankbesitzer Datashares erstellen. Weitere Informationen finden Sie unter <a href="./r_CREATE_DATASHARE.html">DATASHARE ERSTELLEN</a>. Bei ALTER DATASHARE kann der Besitzer des Datashares mit den erforderlichen Berechtigungen für die hinzuzufügenden oder zu entfernenden Datashare-Objekte den Datashare ändern. Weitere Informationen finden Sie unter <a href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</a>. </p>
          
          <p>Wenn Sie als Administrator eines Produzenten-Clusters einen Datashare entfernen, wird er nicht mehr im Konsumenten-Cluster aufgeführt. Die Datenbanken und Schemareferenzen, die auf dem Consumer-Cluster aus dem gelöschten Datashare erstellt wurden, sind weiterhin ohne Objekte vorhanden. Der Administrator des Consumer Clusters muss diese Datenbanken manuell löschen.</p>
-         <p>Auf der Verbraucherseite kann ein Administrator für Konsumenten-Cluster bestimmen, welche Benutzer und Gruppen Zugriff auf die freigegebenen Daten erhalten sollen. Ein Administrator kann den Zugriff auf Datenbank- oder Schemaebene steuern. Um den Zugriff auf Schemaebene zu steuern, muss der Administrator ein externes Schema aus der Amazon-Redshift-Datenbank erstellen, die aus dem Datashare erstellt wurde.</p>
+         <p>Auf der Konsumentenseite kann ein Administrator für Konsumenten-Cluster durch Erstellen einer Datenbank aus dem Datashare bestimmen, welche Benutzer und Rollen Zugriff auf die freigegebenen Daten erhalten sollen. Abhängig von den Optionen, die Sie bei der Erstellung der Datenbank wählen, können Sie den Zugriff auf die Datenbank wie folgt steuern. Weitere Informationen zum Erstellen einer Datenbank aus einem Datashare finden Sie unter <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>.</p>
+          
+            <h6>Erstellen der Datenbank ohne die WITH PERMISSIONS-Klausel</h6>
+            <p>Ein Administrator kann den Zugriff auf Datenbank- oder Schemaebene steuern. Um den Zugriff auf Schemaebene zu steuern, muss der Administrator ein externes Schema aus der Amazon-Redshift-Datenbank erstellen, die aus dem Datashare erstellt wurde. </p>
+          
          <p>Im folgenden Beispiel werden Berechtigungen für den Zugriff auf eine freigegebene Tabelle auf Datenbank- und Schemaebene erteilt.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATABASE sales_db TO Bob;
 
 CREATE EXTERNAL SCHEMA sales_schema FROM REDSHIFT DATABASE sales_db;
 
-GRANT USAGE ON SCHEMA sales_schema TO GROUP Analyst_group;</code></pre>
-         <p>Um den Zugriff weiter einzuschränken, können Sie Ansichten über freigegebene Objekte erstellen, wobei nur die erforderlichen Daten verfügbar sind. Sie können diese Ansichten dann verwenden, um den Benutzern und Gruppen Zugriff zu gewähren.</p>
-         <p>Sobald den Benutzern Zugriff auf die Datenbank oder das Schema gewährt wurde, haben sie Zugriff auf alle freigegebenen Objekte in der betreffenden Datenbank bzw. dem Schema.</p>   
+GRANT USAGE ON SCHEMA sales_schema TO ROLE Analyst_role;</code></pre>
+         <p>Um den Zugriff weiter einzuschränken, können Sie Ansichten über freigegebene Objekte erstellen, wobei nur die erforderlichen Daten verfügbar sind. Sie können diese Ansichten dann verwenden, um den Benutzern und Rollen Zugriff zu gewähren.</p>
+         <p>Sobald den Benutzern Zugriff auf die Datenbank oder das Schema gewährt wurde, haben sie Zugriff auf alle freigegebenen Objekte in der betreffenden Datenbank bzw. dem Schema.</p>
+         
+          
+            <h6>Erstellen der Datenbank mit der WITH PERMISSIONS-Klausel</h6>
+            <p>Nach der Gewährung von Nutzungsrechten für die Datenbank oder das Schema kann ein Administrator den Zugriff mit demselben Verfahren weiter kontrollieren, wie er es für eine lokale Datenbank oder ein lokales Schema tun würde. Ohne individuelle Objektberechtigungen können Benutzer auch dann nicht auf Objekte in der gemeinsam genutzten Datenbank oder dem Schema zugreifen, wenn ihnen die USAGE-Berechtigung erteilt wurde.</p>            
+          
+         <p>Im folgenden Beispiel werden Berechtigungen für den Zugriff auf eine gemeinsam genutzte Tabelle auf Datenbankebene erteilt.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">GRANT USAGE ON DATABASE sales_db TO Bob;
+GRANT USAGE FOR SCHEMAS IN DATABASE sales_db TO Bob;
+GRANT SELECT ON sales_db.public.tickit_sales_redshift TO Bob;</code></pre>
+         <p>Nachdem Benutzern der Zugriff auf die Datenbank oder das Schema gewährt wurde, müssen sie weiterhin die entsprechenden Berechtigungen für alle Objekte in der Datenbank oder in dem Schema erhalten, auf die sie zugreifen sollen. </p>
        
          <h2 id="datashare-views">Arbeiten mit Ansichten in der Amazon-Redshift-Datenfreigabe</h2>
          <p>Ein Produzenten-Cluster kann reguläre, spätbindende und materialisierte Ansichten freigeben. Wenn Sie reguläre oder spätbindende Ansichten freigeben, müssen Sie die Basistabellen nicht freigeben. Die folgende Tabelle zeigt, wie Ansichten bei der Datenfreigabe unterstützt werden.</p>
          
-         <div class="table-container"><div class="table-contents"><table id="w317aac33c13b7b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac35c13b7b5"><thead>
                   <tr>
                      <th>Name der Ansicht</th>
                      <th>Kann diese Ansicht einem Datashare hinzugefügt werden?</th>
@@ -164,7 +180,7 @@ dwuser       | 86b5169f-01dc-4a6f-9fbb-e2e24359e9a8
         }
     ]
 }</code></pre>
-         <p>Sie können einen Produzenten mit einem DataShareArn <code class="userinput">testshare2</code> in der IAM-Richtlinie explizit die Freigabe für einen Konsumenten mit einem AWS-Konto 111122223333 gestatten.</p>
+         <p>Sie können einem Produzenten mit einem DataShareArn <code class="userinput">testshare2</code> erlauben, in der IAM-Richtlinie explizit mit einem Konsumenten mit einem AWS-Konto von 111122223333 zu teilen.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "Version": "2012-10-17",
     "Statement": [

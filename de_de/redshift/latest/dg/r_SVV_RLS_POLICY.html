@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_RLS_POLICY" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_RLS_POLICY-table-columns">Tabellenspalten</a><a href="#r_SVV_RLS_POLICY-sample-query">Beispielabfrage</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_RLS_POLICY">SVV_RLS_POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SVV_RLS_POLICY, um eine Liste aller RLS-Richtlinien anzuzeigen, die im Amazon-Redshift-Cluster erstellt wurden.</p><p>Nur Benutzer mit der Rolle sys:secadmin können diese Ansicht abfragen.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_RLS_POLICY" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_RLS_POLICY-table-columns">Tabellenspalten</a><a href="#r_SVV_RLS_POLICY-sample-query">Beispielabfrage</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_SVV_RLS_POLICY">SVV_RLS_POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SVV_RLS_POLICY, um eine Liste aller RLS-Richtlinien anzuzeigen, die im Amazon-Redshift-Cluster erstellt wurden.</p><p>SVV_RLS_POLICY ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>.</p>
             <h2 id="r_SVV_RLS_POLICY-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c99b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c99b7b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -55,42 +55,42 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">poldb</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name der Datenbank, in der die RLS-Richtlinie erstellt wird.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">polname</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name der RLS-Richtlinie.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">polalias</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der in der Richtliniendefinition verwendete Tabellenalias.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">polatts</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Die für die Richtliniendefinition bereitgestellten Attribute.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">polqual</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Die in der USING-Klausel der CREATE POLICY-Anweisung angegebene Richtlinienbedingung.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">polenabled</td>
-                            <td tabindex="-1">Boolean</td>
+                            <td tabindex="-1">boolesch</td>
                             <td tabindex="-1">Gibt an, ob die Richtlinie global aktiviert ist.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">polmodifiedby</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Der Name des Benutzers, der die Richtlinie zuletzt erstellt oder geändert hat.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">polmodifiedtime</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Der Zeitstempel der Erstellung oder letzten Änderung der Richtlinie.</td>
                         </tr>
                     </table></div></div>

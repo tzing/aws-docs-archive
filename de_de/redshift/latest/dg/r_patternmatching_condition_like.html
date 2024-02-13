@@ -54,7 +54,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_patternmatching_condition_like" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_patternmatching_condition_like-synopsis">Syntax</a><a href="#r_patternmatching_condition_like-arguments">Argumente</a><a href="#r_patternmatching_condition_like-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_patternmatching_condition_like">LIKE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Der LIKE-Operator vergleicht einen Zeichenfolgenausdruck (beispielsweise einen Spaltennamen) mit einem Muster, in dem die Platzhalterzeichen % (Prozentzeichen) und _ (Unterstrich) verwendet werden können. Beim LIKE-Patternmatching wird jeweils die gesamte Zeichenfolge durchsucht. Um für ein Muster anzugeben, dass es an einer beliebigen Stelle innerhalb der Zeichenfolge auftreten kann, muss es in Prozentzeichen eingeschlossen werden. </p><p>Bei LIKE wird die Groß-/Kleinschreibung berücksichtigt, bei ILIKE nicht.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_patternmatching_condition_like" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_patternmatching_condition_like-synopsis">Syntax</a><a href="#r_patternmatching_condition_like-arguments">Argumente</a><a href="#r_patternmatching_condition_like-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_patternmatching_condition_like">LIKE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Der LIKE-Operator vergleicht einen Zeichenfolgenausdruck (beispielsweise einen Spaltennamen) mit einem Muster, in dem die Platzhalterzeichen % (Prozentzeichen) und _ (Unterstrich) verwendet werden können. Beim LIKE-Patternmatching wird jeweils die gesamte Zeichenfolge durchsucht. Um für ein Muster anzugeben, dass es an einer beliebigen Stelle innerhalb der Zeichenfolge auftreten kann, muss es in Prozentzeichen eingeschlossen werden. </p><p>Bei LIKE wird die Groß-/Kleinschreibung berücksichtigt, bei ILIKE nicht.</p>
                   <h2 id="r_patternmatching_condition_like-synopsis">Syntax</h2>
 
 
@@ -95,7 +95,7 @@
                   <p>Wenn das Muster <em>pattern</em> keine Metazeichen enthält, ist wird das Muster als die Zeichenfolge selbst interpretiert. In diesem Fall liefert LIKE dasselbe Ergebnis wie der Gleichheitsoperator.</p>
                   <p>Die Zeichenfolgenausdrücke können vom Datentyp CHAR oder VARCHAR sein. Wenn unterschiedliche Datentypen verwendet werden, konvertiert Amazon Redshift <em>pattern</em> in den Datentyp des Ausdrucks <em>expression</em>. </p>
                   <p>LIKE unterstützt die folgenden Metazeichen in Mustern: </p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c13b9c11"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c13b9c11"><thead>
                            <tr>
                               <th>Operator </th>
                               <th>Beschreibung </th>
@@ -116,7 +116,7 @@
 
 
                   <p>In der folgenden Tabelle werden Beispiele für Patternmatching mit LIKE dargestellt.</p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c13c11b5"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c13c11b5"><thead>
                            <tr>
                               <th>Ausdruck </th>
                               <th>Rückgabewert </th>

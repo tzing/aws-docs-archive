@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-the-query-plan" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#EXPLAIN-operators">EXPLAIN-Operatoren</a><a href="#joins-in-EXPLAIN">Joins in EXPLAIN</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="c-the-query-plan">Abfrageplan</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Sie können den Abfrageplan verwenden, um Informationen über die Einzeloperationen zu erhalten, die zur Ausführung einer Abfrage benötigt werden. Wir empfehlen, sich zunächst mit den Grundlagen der Verarbeitung von Abfragen und der Erstellung von Abfrageplänen durch Amazon Redshift vertraut zu machen, bevor Sie mit Abfrageplänen arbeiten. Weitere Informationen finden Sie unter <a href="./c-query-planning.html">Workflow der Abfrageplanung und -ausführung</a>.</p><p>Um einen Abfrageplan zu erstellen, führen Sie einen <a href="./r_EXPLAIN.html">EXPLAIN</a>-Befehl, gefolgt von der Abfragetext, aus. Der Abfrageplan enthält die folgenden Informationen:</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-the-query-plan" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#EXPLAIN-operators">EXPLAIN-Operatoren</a><a href="#joins-in-EXPLAIN">Joins in EXPLAIN</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="c-the-query-plan">Abfrageplan</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Sie können den Abfrageplan verwenden, um Informationen über die Einzeloperationen zu erhalten, die zur Ausführung einer Abfrage benötigt werden. Wir empfehlen, sich zunächst mit den Grundlagen der Verarbeitung von Abfragen und der Erstellung von Abfrageplänen durch Amazon Redshift vertraut zu machen, bevor Sie mit Abfrageplänen arbeiten. Weitere Informationen finden Sie unter <a href="./c-query-planning.html">Workflow der Abfrageplanung und -ausführung</a>.</p><p>Um einen Abfrageplan zu erstellen, führen Sie einen <a href="./r_EXPLAIN.html">EXPLAIN</a>-Befehl, gefolgt von der Abfragetext, aus. Der Abfrageplan enthält die folgenden Informationen:</p><div class="itemizedlist">
              
              
              
@@ -70,12 +70,12 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
          <dl>
                <dt><b><span class="term">Kosten</span></b></dt>
                <dd>
-                  <p>Ein relativer Wert, mit dem sich die Operationen in einem Plan vergleichen lassen. Die kosten werden repräsentiert als zwei Dezimalzahlen, die durch zwei Punkte getrennt sind, beispielsweise <code class="code">cost=131.97..133.41</code>. Der erste Wert (in diesem Fall 131,97) gibt die relativen Kosten für die Rückgabe der ersten Zeile für diese Operation an. Der zweite Wert (in diesem Fall 133,41) gibt die relativen Kosten für die Ausführung der gesamten Operation an. Die Kosten in dem Abfrageplan sind kumulativ: Wenn Sie den Plan von unten nach oben lesen, enthalten die HashAggregate-Kosten in diesem Beispiel („131.97..133.41“) die Seq Scan-Kosten darunter (0.00..87.98).</p>
+                  <p>Ein relativer Wert, mit dem sich die Operationen in einem Plan vergleichen lassen. Die kosten werden repräsentiert als zwei Dezimalzahlen, die durch zwei Punkte getrennt sind, beispielsweise <code class="code">cost=131.97..133.41</code>. Der erste Wert (in diesem Fall 131,97) gibt die relativen Kosten für die Rückgabe der ersten Zeile für diese Operation an. Der zweite Wert (in diesem Fall 133,41) gibt die relativen Kosten für die Ausführung der gesamten Operation an. Die Kosten im Abfrageplan sind beim Lesen des Plans kumulativ, sodass die  HashAggregate Kosten in diesem Beispiel (131.97...133.41) die Kosten des darunterliegenden Seq Scans beinhalten (0.00...87.98).</p>
                </dd>
             
                <dt><b><span class="term">Rows</span></b></dt>
                <dd>
-                  <p>Die geschätzte Anzahl der zurückzugebenden Zeilen. In diesem Beispiel wird erwartet, dass der Scan 8798 Zeilen zurückgibt. Für die HashAggregate-Operation selbst wird eine Rückgabe von 576 Zeilen erwartet (doppelte Event-Namen werden aus dem Ergebnissatz entfernt).</p>
+                  <p>Die geschätzte Anzahl der zurückzugebenden Zeilen. In diesem Beispiel wird erwartet, dass der Scan 8798 Zeilen zurückgibt. Es wird erwartet, dass der  HashAggregate Operator allein 576 Zeilen zurückgibt (nachdem doppelte Ereignisnamen aus der Ergebnismenge verworfen wurden).</p>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Die Schätzung der zurückgegebenen Zeilen basiert auf der durch den Befehl ANALYZE generierten Statistik. Wenn ANALYZE längere Zeit nicht ausgeführt wurde, sind die Schätzungen weniger zuverlässig.</p></div></div>
                </dd>
             
@@ -97,6 +97,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                    
                    
                    
+                   
                <ul class="itemizedlist"><li class="listitem">
                      <p><span class="topcom">Nested Loop</span></p>
                      <p>Dies ist der am wenigsten optimale Join; wird vor allem für Kreuz-Joins (kartesische Produkte) und einige Ungleichheits-Joins verwendet.</p>
@@ -106,6 +107,9 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                   </li><li class="listitem">
                      <p><span class="topcom">Merge Join</span></p>
                      <p>In der Regel die schnellste Join-Variante, wird für innere und äußere Joins verwendet. Der Zusammenführungs-Join ermöglicht nicht die Erstellung eines vollständigen Joins. Der Operator wird bei Join-Operationen für Tabellen verwendet, bei denen die Join-Spalten sowohl Verteilungsschlüssel <em>als auch</em> Sortierschlüssel sind und weniger als 20 % der Tabellen für die Join-Operation unsortiert sind. Bei dieser Operation werden zwei sortierte Tabellen sequentiell eingelesen und die übereinstimmenden Zeilen gesucht. Um den Prozentsatz unsortierter Zeilen anzuzeigen, führen Sie eine Abfrage über der Systemtabelle <a href="./r_SVV_TABLE_INFO.html">SVV_TABLE_INFO</a> aus.</p>
+                  </li><li class="listitem"> 
+                     <p><span class="topcom">Räumlicher Join</span></p>
+                     <p>In der Regel ein schneller Join, der auf der Nähe von räumlichen Daten basiert und für die Datentypen <code class="code">GEOMETRY</code> und <code class="code">GEOGRAPHY</code> verwendet wird.</p>
                   </li></ul></div>
              
             <h3 id="aggregate-operators">Aggregat-Operatoren</h3>
@@ -154,7 +158,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                      <p><span class="topcom">Hash Intersect Distinct </span></p>
                      <p>Wird für INTERSECT -Abfragen verwendet.</p>
                   </li><li class="listitem">
-                     <p><span class="topcom">SetOp Except</span></p>
+                     <p><span class="topcom">SetOp Ausnahme</span></p>
                      <p>Wird zur Ausführung von EXCEPT- (bzw. MINUS-)Abfragen verwendet.</p>
                   </li></ul></div>
              

@@ -54,7 +54,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#copy-usage_notes-copy-from-columnar" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="copy-usage_notes-copy-from-columnar">COPY aus spaltenbasierten Datenformaten</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>COPY kann Daten aus Amazon S3 in folgenden spaltenbasierten Formaten laden:</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#copy-usage_notes-copy-from-columnar" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="copy-usage_notes-copy-from-columnar">COPY aus spaltenbasierten Datenformaten</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>COPY kann Daten aus Amazon S3 in folgenden spaltenbasierten Formaten laden:</p><div class="itemizedlist">
                 
                 
                
@@ -63,8 +63,8 @@
                   <p>ORC </p>
                </li><li class="listitem">
                   <p>Parquet </p>
-               </li></ul></div><p>COPY unterstützt im Spaltenformat formatierte Daten mit folgenden Einschränkungen:</p><div class="itemizedlist">
-                
+               </li></ul></div><p>Beispiele für die Verwendung von COPY aus spaltenbasierten Datenformaten finden Sie unter <a href="./r_COPY_command_examples.html">Beispiele für COPY</a>.</p><p>COPY unterstützt im Spaltenformat formatierte Daten mit folgenden Einschränkungen:</p><div class="itemizedlist">
+               
                 
               
                
@@ -85,94 +85,6 @@
                
                 
             <ul class="itemizedlist"><li class="listitem">
-                  <p>Der Cluster muss sich in einer der folgenden AWS-Regionen befinden: </p>
-                  <div class="itemizedlist">
-                      
-                      
-                      
-                      
-                      
-                          
-                               
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                  <ul class="itemizedlist"><li class="listitem">
-                        <p>Region USA Ost (Nord-Virginia) (us-east-1)</p>
-                     </li><li class="listitem">
-                        <p>Region USA Ost (Ohio) (us-east-2)</p>
-                     </li><li class="listitem">
-                        <p>Region USA West (Nordkalifornien) (us-west-1)</p>
-                     </li><li class="listitem">
-                        <p>Region USA West (Oregon) (us-west-2) </p>
-                     </li><li class="listitem">
-                        <p>Region Afrika (Kapstadt) (af-south-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Hongkong) (ap-east-1) </p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Melbourne) (ap-southeast-4) </p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Mumbai) (ap-south-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Osaka) (ap-northeast-3)</p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Seoul) (ap-northeast-2)</p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Singapur) (ap-southeast-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Sydney) (ap-southeast-2)</p>
-                     </li><li class="listitem">
-                        <p>Region Asien-Pazifik (Tokio) (ap-northeast-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Kanada (Zentral) (ca-central-1)</p>
-                     </li><li class="listitem">
-                        <p>Region China (Peking) (cn-north-1)</p>
-                     </li><li class="listitem">
-                        <p>Region China (Ningxia) (cn-northwest-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Europa (Frankfurt) (eu-central-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Europa (Irland) (eu-west-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Europa (London) (eu-west-2)</p>
-                     </li><li class="listitem">
-                        <p>Region Europa (Mailand) (eu-south-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Europa (Paris) (eu-west-3)</p>
-                     </li><li class="listitem">
-                        <p>Region Europa (Stockholm) (eu-north-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Israel (Tel Aviv) (il-central-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Naher Osten (Bahrain) (me-south-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Naher Osten (VAE) (me-central-1)</p>
-                     </li><li class="listitem">
-                        <p>Region Südamerika (São Paulo) (sa-east-1)</p>
-                     </li><li class="listitem">
-                        <p>AWS GovCloud (US-East) (us-gov-east-1)</p>
-                     </li><li class="listitem">
-                        <p>AWS GovCloud (US-West) (us-gov-west-1)</p>
-                     </li></ul></div>
-               </li><li class="listitem">
                   <p>Der Amazon-S3-Bucket muss sich in derselben AWS-Region wie die Amazon-Redshift-Datenbank befinden. </p>
                </li><li class="listitem">
                   <p>Um über einen VPC-Endpunkt auf Ihre Amazon-S3-Daten zugreifen zu können, richten Sie den Zugriff mithilfe von IAM-Richtlinien und IAM-Rollen ein, wie unter <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/spectrum-enhanced-vpc.html">Verwendung von Amazon Redshift Spectrum mit Enhanced VPC-Routing</a> im <em>Amazon-Redshift-Verwaltungshandbuch</em> beschrieben. </p>

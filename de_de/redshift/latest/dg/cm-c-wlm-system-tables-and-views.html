@@ -36,7 +36,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#cm-c-wlm-system-tables-and-views" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#wlm-service-class-ids">WLM-Serviceklassen-IDs</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="cm-c-wlm-system-tables-and-views">WLM-Systemtabellen und Ansichten</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>WLM konfiguriert Abfragewarteschlangen anhand von intern definierten WLM-Serviceklassen. Amazon Redshift erstellt mehrere interne Warteschlangen gemäß diesen Serviceklassen, zusammen mit den in der WLM-Konfiguration definierten Warteschlangen. Die Begriffe <em>Warteschlange</em> und <em>Serviceklasse</em> haben in den Systemtabellen häufig dieselbe Bedeutung. Die Superuser-Warteschlange verwendet Serviceklasse 5. Benutzerdefinierte Warteschlangen verwenden Service-Klasse 6 und darüber.</p><p>Sie können den Status von Abfragen, Warteschlangen und Service-Klassen mit WLM-spezifischen Systemtabellen anzeigen. Fragen Sie die folgenden Systemtabellen ab, um Folgendes zu tun:</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#cm-c-wlm-system-tables-and-views" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#wlm-service-class-ids">WLM-Serviceklassen-IDs</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="cm-c-wlm-system-tables-and-views">WLM-Systemtabellen und Ansichten</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>WLM konfiguriert Abfragewarteschlangen anhand von intern definierten WLM-Serviceklassen. Amazon Redshift erstellt mehrere interne Warteschlangen gemäß diesen Serviceklassen, zusammen mit den in der WLM-Konfiguration definierten Warteschlangen. Die Begriffe <em>Warteschlange</em> und <em>Serviceklasse</em> haben in den Systemtabellen häufig dieselbe Bedeutung. Die Superuser-Warteschlange verwendet Serviceklasse 5. Benutzerdefinierte Warteschlangen verwenden Service-Klasse 6 und darüber.</p><p>Sie können den Status von Abfragen, Warteschlangen und Service-Klassen mit WLM-spezifischen Systemtabellen anzeigen. Fragen Sie die folgenden Systemtabellen ab, um Folgendes zu tun:</p><div class="itemizedlist">
           
           
           
@@ -46,7 +46,7 @@
             <p>Anzeige, welcher Warteschlange eine Abfrage zugewiesen wurde.</p>
          </li><li class="listitem">
             <p>Anzeige des Status einer Abfrage, die derzeit vom Workload Manager verfolgt wird.</p>
-         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w317aac41c59b9"><thead>
+         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w319aac43c59b9"><thead>
                <tr>
                   <th>Tabellenname </th>
                   <th>Beschreibung </th>
@@ -100,7 +100,19 @@
                   <td tabindex="-1">
                      <a href="./r_STV_WLM_SERVICE_CLASS_STATE.html">STV_WLM_SERVICE_CLASS_STATE</a>
                   </td>
-                  <td tabindex="-1">Enthält den derzeitigen Status der Service-Klassen. </td>
+                  <td tabindex="-1">Enthält den derzeitigen Status der Service-Klassen.</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STL_WLM_RULE_ACTION.html">STL_WLM_RULE_ACTION</a>
+                  </td>
+                  <td tabindex="-1">Zeigt Einzelheiten zu Aktionen aufgrund von WLM-Abfrageüberwachungsregeln im Zusammenhang mit benutzerdefinierten Abfragen auf.</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STV_WLM_QMR_CONFIG.html">STV_WLM_QMR_CONFIG</a>
+                  </td>
+                  <td tabindex="-1">Zeichnet die Konfiguration für WLM-Abfrageüberwachungsregeln (QMR) auf.</td>
                </tr>
             </table></div></div><p> Sie verwenden die Task-ID zur Verfolgung einer Abfrage in den Systemtabellen. Das folgende Beispiel zeigt, wie Sie die Task-ID der zuletzt übermittelten Benutzerabfrage abrufen: </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select task from stl_wlm_query where exec_start_time =(select max(exec_start_time) from stl_wlm_query); 
 
@@ -124,7 +136,7 @@ xid |task|query|service_| wlm_start_  |  state  |queue_ | exec_
          
        <p>Die folgende Tabelle listet die den Serviceklassen zugeordneten IDs auf.</p>  
          
-         <div class="table-container"><div class="table-contents"><table id="w317aac41c59c19b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac43c59c19b5"><thead>
                   <tr>
                      <th>ID </th>
                      <th>Serviceklassen-ID. </th>

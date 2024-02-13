@@ -54,7 +54,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#pattern-matching-conditions-posix" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#pattern-matching-conditions-posix-synopsis">Syntax</a><a href="#pattern-matching-conditions-posix-arguments">Argumente</a><a href="#pattern-matching-conditions-posix-synopsis-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="pattern-matching-conditions-posix">POSIX-Operatoren</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Ein regulärer POSIX-Ausdruck ist eine Zeichenfolge, die ein Übereinstimmungsmuster angibt. Eine Zeichenfolge entspricht einem regulären Ausdruck, wenn sie Teil der regulären Menge ist, die durch den regulären Ausdruck beschrieben wird.</p><p>Reguläre Ausdrücke entsprechend der POSIX-Spezifikation ermöglichen eine feinere Modellierung von Mustern als die Operatoren <a href="./r_patternmatching_condition_like.html">LIKE</a> und <a href="./pattern-matching-conditions-similar-to.html">SIMILAR TO</a>. Bei regulären Ausdrücken entsprechend dem POSIX-Standard kann das Muster einer beliebigen Teilzeichenfolge entsprechen. Der Operator SIMILAR TO hingegen gibt „wahr“ genau dann zurück, wenn das Muster der gesamten Zeichenfolge entspricht.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Patternmatching mit regulären Ausdrücken unter Verwendung von POSIX-Operatoren erfordert einen hohen Rechenaufwand. Wir empfehlen, nach Möglichkeit LIKE zu verwenden, insbesondere, wenn eine große Anzahl an Zeilen verarbeitet werden muss. Ein Beispiel: Die folgenden Abfragen sind funktional identisch, aber die Abfrage mit LIKE wird 7-mal schneller ausgeführt als die Abfrage mit einem regulären Ausdruck:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*) from event where eventname ~ '.*(Ring|Die).*'; 
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#pattern-matching-conditions-posix" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#pattern-matching-conditions-posix-synopsis">Syntax</a><a href="#pattern-matching-conditions-posix-arguments">Argumente</a><a href="#pattern-matching-conditions-posix-synopsis-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="pattern-matching-conditions-posix">POSIX-Operatoren</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Ein regulärer POSIX-Ausdruck ist eine Zeichenfolge, die ein Übereinstimmungsmuster angibt. Eine Zeichenfolge entspricht einem regulären Ausdruck, wenn sie Teil der regulären Menge ist, die durch den regulären Ausdruck beschrieben wird.</p><p>Reguläre Ausdrücke entsprechend der POSIX-Spezifikation ermöglichen eine feinere Modellierung von Mustern als die Operatoren <a href="./r_patternmatching_condition_like.html">LIKE</a> und <a href="./pattern-matching-conditions-similar-to.html">SIMILAR TO</a>. Bei regulären Ausdrücken entsprechend dem POSIX-Standard kann das Muster einer beliebigen Teilzeichenfolge entsprechen. Der Operator SIMILAR TO hingegen gibt „wahr“ genau dann zurück, wenn das Muster der gesamten Zeichenfolge entspricht.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Patternmatching mit regulären Ausdrücken unter Verwendung von POSIX-Operatoren erfordert einen hohen Rechenaufwand. Wir empfehlen, nach Möglichkeit LIKE zu verwenden, insbesondere, wenn eine große Anzahl an Zeilen verarbeitet werden muss. Ein Beispiel: Die folgenden Abfragen sind funktional identisch, aber die Abfrage mit LIKE wird 7-mal schneller ausgeführt als die Abfrage mit einem regulären Ausdruck:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*) from event where eventname ~ '.*(Ring|Die).*'; 
 select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die%';   </code></pre></div></div>
                   <h2 id="pattern-matching-conditions-posix-synopsis">Syntax</h2>
 
@@ -101,7 +101,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                   <p>Die Zeichenfolgenausdrücke können vom Datentyp CHAR oder VARCHAR sein. Wenn unterschiedliche Datentypen verwendet werden, konvertiert Amazon Redshift <em>pattern</em> in den Datentyp des Ausdrucks <em>expression</em>. </p>
                   <p>Alle Zeichenfolgenausdrücke können vom Datentyp CHAR oder VARCHAR sein. Wenn in den Ausdrücken unterschiedliche Datentypen verwendet werden, konvertiert Amazon Redshift sie in den Datentyp des Ausdrucks <em>expression</em>. </p>
                   <p>POSIX unterstützt die folgenden Metazeichen in Mustern: </p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c11c15"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c11c15"><thead>
                            <tr>
                               <th>POSIX </th>
                               <th>Beschreibung </th>
@@ -129,11 +129,11 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                            </tr>
                            <tr>
                               <td tabindex="-1"><code class="code">^</code></td>
-                              <td tabindex="-1">Findet die Position am Zeilenanfang.</td>
+                              <td tabindex="-1">Entspricht dem  beginning-of-line Zeichen.</td>
                            </tr>
                            <tr>
                               <td tabindex="-1"><code class="code">$ </code></td>
-                              <td tabindex="-1">Findet die Position am Zeilenende.</td>
+                              <td tabindex="-1">Stimmt mit dem  end-of-line Zeichen überein.</td>
                            </tr>
                            <tr>
                               <td tabindex="-1"><code class="code">$ </code></td>
@@ -165,7 +165,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                            </tr>
                         </table></div></div>
                   <p>Amazon Redshift unterstützt die folgenden POSIX-Zeichenklassen: </p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c11c19"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c11c19"><thead>
                            <tr>
                               <th>Zeichenklasse </th>
                               <th>Beschreibung </th>
@@ -213,7 +213,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                            </tr>
                         </table></div></div>
                   <p> Amazon Redshift unterstützt in regulären Ausdrücken die folgenden Operatoren, die an Perl angelehnt sind. Wenn Sie den Operator nicht als Metazeichen verwenden möchten, müssen Sie ihn mit zwei umgekehrten Schrägstrichen () als Literal kennzeichnen. (‘<code class="code">\\</code>’).   </p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c11c23"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c11c23"><thead>
                            <tr>
                               <th>Operator</th>
                               <th>Beschreibung </th>
@@ -250,13 +250,18 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                               <td tabindex="-1">Ein Zeichen, das keinen Whitespace darstellt</td>
                               <td tabindex="-1"><code class="code">[^[:space:]]</code></td>
                            </tr>
+                           <tr> 
+                              <td tabindex="-1"><code class="code">\\b</code></td>
+                              <td tabindex="-1">Ein Grenzwort</td>
+                              <td tabindex="-1"> </td>
+                           </tr>
                         </table></div></div>
                 
                   <h2 id="pattern-matching-conditions-posix-synopsis-examples">Beispiele</h2>
 
 
                   <p>In der folgenden Tabelle werden Beispiele für Patternmatching unter Verwendung von POSIX-Operatoren dargestellt:</p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c17c13b5"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c17c13b5"><thead>
                            <tr>
                               <th>Ausdruck </th>
                               <th>Rückgabewert </th>

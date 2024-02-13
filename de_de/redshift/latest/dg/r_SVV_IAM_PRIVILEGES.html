@@ -42,11 +42,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_IAM_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SVV_IAM_PRIVILEGES-table-columns">Tabellenspalten</a><a href="#SVV_IAM_PRIVILEGES-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_IAM_PRIVILEGES">SVV_IAM_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SVV_IAM_PRIVILEGES, um explizit gewährte IAM-Berechtigungen für Benutzer, Rollen und Gruppen anzuzeigen. SVV_IAM_PRIVILEGES ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen. Reguläre Benutzer mit der Systemberechtigung ACCESS SYSTEM TABLE können alle Zeilen sehen. Reguläre Benutzer können nur Einträge sehen, auf die sie Zugriff haben.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_IAM_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#SVV_IAM_PRIVILEGES-table-columns">Tabellenspalten</a><a href="#SVV_IAM_PRIVILEGES-sample-queries">Beispielabfragen</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_SVV_IAM_PRIVILEGES">SVV_IAM_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Verwenden Sie SVV_IAM_PRIVILEGES, um explizit gewährte IAM-Berechtigungen für Benutzer, Rollen und Gruppen anzuzeigen.</p><p>SVV_IAM_PRIVILEGES ist für die folgenden Benutzer sichtbar:</p><div class="itemizedlist">
+             
+             
+        <ul class="itemizedlist"><li class="listitem"><p>Superuser</p></li><li class="listitem"><p>Benutzer mit der Berechtigung ACCESS SYSTEM TABLE</p></li></ul></div><p>Andere Benutzer können nur Einträge sehen, auf die sie Zugriff haben.</p>
             <h2 id="SVV_IAM_PRIVILEGES-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c55b5b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c55c11b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -55,27 +58,27 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">iam_arn</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Name des Namespace.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">command_type</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Arten von Berechtigungen. Mögliche Werte sind COPY, UNLOAD, CREATE MODEL oder EXTERNAL FUNCTION.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Identitäts-ID. Mögliche Werte sind die Benutzer-ID, Rollen-ID und Gruppen-ID. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_name</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Identitätsname.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_type</td>
-                            <td tabindex="-1">Text</td>
+                            <td tabindex="-1">text</td>
                             <td tabindex="-1">Identitätstyp. Mögliche Werte sind der Benutzer, die Rolle, die Gruppe und „Öffentlich“.</td>
                         </tr>
                     </table></div></div>

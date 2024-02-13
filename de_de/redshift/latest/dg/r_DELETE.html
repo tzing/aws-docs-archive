@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DELETE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_DELETE-synopsis">Syntax</a><a href="#r_DELETE-parameters">Parameter</a><a href="#r_DELETE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_DELETE">DELETE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Löscht Zeilen aus Tabellen.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Die maximal zulässige Größe für eine einzelne SQL-Anweisung ist 16 MB.</p></div></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DELETE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_DELETE-synopsis">Syntax</a><a href="#r_DELETE-parameters">Parameter</a><a href="#r_DELETE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_DELETE">DELETE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Löscht Zeilen aus Tabellen.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Die maximal zulässige Größe für eine einzelne SQL-Anweisung ist 16 MB.</p></div></div>
          <h2 id="r_DELETE-synopsis">Syntax</h2>
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">[ WITH [RECURSIVE] <em>common_table_expression</em> [, <em>common_table_expression</em> , ...] ]
@@ -61,7 +61,7 @@ DELETE [ FROM ] <em><span>{</span> table_name | materialized_view_name }</em>
              
          <dl>
                <dt><span class="term">WITH-Klausel</span></dt>
-               <dd><p>Optionale Klausel, die eine oder mehrere <em>allgemeine Tabellenausdrücke</em> (CET) angibt. Siehe <a href="./r_WITH_clause.html">WITH-Klausel</a>. </p></dd>
+               <dd><p>Optionale Klausel, die eine oder mehrere angibt<em>common-table-expressions</em>. Siehe <a href="./r_WITH_clause.html">WITH-Klausel</a>. </p></dd>
              
                <dt><span class="term">FROM</span></dt>
                <dd>
@@ -98,7 +98,7 @@ DELETE [ FROM ] <em><span>{</span> table_name | materialized_view_name }</em>
              
                <dt><span class="term">WHERE <em>condition</em> </span></dt>
                <dd>
-                  <p>Optionale Klausel, die das Löschen von Zeilen auf die Zeilen einschränkt, die der Bedingung entsprechen. Bei der Bedingung kann es sich beispielsweise um eine Einschränkung für eine Spalte, eine Join-Bedingung oder eine Bedingung auf der Basis eines Abfrageergebnisses handeln. Die Abfrage kann andere Tabellen als das Ziel des Befehls DELETE referenzieren. Beispiele:</p>
+                  <p>Optionale Klausel, die das Löschen von Zeilen auf die Zeilen einschränkt, die der Bedingung entsprechen. Bei der Bedingung kann es sich beispielsweise um eine Einschränkung für eine Spalte, eine Join-Bedingung oder eine Bedingung auf der Basis eines Abfrageergebnisses handeln. Die Abfrage kann andere Tabellen als das Ziel des Befehls DELETE referenzieren. Beispiel:</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">delete from t1
 where col1 in(select col2 from t2);</code></pre>
                   <p>Wenn keine Bedingung angegeben wird, werden alle Zeilen in der Tabelle gelöscht.</p>

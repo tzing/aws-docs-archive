@@ -37,7 +37,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "Zeichenfolgefunktionen",
+        "name" : "Zeichenfolgenfunktionen",
         "item" : "https://docs.aws.amazon.com/de_de/redshift/latest/dg/String_functions_header.html"
       },
       {
@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_REPLACE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#REGEXP_REPLACE-synopsis">Syntax</a><a href="#REGEXP_REPLACE-arguments">Argumente</a><a href="#REGEXP_REPLACE-return-type">Rückgabetyp</a><a href="#REGEXP_REPLACE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="REGEXP_REPLACE">Die Funktion REGEXP_REPLACE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Durchsucht eine Zeichenfolge nach einem regulären Ausdrucksmuster und ersetzt jedes Vorkommen des Musters durch die angegebene Zeichenfolge. REGEXP_REPLACE ist <a href="./r_REPLACE.html">Die Funktion REPLACE</a> ähnlich. Sie können jedoch eine Zeichenfolge nach einem regulären Ausdrucksmuster durchsuchen. Weitere Informationen zu regulären Ausdrücken finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p><p>REGEXP_REPLACE ist <a href="./r_TRANSLATE.html">Die Funktion TRANSLATE</a> und <a href="./r_REPLACE.html">Die Funktion REPLACE</a> ähnlich. TRANSLATE führt jedoch mehrere Einzelzeichenersetzungen durch und REPLACE ersetzt eine ganze Zeichenfolge durch eine andere Zeichenfolge. Mit REGEXP_REPLACE können Sie dagegen eine Zeichenfolge nach einem regulären Ausdrucksmuster durchsuchen.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_REPLACE" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#REGEXP_REPLACE-synopsis">Syntax</a><a href="#REGEXP_REPLACE-arguments">Argumente</a><a href="#REGEXP_REPLACE-return-type">Rückgabetyp</a><a href="#REGEXP_REPLACE-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="REGEXP_REPLACE">Die Funktion REGEXP_REPLACE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Durchsucht eine Zeichenfolge nach einem regulären Ausdrucksmuster und ersetzt jedes Vorkommen des Musters durch die angegebene Zeichenfolge. REGEXP_REPLACE ist <a href="./r_REPLACE.html">Die Funktion REPLACE</a> ähnlich. Sie können jedoch eine Zeichenfolge nach einem regulären Ausdrucksmuster durchsuchen. Weitere Informationen zu regulären Ausdrücken finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p><p>REGEXP_REPLACE ist <a href="./r_TRANSLATE.html">Die Funktion TRANSLATE</a> und <a href="./r_REPLACE.html">Die Funktion REPLACE</a> ähnlich. TRANSLATE führt jedoch mehrere Einzelzeichenersetzungen durch und REPLACE ersetzt eine ganze Zeichenfolge durch eine andere Zeichenfolge. Mit REGEXP_REPLACE können Sie dagegen eine Zeichenfolge nach einem regulären Ausdrucksmuster durchsuchen.</p>
             <h2 id="REGEXP_REPLACE-synopsis">Syntax</h2>
 
 
@@ -72,7 +72,7 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>Ein <code class="code">CHAR</code>- oder <code class="code">VARCHAR</code>-Zeichenfolgenliteral, das ein Muster für reguläre Ausdrücke darstellt. Weitere Informationen finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p>
+                     <p>Ein UTF-8-Zeichenfolgenliteral, das ein reguläres Ausdrucksmuster darstellt. Weitere Informationen finden Sie unter <a href="./pattern-matching-conditions-posix.html">POSIX-Operatoren</a>.</p>
                   </dd>
                 
                   <dt><span class="term"><em>replace_string</em></span></dt>

@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_ACTIVE_CURSORS" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_ACTIVE_CURSORS-table-columns">Tabellenspalten</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_ACTIVE_CURSORS">SVV_ACTIVE_CURSORS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>STV_ACTIVE_CURSORS zeigt Details zu aktuell offenen Cursor an. Weitere Informationen finden Sie unter <a href="./declare.html">DECLARE</a>. </p><p>STV_ACTIV_CURSORS ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>. Ein Benutzer kann nur Cursors sehen, die er selbst geöffnet hat. Ein Superuser kann alle Cursors sehen.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_ACTIVE_CURSORS" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_SVV_ACTIVE_CURSORS-table-columns">Tabellenspalten</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_SVV_ACTIVE_CURSORS">SVV_ACTIVE_CURSORS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>STV_ACTIVE_CURSORS zeigt Details zu aktuell offenen Cursor an. Weitere Informationen finden Sie unter <a href="./declare.html">DECLARE</a>. </p><p>SVV_ACTIVE_CURSORS ist für alle Benutzer sichtbar. Superuser können alle Zeilen sehen; reguläre Benutzer können nur ihre eigenen Daten sehen. Weitere Informationen finden Sie unter <a href="./cm_chap_system-tables.html#c_visibility-of-data">Sichtbarkeit der Daten in Systemtabellen und Ansichten</a>. Ein Benutzer kann nur Cursors sehen, die er selbst geöffnet hat. Ein Superuser kann alle Cursors sehen.</p>
             <h2 id="r_SVV_ACTIVE_CURSORS-table-columns">Tabellenspalten</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11b9b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11b9b7b3"><thead>
                         <tr>
                             <th>Spaltenname </th>
                             <th>Datentyp </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die ID des Benutzers, der den Cursor erstellt hat.</td>
                         </tr>
                         <tr>
@@ -70,12 +70,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Die ID des Prozesses mit dem aktiven Cursor.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">declare_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">Zeitstempel</td>
                             <td tabindex="-1">Zeitpunkt, zu dem der Cursor deklariert wurde.</td>
                         </tr>
                         <tr>
@@ -95,7 +95,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">cursor_storage_limit_used_percent</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">Ganzzahl</td>
                             <td tabindex="-1">Der prozentuale Anteil des derzeit vom Cursor verwendeten Speicherplatzes.</td>
                         </tr>
                     </table></div></div>

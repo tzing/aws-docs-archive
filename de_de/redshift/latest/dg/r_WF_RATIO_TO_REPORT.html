@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_RATIO_TO_REPORT" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_WF_RATIO_TO_REPORT-synopsis">Syntax</a><a href="#r_WF_RATIO_TO_REPORT-arguments">Argumente</a><a href="#r_WF_RATIO_TO_REPORT-return-type">Rückgabetyp</a><a href="#r_WF_RATIO_TO_REPORT-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_RATIO_TO_REPORT">Die Fensterfunktion RATIO_TO_REPORT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Berechnet das Verhältnis eines Werts zur Summe der Werte in einem Fenster oder einer Partition. Der RATIO_TO_REPORT-Wert wird anhand der folgenden Formel festgelegt:</p><p><code class="code">value of </code><em>ratio_expression</em> <code class="code">argument for the current row / sum of</code> <em>ratio_expression</em> <code class="code">argument for the window or partition</code></p><p>Der folgende Datensatz zeigt die Verwendung dieser Formel:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">Row#	Value	Calculation	RATIO_TO_REPORT
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_RATIO_TO_REPORT" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#r_WF_RATIO_TO_REPORT-synopsis">Syntax</a><a href="#r_WF_RATIO_TO_REPORT-arguments">Argumente</a><a href="#r_WF_RATIO_TO_REPORT-return-type">Rückgabetyp</a><a href="#r_WF_RATIO_TO_REPORT-examples">Beispiele</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="r_WF_RATIO_TO_REPORT">Die Fensterfunktion RATIO_TO_REPORT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Berechnet das Verhältnis eines Werts zur Summe der Werte in einem Fenster oder einer Partition. Der RATIO_TO_REPORT-Wert wird anhand der folgenden Formel festgelegt:</p><p><code class="code">value of </code><em>ratio_expression</em> <code class="code">argument for the current row / sum of</code> <em>ratio_expression</em> <code class="code">argument for the window or partition</code></p><p>Der folgende Datensatz zeigt die Verwendung dieser Formel:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">Row#	Value	Calculation	RATIO_TO_REPORT
 1	2500	(2500)/(13900)	0.1798
 2	2600	(2600)/(13900)	0.1870
 3	2800	(2800)/(13900)	0.2014
@@ -92,25 +92,48 @@ OVER ( [ PARTITION BY <em>partition_expression</em> ] )</code></pre>
           
             <h2 id="r_WF_RATIO_TO_REPORT-examples">Beispiele</h2>
 
-
-            <p>Im folgenden Beispiel werden die Verhältnisse der Verkaufsmengen für die einzelnen Verkäufer berechnet:</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select sellerid, qty, ratio_to_report(qty) 
-over (partition by sellerid) 
-from winsales;
-
-sellerid	qty		ratio_to_report
+            <p>Im folgenden Beispiel wird die Tabelle WINSALES benutzt. Weitere Informationen zum Erstellen der WINSALES-Tabelle finden Sie unter <a href="./c_Window_functions.html#r_Window_function_example">Beispieltabelle mit Beispielen von Fensterfunktionen</a>.</p>
+            
+            <p>Im folgenden Beispiel wird der  ratio-to-report Wert jeder Zeile der Menge eines Verkäufers zur Summe aller Mengen des Verkäufers berechnet.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select sellerid, qty, ratio_to_report(qty) 
+over()
+from winsales
+order by sellerid;</code>
+<code class="computeroutput" copy="false">
+sellerid  qty    ratio_to_report
+--------------------------------------
+1         30     0.13953488372093023	
+1         10     0.046511627906976744	
+1         10     0.046511627906976744	
+2         20     0.09302325581395349	
+2         20     0.09302325581395349	
+3         30     0.13953488372093023	
+3         20     0.09302325581395349	
+3         15     0.06976744186046512	
+3         10     0.046511627906976744	
+4         10     0.046511627906976744	
+4         40     0.18604651162790697	
+</code></code></pre>
+            
+            <p>Im folgenden Beispiel werden die Verhältnisse der Verkaufsmengen für die einzelnen Verkäufer nach Partition berechnet.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select sellerid, qty, ratio_to_report(qty) 
+over(partition by sellerid) 
+from winsales;</code>
+<code class="computeroutput" copy="false">
+sellerid   qty    ratio_to_report
 -------------------------------------------
-2		20.12312341      0.5
-2		20.08630000      0.5
-4		10.12414400      0.2
-4		40.23000000      0.8
-1		30.37262000      0.6
-1		10.64000000      0.21
-1		10.00000000      0.2
-3		10.03500000      0.13
-3		15.14660000      0.2
-3		30.54790000      0.4
-3		20.74630000      0.27
-</code></pre>
-            <p>Eine Beschreibung der Tabelle WINSALES finden Sie unter <a href="./c_Window_functions.html#r_Window_function_example">Beispieltabelle mit Beispielen von Fensterfunktionen</a>.</p>
+2          20     0.5	
+2          20     0.5	
+4          40     0.8	
+4          10     0.2	
+1          10     0.2	
+1          30     0.6	
+1          10     0.2	
+3          10     0.13333333333333333	
+3          15     0.2	
+3          20     0.26666666666666666	
+3          30     0.4	
+</code></code></pre>
+
+            
          <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warnung" /> <strong>JavaScript ist in Ihrem Browser nicht verfügbar oder deaktiviert.</strong></p><p>Zur Nutzung der AWS-Dokumentation muss JavaScript aktiviert sein. Weitere Informationen finden auf den Hilfe-Seiten Ihres Browsers.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Dokumentkonventionen</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_WF_RANK.html">RANK</div><div id="next" class="next-link" accesskey="n" href="./r_WF_ROW_NUMBER.html">ROW_NUMBER</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Ja</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass wir gute Arbeit geleistet haben!</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, was wir richtig gemacht haben, damit wir noch besser werden?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_WF_RATIO_TO_REPORT.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Hat Ihnen diese Seite geholfen? – Nein</div><div class="content"><p>Vielen Dank, dass Sie uns mitgeteilt haben, dass diese Seite überarbeitet werden muss. Es tut uns Leid, dass wir Ihnen nicht weiterhelfen konnten.</p><p>Würden Sie sich einen Moment Zeit nehmen, um uns mitzuteilen, wie wir die Dokumentation verbessern können?</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_WF_RATIO_TO_REPORT.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

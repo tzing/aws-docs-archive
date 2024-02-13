@@ -42,22 +42,25 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#tutorial-loading-data-upload-files" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#tutorial-loading-data-to-upload-files"></a><a href="#tutorial-loading-next-step4">Nächster Schritt</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="tutorial-loading-data-upload-files">Schritt 3: Hochladen der Datei in einen Amazon S3 Bucket</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>In diesem Schritt erstellen Sie einen Amazon S3 Bucket und laden die Datendateien in diesen Bucket.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#tutorial-loading-data-upload-files" target="_blank" rel="noopener noreferrer" title="PDF öffnen"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Dokumentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Datenbankentwicklerhandbuch</a></div><div id="page-toc-src"><a href="#tutorial-loading-data-to-upload-files"></a><a href="#tutorial-loading-next-step4">Nächster Schritt</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>Die vorliegende Übersetzung wurde maschinell erstellt. Im Falle eines Konflikts oder eines Widerspruchs zwischen dieser übersetzten Fassung und der englischen Fassung (einschließlich infolge von Verzögerungen bei der Übersetzung) ist die englische Fassung maßgeblich.</p></awsui-alert><h1 class="topictitle" id="tutorial-loading-data-upload-files">Schritt 3: Hochladen der Datei in einen Amazon S3 Bucket</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>In diesem Schritt erstellen Sie einen Amazon S3 Bucket und laden die Datendateien in diesen Bucket.</p>
             <h2 id="tutorial-loading-data-to-upload-files"></h2>
 
             <div class="procedure"><h6>Hochladen der Dateien in einen Amazon S3 Bucket</h6><ol><li>
                     <p>Erstellen eines Buckets in Amazon S3.</p>
+                    <p>Weitere Informationen zum Erstellen eines Buckets finden Sie unter <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">Erstellen von Buckets</a> im <em>Benutzerhandbuch für Amazon Simple Storage Service</em>.</p>
                     
-                    <ol><li> <p>Melden Sie sich bei der AWS Management Console an und öffnen Sie die Amazon-S3-Konsole unter <a href="https://console.aws.amazon.com/s3/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/s3/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p> </li><li>
-                            <p>Klicken Sie auf <b>Create Bucket (Bucket erstellen)</b>.</p>
+                    <ol><li> <p>Melden Sie sich bei der AWS Management Console an und öffnen Sie die Amazon S3-Konsole unter <a href="https://console.aws.amazon.com/s3/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/s3/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p> </li><li>
+                            <p>Wählen Sie <b>Create Bucket (Bucket erstellen)</b>.</p>
                         </li><li>
-                            <p>Geben Sie im Feld <b>Bucket Name (Bucket-Name)</b> des Dialogfelds <b>Create a Bucket (Bucket erstellen)</b> einen Bucket-Namen ein. </p>
-                            <p>Der von Ihnen gewählte Bucket-Name muss unter allen in Amazon S3 vorhandenen Bucket-Namen eindeutig sein. Eine Möglichkeit, für Eindeutigkeit zu sorgen, besteht darin, vor den Namen von Buckets den Namen Ihres Unternehmens zu setzen. Bucket-Namen müssen bestimmten Regeln folgen. Weitere Informationen finden Sie unter <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">Bucket-Einschränkungen und -Limits</a> im <em>Benutzerhandbuch zu Amazon Simple Storage Service.</em> </p>
-                        </li><li>
-                            <p>Wählen Sie eine Region aus. </p>
+                            <p>Wählen Sie ein AWS-Region. </p>
                             <p>Erstellen Sie den Bucket in derselben Region, in der sich auch Ihr Cluster befindet. Wenn sich Ihr Cluster in der Region USA West (Oregon) befindet, wählen Sie <b>USA West (Oregon) Region (us-west-2)</b> aus.</p>
                         </li><li>
-                            <p>Wählen Sie <b>Erstellen</b> aus. </p>
+                            <p>Geben Sie im Feld <b>Bucket-Name</b> des Dialogfelds <b>Bucket erstellen</b> einen Bucket-Namen ein. </p>
+                            <p>Der von Ihnen gewählte Bucket-Name muss unter allen in Amazon S3 vorhandenen Bucket-Namen eindeutig sein. Eine Möglichkeit, für Eindeutigkeit zu sorgen, besteht darin, vor den Namen von Buckets den Namen Ihres Unternehmens zu setzen. Bucket-Namen müssen bestimmten Regeln folgen. Weitere Informationen finden Sie unter <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">Bucket-Einschränkungen und -Limits</a> im <em>Benutzerhandbuch zu Amazon Simple Storage Service.</em> </p>
+                        </li><li>
+                            <p>Wählen Sie die empfohlenen Standardwerte für die restlichen Optionen.</p>
+                        </li><li>
+                            <p>Wählen Sie <b>Bucket erstellen</b> aus. </p>
                             <p>Wenn Amazon S3 Ihren Bucket erfolgreich erstellt hat, wird der leere Bucket in der Konsole im Feld <b>Buckets</b> angezeigt. </p>
                         </li></ol>
                 </li><li>
@@ -65,7 +68,7 @@
                     <ol><li>
                             <p>Wählen Sie den Namen des neuen Buckets.</p>
                         </li><li>
-                            <p>Klicken Sie auf die Schaltfläche <b>Actions</b> (Aktionen) und dann in der Dropdownliste auf <b>Create Folder</b> (Ordner erstellen).</p>
+                            <p>Wählen Sie die Schaltfläche <b>Ordner erstellen</b> aus.</p>
                         </li><li>
                             <p>Geben Sie als Namen für den neuen Ordner  ein <code class="userinput">load</code>.</p>
                             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Anmerkung</h6></div><div class="awsdocs-note-text"><p>Der von Ihnen erstellte Bucket befindet sich nicht in einer Sandbox. In dieser Übung fügen Sie Objekte zu einem echten Bucket hinzu. Für die Zeit, in der Sie die Objekte im Bucket speichern, wird Ihnen ein Nominalbetrag berechnet. Weitere Informationen zu Amazon-S3-Preisen finden Sie unter <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank"><span>Amazon-S3-Preise</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p></div></div>
@@ -75,17 +78,17 @@
                     <ol><li>
                             <p>Wählen Sie auf den Namen des Datenordners aus.</p>
                         </li><li>
-                            <p>Klicken Sie im Assistenten für das Hochladen und Auswählen von Dateien auf <b>Add Files</b> (Dateien hinzufügen).</p>
+                            <p>Wählen Sie im Assistenten für das Hochladen die Option <b>Dateien hinzufügen</b>.</p>
 
                             <p>Befolgen Sie die Amazon-S3-Konsolenanweisungen, um alle heruntergeladenen und extrahierten Dateien hochzuladen.</p>
                         </li><li>
-                            <p>Wählen Sie <b>Start Upload</b>.</p>
+                            <p>Klicken Sie auf <b>Hochladen</b>.</p>
                         </li></ol>
                 </li></ol></div>
 
              
                 <h6>Benutzeranmeldeinformationen</h6>
-                <p>Der COPY-Befehl in Amazon Redshift muss einen Lesezugriff auf Dateiobjekte im Amazon-S3-Bucket besitzen. Wenn Sie dieselben Benutzer-Anmeldeinformationen verwenden, um den Amazon-S3-Bucket zu erstellen und den Amazon-Redshift-Befehl COPY auszuführen, verfügt der Befehl COPY über alle erforderlichen Berechtigungen. Wenn Sie andere Benutzeranmeldeinformationen verwenden möchten, können Sie den Zugriff über die Amazon-S3-Zugriffssteuerungselemente gewähren. Der COPY-Befehl in Amazon Redshift benötigt mindestens ListBucket- und GetObject-Berechtigungen, um auf die Dateiobjekte im Amazon-S3-Bucket zugreifen zu können. Weitere Informationen über Zugriffsrichtlinien für Amazon-S3-Ressourcen finden Sie unter <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Managing access permissions to your Amazon S3 resources</a> (Verwaltung der Zugriffsberechtigungen zu Ihren Amazon-S3-Ressourcen).</p>
+                <p>Der COPY-Befehl in Amazon Redshift muss einen Lesezugriff auf Dateiobjekte im Amazon-S3-Bucket besitzen. Wenn Sie dieselben Benutzer-Anmeldeinformationen verwenden, um den Amazon-S3-Bucket zu erstellen und den Amazon-Redshift-Befehl COPY auszuführen, verfügt der Befehl COPY über alle erforderlichen Berechtigungen. Wenn Sie andere Benutzeranmeldeinformationen verwenden möchten, können Sie den Zugriff über die Amazon-S3-Zugriffssteuerungselemente gewähren. Der Amazon-Redshift-Befehl COPY benötigt mindestens -  ListBucket und - GetObject Berechtigungen für den Zugriff auf die Dateiobjekte im Amazon S3-Bucket. Weitere Informationen über Zugriffsrichtlinien für Amazon-S3-Ressourcen finden Sie unter <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Managing access permissions to your Amazon S3 resources</a> (Verwaltung der Zugriffsberechtigungen zu Ihren Amazon-S3-Ressourcen).</p>
              
 
 
