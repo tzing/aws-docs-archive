@@ -47,6 +47,7 @@
       "<a href="#cfn-route53-recordset-comment">Comment</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-route53-recordset-failover">Failover</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-route53-recordset-geolocation">GeoLocation</a>" : <code class="replaceable"><a href="./aws-properties-route53-recordset-geolocation.html">GeoLocation</a></code>,
+      "<a href="#cfn-route53-recordset-geoproximitylocation">GeoProximityLocation</a>" : <code class="replaceable"><a href="./aws-properties-route53-recordset-geoproximitylocation.html">GeoProximityLocation</a></code>,
       "<a href="#cfn-route53-recordset-healthcheckid">HealthCheckId</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-route53-recordset-hostedzoneid">HostedZoneId</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-route53-recordset-hostedzonename">HostedZoneName</a>" : <code class="replaceable">String</code>,
@@ -70,6 +71,8 @@ Properties:
   <a href="#cfn-route53-recordset-failover">Failover</a>: <code class="replaceable">String</code>
   <a href="#cfn-route53-recordset-geolocation">GeoLocation</a>: <code class="replaceable">
     <a href="./aws-properties-route53-recordset-geolocation.html">GeoLocation</a></code>
+  <a href="#cfn-route53-recordset-geoproximitylocation">GeoProximityLocation</a>: <code class="replaceable">
+    <a href="./aws-properties-route53-recordset-geoproximitylocation.html">GeoProximityLocation</a></code>
   <a href="#cfn-route53-recordset-healthcheckid">HealthCheckId</a>: <code class="replaceable">String</code>
   <a href="#cfn-route53-recordset-hostedzoneid">HostedZoneId</a>: <code class="replaceable">String</code>
   <a href="#cfn-route53-recordset-hostedzonename">HostedZoneName</a>: <code class="replaceable">String</code>
@@ -194,7 +197,12 @@ Properties:
          <p>You can't create non-geolocation resource record sets that have the same values for
 			the <code class="code">Name</code> and <code class="code">Type</code> elements as geolocation resource record
 			sets.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-route53-recordset-geolocation.html">GeoLocation</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-route53-recordset-healthcheckid"><span class="term"><code class="code">HealthCheckId</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-route53-recordset-geolocation.html">GeoLocation</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-route53-recordset-geoproximitylocation"><span class="term"><code class="code">GeoProximityLocation</code></span></dt><dd>
+         <p>
+            <em> GeoproximityLocation resource record sets only:</em> A complex type that lets you control how
+				Route 53 responds to DNS queries based on the geographic origin of the
+			query and your resources. </p>
+      <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-route53-recordset-geoproximitylocation.html">GeoProximityLocation</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-route53-recordset-healthcheckid"><span class="term"><code class="code">HealthCheckId</code></span></dt><dd>
          <p>If you want Amazon Route 53 to return this resource record set in response to a DNS
 			query only when the status of a health check is healthy, include the
 				<code class="code">HealthCheckId</code> element and specify the ID of the applicable health
@@ -657,7 +665,7 @@ Properties:
                <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>You can't use the * wildcard for resource records sets that have a type of
 						NS.</p></div></div>
             </li></ul></div><h3 id="aws-resource-route53-recordset-return-values-fn--getatt">Fn::GetAtt</h3><h2 id="aws-resource-route53-recordset--examples">Examples</h2><p>For more examples, see 
-      		<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-route53.html">Route 53 Template Snippets</a>.</p><h3 id="aws-resource-route53-recordset--examples--Creating_a_Route_53_A_record">Creating a Route 53 A record</h3><p>The following example shows how to specify the settings for an A record.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-route53-recordset--examples--Creating_a_Route_53_A_record--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+      		<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-route53.html">Route 53 Template Snippets</a>.</p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-route53-recordset--examples--Creating_a_Route_53_A_record">Creating a Route 53 A record</a></li><li><a href="#aws-resource-route53-recordset--examples--Creating_a_Route_53_A_record_for_an_Amazon_EC2_instance">Creating a Route 53 A record for an Amazon EC2 instance</a></li></ul></div><h3 id="aws-resource-route53-recordset--examples--Creating_a_Route_53_A_record">Creating a Route 53 A record</h3><p>The following example shows how to specify the settings for an A record.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-route53-recordset--examples--Creating_a_Route_53_A_record--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
    "Resources" : <span>{</span>
       "myDNSRecord" : <span>{</span>
          "Type" : "AWS::Route53::RecordSet",

@@ -25,7 +25,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Amazon Kinesis Data Firehose resource type reference",
+        "name" : "Amazon Data Firehose resource type reference",
         "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_KinesisFirehose.html"
       },
       {
@@ -64,11 +64,11 @@
          <p>Defaults to <code class="code">true</code>. Set it to <code class="code">false</code> if you want to disable
          format conversion while preserving the configuration details.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-dataformatconversionconfiguration-inputformatconfiguration"><span class="term"><code class="code">InputFormatConfiguration</code></span></dt><dd>
-         <p>Specifies the deserializer that you want Kinesis Data Firehose to use to convert the
+         <p>Specifies the deserializer that you want Firehose to use to convert the
          format of your data from JSON. This parameter is required if <code class="code">Enabled</code> is set to
          true.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-kinesisfirehose-deliverystream-inputformatconfiguration.html">InputFormatConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-dataformatconversionconfiguration-outputformatconfiguration"><span class="term"><code class="code">OutputFormatConfiguration</code></span></dt><dd>
-         <p>Specifies the serializer that you want Kinesis Data Firehose to use to convert the
+         <p>Specifies the serializer that you want Firehose to use to convert the
          format of your data to the Parquet or ORC format. This parameter is required if
             <code class="code">Enabled</code> is set to true.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-kinesisfirehose-deliverystream-outputformatconfiguration.html">OutputFormatConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-dataformatconversionconfiguration-schemaconfiguration"><span class="term"><code class="code">SchemaConfiguration</code></span></dt><dd>

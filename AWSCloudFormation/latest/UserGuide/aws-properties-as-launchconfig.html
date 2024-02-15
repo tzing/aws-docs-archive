@@ -42,13 +42,12 @@
       name. Existing instances are not affected. To update existing instances when you update the
         <code class="code">AWS::AutoScaling::LaunchConfiguration</code> resource, you can specify an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html">UpdatePolicy
         attribute</a> for the group. You can find sample update policies for rolling updates in
-        <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling template
-        snippets</a>. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Amazon EC2 Auto Scaling configures instances launched as part of an Auto Scaling group
+        <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html">Configure Amazon EC2
+        Auto Scaling resources</a>. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Amazon EC2 Auto Scaling configures instances launched as part of an Auto Scaling group
         using either a <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">launch
           template</a> or a launch configuration. We strongly recommend that you do not use
-        launch configurations. They do not provide full functionality for Amazon EC2 Auto Scaling or
-        Amazon EC2. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html">Launch configurations</a>
-        and <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-launch-configurations-with-cloudformation.html">Migrate AWS CloudFormation stacks from launch configurations to launch
+        launch configurations. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html">Launch configurations</a>
+        in the <em>Amazon EC2 Auto Scaling User Guide</em>.</p><p>For help migrating from launch configurations to launch templates, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-launch-configurations-with-cloudformation.html">Migrate AWS CloudFormation stacks from launch configurations to launch
           templates</a> in the <em>Amazon EC2 Auto Scaling User Guide</em>.</p></div></div><h2 id="aws-resource-autoscaling-launchconfiguration-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-resource-autoscaling-launchconfiguration-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "Type" : "AWS::AutoScaling::LaunchConfiguration",
   "Properties" : <span>{</span>
@@ -224,7 +223,7 @@ Properties:
         request for Spot Instances is unsuccessful, it keeps trying. </p><p>If your Auto Scaling instances receive a public IPv4 address and are launched in a VPC
         that is defined in the same stack template, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html">DependsOn
           attribute</a> to declare a dependency on the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc-gateway-attachment.html">VPC-gateway attachment</a>. </p><h2 id="aws-resource-autoscaling-launchconfiguration--examples">Examples</h2><p>The following examples create launch configurations that can be used by an Auto Scaling
-        group to configure Amazon EC2 instances. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>For examples of Amazon EC2 launch templates, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html#aws-resource-ec2-launchtemplate--examples">Examples</a> section of the <code class="code">AWS::EC2::LaunchTemplate</code> resources.</p></div></div><h3 id="aws-resource-autoscaling-launchconfiguration--examples--Amazon_EBS-backed_AMI_and_defined_block_device_mappings">Amazon EBS-backed AMI and defined block device mappings</h3><p>This example shows a launch configuration with a <code class="code">BlockDeviceMappings</code>
+        group to configure Amazon EC2 instances. </p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-autoscaling-launchconfiguration--examples--Amazon_EBS-backed_AMI_and_defined_block_device_mappings">Amazon EBS-backed AMI and defined block device mappings</a></li><li><a href="#aws-resource-autoscaling-launchconfiguration--examples--Instance_store-backed_AMI_with_Spot_price_and_IAM_role">Instance store-backed AMI with Spot price and IAM role</a></li><li><a href="#aws-resource-autoscaling-launchconfiguration--examples--Provisioned_IOPS_EBS-optimized_volume_with_key-pair_name_and_user_data">Provisioned IOPS EBS-optimized volume with key-pair name and user data</a></li></ul></div><h3 id="aws-resource-autoscaling-launchconfiguration--examples--Amazon_EBS-backed_AMI_and_defined_block_device_mappings">Amazon EBS-backed AMI and defined block device mappings</h3><p>This example shows a launch configuration with a <code class="code">BlockDeviceMappings</code>
           property that lists two devices: a 30 gigabyte EBS root volume mapped to /dev/sda1 and a
           100 gigabyte EBS volume mapped to /dev/sdm. The /dev/sdm volume uses the default EBS
           volume type based on the region and is not deleted when terminating the instance it is
@@ -426,7 +425,21 @@ Resources:
       EbsOptimized: true</code></pre></div><h2 id="aws-resource-autoscaling-launchconfiguration--seealso">See also</h2><div class="itemizedlist">
          
          
+         
       <ul class="itemizedlist"><li class="listitem">
+          <p>You can find additional useful snippets in the following sections of the
+                <em>AWS CloudFormation User Guide</em>:</p>
+          <div class="itemizedlist">
+             
+             
+          <ul class="itemizedlist"><li class="listitem">
+              <p>For examples of Auto Scaling groups, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html">Configure
+                  Amazon EC2 Auto Scaling resources</a>.</p>
+            </li><li class="listitem">
+              <p>For examples of launch templates, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-launch-templates.html">Create
+                  launch templates</a>.</p>
+            </li></ul></div>
+        </li><li class="listitem">
           <p>
             <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-launch-configurations-with-cloudformation.html">Migrate AWS CloudFormation stacks from launch configurations to
               launch templates</a> in the <em>Amazon EC2 Auto Scaling User

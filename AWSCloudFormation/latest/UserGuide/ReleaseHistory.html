@@ -33,7 +33,46 @@
 </script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#release-history-earlier-updates">Earlier updates</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ReleaseHistory">Release history</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>The following table describes important changes in each release of the AWS CloudFormation User Guide
       after May 2018. For notification about updates to this documentation, you can subscribe to an
          <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss">RSS
-         feed</a>.</p><div class="table-container"><div class="table-contents"><table id="w1337aac42b5"><tr><th>Change</th><th>Description</th><th>Date</th></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Cassandra">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <code class="code">AWS::Cassandra::Table</code>.</p><div class="variablelist">
+         feed</a>.</p><div class="table-container"><div class="table-contents"><table id="w1341aac42b5"><tr><th>Change</th><th>Description</th><th>Date</th></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_NeptuneGraph">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: <code class="code">AWS::NeptuneGraph::Graph</code> and 
+                        <code class="code">AWS::NeptuneGraph::PrivateGraphEndpoint</code>.</p><div class="variablelist">
+                                 
+                                 
+                        <dl>
+                                        <dt><span class="term">
+                                                <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-graph.html">AWS::NeptuneGraph::Graph</a>
+                                        </span></dt>
+                                        <dd>
+                                                <p>Use the <code class="code">AWS::NeptuneGraph::Graph</code> resource to specify a graph in Amazon Neptune Analytics.</p>
+                                        </dd>
+                                 
+                                        <dt><span class="term">
+                                                <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-neptunegraph-privategraphendpoint.html">AWS::NeptuneGraph::PrivateGraphEndpoint</a>
+                                        </span></dt>
+                                        <dd>
+                                                <p>Use the <code class="code">AWS::NeptuneGraph::PrivateGraphEndpoint</code> resource to specify a private graph endpoint in Amazon Neptune Analytics.</p>
+                                        </dd>
+                                </dl></div></td><td tabindex="-1"><p>February 13, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_FSx">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <code class="code">AWS::FSx::Filesystem</code> and <code class="code">AWS::FSx::Volume</code></p><div class="variablelist">
+                     
+                               
+                <dl>
+                        <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html">AWS::FSx::Filesystem</a></span></dt>
+                        <dd><p>Use the <code class="code">HAPairs</code> and <code class="code">ThroughputCapacityPerHAPair</code> <code class="code">AWS::FSx::FileSystem OntapConfiguration</code> properties to create 
+                          a scale out FSx for ONTAP file system.</p></dd>                        
+                     
+                        <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html">AWS::FSx::Volume</a></span></dt>
+                        <dd><p>Use the <code class="code">AggregateConfiguration</code>, <code class="code">SizeInBytes</code>, and <code class="code">VolumeStyle</code> 
+                            <code class="code">AWS::FSx::Volume OntapConfiguration</code> properties when creating FSx for ONTAP volumes.</p></dd>
+                    </dl></div></td><td tabindex="-1"><p>February 9, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_IoT">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::IoT::DomainConfiguration.</p><div class="variablelist">
+                
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iot-domainconfiguration.html">AWS::IoT::DomainConfiguration</a>
+                  </span></dt>
+                  <dd>
+                     <p>The AWS::IoT::DomainConfiguration resource adds server certificate configuration
+                        parameter.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>February 9, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Cassandra">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <code class="code">AWS::Cassandra::Table</code>.</p><div class="variablelist">
              
              
           <dl>
@@ -130,7 +169,31 @@
                         <dd>
                             <p>Added a <code class="code">Qtype</code> property to include a DNS query type for the DNS Firewall rule to evaluate.</p>
                         </dd>
-                    </dl></div></td><td tabindex="-1"><p>January 19, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_DataZone">New resource</a></p></td><td tabindex="-1"><p>The following resources were added: <code class="code">AWS::DataZone::DataSource</code>,
+                    </dl></div></td><td tabindex="-1"><p>January 19, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_DynamoDB">Updated resource</a></p></td><td tabindex="-1"><p>The following property was added to the <code class="code">AWS::DynamoDB::GlobalTable</code> resource:
+                <code class="code">KinesisStreamSpecification</code></p><div class="variablelist">
+                     
+                <dl>
+                        <dt><span class="term">
+                            <a href="https://docs.aws.amazon.com/aws-properties-dynamodb-globaltable-kinesisstreamspecification.html">AWS::DynamoDB::GlobalTable.KinesisStreamSpecification</a>
+                        </span></dt>
+                        <dd>
+                            <p>Use the
+                                <code class="code">KinesisStreamSpecification</code>
+                                property to set timestamp precision for Kinesis Data Streams.</p>
+                        </dd>
+                    </dl></div></td><td tabindex="-1"><p>January 18, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_DynamoDB">Updated resource</a></p></td><td tabindex="-1"><p>The following property was added to the <code class="code">AWS::DynamoDB::Table</code> resource:
+                <code class="code">KinesisStreamSpecification</code></p><div class="variablelist">
+                     
+                <dl>
+                        <dt><span class="term">
+                            <a href="https://docs.aws.amazon.com/aws-properties-dynamodb-table-kinesisstreamspecification.html">AWS::DynamoDB::Table.KinesisStreamSpecification</a>
+                        </span></dt>
+                        <dd>
+                            <p>Use the
+                                <code class="code">KinesisStreamSpecification</code>
+                                property to set timestamp precision for Kinesis Data Streams.</p>
+                        </dd>
+                    </dl></div></td><td tabindex="-1"><p>January 18, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_DataZone">New resource</a></p></td><td tabindex="-1"><p>The following resources were added: <code class="code">AWS::DataZone::DataSource</code>,
           <code class="code">AWS::DataZone::Domain</code>, <code class="code">AWS::DataZone::Environment</code>,
           <code class="code">AWS::DataZone::EnvironmentBlueprintConfiguration</code>,
           <code class="code">AWS::DataZone::EnvironmentProfile</code>, <code class="code">AWS::DataZone::Project</code>,
@@ -252,18 +315,7 @@
                      <dd>
                         <p>Use the <code class="code">AWS::NetworkFirewall::TLSInspectionConfiguration</code> resource to specify a TLS inspection configuration for Network Firewall to use to decrypt traffic for inspection. Network Firewall re-encrypts the traffic before sending it to its destination.</p>
                      </dd>
-                  </dl></div></td><td tabindex="-1"><p>January 10, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_FSx">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <code class="code">AWS::FSx::Filesystem</code> and <code class="code">AWS::FSx::Volume</code></p><div class="variablelist">
-                     
-                               
-                <dl>
-                        <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html">AWS::FSx::Filesystem</a></span></dt>
-                        <dd><p>Use the <code class="code">HAPairs</code> and <code class="code">ThroughputCapacityPerHAPair</code> <code class="code">AWS::FSx::FileSystem OntapConfiguration</code> properties to create 
-                          a scale out FSx for ONTAP file system.</p></dd>                        
-                     
-                        <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-volume.html">AWS::FSx::Volume</a></span></dt>
-                        <dd><p>Use the <code class="code">AggregateConfiguration</code>, <code class="code">SizeInBytes</code>, and <code class="code">VolumeStyle</code> 
-                            <code class="code">AWS::FSx::Volume OntapConfiguration</code> properties when creating FSx for ONTAP volumes.</p></dd>
-                    </dl></div></td><td tabindex="-1"><p>January 9, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_MediaTailor">Updated resources</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::MediaTailor::Channel.TimeShiftConfiguration</p><div class="variablelist">
+                  </dl></div></td><td tabindex="-1"><p>January 10, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_MediaTailor">Updated resources</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::MediaTailor::Channel.TimeShiftConfiguration</p><div class="variablelist">
                     
                <dl>
                        <dt><span class="term">
@@ -7079,7 +7131,7 @@
                      <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lightsail-certificate.html">AWS::Lightsail::Certificate</a>
                   </span></dt>
                   <dd>
-                     <p>Use the <code class="code">AWS::Lightsail::Certificate</code> resource to specify an Amazon Lightsail certificate that you can use with a Lightsail content delivery network (CDN) distribution and a  container service.</p>
+                     <p>Use the <code class="code">AWS::Lightsail::Certificate</code> resource to specify an Amazon Lightsail certificate that you can use with a Lightsail content delivery network (CDN) distribution and a Lightsail container service.</p>
                   </dd>
                 
                   <dt><span class="term">
@@ -7391,7 +7443,7 @@
             </span></dt>
             <dd>
               <p>You can now log web ACL traffic to an Amazon CloudWatch Logs log group or an Amazon Simple Storage Service (Amazon S3) bucket. These options 
-                are in addition to the existing option of logging to an Amazon Kinesis Data Firehose.</p>
+                are in addition to the existing option of logging to an Amazon Data Firehose.</p>
             </dd>
           </dl></div></td><td tabindex="-1"><p>December 3, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_S3">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::S3::StorageLens.</p><div class="variablelist">
            
@@ -17239,14 +17291,14 @@
                                  writing it to Amazon S3.</p>
                            </li><li class="listitem">
                               <p>Use the <code class="code">ErrorOutputPrefix</code> property to specify a
-                                 prefix that Amazon Kinesis Data Firehose evaluates and adds to failed records before
+                                 prefix that Amazon Data Firehose evaluates and adds to failed records before
                                  writing them to S3.</p>
                            </li><li class="listitem">
                               <p>The <code class="code">Prefix</code> property is no longer required.</p>
                            </li></ul></div>
                         <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-kinesisfirehose-deliverystream-s3destinationconfiguration.html">S3DestinationConfiguration</a> property type, use the
                               <code class="code">ErrorOutputPrefix</code> property to specify a prefix that
-                           Amazon Kinesis Data Firehose evaluates and adds to failed records before writing them to
+                           Amazon Data Firehose evaluates and adds to failed records before writing them to
                            S3.</p>
                      </dd>
                    
@@ -20417,7 +20469,7 @@
                      </span></dt>
                      <dd>
                         <p>Use the <code class="code">SplunkDestinationConfiguration</code> property to
-                           specify the configuration of a destination in Splunk for a Kinesis Data Firehose delivery
+                           specify the configuration of a destination in Splunk for a Firehose delivery
                            stream.</p>
                      </dd>
                    
@@ -20633,7 +20685,7 @@
 
       <p>The following table describes important changes in each release of the AWS CloudFormation User Guide
          before May 2018.</p>
-      <div class="table-container"><div class="table-contents disable-scroll"><table id="w1337aac42b9b5"><thead>
+      <div class="table-container"><div class="table-contents disable-scroll"><table id="w1341aac42b9b5"><thead>
                <tr>
                   <th>Change</th>
                   <th>Release Date</th>
@@ -27466,5 +27518,4 @@
                   </td>
                </tr>
             </table></div></div>
-   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./troubleshooting.html">Troubleshooting</div><div id="next" class="next-link" accesskey="n" href="./releasehistory-aws-cfn-bootstrap.html">Release history for helper
-         scripts</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/ReleaseHistory.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/ReleaseHistory.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./troubleshooting.html">Troubleshooting</div><div id="next" class="next-link" accesskey="n" href="./releasehistory-aws-cfn-bootstrap.html">Release history for helper scripts</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/ReleaseHistory.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/ReleaseHistory.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

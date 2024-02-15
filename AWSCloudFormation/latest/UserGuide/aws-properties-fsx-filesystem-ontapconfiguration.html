@@ -113,7 +113,21 @@
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[^\u0000\u0085\u2028\u2029\r\n]<span>{</span>9,17}$</code></p><p><em>Minimum</em>: <code class="code">9</code></p><p><em>Maximum</em>: <code class="code">17</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-fsxadminpassword"><span class="term"><code class="code">FsxAdminPassword</code></span></dt><dd>
          <p>The ONTAP administrative password for the <code class="code">fsxadmin</code> user with which you
             administer your file system using the NetApp ONTAP CLI and REST API.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[^\u0000\u0085\u2028\u2029\r\n]<span>{</span>8,50}$</code></p><p><em>Minimum</em>: <code class="code">8</code></p><p><em>Maximum</em>: <code class="code">50</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-hapairs"><span class="term"><code class="code">HAPairs</code></span></dt><dd><p>Property description not available.</p><p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-preferredsubnetid"><span class="term"><code class="code">PreferredSubnetId</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[^\u0000\u0085\u2028\u2029\r\n]<span>{</span>8,50}$</code></p><p><em>Minimum</em>: <code class="code">8</code></p><p><em>Maximum</em>: <code class="code">50</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-hapairs"><span class="term"><code class="code">HAPairs</code></span></dt><dd>
+         <p>Specifies how many high-availability (HA) pairs of file servers will power your file system. Scale-up file systems are powered by 1 HA pair. The default value is 1. 
+            FSx for ONTAP scale-out file system are powered by up to six HA pairs. The value of this property affects the values of <code class="code">StorageCapacity</code>, 
+            <code class="code">Iops</code>, and <code class="code">ThroughputCapacity</code>. For more information, see 
+            <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/HA-pairs.html">High-availability (HA) pairs</a> in the FSx for ONTAP user guide.</p>
+         <p>Amazon FSx responds with an HTTP status code 400 (Bad Request) for the following conditions:</p>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>The value of <code class="code">HAPairs</code> is less than 1 or greater than 6.</p>
+            </li><li class="listitem">
+               <p>The value of <code class="code">HAPairs</code> is greater than 1 and the value of <code class="code">DeploymentType</code> is <code class="code">SINGLE_AZ_1</code> or <code class="code">MULTI_AZ_1</code>.</p>
+            </li></ul></div>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">6</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-preferredsubnetid"><span class="term"><code class="code">PreferredSubnetId</code></span></dt><dd>
          <p>Required when <code class="code">DeploymentType</code> is set to <code class="code">MULTI_AZ_1</code>. This
             specifies the subnet in which you want the preferred file server to be located.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-routetableids"><span class="term"><code class="code">RouteTableIds</code></span></dt><dd>
@@ -138,7 +152,31 @@
             </li><li class="listitem">
                <p>The value of <code class="code">ThroughputCapacity</code> when divided by the value of <code class="code">HAPairs</code> is outside of the valid range for <code class="code">ThroughputCapacity</code>.</p>
             </li></ul></div>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">8</code></p><p><em>Maximum</em>: <code class="code">100000</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-throughputcapacityperhapair"><span class="term"><code class="code">ThroughputCapacityPerHAPair</code></span></dt><dd><p>Property description not available.</p><p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-weeklymaintenancestarttime"><span class="term"><code class="code">WeeklyMaintenanceStartTime</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">8</code></p><p><em>Maximum</em>: <code class="code">100000</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-throughputcapacityperhapair"><span class="term"><code class="code">ThroughputCapacityPerHAPair</code></span></dt><dd>
+         <p>Use to choose the throughput capacity per HA pair, rather than the total throughput for the file system. </p>
+         <p>You can define either the <code class="code">ThroughputCapacityPerHAPair</code> or the <code class="code">ThroughputCapacity</code> when creating a file system, but not both.</p>
+         <p>This field and <code class="code">ThroughputCapacity</code> are the same for scale-up file systems powered by one HA pair.</p>
+         <div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>For <code class="code">SINGLE_AZ_1</code> and <code class="code">MULTI_AZ_1</code> file systems, valid values are 128, 256, 512, 1024, 2048, or 4096 MBps.</p>
+            </li><li class="listitem">
+               <p>For <code class="code">SINGLE_AZ_2</code> file systems, valid values are 3072 or 6144 MBps.</p>
+            </li></ul></div>
+         <p>Amazon FSx responds with an HTTP status code 400 (Bad Request) for the following conditions:</p>
+         <div class="itemizedlist">
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>The value of <code class="code">ThroughputCapacity</code> and <code class="code">ThroughputCapacityPerHAPair</code> are not the same value for file systems with one HA pair.</p>
+            </li><li class="listitem">
+               <p>The value of deployment type is <code class="code">SINGLE_AZ_2</code> and <code class="code">ThroughputCapacity</code> / <code class="code">ThroughputCapacityPerHAPair</code> is a valid HA pair (a value between 2 and 6).</p>
+            </li><li class="listitem">
+               <p>The value of <code class="code">ThroughputCapacityPerHAPair</code> is not a valid value.</p>
+            </li></ul></div>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">128</code></p><p><em>Maximum</em>: <code class="code">6144</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-filesystem-ontapconfiguration-weeklymaintenancestarttime"><span class="term"><code class="code">WeeklyMaintenanceStartTime</code></span></dt><dd>
          <p>A recurring weekly time, in the format <code class="code">D:HH:MM</code>. </p>
          <p>
             <code class="code">D</code> is the day of the week, for which 1 represents Monday and 7

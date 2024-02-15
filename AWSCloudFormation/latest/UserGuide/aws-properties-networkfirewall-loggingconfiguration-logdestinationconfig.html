@@ -79,7 +79,7 @@
                   <code class="code">"LogDestination": <span>{</span> "logGroup": "alert-log-group" }</code>
                </p>
             </li><li class="listitem">
-               <p>For a Kinesis Data Firehose delivery stream, provide the name of the delivery stream, with key
+               <p>For a Firehose delivery stream, provide the name of the delivery stream, with key
                   <code class="code">deliveryStream</code>. The following example specifies a delivery stream
                named <code class="code">alert-delivery-stream</code>: </p>
                <p>
@@ -89,7 +89,7 @@
             </li></ul></div>
       <p><em>Required</em>: Yes</p><p><em>Type</em>: Object of String</p><p><em>Pattern</em>: <code class="code">^[0-9A-Za-z.\-_@\/]+$</code></p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">1024</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-networkfirewall-loggingconfiguration-logdestinationconfig-logdestinationtype"><span class="term"><code class="code">LogDestinationType</code></span></dt><dd>
          <p>The type of storage destination to send these logs to. You can send logs to an Amazon S3 bucket,
-         a CloudWatch log group, or a Kinesis Data Firehose delivery stream.</p>
+         a CloudWatch log group, or a Firehose delivery stream.</p>
       <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">S3 | CloudWatchLogs | KinesisDataFirehose</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-networkfirewall-loggingconfiguration-logdestinationconfig-logtype"><span class="term"><code class="code">LogType</code></span></dt><dd>
          <p>The type of log to send. Alert logs report traffic that matches a stateful rule with an action setting that sends an alert log message. Flow logs are
          standard network traffic flow logs. </p>

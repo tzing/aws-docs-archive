@@ -7,7 +7,29 @@
       <atom:link href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss"
                  rel="self"
                  type="application/rss+xml"/>
-      <lastBuildDate>Thu, 8 Feb 2024 02:07:06 GMT</lastBuildDate>
+      <lastBuildDate>Thu, 15 Feb 2024 15:17:22 GMT</lastBuildDate>
+      <item>
+         <title>New resources</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resources were added: &lt;code class="code"&gt;AWS::NeptuneGraph::Graph&lt;/code&gt; and 
+                        &lt;code class="code"&gt;AWS::NeptuneGraph::PrivateGraphEndpoint&lt;/code&gt;.</description>
+         <pubDate>Tue, 13 Feb 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resources_2024-02-13</guid>
+      </item>
+      <item>
+         <title>Updated resources</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resources were updated: &lt;code class="code"&gt;AWS::FSx::Filesystem&lt;/code&gt; and &lt;code class="code"&gt;AWS::FSx::Volume&lt;/code&gt;</description>
+         <pubDate>Fri, 9 Feb 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resources_2024-02-09</guid>
+      </item>
+      <item>
+         <title>Updated resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resource was updated: AWS::IoT::DomainConfiguration.</description>
+         <pubDate>Fri, 9 Feb 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-02-09</guid>
+      </item>
       <item>
          <title>Updated resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
@@ -75,6 +97,22 @@
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resources_2024-01-19</guid>
       </item>
       <item>
+         <title>Updated resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following property was added to the &lt;code class="code"&gt;AWS::DynamoDB::GlobalTable&lt;/code&gt; resource:
+                &lt;code class="code"&gt;KinesisStreamSpecification&lt;/code&gt;</description>
+         <pubDate>Thu, 18 Jan 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-01-18</guid>
+      </item>
+      <item>
+         <title>Updated resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following property was added to the &lt;code class="code"&gt;AWS::DynamoDB::Table&lt;/code&gt; resource:
+                &lt;code class="code"&gt;KinesisStreamSpecification&lt;/code&gt;</description>
+         <pubDate>Thu, 18 Jan 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-01-18</guid>
+      </item>
+      <item>
          <title>New resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
          <description>The following resources were added: &lt;code class="code"&gt;AWS::DataZone::DataSource&lt;/code&gt;,
@@ -113,13 +151,6 @@
          <description>The following resource was added: AWS::NetworkFirewall::TLSInspectionConfiguration</description>
          <pubDate>Wed, 10 Jan 2024 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2024-01-10</guid>
-      </item>
-      <item>
-         <title>Updated resources</title>
-         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resources were updated: &lt;code class="code"&gt;AWS::FSx::Filesystem&lt;/code&gt; and &lt;code class="code"&gt;AWS::FSx::Volume&lt;/code&gt;</description>
-         <pubDate>Tue, 9 Jan 2024 19:00:00 GMT</pubDate>
-         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resources_2024-01-09</guid>
       </item>
       <item>
          <title>Updated resources</title>

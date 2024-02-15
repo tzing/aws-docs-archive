@@ -42,9 +42,8 @@
         User Guide</a>. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Amazon EC2 Auto Scaling configures instances launched as part of an Auto Scaling group
         using either a <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">launch
           template</a> or a launch configuration. We strongly recommend that you do not use
-        launch configurations. They do not provide full functionality for Amazon EC2 Auto Scaling or
-        Amazon EC2. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html">Launch configurations</a>
-        and <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-launch-configurations-with-cloudformation.html">Migrate AWS CloudFormation stacks from launch configurations to launch
+        launch configurations. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html">Launch configurations</a>
+        in the <em>Amazon EC2 Auto Scaling User Guide</em>.</p><p>For help migrating from launch configurations to launch templates, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-launch-configurations-with-cloudformation.html">Migrate AWS CloudFormation stacks from launch configurations to launch
           templates</a> in the <em>Amazon EC2 Auto Scaling User Guide</em>.</p></div></div><h2 id="aws-resource-autoscaling-autoscalinggroup-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-resource-autoscaling-autoscalinggroup-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "Type" : "AWS::AutoScaling::AutoScalingGroup",
   "Properties" : <span>{</span>
@@ -331,30 +330,21 @@ Properties:
         This works the same way as any other Auto Scaling group. </p><p>You can add an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html">UpdatePolicy
           attribute</a> to your stack to perform rolling updates (or replace the group) when a
         change has been made to the group. You can find a sample update policy for rolling updates
-        in <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling template
-          snippets</a>. Alternatively, you can force a rolling update on your instances at any
-        time after updating the stack by starting an instance refresh. For more information, see
-          <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html">Replace Auto Scaling instances based on an instance refresh</a> in the
-          <em>Amazon EC2 Auto Scaling User Guide</em>.</p><p>You can use a <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-creationpolicy.html">CreationPolicy
+        in <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html">Configure Amazon
+          EC2 Auto Scaling resources</a>. Alternatively, you can force a rolling update on your
+        instances at any time after updating the stack by starting an instance refresh. For more
+        information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html">Replace Auto Scaling instances
+          based on an instance refresh</a> in the <em>Amazon EC2 Auto Scaling User
+          Guide</em>.</p><p>You can use a <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-creationpolicy.html">CreationPolicy
           attribute</a> with an Auto Scaling group to prevent its status from reaching create
         complete until CloudFormation receives a specified number of success signals. For more
         information, see <a href="https://aws.amazon.com/blogs/devops/use-a-creationpolicy-to-wait-for-on-instance-configurations/" rel="noopener noreferrer" target="_blank"><span>Use a
           CreationPolicy to Wait for On-Instance Configurations</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> on the AWS
-        DevOps Blog. For an example template, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling template
-          snippets</a>.</p><p>Note that Amazon EC2 Auto Scaling provides scaling activities to help you monitor the
+        DevOps Blog. For an example template, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html">Configure Amazon
+          EC2 Auto Scaling resources</a>.</p><p>Note that Amazon EC2 Auto Scaling provides scaling activities to help you monitor the
         progress of your Auto Scaling group and to assist in troubleshooting any configuration
         issues when launching Amazon EC2 instances. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html">Verify a scaling activity for an Auto Scaling group</a> in the <em>Amazon EC2
-          Auto Scaling User Guide</em>.</p><h2 id="aws-resource-autoscaling-autoscalinggroup--examples">Examples</h2><p>The following examples create or make changes to an Auto Scaling group. </p><p>You can find additional useful examples in the following sections of the
-            <em>AWS CloudFormation User Guide</em>:</p><div class="itemizedlist">
-         
-         
-      <ul class="itemizedlist"><li class="listitem">
-          <p>For additional examples of Auto Scaling groups, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling
-              template snippets</a>.</p>
-        </li><li class="listitem">
-          <p>For additional examples of Amazon EC2 launch templates, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html#aws-resource-ec2-launchtemplate--examples">Examples</a> section of the <code class="code">AWS::EC2::LaunchTemplate</code>
-            resources.</p>
-        </li></ul></div><h3 id="aws-resource-autoscaling-autoscalinggroup--examples--An_Auto_Scaling_group_and_a_launch_template_with_a_parameters_section">An Auto Scaling group and a launch template with a parameters section</h3><p>The following example shows an Auto Scaling group. You specify values for the
+          Auto Scaling User Guide</em>.</p><h2 id="aws-resource-autoscaling-autoscalinggroup--examples">Examples</h2><p>The following examples create or make changes to an Auto Scaling group. </p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-autoscaling-autoscalinggroup--examples--An_Auto_Scaling_group_and_a_launch_template_with_a_parameters_section">An Auto Scaling group and a launch template with a parameters section</a></li><li><a href="#aws-resource-autoscaling-autoscalinggroup--examples--Auto_Scaling_group_with_CloudWatch_monitoring_enabled_and_custom_tags">Auto Scaling group with CloudWatch monitoring enabled and custom tags</a></li></ul></div><h3 id="aws-resource-autoscaling-autoscalinggroup--examples--An_Auto_Scaling_group_and_a_launch_template_with_a_parameters_section">An Auto Scaling group and a launch template with a parameters section</h3><p>The following example shows an Auto Scaling group. You specify values for the
             <code class="code">MaxSize</code> and <code class="code">MinSize</code> properties.</p><p>It also shows an <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">AWS::EC2::LaunchTemplate</a> resource that contains the instance configuration
           information for the group, which uses the <code class="code">LaunchTemplate</code> property to specify
           the launch template. The <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html">Ref</a> intrinsic function gets the ID of the <code class="code">AWS::EC2::LaunchTemplate</code>
@@ -523,10 +513,19 @@ Resources:
          
          
          
-         
       <ul class="itemizedlist"><li class="listitem">
-          <p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling
-              template snippets</a></p>
+          <p>You can find additional useful snippets in the following sections of the
+                <em>AWS CloudFormation User Guide</em>:</p>
+          <div class="itemizedlist">
+             
+             
+          <ul class="itemizedlist"><li class="listitem">
+              <p>For examples of Auto Scaling groups, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html">Configure
+                  Amazon EC2 Auto Scaling resources</a>.</p>
+            </li><li class="listitem">
+              <p>For examples of launch templates, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-launch-templates.html">Create
+                  launch templates</a>.</p>
+            </li></ul></div>
         </li><li class="listitem">
           <p>
             <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-launch-configurations-with-cloudformation.html">Migrate AWS CloudFormation stacks from launch configurations to
@@ -534,9 +533,6 @@ Resources:
               Guide</em>
           </p>
         </li><li class="listitem">
-          <p><a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateAutoScalingGroup.html">CreateAutoScalingGroup</a> in the <em>Amazon EC2 Auto Scaling API
-              Reference</em></p>
-        </li><li class="listitem">
-          <p><a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_UpdateAutoScalingGroup.html">UpdateAutoScalingGroup</a> in the <em>Amazon EC2 Auto Scaling API
+          <p><a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateAutoScalingGroup.html">CreateAutoScalingGroup</a> and <a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_UpdateAutoScalingGroup.html">UpdateAutoScalingGroup</a> in the <em>Amazon EC2 Auto Scaling API
               Reference</em></p>
         </li></ul></div><p></p><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./AWS_AutoScaling.html">Amazon EC2 Auto Scaling</div><div id="next" class="next-link" accesskey="n" href="./aws-properties-autoscaling-autoscalinggroup-acceleratorcountrequest.html">AcceleratorCountRequest</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Auto Scaling&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Auto Scaling&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

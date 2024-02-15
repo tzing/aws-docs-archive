@@ -44,6 +44,7 @@
       "<a href="#cfn-iot-domainconfiguration-domainconfigurationstatus">DomainConfigurationStatus</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-iot-domainconfiguration-domainname">DomainName</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-iot-domainconfiguration-servercertificatearns">ServerCertificateArns</a>" : <code class="replaceable">[ String, ... ]</code>,
+      "<a href="#cfn-iot-domainconfiguration-servercertificateconfig">ServerCertificateConfig</a>" : <code class="replaceable"><a href="./aws-properties-iot-domainconfiguration-servercertificateconfig.html">ServerCertificateConfig</a></code>,
       "<a href="#cfn-iot-domainconfiguration-servicetype">ServiceType</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-iot-domainconfiguration-tags">Tags</a>" : <code class="replaceable">[ <a href="./aws-properties-iot-domainconfiguration-tag.html">Tag</a>, ... ]</code>,
       "<a href="#cfn-iot-domainconfiguration-tlsconfig">TlsConfig</a>" : <code class="replaceable"><a href="./aws-properties-iot-domainconfiguration-tlsconfig.html">TlsConfig</a></code>,
@@ -59,6 +60,8 @@ Properties:
   <a href="#cfn-iot-domainconfiguration-domainname">DomainName</a>: <code class="replaceable">String</code>
   <a href="#cfn-iot-domainconfiguration-servercertificatearns">ServerCertificateArns</a>: <code class="replaceable">
     - String</code>
+  <a href="#cfn-iot-domainconfiguration-servercertificateconfig">ServerCertificateConfig</a>: <code class="replaceable">
+    <a href="./aws-properties-iot-domainconfiguration-servercertificateconfig.html">ServerCertificateConfig</a></code>
   <a href="#cfn-iot-domainconfiguration-servicetype">ServiceType</a>: <code class="replaceable">String</code>
   <a href="#cfn-iot-domainconfiguration-tags">Tags</a>: <code class="replaceable">
     - <a href="./aws-properties-iot-domainconfiguration-tag.html">Tag</a></code>
@@ -77,7 +80,11 @@ Properties:
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">253</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-iot-domainconfiguration-servercertificatearns"><span class="term"><code class="code">ServerCertificateArns</code></span></dt><dd>
          <p>The ARNs of the certificates that AWS IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. 
       This value is not required for AWS-managed domains.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Minimum</em>: <code class="code">1 | 0</code></p><p><em>Maximum</em>: <code class="code">2048 | 1</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-iot-domainconfiguration-servicetype"><span class="term"><code class="code">ServiceType</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Minimum</em>: <code class="code">1 | 0</code></p><p><em>Maximum</em>: <code class="code">2048 | 1</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-iot-domainconfiguration-servercertificateconfig"><span class="term"><code class="code">ServerCertificateConfig</code></span></dt><dd>
+      <p>The server certificate configuration.</p>
+      <p>For more information, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-custom-endpoints-configurable.html">Configurable endpoints</a> 
+         from the AWS IoT Core Developer Guide.</p>
+   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-iot-domainconfiguration-servercertificateconfig.html">ServerCertificateConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-iot-domainconfiguration-servicetype"><span class="term"><code class="code">ServiceType</code></span></dt><dd>
          <p>The type of service delivered by the endpoint.</p>
          <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>
                AWS IoT Core currently supports only the <code class="code">DATA</code> service type.</p></div></div>

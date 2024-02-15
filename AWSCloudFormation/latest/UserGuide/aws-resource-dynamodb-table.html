@@ -67,6 +67,7 @@
       "<a href="#cfn-dynamodb-table-localsecondaryindexes">LocalSecondaryIndexes</a>" : <code class="replaceable">[ <a href="./aws-properties-dynamodb-table-localsecondaryindex.html">LocalSecondaryIndex</a>, ... ]</code>,
       "<a href="#cfn-dynamodb-table-pointintimerecoveryspecification">PointInTimeRecoverySpecification</a>" : <code class="replaceable"><a href="./aws-properties-dynamodb-table-pointintimerecoveryspecification.html">PointInTimeRecoverySpecification</a></code>,
       "<a href="#cfn-dynamodb-table-provisionedthroughput">ProvisionedThroughput</a>" : <code class="replaceable"><a href="./aws-properties-dynamodb-table-provisionedthroughput.html">ProvisionedThroughput</a></code>,
+      "<a href="#cfn-dynamodb-table-resourcepolicy">ResourcePolicy</a>" : <code class="replaceable"><a href="./aws-properties-dynamodb-table-resourcepolicy.html">ResourcePolicy</a></code>,
       "<a href="#cfn-dynamodb-table-ssespecification">SSESpecification</a>" : <code class="replaceable"><a href="./aws-properties-dynamodb-table-ssespecification.html">SSESpecification</a></code>,
       "<a href="#cfn-dynamodb-table-streamspecification">StreamSpecification</a>" : <code class="replaceable"><a href="./aws-properties-dynamodb-table-streamspecification.html">StreamSpecification</a></code>,
       "<a href="#cfn-dynamodb-table-tableclass">TableClass</a>" : <code class="replaceable">String</code>,
@@ -97,6 +98,8 @@ Properties:
     <a href="./aws-properties-dynamodb-table-pointintimerecoveryspecification.html">PointInTimeRecoverySpecification</a></code>
   <a href="#cfn-dynamodb-table-provisionedthroughput">ProvisionedThroughput</a>: <code class="replaceable">
     <a href="./aws-properties-dynamodb-table-provisionedthroughput.html">ProvisionedThroughput</a></code>
+  <a href="#cfn-dynamodb-table-resourcepolicy">ResourcePolicy</a>: <code class="replaceable">
+    <a href="./aws-properties-dynamodb-table-resourcepolicy.html">ResourcePolicy</a></code>
   <a href="#cfn-dynamodb-table-ssespecification">SSESpecification</a>: <code class="replaceable">
     <a href="./aws-properties-dynamodb-table-ssespecification.html">SSESpecification</a></code>
   <a href="#cfn-dynamodb-table-streamspecification">StreamSpecification</a>: <code class="replaceable">
@@ -185,7 +188,7 @@ Properties:
         <p>If you set <code class="code">BillingMode</code> as <code class="code">PROVISIONED</code>, you must specify this
             property. If you set <code class="code">BillingMode</code> as <code class="code">PAY_PER_REQUEST</code>, you
             cannot specify this property.</p>
-    <p><em>Required</em>: Conditional</p><p><em>Type</em>: <a href="./aws-properties-dynamodb-table-provisionedthroughput.html">ProvisionedThroughput</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-dynamodb-table-ssespecification"><span class="term"><code class="code">SSESpecification</code></span></dt><dd>
+    <p><em>Required</em>: Conditional</p><p><em>Type</em>: <a href="./aws-properties-dynamodb-table-provisionedthroughput.html">ProvisionedThroughput</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-dynamodb-table-resourcepolicy"><span class="term"><code class="code">ResourcePolicy</code></span></dt><dd><p>Property description not available.</p><p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-dynamodb-table-resourcepolicy.html">ResourcePolicy</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-dynamodb-table-ssespecification"><span class="term"><code class="code">SSESpecification</code></span></dt><dd>
         <p>Specifies the settings to enable server-side encryption.</p>
 
     <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-dynamodb-table-ssespecification.html">SSESpecification</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-dynamodb-table-streamspecification"><span class="term"><code class="code">StreamSpecification</code></span></dt><dd>
@@ -225,7 +228,7 @@ Properties:
                 <code class="code">arn:aws:dynamodb:us-east-1:123456789012:table/testddbstack-myDynamoDBTable-012A1SL7SMP5Q/stream/2015-11-30T20:10:00.000</code>. </p>
         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>You must specify the <code class="code">StreamSpecification</code> property to use this
                 attribute.</p></div></div>
-    </dd></dl></div><h2 id="aws-resource-dynamodb-table--examples">Examples</h2><h3 id="aws-resource-dynamodb-table--examples--DynamoDB_Table_with_Local_and_Secondary_Indexes">DynamoDB Table with Local and Secondary Indexes</h3><p>The following sample creates a DynamoDB table with <code class="code">Album</code>,
+    </dd></dl></div><h2 id="aws-resource-dynamodb-table--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-dynamodb-table--examples--DynamoDB_Table_with_Local_and_Secondary_Indexes">DynamoDB Table with Local and Secondary Indexes</a></li><li><a href="#aws-resource-dynamodb-table--examples--DynamoDB_Table_with_a_DependsOn_Attribute">DynamoDB Table with a DependsOn Attribute</a></li><li><a href="#aws-resource-dynamodb-table--examples--DynamoDB_Table_with_Application_Auto_Scaling">DynamoDB Table with Application Auto Scaling</a></li></ul></div><h3 id="aws-resource-dynamodb-table--examples--DynamoDB_Table_with_Local_and_Secondary_Indexes">DynamoDB Table with Local and Secondary Indexes</h3><p>The following sample creates a DynamoDB table with <code class="code">Album</code>,
                         <code class="code">Artist</code>, <code class="code">Sales</code>, <code class="code">NumberOfSongs</code> as
                     attributes. The primary key includes the <code class="code">Album</code> attribute as the
                     hash key and <code class="code">Artist</code> attribute as the range key. The table also

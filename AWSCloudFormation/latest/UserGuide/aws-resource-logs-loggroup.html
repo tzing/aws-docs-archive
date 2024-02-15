@@ -111,7 +111,7 @@ Properties:
       <p>The ARN of the log group, such as 
          <code class="code">arn:aws:logs:us-west-1:123456789012:log-group:/mystack-testgroup-12ABC1AB12A1:*</code></p>
       
-   </dd></dl></div><h2 id="aws-resource-logs-loggroup--examples">Examples</h2><p></p><h3 id="aws-resource-logs-loggroup--examples--Create_a_log_group">Create a log group</h3><p>The following example creates a log group that retains events for 7 days.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-logs-loggroup--examples--Create_a_log_group--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"myLogGroup": <span>{</span>
+   </dd></dl></div><h2 id="aws-resource-logs-loggroup--examples">Examples</h2><p></p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-logs-loggroup--examples--Create_a_log_group">Create a log group</a></li><li><a href="#aws-resource-logs-loggroup--examples--Create_a_log_group_with_a_data_protection_policy">Create a log group with a data protection policy</a></li></ul></div><h3 id="aws-resource-logs-loggroup--examples--Create_a_log_group">Create a log group</h3><p>The following example creates a log group that retains events for 7 days.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-logs-loggroup--examples--Create_a_log_group--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"myLogGroup": <span>{</span>
     "Type": "AWS::Logs::LogGroup",
     "Properties": <span>{</span>
         "RetentionInDays": 7
@@ -120,7 +120,7 @@ Properties:
   Type: AWS::Logs::LogGroup
   Properties: 
     RetentionInDays: 7</code></pre></div><h3 id="aws-resource-logs-loggroup--examples--Create_a_log_group_with_a_data_protection_policy">Create a log group with a data protection policy</h3><p>The following example creates a log group that uses a data protection policy to 
-               mask email addresses, and send audit findings to CloudWatch Logs, Kinesis Data Firehose, 
+               mask email addresses, and send audit findings to CloudWatch Logs, Firehose, 
                and Amazon S3.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-logs-loggroup--examples--Create_a_log_group_with_a_data_protection_policy--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"TestLogGroupDescription": <span>{</span>
   "Type": "AWS::Logs::LogGroup",
   "Properties": <span>{</span>

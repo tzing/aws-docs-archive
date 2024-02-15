@@ -227,6 +227,7 @@
                    
                    
                    
+                   
                <ul class="itemizedlist"><li class="listitem">
                      <p>
                         <code class="code">AWS::DynamoDB::Table</code>
@@ -426,6 +427,10 @@
                   </li><li class="listitem">
                      <p>
                         <code class="code">AWS::SNS::Topic</code>
+                     </p>
+                  </li><li class="listitem">
+                     <p>
+                        <code class="code">AWS::SWF::Domain</code>
                      </p>
                   </li><li class="listitem">
                      <p>
@@ -974,6 +979,16 @@
                <ul class="itemizedlist"><li class="listitem">
                      <p>
                         <code class="code">arn:&lt;partition&gt;:sns:&lt;region&gt;:&lt;account_ID&gt;:&lt;topic_name&gt;</code>
+                     </p>
+                  </li></ul></div>
+               <p>When <code class="code">resources.type</code> equals <code class="code">AWS::SWF::Domain</code>,
+               and the operator is set to <code class="code">Equals</code> or <code class="code">NotEquals</code>, the ARN
+               must be in the following format:</p>
+               <div class="itemizedlist">
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>
+                        <code class="code">arn:&lt;partition&gt;:swf:&lt;region&gt;:&lt;account_ID&gt;:domain/&lt;domain_name&gt;</code>
                      </p>
                   </li></ul></div>
                <p>When <code class="code">resources.type</code> equals <code class="code">AWS::SQS::Queue</code>,

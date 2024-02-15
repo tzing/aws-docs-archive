@@ -44,6 +44,7 @@
       "<a href="#cfn-appsync-graphqlapi-additionalauthenticationproviders">AdditionalAuthenticationProviders</a>" : <code class="replaceable">[ <a href="./aws-properties-appsync-graphqlapi-additionalauthenticationprovider.html">AdditionalAuthenticationProvider</a>, ... ]</code>,
       "<a href="#cfn-appsync-graphqlapi-apitype">ApiType</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-graphqlapi-authenticationtype">AuthenticationType</a>" : <code class="replaceable">String</code>,
+      "<a href="#cfn-appsync-graphqlapi-environmentvariables">EnvironmentVariables</a>" : <code class="replaceable">Json</code>,
       "<a href="#cfn-appsync-graphqlapi-introspectionconfig">IntrospectionConfig</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-graphqlapi-lambdaauthorizerconfig">LambdaAuthorizerConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-graphqlapi-lambdaauthorizerconfig.html">LambdaAuthorizerConfig</a></code>,
       "<a href="#cfn-appsync-graphqlapi-logconfig">LogConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-graphqlapi-logconfig.html">LogConfig</a></code>,
@@ -65,6 +66,7 @@ Properties:
     - <a href="./aws-properties-appsync-graphqlapi-additionalauthenticationprovider.html">AdditionalAuthenticationProvider</a></code>
   <a href="#cfn-appsync-graphqlapi-apitype">ApiType</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-graphqlapi-authenticationtype">AuthenticationType</a>: <code class="replaceable">String</code>
+  <a href="#cfn-appsync-graphqlapi-environmentvariables">EnvironmentVariables</a>: <code class="replaceable">Json</code>
   <a href="#cfn-appsync-graphqlapi-introspectionconfig">IntrospectionConfig</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-graphqlapi-lambdaauthorizerconfig">LambdaAuthorizerConfig</a>: <code class="replaceable">
     <a href="./aws-properties-appsync-graphqlapi-lambdaauthorizerconfig.html">LambdaAuthorizerConfig</a></code>
@@ -96,7 +98,13 @@ Properties:
       <p>Security configuration for your GraphQL API. For allowed values (such as <code class="code">API_KEY</code>,
             <code class="code">AWS_IAM</code>, <code class="code">AMAZON_COGNITO_USER_POOLS</code>, <code class="code">OPENID_CONNECT</code>, or
             <code class="code">AWS_LAMBDA</code>), see <a href="https://docs.aws.amazon.com/appsync/latest/devguide/security.html">Security</a> in the <em>AWS AppSync Developer Guide</em>.</p>
-   <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-graphqlapi-introspectionconfig"><span class="term"><code class="code">IntrospectionConfig</code></span></dt><dd>
+   <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-graphqlapi-environmentvariables"><span class="term"><code class="code">EnvironmentVariables</code></span></dt><dd>
+      <p>A map containing the list of resources with their properties and environment variables. For more
+         information, see <a href="https://docs.aws.amazon.com/appsync/latest/devguide/environmental-variables.html">Environmental variables</a>.</p>
+      <p><em>Pattern</em>: <code class="code">^[A-Za-z]+\\w*$\\</code></p>
+      <p><em>Minimum</em>: 2</p>
+      <p><em>Maximum</em>: 64</p>
+   <p><em>Required</em>: No</p><p><em>Type</em>: Json</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-graphqlapi-introspectionconfig"><span class="term"><code class="code">IntrospectionConfig</code></span></dt><dd>
       <p>Sets the value of the GraphQL API to enable (<code class="code">ENABLED</code>) or disable (<code class="code">DISABLED</code>)
          introspection. If no value is provided, the introspection configuration will be set to <code class="code">ENABLED</code> by
          default. This field will produce an error if the operation attempts to use the introspection feature while this

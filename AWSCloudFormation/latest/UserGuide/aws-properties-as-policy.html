@@ -199,9 +199,8 @@ Properties:
     <p>Returns the name of a scaling policy.</p>
   </dd></dl></div><h2 id="aws-resource-autoscaling-scalingpolicy--remarks">Remarks</h2><p>When you create the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a> resource for a step or simple scaling policy, specify the
         name of the scaling policy in the <code class="code">AlarmActions</code> property. For an example
-        snippet, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling template
-          snippets</a>.</p><h2 id="aws-resource-autoscaling-scalingpolicy--examples">Examples</h2><p>The following examples specify scaling policies for an Auto Scaling group.</p><p>For more template snippets, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling template
-          snippets</a>.</p><h3 id="aws-resource-autoscaling-scalingpolicy--examples--Predictive_scaling_policy">Predictive scaling policy</h3><p>The following template snippet shows a predictive scaling policy configuration that
+        snippet, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html">Configure Amazon
+          EC2 Auto Scaling resources</a>.</p><h2 id="aws-resource-autoscaling-scalingpolicy--examples">Examples</h2><p>The following examples specify scaling policies for an Auto Scaling group.</p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-autoscaling-scalingpolicy--examples--Predictive_scaling_policy">Predictive scaling policy</a></li><li><a href="#aws-resource-autoscaling-scalingpolicy--examples--Target_tracking_scaling_policy">Target tracking scaling policy</a></li><li><a href="#aws-resource-autoscaling-scalingpolicy--examples--Step_scaling_policy">Step scaling policy</a></li><li><a href="#aws-resource-autoscaling-scalingpolicy--examples--Simple_scaling_policy">Simple scaling policy</a></li></ul></div><h3 id="aws-resource-autoscaling-scalingpolicy--examples--Predictive_scaling_policy">Predictive scaling policy</h3><p>The following template snippet shows a predictive scaling policy configuration that
           uses CPU utilization metrics with a target utilization of 70. Because
             <code class="code">ForecastOnly</code> mode is specified, Amazon EC2 Auto Scaling generates forecasts
           with traffic predictions for the two days ahead, but does not actively scale the group.
@@ -582,8 +581,18 @@ Resources:
          
          
       <ul class="itemizedlist"><li class="listitem">
-          <p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html">Auto scaling
-              template snippets</a></p>
+          <p>You can find additional useful snippets in the following sections of the
+                <em>AWS CloudFormation User Guide</em>:</p>
+          <div class="itemizedlist">
+             
+             
+          <ul class="itemizedlist"><li class="listitem">
+              <p>For examples of Auto Scaling groups, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-auto-scaling.html">Configure
+                  Amazon EC2 Auto Scaling resources</a>.</p>
+            </li><li class="listitem">
+              <p>For examples of launch templates, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2-launch-templates.html">Create
+                  launch templates</a>.</p>
+            </li></ul></div>
         </li><li class="listitem">
           <p><a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutScalingPolicy.html">PutScalingPolicy</a>
             in the <em>Amazon EC2 Auto Scaling API Reference</em></p>

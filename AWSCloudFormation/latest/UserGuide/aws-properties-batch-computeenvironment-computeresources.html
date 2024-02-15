@@ -89,61 +89,72 @@
   <a href="#cfn-batch-computeenvironment-computeresources-type">Type</a>: <code class="replaceable">String</code>
   <a href="#cfn-batch-computeenvironment-computeresources-updatetolatestimageversion">UpdateToLatestImageVersion</a>: <code class="replaceable">Boolean</code>
 </code></pre></div><h2 id="aws-properties-batch-computeenvironment-computeresources-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-batch-computeenvironment-computeresources-allocationstrategy"><span class="term"><code class="code">AllocationStrategy</code></span></dt><dd>
-  <p>The allocation strategy to use for the compute resource if not enough instances of the best fitting instance
-   type can be allocated. This might be because of availability of the instance type in the Region or <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">Amazon EC2 service limits</a>. For
-   more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html">Allocation
-   strategies</a> in the <em> AWS Batch User Guide</em>.</p>
-  <p>When updating a compute environment, changing the allocation strategy requires an infrastructure update of the
-   compute environment. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html">Updating compute environments</a> in the
-   <em> AWS Batch User Guide</em>. <code class="code">BEST_FIT</code> is not supported when updating a
-   compute environment.</p>
-  <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This parameter isn't applicable to jobs that are running on Fargate resources, and shouldn't be
-    specified.</p></div></div>
-  <div class="variablelist">
-    
-    
-    
-    
-  <dl>
-    <dt><span class="term">BEST_FIT (default)</span></dt>
-    <dd>
-     <p>AWS Batch selects an instance type that best fits the needs of the jobs with a preference for
-      the lowest-cost instance type. If additional instances of the selected instance type aren't available, AWS Batch waits for the additional instances to be available. If there aren't enough instances available,
-      or if the user is reaching <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">Amazon EC2 service limits</a> then additional jobs aren't run until the currently running jobs have
-      completed. This allocation strategy keeps costs lower but can limit scaling. If you are using Spot Fleets with
-      <code class="code">BEST_FIT</code> then the Spot Fleet IAM role must be specified.</p>
-    </dd>
-    
-    <dt><span class="term">BEST_FIT_PROGRESSIVE</span></dt>
-    <dd>
-     <p> AWS Batch will select additional instance types that are large enough to meet the
-      requirements of the jobs in the queue, with a preference for instance types with a lower cost per unit vCPU. If
-      additional instances of the previously selected instance types aren't available, AWS Batch will
-      select new instance types.</p>
-    </dd>
-    
-    <dt><span class="term">SPOT_CAPACITY_OPTIMIZED</span></dt>
-    <dd>
-     <p> AWS Batch will select one or more instance types that are large enough to meet the
-      requirements of the jobs in the queue, with a preference for instance types that are less likely to be
-      interrupted. This allocation strategy is only available for Spot Instance compute resources.</p>
-    </dd>
-    
-    <dt><span class="term">SPOT_PRICE_CAPACITY_OPTIMIZED</span></dt>
-    <dd>
-     <p> The price and capacity optimized allocation strategy looks at both price and capacity to select the Spot
-      Instance pools that are the least likely to be interrupted and have the lowest possible price. This allocation
-      strategy is only available for Spot Instance compute resources.</p>
-     <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>We recommend that you use <code class="code">SPOT_PRICE_CAPACITY_OPTIMIZED</code> rather than
-       <code class="code">SPOT_CAPACITY_OPTIMIZED</code> in most instances.</p></div></div>
-    </dd>
-   </dl></div>
-  <p>With <code class="code">BEST_FIT_PROGRESSIVE</code>, <code class="code">SPOT_CAPACITY_OPTIMIZED</code>, and
-   <code class="code">SPOT_PRICE_CAPACITY_OPTIMIZED</code> allocation strategies using On-Demand or Spot Instances, and the
-   <code class="code">BEST_FIT</code> strategy using Spot Instances, AWS Batch might need to go above
-   <code class="code">maxvCpus</code> to meet your capacity requirements. In this event, AWS Batch never exceeds
-   <code class="code">maxvCpus</code> by more than a single instance.</p>
- <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">BEST_FIT_PROGRESSIVE | SPOT_CAPACITY_OPTIMIZED | SPOT_PRICE_CAPACITY_OPTIMIZED</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-bidpercentage"><span class="term"><code class="code">BidPercentage</code></span></dt><dd>
+      <p>The allocation strategy to use for the compute resource if not enough instances of the
+         best fitting instance type can be allocated. This might be because of availability of the
+         instance type in the Region or <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">Amazon EC2 service
+         limits</a>. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html">Allocation strategies</a> in
+         the <em>
+            AWS Batch User Guide</em>.</p>
+      <p>When updating a compute environment, changing the allocation strategy requires an
+         infrastructure update of the compute environment. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html">Updating compute environments</a> in the <em>
+            AWS Batch User Guide</em>. <code class="code">BEST_FIT</code> is not supported
+         when updating a compute environment.</p>
+      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This parameter isn't applicable to jobs that are running on Fargate resources, and
+            shouldn't be specified.</p></div></div>
+      <div class="variablelist">
+          
+          
+          
+          
+      <dl>
+            <dt><span class="term">BEST_FIT (default)</span></dt>
+            <dd>
+               <p>AWS Batch selects an instance type that best fits the needs of
+                  the jobs with a preference for the lowest-cost instance type. If additional
+                  instances of the selected instance type aren't available, AWS Batch
+                  waits for the additional instances to be available. If there aren't enough
+                  instances available, or if the user is reaching <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">Amazon EC2 service
+                     limits</a> then additional jobs aren't run until the currently running jobs
+                  have completed. This allocation strategy keeps costs lower but can limit scaling.
+                  If you are using Spot Fleets with <code class="code">BEST_FIT</code> then the Spot Fleet IAM
+                  role must be specified.</p>
+            </dd>
+          
+            <dt><span class="term">BEST_FIT_PROGRESSIVE</span></dt>
+            <dd>
+               <p>
+                  AWS Batch will select additional instance types that are large
+                  enough to meet the requirements of the jobs in the queue, with a preference for
+                  instance types with a lower cost per unit vCPU. If additional instances of the
+                  previously selected instance types aren't available, AWS Batch will
+                  select new instance types.</p>
+            </dd>
+          
+            <dt><span class="term">SPOT_CAPACITY_OPTIMIZED</span></dt>
+            <dd>
+               <p>
+                  AWS Batch will select one or more instance types that are large
+                  enough to meet the requirements of the jobs in the queue, with a preference for
+                  instance types that are less likely to be interrupted. This allocation strategy is
+                  only available for Spot Instance compute resources.</p>
+            </dd>
+          
+            <dt><span class="term">SPOT_PRICE_CAPACITY_OPTIMIZED</span></dt>
+            <dd>
+               <p> The price and capacity optimized allocation strategy looks at both price and
+                  capacity to select the Spot Instance pools that are the least likely to be
+                  interrupted and have the lowest possible price. This allocation strategy is only
+                  available for Spot Instance compute resources.</p>
+               <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>We recommend that you use <code class="code">SPOT_PRICE_CAPACITY_OPTIMIZED</code> rather
+                     than <code class="code">SPOT_CAPACITY_OPTIMIZED</code> in most instances.</p></div></div>
+            </dd>
+         </dl></div>
+      <p>With <code class="code">BEST_FIT_PROGRESSIVE</code>, <code class="code">SPOT_CAPACITY_OPTIMIZED</code>, and
+            <code class="code">SPOT_PRICE_CAPACITY_OPTIMIZED</code> allocation strategies using On-Demand or Spot
+         Instances, and the <code class="code">BEST_FIT</code> strategy using Spot Instances, AWS Batch might need to go above <code class="code">maxvCpus</code> to meet your capacity
+         requirements. In this event, AWS Batch never exceeds <code class="code">maxvCpus</code>
+         by more than a single instance.</p>
+   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">BEST_FIT_PROGRESSIVE | SPOT_CAPACITY_OPTIMIZED | SPOT_PRICE_CAPACITY_OPTIMIZED</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-bidpercentage"><span class="term"><code class="code">BidPercentage</code></span></dt><dd>
          <p>The maximum percentage that a Spot Instance price can be when compared with the On-Demand
    price for that instance type before instances are launched. For example, if your maximum
    percentage is 20%, the Spot price must be less than 20% of the current On-Demand price for that
@@ -239,17 +250,19 @@
     families. In Regions that don't have instance types from those instance families, instance types
     from the C5, M5, and R5 instance families are used.</p></div></div>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-launchtemplate"><span class="term"><code class="code">LaunchTemplate</code></span></dt><dd>
-  <p>The launch template to use for your compute resources. Any other compute resource parameters that you specify in
-   a <a href="https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateComputeEnvironment.html">CreateComputeEnvironment</a> API operation override the same parameters in the launch template. You must specify
-   either the launch template ID or launch template name in the request, but not both. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html">Launch Template Support</a> in the
-   <em>AWS Batch User Guide</em>. Removing the launch template from a compute environment will
-   not remove the AMI specified in the launch template. In order to update the AMI specified in a launch template, the
-   <code class="code">updateToLatestImageVersion</code> parameter must be set to <code class="code">true</code>.</p>
-  <p>When updating a compute environment, changing the launch template requires an infrastructure update of the
-   compute environment. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html">Updating compute environments</a> in the
-   <em>AWS Batch User Guide</em>.</p>
-  <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This parameter isn't applicable to jobs running on Fargate resources, and shouldn't be specified.</p></div></div>
- <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-batch-computeenvironment-launchtemplatespecification.html">LaunchTemplateSpecification</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-maxvcpus"><span class="term"><code class="code">MaxvCpus</code></span></dt><dd>
+      <p>The launch template to use for your compute resources. Any other compute resource
+         parameters that you specify in a <a href="https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateComputeEnvironment.html">CreateComputeEnvironment</a> API operation override the same parameters in the
+         launch template. You must specify either the launch template ID or launch template name in
+         the request, but not both. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html">Launch Template Support</a> in
+         the <em>AWS Batch User Guide</em>. Removing the launch template from
+         a compute environment will not remove the AMI specified in the launch template. In order to
+         update the AMI specified in a launch template, the <code class="code">updateToLatestImageVersion</code>
+         parameter must be set to <code class="code">true</code>.</p>
+      <p>When updating a compute environment, changing the launch template requires an
+         infrastructure update of the compute environment. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html">Updating compute environments</a> in the <em>AWS Batch User Guide</em>.</p>
+      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This parameter isn't applicable to jobs running on Fargate resources, and shouldn't
+            be specified.</p></div></div>
+   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-batch-computeenvironment-launchtemplatespecification.html">LaunchTemplateSpecification</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-maxvcpus"><span class="term"><code class="code">MaxvCpus</code></span></dt><dd>
          <p>The maximum number of Amazon EC2 vCPUs that an environment can reach.</p>
          <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>With <code class="code">BEST_FIT_PROGRESSIVE</code>,<code class="code">SPOT_CAPACITY_OPTIMIZED</code> and
     <code class="code">SPOT_PRICE_CAPACITY_OPTIMIZED</code>
@@ -328,19 +341,24 @@
                AWS Batch User Guide</em>.</p>
          <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This parameter isn't applicable to jobs that are running on Fargate resources. Don't specify it.</p></div></div>
       <p><em>Required</em>: No</p><p><em>Type</em>: Object of String</p><p><em>Pattern</em>: <code class="code">.*</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-type"><span class="term"><code class="code">Type</code></span></dt><dd>
-  <p>The type of compute environment: <code class="code">EC2</code>, <code class="code">SPOT</code>, <code class="code">FARGATE</code>, or
-   <code class="code">FARGATE_SPOT</code>. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html">Compute environments</a> in the <em> AWS Batch User Guide</em>.</p>
-  <p> If you choose <code class="code">SPOT</code>, you must also specify an Amazon EC2 Spot Fleet role with the
-   <code class="code">spotIamFleetRole</code> parameter. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html">Amazon EC2 spot fleet role</a> in the <em> AWS Batch User Guide</em>.</p>
-  <p>When updating compute environment, changing the type of a compute environment requires an infrastructure update
-   of the compute environment. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html">Updating compute environments</a> in the
-   <em> AWS Batch User Guide</em>.</p>
-  
-  <p>When updating the type of a compute environment, changing between <code class="code">EC2</code> and <code class="code">SPOT</code> or
-   between <code class="code">FARGATE</code> and <code class="code">FARGATE_SPOT</code> will initiate an infrastructure update, but if you switch
-   between <code class="code">EC2</code> and <code class="code">FARGATE</code>, AWS CloudFormation will create a new compute environment.</p>
-  
- <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">EC2 | SPOT | FARGATE | FARGATE_SPOT</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-updatetolatestimageversion"><span class="term"><code class="code">UpdateToLatestImageVersion</code></span></dt><dd>
+      <p>The type of compute environment: <code class="code">EC2</code>, <code class="code">SPOT</code>,
+            <code class="code">FARGATE</code>, or <code class="code">FARGATE_SPOT</code>. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html">Compute
+            environments</a> in the <em>
+            AWS Batch User Guide</em>.</p>
+      <p> If you choose <code class="code">SPOT</code>, you must also specify an Amazon EC2 Spot Fleet role
+         with the <code class="code">spotIamFleetRole</code> parameter. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html">Amazon EC2
+            spot fleet role</a> in the <em>
+            AWS Batch User Guide</em>.</p>
+      <p>When updating compute environment, changing the type of a compute environment requires
+         an infrastructure update of the compute environment. For more information, see <a href="https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html">Updating compute environments</a> in the <em>
+            AWS Batch User Guide</em>.</p>
+      
+      <p>When updating the type of a compute environment, changing between <code class="code">EC2</code> and
+            <code class="code">SPOT</code> or between <code class="code">FARGATE</code> and <code class="code">FARGATE_SPOT</code> will
+         initiate an infrastructure update, but if you switch between <code class="code">EC2</code> and
+            <code class="code">FARGATE</code>, AWS CloudFormation will create a new compute environment.</p>
+      
+   <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">EC2 | SPOT | FARGATE | FARGATE_SPOT</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-batch-computeenvironment-computeresources-updatetolatestimageversion"><span class="term"><code class="code">UpdateToLatestImageVersion</code></span></dt><dd>
          <p>Specifies whether the AMI ID is updated to the latest one that's supported by AWS Batch when
    the compute environment has an infrastructure update. The default value is
    <code class="code">false</code>.</p>
@@ -356,8 +374,8 @@
     <em>
                AWS Batch User Guide</em>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-properties-batch-computeenvironment-computeresources--seealso">See also</h2><div class="itemizedlist">
-     
-   <ul class="itemizedlist"><li class="listitem">
-     <p> <a href="https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html">Compute
-      Environments</a> in the <em>AWS Batch User Guide</em>.</p>
-    </li></ul></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</div><div id="next" class="next-link" accesskey="n" href="./aws-properties-batch-computeenvironment-ec2configurationobject.html">Ec2ConfigurationObject</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWSBatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-properties-batch-computeenvironment-computeresources.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWSBatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-properties-batch-computeenvironment-computeresources.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p>
+                  <a href="https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html">Compute Environments</a> in the <em>AWS Batch User Guide</em>.</p>
+            </li></ul></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</div><div id="next" class="next-link" accesskey="n" href="./aws-properties-batch-computeenvironment-ec2configurationobject.html">Ec2ConfigurationObject</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWSBatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-properties-batch-computeenvironment-computeresources.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=AWSBatch&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-properties-batch-computeenvironment-computeresources.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

@@ -169,7 +169,7 @@ Properties:
          <p>An Amazon Simple Storage Service (Amazon S3) bucket where you want to store the output
    details of the request.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-ssm-association-instanceassociationoutputlocation.html">InstanceAssociationOutputLocation</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-parametervalues"><span class="term"><code class="code">ParameterValues</code></span></dt><dd>
-         <p>A description of the parameters for a document. </p>
+          <p>A description of the parameters for a document. </p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-scheduleexpression"><span class="term"><code class="code">ScheduleExpression</code></span></dt><dd>
          <p>A cron expression that specifies a schedule when the association runs. The schedule runs in
    Coordinated Universal Time (UTC).</p>
@@ -198,7 +198,7 @@ Properties:
           for your AWS CloudFormation stack’s configuration might yield inaccurate results. If drift 
           detection is important in your scenario, we recommend that you don’t include 
           <code class="code">WaitForSuccessTimeoutSeconds</code> in your template.</p></div></div>
-  <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">15</code></p><p><em>Maximum</em>: <code class="code">172800</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-ssm-association-return-values">Return values</h2><h3 id="aws-resource-ssm-association-return-values-fn--getatt">Fn::GetAtt</h3><h4 id="aws-resource-ssm-association-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AssociationId-fn::getatt"><span class="term"><code class="code">AssociationId</code></span></dt><dd><p>The association ID.</p></dd></dl></div><h2 id="aws-resource-ssm-association--examples">Examples</h2><h3 id="aws-resource-ssm-association--examples--Create_an_association_for_a_specific_instance">Create an association for a specific instance</h3><p>The following example creates an association that uses the AWS-RunShellScript SSM
+  <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">15</code></p><p><em>Maximum</em>: <code class="code">172800</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-ssm-association-return-values">Return values</h2><h3 id="aws-resource-ssm-association-return-values-fn--getatt">Fn::GetAtt</h3><h4 id="aws-resource-ssm-association-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AssociationId-fn::getatt"><span class="term"><code class="code">AssociationId</code></span></dt><dd><p>The association ID.</p></dd></dl></div><h2 id="aws-resource-ssm-association--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-ssm-association--examples--Create_an_association_for_a_specific_instance">Create an association for a specific instance</a></li><li><a href="#aws-resource-ssm-association--examples--Create_an_association_for_all_managed_instances_in_an_">Create an association for all managed instances in an AWS account</a></li><li><a href="#aws-resource-ssm-association--examples--Create_an_association_for_a_specific_tag">Create an association for a specific tag</a></li><li><a href="#aws-resource-ssm-association--examples--Create_an_association_that_associates_an_automation_document_with_an_instance">Create an association that associates an automation document with an instance</a></li><li><a href="#aws-resource-ssm-association--examples--Create_an_association_that_uses_rate_controls_and_sends_log_output_to_">Create an association that uses rate controls and sends log output to Amazon S3</a></li><li><a href="#aws-resource-ssm-association--examples--Create_an_association_that_works_with_Ansible">Create an association that works with Ansible</a></li><li><a href="#aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script">Create an association that runs a bash script</a></li><li><a href="#aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script_with__Automation">Create an association that runs a bash script with Systems Manager Automation</a></li></ul></div><h3 id="aws-resource-ssm-association--examples--Create_an_association_for_a_specific_instance">Create an association for a specific instance</h3><p>The following example creates an association that uses the AWS-RunShellScript SSM
           document. The association runs a simple command on a specific instance.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ssm-association--examples--Create_an_association_for_a_specific_instance--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
     "Resources": <span>{</span>
         "SpecificInstanceIdAssociation": <span>{</span>
@@ -213,7 +213,7 @@ Properties:
                         ]
                     }
                 ],
-                "ParameterValues": <span>{</span>
+                "Parameters": <span>{</span>
                     "commands": [
                         "ls"
                     ],
@@ -234,7 +234,7 @@ Resources:
       - Key: InstanceIds
         Values:
         - i-1234567890abcdef0
-      ParameterValues:
+      Parameters:
         commands:
         - ls
         workingDirectory:
@@ -337,7 +337,7 @@ Resources:
             "Type": "AWS::SSM::Association",
             "Properties": <span>{</span>
                 "Name": "AWS-StopEC2Instance",
-                "ParameterValues": <span>{</span>
+                "Parameters": <span>{</span>
                     "AutomationAssumeRole": [
                         "AutomationExecutionRole.Arn"
                     ]
@@ -374,7 +374,7 @@ Resources:
     Type: AWS::SSM::Association
     Properties:
       Name: AWS-StopEC2Instance
-      ParameterValues:
+      Parameters:
         AutomationAssumeRole:
           - !GetAtt AutomationExecutionRole.Arn
       Targets:
@@ -429,7 +429,7 @@ OutputLocation:
           deploy Nginx. This template copies the Ansible Playbook from a Github repo. The target is
           based on instance ID.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ssm-association--examples--Create_an_association_that_works_with_Ansible--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
     "Description": "Deploy single Amazon Linux 2 instance",
-    "ParameterValues": <span>{</span>
+    "Parameters": <span>{</span>
         "LatestAmiId": <span>{</span>
             "Type": "AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;",
             "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
@@ -551,7 +551,7 @@ OutputLocation:
                         "OutputS3KeyPrefix": "logs/"
                     }
                 },
-                "ParameterValues": <span>{</span>
+                "Parameters": <span>{</span>
                     "SourceType": [
                         "GitHub"
                     ],
@@ -585,7 +585,7 @@ OutputLocation:
     }
 }</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ssm-association--examples--Create_an_association_that_works_with_Ansible--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">---
 Description: "Deploy single Amazon Linux 2 EC2 instance"
-ParameterValues:
+Parameters:
   # Using SSM Parameter Store to fetch the Latest AMI for Amazon Linux 2, eliminates the need for AMI Mappings
   LatestAmiId:
     Type: 'AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;'
@@ -667,7 +667,7 @@ Resources:
         S3Location: 
           OutputS3BucketName: !Ref SSMAssocLogs
           OutputS3KeyPrefix: 'logs/'
-      ParameterValues:
+      Parameters:
         # Getting an Ansible Playbook from a GitHub Location
         SourceType:
           - 'GitHub'
@@ -697,7 +697,7 @@ Outputs:
     Description: Public DNS for WebServer</code></pre></div><h3 id="aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script">Create an association that runs a bash script</h3><p>The following example creates an association that runs a bash script. Target is based
           on tags.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
     "Description": "Deploy single Amazon Linux 2 instance and install Nginx by a State Manager association",
-    "ParameterValues": <span>{</span>
+    "Parameters": <span>{</span>
         "LatestAmiId": <span>{</span>
             "Type": "AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;",
             "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
@@ -818,7 +818,7 @@ Outputs:
                         "OutputS3KeyPrefix": "logs/"
                     }
                 },
-                "ParameterValues": <span>{</span>
+                "Parameters": <span>{</span>
                     "commands": [
                         "sudo amazon-linux-extras install nginx1 -y\nsudo service nginx start\n"
                     ]

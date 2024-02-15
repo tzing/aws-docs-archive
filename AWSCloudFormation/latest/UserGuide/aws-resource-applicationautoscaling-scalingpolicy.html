@@ -269,9 +269,9 @@ Properties:
 <p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-applicationautoscaling-scalingpolicy-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="Arn-fn::getatt"><span class="term"><code class="code">Arn</code></span></dt><dd>
     <p>Returns the ARN of a scaling policy.</p>
   </dd></dl></div><h2 id="aws-resource-applicationautoscaling-scalingpolicy--remarks">Remarks</h2><p>When you create the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html">AWS::CloudWatch::Alarm</a> resource for a step scaling policy, specify the name of
-        the scaling policy in the <code class="code">AlarmActions</code> property. For a sample template snippet,
-        see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ecs.html">Amazon Elastic Container Service template snippets</a>.</p><h2 id="aws-resource-applicationautoscaling-scalingpolicy--examples">Examples</h2><p>The following examples create scaling policies for a scalable target that is registered
-        with Application Auto Scaling. </p><p>For more sample template snippets, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html#scenario-app-as-template-examples">Application Auto Scaling template examples</a>.</p><h3 id="aws-resource-applicationautoscaling-scalingpolicy--examples--Target_tracking_scaling_policy_with_a_predefined_metric">Target tracking scaling policy with a predefined metric</h3><p>This example shows how to declare a new AWS::ApplicationAutoScaling::ScalingPolicy
+        the scaling policy in the <code class="code">AlarmActions</code> property.</p><h2 id="aws-resource-applicationautoscaling-scalingpolicy--examples">Examples</h2><p>The following examples create scaling policies for a scalable target that is registered
+        with Application Auto Scaling. </p><p>For more sample template snippets, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-application-auto-scaling.html">Configure
+          Application Auto Scaling resources</a>.</p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-applicationautoscaling-scalingpolicy--examples--Target_tracking_scaling_policy_with_a_predefined_metric">Target tracking scaling policy with a predefined metric</a></li><li><a href="#aws-resource-applicationautoscaling-scalingpolicy--examples--Step_scaling_policy">Step scaling policy</a></li></ul></div><h3 id="aws-resource-applicationautoscaling-scalingpolicy--examples--Target_tracking_scaling_policy_with_a_predefined_metric">Target tracking scaling policy with a predefined metric</h3><p>This example shows how to declare a new AWS::ApplicationAutoScaling::ScalingPolicy
           resource to create a new scaling policy using the <code class="code">TargetTrackingScaling</code>
           policy type.</p><p>In this snippet, the policy specifies the <code class="code">ECSServiceAverageCPUUtilization</code>
           predefined metric. The metrics used with a target tracking scaling policy are either
@@ -392,7 +392,7 @@ Resources:
          
          
       <ul class="itemizedlist"><li class="listitem">
-          <p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-autoscaling.html#scenario-app-as-template-examples">Application Auto Scaling template examples</a></p>
+          <p>You can find additional useful snippets in <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-application-auto-scaling.html">Configure Application Auto Scaling resources</a></p>
         </li><li class="listitem">
           <p><a href="https://docs.aws.amazon.com/autoscaling/application/userguide/getting-started.html">Getting started</a>
             in the <em>Application Auto Scaling User Guide</em></p>

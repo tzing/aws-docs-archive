@@ -54,13 +54,13 @@ Properties:
         <p>The unique identifier for the Amazon Pinpoint application that you want to export data
             from.</p>
     <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-pinpoint-eventstream-destinationstreamarn"><span class="term"><code class="code">DestinationStreamArn</code></span></dt><dd>
-                              <p>The Amazon Resource Name (ARN) of the Amazon Kinesis Data Stream or Amazon Kinesis Data Firehose delivery stream that you want to publish event data
+                              <p>The Amazon Resource Name (ARN) of the Amazon Kinesis Data Stream or Amazon Data Firehose delivery stream that you want to publish event data
                     to.</p>
                               <p>For a Kinesis Data Stream, the ARN format is:
                             <code class="code">arn:aws:kinesis:<code class="replaceable">region</code>:<code class="replaceable">account-id</code>:stream/<code class="replaceable">stream_name</code>
                                  </code>
                               </p>
-                              <p>For a Kinesis Data Firehose delivery stream, the ARN format is:
+                              <p>For a Firehose delivery stream, the ARN format is:
                             <code class="code">arn:aws:firehose:<code class="replaceable">region</code>:<code class="replaceable">account-id</code>:deliverystream/<code class="replaceable">stream_name</code>
                                  </code>
                               </p>

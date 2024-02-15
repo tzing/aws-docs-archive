@@ -74,7 +74,7 @@ Properties:
   <a href="#cfn-ssm-parameter-type">Type</a>: <code class="replaceable">String</code>
   <a href="#cfn-ssm-parameter-value">Value</a>: <code class="replaceable">String</code>
 </code></pre></div><h2 id="aws-resource-ssm-parameter-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-ssm-parameter-allowedpattern"><span class="term"><code class="code">AllowedPattern</code></span></dt><dd>
-    <p>A regular expression used to validate the parameter value. For example, for String types
+    <p>A regular expression used to validate the parameter value. For example, for <code class="code">String</code> types
       with values restricted to numbers, you can specify the following:
         <code class="code">AllowedPattern=^\d+$</code>
     </p>
@@ -111,7 +111,7 @@ Properties:
     <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>Although <code class="code">SecureString</code> is included in the list of valid values, AWS CloudFormation 
             does <em>not</em> currently support creating a <code class="code">SecureString</code> parameter
         type.</p></div></div>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">String | StringList | SecureString</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-parameter-value"><span class="term"><code class="code">Value</code></span></dt><dd>
+      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">String | StringList</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-parameter-value"><span class="term"><code class="code">Value</code></span></dt><dd>
          <p>The parameter value.</p>
          <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>If type is <code class="code">StringList</code>, the system returns a comma-separated string with no
     spaces between commas in the <code class="code">Value</code> field.</p></div></div>
@@ -123,7 +123,7 @@ Properties:
         <code class="code">StringList</code>.</p>
   </dd><dt id="Value-fn::getatt"><span class="term"><code class="code">Value</code></span></dt><dd>
     <p>Returns the value of the parameter.</p>
-  </dd></dl></div><h2 id="aws-resource-ssm-parameter--examples">Examples</h2><h3 id="aws-resource-ssm-parameter--examples--Create_a_String-type_parameter">Create a String-type parameter</h3><p>The following example creates a Systems Manager parameter named command with a
+  </dd></dl></div><h2 id="aws-resource-ssm-parameter--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-ssm-parameter--examples--Create_a_String-type_parameter">Create a String-type parameter</a></li><li><a href="#aws-resource-ssm-parameter--examples--Create_a_StringList-type_parameter">Create a StringList-type parameter</a></li><li><a href="#aws-resource-ssm-parameter--examples--Create_an_advanced_tier_parameter_and_assign_a_policy">Create an advanced tier parameter and assign a policy</a></li></ul></div><h3 id="aws-resource-ssm-parameter--examples--Create_a_String-type_parameter">Create a String-type parameter</h3><p>The following example creates a Systems Manager parameter named command with a
             <code class="code">String</code> type and adds the tag key-value pair
             <code class="code">"Environment":"Dev"</code>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ssm-parameter--examples--Create_a_String-type_parameter--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
     "Resources": <span>{</span>

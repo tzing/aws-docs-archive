@@ -25,7 +25,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Amazon Kinesis Data Firehose resource type reference",
+        "name" : "Amazon Data Firehose resource type reference",
         "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_KinesisFirehose.html"
       },
       {
@@ -52,7 +52,7 @@
 </code></pre></div><h2 id="aws-properties-kinesisfirehose-deliverystream-deliverystreamencryptionconfigurationinput-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-kinesisfirehose-deliverystream-deliverystreamencryptionconfigurationinput-keyarn"><span class="term"><code class="code">KeyARN</code></span></dt><dd>
          <p>If you set <code class="code">KeyType</code> to <code class="code">CUSTOMER_MANAGED_CMK</code>, you must specify
          the Amazon Resource Name (ARN) of the CMK. If you set <code class="code">KeyType</code> to <code class="code">
-               AWS_OWNED_CMK</code>, Kinesis Data Firehose uses a service-account CMK.</p>
+               AWS_OWNED_CMK</code>, Firehose uses a service-account CMK.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">arn:.*</code></p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">512</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-deliverystreamencryptionconfigurationinput-keytype"><span class="term"><code class="code">KeyType</code></span></dt><dd>
       <p>Indicates the type of customer master key (CMK) to use for encryption. The default
          setting is <code class="code">AWS_OWNED_CMK</code>. For more information about CMKs, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">Customer
