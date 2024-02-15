@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="aws-resource-init" /><meta name="default_state" content="aws-resource-init" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="description" content="您可以使用 AWS::CloudFormation::Init 資源類型，在 cfn-init 協助程式指令碼的 Amazon EC2 執行個體上加入中繼資料。" /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="使用者指南" /><meta name="abstract" content="利用此使用者指南，透過 AWS CloudFormation 以可預期且重複的方式建立和管理 AWS 基礎設施部署。" /><meta name="guide-locale" content="zh_tw" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="使用者指南" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="使用者指南" /><meta id="panorama-serviceConsolePage" value="AWS::CloudFormation::Init" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,資源佈建,資源組態,基礎設施管理,CloudFormer,CloudFormation 設計工具,CloudFormation stack (CloudFormation 堆疊),CloudFormation 堆疊集,CloudFormation 範本,變更集合" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="aws-resource-init" /><meta name="default_state" content="aws-resource-init" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="description" content="您可以使用 AWS::CloudFormation::Init 資源類型，在 cfn-init 協助程式指令碼的 Amazon EC2 執行個體上加入中繼資料。" /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="使用者指南" /><meta name="abstract" content="利用此使用者指南，透過 AWS CloudFormation 以可預期且重複的方式建立和管理 AWS 基礎設施部署。" /><meta name="guide-locale" content="zh_tw" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="使用者指南" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="使用者指南" /><meta id="panorama-serviceConsolePage" value="AWS::CloudFormation::Init" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>AWS::CloudFormation::Init - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/aws-resource-init.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,資源佈建,資源組態,基礎設施管理,CloudFormer,CloudFormation 堆疊,CloudFormation 範本,變更集合" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文件</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">使用者指南</a></div><div id="page-toc-src"><a href="#aws-resource-cloudformation-init-syntax">語法</a><a href="#aws-resource-init-configsets">組態集</a><a href="#aws-resource-init-commands">命令</a><a href="#aws-resource-init-files">檔案</a><a href="#aws-resource-init-groups">群組</a><a href="#aws-resource-init-packages">套件</a><a href="#aws-resource-init-services">服務</a><a href="#aws-resource-init-sources">來源</a><a href="#aws-resource-init-users">使用者</a></div><div id="page-filters" style="display:none"><filter label="All" id="All"></filter><filter label="JSON" id="JSON"></filter><filter label="YAML" id="YAML"></filter></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="aws-resource-init"><code class="code">AWS::CloudFormation::Init</code></h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>透過 <code class="code">AWS::CloudFormation::Init</code> 資源類型，即可在 cfn-init 協助程式指令碼的 Amazon EC2 執行個體上加入中繼資料。如果範本呼叫 cfn-init 指令碼，該指令碼會在 <code class="code">AWS::CloudFormation::Init</code> 中繼資料金鑰內尋找根資源中繼資料。如需 cfn-init 的詳細資訊，請參閱 <a href="./cfn-init.html">cfn-init</a>。</p><p>cfn-init 支援適用於 Linux 系統的所有中繼資料類型，亦支援適用於 Windows 的中繼資料類型 (但必須符合以下幾節所述的條件)。</p><p>如需使用 <code class="code">AWS::CloudFormation::Init</code> 與 cfn-init 協助程式指令碼的範例，請參閱<a href="./deploying.applications.html">使用 AWS CloudFormation 在 Amazon EC2 上部署應用程式</a>。</p><p>如需說明如何使用 cfn-init 建立 Windows 堆疊的範例，請參閱 <a href="./cfn-windows-stacks-bootstrapping.html">引導 AWS CloudFormation Windows 堆疊</a>。</p>
+</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文件</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">使用者指南</a></div><div id="page-toc-src"><a href="#aws-resource-cloudformation-init-syntax">語法</a><a href="#aws-resource-init-configsets">組態集</a><a href="#aws-resource-init-commands">命令</a><a href="#aws-resource-init-files">檔案</a><a href="#aws-resource-init-groups">群組</a><a href="#aws-resource-init-packages">套件</a><a href="#aws-resource-init-services">服務</a><a href="#aws-resource-init-sources">來源</a><a href="#aws-resource-init-users">使用者</a></div><div id="page-filters" style="display:none"><filter label="All" id="All"></filter><filter label="JSON" id="JSON"></filter><filter label="YAML" id="YAML"></filter></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>本文為英文版的機器翻譯版本，如內容有任何歧義或不一致之處，概以英文版為準。</p></awsui-alert><h1 class="topictitle" id="aws-resource-init"><code class="code">AWS::CloudFormation::Init</code></h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>透過 <code class="code">AWS::CloudFormation::Init</code> 資源類型，即可在 cfn-init 協助程式指令碼的 Amazon EC2 執行個體上加入中繼資料。如果範本呼叫 cfn-init 指令碼，該指令碼會在 <code class="code">AWS::CloudFormation::Init</code> 中繼資料金鑰內尋找根資源中繼資料。如需 cfn-init 的詳細資訊，請參閱 <a href="./cfn-init.html">cfn-init</a>。</p><p>cfn-init 支援適用於 Linux 系統的所有中繼資料類型，亦支援適用於 Windows 的中繼資料類型 (但必須符合以下幾節所述的條件)。</p><p>如需使用 <code class="code">AWS::CloudFormation::Init</code> 與 cfn-init 協助程式指令碼的範例，請參閱<a href="./deploying.applications.html">使用 AWS CloudFormation 在 Amazon EC2 上部署應用程式</a>。</p><p>如需說明如何使用 cfn-init 建立 Windows 堆疊的範例，請參閱 <a href="./cfn-windows-stacks-bootstrapping.html">引導 AWS CloudFormation Windows 堆疊</a>。</p>
       <h2 id="aws-resource-cloudformation-init-syntax">語法</h2>
 
       <p>組態會分為不同區段。下列範本程式碼片段會說明在範本中將 cfn-init 中繼資料連接至 EC2 執行個體資源的方法。</p>
@@ -126,7 +126,7 @@
 
       <p>如果您想建立多個組態金鑰，並讓 cfn-init 按照特定順序來處理這些金鑰，則請建立包含所需組態金鑰順序的組態集。</p>
        
-         <h3 id="w9ab1c23c15c15c23c13b5">單一組態集</h3>
+         <h3 id="w9aac23c15c15c23c13b5">單一組態集</h3>
 
          <p>下列範本程式碼片段會建立名為 <code class="code">ascending</code> 與 <code class="code">descending</code> 的組態集，並分別在當中包含兩個組態金鑰。</p>
          <div id="JSON" name="JSON" class="section langfilter">
@@ -184,7 +184,7 @@
         cwd: "~"</code></pre>
          </div>
           
-            <h4 id="w9ab1c23c15c15c23c13b5b9">相關的 cfn-init 呼叫</h4>
+            <h4 id="w9aac23c15c15c23c13b5b9">相關的 cfn-init 呼叫</h4>
 
             <p>以下範例會參考上述範例組態集來呼叫 cfn-init，且為清楚起見，該範例會以縮寫形式進行呼叫；如需完整語法，請參閱 <a href="./cfn-init.html">cfn-init</a>。</p>
             <div class="itemizedlist">
@@ -204,7 +204,7 @@
           
        
        
-         <h3 id="w9ab1c23c15c15c23c13b7">多個組態集</h3>
+         <h3 id="w9aac23c15c15c23c13b7">多個組態集</h3>
 
          <p>您可以建立多個組態集，並使用 cfn-init 指令碼來呼叫一系列的組態集；而每個組態集皆能包含組態金鑰清單或參考其他組態集。以下列範本程式碼片段為例，其將建立三個組態集。第一個組態集 <code class="code">test1</code> 會包含一個名為 <code class="code">1</code> 的組態金鑰；第二個組態集 <code class="code">test2</code> 會參考 <code class="code">test1</code> 組態集，並涵蓋一個名為 <code class="code">2</code> 的組態金鑰；而第三個預設組態集則會參考 <code class="code">test2</code> 組態集。</p>
          <div id="JSON" name="JSON" class="section langfilter">
@@ -266,7 +266,7 @@
         ConfigSet: "test2"</code></pre>
          </div>
           
-            <h4 id="w9ab1c23c15c15c23c13b7b9">相關的 cfn-init 呼叫</h4>
+            <h4 id="w9aac23c15c15c23c13b7b9">相關的 cfn-init 呼叫</h4>
 
             <p>下方將參考上述範本程式碼片段所宣告的組態集來呼叫 cfn-init，且為清楚起見，該範例會以縮寫形式進行呼叫；如需完整語法，請參閱 <a href="./cfn-init.html">cfn-init</a>。</p>
             <div class="itemizedlist">
@@ -292,7 +292,7 @@
       <h2 id="aws-resource-init-commands">命令</h2>
 
       <p>透過 commands 金鑰，即可在 EC2 執行個體上執行命令；而系統會依照名稱的字母順序來處理這些命令。</p>
-      <div class="table-container"><div class="table-contents"><table id="w1319ab1c17c17c17c19c17b5"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1338aac17c17c17c19c17b5"><thead>
                <tr>
                   <th>金錀</th>
                   <th>必要</th>
@@ -356,7 +356,7 @@
                </tr>
             </table></div></div>
        
-         <h3 id="w9ab1c23c15c15c23c15b7">範例</h3>
+         <h3 id="w9aac23c15c15c23c15b7">範例</h3>
 
          <p>下列範例程式碼片段在 <code class="code">~/test.txt</code> 檔案不存在時，會呼叫 echo 命令。</p>
          <div id="JSON" name="JSON" class="section langfilter">
@@ -403,7 +403,7 @@
       <h2 id="aws-resource-init-files">檔案</h2>
 
       <p>透過 <code class="code">files</code> 金鑰，即可在 EC2 執行個體上建立檔案。該內容可能會內嵌於範本中，亦能從 URL 取得；檔案會依詞典編纂順序寫入磁碟。下表會列出支援的金鑰。</p>
-      <div class="table-container"><div class="table-contents"><table id="w1319ab1c17c17c17c19c19b5"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1338aac17c17c17c19c19b5"><thead>
                <tr>
                   <th>金錀</th>
                   <th>描述</th>
@@ -477,7 +477,7 @@
                </tr>
             </table></div></div>
        
-         <h3 id="w9ab1c23c15c15c23c17b7">範例</h3>
+         <h3 id="w9aac23c15c15c23c17b7">範例</h3>
 
          <p>下列範例程式碼片段會建立名稱為 setup.mysql 的檔案，並將該檔案當成大型安裝作業的一部分。</p>
          <div id="JSON" name="JSON" class="section langfilter">
@@ -511,7 +511,7 @@
     owner: "root"
     group: "root"</code></pre>
          </div>
-         <p>如需取得完整範本，請前往：<a href="https://s3.amazonaws.com/cloudformation-templates-us-east-1/Drupal_Single_Instance.template" rel="noopener noreferrer" target="_blank"><span>https://s3.amazonaws.com/cloudformation-templates-us-east-1/Drupal_Single_Instance.template</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a></p>
+         <p>完整的模板可在以下位置找到：<a href="https://s3.amazonaws.com/cloudformation-templates-us-east-1/Drupal_Single_Instance.template" rel="noopener noreferrer" target="_blank"><span>https://s3.amazonaws.com/ cloudformation-templates-us-east-</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> 1/單實例模板</p>
          <p>下列範例程式碼片段所建立的符號連結 <code class="code">/tmp/myfile2.txt</code> 會指向現有檔案 <code class="code">/tmp/myfile1.txt</code>；而目標檔案 <code class="code">/tmp/myfile1.txt</code> 的許可則是由模式 <code class="code">644</code> 所定義。</p>
          <div id="JSON" name="JSON" class="section langfilter">
             <h4 id="aws-resource-init-symlink.json">JSON</h4>
@@ -529,7 +529,7 @@
     content: "/tmp/myfile1.txt"
     mode: "120644"</code></pre>
          </div>
-         <p>Mustache 範本主要用來建立組態檔案。舉例來說，不需使用 <a href="./intrinsic-function-reference-join.html">Fn::Join</a>，您亦可以在 S3 儲存貯體中存放組態檔案，並從範本插入 Ref 與 GetAtt。下列範例程式碼片段會將「Content for test9」(test9 的內容) 輸出至 <code>/tmp/test9.txt</code>。</p>
+         <p>Mustache 範本主要用來建立組態檔案。例如，您可以將組態檔案存放在 S3 儲存貯體中，並插入 Refs 和 GetAtts 範本，而不是使用。<a href="./intrinsic-function-reference-join.html">Fn::Join</a>下列範例程式碼片段會將「Content for test9」(test9 的內容) 輸出至 <code>/tmp/test9.txt</code>。</p>
          <div id="JSON" name="JSON" class="section langfilter">
             <h4 id="aws-resource-init-test9.json">JSON</h4>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
@@ -569,7 +569,7 @@
 
       <p>透過 groups 金鑰，即可建立 Linux/UNIX 群組和指派群組 ID。請注意，Windows 系統並不支援 groups 金鑰。</p>
       <p>若要建立群組，請新增一組新的索引鍵/值組，此對組會將新的群組名稱對應至選用的群組 ID。groups 金鑰可以包含一個或多個群組名稱。下表會列出可用的金鑰。</p>
-      <div class="table-container"><div class="table-contents"><table id="w1319ab1c17c17c17c19c21b7"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1338aac17c17c17c19c21b7"><thead>
                <tr>
                   <th>金錀</th>
                   <th>描述</th>
@@ -629,7 +629,7 @@
          <h3 id="aws-resource-init-packages-snippet">範例程式碼片段</h3>
 
           
-            <h4 id="w9ab1c23c15c15c23c21b9b3">RPM、yum、Rubygems 與 Zypper</h4>
+            <h4 id="w9aac23c15c15c23c21b9b3">RPM、yum、Rubygems 與 Zypper</h4>
 
             <p>下列程式碼片段將指定 rpm 的版本 URL、請求 yum 與 Zypper 的最新版本，並使用 rubygems 的 chef 0.10.2 版：</p>
             <div id="JSON" name="JSON" class="section langfilter">
@@ -667,7 +667,7 @@ zypper:
             </div>
           
           
-            <h4 id="w9ab1c23c15c15c23c21b9b5">MSI 套件</h4>
+            <h4 id="w9aac23c15c15c23c21b9b5">MSI 套件</h4>
 
             <p>下列程式碼片段將指定 MSI 套件的 URL：</p>
             <div id="JSON" name="JSON" class="section langfilter">
@@ -691,7 +691,7 @@ zypper:
       <p>透過 services 金鑰，即可定義執行個體啟動時應啟用或停用的服務。Linux 系統會透過 sysvinit 或 systemd 來支援此金鑰，而 Windows 系統則會透過 Windows 服務管理員進行支援。</p>
       <p>您也可以使用 services 金鑰指定 sources、packages 與 files 的相依關係；如此一來，若安裝檔案時需要重新啟動，cfn-init 將負責重新啟動服務。例如，如果您下載了 Apache HTTP 伺服器套件，則在堆疊建立程序期間，系統會自動啟動 Apache HTTP 伺服器套件安裝作業。然而，如果您稍後在堆疊建立程序中更新 Apache HTTP 伺服器組態，便必須重新啟動 Apache 伺服器，更新內容才會生效。您可以使用 services 金鑰來確保系統已重新啟動 Apache HTTP 服務。</p>
       <p>下表會列出支援的金鑰。</p>
-      <div class="table-container"><div class="table-contents"><table id="w1319ab1c17c17c17c19c25b9"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1338aac17c17c17c19c25b9"><thead>
                <tr>
                   <th>金錀</th>
                   <th>描述</th>
@@ -751,10 +751,10 @@ zypper:
                </tr>
             </table></div></div>
        
-         <h3 id="w9ab1c23c15c15c23c23c11">範例</h3>
+         <h3 id="w9aac23c15c15c23c23c11">範例</h3>
 
           
-            <h4 id="w9ab1c23c15c15c23c23c11b3">Linux</h4>
+            <h4 id="w9aac23c15c15c23c23c11b3">Linux</h4>
 
             <p>下列 Linux 程式碼片段所設定的服務如下：</p>
             <div class="itemizedlist">
@@ -878,21 +878,19 @@ ExecStart=/usr/local/bin/cfn-hup -v</code></pre>
           
           
       <ul class="itemizedlist"><li class="listitem">
-            <p>tar</p>
+            <p><code class="code">tar</code></p>
          </li><li class="listitem">
-            <p>tar + gzip</p>
+            <p><code class="code">tar+gzip</code></p>
          </li><li class="listitem">
-            <p>tar + bz2</p>
+            <p><code class="code">tar+bz2</code></p>
          </li><li class="listitem">
-            <p>zip</p>
+            <p><code class="code">zip</code></p>
          </li></ul></div>
-       
-         <h3 id="w9ab1c23c15c15c23c25b9">範例</h3>
-
-          
-            <h4 id="w9ab1c23c15c15c23c25b9b3">GitHub</h4>
-
-            <p>如果您將 GitHub 當成來源控制系統，即可使用 cfn-init 與來源封裝機制來提取特定版本的應用程式。GitHub 讓您能透過 URL 從特定版本建立 .zip 或 .tar 檔案，如下所示：</p>
+     
+         <h3 id="aws-resource-init-sources-examples">範例</h3>
+      
+            <h4 id="aws-resource-init-sources-examples-github">GitHub</h4>
+            <p>如果您使用 GitHub 作為原始檔控制系統，您可以使用 cfn-init 和原始碼套件機制來提取特定版本的應用程式。  GitHub 允許您通過 URL 從特定版本創建 .zip 或 .tar，如下所示：</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="text ">https://github.com/&lt;your directory&gt;/(zipball|tarball)/&lt;version&gt;</code></pre>
             <p>舉例來說，下列程式碼片段會將 <em>main</em> 版本壓縮為 <code>.tar</code> 檔案。</p>
             <div id="JSON" name="JSON" class="section langfilter">
@@ -909,9 +907,8 @@ ExecStart=/usr/local/bin/cfn-hup -v</code></pre>
   /etc/puppet: "https://github.com/user1/cfn-demo/tarball/main"</code></pre>
             </div>
           
-          
-            <h4 id="w9ab1c23c15c15c23c25b9b5">S3 儲存貯體</h4>
-
+      
+            <h4 id="aws-resource-init-sources-examples-s3">S3 儲存貯體</h4>
             <p>以下範例從 S3 儲存貯體下載了 tarball，並將其解壓縮至 <code class="code">/etc/myapp</code>：</p>
             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>您可以針對來源使用身分驗證憑證，但不能將 authentication 金鑰放入 sources 區塊。反之，您可以在 <code class="code">S3AccessCreds</code> 區塊中加入 buckets 金鑰。如需 Amazon S3 驗證憑證的詳細資訊，請參閱 <a href="./aws-resource-authentication.html">AWS::CloudFormation::Authentication</a>。</p><p><span>如需範例，請參閱<a href="https://s3.amazonaws.com/cloudformation-templates-us-east-1/S3Bucket_SourceAuth.template" rel="noopener noreferrer" target="_blank"><span>範例範本</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</span></p></div></div>
             <div id="JSON" name="JSON" class="section langfilter">
@@ -943,7 +940,7 @@ ExecStart=/usr/local/bin/cfn-hup -v</code></pre>
 
       <p>透過 users 金鑰，即可在 EC2 執行個體上建立 Linux/UNIX 使用者。請注意，Windows 系統並不支援 users 金鑰。</p>
       <p>下表會列出支援的金鑰。</p>
-      <div class="table-container"><div class="table-contents"><table id="w1319ab1c17c17c17c19c29b7"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w1338aac17c17c17c19c29b7"><thead>
                <tr>
                   <th>金錀</th>
                   <th>描述</th>

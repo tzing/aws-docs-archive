@@ -25,7 +25,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Amazon Kinesis Data Firehose resource type reference",
+        "name" : "Amazon Data Firehose resource type reference",
         "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_KinesisFirehose.html"
       },
       {
@@ -91,8 +91,7 @@
       <p>The endpoint to use when communicating with the cluster. Specify either this
             <code class="code">ClusterEndpoint</code> or the <code class="code">DomainARN</code> field.</p>
    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">https:.*</code></p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">512</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-elasticsearchdestinationconfiguration-documentidoptions"><span class="term"><code class="code">DocumentIdOptions</code></span></dt><dd>
-         <p>Indicates the method for setting up document ID. The supported methods are Kinesis Data
-         Firehose generated document ID and OpenSearch Service generated document ID.</p>
+         <p>Indicates the method for setting up document ID. The supported methods are Firehose generated document ID and OpenSearch Service generated document ID.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-kinesisfirehose-deliverystream-documentidoptions.html">DocumentIdOptions</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-elasticsearchdestinationconfiguration-domainarn"><span class="term"><code class="code">DomainARN</code></span></dt><dd>
 
       <p>The ARN of the Amazon ES domain. The IAM role must have permissions for

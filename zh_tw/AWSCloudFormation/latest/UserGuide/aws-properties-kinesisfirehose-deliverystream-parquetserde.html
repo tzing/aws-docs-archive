@@ -25,7 +25,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Amazon Kinesis Data Firehose resource type reference",
+        "name" : "Amazon Data Firehose resource type reference",
         "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_KinesisFirehose.html"
       },
       {
@@ -60,7 +60,7 @@
 </code></pre></div><h2 id="aws-properties-kinesisfirehose-deliverystream-parquetserde-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-kinesisfirehose-deliverystream-parquetserde-blocksizebytes"><span class="term"><code class="code">BlockSizeBytes</code></span></dt><dd>
          <p>The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to
          copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the
-         minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.</p>
+         minimum is 64 MiB. Firehose uses this value for padding calculations.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">67108864</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-parquetserde-compression"><span class="term"><code class="code">Compression</code></span></dt><dd>
          <p>The compression code to use over data blocks. The possible values are
             <code class="code">UNCOMPRESSED</code>, <code class="code">SNAPPY</code>, and <code class="code">GZIP</code>, with the default

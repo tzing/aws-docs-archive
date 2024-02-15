@@ -145,10 +145,14 @@ Properties:
 <p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-ecs-cluster-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="Arn-fn::getatt"><span class="term"><code class="code">Arn</code></span></dt><dd>
   <p>The Amazon Resource Name (ARN) of the Amazon ECS cluster, such as
     <code class="code">arn:aws:ecs:us-east-2:123456789012:cluster/MyECSCluster</code>.</p>
- </dd></dl></div><h2 id="aws-resource-ecs-cluster--examples">Examples</h2><p></p><h3 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_the__capacity_providers_and_a_default_capacity_provider_strategy_defined">Define a cluster with the Fargate capacity providers and a default capacity provider strategy defined</h3><p>The following example defines a cluster named <code class="code">MyFargateCluster</code> with the <code class="code">FARGATE</code> and
-      <code class="code">FARGATE_SPOT</code> capacity providers. A default capacity provider strategy is also defined where tasks
-     launched will be split evenly between the <code class="code">FARGATE</code> and <code class="code">FARGATE_SPOT</code> capacity
-     providers.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_the__capacity_providers_and_a_default_capacity_provider_strategy_defined--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"ECSCluster": <span>{</span>
+ </dd></dl></div><h2 id="aws-resource-ecs-cluster--examples">Examples</h2><p></p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-ecs-cluster--examples--Define_a_cluster_with_the__capacity_providers_and_a_default_capacity_provider_strategy_defined">Define a cluster with the Fargate capacity providers and a default capacity provider strategy defined</a></li><li><a href="#aws-resource-ecs-cluster--examples--Create_a_cluster_with_the__Amazon_Linux_2023_ECS-Optimized-AMI">Create a cluster with the  Amazon Linux 2023 ECS-Optimized-AMI</a></li><li><a href="#aws-resource-ecs-cluster--examples--Define_an_empty_cluster_with_CloudWatch_Container_Insights_enabled_and_defined_tags">Define an empty cluster with CloudWatch Container Insights enabled and defined tags</a></li></ul></div><h3 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_the__capacity_providers_and_a_default_capacity_provider_strategy_defined">Define a cluster with the Fargate capacity providers and a default capacity provider strategy defined</h3><p>The following example defines a cluster named <code class="code">MyFargateCluster</code> with the
+            <code class="code">FARGATE</code> and <code class="code">FARGATE_SPOT</code> capacity providers. A default
+          capacity provider strategy is also defined where tasks launched will be split evenly
+          between the <code class="code">FARGATE</code> and <code class="code">FARGATE_SPOT</code> capacity providers. It also
+          has ECS Exec enabled using the default logging configuration. For more information, see
+            <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html">Using
+            ECS Exec for debugging</a> in the <em>Amazon ECS Developer
+          Guide</em>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_the__capacity_providers_and_a_default_capacity_provider_strategy_defined--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"ECSCluster": <span>{</span>
     "Type": "AWS: : ECS: : Cluster",
     "Properties": <span>{</span>
         "ClusterName": "MyFargateCluster",
@@ -165,7 +169,11 @@ Properties:
                 "CapacityProvider": "FARGATE_SPOT",
                 "Weight": 1
             }
-        ]
+        ],
+        "Configuration": <span>{</span>
+            "ExecuteCommandConfiguration": <span>{</span>
+                "Logging": "DEFAULT"
+        }
     }
 }</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_the__capacity_providers_and_a_default_capacity_provider_strategy_defined--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">ECSCluster:
   Type: 'AWS::ECS::Cluster'
@@ -178,35 +186,418 @@ Properties:
       - CapacityProvider: FARGATE
         Weight: 1
       - CapacityProvider: FARGATE_SPOT
-        Weight: 1</code></pre></div><h3 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_an_ECS_Exec_configuration_defined">Define a cluster with an ECS Exec configuration defined</h3><p>The following example defines a cluster named <code class="code">MyCluster</code> with ECS Exec enabled using the default
-     logging configuration. For more information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html">Using ECS Exec for debugging</a> in the <em>Amazon
-      ECS Developer Guide</em>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_an_ECS_Exec_configuration_defined--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "ECSCluster": <span>{</span>
-        "Type": "AWS::ECS::Cluster",
-        "Properties": <span>{</span>
-            "ClusterName": "MyCluster",
-            "Configuration": <span>{</span>
-                "ExecuteCommandConfiguration": <span>{</span>
-                    "Logging": "DEFAULT"
-                }
-            }
-        }
-    }
-}</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_a_cluster_with_an_ECS_Exec_configuration_defined--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">ECSCluster:
-  Type: 'AWS::ECS::Cluster'
-  Properties:
-    ClusterName: MyCluster
-    Configuration:
-       ExecuteCommandConfiguration:
-          Logging: DEFAULT</code></pre></div><h3 id="aws-resource-ecs-cluster--examples--Define_an_empty_cluster">Define an empty cluster</h3><p>The following example defines an empty cluster named <code class="code">MyEmptyCluster</code>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_an_empty_cluster--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"ECSCluster": <span>{</span>
+        Weight: 1
+      - Configuration:
+        ExecuteCommandConfiguration:
+        Logging: DEFAULT</code></pre></div><h3 id="aws-resource-ecs-cluster--examples--Create_a_cluster_with_the__Amazon_Linux_2023_ECS-Optimized-AMI">Create a cluster with the  Amazon Linux 2023 ECS-Optimized-AMI</h3><p>The following example defines a cluster named <code class="code">MyCluster</code> with</p><p>Define a cluster that uses a capacity provider that launches Amazon Linux 2023 c5.xlarge instances.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Create_a_cluster_with_the__Amazon_Linux_2023_ECS-Optimized-AMI--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "EC2 ECS cluster that starts out empty, with no EC2 instances yet. An ECS capacity provider automatically launches more EC2 instances as required on the fly when you request ECS to launch services or standalone tasks.",
+  "Parameters": <span>{</span>
+  "InstanceType": <span>{</span>
+    "Type": "String",
+    "Default": "c5.xlarge",
+    "Description": "EC2 instance type",
+    "AllowedValues": "c5.xlarge"
+  },
+  "DesiredCapacity": <span>{</span>
+    "Type": "Number",
+    "Default": "0",
+    "Description": "Number of EC2 instances to launch in your ECS cluster."
+  },
+  "MaxSize": <span>{</span>
+    "Type": "Number",
+    "Default": "100",
+    "Description": "Maximum number of EC2 instances that can be launched in your ECS cluster."
+  },
+  "ECSAMI": <span>{</span>
+    "Description": "The Amazon Machine Image ID used for the cluster",
+    "Type": "AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;"
+    "Default": "/aws/service/ecs/optimized-ami/amazon-linux-2023/recommended"
+  },
+  "VpcId": <span>{</span>
+    "Type": "AWS::EC2::VPC::Id",
+    "Description": "VPC ID where the ECS cluster is launched"
+  },
+  "SubnetIds": <span>{</span>
+    "Type": "List&lt;AWS::EC2::Subnet::Id&gt;"
+    "Description": "List of subnet IDs where the EC2 instances will be launched"
+  }
+  },
+  "Resources": <span>{</span>
+  "ECSCluster": <span>{</span>
     "Type": "AWS::ECS::Cluster",
     "Properties": <span>{</span>
-        "ClusterName": "MyEmptyCluster"
+    "ClusterSettings": [
+      <span>{</span>
+      "Name": "containerInsights",
+      "Value": "enabled"
+      }
+    ]
     }
-}</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_an_empty_cluster--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">ECSCluster:
-  Type: 'AWS::ECS::Cluster'
-  Properties:
-    ClusterName: MyEmptyCluster</code></pre></div><h3 id="aws-resource-ecs-cluster--examples--Define_an_empty_cluster_with_CloudWatch_Container_Insights_enabled_and_defined_tags">Define an empty cluster with CloudWatch Container Insights enabled and defined tags</h3><p>The following example defines an empty cluster named <code class="code">MyCluster</code> with CloudWatch Container Insights
+  },
+  "ECSAutoScalingGroup": <span>{</span>
+    "Type": "AWS::AutoScaling::AutoScalingGroup",
+    "DependsOn": [
+    "ECSCluster",
+    "EC2Role"
+    ],
+    "Properties": <span>{</span>
+    "VPCZoneIdentifier": [
+      [
+        0,
+      "SubnetIds"
+      ],
+      [
+        1,
+      "SubnetIds"
+      ]
+    ],
+    "LaunchTemplate": <span>{</span>
+      "LaunchTemplateId": "ContainerInstances",
+      "Version": "ContainerInstances.LatestVersionNumber"
+    },
+    "MinSize": 0,
+    "MaxSize": "MaxSize",
+    "DesiredCapacity": "DesiredCapacity",
+    "NewInstancesProtectedFromScaleIn": true
+    },
+    "UpdatePolicy": <span>{</span>
+    "AutoScalingReplacingUpdate": <span>{</span>
+      "WillReplace": "true"
+    }
+    }
+  },
+  "ContainerInstances": <span>{</span>
+    "Type": "AWS::EC2::LaunchTemplate",
+    "Properties": <span>{</span>
+    "LaunchTemplateData": <span>{</span>
+      "ImageId": "ECSAMI",
+      "InstanceType": "InstanceType",
+      "IamInstanceProfile": <span>{</span>
+      "Name": "EC2InstanceProfile"
+      },
+      "SecurityGroupIds": [
+      "ContainerHostSecurityGroup"
+      ],
+      "UserData": <span>{</span>
+      "Fn::Base64": "[settings.ecs]\ncluster = \"$<span>{</span>ECSCluster}\"\n"
+      },
+      "MetadataOptions": <span>{</span>
+      "HttpEndpoint": "enabled",
+      "HttpTokens": "required"
+      }
+    }
+    }
+  },
+  "EC2InstanceProfile": <span>{</span>
+    "Type": "AWS::IAM::InstanceProfile",
+    "Properties": <span>{</span>
+    "Path": "/",
+    "Roles": [
+      "EC2Role"
+    ]
+    }
+  },
+  "CapacityProvider": <span>{</span>
+    "Type": "AWS::ECS::CapacityProvider",
+    "Properties": <span>{</span>
+    "AutoScalingGroupProvider": <span>{</span>
+      "AutoScalingGroupArn": "ECSAutoScalingGroup",
+      "ManagedScaling": <span>{</span>
+      "InstanceWarmupPeriod": 60,
+      "MinimumScalingStepSize": 1,
+      "MaximumScalingStepSize": 100,
+      "Status": "ENABLED",
+      "TargetCapacity": 100
+      },
+      "ManagedTerminationProtection": "ENABLED"
+    }
+    }
+  },
+  "CapacityProviderAssociation": <span>{</span>
+    "Type": "AWS::ECS::ClusterCapacityProviderAssociations",
+    "Properties": <span>{</span>
+    "CapacityProviders": [
+      "CapacityProvider"
+    ],
+    "Cluster": "ECSCluster",
+    "DefaultCapacityProviderStrategy": [
+      <span>{</span>
+      "Base": 0,
+      "CapacityProvider": "CapacityProvider",
+      "Weight": 1
+      }
+    ]
+    }
+  },
+  "ContainerHostSecurityGroup": <span>{</span>
+    "Type": "AWS::EC2::SecurityGroup",
+    "Properties": <span>{</span>
+    "GroupDescription": "Access to the EC2 hosts that run containers",
+    "VpcId": "VpcId"
+    }
+  },
+  "EC2Role": <span>{</span>
+    "Type": "AWS::IAM::Role",
+    "Properties": <span>{</span>
+    "AssumeRolePolicyDocument": <span>{</span>
+      "Statement": [
+      <span>{</span>
+        "Effect": "Allow",
+        "Principal": <span>{</span>
+        "Service": [
+          "ec2.amazonaws.com"
+        ]
+        },
+        "Action": [
+        "sts:AssumeRole"
+        ]
+      }
+      ]
+    },
+    "Path": "/",
+    "ManagedPolicyArns": [
+      "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role",
+      "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+    ]
+    }
+  },
+  "ECSTaskExecutionRole": <span>{</span>
+    "Type": "AWS::IAM::Role",
+    "Properties": <span>{</span>
+    "AssumeRolePolicyDocument": <span>{</span>
+      "Statement": [
+      <span>{</span>
+        "Effect": "Allow",
+        "Principal": <span>{</span>
+        "Service": [
+          "ecs-tasks.amazonaws.com"
+        ]
+        },
+        "Action": [
+        "sts:AssumeRole"
+        ],
+        "Condition": <span>{</span>
+        "ArnLike": <span>{</span>
+          "aws:SourceArn": "arn:aws:ecs:$<span>{</span>AWS::Region}:$<span>{</span>AWS::AccountId}:*"
+        },
+        "StringEquals": <span>{</span>
+          "aws:SourceAccount": "AWS::AccountId"
+        }
+        }
+      }
+      ]
+    },
+    "Path": "/",
+    "ManagedPolicyArns": [
+      "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+    ]
+    }
+  }
+  },
+  "Outputs": <span>{</span>
+  "ClusterName": <span>{</span>
+    "Description": "The ECS cluster into which to launch resources",
+    "Value": "ECSCluster"
+  },
+  "ECSTaskExecutionRole": <span>{</span>
+    "Description": "The role used to start up a task",
+    "Value": "ECSTaskExecutionRole"
+  },
+  "CapacityProvider": <span>{</span>
+    "Description": "The cluster capacity provider that the service should use to request capacity when it wants to start up a task",
+    "Value": "CapacityProvider"
+  }
+  }
+} </code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Create_a_cluster_with_the__Amazon_Linux_2023_ECS-Optimized-AMI--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">AWSTemplateFormatVersion: '2010-09-09'
+Description: EC2 ECS cluster that starts out empty, with no EC2 instances yet.
+       An ECS capacity provider automatically launches more EC2 instances
+       as required on the fly when you request ECS to launch services or
+       standalone tasks.
+Parameters:
+  InstanceType:
+    Type: String
+    Default: c5.xlarge
+    Description: Class of EC2 instance used to host containers.
+    AllowedValues: c5.xlarge
+  DesiredCapacity:
+    Type: Number
+    Default: '0'
+    Description: Number of EC2 instances to launch in your ECS cluster.
+  MaxSize:
+    Type: Number
+    Default: '100'
+    Description: Maximum number of EC2 instances that can be launched in your ECS cluster.
+  ECSAMI:
+    Description: The Amazon Machine Image ID used for the cluster
+    Type: AWS::SSM::Parameter::Value&amp;lt;AWS::EC2::Image::Id&gt;
+    Default: /aws/service/ecs/optimized-ami/amazon-linux-2023/recommended
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC ID where the ECS cluster is launched
+  SubnetIds:
+    Type: List&amp;lt;AWS::EC2::Subnet::Id&gt;
+    Description: List of subnet IDs where the EC2 instances will be launched
+
+Resources:
+  # This is authorizes ECS to manage resources on your
+  # account on your behalf. This role is likely already created on your account
+  # ECSRole:
+  #  Type: AWS::IAM::ServiceLinkedRole
+  #  Properties:
+  #    AWSServiceName: 'ecs.amazonaws.com'
+
+  # ECS Resources
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+    ClusterSettings:
+    - Name: containerInsights
+      Value: enabled
+
+  # Autoscaling group. This launches the actual EC2 instances that will register
+  # themselves as members of the cluster, and run the docker containers.
+  ECSAutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    DependsOn:
+    # This is to ensure that the ASG gets deleted first before these
+    # resources, when it comes to stack teardown.
+    - ECSCluster
+    - EC2Role
+    Properties:
+    VPCZoneIdentifier:
+    - !Select [ 0, !Ref SubnetIds ]
+    - !Select [ 1, !Ref SubnetIds ]
+    LaunchTemplate:
+      LaunchTemplateId: !Ref ContainerInstances
+      Version: !GetAtt ContainerInstances.LatestVersionNumber
+    MinSize: 0
+    MaxSize: !Ref MaxSize
+    DesiredCapacity: !Ref DesiredCapacity
+    NewInstancesProtectedFromScaleIn: true
+    UpdatePolicy:
+    AutoScalingReplacingUpdate:
+      WillReplace: 'true'
+
+  # The config for each instance that is added to the cluster
+  ContainerInstances:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+    LaunchTemplateData:
+      ImageId: !Ref ECSAMI
+      InstanceType: !Ref InstanceType
+      IamInstanceProfile:
+      Name: !Ref EC2InstanceProfile
+      SecurityGroupIds:
+      - !Ref ContainerHostSecurityGroup
+      UserData:
+      # This injected configuration file is how the EC2 instance
+      # knows which ECS cluster on your AWS account it should be joining
+      Fn::Base64: !Sub |
+      [settings.ecs]
+        cluster = "$<span>{</span>ECSCluster}"
+    # Disable IMDSv1, and require IMDSv2
+      MetadataOptions:
+      HttpEndpoint: enabled
+      HttpTokens: required
+  EC2InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+    Path: /
+    Roles:
+    - !Ref EC2Role
+
+  # Create an ECS capacity provider to attach the ASG to the ECS cluster
+  # so that it autoscales as we launch more containers
+  CapacityProvider:
+    Type: AWS::ECS::CapacityProvider
+    Properties:
+    AutoScalingGroupProvider:
+      AutoScalingGroupArn: !Ref ECSAutoScalingGroup
+      ManagedScaling:
+      InstanceWarmupPeriod: 60
+      MinimumScalingStepSize: 1
+      MaximumScalingStepSize: 100
+      Status: ENABLED
+      # Percentage of cluster reservation to try to maintain
+      TargetCapacity: 100
+      ManagedTerminationProtection: ENABLED
+
+  # Create a cluster capacity provider assocation so that the cluster
+  # will use the capacity provider
+  CapacityProviderAssociation:
+    Type: AWS::ECS::ClusterCapacityProviderAssociations
+    Properties:
+    CapacityProviders:
+    - !Ref CapacityProvider
+    Cluster: !Ref ECSCluster
+    DefaultCapacityProviderStrategy:
+    - Base: 0
+      CapacityProvider: !Ref CapacityProvider
+      Weight: 1
+
+  # A security group for the EC2 hosts that will run the containers.
+  # This can be used to limit incoming traffic to or outgoing traffic
+  # from the container's host EC2 instance.
+  ContainerHostSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+    GroupDescription: Access to the EC2 hosts that run containers
+    VpcId: !Ref VpcId
+
+  # Role for the EC2 hosts. This allows the ECS agent on the EC2 hosts
+  # to communciate with the ECS control plane, as well as download the docker
+  # images from ECR to run on your host.
+  EC2Role:
+    Type: AWS::IAM::Role
+    Properties:
+    AssumeRolePolicyDocument:
+      Statement:
+      - Effect: Allow
+        Principal:
+        Service: [ec2.amazonaws.com]
+        Action: ['sts:AssumeRole']
+    Path: /
+    ManagedPolicyArns:
+    # See reference: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-iam-awsmanpol.html#security-iam-awsmanpol-AmazonEC2ContainerServiceforEC2Role
+    - arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role
+    # This managed policy allows us to connect to the instance using SSM
+    - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  # This is a role which is used within Fargate to allow the Fargate agent
+  # to download images, and upload logs.
+  ECSTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+    AssumeRolePolicyDocument:
+      Statement:
+      - Effect: Allow
+        Principal:
+        Service: [ecs-tasks.amazonaws.com]
+        Action: ['sts:AssumeRole']
+        Condition:
+        ArnLike:
+          aws:SourceArn: !Sub arn:aws:ecs:$<span>{</span>AWS::Region}:$<span>{</span>AWS::AccountId}:*
+        StringEquals:
+          aws:SourceAccount: !Ref AWS::AccountId
+    Path: /
+
+    # This role enables all features of ECS. See reference:
+    # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/security-iam-awsmanpol.html#security-iam-awsmanpol-AmazonECSTaskExecutionRolePolicy
+    ManagedPolicyArns:
+    - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+
+Outputs:
+  ClusterName:
+    Description: The ECS cluster into which to launch resources
+    Value: !Ref ECSCluster
+  ECSTaskExecutionRole:
+    Description: The role used to start up a task
+    Value: !Ref ECSTaskExecutionRole
+  CapacityProvider:
+    Description: The cluster capacity provider that the service should use
+         to request capacity when it wants to start up a task
+    Value: !Ref CapacityProvider</code></pre></div><h3 id="aws-resource-ecs-cluster--examples--Define_an_empty_cluster_with_CloudWatch_Container_Insights_enabled_and_defined_tags">Define an empty cluster with CloudWatch Container Insights enabled and defined tags</h3><p>The following example defines an empty cluster named <code class="code">MyCluster</code> with CloudWatch Container Insights
      enabled that is tagged with the key <code class="code">environment</code> and the value <code class="code">production</code>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ecs-cluster--examples--Define_an_empty_cluster_with_CloudWatch_Container_Insights_enabled_and_defined_tags--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"ECSCluster": <span>{</span>
     "Type": "AWS::ECS::Cluster",
     "Properties": <span>{</span>

@@ -111,7 +111,7 @@ Properties:
       </dd></dl></div><h2 id="aws-resource-datapipeline-pipeline--examples">Examples</h2><p>The following data pipeline backs up data from an Amazon DynamoDB table to an Amazon
       S3 bucket. The pipeline uses the <code class="code">HiveCopyActivity</code> activity to copy the data,
       and runs it once a day. The <a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html">roles</a> for the
-      pipeline and the pipeline resource are declared elsewhere in the same template.</p><h3 id="aws-resource-datapipeline-pipeline--examples--"></h3><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-datapipeline-pipeline--examples----json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"DynamoDBInputS3OutputHive": <span>{</span>
+      pipeline and the pipeline resource are declared elsewhere in the same template.</p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-datapipeline-pipeline--examples--"></a></li><li><a href="#aws-resource-datapipeline-pipeline--examples--"></a></li></ul></div><h3 id="aws-resource-datapipeline-pipeline--examples--"></h3><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-datapipeline-pipeline--examples----json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"DynamoDBInputS3OutputHive": <span>{</span>
   "Type": "AWS::DataPipeline::Pipeline",
   "Properties": <span>{</span>
     "Name": "DynamoDBInputS3OutputHive",

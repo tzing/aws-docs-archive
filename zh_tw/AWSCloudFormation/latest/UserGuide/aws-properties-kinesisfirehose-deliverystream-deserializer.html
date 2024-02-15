@@ -25,7 +25,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Amazon Kinesis Data Firehose resource type reference",
+        "name" : "Amazon Data Firehose resource type reference",
         "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_KinesisFirehose.html"
       },
       {
@@ -54,12 +54,12 @@
   <a href="#cfn-kinesisfirehose-deliverystream-deserializer-openxjsonserde">OpenXJsonSerDe</a>: <code class="replaceable">
     <a href="./aws-properties-kinesisfirehose-deliverystream-openxjsonserde.html">OpenXJsonSerDe</a></code>
 </code></pre></div><h2 id="aws-properties-kinesisfirehose-deliverystream-deserializer-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-kinesisfirehose-deliverystream-deserializer-hivejsonserde"><span class="term"><code class="code">HiveJsonSerDe</code></span></dt><dd>
-         <p>The native Hive / HCatalog JsonSerDe. Used by Kinesis Data Firehose for deserializing
+         <p>The native Hive / HCatalog JsonSerDe. Used by Firehose for deserializing
          data, which means converting it from the JSON format in preparation for serializing it to
          the Parquet or ORC format. This is one of two deserializers you can choose, depending on
          which one offers the functionality you need. The other option is the OpenX SerDe.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-kinesisfirehose-deliverystream-hivejsonserde.html">HiveJsonSerDe</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-deserializer-openxjsonserde"><span class="term"><code class="code">OpenXJsonSerDe</code></span></dt><dd>
-         <p>The OpenX SerDe. Used by Kinesis Data Firehose for deserializing data, which means
+         <p>The OpenX SerDe. Used by Firehose for deserializing data, which means
          converting it from the JSON format in preparation for serializing it to the Parquet or ORC
          format. This is one of two deserializers you can choose, depending on which one offers the
          functionality you need. The other option is the native Hive / HCatalog JsonSerDe.</p>

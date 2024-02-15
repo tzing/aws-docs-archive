@@ -37,7 +37,7 @@
     ]
 }
 </script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="AWS_SSM.html">User Guide</a></div><div id="page-toc-src"><a href="#aws-resource-ssm-document-syntax">Syntax</a><a href="#aws-resource-ssm-document-properties">Properties</a><a href="#aws-resource-ssm-document-return-values">Return values</a><a href="#aws-resource-ssm-document--examples">Examples</a><a href="#aws-resource-ssm-document--seealso">See also</a></div><div id="page-filters" style="display:none"><filter label="All" id="All"></filter><filter label="JSON" id="JSON"></filter><filter label="YAML" id="YAML"></filter></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="aws-resource-ssm-document">AWS::SSM::Document</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>The <code class="code">AWS::SSM::Document</code> resource creates a Systems Manager (SSM) document in AWS Systems Manager. This document defines the actions that Systems Manager performs on your AWS
-         resources.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This resource does not support CloudFormation drift detection.</p></div></div><h2 id="aws-resource-ssm-document-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-resource-ssm-document-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+         resources.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>This resource does not support AWS CloudFormation drift detection.</p></div></div><h2 id="aws-resource-ssm-document-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-resource-ssm-document-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "Type" : "AWS::SSM::Document",
   "Properties" : <span>{</span>
       "<a href="#cfn-ssm-document-attachments">Attachments</a>" : <code class="replaceable">[ <a href="./aws-properties-ssm-document-attachmentssource.html">AttachmentsSource</a>, ... ]</code>,
@@ -76,7 +76,7 @@ Properties:
          <p>Specify the document format for the request. JSON is the default format.</p>
    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">YAML | JSON | TEXT</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-ssm-document-documenttype"><span class="term"><code class="code">DocumentType</code></span></dt><dd>
          <p>The type of document to create.</p>
-   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">ApplicationConfiguration | ApplicationConfigurationSchema | Automation | Automation.ChangeTemplate | ChangeCalendar | CloudFormation | Command | DeploymentStrategy | Package | Policy | ProblemAnalysis | ProblemAnalysisTemplate | Session | OpsPack</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-ssm-document-name"><span class="term"><code class="code">Name</code></span></dt><dd>
+   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">ApplicationConfiguration | ApplicationConfigurationSchema | Automation | Automation.ChangeTemplate | ChangeCalendar | CloudFormation | Command | DeploymentStrategy | Package | Policy | ProblemAnalysis | ProblemAnalysisTemplate | Session</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-ssm-document-name"><span class="term"><code class="code">Name</code></span></dt><dd>
          <p>A name for the SSM document.</p>
          <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>You can't use the following strings as document name prefixes. These are reserved by AWS
     for use as document name prefixes:</p><div class="itemizedlist">
@@ -122,7 +122,7 @@ Properties:
    and can't be changed.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[a-zA-Z0-9_\-.]<span>{</span>1,128}$</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd></dl></div><h2 id="aws-resource-ssm-document-return-values">Return values</h2><h3 id="aws-resource-ssm-document-return-values-ref">Ref</h3><p>
          When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the Systems Manager document name, such as
-            <code class="code">MyNewSSMDocument</code>.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h2 id="aws-resource-ssm-document--examples">Examples</h2><h3 id="aws-resource-ssm-document--examples--Create_an_Automation_runbook_that_runs_commands_on_an_EC2_Linux_instance">Create an Automation runbook that runs commands on an EC2 Linux instance</h3><p>The following runbook runs the commands you specify on your target Amazon EC2 Linux
+            <code class="code">MyNewSSMDocument</code>.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h2 id="aws-resource-ssm-document--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-ssm-document--examples--Create_an_Automation_runbook_that_runs_commands_on_an_EC2_Linux_instance">Create an Automation runbook that runs commands on an EC2 Linux instance</a></li><li><a href="#aws-resource-ssm-document--examples--Create_a_document_that_runs_commands_on_an_EC2_Linux_instance">Create a document that runs commands on an EC2 Linux instance</a></li><li><a href="#aws-resource-ssm-document--examples--Join_a_managed_instance_to_a_directory_in_">Join a managed instance to a directory in AWS Directory Service</a></li><li><a href="#aws-resource-ssm-document--examples--Associate_an_SSM_document_with_an_instance">Associate an SSM document with an instance</a></li><li><a href="#aws-resource-ssm-document--examples--Create_a__document_for_Session_Manager_preferences">Create a Systems Manager document for Session Manager preferences</a></li><li><a href="#aws-resource-ssm-document--examples--Create_a__document_with_JSON_content">Create a Systems Manager document with JSON content</a></li><li><a href="#aws-resource-ssm-document--examples--Create_a__Distributor_package">Create a Systems Manager Distributor package</a></li><li><a href="#aws-resource-ssm-document--examples--Create_a__Change_Calendar_document">Create a Systems Manager Change Calendar document</a></li></ul></div><h3 id="aws-resource-ssm-document--examples--Create_an_Automation_runbook_that_runs_commands_on_an_EC2_Linux_instance">Create an Automation runbook that runs commands on an EC2 Linux instance</h3><p>The following runbook runs the commands you specify on your target Amazon EC2 Linux
           instance. You specify the commands parameter value when starting the runbook.</p><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ssm-document--examples--Create_an_Automation_runbook_that_runs_commands_on_an_EC2_Linux_instance--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">document: 
     Type: AWS::SSM::Document
     Properties:
@@ -407,19 +407,19 @@ Properties:
                "description":"Document to hold regional settings for Session Manager",
                "sessionType":"Standard_Stream",
                "inputs":<span>{</span>
-                  "s3BucketName":"<code class="replaceable">DOC-EXAMPLE-BUCKET</code>",
-                  "s3KeyPrefix":"<code class="replaceable">MyBucketPrefix</code>",
+                  "s3BucketName":"DOC-EXAMPLE-BUCKET",
+                  "s3KeyPrefix":"MyBucketPrefix",
                   "s3EncryptionEnabled":true,
-                  "cloudWatchLogGroupName":"<code class="replaceable">MyLogGroupName</code>",
+                  "cloudWatchLogGroupName":"MyLogGroupName",
                   "cloudWatchEncryptionEnabled":true,
                   "cloudWatchStreamingEnabled":false,
-                  "kmsKeyId":"<code class="replaceable">MyKMSKeyID</code>",
+                  "kmsKeyId":"331dba25-425c-446c-abf9-daf42EXAMPLE",
                   "runAsEnabled":false,
-                  "runAsDefaultUser":"<code class="replaceable">MyDefaultRunAsUser</code>",
+                  "runAsDefaultUser":"MyDefaultRunAsUser",
                   "idleSessionTimeout":"20",
                   "shellProfile":<span>{</span>
-                     "windows":"<code class="replaceable">example commands</code>",
-                     "linux":"<code class="replaceable">example commands</code>"
+                     "windows":"my-windowscommands",
+                     "linux":"my-linux-commands"
                   }
                }
             },
@@ -443,19 +443,19 @@ Properties:
         description: Document to hold regional settings for Session Manager
         sessionType: Standard_Stream
         inputs:
-          s3BucketName: '<code class="replaceable">DOC-EXAMPLE-BUCKET</code>'
-          s3KeyPrefix: '<code class="replaceable">MyBucketPrefix</code>'
+          s3BucketName: 'DOC-EXAMPLE-BUCKET'
+          s3KeyPrefix: 'MyBucketPrefix'
           s3EncryptionEnabled: true
-          cloudWatchLogGroupName: '<code class="replaceable">MyLogGroupName</code>'
+          cloudWatchLogGroupName: 'MyLogGroupName'
           cloudWatchEncryptionEnabled: true
           cloudWatchStreamingEnabled: false
-          kmsKeyId: '<code class="replaceable">MyKMSKeyID</code>'
+          kmsKeyId: '"331dba25-425c-446c-abf9-daf42EXAMPLE"'
           runAsEnabled: false
-          runAsDefaultUser: '<code class="replaceable">MyDefaultRunAsUser</code>'
+          runAsDefaultUser: 'MyDefaultRunAsUser'
           idleSessionTimeout: '20'
           shellProfile:
-            windows: <code class="replaceable">example commands</code>
-            linux: <code class="replaceable">example commands</code>
+            windows: my-windows-commands
+            linux: my-linux-commands
       DocumentFormat: YAML
       DocumentType: Session
 Outputs:
@@ -478,13 +478,13 @@ Properties:
         "ExamplePackageDocument": <span>{</span>
             "Type": "AWS::SSM::Document",
             "Properties": <span>{</span>
-                "Content": "<span>{</span>\"files\": <span>{</span>\"<code class="replaceable">NewPackage_WINDOWS.zip</code>\": <span>{</span>\"checksums\": <span>{</span>\"sha256\": \"<code class="replaceable">36aeb0ec2c706013cf8c68163459678f7f6daa9489cd3f91d52799331EXAMPLE</code>\"}}}, \"publisher\": \"<code class="replaceable">publisherName</code>\", \"schemaVersion\": \"2.0\", \"packages\": <span>{</span>\"_any\": <span>{</span>\"_any\": <span>{</span>\"x86_64\": <span>{</span>\"file\": \"<code class="replaceable">NewPackage_WINDOWS.zip</code>\"}}}}, \"version\": \"1.0\"}",
+                "Content": "<span>{</span>\"files\": <span>{</span>\"NewPackage_WINDOWS.zip\": <span>{</span>\"checksums\": <span>{</span>\"sha256\": \"36aeb0ec2c706013cf8c68163459678f7f6daa9489cd3f91d52799331EXAMPLE\"}}}, \"publisher\": \"MyPublisherName\", \"schemaVersion\": \"2.0\", \"packages\": <span>{</span>\"_any\": <span>{</span>\"_any\": <span>{</span>\"x86_64\": <span>{</span>\"file\": \"MyNewPackage_WINDOWS.zip\"}}}}, \"version\": \"1.0\"}",
                 "DocumentType": "Package",
                 "Attachments": [
                     <span>{</span>
                         "Key": "SourceUrl",
                         "Values": [
-                            "<code class="replaceable">s3://example-package-path/valid-package</code>"
+                            "s3://example-package-path/valid-package"
                         ]
                     }
                 ]
@@ -495,16 +495,16 @@ Properties:
   ExamplePackageDocument:
     Type: AWS::SSM::Document
     Properties:
-      Content: '<span>{</span>\"files\": <span>{</span>\"<code class="replaceable">NewPackage_WINDOWS.zip</code>\": <span>{</span>\"checksums\":
-        <span>{</span>\"sha256\": \"<code class="replaceable">36aeb0ec2c706013cf8c68163459678f7f6daa9489cd3f91d52799331EXAMPLE</code>\"}}},
-        \"publisher\": \"<code class="replaceable">publisherName</code>\", \"schemaVersion\":
-        \"2.0\", \"packages\": <span>{</span>\"_any\": <span>{</span>\"_any\": <span>{</span>\"x86_64\": <span>{</span>\"file\": \"<code class="replaceable">NewPackage_WINDOWS.zip</code>\"}}}},
+      Content: '<span>{</span>\"files\": <span>{</span>\"MyNewPackage_WINDOWS.zip\": <span>{</span>\"checksums\":
+        <span>{</span>\"sha256\": \"36aeb0ec2c706013cf8c68163459678f7f6daa9489cd3f91d52799331EXAMPLE\"}}},
+        \"publisher\": \"MyPublisherName\", \"schemaVersion\":
+        \"2.0\", \"packages\": <span>{</span>\"_any\": <span>{</span>\"_any\": <span>{</span>\"x86_64\": <span>{</span>\"file\": \"MyNewPackage_WINDOWS.zip\"}}}},
         \"version\": \"1.0\"}'
       DocumentType: Package
       Attachments:
       - Key: SourceUrl
         Values:
-        - "<code class="replaceable">s3://example-package-path/valid-package</code>"</code></pre></div><h3 id="aws-resource-ssm-document--examples--Create_a__Change_Calendar_document">Create a Systems Manager Change Calendar document</h3><p>The following example creates a new Systems Manager Change Calendar document.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ssm-document--examples--Create_a__Change_Calendar_document--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+        - "s3://example-package-path/valid-package"</code></pre></div><h3 id="aws-resource-ssm-document--examples--Create_a__Change_Calendar_document">Create a Systems Manager Change Calendar document</h3><p>The following example creates a new Systems Manager Change Calendar document.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ssm-document--examples--Create_a__Change_Calendar_document--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
    "Resources":<span>{</span>
       "ExampleChangeCalendarDocument":<span>{</span>
          "Type":"AWS::SSM::Document",

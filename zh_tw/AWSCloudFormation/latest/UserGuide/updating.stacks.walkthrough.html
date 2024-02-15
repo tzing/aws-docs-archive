@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>演練：更新堆疊 - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="updating.stacks.walkthrough" /><meta name="default_state" content="updating.stacks.walkthrough" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="description" content="您可以使用 AWS CloudFormation，逐步完成更新運作中堆疊的簡易程序。" /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="使用者指南" /><meta name="abstract" content="利用此使用者指南，透過 AWS CloudFormation 以可預期且重複的方式建立和管理 AWS 基礎設施部署。" /><meta name="guide-locale" content="zh_tw" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="使用者指南" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="使用者指南" /><meta id="panorama-serviceConsolePage" value="演練：更新堆疊" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>演練：更新堆疊 - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,資源佈建,資源組態,基礎設施管理,CloudFormer,CloudFormation 設計工具,CloudFormation stack (CloudFormation 堆疊),CloudFormation 堆疊集,CloudFormation 範本,變更集合" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>演練：更新堆疊 - AWS CloudFormation</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="updating.stacks.walkthrough" /><meta name="default_state" content="updating.stacks.walkthrough" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="description" content="您可以使用 AWS CloudFormation，逐步完成更新運作中堆疊的簡易程序。" /><meta name="deployment_region" content="IAD" /><meta name="product" content="AWS CloudFormation" /><meta name="guide" content="使用者指南" /><meta name="abstract" content="利用此使用者指南，透過 AWS CloudFormation 以可預期且重複的方式建立和管理 AWS 基礎設施部署。" /><meta name="guide-locale" content="zh_tw" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" hreflang="x-default" /><meta name="feedback-item" content="CloudFormation" /><meta name="this_doc_product" content="AWS CloudFormation" /><meta name="this_doc_guide" content="使用者指南" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'cloudformation'}"></script><meta id="panorama-serviceSubSection" value="使用者指南" /><meta id="panorama-serviceConsolePage" value="演練：更新堆疊" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>演練：更新堆疊 - AWS CloudFormation</title><meta name="rss" content="aws-cloudformation-release-notes.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=92" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html" /><meta name="keywords" content="CloudFormation,AWSCloudFormation,資源佈建,資源組態,基礎設施管理,CloudFormer,CloudFormation 堆疊,CloudFormation 範本,變更集合" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -36,7 +36,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文件</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">使用者指南</a></div><div id="page-toc-src"><a href="#updating.simple.application">簡易的應用程式</a><a href="#updating.create.initial.stack">建立初始堆疊</a><a href="#update.application">更新應用程式</a><a href="#update.walkthrough.changing.resource.properties">變更資源屬性</a><a href="#update.walkthrough.adding.properties">新增資源屬性</a><a href="#update.walkthrough.change.resources">變更堆疊的資源</a><a href="#update.walkthrough.impact">可用性與影響考量事項</a><a href="#update.walkthrough.related">相關資源</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="updating.stacks.walkthrough">演練：更新堆疊</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>透過 AWS CloudFormation，即可在現有堆疊中更新資源的屬性。更改的範圍可以從簡單的組態變更 (如更新 CloudWatch 警示上的警示閾值)，一直到更新 Amazon EC2 執行個體上執行的 Amazon Machine Image (AMI) 等較為複雜的變更項目。範本中有許多 AWS 資源皆可進行更新，而我們亦會持續新增更多資源的支援。</p><p>本節會逐步講解更新運作中堆疊的簡易程序，並說明如何透過範本來善用 AWS 基礎設施的組態版本控制系統，如同使用運作中軟體的版本控制一般。我們將逐步解說以下步驟：</p><div class="orderedlist">
+</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文件</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">使用者指南</a></div><div id="page-toc-src"><a href="#updating.simple.application">簡易的應用程式</a><a href="#updating.create.initial.stack">建立初始堆疊</a><a href="#update.application">更新應用程式</a><a href="#update.walkthrough.changing.resource.properties">變更資源屬性</a><a href="#update.walkthrough.adding.properties">新增資源屬性</a><a href="#update.walkthrough.change.resources">變更堆疊的資源</a><a href="#update.walkthrough.impact">可用性與影響考量事項</a><a href="#update.walkthrough.related">相關資源</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><awsui-alert class="awsdocs-page-banner awsui-util-mb-l"><p>本文為英文版的機器翻譯版本，如內容有任何歧義或不一致之處，概以英文版為準。</p></awsui-alert><h1 class="topictitle" id="updating.stacks.walkthrough">演練：更新堆疊</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>透過 AWS CloudFormation，即可在現有堆疊中更新資源的屬性。這些變更的範圍包括簡單的組態變更 (例如更新警示上的 CloudWatch 警示閾值) 到更複雜的變更 (例如更新 Amazon EC2 執行個體上執行的 Amazon Machine Image (AMI)。範本中有許多 AWS 資源皆可進行更新，而我們亦會持續新增更多資源的支援。</p><p>本節會逐步講解更新運作中堆疊的簡易程序，並說明如何透過範本來善用 AWS 基礎設施的組態版本控制系統，如同使用運作中軟體的版本控制一般。我們將逐步解說以下步驟：</p><div class="orderedlist">
      
      
      
@@ -46,7 +46,7 @@
   <ol><li>
       <p><a href="#updating.create.initial.stack">建立初始堆疊</a> – 使用基本的 Amazon Linux AMI，並透過 AWS CloudFormation 協助程式指令碼來安裝 Apache Web 伺服器與簡易的 PHP 應用程式，藉此建立堆疊。</p>
     </li><li>
-      <p><a href="#update.application">更新應用程式</a> – 更新應用程式中的任一檔案，並使用 CloudFormation 部署軟體。</p>
+      <p><a href="#update.application">更新應用程式</a>— 更新應用程序中的文件之一，並使用部署軟件 CloudFormation.</p>
     </li><li>
       <p> <a href="#update.walkthrough.instance.type">更新執行個體類型</a> – 變更基礎 Amazon EC2 執行個體的執行個體類型。</p>
     </li><li>
@@ -59,7 +59,7 @@
     <h2 id="updating.simple.application">簡易的應用程式</h2>
 
     <p>我們將開始建立堆疊，而本節其餘的部分皆可使用此堆疊。我們所提供的簡易範本能啟動 Apache Web 伺服器上託管的單一執行個體 PHP Web 應用程式，並在 Amazon Linux AMI 上執行該應用程式。</p>
-    <p>Amazon Linux AMI 會預設安裝 CloudFormation 協助程式指令碼，進而透過該指令碼來安裝 Apache Web 伺服器、PHP 與簡易的 PHP 應用程式。下列範本程式碼片段所顯示的中繼資料會說明要安裝的套件與檔案，此處將以來自 Amazon Linux AMI Yum 儲存庫的 Apache Web 伺服器與 PHP 基礎設施為例。而藉由出現在該程式碼片段中的 Services 區段，可確保系統正在執行 Apache Web 伺服器。在 Amazon EC2 執行個體定義的 Properties 區段中，UserData 屬性所包含的 CloudInit 指令碼會呼叫 cfn-init 以安裝套件與檔案。</p>
+    <p>Amazon Linux AMI 會預設安裝  CloudFormation  協助程式指令碼，進而透過該指令碼來安裝 Apache Web 伺服器、PHP 與簡易的 PHP 應用程式。下列範本程式碼片段所顯示的中繼資料會說明要安裝的套件與檔案，此處將以來自 Amazon Linux AMI Yum 儲存庫的 Apache Web 伺服器與 PHP 基礎設施為例。而藉由出現在該程式碼片段中的 Services 區段，可確保系統正在執行 Apache Web 伺服器。在 Amazon EC2 執行個體定義的「屬性」區段中， UserData 屬性包含呼叫 cfn-init 以安裝套件和 CloudInit 檔案的指令碼。</p>
     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
   "WebServerInstance": <span>{</span>
     "Type" : "AWS::EC2::Instance",
@@ -116,7 +116,7 @@
       ]]}}
     }
   },     </code></pre>
-    <p>應用程式本身會採用兩行字 "Hello, World" 作為範例，且範本會完整定義此範例。若是實際的應用程式，系統可能會將檔案存放在 Amazon S3、GitHub 或其他儲存庫上，並參考範本的內容。CloudFormation 能夠下載 RPM 或 RubyGems 等套件、參考個別檔案以及解壓縮 <code>.zip</code> 與 <code>.tar</code> 檔案，藉此在 Amazon EC2 執行個體上建立應用程式成品。</p>
+    <p>應用程式本身會採用兩行字 "Hello, World" 作為範例，且範本會完整定義此範例。對於真實世界的應用程式，檔案可以存放在 Amazon S3 或其他儲存庫中 GitHub，並從範本中參考。  CloudFormation 可以下載套件 (例如 RPM 或 RubyGems)，並參照個別檔案並擴展<code>.zip</code>和檔案，以在 Amazon EC2 執行個體上建立應用程式構<code>.tar</code>件。</p>
     <p>範本會啟用並設定 cfn-hup 常駐程式，以便偵聽 Amazon EC2 執行個體中繼資料內針對組態所定義的變更。透過 cfn-hup 協助程式，即可更新應用程式軟體 (如 Apache 或 PHP 的版本)，亦可從 AWS CloudFormation 更新 PHP 應用程式檔案本身。範本中相同的 Amazon EC2 資源會提供下列程式碼片段，藉此說明設定 cfn-hup 以呼叫 cfn-init 更新軟體的必要部分，進而因應系統所偵測到的任何中繼資料變更：</p>
     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
   "WebServerInstance": <span>{</span>
@@ -435,7 +435,7 @@
     }
   }
 }</code></pre>
-    <p>此處是以單一 Amazon EC2 執行個體為例，但您可以在較複雜的解決方案上使用相同機制；而這些解決方案會透過 Elastic Load Balancer 與 Amazon EC2 Auto Scaling 群組來管理應用程式伺服器集合。不過，使用 Auto Scaling 群組時需注意部分特殊考量。如需更多詳細資訊，請參閱 <a href="#updating.autoscaling">更新 Auto Scaling 群組</a>。</p>
+    <p>此處是以單一 Amazon EC2 執行個體為例，但您可以在較複雜的解決方案上使用相同機制；而這些解決方案會透過 Elastic Load Balancer 與 Amazon EC2 Auto Scaling 群組來管理應用程式伺服器集合。不過，使用 Auto Scaling 群組時需注意部分特殊考量。如需詳細資訊，請參閱 <a href="#updating.autoscaling">更新 Auto Scaling 群組</a>。</p>
    
     <h2 id="updating.create.initial.stack">建立初始堆疊</h2>
     
@@ -445,13 +445,13 @@
     <div class="procedure"><h6>從 AWS Management Console建立堆疊</h6><ol><li>
         <p>複製先前的範本，並在本機系統上將該範本儲存為文字檔案。請記下檔案位置，因為後續步驟仍需使用到該檔案。</p>
       </li><li>
-        <p>前往 <a href="https://console.aws.amazon.com/cloudformation" rel="noopener noreferrer" target="_blank"><span> https://console.aws.amazon.com/cloudformation</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>，登入 CloudFormation 主控台。</p>
+        <p>請在 <a href="https://console.aws.amazon.com/cloudformation" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/cloudformation</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> 登入 CloudFormation 主控台。</p>
       </li><li>
         <p>選擇 <b>Create new stack (建立新堆疊)</b>。</p>
       </li><li>
         <p>在 <b>Create New Stack (建立新堆疊)</b> 精靈的 <b>Select Template (選取範本)</b> 畫面上，將 <code class="userinput">UpdateTutorial</code> 輸入至 <b>Name (名稱)</b> 欄位。在相同的頁面上，選取 <b>Upload a template to Amazon S3</b> (將範本上傳到 Amazon S3)，並瀏覽至您在第一個步驟中下載的檔案，然後選擇 <b>Next</b> (下一步)。</p>
       </li><li>
-        <p>在 <b>Specify Parameters (指定參數)</b> 畫面的 <b>Instance Type (執行個體類型)</b> 方塊中，輸入 <code class="userinput">t1.micro</code>。然後選擇 <b>Next</b> (下一步)。</p>
+        <p>在 <b>Specify Parameters (指定參數)</b> 畫面的 <b>Instance Type (執行個體類型)</b> 方塊中，輸入 <code class="userinput">t1.micro</code>。然後選擇<b>下一步</b>。</p>
       </li><li>
         <p>在 <b>Options</b> (選項) 畫面上，選擇 <b>Next</b> (下一步)。</p>
       </li><li>
@@ -506,7 +506,7 @@
       </li></ol></div>
     <p>如果您是從 AWS Management Console更新堆疊，則會發現系統在 <b>Update Stack</b> (更新堆疊) 精靈的 <b>Parameters</b> (參數) 頁面上，已經預先填入要用來建立初始堆疊的參數。如果您是使用 <code class="code">aws cloudformation update-stack</code> 命令，輸入的值請務必與原先用來建立堆疊的參數相同。</p>
     <p>當堆疊的狀態變成 UPDATE_COMPLETE 時，即可再選擇 WebsiteURL 輸出值，藉此確認應用程式的變更已經生效。在預設情況下，系統每 15 分鐘會執行 cfn-hup 常駐程式一次；因此堆疊更新後，應用程式最多可能需要 15 分鐘才能完成變更。</p>
-    <p>前往 AWS CloudFormation 主控台，即可查看更新後的資源集。您可以在 <b>Events</b> (事件) 標籤上檢視堆疊事件。在此特定案例中，系統已經更新 Amazon EC2 執行個體 WebServerInstance 的中繼資料，致使 AWS CloudFormation 將一併重新評估其他資源 (<code class="code">WebServerSecurityGroup</code>)，進而確保沒有其他變更內容。系統並不會修改其他堆疊資源。唯有堆疊中的資源受到任何堆疊變更影響時，AWS CloudFormation 才會更新這些資源。這類變更可能是由系統直接進行 (例如更改屬性或中繼資料)，亦可能是因依存項目或資料流入 Ref、GetAtt 或其他內部範本函數而導致。</p>
+    <p>前往 AWS CloudFormation 主控台，即可查看更新後的資源集。您可以在 <b>Events</b> (事件) 標籤上檢視堆疊事件。在此特定情況下，Amazon EC2 執行個體的中繼資料 WebServerInstance 已更新，因AWS CloudFormation此也會重新評估其他資源 (<code class="code">WebServerSecurityGroup</code>) 以確保沒有其他變更。系統並不會修改其他堆疊資源。唯有堆疊中的資源受到任何堆疊變更影響時，AWS CloudFormation 才會更新這些資源。這些變更可以是直接的，例如屬性或中繼資料變更，也可能是由於相依性或資料流經 Ref  GetAtt、或其他內建範本函數所致。</p>
     <p>此處透過這項簡單的更新來說明程序；然而，您還可以針對部署至 Amazon EC2 執行個體的檔案和套件進行更加複雜的變更。例如，您可能會認為需要將 MySQL 與 MySQL 的 PHP 支援新增至執行個體。若要執行此作業，只需將其他套件、檔案與任何其他服務一併新增至組態，接著更新堆疊，即可部署變更。在下列範本程式碼片段中，變更內容會用紅色醒目提示：</p>
     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">    "WebServerInstance": <span>{</span>
       "Type" : "AWS::EC2::Instance",
@@ -543,13 +543,13 @@
            :
       }
     }</code></pre>
-    <p>您可以更新 CloudFormation 中繼資料，藉此將應用程式所使用的套件更新至新版本。在先前的範例中，每個套件的版本屬性均為空白，這表示 cfn-init 應該安裝最新版本的套件。</p>
+    <p>您可以更新中 CloudFormation 繼資料，以更新為應用程式所使用的套件的新版本。在先前的範例中，每個套件的版本屬性均為空白，這表示 cfn-init 應該安裝最新版本的套件。</p>
     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">     "packages" : <span>{</span>
        "yum" : <span>{</span>
          "httpd"             : [],
          "php"               : []
       }</code></pre>
-    <p>您可以選擇指定套件的版本字串；若您在後續的更新堆疊呼叫中更改該版本字串，則系統將部署新版本的套件。下方為使用 RubyGems 套件版本編號的範例。而支援版本控制的任何套件皆可擁有特定版本。</p>
+    <p>您可以選擇指定套件的版本字串；若您在後續的更新堆疊呼叫中更改該版本字串，則系統將部署新版本的套件。以下是使用 RubyGems 套件版本號碼的範例。而支援版本控制的任何套件皆可擁有特定版本。</p>
     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">  "packages" : <span>{</span>
     "rubygems" : <span>{</span>
       "mysql"           : [],
@@ -570,7 +570,7 @@
         </li><li class="listitem">
           <p>如果系統在不同時間執行 cfn-hup 變更，舊版本與新版本的軟體可能會同時運作。</p>
         </li></ul></div>
-      <p>請考慮強制輪流更新 Auto Scaling 群組中的執行個體，以避免上述問題。如需更多詳細資訊，請參閱 <a href="./aws-attribute-updatepolicy.html">UpdatePolicy 屬性</a>。</p>
+      <p>請考慮強制輪流更新 Auto Scaling 群組中的執行個體，以避免上述問題。如需詳細資訊，請參閱 <a href="./aws-attribute-updatepolicy.html">UpdatePolicy 屬性</a>。</p>
      
    
     <h2 id="update.walkthrough.changing.resource.properties">變更資源屬性</h2>
@@ -657,16 +657,16 @@
       "cn-north-1"       : <span>{</span>"HVM64" : "ami-0a4eaf6c4454eda75", "HVMG2" : "NOT_SUPPORTED"},
       "cn-northwest-1"   : <span>{</span>"HVM64" : "ami-6b6a7d09", "HVMG2" : "NOT_SUPPORTED"}
     }</code></pre>
-      <p>現在，讓我們使用先前一節所修改的範本來變更執行個體類型。InstanceType 屬於範本的輸入參數，所以我們不需要修改範本，只需在 Stack Update (更新堆疊) 精靈的 Specify Parameters (指定參數) 頁面上變更參數值即可。</p>
+      <p>現在，讓我們使用先前一節所修改的範本來變更執行個體類型。因為 InstanceType 是範本的輸入參數，所以我們不需要修改範本；我們可以在 [堆疊更新] 精靈的 [指定參數] 頁面上變更參數的值。</p>
       <div class="procedure"><h6>從 AWS Management Console更新堆疊</h6><ol><li>
           <p>登入 AWS CloudFormation 主控台，網址為：<a href="https://console.aws.amazon.com/cloudformation" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/cloudformation</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>
         </li><li>
-          <p>在 CloudFormation 儀表板上，選擇您先前建立的堆疊，然後選擇 <b>Update Stack (更新堆疊)</b>。</p>
+          <p>在 CloudFormation 儀表板上，選擇您先前建立的堆疊，然後選擇 [<b>更新堆疊</b>]。</p>
         </li><li>
           <p>在 <b>Update Stack</b> (更新堆疊) 精靈的 <b>Select Template</b> (選取範本) 畫面上，選取 <b>Use current template</b> (使用目前的範本)，然後選擇 <b>Next</b> (下一步)。</p>
           <p>Specify Details (指定詳細資訊) 頁面即會顯示，其中 <b>Specify Parameters</b> (指定參數) 區段會預先填入要用來建立初始堆疊的參數。</p>
         </li><li>
-          <p>將 <b>InstanceType</b> 文字方塊的 <code class="code">t1.micro</code> 值變更為 <code class="code">m1.small</code>。然後選擇 <b>Next</b> (下一步)。</p>
+          <p>將<b>InstanceType</b>文字方塊的值從變更<code class="code">t1.micro</code>為<code class="code">m1.small</code>。然後選擇<b>下一步</b>。</p>
         </li><li>
           <p>在 <b>Options</b> (選項) 畫面上，選擇 <b>Next</b> (下一步)。</p>
         </li><li>
@@ -692,19 +692,19 @@
         </li><li>
           <p>從 AWS Management Console (如 <a href="#update.application">更新應用程式</a> 所述) 或使用 AWS 命令 <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/update-stack.html"><code class="code">aws cloudformation update-stack</code></a> 來更新堆疊。</p>
         </li></ol></div>
-      <p>更新堆疊時，CloudFormation 即會偵測到 AMI ID 有所變更，然後啟動堆疊更新作業 (與上述更新的觸發方式相同)。</p>
+      <p>當您更新堆棧時， CloudFormation 檢測 AMI ID 是否已更改，然後以與我們啟動上述內容相同的方式觸發堆棧更新。</p>
      
      
       <h3 id="update.walkthrough.launch.config">更新 Auto Scaling 群組的 Amazon EC2 啟動組態</h3>
 
       <p>如果您是使用 Auto Scaling 群組，而非 Amazon EC2 執行個體，則更新執行中的執行個體的程序會稍有不同。您可以透過 Auto Scaling 資源，將 Amazon EC2 執行個體的組態 (如執行個體類型或 AMI ID) 封裝在 Auto Scaling 啟動組態中。您可以採用先前各節所示的 Amazon EC2 執行個體資源變更方式，以便變更啟動組態。不過，變更啟動組態並不會影響 Auto Scaling 群組中任何正在運作的 Amazon EC2 執行個體；而更新的啟動組態僅適用於更新後所建立的新執行個體。</p>
-      <p>透過更新屬性，即可將變更傳播至 Auto Scaling 群組中所有執行個體的啟動組態。如需更多詳細資訊，請參閱 <a href="./aws-attribute-updatepolicy.html">UpdatePolicy 屬性</a>。</p>
+      <p>透過更新屬性，即可將變更傳播至 Auto Scaling 群組中所有執行個體的啟動組態。如需詳細資訊，請參閱 <a href="./aws-attribute-updatepolicy.html">UpdatePolicy 屬性</a>。</p>
      
    
     <h2 id="update.walkthrough.adding.properties">新增資源屬性</h2>
     
 
-    <p>到目前為止，我們已經了解範本中資源現有屬性的變更方式。除此之外，您還可以在範本中新增原本沒有指定的屬性。為了說明這項操作，我們會將 Amazon EC2 金鑰對新增至現有的 EC2 執行個體，接著在 Amazon EC2 安全群組中開啟連接埠 22，即可使用安全殼層 (SSH) 來存取該執行個體。</p>
+    <p>到目前為止，我們已經了解範本中資源現有屬性的變更方式。除此之外，您還可以在範本中新增原本沒有指定的屬性。為了說明這項操作，我們會將 Amazon EC2 金鑰對新增至現有的 EC2 執行個體，接著在 Amazon EC2 安全群組中開啟連接埠 22，即可使用 Secure Shell (SSH) 來存取該執行個體。</p>
      
       <h3 id="update.walkthrough.security.group">將金鑰對新增至執行個體</h3>
 
@@ -729,7 +729,7 @@
   },
 </code></pre>
         </li><li>
-          <p>將 KeyName 屬性新增至 Amazon EC2 執行個體。</p>
+          <p>將 KeyName 屬性新增至亞馬遜 EC2 執行個體。</p>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">          "WebServerInstance": <span>{</span>
           "Type" : "AWS::EC2::Instance",
           :
@@ -797,7 +797,7 @@
         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
 <code class="replaceable">"LaunchConfig"</code>: <span>{</span>
   "Type" : <code class="replaceable">"AWS::AutoScaling::LaunchConfiguration"</code>,</code></pre>
-        <p>為了讓範本清晰好讀，我們會將資源名稱從 <em>WebServerInstance</em> 變更為 <em>LaunchConfig</em>；而您必須更新 cfn-init 與 cfn-hup 所參考的資源名稱 (僅需搜尋 WebServerInstance 並用 LaunchConfig 取而代之即可，但 cfn-signal 除外)。如果是 cfn-signal，您便必須向 Auto Scaling 群組 (WebServerGroup) 傳送訊號，而非發送至執行個體；如下列程式碼片段所示：</p>
+        <p>為了清楚模板，我們將資源的名稱從<em>WebServerInstance</em>更改為 <em>LaunchConfig</em>，因此您需要更新 cfn-init 和 cfn-hup 引用的資源名稱（只需搜索 WebServerInstance 並替換它 LaunchConfig，除了 cfn-signal）。對於 cfn-signal，您需要向 Auto Scaling 組（WebServerGroup）而不是實例發出信號，如以下代碼片段所示：</p>
         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="複製"><awsui-icon name="copy"></awsui-icon></div></div><code class="text ">             "# Signal the status from cfn-init\n",
              "/opt/aws/bin/cfn-signal -e $? ",
              "         --stack ", <span>{</span> "Ref" : "AWS::StackName" },
@@ -1188,19 +1188,19 @@
    
     <h2 id="update.walkthrough.impact">可用性與影響考量事項</h2>
 
-    <p>不同屬性會對堆疊中的資源造成不同影響。您可以善用 CloudFormation 來更新任何屬性；但進行任何變更之前，應考量下列問題：</p>
+    <p>不同屬性會對堆疊中的資源造成不同影響。您可以善用  CloudFormation  來更新任何屬性；但進行任何變更之前，應考量下列問題：</p>
     <div class="orderedlist">
        
        
     <ol><li>
         <p>更新作業對資源本身有何影響？ 舉例來說，更新警示閾值會導致警示在更新期間處於非作用中狀態。正如我們所見，您需要停用並重新啟動執行個體，才能變更執行個體類型。AWS CloudFormation 會透過基礎資源的 Update (更新) 或 Modify (修改) 動作來更改資源。如需了解更新造成的影響，請查閱特定資源的文件。</p>
       </li><li>
-        <p>更改內容屬於可變或不可變項目？ 基礎服務並不支援部分資源屬性變更操作，例如：更改 Amazon EC2 執行個體上的 AMI。如果更改內容屬於可變項目，CloudFormation 將針對基礎資源使用 Update (更新) 或 Modify (修改) 類型的 API。如果屬性更改屬於不可變項目，則 CloudFormation 會使用更新後的屬性來建立新資源，並將這些資源連結至堆疊，接著刪除舊資源。雖然 CloudFormation 會嘗試縮短堆疊資源的停機時間，但替換資源屬於多步驟程序，需要一些時間才能完成。重新設定堆疊期間，應用程式將無法完全正常運作。例如，應用程式可能無法處理請求或存取資料庫；</p>
+        <p>更改內容屬於可變或不可變項目？ 基礎服務並不支援部分資源屬性變更操作，例如：更改 Amazon EC2 執行個體上的 AMI。在可變更的情況下， CloudFormation 將針對基礎資源使用更新或修改類型 API。對於不可變的屬性更改， CloudFormation 將創建具有更新屬性的新資源，然後在刪除舊資源之前將它們鏈接到堆棧。雖然 CloudFormation 試圖減少堆疊資源的停機時間，但取代資源是一個多步驟的程序，而且需要一些時間。重新設定堆疊期間，應用程式將無法完全正常運作。例如，應用程式可能無法處理請求或存取資料庫；</p>
       </li></ol></div>
    
     <h2 id="update.walkthrough.related">相關資源</h2>
 
-    <p>如需使用 CloudFormation 啟動應用程式及整合其他組態與部署服務 (如 Puppet 和 Opscode Chef) 的詳細資訊，請參閱下列白皮書：</p>
+    <p>如需有關使用啟動應用程式 CloudFormation 以及與其他組態和部署服務 (例如 Puppet 和 Opscode Chef) 整合的詳細資訊，請參閱下列白皮書：</p>
     <div class="itemizedlist">
        
        
@@ -1212,5 +1212,5 @@
       </li><li class="listitem">
         <p><a href="https://s3.amazonaws.com/cloudformation-examples/IntegratingAWSCloudFormationWithPuppet.pdf" rel="noopener noreferrer" target="_blank"><span>整合 AWS CloudFormation 與 Puppet</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a></p>
       </li></ul></div>
-    <p>本節中所使用的範本為 "Hello World" PHP 應用程式。範本程式庫亦提供 Amazon ElastiCache 範例範本，說明如何善用 cfn-hup 與 cfn-init 來整合 PHP 應用程式與 ElasticCache，藉此回應 Amazon ElastiCache 快取叢集組態的變更；您可以透過 Update Stack (更新堆疊) 精靈執行所有操作。</p>
+    <p>本節中所使用的範本為 "Hello World" PHP 應用程式。範本程式庫也有一個 Amazon  ElastiCache  範例範本，顯示如何整合 PHP 應用程式，並 ElasticCache 使用 cfn-hup 和 cfn-init 來回應 Amazon  ElastiCache  快取叢集組態中的變更，所有這些變更都可由更新堆疊執行。</p>
   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>您的瀏覽器已停用或無法使用 Javascript。</strong></p><p>您必須啟用 Javascript，才能使用 AWS 文件。請參閱您的瀏覽器說明頁以取得說明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文件慣用形式</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./gettingstarted.templatebasics.html">了解範本的基本知識</div><div id="next" class="next-link" accesskey="n" href="./security.html">安全性</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此頁面是否有幫助？ - 是</div><div class="content"><p>感謝您，讓我們知道我們做得很好！</p><p>若您有空，歡迎您告知我們值得讚許的地方，這樣才能保持良好服務。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="意見回饋" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此頁面是否有幫助？ - 否</div><div class="content"><p>感謝讓我們知道此頁面仍須改善。很抱歉，讓您失望。</p><p>若您有空，歡迎您提供改善文件的方式。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="意見回饋" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/zh_tw/AWSCloudFormation/latest/UserGuide/updating.stacks.walkthrough.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

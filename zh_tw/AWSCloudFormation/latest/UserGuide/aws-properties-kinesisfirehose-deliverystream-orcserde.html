@@ -25,7 +25,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Amazon Kinesis Data Firehose resource type reference",
+        "name" : "Amazon Data Firehose resource type reference",
         "item" : "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_KinesisFirehose.html"
       },
       {
@@ -70,9 +70,9 @@
 </code></pre></div><h2 id="aws-properties-kinesisfirehose-deliverystream-orcserde-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-kinesisfirehose-deliverystream-orcserde-blocksizebytes"><span class="term"><code class="code">BlockSizeBytes</code></span></dt><dd>
          <p>The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to
          copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the
-         minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.</p>
+         minimum is 64 MiB. Firehose uses this value for padding calculations.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Minimum</em>: <code class="code">67108864</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-orcserde-bloomfiltercolumns"><span class="term"><code class="code">BloomFilterColumns</code></span></dt><dd>
-         <p>The column names for which you want Kinesis Data Firehose to create bloom filters. The
+         <p>The column names for which you want Firehose to create bloom filters. The
          default is <code class="code">null</code>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kinesisfirehose-deliverystream-orcserde-bloomfilterfalsepositiveprobability"><span class="term"><code class="code">BloomFilterFalsePositiveProbability</code></span></dt><dd>
          <p>The Bloom filter false positive probability (FPP). The lower the FPP, the bigger the

@@ -77,14 +77,15 @@ Properties:
                 accessing the data uses a UNIX user as the service account.</p>
             </li><li class="listitem">
                <p>
-                  <code class="code">NTFS</code> if the file system is managed by a Windows
+                  <code class="code">NTFS</code> if the file system is managed by a Microsoft Windows
                 administrator, the majority of users are SMB clients, and an application
-                accessing the data uses a Windows user as the service account.</p>
+                accessing the data uses a Microsoft Windows user as the service account.</p>
             </li><li class="listitem">
                <p>
-                  <code class="code">MIXED</code> if the file system is managed by both UNIX
-                and Windows administrators and users consist of both NFS and SMB clients.</p>
+                  <code class="code">MIXED</code> This is an advanced setting. For more information, see 
+                <a href="fsx/latest/ONTAPGuide/volume-security-style.html" rel="noopener noreferrer" target="_blank">Volume security style</a> in the Amazon FSx for NetApp ONTAP User Guide.</p>
             </li></ul></div>
+         <p></p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">UNIX | NTFS | MIXED</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-fsx-storagevirtualmachine-svmadminpassword"><span class="term"><code class="code">SvmAdminPassword</code></span></dt><dd>
         
         <p>Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. 
@@ -93,10 +94,8 @@ Properties:
             <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-resources-ontap-apps.html#vsadmin-ontap-cli">
                 Managing SVMs using the NetApp ONTAP CLI</a> in the <em>FSx for ONTAP User Guide</em>.</p>
     <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-storagevirtualmachine-tags"><span class="term"><code class="code">Tags</code></span></dt><dd>
-        
-        <p>An array of key-value pairs to apply to this resource.</p>
-        <p>For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html">Tag</a>.</p>
-    <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-fsx-storagevirtualmachine-tag.html">Tag</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-fsx-storagevirtualmachine-return-values">Return values</h2><h3 id="aws-resource-fsx-storagevirtualmachine-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the resource ID, such as <code class="code">svm-01234567890123456</code>. 
+         <p>A list of <code class="code">Tag</code> values, with a maximum of 50 elements.</p>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-fsx-storagevirtualmachine-tag.html">Tag</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-fsx-storagevirtualmachine-return-values">Return values</h2><h3 id="aws-resource-fsx-storagevirtualmachine-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the resource ID, such as <code class="code">svm-01234567890123456</code>. 
             For example:</p><p><code class="code"><span>{</span>"Ref": "svm_logical_id"}</code> returns </p><p><code class="code">svm-01234567890123456</code></p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h3 id="aws-resource-fsx-storagevirtualmachine-return-values-fn--getatt">Fn::GetAtt</h3><p>The <code class="code">Fn::GetAtt</code> intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.</p>
 <p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-fsx-storagevirtualmachine-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="ResourceARN-fn::getatt"><span class="term"><code class="code">ResourceARN</code></span></dt><dd>
         <p>Returns the storage virtual machine's Amazon Resource Name (ARN).</p>

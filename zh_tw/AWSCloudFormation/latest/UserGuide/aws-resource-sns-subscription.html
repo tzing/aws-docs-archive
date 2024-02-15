@@ -137,24 +137,24 @@ Properties:
                <code class="code">NULL</code>.</p>
          </li></ul></div>
    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sns-subscription-replaypolicy"><span class="term"><code class="code">ReplayPolicy</code></span></dt><dd><p>Property description not available.</p><p><em>Required</em>: No</p><p><em>Type</em>: Json</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sns-subscription-subscriptionrolearn"><span class="term"><code class="code">SubscriptionRoleArn</code></span></dt><dd>
-      <p>This property applies only to Amazon Kinesis Data Firehose delivery stream subscriptions.
+      <p>This property applies only to Amazon Data Firehose delivery stream subscriptions.
          Specify the ARN of the IAM role that has the following:</p>
       <div class="itemizedlist">
           
           
       <ul class="itemizedlist"><li class="listitem">
-            <p>Permission to write to the Amazon Kinesis Data Firehose delivery stream</p>
+            <p>Permission to write to the Amazon Data Firehose delivery stream</p>
          </li><li class="listitem">
             <p>Amazon SNS listed as a trusted entity</p>
          </li></ul></div>
-      <p>Specifying a valid ARN for this attribute is required for Kinesis Data Firehose delivery
-         stream subscriptions. For more information, see <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html">Fanout to Amazon Kinesis Data Firehose
+      <p>Specifying a valid ARN for this attribute is required for Firehose delivery
+         stream subscriptions. For more information, see <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html">Fanout to Amazon Data Firehose
             delivery streams</a> in the <em>Amazon SNS Developer
          Guide.</em></p>
    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-sns-subscription-topicarn"><span class="term"><code class="code">TopicArn</code></span></dt><dd>
       <p>The ARN of the topic to subscribe to.</p>
    <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd></dl></div><h2 id="aws-resource-sns-subscription-return-values">Return values</h2><h3 id="aws-resource-sns-subscription-return-values-fn--getatt">Fn::GetAtt</h3><p>The <code class="code">Fn::GetAtt</code> intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.</p>
-<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h2 id="aws-resource-sns-subscription--examples">Examples</h2><p></p><h3 id="aws-resource-sns-subscription--examples--Create_a_subscription_with_mandatory_attributes">Create a subscription with mandatory attributes</h3><p>The following example creates a subscription with only an endpoint, protocol, and
+<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h2 id="aws-resource-sns-subscription--examples">Examples</h2><p></p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-sns-subscription--examples--Create_a_subscription_with_mandatory_attributes">Create a subscription with mandatory attributes</a></li><li><a href="#aws-resource-sns-subscription--examples--Create_a_subscription_with_optional_attributes">Create a subscription with optional attributes</a></li></ul></div><h3 id="aws-resource-sns-subscription--examples--Create_a_subscription_with_mandatory_attributes">Create a subscription with mandatory attributes</h3><p>The following example creates a subscription with only an endpoint, protocol, and
                topic ARN.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-sns-subscription--examples--Create_a_subscription_with_mandatory_attributes--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"MySubscription" : <span>{</span>
   "Type" : "AWS::SNS::Subscription",
   "Properties" : <span>{</span>

@@ -56,14 +56,14 @@
          the account also has an account-level data protection policy, then the two policies are cumulative. Any sensitive term
          specified in either policy is masked.</p><p><b>Subscription filter policy</b></p><p>A subscription filter policy sets up a real-time feed of log events from CloudWatch Logs to other AWS services.
          Account-level subscription filter policies apply to both existing log groups and log groups that are created later in 
-         this account. Supported destinations are Kinesis Data Streams, Kinesis Data Firehose, and 
+         this account. Supported destinations are Kinesis Data Streams, Firehose, and 
          Lambda. When log events are sent to the receiving service, they are Base64 encoded and 
          compressed with the GZIP format.</p><p>The following destinations are supported for subscription filters:</p><div class="itemizedlist">
           
           
           
-         <ul class="itemizedlist"><li class="listitem"><p>An Kinesis Data Streams data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>An Kinesis Data Firehose data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A Lambda function in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A logical destination in a different account created with <a href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html">PutDestination</a>, for cross-account
-            delivery. Kinesis Data Streams and Kinesis Data Firehose are supported as logical destinations.</p></li></ul></div><p>Each account can have one account-level subscription filter policy. 
+         <ul class="itemizedlist"><li class="listitem"><p>An Kinesis Data Streams data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>An Firehose data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A Lambda function in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A logical destination in a different account created with <a href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html">PutDestination</a>, for cross-account
+            delivery. Kinesis Data Streams and Firehose are supported as logical destinations.</p></li></ul></div><p>Each account can have one account-level subscription filter policy. 
          If you are updating an existing filter, you must specify the correct name in <code class="code">PolicyName</code>.
          To perform a <code class="code">PutAccountPolicy</code> subscription filter operation for any destination except a Lambda 
          function, you must also have the <code class="code">iam:PassRole</code> permission.</p><h2 id="aws-resource-logs-accountpolicy-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-resource-logs-accountpolicy-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
@@ -98,7 +98,7 @@ Properties:
                sensitive data terms. This <code class="code">Audit</code> action must contain a <code class="code">FindingsDestination</code>
                object. You can optionally use that <code class="code">FindingsDestination</code> object to list one or more 
                destinations to send audit findings to. If you specify destinations such as log groups, 
-               Kinesis Data Firehose streams, and S3 buckets, they must already exist.</p>
+               Firehose streams, and S3 buckets, they must already exist.</p>
          </li><li class="listitem"><p>The second block must include both a <code class="code">DataIdentifer</code> array and an
             <code class="code">Operation</code> property with an <code class="code">Deidentify</code> action. The
             <code class="code">DataIdentifer</code> array must exactly match the <code class="code">DataIdentifer</code> array
@@ -132,8 +132,8 @@ Properties:
                 
                 
                 
-            <ul class="itemizedlist"><li class="listitem"><p>An Kinesis Data Streams data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>An Kinesis Data Firehose data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A Lambda function in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A logical destination in a different account created with <a href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html">PutDestination</a>, for cross-account
-                  delivery. Kinesis Data Streams and Kinesis Data Firehose are supported as logical destinations.</p></li></ul></div></li><li class="listitem"><p><b>RoleArn</b> The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log
+            <ul class="itemizedlist"><li class="listitem"><p>An Kinesis Data Streams data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>An Firehose data stream in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A Lambda function in the same account as the subscription policy, for same-account delivery.</p></li><li class="listitem"><p>A logical destination in a different account created with <a href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestination.html">PutDestination</a>, for cross-account
+                  delivery. Kinesis Data Streams and Firehose are supported as logical destinations.</p></li></ul></div></li><li class="listitem"><p><b>RoleArn</b> The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log
             events to the destination stream. You don't need to provide the ARN when you are working with
             a logical destination for cross-account delivery.</p></li><li class="listitem"><p><b>FilterPattern</b> A filter pattern for subscribing to a 
             filtered stream of log events.</p></li><li class="listitem"><p><b>Distribution</b>The method used to distribute log data to the destination. 
@@ -162,7 +162,7 @@ Properties:
 <p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-logs-accountpolicy-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AccountId-fn::getatt"><span class="term"><code class="code">AccountId</code></span></dt><dd>
       <p>The account ID of the account where this policy was created. For example, 
          <code class="code">123456789012</code>.</p>
-   </dd></dl></div><h2 id="aws-resource-logs-accountpolicy--examples">Examples</h2><p></p><h3 id="aws-resource-logs-accountpolicy--examples--Create_an_account-level_data_protection_policy">Create an account-level data protection policy</h3><p>The following example creates an account-level data protection policy that finds and masks email addresses in log events.
+   </dd></dl></div><h2 id="aws-resource-logs-accountpolicy--examples">Examples</h2><p></p><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-logs-accountpolicy--examples--Create_an_account-level_data_protection_policy">Create an account-level data protection policy</a></li><li><a href="#aws-resource-logs-accountpolicy--examples--Create_an_account-level_subscription_filter_policy">Create an account-level subscription filter policy</a></li></ul></div><h3 id="aws-resource-logs-accountpolicy--examples--Create_an_account-level_data_protection_policy">Create an account-level data protection policy</h3><p>The following example creates an account-level data protection policy that finds and masks email addresses in log events.
                It also sends audit findings to the <code class="code">EXISTING_LOG_GROUP_NAME</code> log group in CloudWatch Logs.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-logs-accountpolicy--examples--Create_an_account-level_data_protection_policy--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
     "Resources": <span>{</span>
         "AccountPolicy": <span>{</span>

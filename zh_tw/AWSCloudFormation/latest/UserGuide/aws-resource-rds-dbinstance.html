@@ -484,13 +484,12 @@ Properties:
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-rds-dbinstance-dbclusteridentifier"><span class="term"><code class="code">DBClusterIdentifier</code></span></dt><dd>
          <p>The identifier of the DB cluster that the instance will belong to.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-rds-dbinstance-dbclustersnapshotidentifier"><span class="term"><code class="code">DBClusterSnapshotIdentifier</code></span></dt><dd>
-         <p>The identifier for the RDS for MySQL Multi-AZ DB cluster snapshot to restore from.</p>
+         <p>The identifier for the Multi-AZ DB cluster snapshot to restore from.</p>
          <p>For more information on Multi-AZ DB clusters, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html"> Multi-AZ DB
                 cluster deployments</a> in the <em>Amazon RDS User
             Guide</em>.</p>
          <p>Constraints:</p>
          <div class="itemizedlist">
-             
              
              
              
@@ -507,8 +506,6 @@ Properties:
                     must be the ARN of the shared snapshot.</p>
             </li><li class="listitem">
                <p>Can't be the identifier of an Aurora DB cluster snapshot.</p>
-            </li><li class="listitem">
-               <p>Can't be the identifier of an RDS for PostgreSQL Multi-AZ DB cluster snapshot.</p>
             </li></ul></div>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-rds-dbinstance-dbinstanceclass"><span class="term"><code class="code">DBInstanceClass</code></span></dt><dd>
         <p>The compute and memory capacity of the DB instance, for example,
@@ -828,30 +825,30 @@ Properties:
          <p>For more information, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/kerberos-authentication.html">
            Kerberos Authentication</a> in the <em>Amazon RDS User Guide</em>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-rds-dbinstance-domainauthsecretarn"><span class="term"><code class="code">DomainAuthSecretArn</code></span></dt><dd>
-         <p>The ARN for the Secrets Manager secret with the credentials for the user joining the domain.</p>
-         <p>Example: <code class="code">arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456</code>
-         </p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-rds-dbinstance-domaindnsips"><span class="term"><code class="code">DomainDnsIps</code></span></dt><dd>
-         <p>The IPv4 DNS IP addresses of your primary and secondary Active Directory domain controllers.</p>
-         <p>Constraints:</p>
-         <div class="itemizedlist">
+        <p>The ARN for the Secrets Manager secret with the credentials for the user joining the domain.</p>
+        <p>Example: <code class="code">arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456</code>
+        </p>
+    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-rds-dbinstance-domaindnsips"><span class="term"><code class="code">DomainDnsIps</code></span></dt><dd>
+        <p>The IPv4 DNS IP addresses of your primary and secondary Active Directory domain controllers.</p>
+        <p>Constraints:</p>
+        <div class="itemizedlist">
              
-         <ul class="itemizedlist"><li class="listitem">
-               <p>Two IP addresses must be provided.  If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list.</p>
+        <ul class="itemizedlist"><li class="listitem">
+                <p>Two IP addresses must be provided.  If there isn't a secondary domain controller, use the IP address of the primary domain controller for both entries in the list.</p>
             </li></ul></div>
-         <p>Example: <code class="code">123.124.125.126,234.235.236.237</code>
-         </p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-rds-dbinstance-domainfqdn"><span class="term"><code class="code">DomainFqdn</code></span></dt><dd>
-         <p>The fully qualified domain name (FQDN) of an Active Directory domain.</p>
-         <p>Constraints:</p>
-         <div class="itemizedlist">
+        <p>Example: <code class="code">123.124.125.126,234.235.236.237</code>
+        </p>
+    <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-rds-dbinstance-domainfqdn"><span class="term"><code class="code">DomainFqdn</code></span></dt><dd>
+        <p>The fully qualified domain name (FQDN) of an Active Directory domain.</p>
+        <p>Constraints:</p>
+        <div class="itemizedlist">
              
-         <ul class="itemizedlist"><li class="listitem">
-               <p>Can't be longer than 64 characters.</p>
+        <ul class="itemizedlist"><li class="listitem">
+                <p>Can't be longer than 64 characters.</p>
             </li></ul></div>
-         <p>Example: <code class="code">mymanagedADtest.mymanagedAD.mydomain</code>
-         </p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-rds-dbinstance-domainiamrolename"><span class="term"><code class="code">DomainIAMRoleName</code></span></dt><dd>
+        <p>Example: <code class="code">mymanagedADtest.mymanagedAD.mydomain</code>
+        </p>
+    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-rds-dbinstance-domainiamrolename"><span class="term"><code class="code">DomainIAMRoleName</code></span></dt><dd>
          <p>The name of the IAM role to use when making API calls to the Directory Service.</p>
          <p>This setting doesn't apply to the following DB instances:</p>
          <div class="itemizedlist">
@@ -863,19 +860,19 @@ Properties:
                <p>RDS Custom</p>
             </li></ul></div>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-rds-dbinstance-domainou"><span class="term"><code class="code">DomainOu</code></span></dt><dd>
-         <p>The Active Directory organizational unit for your DB instance to join.</p>
-         <p>Constraints:</p>
-         <div class="itemizedlist">
+        <p>The Active Directory organizational unit for your DB instance to join.</p>
+        <p>Constraints:</p>
+        <div class="itemizedlist">
              
              
-         <ul class="itemizedlist"><li class="listitem">
-               <p>Must be in the distinguished name format.</p>
+        <ul class="itemizedlist"><li class="listitem">
+                <p>Must be in the distinguished name format.</p>
             </li><li class="listitem">
-               <p>Can't be longer than 64 characters.</p>
+                <p>Can't be longer than 64 characters.</p>
             </li></ul></div>
-         <p>Example: <code class="code">OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain</code>
-         </p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-rds-dbinstance-enablecloudwatchlogsexports"><span class="term"><code class="code">EnableCloudwatchLogsExports</code></span></dt><dd>
+        <p>Example: <code class="code">OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain</code>
+        </p>
+    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt">Some interruptions</a></p></dd><dt id="cfn-rds-dbinstance-enablecloudwatchlogsexports"><span class="term"><code class="code">EnableCloudwatchLogsExports</code></span></dt><dd>
         <p>The list of log types that need to be enabled for exporting to CloudWatch Logs. The values
             in the list depend on the DB engine being used. For more information, see 
             <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch">Publishing Database Logs to Amazon CloudWatch Logs </a> in the <em>Amazon Relational Database
@@ -1706,7 +1703,7 @@ Properties:
                 <code class="code">3260</code>, <code class="code">3343</code>, <code class="code">3389</code>, <code class="code">47001</code>, or
                 <code class="code">49152-49156</code>.</p>
             </li></ul></div>
-      </dd><dt id="SecretArn-fn::getatt"><span class="term"><code class="code">SecretArn</code></span></dt><dd><p>Property description not available.</p></dd><dt id="ValidTill-fn::getatt"><span class="term"><code class="code">ValidTill</code></span></dt><dd><p>Property description not available.</p></dd></dl></div><h2 id="aws-resource-rds-dbinstance--examples">Examples</h2><h3 id="aws-resource-rds-dbinstance--examples--Creating_a_DB_instance_with_Enhanced_Monitoring_enabled">Creating a DB instance with Enhanced Monitoring enabled</h3><p>The following example creates an Amazon RDS MySQL DB instance with Enhanced
+      </dd><dt id="SecretArn-fn::getatt"><span class="term"><code class="code">SecretArn</code></span></dt><dd><p>Property description not available.</p></dd><dt id="ValidTill-fn::getatt"><span class="term"><code class="code">ValidTill</code></span></dt><dd><p>Property description not available.</p></dd></dl></div><h2 id="aws-resource-rds-dbinstance--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-rds-dbinstance--examples--Creating_a_DB_instance_with_Enhanced_Monitoring_enabled">Creating a DB instance with Enhanced Monitoring enabled</a></li><li><a href="#aws-resource-rds-dbinstance--examples--Creating_a_cross-region_encrypted_read_replica">Creating a cross-region encrypted read replica</a></li><li><a href="#aws-resource-rds-dbinstance--examples--Setting_a__region_for_the_backup_replication_of_a_DB_instance">Setting a AWS region for the backup replication of a DB instance</a></li><li><a href="#aws-resource-rds-dbinstance--examples--Creating_an_Amazon_RDS_Custom_DB_instance">Creating an Amazon RDS Custom DB instance</a></li><li><a href="#aws-resource-rds-dbinstance--examples--Create_a_Secrets_Manager_secret_for_a_master_password">Create a Secrets Manager secret for a master password</a></li><li><a href="#aws-resource-rds-dbinstance--examples--Creating_a_DB_instance_with_self-managed_Active_Directory_domain">Creating a DB instance with self-managed Active Directory domain</a></li></ul></div><h3 id="aws-resource-rds-dbinstance--examples--Creating_a_DB_instance_with_Enhanced_Monitoring_enabled">Creating a DB instance with Enhanced Monitoring enabled</h3><p>The following example creates an Amazon RDS MySQL DB instance with Enhanced
                     Monitoring enabled. The IAM role for Enhanced Monitoring specified in
                         <code class="code">MonitoringRoleArn</code> must exist before you run this example. For
                     more information, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html"> Enhanced
