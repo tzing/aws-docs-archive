@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Casos de uso - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_create_model_use_cases" /><meta name="default_state" content="r_create_model_use_cases" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="description" content="Información sobre los distintos casos de CREATE MODEL." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="Guía para desarrolladores de bases de datos" /><meta name="abstract" content="Cree y administre un almacenamiento de datos con Amazon Redshift, un servicio de almacenamiento de datos completamente administrado a escala de petabytes de nivel empresarial." /><meta name="guide-locale" content="es_es" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="Guía para desarrolladores de bases de datos" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="Guía para desarrolladores de bases de datos" /><meta id="panorama-serviceConsolePage" value="Casos de uso" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Casos de uso - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_create_model_use_cases" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,clúster,almacenamiento de datos,desarrollador,datos de ejemplo,base de datos,desarrollador de base de datos,HLL" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Casos de uso - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_create_model_use_cases" /><meta name="default_state" content="r_create_model_use_cases" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="description" content="Información sobre los distintos casos de CREATE MODEL." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="Guía para desarrolladores de bases de datos" /><meta name="abstract" content="Cree y administre un almacenamiento de datos con Amazon Redshift, un servicio de almacenamiento de datos completamente administrado a escala de petabytes de nivel empresarial." /><meta name="guide-locale" content="es_es" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="Guía para desarrolladores de bases de datos" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="Guía para desarrolladores de bases de datos" /><meta id="panorama-serviceConsolePage" value="Casos de uso" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Casos de uso - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_create_model_use_cases" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,Clúster,almacenamiento de datos,desarrollador,datos de ejemplo,base de datos,desarrollador de base de datos,HLL" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -25,7 +25,7 @@
       {
         "@type" : "ListItem",
         "position" : 4,
-        "name" : "Referencia de la SQL",
+        "name" : "Referencia de SQL",
         "item" : "https://docs.aws.amazon.com/es_es/redshift/latest/dg/cm_chap_SQLCommandRef.html"
       },
       {
@@ -310,7 +310,7 @@ S3_BUCKET 'bucket'
                     <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value’ (,..) ) }</span></dt>
                     <dd>
                         <p>Especifica si los parámetros de XGBoost predeterminados se utilizan o se sustituyen con valores especificados por el usuario. Los valores deben ir entre comillas simples. Los siguientes son ejemplos de parámetros para XGBoost y sus valores predeterminados.</p>
-                        <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c17b9b9b3b7b3b3"><thead>
+                        <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c17b9b9b3b7b3b3"><thead>
                                     <tr>
                                         <th>Nombre del parámetro</th>
                                         <th>Valor del parámetro </th>
@@ -357,55 +357,55 @@ S3_BUCKET 'bucket'
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">min_child_weight</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">1</td>
                                         <td tabindex="-1">MinValue: 0, MaxValue: 120</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">subsample</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">1</td>
                                         <td tabindex="-1">MinValue: 0,5, MaxValue: 1</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">gamma</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">0</td>
                                         <td tabindex="-1">MinValue: 0, MaxValue: 5</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">alpha</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">0</td>
                                         <td tabindex="-1">MinValue: 0, MaxValue: 1000</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">eta</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">0.3</td>
                                         <td tabindex="-1">MinValue: 0,1, MaxValue: 0,5</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">colsample_byleve</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">1</td>
                                         <td tabindex="-1">MinValue: 0,1, MaxValue: 1</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">colsample_bynode</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">1</td>
                                         <td tabindex="-1">MinValue: 0,1, MaxValue: 1</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">colsample_bytree</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">1</td>
                                         <td tabindex="-1">MinValue: 0,5, MaxValue: 1</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">lambda</td>
-                                        <td tabindex="-1">Float</td>
+                                        <td tabindex="-1">Flotante</td>
                                         <td tabindex="-1">1</td>
                                         <td tabindex="-1">MinValue: 0, MaxValue: 1000</td>
                                     </tr>
@@ -551,6 +551,24 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
           <h2 id="r_byom_create_model_remote">Bring your own model (BYOM): inferencia remota</h2>
           <p>Amazon Redshift ML también admite el uso de Bring your own model (BYOM) para inferencias remotas.</p>
           <p>A continuación, se resumen las opciones para la sintaxis de CREATE MODEL para BYOM.</p>
+          <div class="awsdocs-note awsdocs-sticky-note awsdocs-warning"><div class="awsdocs-note-icon"><awsui-icon name="status-warning" variant="error"></awsui-icon></div><div class="awsdocs-note-text"><p><em><b>Esta es la versión preliminar de la documentación del tipo de datos SUPER para el tipo de entrada para los modelos BYOM en Amazon Redshift ML. Tanto la documentación como la característica quedan sujetas a cambios. Se recomienda utilizar esta característica solo con clústeres de prueba y no en entornos de producción. Para ver la versión preliminar de los términos y condiciones, consulte <em>Betas y versiones preliminares</em> en <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>Términos de servicio de AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. </b></em> </p></div></div>
+          
+          <p>Si especifica utilizar el tipo de datos SUPER como datos de entrada y el tipo de datos devuelto, indica que desea crear un modelo de lenguaje grande (LLM) alojado en Amazon Sagemaker JumpStart. Actualmente, la creación de LLM solo está disponible como característica de versión preliminar. Esta versión preliminar está disponible en las siguientes Regiones de AWS.</p>
+          <div class="itemizedlist">
+              
+              
+              
+              
+              
+          <ul class="itemizedlist"><li class="listitem"><p>Este de EE. UU. (Ohio) (us-east-2)</p></li><li class="listitem"><p>Este de EE. UU. (Norte de Virginia) (us-east-1)</p></li><li class="listitem"><p>Asia-Pacífico (Tokio) (ap-northeast-1)</p></li><li class="listitem"><p>Europa (Irlanda) (eu-west-1)</p></li><li class="listitem"><p>Europa (Estocolmo) (eu-north-1)</p></li></ul></div>
+          <p>Puede crear un clúster de Amazon Redshift en <b>versión preliminar</b> para probar las nuevas características de Amazon Redshift. No puede usar esas características en producción ni mover su clúster de <b>versión preliminar</b> a un clúster de producción o a un clúster de otra pista. Para conocer los términos y condiciones de las versiones preliminares, consulte <em>Betas y versiones preliminares</em> en <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>Términos de servicio de AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>            
+            <div class="procedure"><h6>Para crear un clúster en <b>versión preliminar</b></h6><ol><li><p>Inicie sesión en la AWS Management Console y abra la consola de Amazon Redshift en <a href="https://console.aws.amazon.com/redshift/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/redshift/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p> </li><li><p>En el menú de navegación, elija <b>Provisioned clusters dashboard</b> (Panel de clústeres aprovisionados) y elija <b>Clusters</b> (Clústeres). Se enumeran los clústeres de su cuenta en la Región de AWS actual. Se muestra en la lista un subconjunto de propiedades de cada clúster en columnas.</p></li><li><p>Aparece un banner en la página de la lista <b>Clusters</b> (Clústeres) que presenta la versión preliminar. Elija el botón <b>Create preview cluster</b> (Crear clúster de versión preliminar para abrir la página de creación de clústeres.</p></li><li><p>Ingrese las propiedades del clúster. Elija en <b>Preview track</b> (Pista de versión preliminar) la pista de versión preliminar que contenga las características que desea probar. Le recomendamos que ingrese un nombre para el clúster que indique que se encuentra en una pista de versión preliminar. Elija las opciones de su clúster, incluidas las etiquetadas como <b>-preview</b> (-versión preliminar), para las características que desee probar. Para obtener más información sobre la creación de clústeres, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#create-cluster">Creación de un clúster</a> en la <em>Guía de administración de clústeres de Amazon Redshift</em>.</p></li><li><p>Elija <b>Crear clúster de vista previa</b> para crear un clúster de vista previa.</p>
+                       <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>La pista <code class="code">preview_2023</code> es la pista de versión preliminar más reciente disponible. Esta pista solo admite la creación de clústeres con tipos de nodo RA3. No se admiten los tipos de nodo DC2 y DS2 ni ningún tipo de nodo anterior.</p></div></div></li><li><p>Cuando el clúster de versión preliminar esté disponible, utilice su cliente de SQL para cargar y consultar datos.</p></li></ol></div>
+          
+          <p>También puede crear un grupo de trabajo de versión preliminar para crear un LLM. No puede utilizar estas características en producción ni trasladar su grupo de trabajo a otro grupo de trabajo. Para conocer la versión preliminar de los términos y condiciones, consulte Betas y versiones preliminares en <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>Términos de servicio de AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. Para obtener instrucciones sobre cómo crear una versión preliminar de un grupo de trabajo, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">Crear un grupo de trabajo de versión preliminar</a>.</p>
+            
+             
+          
          
             <h3 id="r_remote-create-model">Sintaxis de CREATE MODEL para inferencias remotas </h3>
             <p>A continuación, se describe la sintaxis de CREATE MODEL para inferencias remotas.</p>
@@ -577,12 +595,15 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                      
                         <dt><span class="term">FUNCTION <em>fn_name</em> ( [<em>data_type</em>] [, ...] )</span></dt>
                         <dd>
-                            <p>Se trata del nombre de la función y los tipos de datos de los argumentos de entrada. Puede proporcionar un nombre de esquema.</p>
+                           <p>Se trata del nombre de la función y los tipos de datos de los argumentos de entrada. Consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">Tipos de datos</a> para ver todos los tipos de datos compatibles. <code class="code">Geography</code>, <code class="code">geometry</code> y <code class="code">hllsketch</code> no son compatibles. Si especifica utilizar el tipo de datos SUPER como datos de entrada y el tipo de datos devuelto, indica que desea crear un modelo de lenguaje grande (LLM) alojado en Amazon Sagemaker JumpStart.</p>
+                           <p>Como alternativa, puede especificar usar solo el tipo de datos SUPER como datos de entrada sin usarlo también como el tipo de datos de la devolución. El uso del tipo de datos SUPER como entrada solo está disponible como característica de vista previa.</p>
+                           <p>También puede proporcionar un nombre de esquema en lugar de un nombre de función.</p>
                         </dd>
                      
                         <dt><span class="term">RETURNS <em>data_type</em></span></dt>
                         <dd>
-                            <p>El tipo de datos del valor que la función devuelve.</p>
+                            <p>El tipo de datos del valor que la función devuelve. Consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">Tipos de datos</a> para ver todos los tipos de datos compatibles. <code class="code">Geography</code>, <code class="code">geometry</code> y <code class="code">hllsketch</code> no son compatibles. Si especifica utilizar el tipo de datos SUPER como datos de entrada y el tipo de datos devuelto, indica que desea crear un modelo de lenguaje grande (LLM) alojado en Amazon Sagemaker JumpStart.</p>
+                           <p>Como alternativa, puede especificar usar solo el tipo de datos SUPER como tipo de datos de devolución sin usarlo también como datos de entrada.</p>
                         </dd>
                      
                         <dt><span class="term">SAGEMAKER <em>'endpoint_name'</em>[:<em>'model_name'</em>] </span></dt>
@@ -603,16 +624,35 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                 <h4 id="r_remote-create-model-usage-notes">Notas de uso de CREATE MODEL para inferencias remotas</h4>
                 <p>Antes de utilizar CREATE MODEL para inferencias remotas, tenga en cuenta lo siguiente:</p>
                 <div class="itemizedlist">
+                    
+                     
+   
+                     
+                     
+                     
+   
+                     
+                    
+                    
+                  
+                   
 
-                     
-
-                     
-                     
-                     
-
-                     
-
-                <ul class="itemizedlist"><li class="listitem"><p>El modelo debe aceptar entradas en formato de valores separados por comas (CSV) a través de un tipo de contenido de texto/CSV en SageMaker.</p></li><li class="listitem"><p>El punto de conexión debe estar alojado en la misma cuenta de AWS propietaria del clúster de Amazon Redshift.</p></li><li class="listitem"><p>Las salidas de los modelos deben ser un único valor del tipo especificado en el momento de crear la función, en el formato de valores separados por comas (CSV) a través de un tipo de contenido de texto/CSV en SageMaker. Los tipos de datos Varchar no deben estar entre comillas y cada salida debe estar en una línea nueva. </p></li><li class="listitem"><p>Los modelos aceptan valores nulos como cadenas vacías.</p></li><li class="listitem"><p>Asegúrese de que el punto de conexión de Amazon SageMaker tenga suficientes recursos para admitir las llamadas de inferencia de Amazon Redshift o de que el punto de conexión de Amazon SageMaker se pueda escalar de forma automática. </p></li></ul></div>
+                <ul class="itemizedlist"><li class="listitem">
+                      <p>Los modelos BYOM solo admiten un argumento si se utiliza el tipo de datos SUPER como datos de entrada. Además, la salida devuelta también debe ser del tipo de datos SUPER.</p>
+                   </li><li class="listitem"><p>El modelo debe aceptar entradas en formato de valores separados por comas (CSV) a través de un tipo de contenido de texto/CSV en SageMaker. Solo se aplica si no utiliza el tipo de datos SUPER como entrada.</p>
+                    </li><li class="listitem">
+                       <p>El punto de conexión debe estar alojado en la misma cuenta de AWS propietaria del clúster de Amazon Redshift.</p>
+                    </li><li class="listitem">
+                       <p>Las salidas de los modelos deben ser un único valor del tipo especificado en el momento de crear la función, en el formato de valores separados por comas (CSV) a través de un tipo de contenido de texto/CSV en SageMaker. Los tipos de datos Varchar no deben estar entre comillas y cada salida debe estar en una línea nueva. Solo se aplica si ha especificado que el modelo no debe devolver el tipo de datos SUPER. </p>
+                    </li><li class="listitem">
+                       <p>Los modelos aceptan valores nulos como cadenas vacías.</p>
+                    </li><li class="listitem">
+                       <p>Asegúrese de que el punto de conexión de Amazon SageMaker tenga suficientes recursos para admitir las llamadas de inferencia de Amazon Redshift o de que el punto de conexión de Amazon SageMaker se pueda escalar de forma automática.</p>
+                    </li><li class="listitem">
+                      <p>Si el tipo devuelto es SUPER, la salida del modelo debe ser JSON y el tipo de contenido <code class="code">application/jsonlines</code>.</p>
+                   </li><li class="listitem">
+                      <p>Si el tipo de entrada y de salida son SUPER, el modelo debe aceptar y devolver JSON a través del tipo de contenido <code class="code">application/json</code>.</p>
+                   </li></ul></div>
                  
                     <h5 id="r_remote-create-model-example">Ejemplo de CREATE MODEL para inferencias remotas</h5>
                     <p>En el siguiente ejemplo, se crea un modelo que utiliza un punto de conexión de SageMaker para generar predicciones. Asegúrese de que el punto de conexión se esté ejecutando para generar predicciones y especifique su nombre en el comando CREATE MODEL.</p>
@@ -621,6 +661,12 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
     RETURNS int
     SAGEMAKER 'customer-churn-endpoint'
     IAM_ROLE default;</code></pre>
+                   <p>El siguiente ejemplo crea un modelo de lenguaje grande (LLM) con el tipo de datos SUPER como datos de entrada y genera el tipo de datos SUPER. Los LLM se alojan en SageMaker Jumpstart. </p>
+                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL sample_super_data_model
+FUNCTION sample_super_data_model_predict(super)
+RETURNS super
+SAGEMAKER 'sample_super_data_model_endpoint'
+IAM_ROLE default;</code></pre>
                  
              
          
@@ -723,7 +769,7 @@ customer_id | customers_cluster
           
            
            
-       <ul class="itemizedlist"><li class="listitem"><p>EE.UU. Este (Ohio) (us-east-2)</p></li><li class="listitem"><p>Este de EE. UU. (Norte de Virginia) (us-east-1)</p></li><li class="listitem"><p>Oeste de EE.U U. (Oregón) (us-west-2)</p></li><li class="listitem"><p>Asia Pacífico (Mumbai) (ap-south-1)</p></li><li class="listitem"><p>Asia Pacífico (Seúl) (ap-northeast-2)</p></li><li class="listitem"><p>Asia Pacífico (Singapur) (ap-southeast-1)</p></li><li class="listitem"><p>Asia Pacífico (Sídney) (ap-southeast-2)</p></li><li class="listitem"><p>Asia Pacífico (Tokio) (ap-northeast-1)</p></li><li class="listitem"><p>Europa (Fráncfort) (eu-central-1)</p></li><li class="listitem"><p>Europa (Irlanda) (eu-west-1)</p></li></ul></div>
+       <ul class="itemizedlist"><li class="listitem"><p>Este de EE. UU. (Ohio) (us-east-2)</p></li><li class="listitem"><p>Este de EE. UU. (Norte de Virginia) (us-east-1)</p></li><li class="listitem"><p>Oeste de EE. UU. (Oregón) (us-west-2)</p></li><li class="listitem"><p>Asia Pacífico (Bombay) (ap-south-1)</p></li><li class="listitem"><p>Asia-Pacífico (Seúl) (ap-northeast-2)</p></li><li class="listitem"><p>Asia-Pacífico (Singapur) (ap-southeast-1)</p></li><li class="listitem"><p>Asia-Pacífico (Sídney) (ap-southeast-2)</p></li><li class="listitem"><p>Asia-Pacífico (Tokio) (ap-northeast-1)</p></li><li class="listitem"><p>Europa (Fráncfort) (eu-central-1)</p></li><li class="listitem"><p>Europa (Irlanda) (eu-west-1)</p></li></ul></div>
         
           <h3 id="r_forecast_model-synopsis">CREATE MODEL con sintaxis de Forecast</h3>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE [ OR REPLACE ] MODEL forecast_model_name 
