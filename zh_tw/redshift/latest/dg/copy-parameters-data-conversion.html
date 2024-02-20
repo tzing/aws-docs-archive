@@ -173,7 +173,7 @@
                   <dd>
                      <p>如果不指定 DATEFORMAT，則預設格式為 <code class="code">'YYYY-MM-DD'</code>。例如，另一種有效格式為 <code class="code">'MM-DD-YYYY'</code>。</p>
                      <p>如果 COPY 命令無法辨識日期或時間值的格式，或者，日期或時間值使用不同的格式，請使用 <code class="code">'auto'</code> 引數來搭配 DATEFORMAT 或 TIMEFORMAT 參數。<code class="code">'auto'</code> 引數可以辨識使用 DATEFORMAT 和 TIMEFORMAT 字串時不支援的多種格式。<code class="code">'auto'</code> 關鍵字區分大小寫。如需詳細資訊，請參閱<a href="./automatic-recognition.html">對 DATEFORMAT 和 TIMEFORMAT 使用自動辨識</a>。</p>
-                     <p>日期格式可以包含時間資訊 (時、分、秒)，但此資訊會遭到忽略。AS 關鍵字為選用。如需詳細資訊，請參閱<a href="./r_DATEFORMAT_and_TIMEFORMAT_strings.html"> DATEFORMAT 和 TIMEFORMAT 字串 範例</a>。</p>
+                     <p>日期格式可以包含時間資訊 (時、分、秒)，但此資訊會遭到忽略。AS 關鍵字為選用。如需詳細資訊，請參閱<a href="./r_DATEFORMAT_and_TIMEFORMAT_strings.html"> DATEFORMAT 和 TIMEFORMAT 字串</a>。</p>
                   </dd>
                 
                   <dt id="copy-emptyasnull"><span class="term">EMPTYASNULL </span></dt>
@@ -349,7 +349,7 @@ A Midsummer Night's Dream</code></pre>
                 
                   <dt id="copy-timeformat"><span class="term">TIMEFORMAT [AS] <span>{</span>'<em>timeformat_string</em>' | 'auto' | 'epochsecs' | 'epochmillisecs' }</span></dt>
                   <dd>
-                     <p>指定時間格式。如果不指定 TIMEFORMAT，則 TIMESTAMP 欄的預設格式為 <code class="code">YYYY-MM-DD HH:MI:SS</code>，TIMESTAMPTZ 欄的預設格式為 <code class="code">YYYY-MM-DD HH:MI:SSOF</code>，其中 <code class="code">OF</code> 是國際標準時間 (UTC) 的時差。<em>timeformat_string</em> 中不可包含時區指標。若要載入不是預設格式的 TIMESTAMPTZ 資料，請指定 'auto'；如需詳細資訊，請參閱<a href="./automatic-recognition.html">對 DATEFORMAT 和 TIMEFORMAT 使用自動辨識</a>。如需 <em>timeformat_string</em> 的詳細資訊，請參閱 <a href="./r_DATEFORMAT_and_TIMEFORMAT_strings.html"> DATEFORMAT 和 TIMEFORMAT 字串 範例</a>。</p>
+                     <p>指定時間格式。如果不指定 TIMEFORMAT，則 TIMESTAMP 欄的預設格式為 <code class="code">YYYY-MM-DD HH:MI:SS</code>，TIMESTAMPTZ 欄的預設格式為 <code class="code">YYYY-MM-DD HH:MI:SSOF</code>，其中 <code class="code">OF</code> 是國際標準時間 (UTC) 的時差。<em>timeformat_string</em> 中不可包含時區指標。若要載入不是預設格式的 TIMESTAMPTZ 資料，請指定 'auto'；如需詳細資訊，請參閱<a href="./automatic-recognition.html">對 DATEFORMAT 和 TIMEFORMAT 使用自動辨識</a>。如需 <em>timeformat_string</em> 的詳細資訊，請參閱 <a href="./r_DATEFORMAT_and_TIMEFORMAT_strings.html"> DATEFORMAT 和 TIMEFORMAT 字串</a>。</p>
                      <p><code class="code">'auto'</code> 引數可以辨識使用 DATEFORMAT 和 TIMEFORMAT 字串時不支援的多種格式。如果 COPY 命令無法辨識日期或時間值的格式，或者，日期和時間值使用彼此不同的格式，請使用 <code class="code">'auto'</code> 引數來搭配 DATEFORMAT 或 TIMEFORMAT 參數。如需詳細資訊，請參閱<a href="./automatic-recognition.html">對 DATEFORMAT 和 TIMEFORMAT 使用自動辨識</a>。</p>
                      <p>如果來源資料以 ecpch 時間表示，亦即，自 1970 年 1 月 1 日 00:00:00 UTC 以來的秒數或毫秒數，請指定 <code class="code">'epochsecs'</code> 或 <code class="code">'epochmillisecs'</code>。</p>
                      <p><code class="code">'auto'</code>、<code class="code">'epochsecs'</code> 和 <code class="code">'epochmillisecs'</code> 關鍵字區分大小寫。</p>
