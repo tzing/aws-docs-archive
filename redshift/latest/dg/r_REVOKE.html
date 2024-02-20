@@ -128,14 +128,11 @@ REVOKE [ GRANT OPTION FOR ]
                permissions granted for underlying objects. If you re-grant usage permission to that 
                user or role, they will retain all additional permissions that they had before you 
                revoked usage.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
- FROM <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Revoking scoped permissions" id="revoke-scoped-permissions" expanded="false"><p>Use scoped permissions to alter permissions for a user or role on a database or schema scope. </p><p>Scoped permissions apply to objects in the selected scope when you grant or revoke the permission, 
-       as well as to new objects created after you grant or revoke the permission. For example, granting a role 
-       scoped permission to select from tables in a database lets users with that role select from tables that 
-       are created in the future, and also lets them select from tables that currently exist in the database. </p><p>You can use scoped permissions to set the default permissions on a shared database created from a datashare. A consumer-side 
-       datashare user who is granted scoped permissions on a shared database will automatically gain those permissions 
-       for any new object added to the datashare on the producer side.</p><p>The following is the syntax for revoking scoped permissions 
+ FROM <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Revoking scoped permissions" id="revoke-scoped-permissions" expanded="false"><p>Scoped permissions let you grant permissions to a user or role on 
+all objects of a type within a database or schema.  Users and roles with scoped permissions have the specified 
+permissions on all current and future objects within the database or schema.</p><p>The following is the syntax for revoking scoped permissions 
                   from users and roles. For more information about scoped permissions, 
-                  see <a href="./t_scoped-permissions.html">Scoped permissions </a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">REVOKE [ GRANT OPTION FOR ] 
+                  see <a href="./t_scoped-permissions.html">Scoped permissions</a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">REVOKE [ GRANT OPTION FOR ] 
 <span>{</span> CREATE | USAGE | ALTER } [,...] | ALL [ PRIVILEGES ] }
 FOR SCHEMAS IN
 DATABASE db_name 

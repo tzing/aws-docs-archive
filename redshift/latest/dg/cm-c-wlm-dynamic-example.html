@@ -43,7 +43,7 @@
     ]
 }
 </script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#cm-c-wlm-dynamic-example" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="cm-c-wlm-dynamic-example">Dynamic WLM example</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Suppose that your cluster WLM is configured with two queues, using the following
-            dynamic properties. </p><div class="table-container"><div class="table-contents"><table id="w322aac62c73c21b5"><thead>
+            dynamic properties. </p><div class="table-container"><div class="table-contents"><table id="w323aac62c73c21b5"><thead>
                   <tr>
                      <th>Queue</th>
                      <th>Concurrency</th>
@@ -74,7 +74,7 @@
                   </tr>
                </table></div></div><p>Now suppose that your cluster has 200 GB of memory available for query processing.
             (This number is arbitrary and used for illustration only.) As the following equation
-            shows, each slot is allocated 25 GB. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">(200 GB * 50% ) / 4 slots  = 25 GB</code></pre><p>Next, you change your WLM to use the following dynamic properties.</p><div class="table-container"><div class="table-contents"><table id="w322aac62c73c21c13"><thead>
+            shows, each slot is allocated 25 GB. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">(200 GB * 50% ) / 4 slots  = 25 GB</code></pre><p>Next, you change your WLM to use the following dynamic properties.</p><div class="table-container"><div class="table-contents"><table id="w323aac62c73c21c13"><thead>
                   <tr>
                      <th>Queue</th>
                      <th>Concurrency</th>
@@ -106,7 +106,7 @@
                </table></div></div><p>As the following equation shows, the new memory allocation for each slot in queue 1
             is 50 GB. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">(200 GB * 75% ) / 3 slots = 50 GB </code></pre><p>Suppose that queries A1, A2, A3, and A4 are running when the new configuration is
             applied, and queries B1, B2, B3, and B4 are queued. WLM dynamically reconfigures the
-            query slots as follows. </p><div class="table-container"><div class="table-contents"><table id="w322aac62c73c21c21"><thead>
+            query slots as follows. </p><div class="table-container"><div class="table-contents"><table id="w323aac62c73c21c21"><thead>
                   <tr>
                      <th>Step</th>
                      <th>Queries Running</th>

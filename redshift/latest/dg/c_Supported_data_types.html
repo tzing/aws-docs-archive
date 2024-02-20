@@ -51,7 +51,7 @@
 </script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#c_Supported_data_types" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="page-toc-src"><a href="#c_Supported_data_types-multi-byte-characters">Multibyte characters</a><a href="#r_Type_conversion">Type compatibility and conversion</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="c_Supported_data_types">Data types</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="highlights"><h6>Topics</h6><ul><li><a href="#c_Supported_data_types-multi-byte-characters">Multibyte
                      characters</a></li><li><a href="./r_Numeric_types201.html">Numeric types</a></li><li><a href="./r_Character_types.html">Character types</a></li><li><a href="./r_Datetime_types.html">Datetime types</a></li><li><a href="./r_Boolean_type.html">Boolean type</a></li><li><a href="./r_HLLSKTECH_type.html">HLLSKETCH type</a></li><li><a href="./r_SUPER_type.html">SUPER type</a></li><li><a href="./r_VARBYTE_type.html">VARBYTE type</a></li><li><a href="#r_Type_conversion">Type compatibility and conversion</a></li></ul></div><p>Each value that Amazon Redshift stores or retrieves has a data type with a fixed set of
                associated properties. Data types are declared when tables are created. A data type
-               constrains the set of values that a column or argument can contain. </p><p>The following table lists the data types that you can use in Amazon Redshift tables. </p><div class="table-container"><div class="table-contents"><table id="w322aac67b7b9c13b9"><thead>
+               constrains the set of values that a column or argument can contain. </p><p>The following table lists the data types that you can use in Amazon Redshift tables. </p><div class="table-container"><div class="table-contents"><table id="w323aac67b7b9c13b9"><thead>
                      <tr>
                         <th>Data type </th>
                         <th>Aliases </th>
@@ -88,12 +88,6 @@
                         <td tabindex="-1">FLOAT8, FLOAT</td>
                         <td tabindex="-1">Double precision floating-point number </td>
                      </tr>
-
-                     <tr>
-                        <td tabindex="-1">BOOLEAN </td>
-                        <td tabindex="-1">BOOL </td>
-                        <td tabindex="-1">Logical Boolean (true/false) </td>
-                     </tr>
                      <tr>
                         <td tabindex="-1">CHAR </td>
                         <td tabindex="-1">CHARACTER, NCHAR, BPCHAR</td>
@@ -111,40 +105,6 @@
                         <td tabindex="-1"> </td>
                         <td tabindex="-1">Calendar date (year, month, day) </td>
                      </tr>
-
-                     <tr>
-                        <td tabindex="-1">TIMESTAMP </td>
-                        <td tabindex="-1">TIMESTAMP WITHOUT TIME ZONE</td>
-                        <td tabindex="-1">Date and time (without time zone) </td>
-                     </tr>
-                     <tr>
-                        <td tabindex="-1">TIMESTAMPTZ</td>
-                        <td tabindex="-1">TIMESTAMP WITH TIME ZONE</td>
-                        <td tabindex="-1">Date and time (with time zone) </td>
-                     </tr>
-                     <tr>
-                        <td tabindex="-1">GEOMETRY</td>
-                        <td tabindex="-1"></td>
-                        <td tabindex="-1">Spatial data</td>
-                     </tr>
-                     <tr>
-                        <td tabindex="-1">GEOGRAPHY</td>
-                        <td tabindex="-1"></td>
-                        <td tabindex="-1">Spatial data</td>
-                     </tr>
-
-                     <tr>
-                        <td tabindex="-1">HLLSKETCH</td>
-                        <td tabindex="-1"></td>
-                        <td tabindex="-1">Type used with HyperLogLog sketches.</td></tr>
-
-                     <tr>
-                        <td tabindex="-1">SUPER</td>
-                        <td tabindex="-1"></td>
-                        <td tabindex="-1">A superset data type that encompasses all scalar types of Amazon Redshift including complex types such as ARRAY and STRUCTS.
-                        </td>
-                     </tr>
-
                      
                      <tr>
                         <td tabindex="-1">TIME</td>
@@ -157,12 +117,59 @@
                         <td tabindex="-1">TIME WITH TIME ZONE</td>
                         <td tabindex="-1">Time of day with time zone</td>
                      </tr>
+                     <tr>
+                        <td tabindex="-1">TIMESTAMP </td>
+                        <td tabindex="-1">TIMESTAMP WITHOUT TIME ZONE</td>
+                        <td tabindex="-1">Date and time (without time zone) </td>
+                     </tr>
+                     <tr>
+                        <td tabindex="-1">TIMESTAMPTZ</td>
+                        <td tabindex="-1">TIMESTAMP WITH TIME ZONE</td>
+                        <td tabindex="-1">Date and time (with time zone) </td>
+                     </tr>
+                     
+                     <tr>
+                        <td tabindex="-1">INTERVAL YEAR TO MONTH</td>
+                        <td tabindex="-1"> </td>
+                        <td tabindex="-1">Time duration in year to month order</td>
+                     </tr> 
+                     <tr>
+                        <td tabindex="-1">INTERVAL DAY TO SECOND</td>
+                        <td tabindex="-1"> </td>
+                        <td tabindex="-1">Time duration in day to second order</td>
+                     </tr>  
+                     <tr>
+                        <td tabindex="-1">BOOLEAN </td>
+                        <td tabindex="-1">BOOL </td>
+                        <td tabindex="-1">Logical Boolean (true/false) </td>
+                     </tr>
+                     <tr>
+                        <td tabindex="-1">HLLSKETCH</td>
+                        <td tabindex="-1"></td>
+                        <td tabindex="-1">Type used with HyperLogLog sketches.</td>
+                     </tr>
+                     <tr>
+                        <td tabindex="-1">SUPER</td>
+                        <td tabindex="-1"></td>
+                        <td tabindex="-1">A superset data type that encompasses all scalar types of Amazon Redshift including complex types such as ARRAY and STRUCTS.
+                        </td>
+                     </tr>
                      
                      <tr>
                         <td tabindex="-1">VARBYTE</td>
                         <td tabindex="-1">VARBINARY, BINARY VARYING</td>
                         <td tabindex="-1">Variable-length binary value</td>
                      </tr>
+                     <tr>
+                        <td tabindex="-1">GEOMETRY</td>
+                        <td tabindex="-1"></td>
+                        <td tabindex="-1">Spatial data</td>
+                     </tr>
+                     <tr>
+                        <td tabindex="-1">GEOGRAPHY</td>
+                        <td tabindex="-1"></td>
+                        <td tabindex="-1">Spatial data</td>
+                     </tr>                                      
 
                   </table></div></div><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>For information about unsupported data types, such as "char" (notice that char is enclosed in quotation marks), see 
                <a href="./c_unsupported-postgresql-datatypes.html">Unsupported PostgreSQL data
@@ -318,7 +325,7 @@
                      assignments or expressions. You can also use an explicit conversion function to
                      perform these conversions. </p>
 
-                  <div class="table-container"><div class="table-contents"><table id="w322aac67b7b9c13c33b9b9"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w323aac67b7b9c13c33b9b9"><thead>
                            <tr>
                               <th>From type </th>
                               <th>To type </th>
@@ -515,11 +522,14 @@
                            </tr>
                            
                            <tr>
-                              <td rowspan="2" tabindex="-1">TIME</td>
+                              <td rowspan="3" tabindex="-1">TIME</td>
                               <td tabindex="-1">VARCHAR </td>
                            </tr>
                            <tr>
                               <td tabindex="-1">TIMETZ</td>
+                           </tr>
+                           <tr>
+                              <td tabindex="-1">INTERVAL DAY TO SECOND</td>
                            </tr>
                            
                            <tr>

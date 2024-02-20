@@ -36,12 +36,9 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#t_scoped-permissions" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="page-toc-src"><a href="#t_scoped-permissions-considerations">Considerations for using scoped permissions</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_scoped-permissions">Scoped permissions </h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use scoped permissions to alter permissions for a user or role on a database or schema scope. </p><p>Scoped permissions apply to objects in the selected scope when you grant or revoke the permission, 
-       as well as to new objects created after you grant or revoke the permission. For example, granting a role 
-       scoped permission to select from tables in a database lets users with that role select from tables that 
-       are created in the future, and also lets them select from tables that currently exist in the database. </p><p>You can use scoped permissions to set the default permissions on a shared database created from a datashare. A consumer-side 
-       datashare user who is granted scoped permissions on a shared database will automatically gain those permissions 
-       for any new object added to the datashare on the producer side.</p><p>
+</script></head><body><div id="main"><div style="display: none"><a href="/pdfs/redshift/latest/dg/redshift-dg.pdf#t_scoped-permissions" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Database Developer Guide</a></div><div id="page-toc-src"><a href="#t_scoped-permissions-considerations">Considerations for using scoped permissions</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_scoped-permissions">Scoped permissions</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Scoped permissions let you grant permissions to a user or role on 
+all objects of a type within a database or schema.  Users and roles with scoped permissions have the specified 
+permissions on all current and future objects within the database or schema.</p><p>
       For more information on applying scoped permissions, see <a href="./r_GRANT.html">GRANT</a>
       and <a href="./r_REVOKE.html">REVOKE</a>.</p>
          <h2 id="t_scoped-permissions-considerations">Considerations for using scoped permissions</h2>
@@ -53,30 +50,32 @@
              
              
              
+             
+             
          <ul class="itemizedlist"><li class="listitem">
-               <p>You can use scoped permissions to grant permissions on a database 
-                  or schema scope to a chosen user or role, or revoke them. You can’t 
-                  grant scoped permissions to user groups, so you can’t revoke them. </p>
+               <p>You can use scoped permissions to grant or revoke permissions 
+                  on a database or schema scope to or from a specified user or role.
+               </p>
+            </li><li class="listitem">
+               <p>You can't grant scoped permissions to user groups.
+               </p>
             </li><li class="listitem">
                <p>Granting or revoking scoped permissions changes permissions for 
                   all current and future objects in the scope.</p>
             </li><li class="listitem">
-               <p>Scoped permissions apply independently of object-level permissions. 
-                  They aren’t mutually exclusive. For example, consider a user who has 
-                  object-level permission to a table, and also scoped permission for 
-                  the schema that the table is in. In both of the following scenarios, 
-                  the user retains access to the table.</p>
+               <p>Scoped permissions and object-level permissions operate independently of each other. 
+                  For example, a user will maintain permissions on a table in both of the following cases.</p>
                <div class="itemizedlist">
                    
                    
                <ul class="itemizedlist"><li class="listitem">
-                     <p>The user’s scoped permission for the schema the table 
-                        is in is revoked, but the user still has access to the table via 
-                        object-level permission for the table.</p>
+                     <p>The user is granted SELECT on the table schema1.table1 and SELECT scoped permission on schema1. 
+                        The user then has SELECT revoked for all tables in schema schema1. 
+                        The user retains SELECT on schema1.table1.</p>
                   </li><li class="listitem">
-                     <p>The user’s object-level permission for the table is revoked, 
-                        but the user still has access to the table via the scoped 
-                        permission for the schema.</p>
+                     <p>The user is granted SELECT on the table schema1.table1 and SELECT scoped permission on schema1. 
+                        The user then has SELECT revoked for schema1.table1.
+                        The user retains SELECT on schema1.table1.</p>
                   </li></ul></div>
             </li><li class="listitem">
                <p>To grant or revoke scoped permissions, you must meet one of the following criteria:</p>
@@ -87,13 +86,19 @@
                      <p>Superusers.</p>
                   </li><li class="listitem">
                      <p>Users with the grant option for that permission. 
-                        For more information on grant options, see the 
+                        For more information on grant options, go to the 
                         WITH GRANT OPTION parameter in <a href="./r_GRANT.html">GRANT</a>.</p>
                   </li></ul></div>
             </li><li class="listitem">
                <p>Scoped permissions can only be granted to or revoked from objects for 
                   the connected database, or from databases imported from a datashare.</p>
             </li><li class="listitem">
-               <p>You can grant scoped permissions that apply to databases created from datashares. </p>
+               <p>You can use scoped permissions to set the default permissions on a database created from a datashare. 
+                  A consumer-side datashare user who is granted scoped permissions on a shared database will 
+                  automatically gain those permissions for any new object added to the datashare on 
+                  the producer side.</p>
+            </li><li class="listitem">
+               <p>Producers can grant scoped permissions on objects within a schema to a datashare. (preview)
+               </p>
             </li></ul></div>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ddm-svv.html">System views for dynamic data masking</div><div id="next" class="next-link" accesskey="n" href="./cm_chap_SQLCommandRef.html">SQL reference</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/en_us/redshift/latest/dg/t_scoped-permissions.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/en_us/redshift/latest/dg/t_scoped-permissions.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
