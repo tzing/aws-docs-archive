@@ -99,5 +99,6 @@ Disallow: /en_pv/
 Disallow: /freertos/archive/
 Disallow: /iot-expresslink/archive/
 Disallow: /help-panel/
+Disallow: /search/
 
 Crawl-delay: 5
