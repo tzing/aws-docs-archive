@@ -103,7 +103,7 @@
          2
 </code></code></pre>
          
-         <p>次の例では、タイムスタンプリテラルから曜日を見つけます。週番号の計算は、ISO 8601 標準に従います。詳細については、Wikipedia の「<a href="https://en.wikipedia.org/wiki/ISO_8601" rel="noopener noreferrer" target="_blank"><span>ISO 8601</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>」を参照してください。</p>             
+         <p>次の例では、タイムスタンプリテラルから曜日を見つけます。曜日番号の計算は、日曜日から始まる 0～6 の整数です。</p>             
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT DATE_PART(dayofweek, timestamp '20220502 04:05:06.789');</code>
             
 <code class="computeroutput" copy="false">pgdate_part

@@ -45,25 +45,48 @@
 </script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c_sql-functions-leader-node" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#c_sql-functions-leader-node-examples">例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="c_sql-functions-leader-node">リーダーノードでサポートされる SQL 関数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>一部のAmazon Redshift クエリはコンピューティングノードに配布され実行されます。ほかのクエリはリーダーノードのみで実行されます。</p><p>ユーザーによって作成されたテーブルまたはシステムテーブル (STL または STV プレフィックスが付いたテーブル、SVL または SVV プレフィックスが付いたシステムビュー) をクエリが参照するたびに、リーダーノードは SQL をコンピューティングノードに配布します。リーダーノード上の PG プレフィックス付きカタログ テーブル (PG_TABLE_DEF など) のみを参照するクエリや、いずれのテーブルも参照しないクエリは、リーダーノード上で排他的に実行されます。</p><p>Amazon Redshift SQL 関数の中にはリーダーノードのみでサポートされ、コンピューティングノードではサポートされないものがあります。リーダーノード専用関数を使用するクエリは、コンピューティングノードではなくリーダーノードのみで実行される必要があり、そうでなければエラーが返されます。</p><p>リーダーノードで排他的に実行されるべき関数がユーザー定義テーブルまたは Amazon Redshift システムテーブルを参照した場合、ドキュメントにメモとして説明されているとおり、エラーが返されます。リーダーノードで排他的に実行される関数については、「<a href="./c_SQL_functions_leader_node_only.html">リーダーノード専用関数</a>」を参照してください。</p>
             <h2 id="c_sql-functions-leader-node-examples">例</h2>
 
-
+            <p><b>CURRENT_SCHEMA</b></p>
             <p>CURRENT_SCHEMA 関数は、リーダーノード専用の関数です。この例では、クエリはテーブルを参照しないのでリーダーノードで排他的に実行されます。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select current_schema();</code></pre>
-            <p>結果は次のようになります。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">current_schema
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select current_schema();</code>
+            
+<code class="computeroutput" copy="false">current_schema
 ---------------
-public
-(1 row)</code></pre>
+public</code></code></pre>
             <p>次の例に示すクエリは、システムカタログテーブルを参照するので、リーダーノードで排他的に実行されます。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from pg_table_def
-where schemaname = current_schema() limit 1;
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select * from pg_table_def
+where schemaname = current_schema() limit 1;</code>
 
- schemaname | tablename | column |   type   | encoding | distkey | sortkey | notnull
+<code class="computeroutput" copy="false"> schemaname | tablename | column |   type   | encoding | distkey | sortkey | notnull
 ------------+-----------+--------+----------+----------+---------+---------+---------
- public     | category  | catid  | smallint | none     | t       |       1 | t
-(1 row)</code></pre>
+ public     | category  | catid  | smallint | none     | t       |       1 | t</code></code></pre>
             <p>次の例に示すクエリは、コンピューティングノード上の Amazon Redshift システムテーブルを参照するため、エラーを返します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select current_schema(), userid from users;
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select current_schema(), userid from users;</code>
 
-INFO:  Function "current_schema()" not supported.
-ERROR:  Specified types or functions (one per INFO message) not supported on Amazon Redshift tables.</code></pre>
+<code class="computeroutput" copy="false">INFO:  Function "current_schema()" not supported.
+ERROR:  Specified types or functions (one per INFO message) not supported on Amazon Redshift tables.</code></code></pre>
+            
+         <p><b>SUBSTR</b></p>   
+         <p>SUBSTR もリーダーノード専用の関数です。次の例では、クエリはテーブルを参照しないのでリーダーノードで排他的に実行されます。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT SUBSTR('amazon', 5);</code>
+            
+<code class="computeroutput" copy="false">+--------+
+| substr |
++--------+
+| on     |
++--------+</code></code></pre>
+
+<p>次の例に示すクエリは、コンピューティングノード上のテーブルを参照します。その結果、エラーが発生します。</p>
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT SUBSTR(catdesc, 1) FROM category LIMIT 1;</code>
+            
+<code class="computeroutput" copy="false">ERROR: SUBSTR() function is not supported (Hint: use SUBSTRING instead)</code></code></pre>
+<p>前のクエリを正常に実行するには、<a href="https://docs.aws.amazon.com/redshift/latest/dg/r_SUBSTRING.html">SUBSTRING</a> を使用してください。</p>         
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT SUBSTRING(catdesc, 1) FROM category LIMIT 1;</code>
+            
+<code class="computeroutput" copy="false">+---------------------------------+
+|            substring            |
++---------------------------------+
+| National Basketball Association |
++---------------------------------+</code></code></pre>     
+     
+         
          <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./c_redshift-sql.html">Amazon Redshift SQL</div><div id="next" class="next-link" accesskey="n" href="./c_redshift-and-postgres-sql.html">Amazon Redshift および PostgreSQL</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c_sql-functions-leader-node.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/c_sql-functions-leader-node.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

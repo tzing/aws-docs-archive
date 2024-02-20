@@ -47,17 +47,20 @@
 
             <div class="procedure"><h6>Amazon S3 バケットにファイルをアップロードするには</h6><ol><li>
                     <p>Amazon S3 にバケットを作成します。</p>
+                    <p>バケットの作成の詳細については、「Amazon Simple Storage Service ユーザーガイド」の「<a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">Creating a bucket</a>」(バケットの作成) を参照してください。</p>
                     
                     <ol><li> <p>AWS Management Console にサインインし、Amazon S3 コンソール <a href="https://console.aws.amazon.com/s3/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/s3/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> を開きます。</p> </li><li>
-                            <p>[<b>バケットを作成する</b>] をクリックします。</p>
+                            <p><b>[バケットの作成]</b> を選択します。</p>
                         </li><li>
-                            <p>[<b>Create a Bucket (バケットの作成)</b>] ダイアログボックスの [<b>Bucket Name (バケット名)</b>] ボックスに、バケットの名前を入力します。</p>
-                            <p>バケット名は必ず、Amazon S3 内の既存バケット名の中で一意となるようにしてください。一意性を確実にする方法の 1 つは、バケット名を組織名で始めることです。バケット名は一定の規則に沿って命名する必要があります。詳細については、<em>Amazon Simple Storage Service ユーザーガイド</em>の<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">バケットの制約と制限</a>を参照してください。</p>
-                        </li><li>
-                            <p>[Region (リージョン)] を選択します。</p>
+                            <p>[AWS リージョン] を選択します。</p>
                             <p>クラスターと同じリージョンでバケットを作成します。使用しているクラスターが米国西部 (オレゴン) リージョンにある場合は、<b>[US West (Oregon) Region (us-west-2)]</b> (米国西部 (オレゴン) リージョン (us-west-2)) を選択します。</p>
                         </li><li>
-                            <p><b>[Create]</b> (作成) を選択します。</p>
+                            <p><b>[バケットを作成]</b> ダイアログボックスの <b>[バケット名]</b> ボックスに、バケットの名前を入力します。</p>
+                            <p>バケット名は必ず、Amazon S3 内の既存バケット名の中で一意となるようにしてください。一意性を確実にする方法の 1 つは、バケット名を組織名で始めることです。バケット名は一定の規則に沿って命名する必要があります。詳細については、<em>Amazon Simple Storage Service ユーザーガイド</em>の<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">バケットの制約と制限</a>を参照してください。</p>
+                        </li><li>
+                            <p>残りのオプションについては、推奨デフォルトを選択します。</p>
+                        </li><li>
+                            <p><b>[バケットの作成]</b> を選択します。</p>
                             <p>Amazon S3 が正常にバケットを作成すると、コンソールが [<b>Buckets (バケット)</b>] パネルに空のバケットを表示します。</p>
                         </li></ol>
                 </li><li>
@@ -65,7 +68,7 @@
                     <ol><li>
                             <p>新しいバケットの名前を選択します。</p>
                         </li><li>
-                            <p><b>[Actions]</b> (アクション) ボタンをクリックし、ドロップダウンリストの <b>[Create Folder]</b> (フォルダの作成) をクリックします。</p>
+                            <p><b>[フォルダを作成]</b> ボタンを選択します。</p>
                         </li><li>
                             <p>新しいフォルダに <code class="userinput">load</code> という名前を付けます。</p>
                             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>作成したバケットは、サンドボックスの中にはありません。この演習では、実際のバケットにオブジェクトを追加します。オブジェクトをバケットに格納する時間に対して、名目上の料金が発生します。Amazon S3 の料金に関する詳細については、<a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank"><span>Amazon S3 の料金</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>を参照してください。</p></div></div>
@@ -75,11 +78,11 @@
                     <ol><li>
                             <p>データフォルダの名前を選択します。</p>
                         </li><li>
-                            <p>[Upload] (アップロード) の中の [Select Files] (ファイルの選択) ウィザードで、<b>[Add Files]</b> (ファイルを追加) をクリックします。</p>
+                            <p>[アップロード] ウィザードで、<b>[ファイルを追加]</b> をクリックします。</p>
 
                             <p>Amazon S3 コンソールの指示に従い、ダウンロードおよび展開したすべてのファイルをアップロードします。</p>
                         </li><li>
-                            <p><b>[Start Upload]</b> (アップロードの開始) をクリックします。</p>
+                            <p><b>[Upload（アップロード）]</b> を選択します。</p>
                         </li></ol>
                 </li></ol></div>
 

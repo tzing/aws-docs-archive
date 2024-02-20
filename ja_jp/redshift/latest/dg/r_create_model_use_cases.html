@@ -310,7 +310,7 @@ S3_BUCKET 'bucket'
                     <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value’ (,..) ) }</span></dt>
                     <dd>
                         <p>デフォルトの XGBoost パラメータを使用するか、それをユーザー指定の値で上書きするかを指定します。値は一重引用符で囲む必要があります。以下に、XGBoost のパラメータとそのデフォルトの例を示します。</p>
-                        <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c17b9b9b3b7b3b3"><thead>
+                        <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c17b9b9b3b7b3b3"><thead>
                                     <tr>
                                         <th>パラメータ名</th>
                                         <th>パラメータ値 </th>
@@ -516,7 +516,7 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                      
                         <dt><span class="term">RETURNS <em>data_type</em></span></dt>
                         <dd>
-                            <p>データタイプの値は関数によって返されます。</p>
+                            <p>関数によって返される値のデータ型。</p>
                         </dd>
                      
                        <dt><span class="term">IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;'}</span></dt>
@@ -551,6 +551,24 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
           <h2 id="r_byom_create_model_remote">独自のモデルを持参 (BYOM) - リモート推論</h2>
           <p>また、Amazon Redshift 機械学習では、リモート推論においても独自のモデルを持参 (BYOM) できるようサポートしています。</p>
           <p>次に、BYOM の CREATE MODEL 構文のオプションをまとめます。</p>
+          <div class="awsdocs-note awsdocs-sticky-note awsdocs-warning"><div class="awsdocs-note-icon"><awsui-icon name="status-warning" variant="error"></awsui-icon></div><div class="awsdocs-note-text"><p><em><b>これは、プレビュー版 Amazon Redshift ML における BYOM モデルの入力の SUPER データ型について記載した暫定版ドキュメントです。ドキュメントと機能はどちらも変更されることがあります。この機能は、本番環境ではなくテストクラスターでのみ使用することをお勧めします。</b>プレビューの利用規約については、「<a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS のサービス条件</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>」の「<em></em>ベータ版とプレビュー」を参照してください。</em></p></div></div>
+          
+          <p>入力データおよび返されるデータ型として SUPER データ型を使用するように指定することは、Amazon SageMaker JumpStart でホストされる大規模言語モデル (LLM) を作成することを示します。LLM の作成は現時点ではプレビュー機能としてのみ利用できます。このプレビューは以下の AWS リージョン で使用できます。</p>
+          <div class="itemizedlist">
+              
+              
+              
+              
+              
+          <ul class="itemizedlist"><li class="listitem"><p>米国東部 (オハイオ) (us-east-2)</p></li><li class="listitem"><p>米国東部 (バージニア北部) (us-east-1)</p></li><li class="listitem"><p>アジアパシフィック (東京) (ap-northeast-1)</p></li><li class="listitem"><p>欧州 (アイルランド) (eu-west-1)</p></li><li class="listitem"><p>欧州 (ストックホルム) (eu-north-1)</p></li></ul></div>
+          <p>Amazon Redshift クラスターを <b>[プレビュー]</b> で作成して、Amazon Redshift の新機能をテストできます。これらの機能を本番稼働で使用したり、<b>[プレビュー]</b> クラスターを本稼働クラスターや別のトラックのクラスターに移動したりすることはできません。プレビューの利用規約については、「<a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS のサービス条件</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>」の「<em>ベータ版とプレビュー</em>」を参照してください。</p>            
+            <div class="procedure"><h6><b>[Preview]</b> (プレビュー) で クラスターを作成するには</h6><ol><li><p>AWS Management Console にサインインして <a href="https://console.aws.amazon.com/redshift/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/redshift/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> で Amazon Redshift コンソールを開きます。</p> </li><li><p>ナビゲーションメニューで <b>[Provisioned clusters dashboard]</b> (プロビジョニングされたクラスターダッシュボード) を選択し、<b>[Clusters]</b> (クラスター) を選択します。現在の AWS リージョン にあるアカウントのクラスターがリストされています。各クラスターのプロパティのサブセットが、リストの列に表示されます。</p></li><li><p><b>[Clusters]</b> (クラスター) リストページに、プレビューを紹介するバナーが表示されます。<b>[Create preview cluster]</b> (プレビュークラスターの作成) ボタンを選択して、クラスターの作成ページを開きます。</p></li><li><p>クラスターのプロパティを入力します。テストしたい機能を含む <b>[プレビュートラック]</b> を選択します。プレビュートラックにあることを示すクラスターの名前を入力することをお勧めします。テストする機能について、<b>-preview</b> というラベルの付いたオプションを含む、クラスターのオプションを選択します。クラスター作成の詳細については、「<em>Amazon Redshift 管理ガイド</em>」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#create-cluster">クラスターの作成</a>」を参照してください。</p></li><li><p><b>[クラスターを作成]</b> を選択して、プレビューのクラスターを作成します。</p>
+                       <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p><code class="code">preview_2023</code> トラックは、利用可能な最新のプレビュートラックです。このトラックは RA3 ノードタイプのクラスターの作成のみをサポートしています。ノードタイプ DC2 と DS2、およびそれ以前のノードタイプはサポートされていません。</p></div></div></li><li><p>プレビュークラスターが使用可能になったら、SQL クライアントを使用してデータをロードし、クエリを実行します。</p></li></ol></div>
+          
+          <p>LLM を作成するためのプレビューワークグループを作成することもできます。これらの機能を本番稼働で使用したり、ワークグループを別のワークグループに移動したりすることはできません。プレビューの利用規約については、「<a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS のサービス条件</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>」の「ベータ版とプレビュー」を参照してください。プレビューワークグループの作成方法については、「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">プレビューワークグループの作成</a>」を参照してください。</p>
+            
+             
+          
          
             <h3 id="r_remote-create-model">リモート推論のための CREATE MODEL 構文 </h3>
             <p>次に、リモート推論用の CREATE MODEL 構文について説明します。</p>
@@ -577,12 +595,15 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                      
                         <dt><span class="term">FUNCTION <em>fn_name</em> ( [<em>data_type</em>] [, ...] )</span></dt>
                         <dd>
-                            <p>関数の名前と入力引数のデータ型。スキーマ名を指定できます。</p>
+                           <p>関数の名前と入力引数のデータ型。サポートされているすべてのデータ型については、「<a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">データ型</a>」を参照してください。<code class="code">Geography</code>、<code class="code">geometry</code>、<code class="code">hllsketch</code> はサポートされていません。入力データおよび返されるデータ型として SUPER データ型を使用するように指定することは、Amazon SageMaker JumpStart でホストされる大規模言語モデル (LLM) を作成することを示します。</p>
+                           <p>または、SUPER データ型を、返されたデータ型としては使用せずに、入力データとしてのみ使用するように指定することもできます。SUPER データ型を入力として使用する場合、プレビュー機能としてのみ使用できます。</p>
+                           <p>関数名の代わりにスキーマ名を指定することもできます。</p>
                         </dd>
                      
                         <dt><span class="term">RETURNS <em>data_type</em></span></dt>
                         <dd>
-                            <p>データタイプの値は関数によって返されます。</p>
+                            <p>関数によって返される値のデータ型。サポートされているすべてのデータ型については、「<a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">データ型</a>」を参照してください。<code class="code">Geography</code>、<code class="code">geometry</code>、<code class="code">hllsketch</code> はサポートされていません。入力データおよび返されるデータ型として SUPER データ型を使用するように指定することは、Amazon SageMaker JumpStart でホストされる大規模言語モデル (LLM) を作成することを示します。</p>
+                           <p>または、SUPER データ型を入力データとしては使用せずに、返されるデータ型としてのみ使用するように指定することもできます。</p>
                         </dd>
                      
                         <dt><span class="term">SAGEMAKER <em>'endpoint_name'</em>[:<em>'model_name'</em>] </span></dt>
@@ -603,16 +624,35 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                 <h4 id="r_remote-create-model-usage-notes">リモート推論の使用上の注意のための CREATE MODEL</h4>
                 <p>リモート推論に CREATE MODEL を使用する前に、次の点を考慮してください。</p>
                 <div class="itemizedlist">
+                    
+                     
+   
+                     
+                     
+                     
+   
+                     
+                    
+                    
+                  
+                   
 
-                     
-
-                     
-                     
-                     
-
-                     
-
-                <ul class="itemizedlist"><li class="listitem"><p>モデルは、SageMaker コンテンツタイプのテキスト/CSV を介して、コンマ区切り値 (CSV) の形式で入力を受け入れる必要があります。</p></li><li class="listitem"><p>エンドポイントは、Amazon Redshift クラスターを所有するのと同じ AWS アカウントでホストされている必要があります。</p></li><li class="listitem"><p>モデルの出力は、SageMaker のテキスト/CSV のコンテンツタイプを介してコンマ区切り値 (CSV) の形式で、関数の作成時に指定されたタイプの単一の値でなければなりません。Varchar データ型は引用符で囲んではならず、各出力は改行する必要があります。</p></li><li class="listitem"><p>モデルは空の文字列として null を受け入れます。</p></li><li class="listitem"><p>Amazon SageMaker エンドポイントに Amazon Redshift からの推論呼び出しに対応するのに十分なリソースがあること、または Amazon SageMaker エンドポイントを自動的にスケーリングできることを確認してください。</p></li></ul></div>
+                <ul class="itemizedlist"><li class="listitem">
+                      <p>入力データとして SUPER データ型を使用している場合、BYOM モデルは引数を 1 つしかサポートできず、返される出力も SUPER データ型でなければなりません。</p>
+                   </li><li class="listitem"><p>モデルは、SageMaker コンテンツタイプのテキスト/CSV を介して、コンマ区切り値 (CSV) の形式で入力を受け入れる必要があります。SUPER データ型を入力として使用していない場合にのみ適用されます。</p>
+                    </li><li class="listitem">
+                       <p>エンドポイントは、Amazon Redshift クラスターを所有するのと同じ AWS アカウントでホストされている必要があります。</p>
+                    </li><li class="listitem">
+                       <p>モデルの出力は、SageMaker のテキスト/CSV のコンテンツタイプを介してコンマ区切り値 (CSV) の形式で、関数の作成時に指定されたタイプの単一の値でなければなりません。Varchar データ型は引用符で囲んではならず、各出力は改行する必要があります。モデルが SUPER データ型を返さないように指定した場合にのみ適用されます。</p>
+                    </li><li class="listitem">
+                       <p>モデルは空の文字列として null を受け入れます。</p>
+                    </li><li class="listitem">
+                       <p>Amazon SageMaker エンドポイントに Amazon Redshift からの推論呼び出しに対応するのに十分なリソースがあること、または Amazon SageMaker エンドポイントを自動的にスケーリングできることを確認してください。</p>
+                    </li><li class="listitem">
+                      <p>返される型が SUPER の場合、モデル出力は JSON およびコンテンツタイプ <code class="code">application/jsonlines</code> である必要があります。</p>
+                   </li><li class="listitem">
+                      <p>入力の型と出力の型が両方とも SUPER の場合、モデルはコンテンツタイプ <code class="code">application/json</code> を通じて JSON を受け入れて返す必要があります。</p>
+                   </li></ul></div>
                  
                     <h5 id="r_remote-create-model-example">リモート推論のための CREATE MODEL 例</h5>
                     <p>次の例では、SageMaker エンドポイントを使用して予測を行うモデルを作成します。エンドポイントが実行されていることを確認して予測を行い、CREATE MODEL コマンドでその名前を指定します。</p>
@@ -621,6 +661,12 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
     RETURNS int
     SAGEMAKER 'customer-churn-endpoint'
     IAM_ROLE default;</code></pre>
+                   <p>次の例では、SUPER データ型を入力データとして使用して大規模言語モデル (LLM) を作成し、SUPER データ型を出力します。LLM は SageMaker JumpStart でホストされます。</p>
+                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL sample_super_data_model
+FUNCTION sample_super_data_model_predict(super)
+RETURNS super
+SAGEMAKER 'sample_super_data_model_endpoint'
+IAM_ROLE default;</code></pre>
                  
              
          

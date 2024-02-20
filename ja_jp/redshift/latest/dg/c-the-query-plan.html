@@ -97,6 +97,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                    
                    
                    
+                   
                <ul class="itemizedlist"><li class="listitem">
                      <p><span class="topcom">Nested Loop</span></p>
                      <p>最適性が最も低いネステッドループは、主にクロス結合 (デカルト積) および一部の不等結合に使用されます。</p>
@@ -106,6 +107,9 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                   </li><li class="listitem">
                      <p><span class="topcom">Merge Join</span></p>
                      <p>通常、結合が高速であれば、内部結合と外部結合にマージ結合が使用されます。マージ結合は完全結合には使用されません。この演算子は、結合列が分散キー<em>と</em>ソートキーの両方である結合テーブルで、結合テーブルの 20 % 未満がソートされていない場合に使用されます。また、ソートされた 2 つのテーブルを順に読み取り、一致する行を検索します。ソートされていない列の割合を表示するには、<a href="./r_SVV_TABLE_INFO.html">SVV_TABLE_INFO</a>システムテーブルをクエリします。</p>
+                  </li><li class="listitem"> 
+                     <p><span class="topcom">空間結合</span></p>
+                     <p>通常、空間データの近接性に基づく高速結合であり、<code class="code">GEOMETRY</code> と <code class="code">GEOGRAPHY</code> のデータ型に使用されます。</p>
                   </li></ul></div>
              
             <h3 id="aggregate-operators">Aggregate 演算子</h3>
@@ -133,7 +137,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                    
                    
                <ul class="itemizedlist"><li class="listitem">
-                     <p><span class="topcom">並べ替え</span></p>
+                     <p>並べ替え</p>
                      <p>ORDER BY 句およびその他のソート操作 (UNION クエリや結合、SELECT DISTINCT クエリ、ウィンドウ関数で必要となるソートなど) を評価します。</p>
                   </li><li class="listitem">
                      <p><span class="topcom">Merge</span></p>

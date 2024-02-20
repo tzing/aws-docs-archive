@@ -84,6 +84,7 @@
     FROM <span>{</span> table_name | ( select_statement )  | 'job_name' }
     [ TARGET column_name ]
     FUNCTION function_name ( data_type [, ...] ) 
+    [ RETURNS super ]
     IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }
     [ AUTO ON / OFF ]
       -- default is AUTO ON
@@ -135,6 +136,7 @@
              
              
              
+            
              
              
              
@@ -161,9 +163,14 @@
              
                 <dt><span class="term">FUNCTION <em>function_name</em> ( <em>data_type</em> [, ...] )</span></dt>
                 <dd>
-                    <p>作成する関数の名前と、入力引数のデータ型。スキーマ名を指定できます。</p>
+                    <p>作成する関数の名前と、入力引数のデータ型。関数名の代わりに、データベース内のスキーマのスキーマ名を指定できます。</p>
                 </dd>
              
+              <dt><span class="term">RETURNS <em>SUPER</em> (プレビュー)</span></dt>
+              <dd>
+                 <p>モデルから返されるデータの型。返される SUPER データ型はリモート BYOM モデルにのみ適用されます。</p>
+              </dd>
+            
                <dt><span class="term">IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }</span></dt>
                 <dd>
                     <p> デフォルトキーワードを使用して、CREAT MODEL コマンドの実行時にデフォルトとして設定され、クラスターに関連付けられた IAM ロールの使用を、Amazon Redshift に指示します。または、IAM ロールの ARN を指定して、そのロールを使用することもできます。</p>
@@ -234,7 +241,7 @@ SETTINGS (
                 <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value’ (,..) ) }</span></dt>
                 <dd>
                     <p>デフォルトの XGBoost パラメータを使用するか、それをユーザー指定の値で上書きするかを指定します。値は一重引用符で囲む必要があります。以下に、XGBoost のパラメータとそのデフォルトの例を示します。</p>
-                    <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c13b3c21b3b3"><thead>
+                    <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c13b3c23b3b3"><thead>
                                 <tr>
                                     <th>パラメータ名</th>
                                     <th>パラメータ値 </th>

@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_MV_REFRESH_HISTORY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_MV_REFRESH_HISTORY-table-columns">テーブルの列</a><a href="#SYS_MV_REFRESH_HISTORY-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_MV_REFRESH_HISTORY">SYS_MV_REFRESH_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>結果には、すべてのマテリアライズドビューの更新履歴に関する情報が含まれます。結果には、手動や自動などの更新タイプ、および最新の更新のステータスが含まれます。</p><p>SYS_MV_REFRESH_HISTORY はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できます。通常のユーザーはアクセスできるメタデータのみを表示できます。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_MV_REFRESH_HISTORY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_MV_REFRESH_HISTORY-table-columns">テーブルの列</a><a href="#SYS_MV_REFRESH_HISTORY-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_MV_REFRESH_HISTORY">SYS_MV_REFRESH_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>結果には、すべてのマテリアライズドビューの更新履歴に関する情報が含まれます。結果には、手動や自動などの更新タイプ、および最新の更新のステータスが含まれます。</p><p>SYS_MV_REFRESH_HISTORY はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p>
             <h2 id="SYS_MV_REFRESH_HISTORY-table-columns">テーブルの列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c41b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c43b7b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -111,7 +111,7 @@
                         </tr> 
                         
                         <tr>
-                            <td tabindex="-1">期間</td>
+                            <td tabindex="-1">duration</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">マテリアライズドビューの更新にかかった時間 (マイクロ秒単位)。</td>
                         </tr> 
@@ -124,25 +124,27 @@
             <p>次のクエリは、マテリアライズドビューの更新履歴を表示します。</p>
             
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SELECT user_id, 
+     session_id, 
+     transaction_id, 
      database_name, 
      schema_name, 
-     mv_name, 
-     transaction_id, 
-     start_time, 
-     end_time, 
-     status 
+     mv_id, 
+     mv_name,
+     refresh_type,
+     status,
+     start_time,
+     end_time,
+     duration
      from sys_mv_refresh_history;</code></pre>   
             <p>このクエリは、次のサンプル出力を返します。</p>   
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class=""> database_name| user_id |  schema_name  |  mv_name   |  transaction_id  |         start_time          |          end_time           |          status
---------------+---------+---------------+------------+------------------+-----------------------------+-----------------------------+------------------------------------------------------
- dev          |     169 | mv_schema     |    mv_test |             6640 |  2020-02-14 02:26:53.497935 |  2020-02-14 02:26:53.556156 | Refresh successfully recomputed MV from scratch
- dev          |     166 | mv_schema     |    mv_test |             6517 |  2020-02-14 02:26:39.287438 |  2020-02-14 02:26:39.349539 | Refresh successfully updated MV incrementally
- dev          |     162 | mv_schema     |    mv_test |             6388 |  2020-02-14 02:26:27.863426 |  2020-02-14 02:26:27.918307 | Refresh successfully recomputed MV from scratch
- dev          |     161 | mv_schema     |    mv_test |             6323 |  2020-02-14 02:26:20.020717 |  2020-02-14 02:26:20.080002 | Refresh successfully updated MV incrementally
- dev          |     161 | mv_schema     |    mv_test |             6301 |  2020-02-14 02:26:05.796146 |  2020-02-14 02:26:07.853986 | Refresh successfully recomputed MV from scratch
- dev          |     153 | mv_schema     |    mv_test |             6024 |  2020-02-14 02:25:18.762335 |  2020-02-14 02:25:20.043462 | MV was already updated
- dev          |     143 | mv_schema     |    mv_test |             5557 |  2020-02-14 02:24:23.100601 |  2020-02-14 02:24:23.100633 | MV was already updated
- dev          |     141 | mv_schema     |    mv_test |             5447 |  2020-02-14 02:23:54.102837 |  2020-02-14 02:24:00.310166 | Refresh successfully updated MV incrementally
- dev          |       1 | mv_schema     |    mv_test |             5329 |  2020-02-14 02:22:26.328481 |  2020-02-14 02:22:28.369217 | Refresh successfully recomputed MV from scratch
- dev          |     138 | mv_schema     |    mv_test |             5290 |  2020-02-14 02:21:56.885093 |  2020-02-14 02:21:56.885098 | Refresh failed. MV was not found</code></pre>  
+            
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class=""> user_id | session_id | transaction_id | database_name | schema_name                | mv_id  |  mv_name           |  refresh_type  |  status                                         |  start_time                |  end_time                  |  duration
+---------+------------+----------------+---------------+----------------------------+--------+--------------------+----------------+-------------------------------------------------+----------------------------+----------------------------+-----------
+       1 | 1073815659 |          15066 | dev           | test_stl_mv_refresh_schema | 203762 | mv_incremental     | Manual         | MV was already updated                          | 2023-10-26 15:59:20.952179 | 2023-10-26 15:59:20.952866 |      687
+       1 | 1073815659 |          15068 | dev           | test_stl_mv_refresh_schema | 203771 | mv_nonincremental  | Manual         | MV was already updated                          | 2023-10-26 15:59:21.008049 | 2023-10-26 15:59:21.008658 |      609
+       1 | 1073815659 |          15070 | dev           | test_stl_mv_refresh_schema | 203779 | mv_refresh_error   | Manual         | MV was already updated                          | 2023-10-26 15:59:21.064252 | 2023-10-26 15:59:21.064885 |      633
+       1 | 1073815659 |          15074 | dev           | test_stl_mv_refresh_schema | 203762 | mv_incremental     | Manual         | Refresh successfully updated MV incrementally   | 2023-10-26 15:59:29.693329 | 2023-10-26 15:59:43.482842 | 13789513
+       1 | 1073815659 |          15076 | dev           | test_stl_mv_refresh_schema | 203771 | mv_nonincremental  | Manual         | Refresh successfully recomputed MV from scratch | 2023-10-26 15:59:43.550184 | 2023-10-26 15:59:47.880833 |  4330649
+       1 | 1073815659 |          15078 | dev           | test_stl_mv_refresh_schema | 203779 | mv_refresh_error   | Manual         | Refresh failed due to an internal error         | 2023-10-26 15:59:47.949052 | 2023-10-26 15:59:52.494681 |  4545629
+(6 rows)</code></pre>                       
         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./SYS_LOAD_HISTORY.html">SYS_LOAD_HISTORY</div><div id="next" class="next-link" accesskey="n" href="./SYS_MV_STATE.html">SYS_MV_STATE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/SYS_MV_REFRESH_HISTORY.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/SYS_MV_REFRESH_HISTORY.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

@@ -48,8 +48,8 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CTAS_usage_notes" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_CTAS_usage_notes-limits">Limits</a><a href="#r_CTAS_usage_notes-inheritance-of-column-and-table-attributes">列属性とテーブル属性の継承</a><a href="#r_CTAS_usage_notes_encoding">圧縮エンコード</a><a href="#r_CTAS_usage_notes-distribution-of-incoming-data">受信データの分散</a><a href="#r_CTAS_usage_notes-automatic-analyze-operations">自動 ANALYZE 操作</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CTAS_usage_notes">CTAS の使用に関する注意事項</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
-            <h2 id="r_CTAS_usage_notes-limits">Limits</h2>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CTAS_usage_notes" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_CTAS_usage_notes-limits">制限</a><a href="#r_CTAS_usage_notes-inheritance-of-column-and-table-attributes">列属性とテーブル属性の継承</a><a href="#r_CTAS_usage_notes_encoding">圧縮エンコード</a><a href="#r_CTAS_usage_notes-distribution-of-incoming-data">受信データの分散</a><a href="#r_CTAS_usage_notes-automatic-analyze-operations">自動 ANALYZE 操作</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CTAS_usage_notes">CTAS の使用に関する注意事項</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
+            <h2 id="r_CTAS_usage_notes-limits">制限</h2>
 
 
             <p>Amazon Redshift は、ノードタイプごとにクラスターあたりのテーブル数のクォータを適用します。</p>
@@ -79,7 +79,7 @@
                </li><li class="listitem">
                   <p>CHAR、VARCHAR、または VARBYTE として定義されている列には、LZO 圧縮が割り当てられます。</p>
                </li></ul></div>
-            <p>詳細については、<a href="./c_Compression_encodings.html">圧縮エンコード</a> および <a href="./c_Supported_data_types.html">データ型</a> を参照してください。</p>
+            <p>詳細については、「<a href="./c_Compression_encodings.html">圧縮エンコード</a>」および「<a href="./c_Supported_data_types.html">データ型</a>」を参照してください。</p>
             <p>列エンコーディングを明示的に割り当てるには、<a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a> を使用します。</p>
             <p>CTAS は、SELECT 句のクエリプランに基づいて新しいテーブルの分散スタイルとソートキーを決定します。</p>
             <p>結合、集計、ORDER BY 句、LIMIT 句を含むクエリなど、複雑なクエリの場合、CTAS はクエリプランに基づいてベストエフォートで最適な分散スタイルとソートキーを選択します。</p>
@@ -176,7 +176,7 @@ explain create table sales5_groupby as select listid, dateid, sum(qtysold) from 
  sales5_groupby       | sum        | f       |       0
             </code></pre>
             <p>結果の概要を次の表に示します。分かりやすいように、説明プランからコスト、行、幅の詳細を省略しています。</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45b9c99c13b5c35"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47b9d105c13b5c35"><thead>
                      <tr>
                         <th>
                            <p>表</p>

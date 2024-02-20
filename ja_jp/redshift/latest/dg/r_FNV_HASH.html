@@ -57,12 +57,12 @@
                    
                    
                <dl>
-                     <dt><span class="term"> <em>値</em></span></dt>
+                     <dt><span class="term"> <em>value</em></span></dt>
                      <dd>
                         <p>ハッシュされる入力値。Amazon Redshift は、値のバイナリ表現を使用して入力値をハッシュします。例えば、INTEGER 値は 4 バイトを使用してハッシュされ、BIGINT 値は 8 バイトを使用してハッシュされます。また、CHAR および VARCHAR 入力をハッシュしても、末尾のスペースは無視されません。</p>
                      </dd>
                    
-                     <dt><span class="term"> <em>シード</em></span></dt>
+                     <dt><span class="term"> <em>seed</em></span></dt>
                      <dd>
                         <p>ハッシュ関数の BIGINT シードはオプションです。指定しない場合、Amazon Redshift はデフォルトの FNV シードを使用します。これにより、変換や連結を行わずに、複数の列のハッシュを組み合わせることができます。</p>
                      </dd>

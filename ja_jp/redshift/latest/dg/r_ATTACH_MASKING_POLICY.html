@@ -45,12 +45,13 @@
 </script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ATTACH_MASKING_POLICY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_ATTACH_MASKING_POLICY-synopsis">構文</a><a href="#r_ATTACH_MASKING_POLICY-parameters">パラメータ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ATTACH_MASKING_POLICY">ATTACH MASKING POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>既存の動的データマスキングポリシーを列にアタッチします。動的データマスキングの詳細については、「<a href="./t_ddm.html">動的データマスキング</a>」を参照してください。</p><p>スーパーユーザーと sys:secadmin ロールを持つユーザーまたはロールは、マスキングポリシーをアタッチできます。</p>
          <h2 id="r_ATTACH_MASKING_POLICY-synopsis">構文</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ATTACH MASKING POLICY <em>policy_name</em>
-   ON <span>{</span> <em>table_name</em> }
-   ( <em>output_columns_names</em> ) [ USING ( <em>input_column_names</em> ) ]
+   ON <span>{</span> <em>relation_name</em> }
+   ( <span>{</span><em>output_columns_names</em> | <em>output_path</em>} ) [ USING ( <span>{</span><em>input_column_names</em> | <em>input_path</em> )} ]
    TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC }
    [ PRIORITY <em>priority</em> ];</code></pre>
        
          <h2 id="r_ATTACH_MASKING_POLICY-parameters">パラメータ</h2>
+         
          <div class="variablelist">
              
              
@@ -61,16 +62,18 @@
              
              
              
+             
+             
          <dl>
-               <dt><span class="term">policy_name </span></dt>
+               <dt><span class="term"><em>policy_name</em> </span></dt>
                <dd>
                   <p>アタッチするマスキングポリシーの名前。</p>
 
                </dd>
              
-               <dt><span class="term"> <em>table_name</em> </span></dt>
+               <dt><span class="term"> <em>relation_name</em> </span></dt>
                <dd>
-                  <p>マスキングポリシーをアタッチするテーブルの名前。</p>
+                  <p>マスキングポリシーをアタッチするリレーションの名前。</p>
 
                </dd>
              
@@ -79,14 +82,24 @@
                   <p>マスキングポリシーが適用される列の名前。</p>
                </dd>
              
+               <dt><span class="term"><em>output_paths</em> </span></dt>
+               <dd>
+                  <p>マスキングポリシーが適用される SUPER オブジェクトのフルパス (列名を含む)。例えば、<code class="code">person</code> というSUPER 型の列を使用したリレーションの場合、<em>output_path</em> は <code class="code">person.name.first_name</code> になります。</p>
+               </dd>
+             
                <dt><span class="term"><em>input_column_names</em> </span></dt>
                <dd>
-                  <p>マスキングポリシーが入力として受け取る列の名前。このパラメータはオプションです。指定しない場合、マスキングポリシーは output_column_names を入力として使用します。</p>
+                  <p>マスキングポリシーが入力として受け取る列の名前。このパラメータはオプションです。指定しない場合、マスキングポリシーは <em>output_column_names</em> を入力として使用します。</p>
+               </dd>
+             
+               <dt><span class="term"><em>input_paths</em> </span></dt>
+               <dd>
+                  <p>マスキングポリシーが入力として受け取る SUPER オブジェクトのフルパス。このパラメータはオプションです。指定しない場合、マスキングポリシーは <em>output_path</em> を入力に使用します。</p>
                </dd>
              
                <dt><span class="term"><em>user_name</em> </span></dt>
                <dd>
-                  <p>マスキングポリシーをアタッチするユーザーの名前。同じ列/ユーザーのペアに 2 つのポリシーをアタッチすることはできません。ポリシーをユーザーに、別のポリシーをユーザーのロールにアタッチできます。この場合、優先度の高いポリシーが適用されます。</p>
+                  <p>マスキングポリシーをアタッチするユーザーの名前。ユーザーと列、またはロールと列の同じ組み合わせに 2 つのポリシーをアタッチすることはできません。ポリシーをユーザーに、別のポリシーをユーザーのロールにアタッチできます。この場合、優先度の高いポリシーが適用されます。</p>
                   <p>1 回の ATTACH MASKING POLICY コマンドで設定できるのは、user_name、role_name、PUBLIC のいずれか 1 つのみです。</p>
                </dd>
              
@@ -102,9 +115,10 @@
                   <p>1 回の ATTACH MASKING POLICY コマンドで設定できるのは、user_name、role_name、PUBLIC のいずれか 1 つのみです。</p>
                </dd>
              
-               <dt><span class="term"><em>優先度</em> </span></dt>
+               <dt><span class="term"><em>priority</em> </span></dt>
                <dd>
                   <p>マスキングポリシーの優先度。特定のユーザーのクエリに複数のマスキングポリシーが適用される場合、最も優先度の高いポリシーが適用されます。</p>
+                  <p>2 つの異なるポリシーを同じ優先順位で同じ列にアタッチすることはできません。2 つの異なるポリシーが別々のユーザーまたはロールにアタッチされている場合でも同様です。ポリシーをアタッチするユーザーまたはロールが毎回異なる場合に限り、同じポリシーを同じテーブル、出力列、入力列、優先度のパラメーターのセットに複数回アタッチできます。</p>
                   <p>ロールが異なっていても、その列にアタッチされている別のポリシーと同じ優先度の列にポリシーを適用することはできません。このフィールドはオプションです。優先度を指定しない場合、マスキングポリシーのアタッチの優先度はデフォルトで 0 に設定されます。</p>
                </dd>
             </dl></div>

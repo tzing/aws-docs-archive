@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_UNLOAD_HISTORY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_UNLOAD_HISTORY-table-columns">テーブルの列</a><a href="#SYS_UNLOAD_HISTORY-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_UNLOAD_HISTORY">SYS_UNLOAD_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SYS_UNLOAD_HISTORY では、UNLOAD コマンドの詳細を表示します。いくつかのフィールドの累積統計情報を含む UNLOAD コマンドが、それぞれの行に対応し表示されます。この情報には、実行中および終了した UNLOAD コマンドの両方が含まれます。</p><p>SYS_UNLOAD_HISTORY はすべてのユーザーが表示可能です。スーパーユーザーはすべての行を表示できます。通常のユーザーはアクセスできるメタデータのみを表示できます。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_UNLOAD_HISTORY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_UNLOAD_HISTORY-table-columns">テーブルの列</a><a href="#SYS_UNLOAD_HISTORY-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_UNLOAD_HISTORY">SYS_UNLOAD_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SYS_UNLOAD_HISTORY では、UNLOAD コマンドの詳細を表示します。いくつかのフィールドの累積統計情報を含む UNLOAD コマンドが、それぞれの行に対応し表示されます。この情報には、実行中および終了した UNLOAD コマンドの両方が含まれます。</p><p>SYS_UNLOAD_HISTORY はすべてのユーザーが表示可能です。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p>
             <h2 id="SYS_UNLOAD_HISTORY-table-columns">テーブルの列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c75b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c79b7b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -81,7 +81,7 @@
                         <tr>
                             <td tabindex="-1">status</td>
                             <td tabindex="-1">text</td>
-                            <td tabindex="-1">UNLOAD コマンドのステータス。有効な値は、<code class="code">running</code>および <code class="code">completed</code> です。</td>
+                            <td tabindex="-1">UNLOAD コマンドのステータス。有効な値は、<code class="code">running</code>、<code class="code">completed</code>、<code class="code">aborted</code>、および <code class="code">unknown</code> です。</td> 
                         </tr>   
                         <tr>
                             <td tabindex="-1">start_time</td>
@@ -94,7 +94,7 @@
                             <td tabindex="-1">アンロードが完了した時刻。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">期間</td>
+                            <td tabindex="-1">duration</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">UNLOAD コマンド中に消費された時間 (マイクロ秒)。</td>
                         </tr>

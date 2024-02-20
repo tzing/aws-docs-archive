@@ -72,7 +72,7 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>正規表現パターンを表す <code class="code">CHAR</code> または <code class="code">VARCHAR</code> 文字列リテラル。詳細については、「<a href="./pattern-matching-conditions-posix.html">POSIX 演算子</a>」を参照してください。</p>
+                     <p>正規表現パターンを表す UTF-8 文字列リテラル。詳細については、「<a href="./pattern-matching-conditions-posix.html">POSIX 演算子</a>」を参照してください。</p>
                   </dd>
                 
                   <dt><span class="term"><em>replace_string</em></span></dt>
@@ -85,7 +85,7 @@
                      <p>(オプション) 検索を開始する <em>source_string</em> 内の位置を示す正の整数。position はバイト数ではなく文字数に基づくため、マルチバイト文字は 1 文字としてカウントされます。デフォルトは <code class="code">1</code> です。<em>position</em> が <code class="code">1</code> より小さい場合、<em>source_string</em> の最初の文字から検索が開始されます。<em>position</em> が <em>source_string</em> の文字数より大きい場合、結果は <em>source_string</em> になります。</p>
                   </dd>
                 
-                  <dt><span class="term"> <em>パラメータ</em> </span></dt>
+                  <dt><span class="term"> <em>parameters</em> </span></dt>
                   <dd>
                      <p>(オプション) 関数がパターンとどのように一致するかを示す 1 つ以上のリテラル文字列。取り得る値には以下のものがあります。</p>
                      <div class="itemizedlist">

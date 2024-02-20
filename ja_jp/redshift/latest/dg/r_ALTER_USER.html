@@ -144,7 +144,7 @@ CREATEDB | NOCREATEDB
                <dt><span class="term"> <em>new_name</em> </span></dt>
                <dd>
                   <p>ユーザーの新しい名前。有効な名前の詳細については、「<a href="./r_names.html">名前と識別子</a>」を参照してください。</p>
-                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>ユーザーの名前を変更すると、ユーザーのパスワードも変更する必要があります。ユーザー名はパスワード暗号化の一部として使用されるため、ユーザーの名前を変更すると、パスワードは消去されます。パスワードをリセットするまで、ユーザーはログオンできません。次に例を示します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user newuser password 'EXAMPLENewPassword11'; </code></pre></div></div>
+                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>ユーザーの名前を変更すると、ユーザーのパスワードもリセットする必要があります。リセット後のパスワードは、以前のパスワードと異ならなくても構いません。ユーザー名はパスワード暗号化の一部として使用されるため、ユーザーの名前を変更すると、パスワードは消去されます。パスワードをリセットするまで、ユーザーはログオンできません。次に例を示します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user newuser password 'EXAMPLENewPassword11'; </code></pre></div></div>
                </dd>
              
                <dt><span class="term">CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED } </span></dt>
@@ -175,7 +175,7 @@ CREATEDB | NOCREATEDB
                   <p>設定またはリセットするパラメータの名前。</p>
                </dd>
              
-               <dt><span class="term"> <em>値</em> </span></dt>
+               <dt><span class="term"> <em>value</em> </span></dt>
                <dd>
                   <p>パラメータの新しい値。</p>
                </dd>
@@ -187,7 +187,7 @@ CREATEDB | NOCREATEDB
              
                <dt><span class="term">EXTERNALID <em>external_id</em> </span></dt>
                <dd>
-                  <p>ID プロバイダーに関連付けられているユーザーの識別子。ユーザーはパスワードを無効にする必要があります。詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-native-idp.html">Amazon Redshift のネイティブ ID プロバイダー (IdP) フェデレーション</a>」 を参照してください。</p>
+                  <p>ID プロバイダーに関連付けられているユーザーの識別子。ユーザーはパスワードを無効にする必要があります。詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-native-idp.html">Amazon Redshift 用のネイティブ ID プロバイダー (IdP) フェデレーション</a>」を参照してください。</p>
                </dd>
             </dl></div>
        

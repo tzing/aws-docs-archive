@@ -149,7 +149,7 @@ and <em>table_attributes</em> are:
                   <p>テーブル名の最大長は 127 バイトです。それより長い名前は 127 バイトまで切り詰められます。最大 4 バイトまで UTF-8 マルチバイト文字を使用できます。Amazon Redshift は、ユーザー定義の一時テーブルや、クエリ処理またはシステムメンテナンス中に Amazon Redshift によって作成された一時テーブルを含む、各ノードタイプのクラスターあたりのテーブル数のクォータを適用します。オプションで、テーブル名は、データベース名およびスキーマ名で修飾することができます。次の例では、データベース名は <code class="code">tickit</code>、スキーマ名は <code class="code">public</code>、テーブル名は <code class="code">test</code> です。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create table tickit.public.test (c1 int);
 </code></pre>
-                  <p>データベースまたはスキーマが存在し、テーブルが作成されていない場合、このステートメントはエラーを返します。システムデータベース <code class="code">template0</code>、<code class="code">template1</code>、および <code class="code">padb_harvest</code> にテーブルまたはビューを作成することはできません。</p>
+                  <p>データベースまたはスキーマが存在し、テーブルが作成されていない場合、このステートメントはエラーを返します。システムデータベース <code class="code">template0</code>、<code class="code">template1</code>、<code class="code">padb_harvest</code>、または <code class="code">sys:internal</code> にテーブルまたはビューを作成することはできません。</p>
                   <p>スキーマ名を指定すると、新しいテーブルはそのスキーマ内に作成されます (作成者がスキーマにアクセス権を持っている場合)。テーブル名は、そのスキーマで一意の名前にする必要があります。スキーマを指定しない場合、現在のデータベーススキーマを使用してテーブルが作成されます。一時テーブルを作成する場合、一時テーブルは特殊なスキーマに作成されるので、スキーマ名を指定することはできません。</p>
                   <p>同じ名前の一時テーブルでも、別のセッションで作成される場合は同じデータベース内に同時に存在することができます。これは、テーブルに割り当てられるスキーマが異なるためです。有効な名前の詳細については、「<a href="./r_names.html">名前と識別子</a>」を参照してください。</p>
                </dd>
@@ -237,7 +237,7 @@ and <em>table_attributes</em> are:
                         <p>CHAR、VARCHAR、または VARBYTE として定義されている列には、LZO 圧縮が割り当てられます。</p>
                      </li></ul></div>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>列を圧縮しない場合は、明示的に RAW エンコードを指定します。</p></div></div>
-                  <p> 次の <a href="./c_Compression_encodings.html#compression-encoding-list">compression encodings</a>がサポートされています。</p>
+                  <p> 次の <a href="./c_Compression_encodings.html#compression-encoding-list">compression encodings</a> がサポートされています。</p>
                   <div class="itemizedlist">
                      
                       
@@ -327,7 +327,7 @@ and <em>table_attributes</em> are:
                   <p>列がテーブルのプライマリキーであることを指定するキーワード。列定義を使用してプライマリキーとして定義できるのは 1 列だけです。複数列のプライマリキーを使用してテーブル制約を定義するには、PRIMARY KEY ( <em>column_name</em> [, ... ] ) 構文を使用します。</p>
                   <p>列をプライマリキーに指定すると、スキーマの設計に関するメタデータが提供されます。プライマリキーは、他のテーブルが、行の一意の識別子としてこの列セットに依存している可能性があることを示します。列制約かテーブル制約かにかかわらず、テーブルに指定できるプライマリキーは 1 つです。プライマリキーの制約は、同じテーブルに定義されている一意の制約で指定された列セットとは異なる列セットを指定する必要があります。</p>
                   
-                  <p>PRIMARY KEY カラムは NOT NULL としても定義されます。</p>
+                  <p>PRIMARY KEY 列は NOT NULL としても定義されます。</p>
                   <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>プライマリキーの制約は情報提供にのみ使用されます。プライマリキーの制約がシステムに強制されることはありませんが、プランナーによって使用されます。</p></div></div>
                </dd>
              

@@ -68,6 +68,7 @@
             
              
              
+             
          <ul class="itemizedlist"><li class="listitem">
                <p>増分マテリアライズドビューの場合、<code class="code">REFRESH MATERIALIZED VIEW</code>はコミット済みのベーステーブル行のみを使用します。したがって、同じトランザクション内のデータ操作言語 (DML) ステートメントの後に更新操作が実行された場合、その DML ステートメントの変更は更新のために表示されません。</p>
             </li><li class="listitem">
@@ -75,6 +76,8 @@
                      VIEW</code>は、通常の Amazon Redshift トランザクションセマンティクスに従って、更新トランザクションに表示されるすべてのベーステーブル行を表示します。</p>
             </li><li class="listitem">
                <p>入力引数型よっては、マテリアライズドビューの増分リフレッシュが Amazon Redshift でサポートされています。特定の入力引数型を持つ次の関数です。DATE (タイムスタンプ)、DATE_PART (日付、時刻、間隔、time-tz)、DATE_TRUNC (タイムスタンプ、間隔)。</p>
+            </li><li class="listitem">
+               <p>増分更新は、ベーステーブルがデータ共有内にあるマテリアライズドビューでサポートされます。</p>
             </li></ul></div>
          <p>Amazon Redshift の一部のオペレーションは、マテリアライズドビューに影響します。こうしたオペレーションの中には、マテリアライズドビューを定義するクエリで増分更新のための SQL 機能のみが使用されている場合でも、<code class="code">REFRESH MATERIALIZED VIEW</code>オペレーションによってマテリアライズドビューが完全に再計算されるものがあります。次に例を示します。</p>
          <div class="itemizedlist">
@@ -98,7 +101,6 @@
              
              
              
-
              
             
             
@@ -122,7 +124,16 @@
             </li><li class="listitem">
                <p>FROM 句以外にあるサブクエリ</p>
             </li><li class="listitem">
-               <p>マテリアライズドビューを定義するクエリでベーステーブルとして参照される外部テーブル。</p>
+               <p>マテリアライズドビューを定義するクエリで以下の形式を参照する外部テーブル。</p>
+               <div class="itemizedlist">
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p> Delta Lake </p>
+                  </li><li class="listitem">
+                     <p> Hudi </p>
+                  </li></ul></div>
+               <p>増分更新は、プレビュートラック上の他の形式を参照する外部テーブルを使用して定義されたマテリアライズドビューでサポートされています。プレビュークラスターのセットアップの詳細については、「<em>Amazon Redshift 管理ガイド</em>」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#cluster-preview">プレビュークラスターの作成</a>」を参照してください。プレビューワークグループの設定の詳細については、「<em>Amazon Redshift 管理ガイド</em>」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">プレビューワークグループの作成</a>」を参照してください。</p>
             </li><li class="listitem"><p>日時関数、RANDOM、STABLE 以外のユーザー定義関数など、可変関数。</p></li></ul></div>
          <p>VACUUM などのバックグラウンド操作がマテリアライズドビューの更新オペレーションに与える影響など、マテリアライズドビューの制限の詳細については、<a href="#mv_REFRESH_MARTERIALIZED_VIEW_usage">使用に関する注意事項</a> を参照してください。</p>
        

@@ -42,10 +42,10 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_ATTACHED_MASKING_POLICY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVV_ATTACHED_MASKING_POLICY-table-columns">テーブルの列</a><a href="#r_SVV_ATTACHED_MASKING_POLICY-internal-functions">内部関数</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_ATTACHED_MASKING_POLICY">SVV_ATTACHED_MASKING_POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVV_ATTACHED_MASKING_POLICY を使用して、現在接続されているデータベースに、ポリシーがアタッチされているすべてのリレーションとロール/ユーザーを表示します。</p><p>SVV_ATTACHED_MASKING_POLICY を閲覧できるのは、<a href="https://docs.aws.amazon.com/redshift/latest/dg/r_roles-default.html"><code class="code">sys:secadmin</code></a> ロールを持つユーザーだけです。通常のユーザーには 0 行が表示されます。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_ATTACHED_MASKING_POLICY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVV_ATTACHED_MASKING_POLICY-table-columns">テーブルの列</a><a href="#r_SVV_ATTACHED_MASKING_POLICY-internal-functions">内部関数</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_ATTACHED_MASKING_POLICY">SVV_ATTACHED_MASKING_POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVV_ATTACHED_MASKING_POLICY を使用して、現在接続されているデータベースに、ポリシーがアタッチされているすべてのリレーションとロール/ユーザーを表示します。</p><p>SVV_ATTACHED_MASKING_POLICY を閲覧できるのは、スーパーユーザーおよび <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_roles-default.html"><code class="code">sys:secadmin</code></a> ロールを持つユーザーだけです。通常のユーザーには 0 行が表示されます。</p>
             <h2 id="r_SVV_ATTACHED_MASKING_POLICY-table-columns">テーブルの列</h2>
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c19b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c19b7b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -88,7 +88,7 @@
                             <td tabindex="-1">被付与者のタイプ。<em>ロール</em>、<em>ユーザー</em>、<em>パブリック</em>のいずれでもかまいません。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">優先度</td>
+                            <td tabindex="-1">priority</td>
                             <td tabindex="-1">整数</td>
                             <td tabindex="-1">アタッチされたポリシーの優先順位。</td>
                         </tr>
@@ -110,7 +110,7 @@
                 <h3 id="r_SVV_ATTACHED_MASKING_POLICY-internal-functions-get-pol-role">mask_get_policy_for_role_on_column</h3>
                 <p>特定の列/ロールペアに適用される最も優先度の高いポリシーを取得します。</p>
                  
-                <h4 id="r_ATTACHED_MASKING_POLICY-internal-functions-get-pol-role-syntax">構文</h4>
+                <h4 id="r_SVV_ATTACHED_MASKING_POLICY-internal-functions-get-pol-role-syntax">構文</h4>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">mask_get_policy_for_role_on_column 
                         (relschema, 
                         relname, 
@@ -118,8 +118,8 @@
                         rolename);
 </code></pre>
                  
-                     
-                        <h4 id="r_ATTACHED_MASKING_POLICY-internal-functions-get-pol-role-parameters">パラメータ</h4>
+                 
+                        <h4 id="r_SVV_ATTACHED_MASKING_POLICY-internal-functions-get-pol-role-parameters">パラメータ</h4>
                         <div class="variablelist">
                              
                              
@@ -152,7 +152,7 @@
                 <h3 id="r_SVV_ATTACHED_MASKING_POLICY-internal-functions-get-pol-user">mask_get_policy_for_user_on_column</h3>
                 <p>特定の列/ユーザーのペアに適用される最も優先度の高いポリシーを取得します。</p>
                  
-                    <h4 id="r_ATTACHED_MASKING_POLICY-internal-functions-get-pol-user-syntax">構文</h4>
+                    <h4 id="r_SVV_ATTACHED_MASKING_POLICY-internal-functions-get-pol-user-syntax">構文</h4>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">mask_get_policy_for_user_on_column 
                         (relschema, 
                         relname, 
@@ -160,8 +160,8 @@
                         username);
 </code></pre>
                  
-                     
-                        <h4 id="r_ATTACHED_MASKING_POLICY-internal-functions-get-pol-user-parameters">パラメータ</h4>
+                 
+                        <h4 id="r_SVV_ATTACHED_MASKING_POLICY-internal-functions-get-pol-user-parameters">パラメータ</h4>
                         <div class="variablelist">
                              
                              

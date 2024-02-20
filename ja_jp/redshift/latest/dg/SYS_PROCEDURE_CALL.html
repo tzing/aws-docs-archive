@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">テーブルの列</a><a href="#SYS_PROCEDURE_CALL-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SYS_PROCEDURE_CALL ビューを使用して、ストアドプロシージャ呼び出しに関する情報として、開始時刻、終了時刻、ストアドプロシージャ呼び出しのステータス、ネストされたストアドプロシージャ呼び出しの呼び出し階層などを取得できます。ストアドプロシージャ呼び出しごとにクエリ ID を受け取ります。</p><p>SYS_PROCEDURE_CALL はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">テーブルの列</a><a href="#SYS_PROCEDURE_CALL-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SYS_PROCEDURE_CALL ビューを使用して、ストアドプロシージャ呼び出しに関する情報として、開始時刻、終了時刻、ストアドプロシージャ呼び出しのステータス、ネストされたストアドプロシージャ呼び出しの呼び出し階層などを取得できます。ストアドプロシージャ呼び出しごとにクエリ ID を受け取ります。</p><p>SYS_PROCEDURE_CALL はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p>
             <h2 id="SYS_PROCEDURE_CALL-table-columns">テーブルの列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c45b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c47b7b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -86,7 +86,7 @@
                             <td tabindex="-1">クエリの実行が終了した時刻 (UTC)。タイムスタンプは、秒の小数部に 6 桁の精度を使用します。例: 2009-06-12 11:29:19.131358。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">ステータス</td>
+                            <td tabindex="-1">status</td>
                             <td tabindex="-1">char(10)</td>
                             <td tabindex="-1">ストアドプロシージャ呼び出しのステータス。ストアドプロシージャがシステムによって停止されたか、ユーザーによってキャンセルされた場合、値は canceled です。ストアドプロシージャ呼び出しが最後まで実行された場合、値は success です。</td>
                         </tr>

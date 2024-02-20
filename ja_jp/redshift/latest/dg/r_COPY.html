@@ -79,11 +79,12 @@ FROM <em>data-source</em>
 <em>authorization</em>;</code></pre>
          <p>次の例では、CATDEMO というテーブルを作成し、Amazon S3 の <code>category_pipe.txt</code> というデータファイルからサンプルデータを含むテーブルをロードします。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create table catdemo(catid smallint, catgroup varchar(10), catname varchar(10), catdesc varchar(50));</code></pre>
-         <p>以下の例では、COPY コマンドのデータソースは、<code>awssampledbuswest2</code>という名前の Amazon S3 バケットの <code>tickit</code> フォルダ内の <code>category_pipe.txt</code> というデータファイルです。COPY コマンドには、AWS Identity and Access Management(IAM) ロールを通して、Amazon S3 バケットにアクセスすることが許可されています。クラスターに Amazon S3 にアクセスする権限を持つ既存の IAM ロールがある場合、次の COPY コマンドに ロールの Amazon Resource Name (ARN) を置換して実行できます。</p>
+         <p>以下の例では、COPY コマンドのデータソースは、<code>redshift-downloads</code>という名前の Amazon S3 バケットの <code>tickit</code> フォルダ内の <code>category_pipe.txt</code> というデータファイルです。COPY コマンドには、AWS Identity and Access Management(IAM) ロールを通して、Amazon S3 バケットにアクセスすることが許可されています。クラスターに Amazon S3 にアクセスする権限を持つ既存の IAM ロールがある場合、次の COPY コマンドに ロールの Amazon Resource Name (ARN) を置換して実行できます。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">copy catdemo
-from 's3://awssampledbuswest2/tickit/category_pipe.txt'
+from 's3://redshift-downloads/tickit/category_pipe.txt'
 iam_role 'arn:aws:iam::<code class="replaceable">&lt;aws-account-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>'
-region 'us-west-2';</code></pre>
+region 'us-east-1';</code></pre>
+         
          <p>IAM ロールを作成する手順については、Amazon Redshift 入門ガイドの「<a href="https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-create-an-iam-role.html">ステップ 2: IAM ロールを作成する</a>」を参照してください。他の AWS リージョンからデータをロードする手順など、COPY コマンドを使用してサンプルデータをロードする方法の詳細については、Amazon Redshift 入門ガイドの「<a href="https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-create-sample-db.html">ステップ 6: Amazon S3 からサンプルデータをロードする</a>」を参照してください。</p>
 
          <div class="variablelist">

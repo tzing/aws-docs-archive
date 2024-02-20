@@ -72,6 +72,7 @@ IS '<em>text</em>' | NULL</code></pre>
                       
                       
                       
+                      
                   <ul class="itemizedlist"><li class="listitem">
                         <p>TABLE</p>
                      </li><li class="listitem">
@@ -82,6 +83,8 @@ IS '<em>text</em>' | NULL</code></pre>
                         <p>DATABASE</p>
                      </li><li class="listitem">
                         <p>VIEW</p>
+                     </li><li class="listitem">
+                        <p>SCHEMA</p>
                      </li></ul></div>
                </dd>
              
@@ -112,6 +115,8 @@ IS '<em>text</em>' | NULL</code></pre>
          <p>コメントを追加または更新するには、スーパーユーザーまたはデータベースオブジェクトの所有者である必要があります。</p>
 
          <p>データベースに関するコメントは現在のデータベースにのみ適用できます。異なるデータベースにコメントしようとすると、警告メッセージが表示されます。存在しないデータベースに関するコメントに対しても、同じ警告が表示されます。</p>
+         
+         <p>外部テーブル、外部列、遅延バインドビューの列に関するコメントはサポートされていません。</p> 
        
          <h2 id="r_COMMENT-example">例</h2>
 

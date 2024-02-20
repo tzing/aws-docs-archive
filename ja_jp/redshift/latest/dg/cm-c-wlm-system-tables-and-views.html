@@ -46,7 +46,7 @@
             <p>クエリの割り当て先のキューを確認する。</p>
          </li><li class="listitem">
             <p>現在、ワークロードマネージャーによって追跡されているクエリのステータスを確認する。</p>
-         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w317aac41c59b9"><thead>
+         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w319aac43c59b9"><thead>
                <tr>
                   <th>テーブル名 </th>
                   <th>説明 </th>
@@ -102,6 +102,18 @@
                   </td>
                   <td tabindex="-1">サービスクラスの現在の状態を表示します。</td>
                </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STL_WLM_RULE_ACTION.html">STL_WLM_RULE_ACTION</a>
+                  </td>
+                  <td tabindex="-1">レコードは、ユーザー定義のキューに関連付けられた WLM クエリモニタリングルールによって生じたアクションの詳細を示します。</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STV_WLM_QMR_CONFIG.html">STV_WLM_QMR_CONFIG</a>
+                  </td>
+                  <td tabindex="-1">WLM クエリモニタリングルール (QMR) の構成を記録します。</td>
+               </tr>
             </table></div></div><p> システムテーブルのクエリを追跡するには、タスク ID を使用します。次の例に、最近送信されたユーザークエリのタスク ID を取得する方法を示します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select task from stl_wlm_query where exec_start_time =(select max(exec_start_time) from stl_wlm_query); 
 
 task 
@@ -124,7 +136,7 @@ xid |task|query|service_| wlm_start_  |  state  |queue_ | exec_
          
        <p>次の表は、サービスクラスに割り当てられている ID の一覧です。</p>  
          
-         <div class="table-container"><div class="table-contents"><table id="w317aac41c59c19b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac43c59c19b5"><thead>
                   <tr>
                      <th>ID </th>
                      <th>サービスクラス </th>

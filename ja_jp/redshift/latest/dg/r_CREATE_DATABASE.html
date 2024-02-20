@@ -51,7 +51,7 @@
 [ CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED } ]
 [ COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ]
 [ ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT } ]
-[ FROM DATASHARE datashare_name OF [ ACCOUNT account_id ] NAMESPACE namespace_guid ]
+[ [ WITH PERMISSIONS ] FROM DATASHARE datashare_name ] OF [ ACCOUNT account_id ] NAMESPACE namespace_guid 
 | [ FROM ARN '&lt;arn&gt;' <span>{</span> WITH DATA CATALOG SCHEMA '&lt;schema&gt;' | WITH NO DATA CATALOG SCHEMA } 
 [ IAM_ROLE  default | 'SESSION' | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' ] ]</code></pre>
 
@@ -134,7 +134,7 @@
                   <p>Amazon Redshift データベースでは、SERIALIZABLE と SNAPSHOT の両方の分離は、直列化可能な分離レベルのタイプです。つまり、ダーティリード、ノンリピータブルリード、ファントムリードは、SQL 標準に従って防止されます。どちらの分離レベルでも、トランザクションが開始されたときに存在するデータのスナップショットに対してトランザクションが実行され、他のトランザクションがそのスナップショットを変更できないことが保証されます。ただし、SNAPSHOT 分離は、異なるテーブル行での書き込みスキューの挿入と更新を妨げないため、完全な直列化機能を提供しません。</p>
                   <p>次のシナリオは、SNAPSHOT 分離レベルを使用した書き込みスキューの更新を示しています。<code class="code">Numbers</code> という名前のテーブルには、<code class="code">0</code> と <code class="code">1</code> の値を含む <code class="code">digits</code> という名前の列が含まれています。各ユーザーの UPDATE ステートメントは、他のユーザーと重複しません。ただし、<code class="code">0</code> と <code class="code">1</code> の値はスワップされます。実行する SQL は、このタイムラインに従い次の結果になります。</p>
                   
-                  <div class="table-container"><div class="table-contents disable-scroll"><table id="w317aac45b9c65c11b3c15b3c13"><thead>
+                  <div class="table-container"><div class="table-contents disable-scroll"><table id="w319aac47b9c69c11b3c15b3c13"><thead>
                            <tr>
                               <th>時間 </th>
                               <th>ユーザー 1 アクション </th>
@@ -263,7 +263,7 @@ digits
                   <p><code class="code">default</code> キーワードを指定することは、デフォルトとして設定されてクラスターに関連付けられている IAM ロールを使用することを意味します。</p>
                   <p>フェデレーション ID を使用して Amazon Redshift クラスターに接続し、このコマンドを使用して作成された外部スキーマからテーブルにアクセスする場合は、<code class="code">'SESSION'</code> を使用します。フェデレーション ID の使用例については、フェデレーション ID の設定方法を説明している「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/authorization-fas-spectrum.html">フェデレーション ID を使用して、ローカルリソースと Amazon Redshift Spectrum の外部テーブルへの Amazon Redshift アクセスを管理する</a>」を参照してください。</p>
                   
-                  <p>クラスターが認証と承認に使用する IAM ロールの Amazon リソースネーム (ARN) を使用します。少なくとも、IAM ロールには、Amazon S3 バケットで LIST 操作を実行してアクセスを受ける権限と、バケットに含まれる Amazon S3 オブジェクトで GET 操作を実行する権限が必要です。データベース用の AWS Glue Data Catalog を使用してデータベースを作成するときに IAM_ROLE を使用する方法の詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/dg/lake-formation-getting-started-consumer.html">コンシューマーとして Lake Formation 管理のデータ共有を使用する</a>」を参照してください。</p>
+                  <p>クラスターが認証と承認に使用する IAM ロールの Amazon リソースネーム (ARN) を使用します。少なくとも、IAM ロールには、Amazon S3 バケットで LIST オペレーションを実行してアクセスを受ける許可と、バケットに含まれる Amazon S3 オブジェクトで GET オペレーションを実行する許可が必要です。データベース用の AWS Glue Data Catalog を使用してデータベースを作成するときに IAM_ROLE を使用する方法の詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/dg/lake-formation-getting-started-consumer.html">コンシューマーとして Lake Formation 管理のデータ共有を使用する</a>」を参照してください。</p>
                   <p>以下に ARN が 1 つの場合の IAM_ROLE パラメータ文字列の構文を示します。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">IAM_ROLE 'arn:aws:iam::<code class="replaceable">&lt;aws-account-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>'</code></pre>
                   <p>ロールを連鎖することで、クラスターは別のアカウントに属している可能性がある別の IAM ロールを引き受けることができます。最大10 個までのロールを連鎖できます。詳細については、「<a href="./c-spectrum-iam-policies.html#c-spectrum-chaining-roles">Amazon Redshift Spectrum での IAM ロールの連鎖</a>」を参照してください。</p>
@@ -305,17 +305,18 @@ digits
 
                <p>次の構文で、同じ AWS アカウント内のデータ共有からデータベースを作成するために使用される、CREATE DATABASE コマンドについて確認できます。</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CREATE DATABASE <em>database_name</em>
-FROM DATASHARE <em>datashare_name</em> OF [ ACCOUNT account_id ] NAMESPACE <em>namespace_guid</em></code></pre>
+[ [ WITH PERMISSIONS ] FROM DATASHARE <em>datashare_name</em> ] OF [ ACCOUNT account_id ] NAMESPACE <em>namespace_guid</em></code></pre>  
                <p>次の構文で、AWSアカウント間のデータ共有からデータベースを作成するために使用される,CREATE DATABASE コマンドについて確認できます。</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CREATE DATABASE <em>database_name</em>
-FROM DATASHARE <em>datashare_name</em> OF ACCOUNT <em>account_id</em> NAMESPACE <em>namespace_guid</em></code></pre>
-               
+[ [ WITH PERMISSIONS ] FROM DATASHARE <em>datashare_name</em> ] OF ACCOUNT <em>account_id</em> NAMESPACE <em>namespace_guid</em></code></pre>
 
                 
                   <h3 id="r_CREATE_DATABASE-parameters-datashare">データ共有で CREATE DATABASE を使用するためのパラメータ</h3>
                   <div class="variablelist">
                    
              
+                     
+                        
                       
              
          <dl>
@@ -329,6 +330,13 @@ FROM DATASHARE <em>datashare_name</em> OF ACCOUNT <em>account_id</em> NAMESPACE 
                   <p>コンシューマーデータベースが作成されるデータ共有の名前。</p>
                </dd>
              
+                        <dt><span class="term">WITH PERMISSIONS</span></dt>
+
+                        <dd>
+                           <p>データ共有から作成されたデータベースに、個々のデータベースオブジェクトにアクセスするためのオブジェクトレベルの許可が必要であることを指定します。この句を指定しないと、データベースに対する USAGE アクセス許可を付与されたユーザーまたはロールは、データベース内のすべてのデータベースオブジェクトに自動的にアクセスできるようになります。</p>
+                           
+                        </dd>
+                      
                         <dt><span class="term"> NAMESPACE <em>namespace_guid</em> </span></dt>
                         <dd>
                            <p>データ共有が属しているプロデユーサ名前空間を指定する値。</p>

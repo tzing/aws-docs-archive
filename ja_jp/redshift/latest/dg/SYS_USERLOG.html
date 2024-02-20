@@ -47,11 +47,11 @@
              
              
              
-        <ul class="itemizedlist"><li class="listitem"><p>ユーザーの作成</p></li><li class="listitem"><p>ユーザーの削除</p></li><li class="listitem"><p>ユーザーの変更 (名前の変更)</p></li><li class="listitem"><p>ユーザーの変更 (プロパティの変更)</p></li></ul></div><p>このビューをクエリして、サーバーレスワークグループとプロビジョニングされたクラスターに関する情報を確認できます。</p><p>このビューはスーパーユーザーにのみ表示されます。詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/dg/cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p>
+        <ul class="itemizedlist"><li class="listitem"><p>ユーザーの作成</p></li><li class="listitem"><p>ユーザーの削除</p></li><li class="listitem"><p>ユーザーの変更 (名前の変更)</p></li><li class="listitem"><p>ユーザーの変更 (プロパティの変更)</p></li></ul></div><p>このビューをクエリして、サーバーレスワークグループとプロビジョニングされたクラスターに関する情報を確認できます。</p><p>SYS_USERLOG はスーパーユーザーにのみ表示されます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p>
             <h2 id="SYS_USERLOG-table-columns">テーブルの列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c77c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c81c11b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -74,7 +74,7 @@
                             <td tabindex="-1">名前の変更アクションでの変更前のユーザー名。他のすべてのアクションの場合、このフィールドは空です。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">action</td>
+                            <td tabindex="-1">アクション</td>
                             <td tabindex="-1">character(10)</td>
                             <td tabindex="-1">実行されたアクション。有効な値は、変更、作成、削除、および名前変更です。</td>
                         </tr>

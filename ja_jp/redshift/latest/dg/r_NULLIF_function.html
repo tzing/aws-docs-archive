@@ -130,7 +130,7 @@ catgroup
 ----------
 null
 (1 row)</code></pre>
-            <p>NULLIF は末尾のスペースを無視します。文字列が空ではないがスペースが含まれる場合も、NULLIF は Null を返します。</p>
+            <p>NULLIF は末尾の空白を無視します。文字列が空ではないが空鶴が含まれる場合も、NULLIF は Null を返します。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create table nulliftest(c1 char(2), c2 char(2));
 
 insert into nulliftest values ('a','a ');

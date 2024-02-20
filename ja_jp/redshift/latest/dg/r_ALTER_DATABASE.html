@@ -53,11 +53,13 @@
        
          <h2 id="r_ALTER_DATABASE-synopsis">構文</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER DATABASE <em>database_name</em>
-[ RENAME TO <em>new_name</em>
+<span>{</span> RENAME TO <em>new_name</em>
 | OWNER TO <em>new_owner</em>
 | CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED }
-| COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ]
-[ ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT } ]</code></pre>
+| COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE }
+| ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT }
+| INTEGRATION REFRESH <span>{</span><span>{</span> ALL | INERROR } TABLES [IN SCHEMA <em>schema</em> [, ...]] | TABLE <em>schema.table</em> [, ...]}
+}</code></pre>
          
        
          <h2 id="r_ALTER_DATABASE-parameters">パラメータ</h2>
@@ -73,7 +75,9 @@
              
 
              
-
+            
+            
+             
 
          <dl>
                <dt><span class="term"> <em>database_name</em> </span></dt>
@@ -85,7 +89,7 @@ ERROR:  current database may not be renamed</code></pre>
              
                <dt><span class="term">RENAME TO </span></dt>
                <dd>
-                  <p>指定したデータベースの名前を変更します。有効な名前の詳細については、「<a href="./r_names.html">名前と識別子</a>」を参照してください。dev、padb_harvest、template0、または template1 の各データベースの名前を変更することはできません。また現在のデータベースの名前も変更できません。データベース所有者または<a href="./r_superusers.html#def_superusers">superuser</a>のみがデータベース名を変更できます。スーパーユーザー以外の所有者には CREATEDB 権限も必要です。</p>
+                  <p>指定したデータベースの名前を変更します。有効な名前の詳細については、「<a href="./r_names.html">名前と識別子</a>」を参照してください。dev、padb_harvest、template0、template1、または sys:internal の各データベースの名前を変更することはできません。また、現在のデータベースの名前も変更できません。データベース所有者または<a href="./r_superusers.html#def_superusers">superuser</a>のみがデータベース名を変更できます。スーパーユーザー以外の所有者には CREATEDB 権限も必要です。</p>
                </dd>
              
                <dt><span class="term"> <em>new_name</em> </span></dt>
@@ -138,6 +142,11 @@ ERROR:  current database may not be renamed</code></pre>
                   <ul class="itemizedlist"><li class="listitem"><p>データベースの分離レベルを変更するには、スーパーユーザー権限または CREATE DATABASE 権限が必要です。</p></li><li class="listitem"><p><code class="code">dev</code> データベースの分離レベルは変更できません。</p></li><li class="listitem"><p>トランザクションブロック内の分離レベルは変更できません。</p></li><li class="listitem"><p>他のユーザーがデータベースに接続している場合、分離レベルの変更コマンドは失敗します。</p></li><li class="listitem"><p>分離レベルの変更コマンドでは、現在のセッションの分離レベルの設定を変更できます。</p></li></ul></div>
 
                </dd>
+             
+               <dt><span class="term">INTEGRATION REFRESH <span>{</span><span>{</span> ALL | INERROR } TABLES [IN SCHEMA <em>schema</em> [, ...]] | TABLE <em>schema.table</em> [, ...]}</span></dt>
+               <dd><p>Amazon Redshift がすべてのテーブルを更新するか、あるいは指定されたスキーマやテーブル内でエラーのあるテーブルを更新するかどうかを指定する句。更新によって、指定されたスキーマやテーブル内のテーブルはソースデータベースから完全に複製されます。</p>
+               <p>詳細については、「<em></em>Amazon Redshift 管理ガイド」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/zero-etl-using.html">ゼロ ETL 統合での作業</a>」を参照してください。統合の状態の詳細については、「<a href="./r_SVV_INTEGRATION_TABLE_STATE.html">SVV_INTEGRATION_TABLE_STATE</a>」と「<a href="./r_SVV_INTEGRATION.html">SVV_INTEGRATION</a>」を参照してください。</p>
+               </dd>
             </dl></div>
        
          <h2 id="r_ALTER_DATABASE-usage-notes">使用に関する注意事項</h2>
@@ -155,4 +164,13 @@ ERROR:  current database may not be renamed</code></pre>
          
          <p>次の例では、スナップショット分離レベルを使用して <code class="userinput">sampledb</code> という名前のデータベースを変更します。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER DATABASE sampledb ISOLATION LEVEL SNAPSHOT;</code></pre>
+      
+         <p>次の例では、ゼロ ETL 統合で、データベース <code class="userinput">sample_integration_db</code> 内のテーブル <code class="userinput">sample_table1</code> と <code class="userinput">sample_table2</code> を更新します。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE sample_integration_db INTEGRATION REFRESH TABLES sample_table1, sample_table2;</code></pre>
+         
+         <p>次の例では、ゼロ ETL 統合で同期されたテーブルと失敗したテーブルをすべて更新します。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE sample_integration_db INTEGRATION REFRESH ALL tables;</code></pre>
+         
+         <p>次の例では、スキーマ <code class="userinput">sample_schema</code> 内で <code class="computeroutput">ErrorState</code> となっているテーブルをすべて更新します。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE INTEGRATION REFRESH IN ERROR TABLES in SCHEMA sample_schema;</code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ABORT.html">ABORT</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_ALTER_DATABASE.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_ALTER_DATABASE.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

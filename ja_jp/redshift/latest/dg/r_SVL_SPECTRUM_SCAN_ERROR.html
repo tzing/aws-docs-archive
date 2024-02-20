@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_SPECTRUM_SCAN_ERROR" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVL_SPECTRUM_SCAN_ERROR-table-columns">テーブルの列</a><a href="#r_SVL_SPECTRUM_SCAN_ERROR-sample-query">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_SPECTRUM_SCAN_ERROR">SVL_SPECTRUM_SCAN_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>システムビュー SVL_SPECTRUM_SCAN_ERROR をクエリして Redshift Spectrum スキャンエラーに関する情報を取得することができます。</p><p>SVL_SPECTRUM_SCAN_ERROR はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべての列は、SYS モニタリングビュー <a href="./SYS_EXTERNAL_QUERY_ERROR.html">SYS_EXTERNAL_QUERY_ERROR</a> にも定義されています。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_SPECTRUM_SCAN_ERROR" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVL_SPECTRUM_SCAN_ERROR-table-columns">テーブルの列</a><a href="#r_SVL_SPECTRUM_SCAN_ERROR-sample-query">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_SPECTRUM_SCAN_ERROR">SVL_SPECTRUM_SCAN_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>システムビュー SVL_SPECTRUM_SCAN_ERROR をクエリして Redshift Spectrum スキャンエラーに関する情報を取得することができます。</p><p>SVL_SPECTRUM_SCAN_ERROR はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべてのデータは、SYS モニタリングビュー <a href="./SYS_EXTERNAL_QUERY_ERROR.html">SYS_EXTERNAL_QUERY_ERROR</a> でも確認できます。SYS モニタリングビューのデータは、使いやすく理解しやすいようにフォーマットされます。クエリには、SYS モニタリングビューを使用することをお勧めします。</p>
             <h2 id="r_SVL_SPECTRUM_SCAN_ERROR-table-columns">テーブルの列</h2>
             
             <p>ログに記録されたエラーのサンプルを表示します。デフォルトは、クエリあたり 10 エントリです。</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c59b9b5"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c59b9b5"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -70,7 +70,7 @@
                             <td tabindex="-1">この行を生成したクエリの ID。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">ロケーション </td>
+                            <td tabindex="-1">location </td>
                             <td tabindex="-1">character(128) </td>
                             <td tabindex="-1">クエリされているデータの場所。</td>
                         </tr>
@@ -101,7 +101,7 @@
                             <td tabindex="-1">クエリで指定されているデータ処理オプション。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">action </td>
+                            <td tabindex="-1">アクション </td>
                             <td tabindex="-1">character(128) </td>
                             <td tabindex="-1">クエリで指定されているデータ処理オプションに関連付けられたアクション。</td>
                         </tr>

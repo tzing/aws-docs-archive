@@ -131,7 +131,7 @@ GROUP BY CUBE(category, product) ORDER BY 1,2;
                <p> それ自体に NULL 値が格納されているリレーションに対して ROLLUP と CUBE を使用して GROUP BY オペレーションを実行すると、同じグループ化列を持つように見える行を含む結果セットが生成されることがあります。前の例に戻ると、b のグループ化列に NULL 値が格納されている場合、GROUP BY ROLLUP((a), (b)) は、小計ではない b のグループ化列に値が NULL の行を返します。</p>
                <p> ROLLUP と CUBE によって作成された NULL 値と、テーブル自体に格納されている NULL 値を区別するには、GROUPING 関数またはそのエイリアスである GROUPING_ID を使用できます。GROUPING は、引数として 1 つのグループ化セットを取り、結果セットの各行について、その位置のグループ化列に対応する 0 または 1 ビットの値を返し、その値を整数に変換します。その位置の値が集計拡張によって作成された NULL 値の場合、GROUPING は 1 を返します。格納されている NULL 値を含む他のすべての値に対しては 0 を返します。</p>
                <p> 例えば、GROUPING(category, product) は、その行のグループ化列の値に応じて、特定の行について次の値を返すことができます。この例では、テーブル内のすべての NULL 値は、集計拡張によって作成された NULL 値です。</p>
-               <div class="table-container"><div class="table-contents"><table id="w317aac45b9d179c19b9c15c11"><thead>
+               <div class="table-container"><div class="table-contents"><table id="w319aac47b9d187c19b9c15c11"><thead>
                         <tr>
                            <th>カテゴリ列</th>
                            <th>製品列</th>

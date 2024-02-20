@@ -42,10 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_SYSTEM" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_ALTER_SYSTEM-privileges">必要な権限</a><a href="#r_ALTER_SYSTEM-synopsis">構文</a><a href="#r_ALTER_SYSTEM-parameters">パラメータ</a><a href="#r_ALTER_SYSTEM-examples">例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_SYSTEM">ALTER SYSTEM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift クラスターまたは Redshift Serverless ワークグループのシステムレベルの設定オプションを変更します。</p><p>システム値の変更は、次の方法に従って有効になります。</p><div class="itemizedlist">
-          
-          
-      <ul class="itemizedlist"><li class="listitem"><p>プロビジョニングされたクラスターの場合、新しい値はクラスターの次回の再起動時に有効になります。詳細については、「Amazon Redshift 管理ガイド」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#reboot-cluster">クラスターの再起動</a>」を参照してください。<em></em></p></li><li class="listitem"><p>サーバーレスワークグループの場合、新しい値は、次回にワークグループが一時停止してから再開したときに有効になります。ワークグループで作業が行われていない場合、ワークグループの一時停止は Redshift Serverless によって行われます。</p></li></ul></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_SYSTEM" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_ALTER_SYSTEM-privileges">必要な権限</a><a href="#r_ALTER_SYSTEM-synopsis">構文</a><a href="#r_ALTER_SYSTEM-parameters">パラメータ</a><a href="#r_ALTER_SYSTEM-usage-notes">使用に関する注意事項</a><a href="#r_ALTER_SYSTEM-examples">例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_SYSTEM">ALTER SYSTEM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift クラスターまたは Redshift Serverless ワークグループのシステムレベルの設定オプションを変更します。</p>
          <h2 id="r_ALTER_SYSTEM-privileges">必要な権限</h2>
          <p>次のいずれかのユーザータイプで ALTER SYSTEM コマンドを実行できます。</p>
          <div class="itemizedlist">
@@ -63,7 +60,7 @@
          <dl>
                <dt><span class="term"> system-level-configuration<em></em> </span></dt>
                <dd>
-                  <p>システムレベルの設定。有効な値: <code class="code">data_catalog_auto_mount</code>。</p>
+                  <p>システムレベルの設定。有効な値: <code class="code">data_catalog_auto_mount</code> および <code class="code">metadata_security</code>。</p>
                </dd>
              
                <dt><span class="term"><span>{</span>true| t | on | false | f | off} </span></dt>
@@ -72,7 +69,13 @@
                </dd>
             </dl></div>
        
+         <h2 id="r_ALTER_SYSTEM-usage-notes">使用に関する注意事項</h2>
+         <p>プロビジョニングされたクラスターの場合、<code class="code">data_catalog_auto_mount</code> への変更はクラスターの次回の再起動時に有効になります。詳細については、「Amazon Redshift 管理ガイド」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#reboot-cluster">クラスターの再起動</a>」を参照してください。<em></em></p>
+         <p>サーバーレスワークグループでは、<code class="code">data_catalog_auto_mount</code> への変更はすぐには有効になりません。</p>
+       
          <h2 id="r_ALTER_SYSTEM-examples">例</h2>
          <p>次の例では、AWS Glue Data Catalog の自動マウントを有効にします。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER SYSTEM SET data_catalog_auto_mount = true;</code></pre>
+         <p>次の例では、メタデータのセキュリティを有効にします。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER SYSTEM SET metadata_security = true;</code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ALTER_SCHEMA.html">ALTER SCHEMA</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_TABLE.html">ALTER TABLE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_ALTER_SYSTEM.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_ALTER_SYSTEM.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

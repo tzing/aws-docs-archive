@@ -57,7 +57,7 @@
                 
                 
             <dl>
-                  <dt><span class="term"> <em>タイプ</em> </span></dt>
+                  <dt><span class="term"> <em>type</em> </span></dt>
                   <dd>
                      <p>サポートされる <a href="./c_Supported_data_types.html">データ型</a> の 1 つ。</p>
                   </dd>
@@ -73,7 +73,7 @@
             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>次の正確性が失われる DECIMAL 変換のように、問題のある変換を実行しようとすると、Amazon Redshift はエラーを返します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="userinput">SELECT CONVERT(decimal(2,1), 123.456);</code></code></pre><p>また、次の INTEGER 変換では、オーバーフローが生じます。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="userinput">SELECT CONVERT(smallint, 12345678);</code></code></pre></div></div>
           
             <h2 id="r_CONVERT-examples">例</h2>
-            <p>一部の例では、サンプルの <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_sampledb.html">TICKIT データベース</a>を使用しています。サンプルデータの設定の詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/gsg/data-loading.html">Amazon Redshift クラスターとデータロードの開始方法</a>」を参照してください。</p>
+            <p>一部の例では、サンプルの <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_sampledb.html">TICKIT データベース</a>を使用しています。サンプルデータのセットアップの詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/gsg/data-loading.html">Amazon Redshift クラスターとデータロードの開始方法</a>」を参照してください。</p>
             
             <p>次のクエリは、CONVERT 関数を使用して小数の列を整数に変換します。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CONVERT(integer, pricepaid)
@@ -96,7 +96,7 @@ FROM sales order by salesid limit 10;</code>
             <p>タイムスタンプをあるタイムゾーンから別のタイムゾーンに変換する方法については、「<a href="./CONVERT_TIMEZONE.html">CONVERT_TIMEZONE 関数</a>」を参照してください。その他の日付および時刻関数については、「<a href="./Date_functions_header.html">日付および時刻関数</a>」を参照してください。</p>
             <p>次の例では、可変文字データを datetime オブジェクトに変換します。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="userinput">SELECT CONVERT(datetime, '2008-02-18 02:36:48') as mysaletime;</code></code></pre>
-            <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p><code class="code">GEOMETRY</code> データ型に対して CAST や CONVERT オペレーションを実行して別のデータ型に変更することはできません。ただし、<code class="code">GEOMETRY</code> 引数を受け入れる関数への入力として、Extended Well-Known Binary (EWKB) 形式の 16 進数の文字列リテラルを指定できます。たとえば、後続の <code class="code">ST_AsText</code> 関数は <code class="code">GEOMETRY</code> データ型を想定します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT ST_AsText('01010000000000000000001C400000000000002040');</code></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="computeroutput" copy="false">st_astext  
+            <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p><code class="code">GEOMETRY</code> データ型に対して CAST や CONVERT オペレーションを実行して別のデータ型に変更することはできません。ただし、<code class="code">GEOMETRY</code> 引数を受け入れる関数への入力として、Extended Well-Known Binary (EWKB) 形式の 16 進数の文字列リテラルを指定できます。例えば、後続の <code class="code">ST_AsText</code> 関数は <code class="code">GEOMETRY</code> データ型を想定します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT ST_AsText('01010000000000000000001C400000000000002040');</code></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="computeroutput" copy="false">st_astext  
 ------------
  POINT(7 8)</code>
 </code></pre><p>また、明示的に <code class="code">GEOMETRY</code> データ型を指定することもできます。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT ST_AsText('010100000000000000000014400000000000001840'::geometry);</code></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="computeroutput" copy="false">st_astext  

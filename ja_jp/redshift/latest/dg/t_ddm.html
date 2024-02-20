@@ -187,23 +187,47 @@ DROP MASKING POLICY mask_credit_card_partial; </code></pre>
              
              
             
+             
+             
+             
             
              
              
-            
              
              
              
-         <ul class="itemizedlist"><li class="listitem"><p> ビューなど、テーブルから作成されたオブジェクトをクエリすると、オブジェクトを作成したユーザーのポリシーではなく、クエリを実行するユーザーのマスキングポリシーに基づいて結果が表示されます。例えば、アナリストロールを持つユーザーが secadmin によって作成されたビューをクエリすると、アナリストロールにアタッチされたマスキングポリシーを使用して結果が表示されます。</p></li><li class="listitem"><p> EXPLAIN コマンドによって機密性の高いマスキングポリシーフィルターが公開されるのを防ぐために、SYS_EXPLAIN _DDM のアクセス許可を持つユーザーのみが EXPLAIN 出力に適用されたマスキングポリシーを確認できます。デフォルトでは、ユーザーには SYS_EXPLAIN_DDM のアクセス許可がありません。</p> 
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p> ビューなど、テーブルから作成されたオブジェクトをクエリすると、オブジェクトを作成したユーザーのポリシーではなく、クエリを実行するユーザーのマスキングポリシーに基づいて結果が表示されます。例えば、アナリストロールを持つユーザーが secadmin によって作成されたビューをクエリすると、アナリストロールにアタッチされたマスキングポリシーを使用して結果が表示されます。</p>
+            </li><li class="listitem">
+               <p> EXPLAIN コマンドによって機密性の高いマスキングポリシーフィルターが公開されるのを防ぐために、SYS_EXPLAIN _DDM のアクセス許可を持つユーザーのみが EXPLAIN 出力に適用されたマスキングポリシーを確認できます。デフォルトでは、ユーザーには SYS_EXPLAIN_DDM のアクセス許可がありません。</p>
                <p>次の内容は、ユーザーまたはロールに許可を付与する際の構文です。</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT EXPLAIN MASKING TO <span>{</span> username | ROLE rolename }</code></pre>
-               <p> EXPLAIN コマンドの詳細については、「<a href="./r_EXPLAIN.html">EXPLAIN</a>」を参照してください。</p></li><li class="listitem"><p> ロールが異なるユーザーには、使用したフィルター条件または結合条件に基づいて異なる結果が表示されます。例えば、特定の列値を使用するテーブルで SELECT コマンドを実行する際、コマンドを実行するユーザーにその列を難読化するマスキングポリシーが適用されている場合、失敗します。</p></li><li class="listitem"><p> DDM ポリシーは、前提となる操作や述語よりも先に適用する必要があります。マスキングポリシーには以下が含まれる場合があります。</p>
+               <p> EXPLAIN コマンドの詳細については、「<a href="./r_EXPLAIN.html">EXPLAIN</a>」を参照してください。</p>
+            </li><li class="listitem">
+               <p> ロールが異なるユーザーには、使用したフィルター条件または結合条件に基づいて異なる結果が表示されます。例えば、特定の列値を使用するテーブルで SELECT コマンドを実行する際、コマンドを実行するユーザーにその列を難読化するマスキングポリシーが適用されている場合、失敗します。</p>
+            </li><li class="listitem">
+               <p> DDM ポリシーは、前提となる操作や述語よりも先に適用する必要があります。マスキングポリシーには以下が含まれる場合があります。</p>
                <div class="itemizedlist">
                    
                    
                    
-               <ul class="itemizedlist"><li class="listitem"><p>値を NULL に変換するなどの低コストの定数演算</p></li><li class="listitem"><p>HMAC ハッシュなどの中コストのオペレーション</p></li><li class="listitem"><p>外部の Lambda ユーザー定義関数への呼び出しなどの高コストの操作</p></li></ul></div>
-               <p>そのため、可能な限り、単純なマスキング式を使用することをお勧めします。</p></li><li class="listitem"><p> 行レベルのセキュリティポリシーを持つロールには DDM ポリシーを使用できますが、RLS ポリシーは DDM の前に適用されることに注意してください。動的データマスキング式は、RLS で保護された行を読み取ることができません。RLS の詳細については、「<a href="./t_rls.html">行レベルのセキュリティ</a>」を参照してください。</p></li><li class="listitem"><p> <a href="./r_COPY.html">COPY</a> コマンドを使用してパーケットから保護されているターゲットテーブルにコピーするときには、COPY ステートメントで列を明示的に指定する必要があります。COPY による列のマッピングの詳細については、「<a href="./copy-parameters-column-mapping.html">列のマッピングオプション</a>」を参照してください。</p></li><li class="listitem"><p> DDM ポリシーにはルックアップテーブルを含めることができます。以下のリレーションにアタッチしたり、USING 句で使用したりすることはできません。</p>
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>値を NULL に変換するなどの低コストの定数演算</p>
+                  </li><li class="listitem">
+                     <p>HMAC ハッシュなどの中コストのオペレーション</p>
+                  </li><li class="listitem">
+                     <p>外部の Lambda ユーザー定義関数への呼び出しなどの高コストの操作</p>
+                  </li></ul></div>
+               <p>そのため、可能な限り、単純なマスキング式を使用することをお勧めします。</p>
+            </li><li class="listitem">
+               <p> 行レベルのセキュリティポリシーを持つロールには DDM ポリシーを使用できますが、RLS ポリシーは DDM の前に適用されることに注意してください。動的データマスキング式は、RLS で保護された行を読み取ることができません。RLS の詳細については、「<a href="./t_rls.html">行レベルのセキュリティ</a>」を参照してください。</p>
+            </li><li class="listitem">
+               <p> <a href="./r_COPY.html">COPY</a> コマンドを使用してパーケットから保護されているターゲットテーブルにコピーするときには、COPY ステートメントで列を明示的に指定する必要があります。COPY による列のマッピングの詳細については、「<a href="./copy-parameters-column-mapping.html">列のマッピングオプション</a>」を参照してください。</p>
+            </li><li class="listitem">
+               <p> DDM ポリシーは、次の関係にアタッチできません。</p>
                <div class="itemizedlist">
                    
                    
@@ -212,7 +236,46 @@ DROP MASKING POLICY mask_credit_card_partial; </code></pre>
                    
                    
                    
-               <ul class="itemizedlist"><li class="listitem"><p> システムテーブルとカタログ </p></li><li class="listitem"><p> 外部テーブル </p></li><li class="listitem"><p> データ共有テーブル </p></li><li class="listitem"><p> ビュー、マテリアライズドビュー、レイトバインディングビュー </p></li><li class="listitem"><p> データベース間の関係 </p></li><li class="listitem"><p> 一時テーブル </p></li><li class="listitem"><p> 相関クエリ </p></li></ul></div>
+               <ul class="itemizedlist"><li class="listitem">
+                     <p> システムテーブルとカタログ </p>
+                  </li><li class="listitem">
+                     <p> 外部テーブル </p>
+                  </li><li class="listitem">
+                     <p> データ共有テーブル </p>
+                  </li><li class="listitem">
+                     <p> マテリアライズドビュー </p>
+                  </li><li class="listitem">
+                     <p> データベース間の関係 </p>
+                  </li><li class="listitem">
+                     <p> 一時テーブル </p>
+                  </li><li class="listitem">
+                     <p> 相関クエリ </p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p> DDM ポリシーにはルックアップテーブルを含めることができます。USING 句にはルックアップテーブルを含めることができます。以下の関係タイプはルックアップテーブルとして使用できません。</p>
+               <div class="itemizedlist">
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p> システムテーブルとカタログ </p>
+                  </li><li class="listitem">
+                     <p> 外部テーブル </p>
+                  </li><li class="listitem">
+                     <p> データ共有テーブル </p>
+                  </li><li class="listitem">
+                     <p> ビュー、マテリアライズドビュー、遅延バインディングビュー </p>
+                  </li><li class="listitem">
+                     <p> データベース間の関係 </p>
+                  </li><li class="listitem">
+                     <p> 一時テーブル </p>
+                  </li><li class="listitem">
+                     <p> 相関クエリ </p>
+                  </li></ul></div>
                <p>次に示すのは、マスキングポリシーをルックアップテーブルにアタッチする例です。</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">--Create a masking policy referencing a lookup table
 CREATE MASKING POLICY lookup_mask_credit_card WITH (credit_card TEXT) USING (
@@ -226,7 +289,8 @@ CREATE MASKING POLICY lookup_mask_credit_card WITH (credit_card TEXT) USING (
   
 --Provides access to the lookup table via a policy attached to a role
 GRANT SELECT ON TABLE credit_cards_lookup TO MASKING POLICY lookup_mask_credit_card;</code></pre>
-            </li><li class="listitem"><p> ターゲット列のタイプとサイズと互換性のない出力を生成するようなマスキングポリシーをアタッチすることはできません。例えば、12 文字の文字列を VARCHAR(10) 列に出力するマスキングポリシーをアタッチすることはできません。Amazon Redshift では、次の例外がサポートされます。</p>
+            </li><li class="listitem">
+               <p> ターゲット列のタイプとサイズと互換性のない出力を生成するようなマスキングポリシーをアタッチすることはできません。例えば、12 文字の文字列を VARCHAR(10) 列に出力するマスキングポリシーをアタッチすることはできません。Amazon Redshift では、次の例外がサポートされます。</p>
                <div class="itemizedlist">
                   
                    
@@ -237,7 +301,8 @@ GRANT SELECT ON TABLE credit_cards_lookup TO MASKING POLICY lookup_mask_credit_c
                      <p> 入力タイプ INTN のマスキングポリシーは、M &lt; N であればサイズ INTM のポリシーにアタッチできます。例えば、BIGINT (INT8) 入力ポリシーを smallint (INT4) 列にアタッチできます。</p>
                   </li><li class="listitem">
                      <p> 入力タイプが NUMERIC または DECIMAL のマスキングポリシーは、常に FLOAT 列にアタッチできます。</p>
-                  </li></ul></div></li><li class="listitem">
+                  </li></ul></div>
+            </li><li class="listitem">
                <p> DDM ポリシーは、データ共有では使用できません。データ共有のデータプロデューサーがデータ共有内のテーブルに DDM ポリシーをアタッチすると、テーブルをクエリしようとしているデータコンシューマーのユーザーはテーブルにアクセスできなくなります。DDM ポリシーがアタッチされたテーブルは、データ共有に追加できません。</p>
             </li><li class="listitem">
                <p>以下の設定オプションのいずれかの値がセッションのデフォルト値と一致しない場合、DDM ポリシーがアタッチされているリレーションをクエリすることはできません。</p>
@@ -245,15 +310,33 @@ GRANT SELECT ON TABLE credit_cards_lookup TO MASKING POLICY lookup_mask_credit_c
                    
                    
                    
-               <ul class="itemizedlist"><li class="listitem"><p>
-                     <code class="code">enable_case_sensitive_super_attribute</code>
-                  </p></li><li class="listitem"><p>
-                     <code class="code">enable_case_sensitive_identifier</code>
-                  </p></li><li class="listitem"><p>                     
-                     <code class="code">downcase_delimited_identifier</code>
-                  </p></li></ul></div>
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>
+                        <code class="code">enable_case_sensitive_super_attribute</code>
+                     </p>
+                  </li><li class="listitem">
+                     <p>
+                        <code class="code">enable_case_sensitive_identifier</code>
+                     </p>
+                  </li><li class="listitem">
+                     <p>
+                        <code class="code">downcase_delimited_identifier</code>
+                     </p>
+                  </li></ul></div>
                <p>DDM ポリシーがアタッチされているリレーションをクエリしようとして、「DDM で保護されたリレーションは、大文字と小文字の区別がデフォルト値と異なるため、セッションレベルの設定をサポートしていません」というメッセージが表示される場合は、セッションの設定オプションをリセットすることを検討してください。</p>
-            </li><li class="listitem"><p> プロビジョニングされたクラスターまたはサーバーレス名前空間にデータマスキングポリシーが適用されている場合、以下のコマンドは標準ユーザーにはブロックされます。</p>
+            </li><li class="listitem">
+               <p> プロビジョニングされたクラスターまたはサーバーレス名前空間にデータマスキングポリシーが適用されている場合、以下のコマンドは標準ユーザーにはブロックされます。</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER &lt;current_user&gt; SET enable_case_sensitive_super_attribute/enable_case_sensitive_identifier/downcase_delimited_identifier</code></pre>
-               <p>DDM ポリシーを作成するときは、ポリシー作成時のセッションの設定オプション設定と一致するように、標準ユーザーのデフォルト設定オプション設定を変更することをお勧めします。スーパーユーザーと ALTER USER 権限を持つユーザーは、パラメータグループ設定または ALTER USER コマンドを使用して、この操作を行うことができます。パラメータグループの詳細については、「<em>Amazon Redshift 管理ガイド</em>」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift パラメータグループ</a>」を参照してください。ALTER USER コマンドの詳細については、「<a href="./r_ALTER_USER.html">ALTER USER</a>」を参照してください。</p></li></ul></div>
-      <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_rls-procedures.html">RLS ポリシーの作成、アタッチ、デタッチ、ドロップ</div><div id="next" class="next-link" accesskey="n" href="./r_ddm-procedures.html">動的データマスキングポリシーの管理</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+               <p>DDM ポリシーを作成するときは、ポリシー作成時のセッションの設定オプション設定と一致するように、標準ユーザーのデフォルト設定オプション設定を変更することをお勧めします。スーパーユーザーと ALTER USER 権限を持つユーザーは、パラメータグループ設定または ALTER USER コマンドを使用して、この操作を行うことができます。パラメータグループの詳細については、「<em>Amazon Redshift 管理ガイド</em>」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift パラメータグループ</a>」を参照してください。ALTER USER コマンドの詳細については、「<a href="./r_ALTER_USER.html">ALTER USER</a>」を参照してください。</p>
+            </li><li class="listitem">
+               <p>DDM ポリシーがアタッチされたビューや遅延バインディングビューは、通常のユーザーが <a href="./r_CREATE_VIEW.html">CREATE VIEW</a> コマンドを使用して置き換えることはできません。ビューまたは LBV を DDM ポリシーに置き換えるには、まず、それらにアタッチされている DDM ポリシーをすべてデタッチし、ビューまたは LBV を置き換えてから、ポリシーを再アタッチします。スーパーユーザーと <code class="code">sys:secadmin</code> アクセス許可を持っているユーザーは、ポリシーをデタッチすることなく、DDM ポリシーが設定されたビューまたは LBV で CREATE VIEW を使用できます。</p>
+            </li><li class="listitem">
+               <p>DDM ポリシーがアタッチされたビューは、システムテーブルとビューを参照できません。遅延バインディングビューは、システムテーブルとビューを参照できます。</p>
+            </li><li class="listitem">
+               <p>DDM ポリシーがアタッチされた遅延バインディングビューは、JSON ドキュメントなどのデータレイク内のネストされたデータを参照できません。</p>
+            </li><li class="listitem">
+               <p> 遅延バインディングビューがいずれかのビューから参照されている場合、その遅延バインディングビューには DDM ポリシーをアタッチできません。</p>
+            </li><li class="listitem">
+               <p> 遅延バインディングビューにアタッチされた DDM ポリシーは、列名でアタッチされます。クエリ時に、Amazon Redshift は、遅延バインディングビューにアタッチされたすべてのマスキングポリシーが正常に適用されていること、および遅延バインディングビューの出力列タイプがアタッチされたマスキングポリシーのタイプと一致することを検証します。検証が失敗した場合、Amazon Redshift はクエリのエラーを返します。</p>
+            </li></ul></div>
+      <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_metadata_security.html">メタデータセキュリティ</div><div id="next" class="next-link" accesskey="n" href="./r_ddm-procedures.html">動的データマスキングポリシーの管理</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

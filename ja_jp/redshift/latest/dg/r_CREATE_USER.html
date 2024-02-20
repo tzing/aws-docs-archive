@@ -135,7 +135,7 @@ CREATEDB | NOCREATEDB
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create user user1 password 'md5153c434b4b77c89e6b94f12c5393af5b';</code></pre>
                      </li><li>
                         <p>サインイン認証情報を使用してデータベースにログオンします。</p>
-                        <p>この例では、<code class="code">user1</code>のパスワードで <code class="code">ez</code> としてログオンします。</p>
+                        <p>この例では、パスワード <code class="code">ez</code> を使用して <code class="code">user1</code> としてログオンします。</p>
                      </li></ol></div>
                   
                   <p>もう 1 つの安全な方法は、パスワード文字列の SHA-256 ハッシュを指定することです。または、ダイジェストの作成に使用された、独自の有効な SHA-256 ダイジェストと 256 ビットのソルトを指定することもできます。</p>
@@ -167,7 +167,7 @@ CREATEDB | NOCREATEDB
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT SHA2(CONCAT('Mypassword1',FROM_HEX('c721bff5d9042cf541ff7b9d48fa8a6e545c19a763e3710151f9513038b0f6c6')), 0);</code></pre></li><li><p> これまでの手順のダイジェストとソルトを使用して、ユーザーを作成します。次のステートメントをご覧ください。</p>
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE USER admin PASSWORD 'sha256|821708135fcc42eb3afda85286dee0ed15c2c461d000291609f77eb113073ec2|c721bff5d9042cf541ff7b9d48fa8a6e545c19a763e3710151f9513038b0f6c6';</code></pre></li><li>
                            <p>サインイン認証情報を使用してデータベースにログオンします。</p>
-                           <p> この例では、<code class="code">admin</code>のパスワードで <code class="code">Mypassword1</code> としてログオンします。</p>
+                           <p> この例では、パスワード <code class="code">Mypassword1</code> を使用して <code class="code">admin</code> としてログオンします。</p>
                         </li></ol></div>
                   <p>ハッシュ関数を指定せずにプレーンテキストによりパスワードを設定した場合は、ユーザーネームをソルトとして使用して MD5 ダイジェストの生成が行われます。</p>
                </dd>
@@ -218,7 +218,7 @@ CREATEDB | NOCREATEDB
              
                <dt><span class="term">EXTERNALID <em>external_id</em></span></dt>
                <dd>
-                  <p>ID プロバイダーに関連付けられているユーザーの識別子。ユーザーはパスワードを無効にする必要があります。詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-native-idp.html">Amazon Redshift のネイティブ ID プロバイダー (IdP) フェデレーション</a>」 を参照してください。</p>
+                  <p>ID プロバイダーに関連付けられているユーザーの識別子。ユーザーはパスワードを無効にする必要があります。詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-native-idp.html">Amazon Redshift 用のネイティブ ID プロバイダー (IdP) フェデレーション</a>」を参照してください。</p>
                </dd>
             </dl></div>
           
@@ -256,6 +256,6 @@ CREATEDB | NOCREATEDB
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create user slashpass password 'md50c983d1a624280812631c5389e60d48c';</code></pre>
          <p>次の例では、アイドルセッションのタイムアウトを 120 秒に設定しながら、<code class="code">dbuser</code>という名前のユーザーを作成します。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE USER dbuser password 'abcD1234' SESSION TIMEOUT 120;</code></pre>
-         <p>次の例では、<code class="code">bob</code> という名前のユーザーを作成します。名前空間は <code class="code">myco_aad</code> です。これはサンプルのみです。コマンドを正常に実行するには、ID プロバイダーが登録されている必要があります。詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-native-idp.html">Amazon Redshift のネイティブ ID プロバイダー (IdP) フェデレーション</a>」を参照してください。</p>
+         <p>次の例では、<code class="code">bob</code> という名前のユーザーを作成します。名前空間は <code class="code">myco_aad</code> です。これはサンプルのみです。コマンドを正常に実行するには、ID プロバイダーが登録されている必要があります。詳細については、「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-native-idp.html">Amazon Redshift 用のネイティブ ID プロバイダー (IdP) フェデレーション</a>」を参照してください。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE USER myco_aad:bob EXTERNALID "ABC123" PASSWORD DISABLE;</code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_CTAS_examples.html">CTAS の例</div><div id="next" class="next-link" accesskey="n" href="./r_CREATE_VIEW.html">CREATE VIEW</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_CREATE_USER.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_CREATE_USER.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

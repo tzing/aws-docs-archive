@@ -48,10 +48,10 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_DATASHARE_USAGE_PRODUCER" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-table-rows">テーブルの列</a><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_DATASHARE_USAGE_PRODUCER">SVL_DATASHARE_USAGE_PRODUCER</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>データ共有のアクティビティと使用状況を記録します。このビューは、コンシューマークラスターにのみ関連しています。</p><p>このテーブルはすべてのユーザーに表示されます。</p><p>このテーブルの一部またはすべての列は、SYS モニタリングビュー <a href="./SYS_DATASHARE_USAGE_PRODUCER.html">SYS_DATASHARE_USAGE_PRODUCER</a> にも定義されています。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_DATASHARE_USAGE_PRODUCER" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-table-rows">テーブルの列</a><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_DATASHARE_USAGE_PRODUCER">SVL_DATASHARE_USAGE_PRODUCER</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>データ共有のアクティビティと使用状況を記録します。このビューは、コンシューマークラスターにのみ関連しています。</p><p>SVL_DATASHARE_USAGE_PRODUCER はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべてのデータは、SYS モニタリングビュー <a href="./SYS_DATASHARE_USAGE_PRODUCER.html">SYS_DATASHARE_USAGE_PRODUCER</a> でも確認できます。SYS モニタリングビューのデータは、使いやすく理解しやすいようにフォーマットされます。クエリには、SYS モニタリングビューを使用することをお勧めします。</p>
             <h2 id="r_SVL_DATASHARE_USAGE_PRODUCER-table-rows">テーブルの列</h2>
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c21b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c21b9b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -131,6 +131,11 @@
                             <td tabindex="-1">varCHAR(512)</td>
                             <td tabindex="-1">エラーのメッセージ。</td>
                         </tr>
+                        <tr>
+                            <td tabindex="-1">consumer_region</td>
+                            <td tabindex="-1">char(64)</td>
+                            <td tabindex="-1">コンシューマークラスターが属するリージョン。</td>
+                        </tr>
                     </table></div></div>
          
             <h2 id="r_SVL_DATASHARE_USAGE_PRODUCER-sample-queries">サンプルクエリ</h2>
@@ -145,6 +150,4 @@ WHERE object_name LIKE 'tickit%';
    request_type
  ------------------   
    "GET RELATION"</code></pre>
-            
-            
         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_SVL_DATASHARE_USAGE_CONSUMER.html">SVL_DATASHARE_USAGE_CONSUMER</div><div id="next" class="next-link" accesskey="n" href="./r_SVL_FEDERATED_QUERY.html">SVL_FEDERATED_QUERY</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_SVL_DATASHARE_USAGE_PRODUCER.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_SVL_DATASHARE_USAGE_PRODUCER.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

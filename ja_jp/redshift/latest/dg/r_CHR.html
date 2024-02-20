@@ -78,13 +78,13 @@
 
           
             <h2 id="r_CHR-example">例</h2>
-<p>ASCII コードポイント 65 に対応する文字を返すには、次の例を使用します。</p>
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CHR(65);</code>
+<p>ASCII コードポイント 0 に対応する文字を返すには、次の例を使用します。CHR 関数は入力 <code class="code">0</code> に対して <code class="code">NULL</code> を返すことに注意してください。</p>
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CHR(0);</code>
 
 <code class="computeroutput" copy="false">+-----+
 | chr |
 +-----+
-| A   |
+|     |
 +-----+</code></code></pre>
 
 <p>ASCII コードポイント 65 に対応する文字を返すには、次の例を使用します。</p>

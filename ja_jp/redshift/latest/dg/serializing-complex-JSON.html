@@ -42,16 +42,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#serializing-complex-JSON" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#serializing-complex-JSON-strings">JSON 文字列を含む複合型のシリアル化</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="serializing-complex-JSON">複雑なネストされた JSON のシリアル化</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>このチュートリアルで説明するメソッドの代わりに、最上位のネストされたコレクション列をシリアル化された JSON としてクエリする方法があります。シリアル化を使用して、Redshift Spectrum を使用して、ネストされたデータを JSON として検査、変換、取り込むことができます。このメソッドは、ORC、JSON、Ion、および Parquet 形式でサポートされています。セッション構成パラメータ <code class="code">json_serialization_enable</code> を使用して、シリアル化動作を構成します。設定すると、複雑な JSON データ型が VARCHAR (65535) にシリアル化されます。ネストされた JSON には <a href="./json-functions.html">JSON 関数</a> でアクセスできます。詳細については、「<a href="./r_json_serialization_enable.html">json_serialization_enable</a>」を参照してください。</p><p>たとえば、<code class="code">json_serialization_enable</code> を設定しないと、ネストされた列に直接アクセスする次のクエリが失敗します。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SELECT * FROM spectrum.customers LIMIT 1;
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#serializing-complex-JSON" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#serializing-complex-JSON-strings">JSON 文字列を含む複合型のシリアル化</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="serializing-complex-JSON">複雑なネストされた JSON のシリアル化</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>このチュートリアルで説明するメソッドの代わりに、最上位のネストされたコレクション列をシリアル化された JSON としてクエリする方法があります。シリアル化を使用して、Redshift Spectrum を使用して、ネストされたデータを JSON として検査、変換、取り込むことができます。このメソッドは、ORC、JSON、Ion、および Parquet 形式でサポートされています。セッション構成パラメータ <code class="code">json_serialization_enable</code> を使用して、シリアル化動作を構成します。設定すると、複雑な JSON データ型が VARCHAR (65535) にシリアル化されます。ネストされた JSON には <a href="./json-functions.html">JSON 関数</a> でアクセスできます。詳細については、「<a href="./r_json_serialization_enable.html">json_serialization_enable</a>」を参照してください。</p><p>たとえば、<code class="code">json_serialization_enable</code> を設定しないと、ネストされた列に直接アクセスする次のクエリが失敗します。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SELECT * FROM spectrum.customers LIMIT 1;
 
 =&gt; ERROR:  Nested tables do not support '*' in the SELECT clause.
 
 SELECT name FROM spectrum.customers LIMIT 1;
 
-=&gt; ERROR:  column "name" does not exist in customers
-</code></pre><p><code class="code">json_serialization_enable</code> を設定すると、最上位のコレクションに直接クエリを実行できます。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SET json_serialization_enable TO true;
+=&gt; ERROR:  column "name" does not exist in customers</code></pre><p><code class="code">json_serialization_enable</code> を設定すると、最上位のコレクションに直接クエリを実行できます。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SET json_serialization_enable TO true;
 
 SELECT * FROM spectrum.customers order by id LIMIT 1;
 
@@ -63,8 +60,7 @@ SELECT name FROM spectrum.customers order by id LIMIT 1;
 
 name
 ---------
-<span>{</span>"given": "John", "family": "Smith"}                      
-</code></pre><p>ネストされた JSON をシリアル化するときは、以下の項目について考慮してください。</p><div class="itemizedlist">
+<span>{</span>"given": "John", "family": "Smith"}  </code></pre><p>ネストされた JSON をシリアル化するときは、以下の項目について考慮してください。</p><div class="itemizedlist">
              
              
              
@@ -81,29 +77,23 @@ name
             <h2 id="serializing-complex-JSON-strings">JSON 文字列を含む複合型のシリアル化</h2>
             <p>デフォルトでは、ネストされたコレクションに含まれる文字列値は、エスケープされた JSON 文字列としてシリアル化されます。文字列が有効な JSON である場合、エスケープは望ましくない場合があります。代わりに、VARCHAR であるネストされたサブ要素またはフィールドを JSON として直接記述することができます。<code class="code">json_serialization_parse_nested_strings</code> セッションレベルの設定でこの動作を有効にします。<code class="code">json_serialization_enable</code> と <code class="code">json_serialization_parse_nested_strings</code> の両方が設定されている場合、有効な JSON 値はエスケープ文字なしでインラインでシリアル化されます。値が有効な JSON でない場合、<code class="code">json_serialization_parse_nested_strings</code> 設定値が設定されていないかのようにエスケープされます。詳細については、「<a href="./r_json_serialization_parse_nested_strings.html">json_serialization_parse_nested_strings</a>」を参照してください。</p>  
             <p>たとえば、前の例のデータの <code class="code">name</code> VARCHAR(20) フィールドに <code class="code">structs</code> 複合型として JSON が含まれているとします。</p>
-            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-name
+            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">name
 ---------
-<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}
-</code></pre>
+<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}</code></pre>
             <p><code class="code">json_serialization_parse_nested_strings</code> が設定されている場合、<code class="code">name</code> 列は次のようにシリアル化されます。</p>
             
-            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SET json_serialization_enable TO true;
+            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SET json_serialization_enable TO true;
 SET json_serialization_parse_nested_strings TO true;
 SELECT name FROM spectrum.customers order by id LIMIT 1;
 
 name
 ---------
-<span>{</span>"given": <span>{</span>"first":"John","middle":"James"}, "family": "Smith"}
-</code></pre>
+<span>{</span>"given": <span>{</span>"first":"John","middle":"James"}, "family": "Smith"}</code></pre>
             <p>次のようにエスケープされません。</p>
-            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SET json_serialization_enable TO true;
+            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SET json_serialization_enable TO true;
 SELECT name FROM spectrum.customers order by id LIMIT 1;
 
 name
 ---------
-<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}
-</code></pre>
-        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./nested-data-restrictions.html">ネストデータの制限</div><div id="next" class="next-link" accesskey="n" href="./hyperloglog-overview.html">Amazon Redshift での HyperLogLog スケッチの使用</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}</code></pre>
+        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./nested-data-restrictions.html">ネストデータの制限 (プレビュー)</div><div id="next" class="next-link" accesskey="n" href="./hyperloglog-overview.html">Amazon Redshift での HyperLogLog スケッチの使用</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

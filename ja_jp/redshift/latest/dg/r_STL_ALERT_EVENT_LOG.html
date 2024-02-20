@@ -48,10 +48,10 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ALERT_EVENT_LOG" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_STL_ALERT_EVENT_LOG-column2">テーブルの列</a><a href="#r_STL_ALERT_EVENT_LOG-usage-notes">使用に関する注意事項</a><a href="#r_STL_ALERT_EVENT_LOG-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ALERT_EVENT_LOG">STL_ALERT_EVENT_LOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>パフォーマンスの問題を示している可能性のある条件がクエリオプティマイザによって特定された場合にアラートを記録します。クエリパフォーマンスを向上させる機会を特定するには、STL_ALERT_EVENT_LOG ビューを使用します。</p><p>複数のセグメントから構成された 1 つのクエリ。各セグメントは 1 つ以上のステップから構成されます。詳細については、「<a href="./c-query-processing.html">クエリ処理</a>」を参照してください。</p><p>STL_ALERT_EVENT_LOG はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべての列は、SYS モニタリングビュー <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> にも定義されています。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ALERT_EVENT_LOG" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_STL_ALERT_EVENT_LOG-column2">テーブルの列</a><a href="#r_STL_ALERT_EVENT_LOG-usage-notes">使用に関する注意事項</a><a href="#r_STL_ALERT_EVENT_LOG-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ALERT_EVENT_LOG">STL_ALERT_EVENT_LOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>パフォーマンスの問題を示している可能性のある条件がクエリオプティマイザによって特定された場合にアラートを記録します。クエリパフォーマンスを向上させる機会を特定するには、STL_ALERT_EVENT_LOG ビューを使用します。</p><p>複数のセグメントから構成された 1 つのクエリ。各セグメントは 1 つ以上のステップから構成されます。詳細については、「<a href="./c-query-processing.html">クエリ処理</a>」を参照してください。</p><p>STL_ALERT_EVENT_LOG はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>STL_ALERT_EVENT_LOG には、メインクラスターで実行されるクエリのみが含まれます。同時実行スケーリングクラスターで実行されるクエリは含まれていません。メインクラスターおよび同時実行スケーリングクラスターの両方で実行されるクエリにアクセスするには、SYS モニタリングビュー <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> を使用することをお勧めします。SYS モニタリングビューのデータは、使いやすく理解しやすいようにフォーマットされます。</p></div></div>
             <h2 id="r_STL_ALERT_EVENT_LOG-column2">テーブルの列</h2>
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c13c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c13c11b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -126,13 +126,13 @@
                     <p><b>見つからない統計</b> </p>
                     <p>統計が見つかりません。データロードまたは大規模な更新の後で ANALYZE を実行し、COPY 操作で STATUPDATE を使用します。詳細については、「<a href="./c_designing-queries-best-practices.html">Amazon Redshift クエリの設計のベストプラクティス</a>」を参照してください。</p>
                 </li><li class="listitem">
-                    <p><b>Nested Loop</b></p>
-                    <p>通常、ネステッドループはデカルト積です。クエリを評価して、関与しているすべてのテーブルが効率的に結合されていることを確認します。</p>
+                    <p><b>ネステッドループ</b></p>
+                    <p>通常、ネステッドループは直積集合です。クエリを評価して、関与しているすべてのテーブルが効率的に結合されていることを確認します。</p>
                 </li><li class="listitem">
                     <p><b>非常に選択的なフィルター</b></p>
                     <p>スキャンされた行に対する返された行の比率が 0.05 未満です。スキャンされる行数は <code class="code">rows_pre_user_filter</code> の値であり、返される行数は <a href="./r_STL_SCAN.html">STL_SCAN</a> システムビューの行の値です。結果セットを決定するために、クエリが著しく大量の行数をスキャンしていることを示します。この問題は、ソートキーが見つからない場合や正しくない場合に起こります。詳細については、「<a href="./t_Sorting_data.html">ソートキーの使用</a>」を参照してください。</p>
                 </li><li class="listitem">
-                    <p><b>過剰な数の非実体行 </b></p>
+                    <p><b>過剰な数の非実体行</b></p>
                     <p>削除済みだがバキューム未処理としてマークされた比較的多数の行、または挿入済みだがコミットされていない比較的多数の行がスキャンによってスキップされました。詳細については、「<a href="./t_Reclaiming_storage_space202.html">テーブルのバキューム処理</a>」を参照してください。</p>
                 </li><li class="listitem">
                     <p><b>サイズの大きな分散</b></p>

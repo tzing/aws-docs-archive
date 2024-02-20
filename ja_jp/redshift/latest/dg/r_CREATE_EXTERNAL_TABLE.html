@@ -90,7 +90,7 @@ LOCATION <span>{</span> 's3://<em>bucket/folder</em>/' }
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum_db.spectrum_schema.test (c1 int)
 stored as parquet
 location 's3://mybucket/myfolder/';</code></pre>
-                  <p>指定のデータベースまたはスキーマが存在せず、テーブルが作成されていない場合、このステートメントはエラーを返します。システムデータベース <code class="code">template0</code>、<code class="code">template1</code>、および <code class="code">padb_harvest</code> にテーブルまたはビューを作成することはできません。</p>
+                  <p>指定のデータベースまたはスキーマが存在せず、テーブルが作成されていない場合、このステートメントはエラーを返します。システムデータベース <code class="code">template0</code>、<code class="code">template1</code>、<code class="code">padb_harvest</code>、または <code class="code">sys:internal</code> にテーブルまたはビューを作成することはできません。</p>
                   <p>テーブル名は、指定のスキーマで一意の名前にする必要があります。</p>
                   <p>有効な名前の詳細については、「<a href="./r_names.html">名前と識別子</a>」を参照してください。</p>
                </dd>
@@ -112,7 +112,7 @@ location 's3://mybucket/myfolder/';</code></pre>
              
                <dt><span class="term"> <em>data_type</em> </span></dt>
                <dd>
-                  <p>次の <a href="./c_Supported_data_types.html">データ型</a>がサポートされています。</p>
+                  <p>次の <a href="./c_Supported_data_types.html">データ型</a> がサポートされています。</p>
                   <div class="itemizedlist">
                       
                       
@@ -306,7 +306,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                      </li><li class="listitem">
                         <p>SEQUENCEFILE</p>
                      </li><li class="listitem">
-                        <p>TEXTFILE </p>
+                        <p>TEXTFILE (JSON ファイルを含むテキストファイル)。</p> 
                      </li><li class="listitem">
                         <p>ORC </p>
                      </li><li class="listitem">

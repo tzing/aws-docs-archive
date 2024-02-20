@@ -42,7 +42,39 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_rls_combine_policies" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_rls_combine_policies">ユーザーごとに複数ポリシーの組み合わせ</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift の RLS は、アタッチされたすべてのポリシーが同じテーブルエイリアスを持っているという前提条件で、ユーザーとオブジェクトごとに複数ポリシーのアタッチをサポートします。1 人のユーザーに対して複数ポリシーが定義されていると、Amazon Redshift は AND 構文ですべてのポリシーを適用します。テーブルの複数ポリシーをお客様に関連付けることができます。複数のポリシーが直接お客様にアタッチされているか、複数のロールに属していて、ロールに異なるポリシーがアタッチされています。</p><p>ユーザーにアタッチされたすべての RLS ポリシーが同時に有効になるため、非表示にするつもりのないデータが表示されないようにする、相互に排他的な RLS ポリシーを適用することができます。次の例を考えます。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_rls_combine_policies" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_rls_combine_policies">ユーザーごとに複数ポリシーの組み合わせ</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift の RLS は、ユーザーとオブジェクトごとに複数ポリシーのアタッチをサポートします。1 人のユーザーに対して複数ポリシーが定義されていると、Amazon Redshift は、テーブル上の RLS CONJUNCTION TYPE に応じて、AND 構文または OR 構文ですべてのポリシーを適用します。設定タイプの詳細については、「<a href="./r_ALTER_TABLE.html">ALTER TABLE</a>」を参照してください。</p><p>テーブルの複数ポリシーをお客様に関連付けることができます。複数のポリシーが直接お客様にアタッチされているか、複数のロールに属していて、ロールに異なるポリシーがアタッチされています。</p><p>複数のポリシーで特定の関係の行アクセスを制限する必要がある場合、関係の RLS CONJUNCTION TYPE を AND に設定できます。次の例を考えます。Aliceは、指定されたポリシーで「キャットネーム」が「NBA」になっているスポーツイベントしか見ることができません。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
+CREATE ROLE analyst;
+CREATE USER alice WITH PASSWORD 'Name_is_alice_1';
+GRANT ROLE analyst TO alice;
+
+-- Create an RLS policy that only lets the user see sports.
+CREATE RLS POLICY policy_sports
+WITH (catgroup VARCHAR(10))
+USING (catgroup = 'Sports');
+
+-- Create an RLS policy that only lets the user see NBA.
+CREATE RLS POLICY policy_nba
+WITH (catname VARCHAR(10))
+USING (catname = 'NBA');
+
+-- Attach both to the analyst role.
+ATTACH RLS POLICY policy_sports ON category TO ROLE analyst;
+ATTACH RLS POLICY policy_nba ON category TO ROLE analyst;
+
+-- Activate RLS on the category table with AND CONJUNCTION TYPE. 
+ALTER TABLE category ROW LEVEL SECURITY ON CONJUNCTION TYPE AND;
+
+-- Change session to Alice.
+SET SESSION AUTHORIZATION alice;
+
+-- Select all from the category table.
+SELECT catgroup, catname
+FROM category;
+
+ catgroup | catname 
+---------+---------
+ Sports   | NBA
+(1 row)</code></pre><p>複数のポリシーによって、ユーザーが特定の関係で、より多くの行を表示できるようにする必要がある場合、ユーザーはそのリレーションの RLS CONJUNCTION TYPE を OR に設定できます。次の例を考えます。Alice は、指定されたポリシーに従って「コンサート」と「スポーツ」しか表示できません。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
 CREATE ROLE analyst;
 CREATE USER alice WITH PASSWORD 'Name_is_alice_1';
 GRANT ROLE analyst TO alice;
@@ -59,11 +91,10 @@ USING (catgroup = 'Sports');
 
 -- Attach both to the analyst role.
 ATTACH RLS POLICY policy_concerts ON category TO ROLE analyst;
-
 ATTACH RLS POLICY policy_sports ON category TO ROLE analyst;
 
--- Activate RLS on the category table. 
-ALTER TABLE category ROW LEVEL SECURITY ON;
+-- Activate RLS on the category table with OR CONJUNCTION TYPE. 
+ALTER TABLE category ROW LEVEL SECURITY ON CONJUNCTION TYPE OR;
 
 -- Change session to Alice.
 SET SESSION AUTHORIZATION alice;
@@ -71,4 +102,10 @@ SET SESSION AUTHORIZATION alice;
 -- Select all from the category table.
 SELECT catgroup, count(*)
 FROM category
-GROUP BY catgroup ORDER BY catgroup;</code></pre><p>アナリストロールには矛盾する 2 つの RLS ポリシーがアタッチされているため、RLS ロールのユーザーがカテゴリテーブルをクエリしても結果は表示されません。</p><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_rls_statements.html">SQL ステートメントで RLS ポリシーの使用</div><div id="next" class="next-link" accesskey="n" href="./t_rls_ownership.html">RLS ポリシーの所有権と管理</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+GROUP BY catgroup ORDER BY catgroup;
+
+ catgroup | count 
+---------+-------
+ Concerts |  3
+ Sports   |  5
+(2 rows)</code></pre><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_rls_statements.html">SQL ステートメントで RLS ポリシーの使用</div><div id="next" class="next-link" accesskey="n" href="./t_rls_ownership.html">RLS ポリシーの所有権と管理</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

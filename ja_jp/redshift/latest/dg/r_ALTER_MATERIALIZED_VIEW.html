@@ -47,7 +47,7 @@
 
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER MATERIALIZED VIEW <em>mv_name</em>
 [ AUTO REFRESH <span>{</span> YES | NO } ]
-[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [FOR DATASHARES] ];</code></pre>
+[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [FOR DATASHARES] ];</code></pre>
 
         
 
@@ -56,6 +56,7 @@
 
          <div class="variablelist">
              
+             
     
              
              
@@ -63,18 +64,29 @@
 
 
          <dl>
+               <dt><span class="term"><em>mv_name</em></span></dt>
+               <dd><p>変更するマテリアライズドビューの名前。</p></dd>
+             
                <dt><span class="term">AUTO REFRESH <span>{</span> YES | NO }</span></dt>
                <dd>
                   <p>マテリアライズドビューの自動更新をオンまたはオフにする句。マテリアライズドビューの自動更新の詳細については、「<a href="./materialized-view-refresh.html">マテリアライズドビューの更新</a>」を参照してください。</p></dd>
              
-               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF }</span></dt>
-               <dd>
-                  <p>マテリアライズドビューの行レベルのセキュリティをオンまたはオフにする句。行レベルのセキュリティがオンになっている場合、行レベルポリシーでアクセスが許可されている行のみを読み取ることができます。テーブルまたはビューへのアクセス権をユーザーに付与するポリシーがない場合、ユーザーはレコードを表示できません。ROW LEVEL SECURITY 句を設定できるのは、スーパーユーザーと、<code class="code">sys:secadmin</code> ロールを持つユーザーまたはロールのみです。詳細については、「<a href="./r_CREATE_RLS_POLICY.html">CREATE RLS POLICY</a>」を参照してください。</p></dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>マテリアライズドビューがデータ共有上で RLS で保護されているかどうかを決定する句。デフォルトでは、RLS で保護されたマテリアライズドビューは、データ共有上でも RLS で保護されます。</p>
-
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+               <dd><p>リレーションの行レベルのセキュリティをオンまたはオフにする句。</p>
+                  <p>リレーションで行レベルのセキュリティがオンになっている場合、行レベルのセキュリティポリシーでアクセスが許可されている行のみを読み取ることができます。リレーションへのアクセス権を付与するポリシーがない場合は、リレーションから行を表示できません。ROW LEVEL SECURITY 句を設定できるのは、スーパーユーザーと、<code class="code">sys:secadmin</code> ロールを持つユーザーまたはロールのみです。詳細については、「<a href="./t_rls.html">行レベルのセキュリティ</a>」を参照してください。</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>リレーションの行レベルのセキュリティポリシーの結合タイプを選択できる句。1 つのリレーションに複数の行レベルのセキュリティポリシーがアタッチされている場合、それらのポリシーを AND 句や OR 句で組み合わせることができます。デフォルトでは、Amazon Redshift は RLS ポリシーを AND 句で組み合わせます。スーパーユーザーと、<code class="code">sys:secadmin</code> ロールを持つユーザーまたはロールは、この句を使用して、リレーションの行レベルのセキュリティポリシーの結合タイプを定義できます。詳細については、「<a href="./t_rls_combine_policies.html">ユーザーごとに複数ポリシーの組み合わせ</a>」を参照してください。</p></li><li class="listitem">
+                        <p>FOR DATASHARES</p>
+                        <p> RLS で保護されたリレーションにデータ共有上でアクセスできるかどうかを決定する句。デフォルトでは、RLS で保護されたリレーションにデータ共有経由でアクセスすることはできません。この句を指定して実行される ALTER MATERIALIZED VIEW ROW LEVEL SECURITY コマンドは、リレーションのデータ共有アクセシビリティプロパティにのみ影響します。ROW LEVEL SECURITY のプロパティは変更されません。</p>
+                        <p> RLS で保護されたリレーションにデータ共有上でアクセスできるようにした場合、コンシューマー側のデータ共有データベースにおいて、そのリレーションには行レベルのセキュリティが適用されません。リレーションはプロデューサー側の RLS プロパティを保持します。</p>
+                     </li></ul></div>
                </dd>
+             
+               <dt><span class="term">SPECTRUM MAX ERRORS <em>number_of_errors</em></span></dt>
+               <dd><p> マテリアライズドビューでクエリをキャンセルする前に許容するエラーの最大数を指定する句。 <em>number_of_errors</em> は整数を受け入れます。負の値を指定すると、エラー処理の最大数がオフになります。結果は <a href="./r_SVL_SPECTRUM_SCAN_ERROR.html">SVL_SPECTRUM_SCAN_ERROR</a> にログされます。</p> </dd>
             </dl></div>
 
        

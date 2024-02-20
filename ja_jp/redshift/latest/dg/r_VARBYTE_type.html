@@ -71,7 +71,7 @@
                       
  varbyte
 ---------
- 616263</code></pre><p>次の SQL ステートメントは、カラム内の CHAR 値を VARBYTE にキャストします。次の使用例では、CHAR (10) 列 (c) を持つテーブルを作成し、長さが 10 より短い文字値を挿入します。出力されるキャストでは、スペース文字 (hex'20') を使用して、定義された列サイズに結果がパディングされます。戻り値がバイナリ値の場合でも、結果は 16 進数で表示されます。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">create table t (c char(10));
+ 616263</code></pre><p>次の SQL ステートメントは、列内の CHAR 値を VARBYTE にキャストします。次の使用例では、CHAR (10) 列 (c) を持つテーブルを作成し、長さが 10 より短い文字値を挿入します。出力されるキャストでは、スペース文字 (hex'20') を使用して、定義された列サイズに結果がパディングされます。戻り値がバイナリ値の場合でも、結果は 16 進数で表示されます。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">create table t (c char(10));
 insert into t values ('aa'), ('abc');                 
 select c::varbyte from t;
           c
@@ -96,7 +96,7 @@ select c::varbyte from t;
                       
                       
                       
-                      
+                     
                       
                       
                       
@@ -106,7 +106,7 @@ select c::varbyte from t;
                       
                       
                      
-                  <ul class="itemizedlist"><li class="listitem"><p><a href="./r_VARBYTE_OPERATORS.html">VARBYTE 演算子</a></p></li><li class="listitem"><p><a href="./r_CONCAT.html">CONCAT</a></p></li><li class="listitem"><p><a href="./r_LEN.html">LEN</a></p></li><li class="listitem"><p><a href="./r_LENGTH.html">LENGTH 関数</a></p></li><li class="listitem"><p><a href="./r_OCTET_LENGTH.html">OCTET_LENGTH</a></p></li><li class="listitem"><p><a href="./r_SUBSTR.html">SUBSTR 関数</a></p></li><li class="listitem"><p><a href="./r_SUBSTRING.html">SUBSTRING 関数</a></p></li><li class="listitem"><p><a href="./r_FROM_HEX.html">FROM_HEX</a></p></li><li class="listitem"><p><a href="./r_TO_HEX.html">TO_HEX</a></p></li><li class="listitem"><p><a href="./r_FROM_VARBYTE.html">FROM_VARBYTE</a></p></li><li class="listitem"><p><a href="./r_TO_VARBYTE.html">TO_VARBYTE</a></p></li><li class="listitem"><p><a href="./r_GETBIT.html">GETBIT</a></p></li><li class="listitem"><p><a href="./copy-usage-varbyte.html">VARBYTE データ型の列のロード</a></p></li><li class="listitem"><p><a href="./r_UNLOAD.html#unload-usage-notes">VARBYTE データ型の列のアップロード</a></p></li></ul></div>
+                  <ul class="itemizedlist"><li class="listitem"><p><a href="./r_VARBYTE_OPERATORS.html">VARBYTE 演算子</a></p></li><li class="listitem"><p><a href="./r_CONCAT.html">CONCAT</a></p></li><li class="listitem"><p><a href="./r_LEN.html">LEN</a></p></li><li class="listitem"><p><a href="./r_LENGTH.html">LENGTH 関数</a></p></li><li class="listitem"><p><a href="./r_OCTET_LENGTH.html">OCTET_LENGTH</a></p></li><li class="listitem"><p><a href="./r_SUBSTRING.html">SUBSTRING 関数</a></p></li><li class="listitem"><p><a href="./r_FROM_HEX.html">FROM_HEX</a></p></li><li class="listitem"><p><a href="./r_TO_HEX.html">TO_HEX</a></p></li><li class="listitem"><p><a href="./r_FROM_VARBYTE.html">FROM_VARBYTE</a></p></li><li class="listitem"><p><a href="./r_TO_VARBYTE.html">TO_VARBYTE</a></p></li><li class="listitem"><p><a href="./r_GETBIT.html">GETBIT</a></p></li><li class="listitem"><p><a href="./copy-usage-varbyte.html">VARBYTE データ型の列のロード</a></p></li><li class="listitem"><p><a href="./r_UNLOAD.html#unload-usage-notes">VARBYTE データ型の列のアップロード</a></p></li></ul></div>
                   <h2 id="varbyte-limitations">Amazon Redshift で VARBYTE データ型を使用する際の制約事項</h2>
                   
                   <p>Amazon Redshift で VARBYTE データを使用する際の制約事項を以下に示します。</p>

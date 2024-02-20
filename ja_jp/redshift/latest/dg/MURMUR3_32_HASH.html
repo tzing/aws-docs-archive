@@ -59,12 +59,12 @@
                 
                 
             <dl>
-                  <dt><span class="term"> <em>値</em> </span></dt>
+                  <dt><span class="term"> <em>value</em> </span></dt>
                   <dd>
                      <p>ハッシュする入力値。Amazon Redshift は、入力値のバイナリ表現をハッシュします。この動作は <a href="./r_FNV_HASH.html">FNV_HASH 関数</a> と似ていますが、値は <a href="https://iceberg.apache.org/spec/#appendix-b-32-bit-hash-requirements" rel="noopener noreferrer" target="_blank"><span>Apache Iceberg の 32 ビット Murmur3 ハッシュ仕様</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>で指定されているバイナリ表現に変換されます。</p>
                   </dd>
                 
-                  <dt><span class="term"> <em>シード</em> </span></dt>
+                  <dt><span class="term"> <em>seed</em> </span></dt>
                   <dd>
                      <p>ハッシュ関数の INT シード。この引数はオプションです。指定しない場合、Amazon Redshift はデフォルトシードの 0 を使用します。これにより、変換や連結を行わずに、複数の列のハッシュを組み合わせることができます。</p>
                   </dd>

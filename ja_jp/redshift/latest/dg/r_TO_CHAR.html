@@ -85,44 +85,46 @@
             <p>VARCHAR</p>
           
             <h2 id="r_TO_CHAR-examples">例</h2>
+            
+            
 
             <p>次の例では、月の名前を 9 文字に埋め込み、曜日の名前と日付の数字を指定した形式でタイムスタンプを日付と時刻の値に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2009-12-31 23:15:59', 'MONTH-DY-DD-YYYY HH12:MIPM');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2009-12-31 23:15:59', 'MONTH-DY-DD-YYYY HH12:MIPM');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 DECEMBER -THU-31-2009 11:15PM	
-</code></pre>
+</code></code></pre>
             
             <p>次の例では、タイムスタンプを日付の番号の値に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2009-12-31 23:15:59', 'DDD');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2009-12-31 23:15:59', 'DDD');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 365	
-</code></pre>
+</code></code></pre>
             
             <p>次の例では、タイムスタンプを曜日の番号の値に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2022-05-16 23:15:59', 'ID');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2022-05-16 23:15:59', 'ID');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 1
-</code></pre>
+</code></code></pre>
             
             <p>以下の例では、日付から月を抽出しています。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(date '2009-12-31', 'MONTH');
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(date '2009-12-31', 'MONTH');</code>
+<code class="computeroutput" copy="false">
 to_char
 -------------------------
 DECEMBER	
-</code></pre>
+</code></code></pre>
             
             <p>次の例は、EVENT テーブル内の各 STARTTIME 値を、時、分、および秒から成る文字列に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(starttime, 'HH12:MI:SS')
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(starttime, 'HH12:MI:SS')
 from event where eventid between 1 and 5
-order by eventid;
-
+order by eventid;</code>
+<code class="computeroutput" copy="false">
 to_char
 ----------
 02:30:00
@@ -130,70 +132,135 @@ to_char
 02:30:00
 02:30:00
 07:00:00
-(5 rows)</code></pre>
+</code></code></pre>
             <p>次の例は、タイムスタンプの値全体を別の形式に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select starttime, to_char(starttime, 'MON-DD-YYYY HH12:MIPM')
-from event where eventid=1;
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select starttime, to_char(starttime, 'MON-DD-YYYY HH12:MIPM')
+from event where eventid=1;</code>
+<code class="computeroutput" copy="false">
       starttime      |       to_char
 ---------------------+---------------------
  2008-01-25 14:30:00 | JAN-25-2008 02:30PM
-(1 row)</code></pre>
+</code></code></pre>
+            
+            
+ 
             <p>次の例は、タイムスタンプリテラルをキャラクタ文字列に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(timestamp '2009-12-31 23:15:59','HH24:MI:SS');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(timestamp '2009-12-31 23:15:59','HH24:MI:SS');</code>
+<code class="computeroutput" copy="false">
 to_char
 ----------
 23:15:59
-(1 row)</code></pre>
+</code></code></pre>
+            <p>次の例では、10 進数をキャラクタ文字列に変換します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '999.99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+125.80
+</code></code></pre>
+            <p>次の例では、10 進数をキャラクタ文字列に変換します。</p>
+           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '999D99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+125.80
+</code></code></pre>
+            <p>次の例では、先頭にゼロを含む数字をキャラクタ文字列に変換します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '0999D99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+0125.80
+</code></code></pre>
             <p>次の例では、数字を負の記号を末尾に付けた文字列に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(-125.8, '999D99S');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.8, '999D99S');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
 125.80-
-(1 row)
-</code></pre>
+</code></code></pre>
+            <p>次の例では、指定された位置に正または負の記号を末尾に付けた文字列に数字を変換します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, '999D99SG');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+125.80+
+</code></code></pre>
+            <p>次の例では、指定された位置に正の記号を末尾に付けた文字列に数字を変換します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125.8, 'PL999D99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
++ 125.80
+</code></code></pre>
             <p>次の例では、数字を通貨記号付きの文字列に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(-125.88, '$S999D99');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.88, '$S999D99');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
 $-125.88
-(1 row)
-</code></pre>
+</code></code></pre>
+            <p>次の例では、指定された位置に通貨記号を付けた文字列に数字を変換します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.88, 'S999D99L');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+-125.88$
+</code></code></pre>
+            <p>次の例では、3 桁の区切り文字 (コンマ) を使用して数字をキャラクタ文字列に変換します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(1125.8, '9,999.99');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+1,125.80
+</code></code></pre>
             <p>次の例では、負の数字に角括弧を使用して、数字を文字列に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(-125.88, '$999D99PR');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(-125.88, '$999D99PR');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
 $&lt;125.88&gt;	
-(1 row)
-</code></pre>
+</code></code></pre>
             <p>次の例では、数字をローマ字の文字列に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(125, 'RN');
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(125, 'RN');</code>
+<code class="computeroutput" copy="false">
 to_char
 ---------
-CXXV	
-(1 row)
-</code></pre>
+   CXXV	
+</code></code></pre>
+            <p>次の例では、日付を世紀コードに変換します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(date '2020-12-31', 'CC');</code>
+<code class="computeroutput" copy="false">
+to_char
+---------
+21	
+</code></code></pre>
+            
+            
+            
             
             <p>次の例では、曜日を表示します。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT to_char(current_timestamp, 'FMDay, FMDD HH12:MI:SS');</code>
-               <code class="computeroutput" copy="false">to_char
+<code class="computeroutput" copy="false">
+to_char
 -----------------------
 Wednesday, 31 09:34:26</code></code></pre>
             
             <p>次の例では、数に対して序数のサフィックスを表示します。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT to_char(482, '999th');</code>
-               <code class="computeroutput" copy="false">to_char
+<code class="computeroutput" copy="false">
+to_char
 -----------------------
  482nd</code></code></pre>
             
             
             
             <p>次の例では、販売テーブル内の支払い価格からコミッションを減算します。誤差は四捨五入されて、ローマ数字に変換され、to_char 列に表示されます。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, pricepaid, commission, (pricepaid - commission)
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select salesid, pricepaid, commission, (pricepaid - commission)
 as difference, to_char(pricepaid - commission, 'rn') from sales
 group by sales.pricepaid, sales.commission, salesid
-order by salesid limit 10;
-
+order by salesid limit 10;</code>
+<code class="computeroutput" copy="false">
  salesid | pricepaid | commission | difference |     to_char
 ---------+-----------+------------+------------+-----------------
        1 |    728.00 |     109.20 |     618.80 |           dcxix
@@ -206,13 +273,14 @@ order by salesid limit 10;
        8 |    197.00 |      29.55 |     167.45 |          clxvii
        9 |    591.00 |      88.65 |     502.35 |             dii
       10 |     65.00 |       9.75 |      55.25 |              lv
-(10 rows)</code></pre>
+</code></code></pre>
             <p>次の例では、さまざまな値に通貨記号を追加して、to_char 列に表示します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, pricepaid, commission, (pricepaid - commission)
+            
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select salesid, pricepaid, commission, (pricepaid - commission)
 as difference, to_char(pricepaid - commission, 'l99999D99') from sales
 group by sales.pricepaid, sales.commission, salesid
-order by salesid limit 10;
-
+order by salesid limit 10;</code>
+<code class="computeroutput" copy="false">
 salesid | pricepaid | commission | difference |  to_char
 --------+-----------+------------+------------+------------
       1 |    728.00 |     109.20 |     618.80 | $   618.80
@@ -225,12 +293,12 @@ salesid | pricepaid | commission | difference |  to_char
       8 |    197.00 |      29.55 |     167.45 | $   167.45
       9 |    591.00 |      88.65 |     502.35 | $   502.35
      10 |     65.00 |       9.75 |      55.25 | $    55.25
-(10 rows)
-</code></pre>
+</code></code></pre>
+            
             <p>次の例では、各販売が行われた世紀を一覧で示します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select salesid, saletime, to_char(saletime, 'cc') from sales
-order by salesid limit 10;
-
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select salesid, saletime, to_char(saletime, 'cc') from sales
+order by salesid limit 10;</code>
+<code class="computeroutput" copy="false">
  salesid |      saletime       | to_char
 ---------+---------------------+---------
        1 | 2008-02-18 02:36:48 | 21
@@ -243,12 +311,12 @@ order by salesid limit 10;
        8 | 2008-07-10 02:12:36 | 21
        9 | 2008-07-22 02:23:17 | 21
       10 | 2008-08-06 02:51:55 | 21
-(10 rows)</code></pre>
+</code></code></pre>
             <p>次の例は、EVENT テーブル内の各 STARTTIME 値を、時、分、秒、およびタイムゾーンから成る文字列に変換します。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select to_char(starttime, 'HH12:MI:SS TZ')
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select to_char(starttime, 'HH12:MI:SS TZ')
 from event where eventid between 1 and 5
-order by eventid;
-
+order by eventid;</code>
+<code class="computeroutput" copy="false">
 to_char
 ----------
 02:30:00 UTC
@@ -256,17 +324,16 @@ to_char
 02:30:00 UTC
 02:30:00 UTC
 07:00:00 UTC
-(5 rows)
-
-(10 rows)</code></pre>
+</code></code></pre>
             
             <p>以下の例では、秒、ミリ秒、マイクロ秒の形式を示しています。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select sysdate,
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select sysdate,
 to_char(sysdate, 'HH24:MI:SS') as seconds,
 to_char(sysdate, 'HH24:MI:SS.MS') as milliseconds,
-to_char(sysdate, 'HH24:MI:SS:US') as microseconds;
-
+to_char(sysdate, 'HH24:MI:SS:US') as microseconds;</code>
+<code class="computeroutput" copy="false">
 timestamp           | seconds  | milliseconds | microseconds   
 --------------------+----------+--------------+----------------
-2015-04-10 18:45:09 | 18:45:09 | 18:45:09.325 | 18:45:09:325143</code></pre>
+2015-04-10 18:45:09 | 18:45:09 | 18:45:09.325 | 18:45:09:325143
+</code></code></pre>
          <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_CONVERT_function.html">CONVERT</div><div id="next" class="next-link" accesskey="n" href="./r_TO_DATE_function.html">TO_DATE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_TO_CHAR.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_TO_CHAR.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

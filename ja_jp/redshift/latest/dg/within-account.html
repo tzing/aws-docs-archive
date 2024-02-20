@@ -86,7 +86,7 @@ ALTER DATASHARE salesshare SET INCLUDENEW = TRUE FOR SCHEMA PUBLIC;</code></pre>
 
             <p>GRANT ステートメントでは、1 つのデータ共有コンシューマーにしか許可を付与できません。</p>
             
-            <p>クラスターのスーパーユーザーおよびデータ共有オブジェクトの所有者、またはデータ共有に対する SHARE 権限を持つユーザーは、コンシューマーをデータ共有に追加したり、データ共有からコンシューマーを削除したりできます。そのために、GRANT USAGE または REVOKE USAGE を使用します。</p>
+            <p>クラスターのスーパーユーザーおよびデータ共有オブジェクトの所有者、またはデータ共有に対する SHARE アクセス許可を持つユーザーは、コンシューマーをデータ共有に追加したり、データ共有からコンシューマーを削除したりできます。そのために、GRANT USAGE または REVOKE USAGE を使用します。</p>
             <p>現在表示されているクラスターの名前空間を検索するには、SELECT CURRENT_NAMESPACE コマンドを使用できます。同じ AWS アカウント内の異なるクラスターの名前空間を検索するには、Amazon Redshift コンソールのクラスター詳細ページにアクセスします。そのページで、新しく追加された名前空間フィールドを見つけます。</p>
             <p>また、Amazon Redshift コンソールを使用して、データ共有に対しデータコンシューマーを追加したり削除したりできます。詳細については、<a href="./datashare-creation.html#add-data-consumer-console">データ共有へのデータコンシューマーの追加</a> および <a href="./manage-datashare-existing-console.html#remove-data-consumer-console">データ共有からのデータコンシューマーの削除</a> を参照してください。</p>
          </li><li><p>(オプション) データ共有にセキュリティ制限を追加します。次の例は、パブリック IP アクセスを持つコンシューマークラスターがデータ共有の読み取りを許可されていることを示しています。詳細については、「<a href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</a>」を参照してください。</p>
@@ -176,6 +176,9 @@ salesshare |    100       | dev             |                   |  OUTBOUND  | 2
 
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE DATABASE sales_db FROM DATASHARE salesshare OF NAMESPACE '13b8833d-17c6-4f16-8fe4-1a018f5ed00d';</code></pre>
+            
+            <p>ローカルデータベース内のオブジェクトへのアクセスをより細かく制御する場合は、データベースの作成時に WITH PERMISSIONS 句を使用します。これにより、ステップ 4 でデータベース内のオブジェクトにオブジェクトレベルのアクセス許可を付与できます。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE DATABASE sales_db WITH PERMISSIONS FROM DATASHARE salesshare OF NAMESPACE '13b8833d-17c6-4f16-8fe4-1a018f5ed00d';</code></pre>
 
             <p><a href="./r_SVV_REDSHIFT_DATABASES.html">SVV_REDSHIFT_DATABASES</a> ビューにクエリを実行すると、データ共有から作成したデータベースを確認できます。データ共有から作成されたこれらのデータベースに接続することはできません。これらのデータベースは読み取り専用です。ただし、コンシューマークラスターのローカルデータベースに接続し、データベース間クエリを実行して、データ共有から作成されたデータベースで、データを照会することは可能です。既存のデータ共有から作成されたデータベースオブジェクトの上にデータ共有を作成することはできません。ただし、コンシューマークラスター上の別のテーブルにデータをコピーし、必要な処理を実行してから、作成された新しいオブジェクトを共有できます。</p>
             <p>Amazon Redshift コンソールを使用して、データ共有からデータベースを作成することもできます。詳細については、「<a href="./query-datashare-console.html#create-database-from-datashare-console">データ共有からのデータベースの作成</a>」を参照してください。</p>
@@ -187,18 +190,20 @@ salesshare |    100       | dev             |                   |  OUTBOUND  | 2
 
      
 
-         </li><li><p>必要に応じて、データ共有から作成されたデータベースおよびスキーマ参照に対する許可をコンシューマークラスター内のユーザーグループに付与します。詳細については、「<a href="./r_GRANT.html">GRANT</a>」または「<a href="./r_REVOKE.html">REVOKE</a>」を参照してください。</p>
+         </li><li><p>必要に応じて、データ共有から作成されたデータベースおよびスキーマ参照に対するアクセス許可を、コンシューマークラスター内のユーザーおよびロールに付与します。詳細については、「<a href="./r_GRANT.html">GRANT</a>」または「<a href="./r_REVOKE.html">REVOKE</a>」を参照してください。</p>
 
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATABASE sales_db TO Bob;</code></pre>
             
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON SCHEMA sales_schema TO GROUP Analyst_group;</code></pre>
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON SCHEMA sales_schema TO ROLE Analyst_role;</code></pre>
 
-            <p>コンシューマークラスターの管理者は、データ共有から作成されたデータベース全体に対する許可のみをユーザーおよびグループに割り当てることができます。場合によっては、データ共有から作成されたデータベースオブジェクトのサブセットに対して、詳細なコントロールが必要になります。その場合は、データ共有内の特定のスキーマを指す外部スキーマ参照を作成し (前出のステップを参照)、スキーマレベルの詳細なアクセス許可を提供できます。</p>
+            <p>WITH PERMISSIONS を使用することなくデータベースを作成している場合は、データ共有から作成されたデータベース全体に対するアクセス許可のみをユーザーおよびロールに割り当てることができます。場合によっては、データ共有から作成されたデータベースオブジェクトのサブセットに対して、詳細なコントロールが必要になります。その場合は、データ共有内の特定のスキーマを指す外部スキーマ参照を作成し (前出のステップを参照)、スキーマレベルの詳細なアクセス許可を提供できます。</p>
                   <p>また、共有オブジェクトの上に遅延バインディングビューを作成し、これらを使用して詳細なアクセス許可を割り当てることもできます。また、プロデューサークラスターで必要な粒度で追加のデータ共有を作成するよう検討することもできます。</p>
+            <p>ステップ 2 で WITH PERMISSIONS を使用してデータベースを作成した場合は、共有データベース内のオブジェクトにオブジェクトレベルのアクセス許可を割り当てる必要があります。USAGE アクセス許可のみを持つユーザーは、追加のオブジェクトレベルのアクセス許可が付与されるまで、WITH PERMISSIONS を使用して作成されたデータベース内のオブジェクトにはアクセスできません。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT SELECT ON sales_db.public.tickit_sales_redshift to Bob;</code></pre>
 
          </li><li><p>データ共有内の共有オブジェクト内のデータをクエリします。</p>
-            <p>コンシューマークラスター上のコンシューマデータベースおよびスキーマに対する許可を持つユーザーおよびグループは、任意の共有オブジェクトのメタデータを探索およびナビゲートできます。また、コンシューマークラスター内のローカルオブジェクトを探索およびナビゲートすることもできます。これを行うには、JDBC または ODBC ドライバー、または SVV_ALL および SVV_REDSHIFT ビューを使用します。</p>
+            <p>コンシューマークラスター上のコンシューマデータベースおよびスキーマに対するアクセス許可を持つユーザーおよびロールは、任意の共有オブジェクトのメタデータを探索およびナビゲートできます。また、コンシューマークラスター内のローカルオブジェクトを探索およびナビゲートすることもできます。これを行うには、JDBC または ODBC ドライバー、または SVV_ALL および SVV_REDSHIFT ビューを使用します。</p>
                   <p>プロデューサークラスターには、各スキーマ内のデータベース、テーブル、およびビューに多数のスキーマが含まれる場合があります。コンシューマー側のユーザーは、データ共有を通じて利用可能になったオブジェクトのサブセットのみを表示できます。これらのユーザーは、プロデューサークラスターからのメタデータ全体を表示することはできません。このアプローチは、データ共有による詳細なメタデータセキュリティの制御を提供します。</p>
             <p>引き続きローカルクラスターのデータベースに接続します。ただし、3 つの部分からなる database.schema.table 表記を使用して、データ共有から作成されたデータベースとスキーマから読み込むこともできるようになりました。表示されているすべてのデータベースにまたがるクエリを実行できます。これらは、クラスター上のローカルデータベースでも、データ共有から作成されたデータベースでもかまいません。コンシューマークラスターは、データ共有から作成されたデータベースに接続できません。</p>
             <p>完全な資格を使用してデータにアクセスできます。詳細については、「<a href="./cross-database_example.html">クロスデータベースクエリの使用例</a>」を参照してください。</p>

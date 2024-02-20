@@ -35,7 +35,7 @@
         
         <p>デフォルトでは、ソートキーまたはディストリビューションキーを明示的に定義せずに作成されたテーブルは <code class="code">AUTO</code> に設定されています。テーブルの作成時に、ソートキーまたはディストリビューションキーを手動で明示的に設定することもできます。ソートキーまたはディストリビューションキーを設定した場合、テーブルは自動的に管理されません。</p>
         
-        <p>既存のテーブルを自動的に最適化できるようにするには、ALTER ステートメントオプションを使用して、テーブルを <code class="code">AUTO</code> に変更します。ソートキーの自動化を定義し、ディストリビューションキーの自動化は定義しないことを選択することもできます (逆も可)。ALTER ステートメントを実行してテーブルを自動テーブルに変換する場合、既存のソートキーとディストリビューションスタイルは保持されます。</p>           
+        <p>既存のテーブルを自動的に最適化できるようにするには、ALTER ステートメントオプションを使用して、テーブルを <code class="code">AUTO</code> に変更します。ソートキーには自動化を定義できますが、ディストリビューションキーには自動化を定義することができません (逆も同様)。ALTER ステートメントを実行してテーブルを自動テーブルに変換する場合、既存のソートキーとディストリビューションスタイルは保持されます。</p>           
         
         <pre class="programlisting"><div class="code-btn-container"></div><code class="sql ">ALTER TABLE <code class="replaceable">table_name</code> ALTER SORTKEY AUTO;</code></pre> 
         <pre class="programlisting"><div class="code-btn-container"></div><code class="sql ">ALTER TABLE <code class="replaceable">table_name</code> ALTER DISTSTYLE AUTO;</code></pre>

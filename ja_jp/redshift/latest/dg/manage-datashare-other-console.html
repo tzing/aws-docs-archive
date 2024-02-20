@@ -71,7 +71,7 @@
                        
                        
                        
-                   <ol><li><p>特定の AWS リージョンとクラスター名前空間をデータ共有に追加するには、<b>[Add Region]</b> (リージョンを追加) を選択します。<b>[Add AWS Region]</b> (Amazon リージョンの追加) ページが表示されます。</p></li><li><p><b>[AWS Region]</b> (Amazon リージョン) をクリックします。</p></li><li><p>以下のいずれかを実行します。</p>
+                   <ol><li><p>特定の AWS リージョンとクラスター名前空間をデータ共有に追加するには、<b>[Add Region]</b> (リージョンを追加) を選択します。<b>[Add AWS Region]</b> (Amazon リージョンの追加) ページが表示されます。</p></li><li><p><b>[AWS Region]</b> (Amazon リージョン) をクリックします。</p></li><li><p>次のいずれかを行います:</p>
                       <div class="itemizedlist">
                           
                           
@@ -79,7 +79,7 @@
                       <ul class="itemizedlist"><li class="listitem"><p>このリージョン内に既存、および将来作成されるすべてのクラスター名前空間をデータ共有に追加するには、<b>[Add all cluster namespaces]</b> (すべてのクラスター名前空間を追加) をクリックします。</p></li><li class="listitem"><p>このリージョンにある 1 つ以上の特定のクラスター名前空間をデータ共有に追加するには、<b>[Add specific cluster namespaces]</b> (特定のクラスター名前空間を追加) をクリックします。</p></li><li class="listitem"><p>1 つまたは複数のクラスター名前空間を選択し、<b>[Add AWS Region]</b> (Amazon リージョンを追加) をクリックします。</p></li></ul></div>
                       </li><li><p><b>[関連付ける]</b> を選択します。</p></li></ol></div>
                 </li></ul></div></li></ol></div>
-         <p> データ共有を Lake Formation アカウントに関連付ける場合は、Lake Formation コンソールに移動してデータベースを作成し、データベースに対するアクセス許可を定義します。詳細については、AWS Lake Formation デベロッパーガイドの「<a href="https://docs.aws.amazon.com/lake-formation/latest/dg/setup-ds-perms.html">Amazon Redshift データ共有に対するアクセス許可の設定</a>」を参照してください。AWS Glue データベースまたはフェデレーションデータベースを作成したら、クエリエディタ v2 または任意の SQL クライアントをコンシューマークラスターで使用して、データをクエリできます。詳細については、「<a href="./lake-formation-getting-started-consumer.html">コンシューマーとしての Lake Formation 管理のデータ共有を使用する</a>」を参照してください。</p>
+         <p> データ共有を Lake Formation アカウントに関連付ける場合は、Lake Formation コンソールに移動してデータベースを作成し、データベースに対するアクセス許可を定義します。詳細については、AWS Lake Formation デベロッパーガイドの「<a href="https://docs.aws.amazon.com/lake-formation/latest/dg/setup-ds-perms.html">Amazon Redshift データ共有に対するアクセス許可の設定</a>」を参照してください。AWS Glue データベースまたはフェデレーションデータベースを作成したら、クエリエディタ v2 または任意の優先 SQL クライアントをコンシューマークラスターで使用して、データをクエリできます。詳細については、「<a href="./lake-formation-getting-started-consumer.html">コンシューマーとしての Lake Formation 管理のデータ共有を使用する</a>」を参照してください。</p>
          <p>データ共有の関連付けが完了すると、データを共有することが可能になります。</p>
          <p>データ共有の関連付けはいつでも変更できます。関連付けを AWS リージョンやクラスター名前空間から AWS アカウント全体に変更すると、Amazon Redshift は、特定のリージョンおよびクラスター名前空間に関する情報を、AWSカウントの情報で上書きします。これにより、AWSアカウントにあるすべての AWS リージョンとクラスター名前空間が、データ共有にアクセスできるようになります。</p>
          <p>関連付け先を、特定のクラスター名前空間から、指定された AWS リージョン内のすべてのクラスター名前空間に変更した場合は、このリージョンにあるすべてのクラスター名前空間が、データ共有にアクセスできます。</p>

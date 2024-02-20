@@ -73,7 +73,7 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>正規表現パターンを表す文字列リテラル。詳細については、「<a href="./pattern-matching-conditions-posix.html">POSIX 演算子</a>」を参照してください。</p>
+                     <p>正規表現パターンを表す UTF-8 文字列リテラル。詳細については、「<a href="./pattern-matching-conditions-posix.html">POSIX 演算子</a>」を参照してください。</p>
                   </dd>
                 
                   <dt><span class="term"> <em>position</em> </span></dt>
@@ -81,7 +81,7 @@
                      <p>検索を開始する <em>source_string</em> 内の位置を示す正の整数。位置はバイト数ではなく文字数に基づくため、マルチバイト文字は 1 文字としてカウントされます。デフォルトは 1 です。<em>position</em> が 1 より小さい場合、<em>source_string</em> の最初の文字から検索が開始されます。<em>position</em> が <em>source_string</em> の文字数より大きい場合、結果は空の文字列 ("") になります。</p>
                   </dd>
                 
-                  <dt><span class="term"> <em>実行</em> </span></dt>
+                  <dt><span class="term"> <em>occurrence</em> </span></dt>
                   <dd>
                      <p>このパターンのどの出現を使用するかを示す正の整数。REGEXP_SUBSTR は、最初の<em>出現</em> - 1 一致をスキップします。デフォルトは 1 です。<em>出現</em>が 1 未満、または<em>ソース文字列</em>の文字数以上の場合、検索は無視され、結果は NULL となります。</p>
                   </dd>

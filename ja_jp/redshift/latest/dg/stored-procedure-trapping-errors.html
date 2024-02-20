@@ -51,7 +51,15 @@ EXCEPTION
   WHEN OTHERS THEN
     statements
 END;   
-</code></pre><p>例外が発生し、例外処理ブロックを追加すると、REASE ステートメントおよび他のほとんどの PL/pgSQL ステートメントを書き込みできます。たとえば、カスタムメッセージで例外を発生させたり、ロギングテーブルにレコードを挿入したりできます。</p><p>例外処理ブロックに入ると、現在のトランザクションがロールバックされ、新しいトランザクションがブロック内のステートメントを実行するために作成されます。ブロック内のステートメントがエラーなしで実行されると、トランザクションはコミットされ、例外が再スローされます。最後に、ストアドプロシージャが終了します。</p><p>例外ブロックでサポートされている条件は OTHERS のみです。この条件は、クエリのキャンセルを除いて、すべてのエラータイプに一致します。また、例外処理ブロックでエラーが発生すると、エラーは外部の例外処理ブロックでキャッチできます。</p><p>NONATOMIC プロシージャ内でエラーが発生しても、例外ブロックで処理されればエラーは再スローされません。例外処理ブロックでキャッチされた例外をスローする方法については、「PL/pgSQL ステートメント <code class="code">RAISE</code>」を参照してください。このステートメントは例外処理ブロックでのみ有効です。詳細については、「<a href="./c_PLpgSQL-statements.html#r_PLpgSQL-messages-errors">RAISE</a>」を参照してください。</p><p>さまざまなタイプのエラーに関する情報を収集するのに役立つシステムテーブルがいくつかあります。詳細については、<a href="./r_STL_LOAD_ERRORS.html">STL_LOAD_ERRORS</a>、<a href="./r_STL_ERROR.html">STL_ERROR</a>、および<a href="./r_SYS_STREAM_SCAN_ERRORS.html">SYS_STREAM_SCAN_ERRORS</a>を参照してください。エラーのトラブルシューティングに使用できるその他のシステムテーブルもあります。これらに関する情報は、「<a href="./cm_chap_system-tables.html">システムテーブルとビューのリファレンス</a>」を参照してください。</p>
+</code></pre><p>例外が発生し、例外処理ブロックを追加すると、REASE ステートメントおよび他のほとんどの PL/pgSQL ステートメントを書き込みできます。たとえば、カスタムメッセージで例外を発生させたり、ロギングテーブルにレコードを挿入したりできます。</p><p>例外処理ブロックに入ると、現在のトランザクションがロールバックされ、新しいトランザクションがブロック内のステートメントを実行するために作成されます。ブロック内のステートメントがエラーなしで実行されると、トランザクションはコミットされ、例外が再スローされます。最後に、ストアドプロシージャが終了します。</p><p>例外ブロックでサポートされている条件は OTHERS のみです。この条件は、クエリのキャンセルを除いて、すべてのエラータイプに一致します。また、例外処理ブロックでエラーが発生すると、エラーは外部の例外処理ブロックでキャッチできます。</p><p>NONATOMIC プロシージャ内でエラーが発生しても、例外ブロックで処理されればエラーは再スローされません。例外処理ブロックでキャッチされた例外をスローする方法については、「PL/pgSQL ステートメント <code class="code">RAISE</code>」を参照してください。このステートメントは例外処理ブロックでのみ有効です。詳細については、「<a href="./c_PLpgSQL-statements.html#r_PLpgSQL-messages-errors">RAISE</a>」を参照してください。</p><p><b>CONTINUE ハンドラを使用して、ストアドプロシージャでエラーが発生した後の処理を制御する</b></p><p> <code class="code">CONTINUE</code> ハンドラは、NONATOMIC ストアドプロシージャ内の実行フローを制御する例外ハンドラの一種です。これを使用すると、既存のステートメントブロックを終了せずに例外をキャッチして処理できます。通常、ストアドプロシージャでエラーが発生すると、フローが中断され、エラーが呼び出し元に返されます。ただし、ユースケースによっては、フローの中断を必要とするほどエラー状態が深刻ではない場合があります。別のトランザクションで選択したエラー処理ロジックを使用してエラーをスムーズに処理し、エラーの後にステートメントを実行し続けることもできます。以下にその構文を示します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">[ DECLARE
+  declarations ]
+BEGIN
+  statements
+EXCEPTION
+  [ CONTINUE_HANDLER | EXIT_HANDLER ] WHEN OTHERS THEN
+    handler_statements
+END;   
+</code></pre><p>さまざまなタイプのエラーに関する情報を収集するのに役立つシステムテーブルがいくつかあります。詳細については、「<a href="./r_STL_LOAD_ERRORS.html">STL_LOAD_ERRORS</a>」、「<a href="./r_STL_ERROR.html">STL_ERROR</a>」、および「<a href="./r_SYS_STREAM_SCAN_ERRORS.html">SYS_STREAM_SCAN_ERRORS</a>」を参照してください。エラーのトラブルシューティングに使用できるその他のシステムテーブルもあります。これらに関する情報は、「<a href="./cm_chap_system-tables.html">システムテーブルとビューのリファレンス</a>」を参照してください。</p>
         <h2 id="stored-procedure-trapping-errors-examples">例</h2>
      <p>次の例は、例外処理ブロックでステートメントを書き込みする方法を示しています。ストアドプロシージャはデフォルトのトランザクション管理動作を使用しています。</p>
 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE employee (firstname varchar, lastname varchar);
@@ -168,4 +176,77 @@ SELECT * from employee_error_log;
  Error message: column "invalid1" does not exist
  Error message: column "invalid2" does not exist
 (2 rows)
-</code></pre><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stored-procedure-transaction-management.html">トランザクションの管理</div><div id="next" class="next-link" accesskey="n" href="./c_PLpgSQL-logging.html">ストアドプロシージャのログ記録</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+</code></pre><p>次の例は、CONTINUE 例外ハンドラの使用方法を示しています。このサンプルでは 2 つのテーブルを作成し、ストアドプロシージャで使用します。CONTINUE ハンドラは、NONATOMIC トランザクション管理動作でストアドプロシージャの実行フローを制御します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE tbl_1 (a int);
+CREATE TABLE tbl_error_logging(info varchar, err_state varchar, err_msg varchar);
+
+CREATE OR REPLACE PROCEDURE sp_exc_handling_1() NONATOMIC AS
+$$
+BEGIN
+    INSERT INTO tbl_1 VALUES (1);
+    -- Expect an error for the insert statement following, because of the invalid value
+    INSERT INTO tbl_1 VALUES ("val");
+    INSERT INTO tbl_1 VALUES (2);
+EXCEPTION CONTINUE_HANDLER WHEN OTHERS THEN
+    INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+END;
+$$ LANGUAGE plpgsql;</code></pre><p>ストアドプロシージャを呼び出します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CALL sp_exc_handling_1();</code></pre><p>フローは以下のように進行します。</p><div class="orderedlist">
+         
+         
+     <ol><li><p>互換性のないデータ型を列に挿入しようとして、エラーが発生します。EXCEPTION ブロックに制御が移ります。例外処理ブロックが入力されると、現在のトランザクションがロールバックされ、新しい暗黙的トランザクションが作成されてステートメントを実行します。</p></li><li><p>CONTINUE_HANDLER のステートメントがエラーなく実行された場合、例外が発生したステートメントの直後のステートメントに制御が移ります。(CONTINUE_HANDLER のステートメントによって新しい例外が発生した場合は、EXCEPTION ブロック内の例外ハンドラを使用してその例外を処理できます。)</p></li></ol></div><p>サンプルストアドプロシージャを呼び出すと、テーブルに次のレコードが格納されます。</p><div class="itemizedlist">
+         
+         
+     <ul class="itemizedlist"><li class="listitem"><p><code class="code">SELECT * FROM tbl_1;</code> を実行すると、2 つのレコードが返されます。これらには値 <code class="code">1</code> と <code class="code">2</code> が含まれます。</p></li><li class="listitem"><p><code class="code">SELECT * FROM tbl_error_logging;</code> を実行すると、次の値を含むレコードが 1 つ返されます。「<em></em>エラーが発生しました」、「<em></em>42703」、「<em></em>val列は tbl_1 に存在しません」</p></li></ul></div><p>以下の追加のエラー処理例では、EXIT ハンドラと CONTINUE ハンドラの両方を使用しています。データテーブルとロギングテーブルの 2 つのテーブルを作成します。また、エラー処理を示すストアドプロシージャも作成します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE tbl_1 (a int);
+CREATE TABLE tbl_error_logging(info varchar, err_state varchar, err_msg varchar);
+
+CREATE OR REPLACE PROCEDURE sp_exc_handling_2() NONATOMIC AS
+$$
+BEGIN
+    INSERT INTO tbl_1 VALUES (1);
+    BEGIN
+        INSERT INTO tbl_1 VALUES (100);
+        -- Expect an error for the insert statement following, because of the invalid value
+        INSERT INTO tbl_1 VALUES ("val");
+        INSERT INTO tbl_1 VALUES (101);
+    EXCEPTION EXIT_HANDLER WHEN OTHERS THEN
+        INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+    END;
+    INSERT INTO tbl_1 VALUES (2);
+    -- Expect an error for the insert statement following, because of the invalid value
+    INSERT INTO tbl_1 VALUES ("val");
+    INSERT INTO tbl_1 VALUES (3);
+EXCEPTION CONTINUE_HANDLER WHEN OTHERS THEN
+    INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+END;
+$$ LANGUAGE plpgsql;</code></pre><p>ストアドプロシージャを作成したら、次のように呼び出します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CALL sp_exc_handling_2();</code></pre><p>BEGIN と END の内部セットで囲まれた内部例外ブロックでエラーが発生すると、EXIT ハンドラによって処理されます。外側のブロックで発生したエラーは、CONTINUE ハンドラによって処理されます。</p><p>サンプルストアドプロシージャを呼び出すと、テーブルに次のレコードが格納されます。</p><div class="itemizedlist">
+         
+         
+     <ul class="itemizedlist"><li class="listitem"><p><code class="code">SELECT * FROM tbl_1;</code> を実行すると、値 1、2、3、および 100 を持つ 4 つのレコードが返されます。</p></li><li class="listitem"><p><code class="code">SELECT * FROM tbl_error_logging;</code> を実行すると、2 つのレコードが返されます。これらの値は次のとおりです。「<em></em>エラーが発生しました」、「<em></em>42703」、「<em></em>val 列は tbl_1 に存在しません」</p></li></ul></div><p><b>tbl_error_logging</b> テーブルが存在しない場合、例外が発生します。</p><p>次の例は、CONTINUE 例外ハンドラを FOR ループで使用する方法を示しています。このサンプルでは 3 つのテーブルを作成し、ストアドプロシージャ内の FOR ループで使用します。FOR ループは結果セットバリアントであり、クエリの結果を反復処理します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE tbl_1 (a int);
+INSERT INTO tbl_1 VALUES (1), (2), (3);
+CREATE TABLE tbl_2 (a int);
+CREATE TABLE tbl_error_logging(info varchar, err_state varchar, err_msg varchar);
+
+CREATE OR REPLACE PROCEDURE sp_exc_handling_loop() NONATOMIC AS
+$$
+DECLARE
+ rec RECORD;
+BEGIN
+    FOR rec IN SELECT a FROM tbl_1
+    LOOP
+        IF rec.a = 2 THEN
+            -- Expect an error for the insert statement following, because of the invalid value
+            INSERT INTO tbl_2 VALUES("val");
+        ELSE
+            INSERT INTO tbl_2 VALUES (rec.a);
+        END IF;
+    END LOOP;
+EXCEPTION CONTINUE_HANDLER WHEN OTHERS THEN
+    INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+END;
+$$ LANGUAGE plpgsql;</code></pre><p>ストアドプロシージャを呼び出します。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CALL sp_exc_handling_loop();</code></pre><p>サンプルストアドプロシージャを呼び出すと、テーブルに次のレコードが格納されます。</p><div class="itemizedlist">
+         
+         
+     <ul class="itemizedlist"><li class="listitem"><p> <code class="code">SELECT * FROM tbl_2;</code> を実行すると、2 つのレコードが返されます。これらには値 1 と 3 が含まれます。</p></li><li class="listitem"><p><code class="code">SELECT * FROM tbl_error_logging;</code> を実行すると、次の値を含むレコードが 1 つ返されます。「<em></em>エラーが発生しました」「<em></em>42703」、「<em></em>val列は tbl_2 に存在しません」</p></li></ul></div><p>CONTINUE ハンドラに関する使用上の注意事項:</p><div class="itemizedlist">
+         
+ 
+         
+     <ul class="itemizedlist"><li class="listitem"><p>CONTINUE_HANDLER キーワードと EXIT_HANDLER キーワードは、NONATOMIC ストアドプロシージャでのみ使用できます。</p></li><li class="listitem"><p>CONTINUE_HANDLER キーワードと EXIT_HANDLER キーワードはオプションです。EXIT_HANDLER がデフォルトです。</p></li></ul></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stored-procedure-transaction-management.html">トランザクションの管理</div><div id="next" class="next-link" accesskey="n" href="./c_PLpgSQL-logging.html">ストアドプロシージャのログ記録</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

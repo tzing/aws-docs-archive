@@ -68,11 +68,11 @@
                 <p>VACUUM と ANALYZE を実行することによって生成されたクエリ</p>
             </li><li class="listitem">
                 <p>CREATE TABLE AS (CTAS)</p>
-            </li></ul></div><p>これらのステートメントに関する一定期間のアクティビティをクエリするには、STL_QUERYTEXT ビューと STL_QUERY ビューを結合します。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>STL_QUERY および STL_QUERYTEXT ビューには、クエリに関する情報だけが含まれており、他のユーティリティや DDL コマンドは含まれていません。Amazon Redshift によって実行されるすべてのステートメントのリストと情報については、STL_DDLTEXT および STL_UTILITYTEXT ビューもクエリできます。Amazon Redshift によって実行されるすべてのステートメントの完全なリストについては、SVL_STATEMENTTEXT ビューをクエリできます。</p></div></div><p><a href="./r_STL_DDLTEXT.html">STL_DDLTEXT</a>、<a href="./r_STL_UTILITYTEXT.html">STL_UTILITYTEXT</a>、<a href="./r_SVL_STATEMENTTEXT.html">SVL_STATEMENTTEXT</a> も参照してください。</p><p>このビューはすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべての列は、SYS モニタリングビュー <a href="./SYS_QUERY_TEXT.html">SYS_QUERY_TEXT</a> にも定義されています。</p>
+            </li></ul></div><p>これらのステートメントに関する一定期間のアクティビティをクエリするには、STL_QUERYTEXT ビューと STL_QUERY ビューを結合します。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>STL_QUERY および STL_QUERYTEXT ビューには、クエリに関する情報だけが含まれており、他のユーティリティや DDL コマンドは含まれていません。Amazon Redshift によって実行されるすべてのステートメントのリストと情報については、STL_DDLTEXT および STL_UTILITYTEXT ビューもクエリできます。Amazon Redshift によって実行されるすべてのステートメントの完全なリストについては、SVL_STATEMENTTEXT ビューをクエリできます。</p></div></div><p><a href="./r_STL_DDLTEXT.html">STL_DDLTEXT</a>、<a href="./r_STL_UTILITYTEXT.html">STL_UTILITYTEXT</a>、<a href="./r_SVL_STATEMENTTEXT.html">SVL_STATEMENTTEXT</a> も参照してください。</p><p>STL_QUERYTEXT はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべてのデータは、SYS モニタリングビュー <a href="./SYS_QUERY_TEXT.html">SYS_QUERY_TEXT</a> でも確認できます。SYS モニタリングビューのデータは、使いやすく理解しやすいようにフォーマットされます。クエリには、SYS モニタリングビューを使用することをお勧めします。</p>
             <h2 id="r_STL_QUERYTEXT-table-columns">テーブルの列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c71c19b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c71c19b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>

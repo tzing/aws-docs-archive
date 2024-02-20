@@ -60,7 +60,7 @@ TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC } [, ...
              
                <dt><span class="term">ON [TABLE] table_name [, ...]</span></dt>
                <dd>
-                  <p>行レベルのセキュリティポリシーがアタッチされているテーブルまたはビュー。</p>
+                  <p>行レベルのセキュリティポリシーがアタッチされているリレーション。</p>
                </dd>
              
                <dt><span class="term">TO <span>{</span> user_name | ROLE role_name | PUBLIC} [, ...]</span></dt>
@@ -80,8 +80,16 @@ TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC } [, ...
              
 
          <ul class="itemizedlist"><li class="listitem"><p>アタッチされるテーブルには、ポリシー作成ステートメントの WITH 句に一覧表示されているすべての列が含まれている必要があります。</p></li><li class="listitem">
-               <p>Amazon Redshift の RLS は、RLS ポリシーの次のオブジェクトへのアタッチをサポートしていません: カタログテーブル、データベース間の関係、外部テーブル、通常のビュー、遅延バインディングビュー、マテリアライズドビュー、一時テーブル、RLS ポリシーのルックアップテーブル。</p>
-            </li><li class="listitem"><p>RLS ポリシーをスーパーユーザーまたは sys:secadmin にアタッチすることはできません。</p></li></ul></div>
+               <p>Amazon Redshift RLS は、以下のオブジェクトへの RLS ポリシーのアタッチをサポートしていません。</p>
+               <div class="itemizedlist">
+                   
+                   
+                   
+                   
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem"><p> カタログテーブル </p></li><li class="listitem"><p> データベース間のリレーション </p></li><li class="listitem"><p> 外部テーブル </p></li><li class="listitem"><p> マテリアライズドビュー </p></li><li class="listitem"><p> 一時テーブル </p></li><li class="listitem"><p> ルックアップテーブル </p></li></ul></div>
+            </li><li class="listitem"><p>RLS ポリシーをスーパーユーザーまたは <code class="code">sys:secadmin</code> アクセス許可を持つユーザーにアタッチすることはできません。</p></li></ul></div>
        
          <h2 id="r_ATTACH_RLS_POLICY-examples">例</h2>
          <p>次の例では、ポリシーをロールのテーブルにアタッチします。</p>

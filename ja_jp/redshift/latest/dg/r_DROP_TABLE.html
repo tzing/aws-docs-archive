@@ -75,7 +75,7 @@
              
                <dt><span class="term">CASCADE</span></dt>
                <dd>
-                  <p>その他のビューなど、ビューに依存するオブジェクトを自動的に削除することを示す句。</p>
+                  <p>ビューなどのテーブルに依存するオブジェクトを自動的に削除することを示す句。</p>
                   <p>ビューやテーブルなど、他のデータベースオブジェクトに依存しないビューを作成するには、ビュー定義に WITH NO SCHEMA BINDING 句を含めます。詳細については、「<a href="./r_CREATE_VIEW.html">CREATE VIEW</a>」を参照してください。</p>
                </dd>
              
@@ -110,39 +110,55 @@ drop table feedback, buyers;
          <p> 次の例では、テーブル FEEDBACK を削除し、ビュー FEEDBACK_VIEW も削除します。これは、FEEDBACK_VIEW がテーブル FEEDBACK に依存しているためです。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">drop table feedback cascade;</code></pre>
          <p> <b>テーブルの依存関係の表示</b> </p>
-         <p>データベース内のすべてのテーブルに関する依存関係情報を持つビューを作成できます。指定のテーブルを削除する前に、このビューに対してクエリを実行して、そのテーブルに依存するオブジェクトがあるかどうかを確認します。</p>
-         <p>次のコマンドを入力して FIND_DEPEND ビューを作成します。このビューでは、依存関係をオブジェクト参照と結合します。</p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create view find_depend as
-select distinct c_p.oid as tbloid,
-n_p.nspname as schemaname, c_p.relname as name,
-n_c.nspname as refbyschemaname, c_c.relname as refbyname,
-c_c.oid as viewoid
-from pg_catalog.pg_class c_p
-join pg_catalog.pg_depend d_p
-on c_p.relfilenode = d_p.refobjid
-join pg_catalog.pg_depend d_c
-on d_p.objid = d_c.objid
-join pg_catalog.pg_class c_c
-on d_c.refobjid = c_c.relfilenode
-left outer join pg_namespace n_p
-on c_p.relnamespace = n_p.oid
-left outer join pg_namespace n_c
-on c_c.relnamespace = n_c.oid
-where d_c.deptype = 'i'::"char"
-and c_c.relkind = 'v'::"char";</code></pre>
-         <p>ここで SALES テーブルから SALES_VIEW を作成します。</p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create view sales_view as select * from sales;</code></pre>
-         <p>FIND_DEPEND ビューに対してクエリを実行して、データベース内の依存関係を表示します。次のコードに示すように、PUBLIC スキーマに対するクエリの範囲を制限します。</p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from find_depend
-where refbyschemaname='public'
-order by name;</code></pre>
-         <p>このクエリは次の依存関係を返します。この例では、SALES テーブルを削除するときに、CASCADE オプションを使用して SALES_VIEW ビューも削除されます。</p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class=""> tbloid | schemaname |    name     | viewoid | refbyschemaname |  refbyname
---------+------------+-------------+---------+-----------------+-------------
-100241 | public     | find_depend |  100241 | public          | find_depend
-100203 | public     | sales       |  100245 | public          | sales_view
-100245 | public     | sales_view  |  100245 | public          | sales_view
-(3 rows)</code></pre>
+         
+            
+         
+         <p>テーブルの依存関係を返すには、次の例を使用します。<code class="replaceable">my_schema</code> と <code class="replaceable">my_table</code> を独自のスキーマとテーブルに置き換えます。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT dependent_ns.nspname as dependent_schema
+, dependent_view.relname as dependent_view 
+, source_ns.nspname as source_schema
+, source_table.relname as source_table
+, pg_attribute.attname as column_name
+FROM pg_depend 
+JOIN pg_rewrite ON pg_depend.objid = pg_rewrite.oid 
+JOIN pg_class as dependent_view ON pg_rewrite.ev_class = dependent_view.oid 
+JOIN pg_class as source_table ON pg_depend.refobjid = source_table.oid 
+JOIN pg_attribute ON pg_depend.refobjid = pg_attribute.attrelid 
+    AND pg_depend.refobjsubid = pg_attribute.attnum 
+JOIN pg_namespace dependent_ns ON dependent_ns.oid = dependent_view.relnamespace
+JOIN pg_namespace source_ns ON source_ns.oid = source_table.relnamespace
+WHERE 
+source_ns.nspname = 'my_schema'
+AND source_table.relname = 'my_table'
+AND pg_attribute.attnum &gt; 0 
+ORDER BY 1,2
+LIMIT 10;</code></code></pre>
+         <p><code class="replaceable">my_table</code> とその依存関係を削除するには、次の例を使用します。この例では、削除されたテーブルのすべての依存関係も返されます。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">DROP TABLE my_table CASCADE;
+         
+SELECT dependent_ns.nspname as dependent_schema
+, dependent_view.relname as dependent_view 
+, source_ns.nspname as source_schema
+, source_table.relname as source_table
+, pg_attribute.attname as column_name
+FROM pg_depend 
+JOIN pg_rewrite ON pg_depend.objid = pg_rewrite.oid 
+JOIN pg_class as dependent_view ON pg_rewrite.ev_class = dependent_view.oid 
+JOIN pg_class as source_table ON pg_depend.refobjid = source_table.oid 
+JOIN pg_attribute ON pg_depend.refobjid = pg_attribute.attrelid 
+    AND pg_depend.refobjsubid = pg_attribute.attnum 
+JOIN pg_namespace dependent_ns ON dependent_ns.oid = dependent_view.relnamespace
+JOIN pg_namespace source_ns ON source_ns.oid = source_table.relnamespace
+WHERE 
+source_ns.nspname = 'my_schema'
+AND source_table.relname = 'my_table'
+AND pg_attribute.attnum &gt; 0 
+ORDER BY 1,2
+LIMIT 10;</code>
+
+<code class="computeroutput" copy="false">+------------------+----------------+---------------+--------------+-------------+
+| dependent_schema | dependent_view | source_schema | source_table | column_name |
++------------------+----------------+---------------+--------------+-------------+</code></code></pre>
          <p> <b>IF EXISTS を使用したテーブルの削除</b> </p>
          <p>次の例では、FEEDBACK テーブルが存在する場合は削除し、存在しない場合は何もしないでメッセージを返します。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">drop table if exists feedback;</code></pre>

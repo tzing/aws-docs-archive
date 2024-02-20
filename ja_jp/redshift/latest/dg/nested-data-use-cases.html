@@ -46,63 +46,45 @@
                       <h2 id="ingesting-nested-data">ネストデータの取り込み</h2>
                       <p>複合データ型を含む外部テーブルからデータを取り込むには、<code class="code">CREATE TABLE AS</code> ステートメントを使用します。以下のクエリでは、<code class="code">LEFT
                     JOIN</code> を使用して、外部テーブルから顧客とその電話番号をすべて抽出し、Amazon Redshift テーブルの <code class="code">CustomerPhones</code> にそのデータを保存します。</p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE CustomerPhones AS
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE CustomerPhones AS
 SELECT  c.name.given, c.name.family, p AS phone
-FROM    spectrum.customers c LEFT JOIN c.phones p ON true                      
-                    </code></pre>
+FROM    spectrum.customers c LEFT JOIN c.phones p ON true;     </code></pre>
                   
                
                       <h2 id="aggregating-with-subquery"> サブクエリを使用したネストデータの集約 </h2>
                       <p>ネストデータを集約するにはサブクエリを使用します。この方法の概要を次の例に示します。</p>
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
-FROM   spectrum.customers c
-                     
-                      </code></pre>
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
+FROM   spectrum.customers c;</code></pre>
             <p>以下のデータが返ります。</p>   
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-given   |  family  |  ordercount
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">given   |  family  |  ordercount
 --------|----------|--------------
  Jenny  |  Doe     |       0
  John   |  Smith   |       2
  Andy   |  Jones   |       1
- (3 rows)                              
-                          </code></pre>
+ (3 rows)              </code></pre>
                      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>親の行でグループ化してネストデータを集約するには、前の例で示した方法が最も簡単です。この例では、ネスト化された行 <code class="code">c.orders</code> は、親の行 <code class="code">c</code> によってグループ化されます。また、<code class="code">id</code> は <code class="code">customer</code> ごとに一意であり、<code class="code">o.shipdate</code> が null になることはないという前提で、次の例に示すように集約することができます。ただし、この方法は通常、前の例ほど効率的ではありません。</p></div></div>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
 FROM      spectrum.customers c LEFT JOIN c.orders o ON true 
-GROUP BY  c.id, c.name.given, c.name.family
-            </code></pre>
-                      <p>また、祖先クエリのエイリアス (<code class="code">c</code>) を参照し、配列データを抽出する FROM 句でサブクエリを使用して、クエリを記述することもできます。次の例で、この方法を示します。</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, s.count AS ordercount
-FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s                       
-                      </code></pre>
+GROUP BY  c.id, c.name.given, c.name.family;</code></pre>
+                      <p>また、<code class="code">FROM</code> 句で祖先クエリのエイリアス (<code class="code">c</code>) を参照し、配列データを抽出するサブクエリを使用して、クエリを記述することもできます。次の例で、この方法を示します。</p>
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, s.count AS ordercount
+FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s;    </code></pre>
                    
                       <h2 id="joining-redshift-data"> Amazon Redshift とネストデータの結合 </h2>
                       <p>また、Amazon Redshift データを外部テーブルのネストデータと結合することもできます。たとえば、Amazon S3 に次のネストデータがあるとします。</p>    
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers2 (
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE EXTERNAL TABLE spectrum.customers2 (
   id      int,
   name    struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones  array&lt;varchar(20)&gt;,
   orders  array&lt;struct&lt;shipdate:timestamp, item:int&gt;&gt;
-)
-                       </code></pre>
+);</code></pre>
                       <p>さらに、Amazon Redshift に次のテーブルがあるとします。</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE prices (
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE prices (
   id int,
   price double precision
-)
-                       </code></pre>
+);</code></pre>
                       <p>次のクエリでは、前の値に基づいて各顧客の購入の合計数と金額を検索します。以下はあくまでも例です。データは、前に説明したテーブルを作成した場合にのみ返ります。</p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
 FROM     spectrum.customers2 c, c.orders o, prices p ON o.item = p.id  
-GROUP BY c.id, c.name.given, c.name.family
-            
-                  </code></pre>
-                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">チュートリアル: Amazon Redshift Spectrum を使用したネストデータのクエリ </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">ネストデータの制限</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+GROUP BY c.id, c.name.given, c.name.family;</code></pre>
+                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">チュートリアル: Amazon Redshift Spectrum を使用したネストデータのクエリ </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">ネストデータの制限 (プレビュー)</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

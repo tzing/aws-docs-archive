@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">テーブルの列</a><a href="#SYS_QUERY_DETAIL-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SYS_QUERY_DETAIL により、ステップレベルでクエリの詳細を表示できます。各行が特定の WLM クエリのステップを表し、詳細情報が含まれます、このビューには、DDL、DML、ユーティリティコマンド (コピーおよびアンロード) など、多くの種類のクエリが含まれています。クエリの種類によっては、一部の列との関連がない場合があります。例えば、external_scanned_bytes は内部テーブルには関係しません。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>書き換えとして対応する形を持たないクエリは、SYS_QUERY_HISTORY ビューにのみエントリがあり、SYS_QUERY_DETAIL ビューにはありません。</p></div></div><p>SYS_QUERY_DETAIL はすべてのユーザーが表示可能です。スーパーユーザーはすべての行を表示できます。通常のユーザーはアクセスできるメタデータのみを表示できます。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">テーブルの列</a><a href="#SYS_QUERY_DETAIL-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SYS_QUERY_DETAIL により、ステップレベルでクエリの詳細を表示できます。各行が特定の WLM クエリのステップを表し、詳細情報が含まれます、このビューには、DDL、DML、ユーティリティコマンド (コピーおよびアンロード) など、多くの種類のクエリが含まれています。クエリの種類によっては、一部の列との関連がない場合があります。例えば、external_scanned_bytes は内部テーブルには関係しません。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>書き換えとして対応する形を持たないクエリは、SYS_QUERY_HISTORY ビューにのみエントリがあり、SYS_QUERY_DETAIL ビューにはありません。</p></div></div><p>SYS_QUERY_DETAIL はすべてのユーザーが表示可能です。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p>
             <h2 id="SYS_QUERY_DETAIL-table-columns">テーブルの列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c49b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c51b9b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -99,7 +99,7 @@
                             <td tabindex="-1">実行中のステップでのテーブル名。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">is_rrsscan</td>
+                            <td tabindex="-1">is_rrscan</td>
                             <td tabindex="-1">文字</td>
                             <td tabindex="-1">ステップがスキャンステップであるかどうかを示す値。true (t) の場合は、そのステップで範囲が限定されたスキャンが実行されたことを示します。</td>
                         </tr>
@@ -114,7 +114,7 @@
                             <td tabindex="-1">クエリステップが完了した時刻。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">期間</td>
+                            <td tabindex="-1">duration</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">そのステップに消費された時間 (マイクロ秒)。</td>
                         </tr>
@@ -196,6 +196,12 @@
                             <td tabindex="-1">spilled_block_remote_disk</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">Amazon Simple Storage Service に流出したブロックの数。</td>
+                        </tr>
+                        <tr>
+                            
+                            <td tabindex="-1">step_attribute</td>
+                            <td tabindex="-1">character(64)</td>
+                            <td tabindex="-1">関連のステップに関する情報が含まれます。スキャンステップに指定できる値: <code class="code">multi-dimensional</code>。</td>
                         </tr>
                         
      

@@ -48,12 +48,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_COPY-JOB" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_COPY-JOB-privileges">必要なアクセス権限</a><a href="#r_COPY-JOB-syntax">構文</a><a href="#r_COPY-JOB-parameters">パラメータ</a><a href="#r_COPY-JOB-usage-notes">使用に関する注意事項</a><a href="#r_COPY-JOB-examples">例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_COPY-JOB">COPY JOB (プレビュー)</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="table-container"><div class="table-contents"><table id="w317aac45b9c63c25b3">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_COPY-JOB" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_COPY-JOB-privileges">必要なアクセス許可</a><a href="#r_COPY-JOB-syntax">構文</a><a href="#r_COPY-JOB-parameters">パラメータ</a><a href="#r_COPY-JOB-usage-notes">使用に関する注意事項</a><a href="#r_COPY-JOB-examples">例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_COPY-JOB">COPY JOB (プレビュー)</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="table-container"><div class="table-contents"><table id="w319aac47b9c67c25b3">
       <tr>
-        <td tabindex="-1"><em><b>これは、プレビューで使用できる自動コピー (SQL COPY JOB) に関する、プレリリースドキュメントです。ドキュメントと機能はどちらも変更されることがあります。この機能については、テスト環境のみで使用し、本番環境では使用しないことをお勧めします。パブリックプレビューは 2023 年 10 月 15 日に終了します。プレビュークラスターは、プレビュー終了 2 週間後に自動的に削除されます。プレビューの利用規約については、「<em>AWS のサービス条件</em>」の「<a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>ベータ版とプレビュー</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>」を参照してください。</b></em></td>
+        <td tabindex="-1"><b>これは、プレビューで使用できる自動コピー (SQL COPY JOB) に関する、プレリリースドキュメントです。 ドキュメントと機能はどちらも変更されることがあります。この機能については、テスト環境のみで使用し、本番環境では使用しないことをお勧めします。パブリックプレビューは 2024 年 3 月 27 日に終了します。プレビュークラスターは、プレビュー終了 2 週間後に自動的に削除されます。プレビューの利用規約については、「<a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS のサービス条件</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>」の「ベータ版とプレビュー」を参照してください。</b></td>
       </tr>
     </table></div></div><p>プレビューでのこのコマンドの使用の詳細については、「<a href="./loading-data-copy-job.html">Amazon S3 からの継続的なファイル取り込み (プレビュー)</a>」を参照してください。</p><p>データをテーブルにロードする COPY コマンドを管理します。COPY JOB コマンドは COPY コマンドの拡張であり、Amazon S3 バケットからのデータロードを自動化します。COPY ジョブを作成すると、Amazon Redshift は、指定されたパスに新しい Amazon S3 ファイルが作成されたことを検出し、ユーザーの操作なしで自動的にロードします。データをロードするときには、元の COPY コマンドで使用されているのと同じパラメータが使用されます。Amazon Redshift は、ロードされたファイルを記録して、ロードされたのは 1 回だけであることを確認します。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>使用方法、パラメータ、権限など、COPY コマンドの詳細については、「<a href="./r_COPY.html">COPY</a>」を参照してください。</p></div></div>
-      <h2 id="r_COPY-JOB-privileges">必要なアクセス権限</h2>
+      <h2 id="r_COPY-JOB-privileges">必要なアクセス許可</h2>
       <p>COPY JOB の COPY コマンドを実行するには、ロードするテーブルの INSERT 権限が必要です。</p>
       <p>COPY コマンドで指定した IAM ロールにはロードするデータへのアクセス権限が必要です。詳細については、「<a href="./copy-usage_notes-access-permissions.html#copy-usage_notes-iam-permissions">COPY、UNLOAD、CREATE LIBRARY のための IAM のアクセス許可</a>」を参照してください。</p>
     
@@ -103,14 +103,16 @@
                       
                       
                      
+                     
                       
                       
-                      
-                  <ul class="itemizedlist"><li class="listitem"><p>COPY JOB は、空の Amazon S3 フォルダ (ファイルが入っていない) を指す COPY コマンドを使用して作成する必要があります。</p></li><li class="listitem"><p>COPY コマンドに対しては、MAXERROR オプションまたは IGNOREALLERRORS オプションを指定することはできません。</p></li><li class="listitem"><p>マニフェストファイルは指定できません。COPY JOB では、新しく作成されたファイルをモニタリングするために、指定された Amazon S3 ロケーションが必要です。</p></li><li class="listitem"><p>ORC や Parquet の列データ形式に対しては、Amazon S3 ファイルを指定できません。</p></li><li class="listitem"><p>アクセスキーやシークレットキーなどの認証タイプで COPY コマンドを指定することはできません。この <code class="code">IAM_ROLE</code> パラメータを認証に使用する COPY コマンドのみがサポートされます。詳細については、「<a href="./copy-parameters-authorization.html">認証パラメータ</a>」を参照してください。</p></li><li class="listitem"><p>COPY JOB は、クラスターに関連付けられたデフォルトの IAM ロールをサポートしていません。COPY コマンド内で <code class="code">IAM_ROLE</code> を指定する必要があります。</p></li></ul></div>
+                  <ul class="itemizedlist"><li class="listitem">
+                        <p>COPY JOB は、COPY コマンドで指定されたフォルダー内の既存のファイルを取り込みません。COPY JOB 作成タイムスタンプ以降に作成されたファイルのみが取り込まれます。</p>
+                        </li><li class="listitem"><p>COPY コマンドに対しては、MAXERROR オプションまたは IGNOREALLERRORS オプションを指定することはできません。</p></li><li class="listitem"><p>マニフェストファイルは指定できません。COPY JOB では、新しく作成されたファイルをモニタリングするために、指定された Amazon S3 ロケーションが必要です。</p></li><li class="listitem"><p>アクセスキーやシークレットキーなどの認証タイプで COPY コマンドを指定することはできません。この <code class="code">IAM_ROLE</code> パラメータを認証に使用する COPY コマンドのみがサポートされます。詳細については、「<a href="./copy-parameters-authorization.html">認証パラメータ</a>」を参照してください。</p></li><li class="listitem"><p>COPY JOB は、クラスターに関連付けられたデフォルトの IAM ロールをサポートしていません。COPY コマンド内で <code class="code">IAM_ROLE</code> を指定する必要があります。</p></li></ul></div>
                   <p>詳細については、「<a href="./copy-parameters-data-source-s3.html">Amazon S3 からの COPY</a>」を参照してください。</p>
             </dd>
           
-            <dt><span class="term"><em>ジョブ名</em></span></dt>
+            <dt><span class="term"><em>job-name</em></span></dt>
             <dd>
                <p>COPY ジョブを参照するために使用されるジョブの名前です。</p>
             </dd>

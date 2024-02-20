@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_FEDERATED_QUERY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SVL_FEDERATED_QUERY-table-columns">テーブルの列</a><a href="#SVL_FEDERATED_QUERY-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_FEDERATED_QUERY">SVL_FEDERATED_QUERY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVL_FEDERATED_QUERY ビューは、フェデレーテッドクエリの呼び出しに関する情報を表示するために使用します。</p><p>SVL_FEDERATED_QUERY はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべての列は、SYS モニタリングビュー <a href="./SYS_EXTERNAL_QUERY_DETAIL.html">SYS_EXTERNAL_QUERY_DETAIL</a> にも定義されています。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_FEDERATED_QUERY" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#SVL_FEDERATED_QUERY-table-columns">テーブルの列</a><a href="#SVL_FEDERATED_QUERY-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_FEDERATED_QUERY">SVL_FEDERATED_QUERY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVL_FEDERATED_QUERY ビューは、フェデレーテッドクエリの呼び出しに関する情報を表示するために使用します。</p><p>SVL_FEDERATED_QUERY はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべてのデータは、SYS モニタリングビュー <a href="./SYS_EXTERNAL_QUERY_DETAIL.html">SYS_EXTERNAL_QUERY_DETAIL</a> でも確認できます。SYS モニタリングビューのデータは、使いやすく理解しやすいようにフォーマットされます。クエリには、SYS モニタリングビューを使用することをお勧めします。</p>
             <h2 id="SVL_FEDERATED_QUERY-table-columns">テーブルの列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c23b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c23b9b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -106,7 +106,7 @@
                             <td tabindex="-1">フェデレーションクエリによって返されたバイトの数。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">期間</td>
+                            <td tabindex="-1">duration</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">カーソル呼び出しから行の取得にかかった時間 (マイクロ秒単位)。フェデレーションクエリの実行と結果の取得にかかった時間。</td>
                         </tr>

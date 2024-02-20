@@ -58,11 +58,11 @@
                 <p>DROP SCHEMA、TABLE、VIEW</p>
             </li><li class="listitem">
                 <p>ALTER SCHEMA、TABLE</p>
-            </li></ul></div><p><a href="./r_STL_QUERYTEXT.html">STL_QUERYTEXT</a>、<a href="./r_STL_UTILITYTEXT.html">STL_UTILITYTEXT</a>、<a href="./r_SVL_STATEMENTTEXT.html">SVL_STATEMENTTEXT</a> も参照してください。これらのビューには、システムで実行される SQL コマンドのタイムラインが示されます。この履歴は、トラブルシューティング、およびすべてのシステムアクティビティの監査追跡の作成に役立ちます。</p><p>STARTTIME および ENDTIME 列を使用すると、一定の時間内に記録されたステートメントがわかります。SQL テキストの長いブロックは、200 文字の長さに分割されます。SEQUENCE 列により、1 つのステートメントに属する複数のフラグメントのテキストを識別できます。</p><p>このビューはすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべての列は、SYS モニタリングビュー <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> にも定義されています。</p>
+            </li></ul></div><p><a href="./r_STL_QUERYTEXT.html">STL_QUERYTEXT</a>、<a href="./r_STL_UTILITYTEXT.html">STL_UTILITYTEXT</a>、<a href="./r_SVL_STATEMENTTEXT.html">SVL_STATEMENTTEXT</a> も参照してください。これらのビューには、システムで実行される SQL コマンドのタイムラインが示されます。この履歴は、トラブルシューティング、およびすべてのシステムアクティビティの監査追跡の作成に役立ちます。</p><p>STARTTIME および ENDTIME 列を使用すると、一定の時間内に記録されたステートメントがわかります。SQL テキストの長いブロックは、200 文字の長さに分割されます。SEQUENCE 列により、1 つのステートメントに属する複数のフラグメントのテキストを識別できます。</p><p>STL_DDLTEXT はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべてのデータは、SYS モニタリングビュー <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> でも確認できます。SYS モニタリングビューのデータは、使いやすく理解しやすいようにフォーマットされます。クエリには、SYS モニタリングビューを使用することをお勧めします。</p>
             <h2 id="r_STL_DDLTEXT-table-columns2">テーブルの列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c25c17b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c25c17b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>

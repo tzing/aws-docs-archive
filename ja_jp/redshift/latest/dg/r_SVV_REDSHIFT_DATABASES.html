@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_REDSHIFT_DATABASES" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVV_REDSHIFT_DATABASES-table-columns">テーブルの列</a><a href="#r_SVV_REDSHIFT_DATABASES-sample-query">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_REDSHIFT_DATABASES">SVV_REDSHIFT_DATABASES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVV_ REDSHIFT_DATABASES を使用して、ユーザーがアクセスできるすべてのデータベースリストを表示します。これには、クラスター上のデータベースと、リモートクラスターによって提供されるデータ共有から作成されたデータベースが含まれます。</p><p>SVV_REDSHIFT_DATABASES はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できます。通常のユーザーはアクセスできるメタデータのみを表示できます。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_REDSHIFT_DATABASES" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_SVV_REDSHIFT_DATABASES-table-columns">テーブルの列</a><a href="#r_SVV_REDSHIFT_DATABASES-sample-query">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_REDSHIFT_DATABASES">SVV_REDSHIFT_DATABASES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVV_ REDSHIFT_DATABASES を使用して、ユーザーがアクセスできるすべてのデータベースリストを表示します。これには、クラスター上のデータベースと、リモートクラスターによって提供されるデータ共有から作成されたデータベースが含まれます。</p><p>SVV_REDSHIFT_DATABASES はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p>
             <h2 id="r_SVV_REDSHIFT_DATABASES-table-columns">テーブルの列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c83b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c83b7b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -65,32 +65,36 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">database_type</td>
-                            <td tabindex="-1">varCHAR(16)</td>
+                            <td tabindex="-1">varCHAR(32)</td>
                             <td tabindex="-1">データベースのタイプ。指定できるタイプは、ローカルデータベースまたは共有データベースです。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">database_acl</td>
-                            <td tabindex="-1">varCHAR(256)</td>
-                            <td tabindex="-1">データベースに指定されたユーザーまたはユーザーグループのアクセス許可を定義する文字列。</td>
+                            <td tabindex="-1">varCHAR(128)</td>
+                            <td tabindex="-1">この情報は、内部使用に限定されています。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">database_options</td>
-                            <td tabindex="-1">text</td>
+                            <td tabindex="-1">varCHAR(128)</td>
                             <td tabindex="-1">データベースのプロパティ。</td>
+                        </tr>
+                        <tr> 
+                            <td tabindex="-1">database_isolation_level</td>
+                            <td tabindex="-1">varCHAR(128)</td>
+                            <td tabindex="-1">データベースの分離レベル。可能値には <code class="code">Snapshot Isolation</code> や <code class="code">Serializable</code> などがあります。</td>
                         </tr>
                     </table></div></div>
          
             <h2 id="r_SVV_REDSHIFT_DATABASES-sample-query">サンプルクエリ</h2>
             <p>次の例では、SVV_REDSHIFT_DATABASES の出力を返します。</p>
             
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT database_name, database_type
-FROM svv_redshift_databases
-WHERE database_name = 'tickit_db';
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select database_name, database_owner, database_type, database_options, database_isolation_level 
+from  svv_redshift_databases;</code>
+<code class="computeroutput" copy="false">
 
-database_name | database_owner | database_type | database_acl | database_options
---------------+----------------+---------------+--------------+------------------
-   tickit_db  |     shared     |               |              |</code></pre>
-            
-            
+database_name | database_owner | database_type | database_options | database_isolation_level
+--------------+----------------+---------------+------------------+------------------
+   dev        |  1             | local         | NULL             | Serializable
+</code></code></pre>
             
         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>ブラウザで JavaScript が無効になっているか、使用できません。</strong></p><p>AWS ドキュメントを使用するには、JavaScript を有効にする必要があります。手順については、使用するブラウザのヘルプページを参照してください。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">ドキュメントの表記規則</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_SVV_REDSHIFT_COLUMNS.html">SVV_REDSHIFT_COLUMNS</div><div id="next" class="next-link" accesskey="n" href="./r_SVV_REDSHIFT_FUNCTIONS.html">SVV_REDSHIFT_FUNCTIONS</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">このページは役に立ちましたか? - はい</div><div class="content"><p>ページが役に立ったことをお知らせいただき、ありがとうございます。</p><p>お時間がある場合は、何が良かったかお知らせください。今後の参考にさせていただきます。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_SVV_REDSHIFT_DATABASES.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">このページは役に立ちましたか? - いいえ</div><div class="content"><p>このページは修正が必要なことをお知らせいただき、ありがとうございます。ご期待に沿うことができず申し訳ありません。</p><p>お時間がある場合は、ドキュメントを改善する方法についてお知らせください。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="フィードバック" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_SVV_REDSHIFT_DATABASES.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

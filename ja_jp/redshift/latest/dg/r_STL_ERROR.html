@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ERROR" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_STL_ERROR-table-columns">テーブルの列</a><a href="#r_STL_ERROR-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ERROR">STL_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift データベースエンジンによって生成される内部処理エラーを記録します。STL_ERROR では SQL エラーやメッセージは記録されません。STL_ERROR の情報は、特定のエラーのトラブルシューティングに役立ちます。AWS サポートエンジニアが、トラブルシューティングプロセスを進める上で、この情報の提供を要求する場合があります。</p><p>このビューはすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべての列は、SYS モニタリングビュー <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> にも定義されています。</p><p>Copy コマンドを使用したデータのロード中に生成できるエラーコードのリストについては、「<a href="./r_Load_Error_Reference.html">ロードエラー参照</a>」を参照してください。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ERROR" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_STL_ERROR-table-columns">テーブルの列</a><a href="#r_STL_ERROR-sample-queries">サンプルクエリ</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ERROR">STL_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift データベースエンジンによって生成される内部処理エラーを記録します。STL_ERROR では SQL エラーやメッセージは記録されません。STL_ERROR の情報は、特定のエラーのトラブルシューティングに役立ちます。AWS サポートエンジニアが、トラブルシューティングプロセスを進める上で、この情報の提供を要求する場合があります。</p><p>STL_ERROR はすべてのユーザーに表示されます。スーパーユーザーはすべての行を表示できますが、通常のユーザーは自分のデータのみを表示できます。詳細については、「<a href="./cm_chap_system-tables.html#c_visibility-of-data">システムテーブルとビューのデータの可視性</a>」を参照してください。</p><p>このテーブルの一部またはすべてのデータは、SYS モニタリングビュー <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> でも確認できます。SYS モニタリングビューのデータは、使いやすく理解しやすいようにフォーマットされます。クエリには、SYS モニタリングビューを使用することをお勧めします。</p><p>Copy コマンドを使用したデータのロード中に生成できるエラーコードのリストについては、「<a href="./r_Load_Error_Reference.html">ロードエラー参照</a>」を参照してください。</p>
             <h2 id="r_STL_ERROR-table-columns">テーブルの列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c33c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c33c11b3"><thead>
                         <tr>
                             <th>列名 </th>
                             <th>データ型 </th>
@@ -116,8 +116,8 @@ from stl_error;
 
    process    | errcode | line |                               err
 --------------+---------+------+------------------------------------------------------------------
- padbmaster   |    8001 |  194 | Path prefix: s3://awssampledb/testnulls/venue.txt*
- padbmaster   |    8001 |  529 | Listing bucket=awssampledb prefix=tests/category-csv-quotes
+ padbmaster   |    8001 |  194 | Path prefix: s3://redshift-downloads/testnulls/venue.txt*
+ padbmaster   |    8001 |  529 | Listing bucket=redshift-downloads prefix=tests/category-csv-quotes
  padbmaster   |       2 |  190 | database "template0" is not currently accepting connections
  padbmaster   |      32 | 1956 | pq_flush: could not send data to client: Broken pipe
 (4 rows)</code></pre>

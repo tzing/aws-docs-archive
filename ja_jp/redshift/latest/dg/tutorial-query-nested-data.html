@@ -41,8 +41,7 @@
                 
         <p>Amazon Redshift Spectrum では、ファイル形式が Parquet、ORC、JSON、Ion のネストデータのクエリ実行をサポートしています。Redshift Spectrum は、外部テーブルを使用してデータにアクセスします。<code class="code">struct</code>、<code class="code">array</code>、<code class="code">map</code> などの複合データ型を使用して外部テーブルを作成することもできます。</p>
         <p>たとえば、<code class="code">customers</code> という名前のフォルダ内のデータファイルに、Amazon S3 の以下のデータが含まれるとします。単一のルート要素はありませんが、このサンプルデータの各 JSON オブジェクトはテーブルの行を表します。</p>
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
-<span>{</span>"id": 1,
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>"id": 1,
  "name": <span>{</span>"given": "John", "family": "Smith"},
  "phones": ["123-457789"],
  "orders": [<span>{</span>"shipdate": "2018-03-01T11:59:59.000Z", "price": 100.50},
@@ -57,10 +56,10 @@
  "name": <span>{</span>"given": "Andy", "family": "Jones"},
  "phones": [],
  "orders": [<span>{</span>"shipdate": "2018-03-02T08:02:15.000Z", "price": 13.50}]
-}    
-</code></pre>        
-         
-        <p>Redshift Spectrum を使用して、このデータにクエリを実行することができます。クエリの実行方法を以下のチュートリアルで示します。</p>
+}  </code></pre>        
+   
+        
+        <p>Amazon Redshift Spectrum を使用して、ファイル内のネストデータにクエリを実行できます。以下のチュートリアルでは、Apache Parquet データでの実行方法を紹介します。</p> 
         <p>チュートリアルの前提条件、ステップ、およびネスト化されたデータのユースケースについては、次のトピックを参照してください。</p>
         <div class="itemizedlist">
              
@@ -78,7 +77,7 @@
             </li><li class="listitem">
                 <p><a href="./nested-data-use-cases.html">ネストデータのユースケース </a></p>
             </li><li class="listitem">
-                <p><a href="./nested-data-restrictions.html">ネストデータの制限</a></p>
+                <p><a href="./nested-data-restrictions.html">ネストデータの制限 (プレビュー)</a></p>
             </li><li class="listitem">
                 <p><a href="./serializing-complex-JSON.html">複雑なネストされた JSON のシリアル化</a></p>
             </li></ul></div>
@@ -104,34 +103,28 @@ create external database if not exists;</code></pre>
         <p><a href="https://s3.amazonaws.com/redshift-downloads/tickit/spectrum/customers/customer_file1" rel="noopener noreferrer" target="_blank"><span>ソースデータ</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>は、Amazon S3 からダウンロードして表示できます。</p>
 
         <p>このチュートリアル用に外部テーブルを作成するには、次のコマンドを実行します。</p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers (
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones array&lt;varchar(20)&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';            
-        </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';     </code></pre>
         
-        <p>前述の例で、外部テーブル (<code class="code">spectrum.customers</code>) では、データ型 <code class="code">struct</code> および <code class="code">array</code> を使用して、ネストデータを含む列を定義しています。Amazon Redshift Spectrum では、ファイル形式が Parquet、ORC、JSON、Ion のネストデータのクエリ実行をサポートしています。<code class="code">LOCATION</code> パラメータは、ネストデータまたはファイルを含む Amazon S3 フォルダを参照する必要があります。</p>
+        <p>前述の例で、外部テーブル (<code class="code">spectrum.customers</code>) では、データ型 <code class="code">struct</code> および <code class="code">array</code> を使用して、ネストデータを含む列を定義しています。Amazon Redshift Spectrum では、ファイル形式が Parquet、ORC、JSON、Ion のネストデータのクエリ実行をサポートしています。<code class="code">STORED AS</code> パラメータは、Apache Parquet ファイルを表す <code class="code">PARQUET</code> です。<code class="code">LOCATION</code> パラメータは、ネストデータまたはファイルを含む Amazon S3 フォルダを参照する必要があります。詳細については、「<a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>」を参照してください。</p>
         
-        <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>Amazon Redshift では、Amazon Redshift データベーステーブルでの複合データ型をサポートしていません。複合データ型を使用するには必ず、Redshift Spectrum 外部テーブルを使用します。</p></div></div>
+        
         <p>データ型 <code class="code">array</code> および <code class="code">struct</code> は、任意のレベルでネスト化することができます。たとえば、次の例で示すように、<code class="code">toparray</code> という名前の列を定義できます。</p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-toparray array&lt;struct&lt;nestedarray:
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">toparray array&lt;struct&lt;nestedarray:
          array&lt;struct&lt;morenestedarray: 
-         array&lt;string&gt;&gt;&gt;&gt;&gt;                
-            </code></pre>
+         array&lt;string&gt;&gt;&gt;&gt;&gt;</code></pre>
         <p>また、次の例の <code class="code">struct</code> で示すように、データ型 <code class="code">x</code> をネスト化することもできます。</p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-x struct&lt;a: string,
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">x struct&lt;a: string,
          b: struct&lt;c: integer,
                    d: struct&lt;e: string&gt;
                   &gt;
-        &gt;
-            </code></pre>
+        &gt;</code></pre>
    
      
                 <h2 id="tutorial-query-nested-data-sqlextensions">ステップ 2: SQL 拡張を使用して Amazon S3 のネストデータにクエリを実行する</h2>
@@ -139,143 +132,112 @@ x struct&lt;a: string,
                  
                     <h3 id="nested-data-sqlextension1">拡張 1: Struct 列へのアクセス</h3>
                     <p><code class="code">struct</code> 列からデータを抽出するには、フィールド名をパスに連結するドット表記を使用します。たとえば、次のクエリでは、指定された顧客の姓名が返ります。名にアクセスするには、長いパス <code class="code">c.name.given</code> を使用します。姓にアクセスするには、長いパス <code class="code">c.name.family</code> を使用します。</p>    
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, c.name.given, c.name.family
-FROM   spectrum.customers c;
-          
-                    </code></pre>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, c.name.given, c.name.family
+FROM   spectrum.customers c;</code></pre>
                     <p>前述のクエリでは、次のデータが返ります。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id | given | family
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id | given | family
 ---|-------|-------
 1  | John  | Smith
 2  | Jenny | Doe
 3  | Andy  | Jones
-(3 rows)
-</code></pre>
+(3 rows)</code></pre>
                     <p><code class="code">struct</code> は、別の <code class="code">struct</code> 列にすることができます。つまり、別の <code class="code">struct</code> の列を任意のレベルで使用できます。このように深くネストされた <code class="code">struct</code> 列にアクセスするパスは、任意的に長くすることができます。たとえば、次の例の <code class="code">x</code> 列については、定義を参照してください。</p>     
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-x struct&lt;a: string,
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">x struct&lt;a: string,
          b: struct&lt;c: integer, 
                       d: struct&lt;e: string&gt;
                   &gt;
-        &gt;
-</code></pre>        
+        &gt;</code></pre>        
         <p><code class="code">e</code> のデータに <code class="code">x.b.d.e</code> としてアクセスできます。</p>
     
-    
-                    <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>含まれるフィールドへのパスを示すには、<code class="code">struct</code> のみ使用します。クエリのデータに直接アクセスしたり、クエリからデータを返したりすることはできません。</p></div></div>    
+                    
                     
                    
                  
                     <h3 id="nested-data-sqlextension2">拡張 2: FROM 句の配列範囲</h3>
-                    <p><code class="code">array</code> 列 (および拡張の <code class="code">map</code> 列) からデータを抽出するには、テーブル名ではなく、<code class="code">array</code> 句の <code class="code">FROM</code> 列を指定します。この拡張は、メインクエリの <code class="code">FROM</code> 句だけでなく、サブクエリの <code class="code">FROM</code> 句にも適用されます。<code class="code">array</code> 要素を位置 (例: <code class="code">c.orders[0]</code>) で参照することはできません。</p>
+                    <p><code class="code">array</code> 列 (および拡張の <code class="code">map</code> 列) からデータを抽出するには、テーブル名ではなく、<code class="code">array</code> 句の <code class="code">FROM</code> 列を指定します。この拡張は、メインクエリの <code class="code">FROM</code> 句だけでなく、サブクエリの <code class="code">FROM</code> 句にも適用されます。</p>
+                        
+                <p><code class="code">array</code> 要素を位置 (例: <code class="code">c.orders[0]</code>) で参照できます (プレビュー)。</p>
                     <p>次のユースケースで説明するように、<code class="code">arrays</code> を joins と組み合わせることにより、さまざまな種類のネスト解除を行うことができます。</p>
                      
                         <h4 id="unnest-inner-joins">内部結合を使用したネスト解除</h4>
                         <p>次のクエリでは、注文を含む顧客の顧客 ID と出荷日を選択します。FROM 句の SQL 拡張 <code class="code">c.orders
                         o</code> は、エイリアス <code class="code">c</code> によって異なります。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, o.shipdate
-FROM   spectrum.customers c, c.orders o 
-
-                    </code></pre> 
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, o.shipdate
+FROM   spectrum.customers c, c.orders o </code></pre> 
                         <p>注文を含む顧客 <code class="code">c</code> ごとに、<code class="code">FROM</code> 句によって、顧客 <code class="code">o</code> の注文 <code class="code">c</code> 単位で返ります。その行は、顧客行 <code class="code">c</code> と注文行 <code class="code">o</code> を組み合わせたものです。次に、<code class="code">SELECT</code> 句を使用して、<code class="code">c.id</code> および <code class="code">o.shipdate</code> を維持します。結果は次のとおりです。</p>
-                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id|      shipdate
+                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id|      shipdate
 --|----------------------
 1 |2018-03-01  11:59:59
 1 |2018-03-01  09:10:00
 3 |2018-03-02  08:02:15
-(3 rows)
-                         </code></pre>   
+(3 rows) </code></pre>   
                         <p>エイリアス <code class="code">c</code> では顧客フィールド、<code class="code">o</code> では注文フィールドにアクセスすることができます。</p>
                         <p>セマンティクスは、標準的な SQL と似ています。<code class="code">FROM</code> 句は、次のネステッドループの実行と考えることができます。続いて、<code class="code">SELECT</code> 句を使用して、出力するフィールドを選択します。</p>
-                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-for each customer c in spectrum.customers
+                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">for each customer c in spectrum.customers
   for each order o in c.orders
-     output c.id and o.shipdate
-                        </code></pre>
+     output c.id and o.shipdate </code></pre>
                         <p>したがって、注文のない顧客は、結果に表示されません。</p>
                         <p>また、これは、<code class="code">FROM</code> テーブルおよび <code class="code">JOIN</code> 配列を使用して、<code class="code">customers</code> を実行する <code class="code">orders</code> 句と考えることができます。実際、次の例に示すように、クエリを記述することもできます。</p>
-                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, o.shipdate
-FROM   spectrum.customers c INNER JOIN c.orders o ON true
-                        </code></pre>
+                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, o.shipdate
+FROM   spectrum.customers c INNER JOIN c.orders o ON true </code></pre>
                         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p><code class="code">c</code> という名前のテーブルを持つスキーマ <code class="code">orders</code> が存在する場合、<code class="code">c.orders</code> は、テーブル <code class="code">orders</code> を参照します。<code class="code">customers</code> の配列の列は参照されません。</p></div></div>
                  
                  
                     <h4 id="unnest-left-joins">左結合を使用したネスト解除</h4>
                     <p>次のクエリでは、顧客名とその注文をすべて出力します。顧客が注文を行っていない場合でも、顧客名は返ります。ただし、この場合、次の Jenny Doe の例に示すように、注文列は NULL です。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, c.name.given, c.name.family, o.shipdate, o.price
-FROM   spectrum.customers c LEFT JOIN c.orders o ON true
-                    </code></pre>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, c.name.given, c.name.family, o.shipdate, o.price
+FROM   spectrum.customers c LEFT JOIN c.orders o ON true</code></pre>
                     
                     <p>前述のクエリでは、次のデータが返ります。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id  |  given  | family  |    shipdate          | price
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id  |  given  | family  |    shipdate          | price
 ----|---------|---------|----------------------|--------
  1  |  John   | Smith   | 2018-03-01  11:59:59 | 100.5
  1  |  John   | Smith   | 2018-03-01  09:10:00 |  99.12
  2  |  Jenny  | Doe     |                      |
  3  |  Andy   | Jones   | 2018-03-02  08:02:15 |  13.5
- (4 rows)
-                    </code></pre>
+ (4 rows)</code></pre>
                  
                 
                  
                     <h3 id="nested-data-sqlextension3">拡張 3: エイリアスを使用して Scalars の配列に直接アクセスする </h3>
-                    <p><code class="code">p</code> 句のエイリアス <code class="code">FROM</code> がスカラーの配列範囲にある場合、このクエリでは <code class="code">p</code> の値を単に <code class="code">p</code> として参照します。たとえば、次のクエリでは、顧客名と電話番号のペアが生成されます。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.name.given, c.name.family, p AS phone
-FROM   spectrum.customers c LEFT JOIN c.phones p ON true                        
-                    </code></pre>
+                    <p><code class="code">FROM</code> 句のエイリアス <code class="code">p</code> がスカラーの配列範囲にある場合、このクエリでは <code class="code">p</code> の値を <code class="code">p</code> として参照します。たとえば、次のクエリでは、顧客名と電話番号のペアが生成されます。</p>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.name.given, c.name.family, p AS phone
+FROM   spectrum.customers c LEFT JOIN c.phones p ON true  </code></pre>
                     <p>前述のクエリでは、次のデータが返ります。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-given  |  family  |  phone
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">given  |  family  |  phone
 -------|----------|-----------
 John   | Smith    | 123-4577891
 Jenny  | Doe      | 858-8675309
 Jenny  | Doe      | 415-9876543
 Andy   | Jones    | 
-(4 rows)
-                    </code></pre>
+(4 rows) </code></pre>
                      
                  
                     <h3 id="nested-data-sqlextension4">拡張 4: Map 要素へのアクセス </h3>
                     <p>Redshift Spectrum は、<code class="code">map</code> 列および <code class="code">array</code> 列を持つ <code class="code">struct</code> 型を含む <code class="code">key</code> として <code class="code">value</code> データ型を扱うことができます。<code class="code">key</code> は、<code class="code">scalar</code> である必要があります。値は任意のデータ型にすることができます。</p>
                     <p>たとえば、次のコードでは、電話番号を保存するために、<code class="code">map</code> を使用して外部テーブルを作成します。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-
-CREATE EXTERNAL TABLE spectrum.customers2 (
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers2 (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones map&lt;varchar(20), varchar(20)&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';
-                    </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';</code></pre>
                     <p><code class="code">map</code> 型の動作は、<code class="code">array</code> 列および <code class="code">key</code> 列を持つ <code class="code">value</code> 型と似ているため、前述のスキーマは次のように考えることができます。</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers3 (
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers3 (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones array&lt;struct&lt;key:varchar(20), value:varchar(20)&gt;&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';  
-                    </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';   </code></pre>
                     
                     <p>次のクエリでは、顧客名と携帯電話番号が返ります。この番号は顧客名ごとに返ります。map クエリは、<code class="code">array</code> 型のネスト化された <code class="code">struct</code> のクエリと同じように処理されます。前述のように、以下のクエリでは、外部テーブルを作成した場合にのみデータが返ります。</p>   
-                     <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, p.value 
+                     <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, p.value 
 FROM   spectrum.customers c, c.phones p 
-WHERE  p.key = 'mobile'                    
-                         
-                     </code></pre>   
+WHERE  p.key = 'mobile';  </code></pre>   
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p><code class="code">key</code> の <code class="code">map</code> は、ファイル形式が Ion や JSON の場合の <code class="code">string</code> です。</p></div></div>      
                     
                     

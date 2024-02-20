@@ -63,8 +63,8 @@
                   <p>ORC </p>
                </li><li class="listitem">
                   <p>Parquet </p>
-               </li></ul></div><p>COPY では、列形式のデータがサポートされていますが、以下の制限があります。</p><div class="itemizedlist">
-                
+               </li></ul></div><p>列データ形式からの COPY の使用例については、「<a href="./r_COPY_command_examples.html">COPY の例</a>」を参照してください。</p><p>COPY では、列形式のデータがサポートされていますが、以下の制限があります。</p><div class="itemizedlist">
+               
                 
               
                
@@ -85,94 +85,6 @@
                
                 
             <ul class="itemizedlist"><li class="listitem">
-                  <p>クラスターは以下のいずれかの AWS リージョンに存在する必要があります。</p>
-                  <div class="itemizedlist">
-                      
-                      
-                      
-                      
-                      
-                          
-                               
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                      
-                  <ul class="itemizedlist"><li class="listitem">
-                        <p>米国東部 (バージニア北部) リージョン (us-east-1)</p>
-                     </li><li class="listitem">
-                        <p>米国東部 (オハイオ) リージョン (us-east-2)</p>
-                     </li><li class="listitem">
-                        <p>米国西部 (北カリフォルニア) リージョン (us-west-1)</p>
-                     </li><li class="listitem">
-                        <p>米国西部 (オレゴン) リージョン (us-west-2) </p>
-                     </li><li class="listitem">
-                        <p>アフリカ (ケープタウン) リージョン (af-south-1)</p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (香港) リージョン (ap-east-1) </p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (メルボルン) リージョン (ap-southeast-4) </p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (ムンバイ) リージョン (ap-south-1)</p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (大阪) リージョン (ap-northeast-3)</p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (ソウル) リージョン (ap-northeast-2)</p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (シンガポール) リージョン (ap-southeast-1)</p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (シドニー) リージョン (ap-southeast-2)</p>
-                     </li><li class="listitem">
-                        <p>アジアパシフィック (東京) リージョン (ap-northeast-1)</p>
-                     </li><li class="listitem">
-                        <p>カナダ (中部) リージョン (ca-central-1)</p>
-                     </li><li class="listitem">
-                        <p>中国 (北京) リージョン (cn-north-1)</p>
-                     </li><li class="listitem">
-                        <p>中国 (寧夏) リージョン (cn-northwest-1)</p>
-                     </li><li class="listitem">
-                        <p>欧州 (フランクフルト) リージョン (eu-central-1)</p>
-                     </li><li class="listitem">
-                        <p>欧州 (アイルランド) リージョン (eu-west-1)</p>
-                     </li><li class="listitem">
-                        <p>欧州 (ロンドン) リージョン (eu-west-2)</p>
-                     </li><li class="listitem">
-                        <p>欧州 (ミラノ) リージョン (eu-south-1)</p>
-                     </li><li class="listitem">
-                        <p>欧州 (パリ) リージョン (eu-west-3)</p>
-                     </li><li class="listitem">
-                        <p>欧州 (ストックホルム) リージョン (eu-north-1)</p>
-                     </li><li class="listitem">
-                        <p>イスラエル (テルアビブ) リージョン (il-central-1)</p>
-                     </li><li class="listitem">
-                        <p>中東 (バーレーン) リージョン (me-south-1)</p>
-                     </li><li class="listitem">
-                        <p>中東 (UAE) リージョン (me-central-1)</p>
-                     </li><li class="listitem">
-                        <p>南米 (サンパウロ) リージョン (sa-east-1)</p>
-                     </li><li class="listitem">
-                        <p>AWS GovCloud (米国東部) (us-gov-east-1)</p>
-                     </li><li class="listitem">
-                        <p>AWS GovCloud (米国西部) (us-gov-west-1)</p>
-                     </li></ul></div>
-               </li><li class="listitem">
                   <p>Amazon S3 バケットは、Amazon Redshift データベースと同じ AWS リージョンに存在する必要があります。</p>
                </li><li class="listitem">
                   <p>VPC エンドポイントを介して Amazon S3 データにアクセスするには、「<em>Amazon Redshift 管理ガイド</em>」の「<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/spectrum-enhanced-vpc.html">拡張 VPC のルーティングで Amazon Redshift Spectrum を使用する</a>」の説明に沿って、IAM ポリシーと IAM ロールを使用してアクセスを設定します。</p>

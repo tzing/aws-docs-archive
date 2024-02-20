@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_UNION" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_UNION-synopsis">構文</a><a href="#r_UNION-parameters">パラメータ</a><a href="#r_UNION-order-of-evaluation-for-set-operators">セット演算の評価の順番</a><a href="#r_UNION-usage-notes">使用に関する注意事項</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_UNION">UNION、INTERSECT、または EXCEPT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="highlights"><h6>トピック</h6><ul><li><a href="#r_UNION-synopsis">構文</a></li><li><a href="#r_UNION-parameters">パラメータ</a></li><li><a href="#r_UNION-order-of-evaluation-for-set-operators">セット演算の評価の順番</a></li><li><a href="#r_UNION-usage-notes">使用に関する注意事項</a></li><li><a href="./c_example_union_query.html">UNION クエリの例</a></li><li><a href="./c_example_unionall_query.html">UNION ALL クエリの例</a></li><li><a href="./c_example_intersect_query.html">INTERSECT クエリの例</a></li><li><a href="./c_Example_MINUS_query.html">EXCEPT クエリの例</a></li></ul></div><p>UNION、INTERSECT、または EXCEPT <em>セット演算子</em>は、2 つの個別のクエリ式の比較とマージに使われます。たとえば、ウェブサイトで購入者と販売者の両方を兼ねているが、ユーザー名が別々の列または表に格納されているユーザーを確認するには、これら 2 種類のユーザーの<em>積集合</em>を求めます。購入者ではあるが販売者ではないウェブユーザーを確認するには、EXCEPT 演算子を使用すると、2 つユーザーリストの<em>差</em>を見つけることができます。役割とは無関係に、すべてのユーザーのリストを作成する場合、UNION 演算子を使用できます。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_UNION" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_UNION-synopsis">構文</a><a href="#r_UNION-parameters">パラメータ</a><a href="#r_UNION-order-of-evaluation-for-set-operators">セット演算の評価の順番</a><a href="#r_UNION-usage-notes">使用に関する注意事項</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_UNION">UNION、INTERSECT、または EXCEPT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="highlights"><h6>トピック</h6><ul><li><a href="#r_UNION-synopsis">構文</a></li><li><a href="#r_UNION-parameters">パラメータ</a></li><li><a href="#r_UNION-order-of-evaluation-for-set-operators">セット演算の評価の順番</a></li><li><a href="#r_UNION-usage-notes">使用に関する注意事項</a></li><li><a href="./c_example_union_query.html">UNION クエリの例</a></li><li><a href="./c_example_unionall_query.html">UNION ALL クエリの例</a></li><li><a href="./c_example_intersect_query.html">INTERSECT クエリの例</a></li><li><a href="./c_Example_MINUS_query.html">EXCEPT クエリの例</a></li></ul></div><p>UNION、INTERSECT、または EXCEPT <em>セット演算子</em>は、2 つの個別のクエリ式の比較とマージに使われます。例えば、ウェブサイトで購入者と販売者の両方を兼ねているが、ユーザー名が別々の列または表に格納されているユーザーを確認するには、これら 2 種類のユーザーの<em>積集合</em>を求めます。購入者ではあるが販売者ではないウェブユーザーを確認するには、EXCEPT 演算子を使用すると、2 つユーザーリストの<em>差</em>を見つけることができます。役割とは無関係に、すべてのユーザーのリストを作成する場合、UNION 演算子を使用できます。</p>
             <h2 id="r_UNION-synopsis">構文</h2>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><em>query</em>
 <span>{</span> UNION [ ALL ] | INTERSECT | EXCEPT | MINUS }
@@ -124,7 +124,7 @@ order by c1;</code></pre>
             <div class="itemizedlist">
                 
                 
-                
+               
                 
                 
             <ul class="itemizedlist"><li class="listitem">
@@ -132,13 +132,6 @@ order by c1;</code></pre>
                   
                </li><li class="listitem">
                   <p>セット演算子より前に記述されたクエリ式には、ORDER BY 句を含めないでください。ORDER BY 句は、セット演算子を含むクエリの最後に使用することで、意味のあるソート結果が得られます。この場合、ORDER BY 句は、すべてのセット演算の最終結果に適用されます。最も外側のクエリには、標準の LIMIT 句および OFFSET 句を含めることもできます。</p>
-               </li><li class="listitem">
-                  <p>LIMIT 句と OFFSET 句は、セット演算の中間結果によって返される行数を制限するための手段としてはサポートされていません。例えば、次のクエリはエラーを返します。</p>
-                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">(select listid from listing
-limit 10)
-intersect
-select listid from sales;
-ERROR:  LIMIT may not be used within input to set operations.</code></pre>
                </li><li class="listitem">
                   <p>セット演算子クエリが 10 進数の結果を返した場合、同じ精度とスケールで対応する結果列を返すように奨励されます。例えば、T1.REVENUE が DECIMAL(10,2) 列で T2.REVENUE が DECIMAL(8,4) 列の次のクエリでは、DECIMAL(12,4) への結果も 10 進数であることが奨励されます。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select t1.revenue union select t2.revenue;</code></pre>

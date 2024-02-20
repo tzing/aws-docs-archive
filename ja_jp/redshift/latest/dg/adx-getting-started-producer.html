@@ -152,7 +152,7 @@ salesshare |    100       | dev             |                   |  OUTBOUND  | 2
 ERROR:  Drop of ADX-managed datashare salesshare requires session variable datashare_break_glass_session_var to be set to value '620c871f890c49'</code></pre>
                      <p>AWS Data Exchange データ共有の削除を許可するには、datashare_break_glass_session_var 変数を設定した上で、DROP DATASHARE ステートメントを再度実行します。AWS Data Exchange のデータ共有を削除する場合は、「<a href="./r_DROP_DATASHARE.html#r_DROP_DATASHARE_usage">DROP DATASHARE の使用に関する注意事項</a>」を参照してください。</p>
             <p>Amazon Redshift コンソールを使用してデータ共有を削除することもできます。詳細については、「<a href="./manage-adx-datashare-console.html#delete-adx-datashare-console">アカウント内で作成された AWS Data Exchange データ共有の削除</a>」を参照してください。</p>
-         </li><li><p>ALTER DATASHARE コマンドを使用すると、データ共有から任意の時点でオブジェクトを削除できます。REVOKE USAGE ON を使用すると、特定のコンシューマーについて、データ共有への許可を取り消すことができます。このコマンドは、データ共有内にあるオブジェクトの USAGE 権限を取り消し、すべてのコンシューマークラスターへのアクセスを即座に停止します。アクセス許可が取り消されたあとは、データベースやテーブルに関するものを含め、データ共有およびメタデータを一覧表示するためのクエリは、共有されたオブジェクトを返さなくなります。</p>
+         </li><li><p>ALTER DATASHARE コマンドを使用すると、データ共有から任意の時点でオブジェクトを削除できます。REVOKE USAGE ON を使用すると、特定のコンシューマーについて、データ共有への許可を取り消すことができます。このコマンドは、データ共有内にあるオブジェクトの USAGE 許可を取り消し、すべてのコンシューマークラスターへのアクセスを即座に停止します。アクセス許可が取り消されたあとは、データベースやテーブルに関するものを含め、データ共有およびメタデータを一覧表示するためのクエリは、共有されたオブジェクトを返さなくなります。</p>
             
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER DATASHARE salesshare REMOVE TABLE public.tickit_sales_redshift;</code></pre>
             <p>Amazon Redshift コンソールを使用して、データ共有を編集することもできます。詳細については、「<a href="./manage-adx-datashare-console.html#edit-adx-datashare-console">AWS Data Exchange データ共有の編集</a>」を参照してください。</p>

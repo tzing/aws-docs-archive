@@ -42,7 +42,25 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">構文</a><a href="#r_GRANT-parameters">パラメータ</a><a href="#r_GRANT-usage-notes-link">使用に関する注意事項</a><a href="#r_GRANT-examples-link">例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ユーザーまたはユーザーグループのアクセス許可を定義します。</p><p>アクセス許可には、テーブルとビューのデータの読み取り、データの書き込み、テーブルの作成、テーブルの削除などのアクセスオプションが含まれます。このコマンドを使用して、テーブル、データベース、スキーマ、関数、プロシージャ、言語、または列に対する特定のアクセス許可を付与します。データベースオブジェクトからアクセス許可を削除するには、<a href="./r_REVOKE.html">REVOKE</a> コマンドを使用します。</p><p>アクセス許可には、オブジェクトまたはコンシューマーをデータ共有に追加したり、オブジェクトまたはコンシューマーをデータ共有から削除したりできるなどのアクセスオプションも含まれます。ユーザーまたはユーザーグループのデータ共有にデータベースオブジェクトを追加したり、データベースオブジェクトをデータ共有から削除したりするには、ALTER アクセス許可を使用します。同様に、データ共有にコンシューマーを追加または削除するには、SHARE アクセス許可を使用します。データベースオブジェクトからアクセス許可を削除するには、<a href="./r_REVOKE.html">REVOKE</a> コマンドを使用します。ALTER と SHARE は、ユーザーおよびユーザーグループに付与できる唯一のアクセス許可です。</p><p>また、ロールを付与してデータベースアクセス許可を管理したり、データに関連してユーザーが実行できる操作を制御したりすることもできます。ロールを定義し、ユーザーにロールを割り当てることで、ユーザーを CREATE TABLE コマンドと INSERT コマンドのみに制限するなど、ユーザーが実行できるアクションを制限できます。CREATE ROLE コマンドの詳細については、「<a href="./r_CREATE_ROLE.html">CREATE ROLE</a>」を参照してください。Amazon Redshift にはシステム定義のロールがいくつかあり、これらを使用してユーザーに特定のアクセス許可を付与することもできます。詳細については、「<a href="./r_roles-default.html">Amazon Redshift でのシステム定義のロール</a>」を参照してください。</p><p>ON SCHEMA 構文を使用するデータベースユーザーおよびユーザーグループには、外部スキーマに対する USAGE 権限の GRANT (付与) または REVOKE (取り消し) のみを行うことができます。AWS Lake Formation で ON EXTERNAL SCHEMA を使用する場合は、AWS Identity and Access Management(IAM) ロールに対して、アクセス許可の GRANT (付与) および REVOKE (取り消し) のみを行うことができます。アクセス許可のリストについては、構文を参照してください。</p><p>ストアドプロシージャの場合、付与できるアクセス許可は EXCUTE のみです。</p><p>トランザクションブロック (BEGIN ... END) 内で GRANT を (外部リソースで) 実行することはできません。トランザクションの詳細については、「<a href="./c_serial_isolation.html">直列化可能分離</a>」を参照してください。</p><p>データベースに対してどのアクセス許可がユーザーに付与されているかを確認するには、<a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a> を使用します。スキーマに対してどのアクセス許可がユーザーに付与されているかを確認するには、<a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a> を使用します。テーブルに対してどのアクセス許可がユーザーに付与されているかを確認するには、<a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a> を使用します。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="PDF を開く"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">ドキュメント</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">データベース開発者ガイド</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">構文</a><a href="#r_GRANT-parameters">パラメータ</a><a href="#r_GRANT-usage-notes-link">使用に関する注意事項</a><a href="#r_GRANT-examples-link">例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ユーザーまたはユーザーグループのアクセス許可を定義します。</p><p>アクセス許可には、テーブルとビューのデータの読み取り、データの書き込み、テーブルの作成、テーブルの削除などのアクセスオプションが含まれます。このコマンドを使用して、テーブル、データベース、スキーマ、関数、プロシージャ、言語、または列に対する特定のアクセス許可を付与します。データベースオブジェクトからアクセス許可を削除するには、<a href="./r_REVOKE.html">REVOKE</a> コマンドを使用します。</p><p>アクセス許可には、以下のデータ共有プロデューサーのアクセスオプションも含まれます。</p><div class="itemizedlist">
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p> コンシューマー名前空間とアカウントへのデータ共有のアクセス許可を付与する。</p>
+         </li><li class="listitem">
+            <p> データ共有にオブジェクトを追加したり、データ共有からオブジェクトを削除したりすることでデータ共有を変更するアクセス許可を付与する。</p>
+         </li><li class="listitem">
+            <p> コンシューマー名前空間をデータ共有に追加または削除することでデータ共有を共有するアクセス許可を付与する。</p>
+         </li></ul></div><p>データ共有コンシューマーのアクセスオプションは次のとおりです。</p><div class="itemizedlist">
+          
+         
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>データ共有から作成されたデータベース、またはそのようなデータベースを指す外部スキーマへのフルアクセスをユーザーに付与する。</p>
+         </li><li class="listitem">
+            <p>ローカルデータベースオブジェクトと同様に、データ共有から作成されたデータベースに対するオブジェクトレベルのアクセス許可をユーザーに付与する。このレベルのアクセス許可を付与するには、データ共有からデータベースを作成するときに WITH PERMISSIONS 句を使用する必要があります。詳細については、「<a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>」を参照してください。</p>
+         </li></ul></div><p>データ共有のアクセス許可については、「<a href="./share_datashare.html">データ共有の共有</a>」を参照してください。</p><p>また、ロールを付与してデータベースアクセス許可を管理したり、データに関連してユーザーが実行できる操作を制御したりすることもできます。ロールを定義し、ユーザーにロールを割り当てることで、ユーザーを CREATE TABLE コマンドと INSERT コマンドのみに制限するなど、ユーザーが実行できるアクションを制限できます。CREATE ROLE コマンドの詳細については、「<a href="./r_CREATE_ROLE.html">CREATE ROLE</a>」を参照してください。Amazon Redshift にはシステム定義のロールがいくつかあり、これらを使用してユーザーに特定のアクセス許可を付与することもできます。詳細については、「<a href="./r_roles-default.html">Amazon Redshift でのシステム定義のロール</a>」を参照してください。</p><p>ON SCHEMA 構文を使用するデータベースユーザーおよびユーザーグループには、外部スキーマに対する USAGE 権限の GRANT (付与) または REVOKE (取り消し) のみを行うことができます。AWS Lake Formation で ON EXTERNAL SCHEMA を使用する場合は、AWS Identity and Access Management(IAM) ロールに対して、アクセス許可の GRANT (付与) および REVOKE (取り消し) のみを行うことができます。アクセス許可のリストについては、構文を参照してください。</p><p>ストアドプロシージャの場合、付与できるアクセス許可は EXCUTE のみです。</p><p>トランザクションブロック (BEGIN ... END) 内で GRANT を (外部リソースで) 実行することはできません。トランザクションの詳細については、「<a href="./c_serial_isolation.html">直列化可能分離</a>」を参照してください。</p><p>データベースに対してどのアクセス許可がユーザーに付与されているかを確認するには、<a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a> を使用します。スキーマに対してどのアクセス許可がユーザーに付与されているかを確認するには、<a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a> を使用します。テーブルに対してどのアクセス許可がユーザーに付与されているかを確認するには、<a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a> を使用します。</p>
          <h2 id="r_GRANT-synopsis">構文</h2>
          <p></p>
          
@@ -87,11 +105,46 @@ GRANT <span>{</span> <span>{</span> SELECT | ALTER | DROP | DELETE | INSERT }  [
 
 GRANT <span>{</span> <span>{</span> CREATE | ALTER | DROP }  [, ...] | ALL [ PRIVILEGES ] }
     ON EXTERNAL SCHEMA <em>schema_name</em> [, ...]
-    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="データ共有アクセス許可の付与" id="grant-datashare-syntax" expanded="false"><p>以下は、Amazon Redshift のデータ共有アクセス許可について GRANT を使用するための構文です。この場合、ALTER と SHARE は、ユーザーおよびユーザーグループに付与できる唯一のアクセス許可です。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
+    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="データ共有アクセス許可の付与" id="grant-datashare-syntax" expanded="false">
+               <h6>プロデューサー側のデータ共有のアクセス許可</h6>
+               <p>以下は、GRANT を使用してユーザーまたはロールに ALTER または SHARE アクセス許可を付与するための構文です。ユーザーは ALTER アクセス許可でデータ共有を変更したり、SHARE アクセス許可でコンシューマーに使用を許可したりできます。ALTER と SHARE は、データ共有に対してユーザーおよびロールに付与できる唯一のアクセス許可です。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <code class="code" copy="true">group_name</code> | PUBLIC } [, ...]</code></pre><p>以下は、Amazon Redshift のデータ共有アクセス許可について GRANT を使用するための構文です。USAGE アクセス許可を使用して、データ共有へのアクセスをコンシューマーに付与します。ユーザーまたはユーザーグループに、このアクセス許可を付与することはできません。このアクセス許可は、GRANT ステートメントの WITH GRANT OPTION もサポートしていません。このタイプの GRANT ステートメントを実行できるのは、以前に FOR データ共有に付与された SHARE アクセス許可を持つユーザーまたはユーザーグループのみです。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE
     ON DATASHARE <em>datashare_name</em>
-    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>以下は、Lake Formation アカウントにデータ共有の使用を許可する方法の例です。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre><p>以下は、データ共有から作成された特定のデータベースまたはスキーマに対する GRANT データ共有の使用許可の構文です。この USAGE 許可は、指定されたデータ共有から作成されていないデータベースに対して使用許可を付与しません。ユーザーおよびユーザーグループには、データ共有に対する ALTER または SHARE 権限の付与または取り消しのみを行うことができます。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
-    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="機械学習アクセス許可の付与" id="grant-model-syntax" expanded="false"><p>以下は、Amazon Redshift での機械学習モデルアクセス許可の構文です。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
+    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>以下は、Lake Formation アカウントにデータ共有の使用を許可する方法の例です。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>            
+               <h6>コンシューマー側のデータ共有のアクセス許可</h6>
+               <p>以下は、データ共有から作成された特定のデータベースまたはスキーマに対する GRANT データ共有の使用許可の構文です。</p><p>データ共有から作成されたデータベースにコンシューマーがアクセスするために必要なその他のアクセス許可は、データ共有からデータベースを作成するために使用された CREATE DATABASE コマンドが WITH PERMISSIONS 句を使用したかどうかによって異なります。CREATE DATABASE コマンドとWITH PERMISSIONS 句の詳細については、「<a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>」を参照してください。</p>
+               <h6>WITH PERMISSIONS 句を使用せずに作成されたデータベース</h6>
+               <p>WITH PERMISSIONS 句を使用せずにデータ共有から作成されたデータベースに USAGE を付与する場合、共有データベースのオブジェクトに対して個別にアクセス許可を付与する必要はありません。WITH PERMISSIONS 句を使用せずにデータ共有から作成されたデータベースに対して使用を許可されたエンティティは、自動的にデータベース内のすべてのオブジェクトにアクセスできます。</p>
+             
+               <h6>WITH PERMISSIONS 句を使用して作成されたデータベース</h6>
+               <p>WITH PERMISSIONS 句を使用してデータ共有から共有データベースを作成したデータベースに USAGE を付与する場合、コンシューマ側の ID には、共有データベース内のデータベースオブジェクトにアクセスするために、そのデータベースオブジェクトに関連するアクセス許可が付与されている必要があります。ローカルデータベースオブジェクトに対するアクセス許可を付与する場合と同様です。データ共有から作成されたデータベース内のオブジェクトにアクセス許可を付与するには、3 つの部分からなる構文 <code class="code">database_name.schema_name.object_name</code> を使用します。共有データベース内の共有スキーマを指す外部スキーマのオブジェクトにアクセス許可を付与するには、2 つの部分からなる構文 <code class="code">schema_name.object_name</code> を使用します。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
+    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="スコープ付きアクセス許可の付与 " id="grant-scoped-syntax" expanded="false"><p>スコープ設定アクセス許可を使用して、データベーススコープまたはスキーマスコープ上のユーザーまたはロールのアクセス許可を変更します。</p><p>スコープ設定アクセス許可は、アクセス許可の付与または取り消しの時点で選択したスコープのオブジェクトに適用され、アクセス許可のを付与または取り消しの後に作成された新しいオブジェクトにも適用されます。例えば、データベース内のテーブルから選択するロールスコープのアクセス許可を付与すると、そのロールを持つユーザーは、今後作成されるテーブルからの選択も、データベースに現在存在するテーブルからの選択もできるようになります。</p><p>スコープ設定アクセス許可を使用して、データ共有から作成された共有データベースにデフォルトのアクセス許可を設定できます。共有データベースに対するスコープ設定アクセス許可を付与されたコンシューマー側のデータ共有ユーザーは、プロデューサー側のデータ共有に新しく追加されたオブジェクトに対してそのアクセス許可を自動的に取得します。</p><p>以下は、ユーザーとロールにスコープ付きアクセス許可を付与するための構文です。スコープ設定アクセス許可の詳細については、「<a href="./t_scoped-permissions.html">スコープ設定アクセス許可 </a>」を参照してください。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT <span>{</span> CREATE | USAGE | ALTER } [,...] | ALL [ PRIVILEGES ] }
+FOR SCHEMAS IN
+DATABASE db_name 
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]
+
+GRANT 
+<span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | ALTER | TRUNCATE | REFERENCES } [, ...] } | ALL [PRIVILEGES] } }
+FOR TABLES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name} [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR FUNCTIONS IN 
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR PROCEDURES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT USAGE
+FOR LANGUAGES IN
+<span>{</span>DATABASE db_name}
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]  </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="機械学習アクセス許可の付与" id="grant-model-syntax" expanded="false"><p>以下は、Amazon Redshift での機械学習モデルアクセス許可の構文です。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="コピー"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
 
 GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
@@ -102,6 +155,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     <span>{</span> CREATE USER | DROP USER | ALTER USER |
     CREATE SCHEMA | DROP SCHEMA |
     ALTER DEFAULT PRIVILEGES |
+    ACCESS CATALOG | 
     CREATE TABLE | DROP TABLE | ALTER TABLE |
     CREATE OR REPLACE FUNCTION | CREATE OR REPLACE EXTERNAL FUNCTION |
     DROP FUNCTION |
@@ -110,7 +164,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     CREATE MODEL | DROP MODEL |
     CREATE DATASHARE | ALTER DATASHARE | DROP DATASHARE |
     CREATE LIBRARY | DROP LIBRARY |
-    CREATE ROLE | DROP ROLE
+    CREATE ROLE | DROP ROLE |
     TRUNCATE TABLE
     VACUUM | ANALYZE | CANCEL }[, ...]
   }
@@ -182,8 +236,13 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
 
                    
             
+            
+    
+            
              
 
+             
+            
              
 
             
@@ -218,21 +277,14 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>テーブルからデータ行を削除するアクセス許可を付与します。DELETE 操作には、SELECT 権限も必要です。これは、削除する行を決定するには、テーブルの列を参照する必要があるためです。</p>
                </dd>
              
+               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dd>
+                  <p>テーブルを削除するアクセス許可を付与します。このアクセス許可は、Amazon Redshift、および Lake Formation が有効になっている AWS Glue Data Catalog に対して適用されます。</p>
+               </dd>
+             
                <dt id="grant-references"><span class="term">REFERENCES </span></dt>
                <dd>
                   <p>外部キー制約を作成するアクセス許可を付与します。参照されるテーブルと参照するテーブルの両方について、このアクセス許可を付与する必要があります。そうしないと、ユーザーは制約を作成できません。</p>
-               </dd>
-             
-               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
-               <dd>
-                  <p>テーブルを切り捨てるアクセス許可を付与します。このアクセス許可がない場合、テーブルの所有者またはスーパーユーザーだけがテーブルを切り捨てることができます。TRUNCATE コマンドの詳細については、「<a href="./r_TRUNCATE.html">TRUNCATE</a>」を参照してください。</p>
-               </dd>
-             
-               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
-               <dd>
-                  <p>指定したユーザーまたはユーザーグループに、使用可能なすべてのアクセス許可を一度に付与します。PRIVILEGES キーワードはオプションです。</p>
-                  <p>GRANT ALL ON SCHEMA では、外部スキーマに対する CREATE アクセス許可は付与されません。</p>
-                  <p>Lake Formation で有効になっている AWS Glue Data Catalog のテーブルに対して、ALL アクセス許可を付与することができます。この場合、個々のアクセス許可 (SELECT、ALTER など) は、データカタログに記録されます。</p>
                </dd>
              
                <dt id="grant-alter"><span class="term">ALTER</span></dt>
@@ -253,12 +305,19 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                      </li><li class="listitem">
                         <p>外部テーブルの場合、ALTER は Lake Formation で有効になっている AWS Glue Data Catalog 内のテーブルを変更するアクセス許可を付与します。この許可は、Lake Formation を使用する場合にのみ適用されます。</p>
                      </li></ul></div>
-
+                  
                </dd>
              
-               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
                <dd>
-                  <p>テーブルを削除するアクセス許可を付与します。この許可は、Amazon Redshift および Lake Formation が有効になっている AWS Glue Data Catalog に対して適用されます。</p>
+                  <p>テーブルを切り捨てるアクセス許可を付与します。このアクセス許可がない場合、テーブルの所有者またはスーパーユーザーだけがテーブルを切り捨てることができます。TRUNCATE コマンドの詳細については、「<a href="./r_TRUNCATE.html">TRUNCATE</a>」を参照してください。</p>
+               </dd>
+             
+               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
+               <dd>
+                  <p>指定したユーザーまたはユーザーグループに、使用可能なすべてのアクセス許可を一度に付与します。PRIVILEGES キーワードはオプションです。</p>
+                  <p>GRANT ALL ON SCHEMA では、外部スキーマに対する CREATE アクセス許可は付与されません。</p>
+                  <p>Lake Formation で有効になっている AWS Glue Data Catalog のテーブルに対して、ALL アクセス許可を付与することができます。この場合、個々のアクセス許可 (SELECT、ALTER など) は、データカタログに記録されます。</p>
                </dd>
              
                <dt id="assumerole"><span class="term">ASSUMEROLE</span></dt>
@@ -407,7 +466,7 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p> </p>
                </dd>
              
-               <dt id="grant-for"><span class="term"><span>{</span> ALL | COPY | UNLOAD | EXTERNAL FUNCTION | CREATE MODEL } [, ...] の場合、</span></dt>
+               <dt id="grant-for"><span class="term">FOR <span>{</span> ALL | COPY | UNLOAD | EXTERNAL FUNCTION | CREATE MODEL } [, ...] </span></dt>
                <dd>
                   <p>アクセス許可が付与される SQL コマンドを指定します。ALL を指定することで、COPY、UNLOAD、EXTERNAL FUNCTION、および CREATE MODEL ステートメントに対するアクセス許可を付与できます。この句は、ASSUMEROLE アクセス許可の付与にのみ適用されます。</p>
                </dd>
@@ -443,12 +502,23 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                         <p>指定されたデータ共有に作成される指定されたスキーマに対する指定されたアクセス許可を付与します。</p>
                      </dd>
                    
-               <dt><span class="term">モデルを作成する</span></dt>
+               <dt><span class="term">FOR <span>{</span> SCHEMAS | TABLES | FUNCTIONS | PROCEDURES | LANGUAGES } IN </span></dt>
+               <dd>
+                  <p>アクセス許可を付与するデータベースオブジェクトを指定します。IN に続くパラメータは、付与されるアクセス許可の範囲を定義します。</p>
+               </dd>
+             
+               <dt><span class="term">CREATE MODEL</span></dt>
                <dd><p>特定のユーザーまたはユーザーグループに CREATE MODEL アクセス許可を付与します。</p></dd>
              
                <dt><span class="term">ON MODEL <em>model_name</em></span></dt>
 
                <dd><p>特定のモデルに対する EXECUTE アクセス許可を付与します。</p></dd>
+             
+               <dt><span class="term">ACCESS CATALOG</span></dt>
+               <dd>
+                  <p>ロールがアクセスできるオブジェクトの関連メタデータを表示するアクセス許可を付与します。</p>
+               </dd>
+             
                <dt><span class="term"><span>{</span> role } [, ...]</span></dt>
                <dd><p>別のロール、ユーザー、または PUBLIC に付与されるロール。</p>
                   <p>PUBLIC は、常にすべてのユーザーを含むグループを表します。各ユーザーのアクセス許可は、PUBLIC に付与されたアクセス許可、ユーザーが属するグループに付与されたアクセス許可、およびユーザーに個別に付与されたアクセス許可のすべてで構成されます。</p>

@@ -84,7 +84,7 @@ ADD <em>table_constraint</em>
   [ NOT NULL | NULL ]
   [ COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ] |
 | DROP [ COLUMN ] <em>column_name</em> [ RESTRICT | CASCADE ] 
-| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ FOR DATASHARES ]}
+| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]}
 
 where <em>table_constraint</em> is:
 
@@ -215,7 +215,7 @@ from information_schema.table_constraints;</code></pre>
                   
                   
                   
-                  <p>VARCHAR データ型と定義されている列のサイズを変更する句。この句は VARCHAR データ型のサイズの変更のみをサポートします。次の制限事項を検討してください。</p>
+                  <p>VARCHAR データ型と定義されている列のサイズを変更する句。この句は VARCHAR データ型のサイズの変更のみをサポートします。次の制限事項を考慮してください。</p>
                   <div class="itemizedlist">
                       
                       
@@ -242,7 +242,7 @@ from information_schema.table_constraints;</code></pre>
 
                   <p>列の圧縮エンコードを変更する句。列に圧縮エンコードを指定すると、テーブルは ENCODE AUTO に設定されなくなります。圧縮エンコードに関する詳細は、「<a href="./t_Compressing_data_on_disk.html">列圧縮の操作</a>」を参照してください。</p>
                   <p>列のための圧縮エンコードを変更した後も、テーブルに対しクエリを実行することが可能です。</p>
-                  <p>次の制限事項を検討してください。</p>
+                  <p>次の制限事項を考慮してください。</p>
                   <div class="itemizedlist">
                       
                       
@@ -261,7 +261,7 @@ from information_schema.table_constraints;</code></pre>
 
                   <p>複数の列で、圧縮エンコードを単一のコマンドにより変更するための句。圧縮エンコードに関する詳細は、「<a href="./t_Compressing_data_on_disk.html">列圧縮の操作</a>」を参照してください。</p>
                   <p>列のための圧縮エンコードを変更した後も、テーブルに対しクエリを実行することが可能です。</p>
-                    <p> 次の制限事項を検討してください。</p>
+                    <p> 次の制限事項を考慮してください。</p>
                   <div class="itemizedlist">
                       
                       
@@ -537,7 +537,7 @@ from information_schema.table_constraints;</code></pre>
                         <p>CHAR、VARCHAR、または VARBYTE として定義されている列には、LZO 圧縮が割り当てられます。</p>
                      </li></ul></div>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注記</h6></div><div class="awsdocs-note-text"><p>列を圧縮しない場合は、明示的に RAW エンコードを指定します。</p></div></div>
-                  <p>次の <a href="./c_Compression_encodings.html#compression-encoding-list">compression encodings</a>がサポートされています。</p>
+                  <p>次の <a href="./c_Compression_encodings.html#compression-encoding-list">compression encodings</a> がサポートされています。</p>
                   <div class="itemizedlist">
                      
                       
@@ -661,8 +661,6 @@ from information_schema.table_constraints;</code></pre>
 
              
 
-             
-
 
 
 
@@ -738,13 +736,17 @@ from information_schema.table_constraints;</code></pre>
                   <p>指定のパーティションを削除する句。パーティションを削除すると、外部テーブルのメタデータのみが変化します。Amazon S3 のデータは影響を受けません。</p>
                </dd>
              
-               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } </span></dt>
-               <dd><p>テーブルの行レベルのセキュリティをオンまたはオフにする句。</p>
-                  <p>テーブルで行レベルのセキュリティがオンになっている場合、行レベルポリシーでアクセスが許可されている行のみを読み取ることができます。テーブルへのアクセス権を付与するポリシーがない場合は、テーブルから行を表示できません。ROW LEVEL SECURITY 句を設定できるのは、スーパーユーザーと、<code class="code">sys:secadmin</code> ロールを持つユーザーまたはロールのみです。詳細については、「<a href="./t_rls.html">行レベルのセキュリティ</a>」を参照してください。</p>
-               </dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>テーブルがデータ共有上で RLS で保護されているかどうかを決定する句。デフォルトでは、RLS で保護されたテーブルはデータ共有上でも RLS で保護されます。</p>
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+                     <dd><p>リレーションの行レベルのセキュリティをオンまたはオフにする句。</p>
+                        <p>リレーションで行レベルのセキュリティがオンになっている場合、行レベルのセキュリティポリシーでアクセスが許可されている行のみを読み取ることができます。リレーションへのアクセス権を付与するポリシーがない場合は、リレーションから行を表示できません。ROW LEVEL SECURITY 句を設定できるのは、スーパーユーザーと、<code class="code">sys:secadmin</code> ロールを持つユーザーまたはロールのみです。詳細については、「<a href="./t_rls.html">行レベルのセキュリティ</a>」を参照してください。</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>リレーションの行レベルのセキュリティポリシーの結合タイプを選択できる句。1 つのリレーションに複数の行レベルのセキュリティポリシーがアタッチされている場合、それらのポリシーを AND 句や OR 句で組み合わせることができます。デフォルトでは、Amazon Redshift は RLS ポリシーを AND 句で組み合わせます。スーパーユーザーと、<code class="code">sys:secadmin</code> ロールを持つユーザーまたはロールは、この句を使用して、リレーションの行レベルのセキュリティポリシーの結合タイプを定義できます。詳細については、「<a href="./t_rls_combine_policies.html">ユーザーごとに複数ポリシーの組み合わせ</a>」を参照してください。</p></li><li class="listitem"><p>FOR DATASHARES</p>
+                        <p>RLS で保護されたリレーションにデータ共有上でアクセスできるかどうかを決定する句。デフォルトでは、RLS で保護されたリレーションにデータ共有経由でアクセスすることはできません。この句を指定して実行される ALTER TABLE ROW LEVEL SECURITY コマンドは、リレーションのデータ共有アクセシビリティプロパティにのみ影響します。ROW LEVEL SECURITY のプロパティは変更されません。</p>
+                        <p> RLS で保護されたリレーションにデータ共有上でアクセスできるようにした場合、コンシューマー側のデータ共有データベースにおいて、そのリレーションには行レベルのセキュリティが適用されません。リレーションはプロデューサー側の RLS プロパティを保持します。</p>
+                     </li></ul></div>
                </dd>
             </dl></div>
        
