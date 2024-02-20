@@ -178,7 +178,7 @@ END;
 $$ LANGUAGE plpgsql;               
 </code></pre>
             
-            <p>ROW_COUNT wird mit dem Befehl GET DIAGNOSTICS verwendet. Sie zeigt die Anzahl der Spalten an, die vom letzten SQL-Befehl verarbeitet wurden, der an die SQL-Engine gesendet wurde.</p>
+            <p>ROW_COUNT wird mit dem Befehl GET DIAGNOSTICS verwendet. Sie zeigt die Anzahl der Zeilen an, die vom letzten SQL-Befehl verarbeitet wurden, der an die SQL-Engine gesendet wurde.</p>
             <p>Es folgt ein Beispiel.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Kopieren"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE OR REPLACE PROCEDURE sp_row_count() AS
 $$
