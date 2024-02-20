@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_REDSHIFT_COLUMNS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_REDSHIFT_COLUMNS-table-columns">Colunas da tabela</a><a href="#r_SVV_REDSHIFT_COLUMNS-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_REDSHIFT_COLUMNS">SVV_REDSHIFT_COLUMNS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_REDSHIFT_COLUMNS para exibir uma lista de todas as colunas às quais um usuário tem acesso. Este conjunto de colunas inclui as colunas no cluster e as colunas de datashares fornecidos por clusters remotos.</p><p>SVV_REDSHIFT_COLUMNS é visível para todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_REDSHIFT_COLUMNS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_REDSHIFT_COLUMNS-table-columns">Colunas da tabela</a><a href="#r_SVV_REDSHIFT_COLUMNS-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_REDSHIFT_COLUMNS">SVV_REDSHIFT_COLUMNS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_REDSHIFT_COLUMNS para exibir uma lista de todas as colunas às quais um usuário tem acesso. Este conjunto de colunas inclui as colunas no cluster e as colunas de datashares fornecidos por clusters remotos.</p><p>SVV_REDSHIFT_COLUMNS é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="r_SVV_REDSHIFT_COLUMNS-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c81b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c81b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">ordinal_position</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">
                                 <p>A posição da coluna na tabela.</p>
                             </td>
@@ -106,12 +106,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">distkey</td>
-                            <td tabindex="-1">booleano</td>
+                            <td tabindex="-1">boolean</td>
                             <td tabindex="-1">Um valor que é true se essa coluna for a chave de distribuição da tabela e false caso contrário.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">sortkey</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">
                                 <p>Um valor que especifica a ordem da coluna na chave de classificação. </p>
                                 

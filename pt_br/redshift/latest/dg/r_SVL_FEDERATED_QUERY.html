@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_FEDERATED_QUERY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVL_FEDERATED_QUERY-table-columns">Colunas da tabela</a><a href="#SVL_FEDERATED_QUERY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_FEDERATED_QUERY">SVL_FEDERATED_QUERY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVL_FEDERATED_QUERY para visualizar informações sobre uma chamada de consulta federada.</p><p>SVL_FEDERATED_QUERY é visível por todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_EXTERNAL_QUERY_DETAIL.html">SYS_EXTERNAL_QUERY_DETAIL</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_FEDERATED_QUERY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVL_FEDERATED_QUERY-table-columns">Colunas da tabela</a><a href="#SVL_FEDERATED_QUERY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_FEDERATED_QUERY">SVL_FEDERATED_QUERY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVL_FEDERATED_QUERY para visualizar informações sobre uma chamada de consulta federada.</p><p>SVL_FEDERATED_QUERY é visível por todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_EXTERNAL_QUERY_DETAIL.html">SYS_EXTERNAL_QUERY_DETAIL</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="SVL_FEDERATED_QUERY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c23b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c23b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,7 +61,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que executa a consulta.</td>
                         </tr>
                         <tr>
@@ -71,12 +71,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do processo líder que executa a consulta. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID de consulta de uma chamada federada.</td>
                         </tr>
                         <tr>

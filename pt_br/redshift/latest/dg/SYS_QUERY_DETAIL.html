@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">Colunas da tabela</a><a href="#SYS_QUERY_DETAIL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_QUERY_DETAIL para visualizar detalhes de consultas no nível da etapa. Cada linha representa uma etapa de determinada consulta WLM com detalhes. Essa visualizações contém muitos tipos de consultas, como DDL, DML e comandos de utilitário (por exemplo, copiar e descarregar). Algumas colunas podem não ser relevantes, conforme o tipo de consulta. Por exemplo, external_scanned_bytes não é relevante para tabelas internas.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Uma consulta que não tem uma consulta regravada correspondente tem uma entrada somente na visualização SYS_QUERY_HISTORY, não na visualização SYS_QUERY_DETAIL.</p></div></div><p>SYS_QUERY_HISTORY é visível a todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">Colunas da tabela</a><a href="#SYS_QUERY_DETAIL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_QUERY_DETAIL para visualizar detalhes de consultas no nível da etapa. Cada linha representa uma etapa de determinada consulta WLM com detalhes. Essa visualizações contém muitos tipos de consultas, como DDL, DML e comandos de utilitário (por exemplo, copiar e descarregar). Algumas colunas podem não ser relevantes, conforme o tipo de consulta. Por exemplo, external_scanned_bytes não é relevante para tabelas internas.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Uma consulta que não tem uma consulta regravada correspondente tem uma entrada somente na visualização SYS_QUERY_HISTORY, não na visualização SYS_QUERY_DETAIL.</p></div></div><p>SYS_QUERY_HISTORY é visível a todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_QUERY_DETAIL-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c49b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c51b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário que enviou a consulta.</td>
                         </tr>
                         <tr>
@@ -65,22 +65,22 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">child_query_sequence</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">A sequência da consulta de usuário regravada, começando com 1.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">stream_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do fluxo de execução da consulta.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do segmento da consulta.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">step_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador da etapa em um segmento.</td>
                         </tr>
                         <tr>
@@ -90,7 +90,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">table_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador de tabela para verificações de tabela permanentes.</td>
                         </tr>
                         <tr>
@@ -99,7 +99,7 @@
                             <td tabindex="-1">O nome da tabela da etapa que está sendo operada.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">is_rrsscan</td>
+                            <td tabindex="-1">is_rrscan</td>
                             <td tabindex="-1">caractere</td>
                             <td tabindex="-1">Um valor que indica se a etapa é uma etapa de verificação. True (t) indica que a verificação restrita ao intervalo foi utilizada na etapa.</td>
                         </tr>
@@ -165,19 +165,19 @@
                         </tr>
                         
                         <tr>
-                            <td tabindex="-1">source</td>
+                            <td tabindex="-1">origem</td>
                             <td tabindex="-1">text</td>
                             <td tabindex="-1">O tipo de objeto de banco de dados que foi verificado. Essa coluna só tem um valor quando o valor da linha <em>step_name</em> é <code class="code">scan</code>.</td>
                         </tr>
                         
                         <tr>
                             <td tabindex="-1">data_skewness</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">A distorção da distribuição das linhas de saída entre todas as etapas. É um número no intervalo de 0% a 100%. Quanto maior o número, mais a distribuição é desequilibrada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">time_skewness</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">A distorção da distribuição do tempo de execução entre todas as etapas. É um número no intervalo de 0% a 100%. Quanto maior o número, mais a distribuição é desequilibrada.</td>
                         </tr>
                         
@@ -196,6 +196,12 @@
                             <td tabindex="-1">spilled_block_remote_disk</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">O número de blocos excedentes enviados ao Amazon Simple Storage Service.</td>
+                        </tr>
+                        <tr>
+                            
+                            <td tabindex="-1">step_attribute</td>
+                            <td tabindex="-1">character(64)</td>
+                            <td tabindex="-1">Contém informações sobre a etapa associada. Valores possíveis para etapas de verificação: <code class="code">multi-dimensional</code>.</td>
                         </tr>
                         
      

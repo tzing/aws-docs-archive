@@ -42,9 +42,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_LANUGAGE_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_LANUGAGE_PRIVILEGES-table-columns">Colunas da tabela</a><a href="#r_SVV_LANGUAGE_PRIVILEGES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_LANUGAGE_PRIVILEGES">SVV_LANGUAGE_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_LANGUAGE_PRIVILEGES para exibir as permissões de linguagem que são explicitamente concedidas a usuários, funções e grupos no banco de dados atual.</p><p>SVV_LANGUAGE_PRIVILEGES é visível por todos os usuários. Superusuários podem ver todas as linhas. Usuários regulares que têm a permissão ACCESS SYSTEM TABLE podem ver todas as linhas. Usuários regulares só ver somente identidades às quais têm acesso ou para as quais são os proprietários das identidades.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_LANUGAGE_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_LANUGAGE_PRIVILEGES-table-columns">Colunas da tabela</a><a href="#r_SVV_LANGUAGE_PRIVILEGES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_LANUGAGE_PRIVILEGES">SVV_LANGUAGE_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_LANGUAGE_PRIVILEGES para exibir as permissões de linguagem que são explicitamente concedidas a usuários, funções e grupos no banco de dados atual.</p><p>SVV_LANGUAGE_PRIVILEGES permanece visível para os seguintes usuários:</p><div class="itemizedlist">
+         
+         
+    <ul class="itemizedlist"><li class="listitem"><p>Superusuários</p></li><li class="listitem"><p>Usuários com a permissão ACCESS SYSTEM TABLE</p></li></ul></div><p>Os outros usuários só podem ver identidades às quais tenham acesso ou sejam proprietários.</p>
             <h2 id="r_SVV_LANUGAGE_PRIVILEGES-table-columns">Colunas da tabela</h2>
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c65b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c65c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -64,7 +67,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID da identidade. Os valores possíveis são ID do usuário, ID da função ou ID do grupo.</td>
                         </tr>
                         <tr>
@@ -79,7 +82,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">admin_option</td>
-                            <td tabindex="-1">booleano</td>
+                            <td tabindex="-1">boolean</td>
                             <td tabindex="-1">Um valor que indica se o usuário pode conceder permissão a outros usuários e funções. É sempre falso para o tipo de identidade de função e grupo.</td>
                         </tr>
                     </table></div></div>

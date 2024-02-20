@@ -73,17 +73,17 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>Um literal de string que representa um padrão de expressão regular. Para obter mais informações, consulte <a href="./pattern-matching-conditions-posix.html">Operadores POSIX</a>.</p>
+                     <p>Um literal de string UTF-8 que representa um padrão de expressão regular. Para obter mais informações, consulte <a href="./pattern-matching-conditions-posix.html">Operadores POSIX</a>.</p>
                   </dd>
                 
                   <dt><span class="term"> <em>position</em> </span></dt>
                   <dd>
-                     <p>Um inteiro positivo que indica a posição em <em>source_string</em> para começar a pesquisar. A posição é baseada no número de caracteres, e não bytes, de forma que caracteres multibyte são contados como caracteres simples. O padrão é 1. Se a <em>posição</em> for menor que 1, a pesquisa começará no primeiro caractere da <em>source_string</em>. Se <em>position</em> for maior que o número de caracteres na <em>source_string</em>, o resultado será uma string vazia ("").</p>
+                     <p>Um inteiro positivo que indica a posição em <em>source_string</em> para começar a pesquisar. A posição é baseada no número de caracteres, e não bytes, de forma que caracteres multibyte são contados como caracteres simples. O  padrão é um. Se a <em>posição</em> for menor que 1, a pesquisa começará no primeiro caractere da <em>source_string</em>. Se <em>position</em> for maior que o número de caracteres na <em>source_string</em>, o resultado será uma string vazia ("").</p>
                   </dd>
                 
                   <dt><span class="term"> <em>occurrence</em> </span></dt>
                   <dd>
-                     <p>Um inteiro positivo que indica qual ocorrência do padrão usar. REGEXP_SUBSTR ignora as primeiras correspondências de <em>occurrence</em> -1. O padrão é 1. Se a <em>ocorrência</em> for menor que 1 ou maior que o número de caracteres em <em>source_string</em>, a pesquisa será ignorada e o resultado será NULL.</p>
+                     <p>Um inteiro positivo que indica qual ocorrência do padrão usar. REGEXP_SUBSTR ignora as primeiras correspondências de <em>occurrence</em> -1. O  padrão é um. Se a <em>ocorrência</em> for menor que 1 ou maior que o número de caracteres em <em>source_string</em>, a pesquisa será ignorada e o resultado será NULL.</p>
                   </dd>
                 
                   <dt><span class="term"> <em>parameters</em> </span></dt>

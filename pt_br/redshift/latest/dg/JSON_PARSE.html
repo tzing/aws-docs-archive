@@ -52,17 +52,23 @@
             <h2 id="JSON_PARSE-synopsis">Sintaxe</h2>
             
             
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">JSON_PARSE(<em>json_string</em>)</code></pre>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">JSON_PARSE( <span>{</span><em>json_string</em> | <em>binary_value</em>} )</code></pre>
           
             <h2 id="JSON_PARSE-arguments">Argumentos</h2>
             
             
             <div class="variablelist">
                 
+                
             <dl>
                   <dt><span class="term"> <em>json_string</em></span></dt>
                   <dd>
                      <p>Uma expressão que retorna JSON serializado como um tipo <code class="code">VARBYTE</code> ou <code class="code">VARCHAR</code>. </p>
+                  </dd>
+                
+                  <dt><span class="term"> <em>binary_value</em></span></dt>
+                  <dd>
+                     <p>Um valor binário do tipo VARBYTE.</p>
                   </dd>
                </dl></div>
           
@@ -84,7 +90,7 @@
 | [10001,10002,"abc"] |
 +---------------------+</code></code></pre>
             
-            <p>Para garantir que a função converteu a matriz JSON no tipo de dados <code class="code">SUPER</code>, use o exemplo a seguir. Para obter mais informações, consulte <a href="./r_json_typeof.html">Função JSON_TYPEOF</a>.</p>
+            <p>Para garantir que a função converteu a matriz JSON no tipo de dados <code class="code">SUPER</code>, use o exemplo a seguir. Para obter mais informações, consulte <a href="./r_json_typeof.html">Função JSON_TYPEOF</a></p>
 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT JSON_TYPEOF(JSON_PARSE('[10001,10002,"abc"]'));</code>
 
 <code class="computeroutput" copy="false">+-------------+

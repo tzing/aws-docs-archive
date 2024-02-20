@@ -187,23 +187,47 @@ DROP MASKING POLICY mask_credit_card_partial; </code></pre>
              
              
             
+             
+             
+             
             
              
              
-            
              
              
              
-         <ul class="itemizedlist"><li class="listitem"><p> Ao consultar objetos criados com base em tabelas, como visualizações, os usuários verão os resultados com base em suas próprias políticas de mascaramento, não nas políticas do usuário que criou os objetos. Por exemplo, um usuário com o perfil de analista consultando uma visualização criada por um secadmin verá resultados com as políticas de mascaramento associadas ao perfil de analista. </p></li><li class="listitem"><p> Para evitar que o comando EXPLAIN exponha filtros confidenciais de políticas de mascaramento, somente usuários com a permissão SYS_EXPLAIN_DDM podem ver as políticas de mascaramento aplicadas nas saídas do EXPLAIN. Os usuários não têm a permissão SYS_EXPLAIN_DDM por padrão.</p> 
+             
+             
+             
+         <ul class="itemizedlist"><li class="listitem">
+               <p> Ao consultar objetos criados com base em tabelas, como visualizações, os usuários verão os resultados com base em suas próprias políticas de mascaramento, não nas políticas do usuário que criou os objetos. Por exemplo, um usuário com o perfil de analista consultando uma visualização criada por um secadmin verá resultados com as políticas de mascaramento associadas ao perfil de analista. </p>
+            </li><li class="listitem">
+               <p> Para evitar que o comando EXPLAIN exponha filtros confidenciais de políticas de mascaramento, somente usuários com a permissão SYS_EXPLAIN_DDM podem ver as políticas de mascaramento aplicadas nas saídas do EXPLAIN. Os usuários não têm a permissão SYS_EXPLAIN_DDM por padrão.</p>
                <p>A sintaxe a seguir concede a permissão a um usuário ou perfil.</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT EXPLAIN MASKING TO <span>{</span> username | ROLE rolename }</code></pre>
-               <p> Para obter mais informações sobre o comando EXPLAIN, consulte <a href="./r_EXPLAIN.html">EXPLAIN</a>. </p></li><li class="listitem"><p> Usuários com perfis diferentes podem ver resultados diferentes com base nas condições do filtro ou nas condições de união usadas. Por exemplo, a execução de um comando SELECT em uma tabela usando um valor de coluna específico falhará se o usuário que executa o comando tiver uma política de mascaramento aplicada que ofusque essa coluna. </p></li><li class="listitem"><p> As políticas de DDM devem ser aplicadas antes de qualquer operação ou projeção de predicados. As políticas de mascaramento podem incluir o seguinte:</p>
+               <p> Para obter mais informações sobre o comando EXPLAIN, consulte <a href="./r_EXPLAIN.html">EXPLAIN</a>. </p>
+            </li><li class="listitem">
+               <p> Usuários com perfis diferentes podem ver resultados diferentes com base nas condições do filtro ou nas condições de união usadas. Por exemplo, a execução de um comando SELECT em uma tabela usando um valor de coluna específico falhará se o usuário que executa o comando tiver uma política de mascaramento aplicada que ofusque essa coluna. </p>
+            </li><li class="listitem">
+               <p> As políticas de DDM devem ser aplicadas antes de qualquer operação ou projeção de predicados. As políticas de mascaramento podem incluir o seguinte:</p>
                <div class="itemizedlist">
                    
                    
                    
-               <ul class="itemizedlist"><li class="listitem"><p>Operações constantes de baixo custo, como converter um valor em nulo</p></li><li class="listitem"><p>Operações de custo moderado, como hashing HMAC</p></li><li class="listitem"><p>Operações de alto custo, como chamadas para funções externas do Lambda definidas por usuários</p></li></ul></div>
-               <p>Assim, recomendamos o uso de expressões de mascaramento simples sempre que possível. </p></li><li class="listitem"><p> Você pode usar políticas de DDM para perfis com políticas de segurança por linha, mas observe que as políticas de RLS são aplicadas antes do DDM. Uma expressão de mascaramento dinâmico de dados não conseguirá ler uma linha protegida por RLS. Para obter mais informações sobre RLS, consulte <a href="./t_rls.html">Segurança no nível da linha</a>. </p></li><li class="listitem"><p> Ao usar o comando <a href="./r_COPY.html">COPY</a> para copiar de parquet para tabelas de destino protegidas, você deve especificar explicitamente as colunas na instrução COPY. Para obter mais informações sobre o mapeamento de colunas com COPY, consulte <a href="./copy-parameters-column-mapping.html">Opções de mapeamento da coluna</a>. </p></li><li class="listitem"><p> As políticas de DDM podem incluir tabelas de pesquisa. Eles não podem ser anexadas às seguintes relações nem usadas na cláusula USING:</p>
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Operações constantes de baixo custo, como converter um valor em nulo</p>
+                  </li><li class="listitem">
+                     <p>Operações de custo moderado, como hashing HMAC</p>
+                  </li><li class="listitem">
+                     <p>Operações de alto custo, como chamadas para funções externas do Lambda definidas por usuários</p>
+                  </li></ul></div>
+               <p>Assim, recomendamos o uso de expressões de mascaramento simples sempre que possível. </p>
+            </li><li class="listitem">
+               <p> Você pode usar políticas de DDM para perfis com políticas de segurança por linha, mas observe que as políticas de RLS são aplicadas antes do DDM. Uma expressão de mascaramento de dados dinâmica não conseguirá ler uma linha protegida por RLS. Para obter mais informações sobre RLS, consulte <a href="./t_rls.html">Segurança no nível da linha</a>. </p>
+            </li><li class="listitem">
+               <p> Ao usar o comando <a href="./r_COPY.html">COPY</a> para copiar de parquet para tabelas de destino protegidas, você deve especificar explicitamente as colunas na instrução COPY. Para obter mais informações sobre como mapear colunas com COPY, consulte <a href="./copy-parameters-column-mapping.html">Opções de mapeamento da coluna</a>. </p>
+            </li><li class="listitem">
+               <p> As políticas DDM não podem ser anexadas às seguintes relações:</p>
                <div class="itemizedlist">
                    
                    
@@ -212,7 +236,46 @@ DROP MASKING POLICY mask_credit_card_partial; </code></pre>
                    
                    
                    
-               <ul class="itemizedlist"><li class="listitem"><p> Tabelas e catálogos do sistema </p></li><li class="listitem"><p> Tabelas externas </p></li><li class="listitem"><p> Tabelas de compartilhamento de dados </p></li><li class="listitem"><p> Visões, visões materializadas e visões de vinculação tardia </p></li><li class="listitem"><p> Relações entre bancos de dados </p></li><li class="listitem"><p> Tabelas temporárias </p></li><li class="listitem"><p> Consultas correlacionadas </p></li></ul></div>
+               <ul class="itemizedlist"><li class="listitem">
+                     <p> Tabelas e catálogos do sistema </p>
+                  </li><li class="listitem">
+                     <p> Tabelas externas </p>
+                  </li><li class="listitem">
+                     <p> Tabelas de compartilhamento de dados </p>
+                  </li><li class="listitem">
+                     <p> Visualizações materializadas </p>
+                  </li><li class="listitem">
+                     <p> Relações entre bancos de dados </p>
+                  </li><li class="listitem">
+                     <p> Tabelas temporárias </p>
+                  </li><li class="listitem">
+                     <p> Consultas correlacionadas </p>
+                  </li></ul></div>
+            </li><li class="listitem">
+               <p> As políticas DDM podem conter tabelas de pesquisa. As tabelas de pesquisa podem estar presentes na cláusula USING. Os seguintes tipos de relação não podem ser usados como tabelas de pesquisa:</p>
+               <div class="itemizedlist">
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p> Tabelas e catálogos do sistema </p>
+                  </li><li class="listitem">
+                     <p> Tabelas externas </p>
+                  </li><li class="listitem">
+                     <p> Tabelas de compartilhamento de dados </p>
+                  </li><li class="listitem">
+                     <p> Exibições, visões materializadas e exibições de vinculação tardia </p>
+                  </li><li class="listitem">
+                     <p> Relações entre bancos de dados </p>
+                  </li><li class="listitem">
+                     <p> Tabelas temporárias </p>
+                  </li><li class="listitem">
+                     <p> Consultas correlacionadas </p>
+                  </li></ul></div>
                <p>Veja a seguir um exemplo de como anexar uma política de mascaramento a uma tabela de pesquisa.</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">--Create a masking policy referencing a lookup table
 CREATE MASKING POLICY lookup_mask_credit_card WITH (credit_card TEXT) USING (
@@ -226,7 +289,8 @@ CREATE MASKING POLICY lookup_mask_credit_card WITH (credit_card TEXT) USING (
   
 --Provides access to the lookup table via a policy attached to a role
 GRANT SELECT ON TABLE credit_cards_lookup TO MASKING POLICY lookup_mask_credit_card;</code></pre>
-            </li><li class="listitem"><p> Você não pode anexar uma política de mascaramento que produza uma saída incompatível com o tipo e o tamanho da coluna de destino. Por exemplo, você não pode anexar uma política de mascaramento que gera uma string de 12 caracteres em uma coluna VARCHAR(10). O Amazon Redshift é compatível com as exceções a seguir: </p>
+            </li><li class="listitem">
+               <p> Você não pode anexar uma política de mascaramento que produza uma saída incompatível com o tipo e o tamanho da coluna de destino. Por exemplo, você não pode anexar uma política de mascaramento que gera uma string de 12 caracteres em uma coluna VARCHAR(10). O Amazon Redshift é compatível com as exceções a seguir: </p>
                <div class="itemizedlist">
                   
                    
@@ -237,7 +301,8 @@ GRANT SELECT ON TABLE credit_cards_lookup TO MASKING POLICY lookup_mask_credit_c
                      <p> Uma política de mascaramento com o tipo de entrada INTN pode ser anexada a uma política com tamanho INTM, desde que M &lt; N. Por exemplo, uma política de entrada BIGINT (INT8) pode ser anexada a uma coluna smallint (INT4). </p>
                   </li><li class="listitem">
                      <p> Uma política de mascaramento com o tipo de entrada NUMERIC ou DECIMAL sempre pode ser anexada a uma coluna FLOAT. </p>
-                  </li></ul></div></li><li class="listitem">
+                  </li></ul></div>
+            </li><li class="listitem">
                <p> As políticas de DDM não podem ser usadas com o compartilhamento de dados. Se o produtor de dados da unidade de compartilhamento de dados anexar uma política de DDM a uma tabela na unidade de compartilhamento de dados, a tabela se tornará inacessível aos usuários do consumidor de dados que estão tentando consultar a tabela. Tabelas com políticas de DDM anexadas não podem ser adicionadas a uma unidade de compartilhamento de dados.</p>
             </li><li class="listitem">
                <p>Você não poderá consultar relações que tenham políticas de DDM anexadas se os valores para qualquer uma das opções de configuração a seguir não corresponderem ao valor padrão da sessão:</p>
@@ -245,15 +310,33 @@ GRANT SELECT ON TABLE credit_cards_lookup TO MASKING POLICY lookup_mask_credit_c
                    
                    
                    
-               <ul class="itemizedlist"><li class="listitem"><p>
-                     <code class="code">enable_case_sensitive_super_attribute</code>
-                  </p></li><li class="listitem"><p>
-                     <code class="code">enable_case_sensitive_identifier</code>
-                  </p></li><li class="listitem"><p>                     
-                     <code class="code">downcase_delimited_identifier</code>
-                  </p></li></ul></div>
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>
+                        <code class="code">enable_case_sensitive_super_attribute</code>
+                     </p>
+                  </li><li class="listitem">
+                     <p>
+                        <code class="code">enable_case_sensitive_identifier</code>
+                     </p>
+                  </li><li class="listitem">
+                     <p>
+                        <code class="code">downcase_delimited_identifier</code>
+                     </p>
+                  </li></ul></div>
                <p>Considere redefinir as opções de configuração da sessão se você tentar consultar uma relação com uma política DDM anexada e vir a mensagem “DDM protected relation does not support session level config on case sensitivity being different from its default value”.</p>
-            </li><li class="listitem"><p> Quando o cluster provisionado ou namespace sem servidor tem alguma política de mascaramento dinâmico de dados, os seguintes comandos são bloqueados para usuários comuns: </p>
+            </li><li class="listitem">
+               <p> Quando o cluster provisionado ou namespace sem servidor tem alguma política de mascaramento dinâmico de dados, os seguintes comandos são bloqueados para usuários comuns: </p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER &lt;current_user&gt; SET enable_case_sensitive_super_attribute/enable_case_sensitive_identifier/downcase_delimited_identifier</code></pre>
-               <p>Ao criar políticas de DDM, recomendamos que você altere as definições de opções da configuração padrão para usuários comuns a fim de que correspondam às definições de opções da configuração da sessão no momento em que a política foi criada. Superusuários e usuários com o privilégio ALTER USER podem fazer isso usando as configurações do grupo de parâmetros ou o comando ALTER USER. Para obter informações sobre grupos de parâmetros, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Grupos de parâmetros do Amazon Redshift</a> no <em>Guia de gerenciamento do Amazon Redshift</em>. Para obter mais informações sobre o comando ALTER USER, consulte <a href="./r_ALTER_USER.html">ALTER USER</a>.</p></li></ul></div>
-      <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_rls-procedures.html">Criar, anexar, desanexar e descartar políticas de RLS</div><div id="next" class="next-link" accesskey="n" href="./r_ddm-procedures.html">Gerenciar políticas de mascaramento dinâmico de dados</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+               <p>Ao criar políticas de DDM, recomendamos que você altere as definições de opções da configuração padrão para usuários comuns a fim de que correspondam às definições de opções da configuração da sessão no momento em que a política foi criada. Superusuários e usuários com o privilégio ALTER USER podem fazer isso usando as configurações do grupo de parâmetros ou o comando ALTER USER. Para obter informações sobre grupos de parâmetros, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift parameter groups</a> no <em>Guia de gerenciamento do Amazon Redshift</em>. Para obter mais informações sobre o comando ALTER USER, consulte <a href="./r_ALTER_USER.html">ALTER USER</a>.</p>
+            </li><li class="listitem">
+               <p>As exibições e as exibições de vinculação tardia com políticas DDM não podem ser substituídas por usuários regulares usando o comando <a href="./r_CREATE_VIEW.html">CREATE VIEW</a>. Para substituir exibições ou LBVs por políticas DDM, primeiro desanexe todas as políticas DDM anexadas, substitua as exibições ou LBVs e reanexe as políticas. Os superusuários e usuários com a permissão <code class="code">sys:secadmin</code> podem usar CREATE VIEW em exibições ou LBVs com políticas DDM sem desanexar as políticas.</p>
+            </li><li class="listitem">
+               <p>As exibições com políticas DDM anexadas não podem referenciar tabelas e exibições de sistema. Exibições de vinculação tardia podem referenciar tabelas e exibições de sistema.</p>
+            </li><li class="listitem">
+               <p>As exibições de vinculação tardia com políticas DDM anexadas não podem referenciar dados aninhados em data lakes, como documentos JSON.</p>
+            </li><li class="listitem">
+               <p> As exibições de vinculação tardia não poderão ter políticas DDM anexadas se essa exibição de vinculação tardia for referenciada por qualquer exibição.</p>
+            </li><li class="listitem">
+               <p> As políticas DDM anexadas às exibições de vinculação tardia são anexadas pelo nome da coluna. No momento da consulta, o Amazon Redshift valida se todas as políticas de mascaramento anexadas à exibição de vinculação tardia foram aplicadas com êxito e se o tipo de coluna de saída da exibição de vinculação tardia corresponde aos tipos nas políticas de mascaramento anexadas. Se a validação falhar, o Amazon Redshift retornará um erro para a consulta.</p>
+            </li></ul></div>
+      <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_metadata_security.html">Segurança de metadados</div><div id="next" class="next-link" accesskey="n" href="./r_ddm-procedures.html">Gerenciar políticas de mascaramento dinâmico de dados</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/t_ddm.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

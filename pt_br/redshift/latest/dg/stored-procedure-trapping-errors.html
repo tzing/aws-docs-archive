@@ -51,7 +51,15 @@ EXCEPTION
   WHEN OTHERS THEN
     statements
 END;   
-</code></pre><p>Quando ocorre uma exceção e você adiciona um bloco de tratamento de exceções, é possível gravar instruções RAISE e a maioria das outras instruções PL/PGSQL. Por exemplo, é possível levantar uma exceção com uma mensagem personalizada ou inserir um registro em uma tabela de registro.</p><p>Ao inserir o bloco de tratamento de exceções, a transação atual é revertida, e cria-se uma nova transação para executar as instruções no bloco. Se as instruções no bloco forem executadas sem erros, a transação será confirmada, e a exceção será lançada novamente. Por fim, o procedimento armazenado é encerrado.</p><p>A única condição compatível em um bloco de exceção é OTHERS, que corresponde a todos os tipos de erros, exceto o cancelamento de consulta. Além disso, se ocorrer um erro em um bloco de tratamento de exceções, ele poderá ser detectado por um bloco de tratamento de exceções externo.</p><p>Quando ocorre um erro dentro do procedimento NONATOMIC, o erro não será relançado se for tratado por um bloco de exceções. Consulte a instrução PL/pgSQL <code class="code">RAISE</code> para lançar uma exceção capturada pelo bloco de tratamento de exceções. Essa instrução só é válida em blocos de tratamento de exceções. Para mais informações, consulte <a href="./c_PLpgSQL-statements.html#r_PLpgSQL-messages-errors">RAISE</a>.</p><p>Há várias tabelas do sistema disponíveis para ajudar você a coletar informações sobre vários tipos de erros. Para obter mais informações, consulte <a href="./r_STL_LOAD_ERRORS.html">STL_LOAD_ERRORS</a>, <a href="./r_STL_ERROR.html">STL_ERROR</a> e <a href="./r_SYS_STREAM_SCAN_ERRORS.html">SYS_STREAM_SCAN_ERRORS</a>. Também há tabelas de sistema adicionais que você pode usar para solucionar erros. Mais informações sobre elas podem ser encontradas em <a href="./cm_chap_system-tables.html">Referência de visualizações e tabelas do sistema</a>.</p>
+</code></pre><p>Quando ocorre uma exceção e você adiciona um bloco de tratamento de exceções, é possível gravar instruções RAISE e a maioria das outras instruções PL/PGSQL. Por exemplo, é possível levantar uma exceção com uma mensagem personalizada ou inserir um registro em uma tabela de registro.</p><p>Ao inserir o bloco de tratamento de exceções, a transação atual é revertida, e cria-se uma nova transação para executar as instruções no bloco. Se as instruções no bloco forem executadas sem erros, a transação será confirmada, e a exceção será lançada novamente. Por fim, o procedimento armazenado é encerrado.</p><p>A única condição compatível em um bloco de exceção é OTHERS, que corresponde a todos os tipos de erros, exceto o cancelamento de consulta. Além disso, se ocorrer um erro em um bloco de tratamento de exceções, ele poderá ser detectado por um bloco de tratamento de exceções externo.</p><p>Quando ocorre um erro dentro do procedimento NONATOMIC, o erro não será relançado se for tratado por um bloco de exceções. Consulte a instrução PL/pgSQL <code class="code">RAISE</code> para lançar uma exceção capturada pelo bloco de tratamento de exceções. Essa instrução só é válida em blocos de tratamento de exceções. Para mais informações, consulte <a href="./c_PLpgSQL-statements.html#r_PLpgSQL-messages-errors">RAISE</a>.</p><p><b>Controle do que acontecerá depois de um erro em um procedimento armazenado, com o manipulador CONTINUE</b></p><p> O manipulador <code class="code">CONTINUE</code> é um tipo de manipulador de exceções que controla o fluxo de execuções em um procedimento armazenado NONATOMIC. Ao usá-lo, você pode capturar e processar exceções sem encerrar o bloco de instruções existente. Normalmente, quando ocorre um erro em um procedimento armazenado, o fluxo é interrompido, e o erro é retornado ao chamador. No entanto, em alguns casos de uso, a condição de erro não é grave o suficiente para justificar a interrupção do fluxo. Convém processar o erro normalmente, usando a lógica de tratamento de erros de sua preferência em uma transação à parte e, em seguida, continuar executando as instruções que seguem o erro. Esta é a sintaxe. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">[ DECLARE
+  declarations ]
+BEGIN
+  statements
+EXCEPTION
+  [ CONTINUE_HANDLER | EXIT_HANDLER ] WHEN OTHERS THEN
+    handler_statements
+END;   
+</code></pre><p>Há várias tabelas do sistema disponíveis para ajudar você a coletar informações sobre vários tipos de erros. Para obter mais informações, consulte <a href="./r_STL_LOAD_ERRORS.html">STL_LOAD_ERRORS</a>, <a href="./r_STL_ERROR.html">STL_ERROR</a> e <a href="./r_SYS_STREAM_SCAN_ERRORS.html">SYS_STREAM_SCAN_ERRORS</a>. Também há tabelas de sistema adicionais que você pode usar para solucionar erros. Mais informações sobre elas podem ser encontradas em <a href="./cm_chap_system-tables.html">Referência de visualizações e tabelas do sistema</a>.</p>
         <h2 id="stored-procedure-trapping-errors-examples">Exemplo</h2>
      <p>O exemplo a seguir mostra como gravar instruções no bloco de tratamento de exceções. O procedimento armazenado está usando o comportamento padrão de gerenciamento de transações.</p>
 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE employee (firstname varchar, lastname varchar);
@@ -168,4 +176,77 @@ SELECT * from employee_error_log;
  Error message: column "invalid1" does not exist
  Error message: column "invalid2" does not exist
 (2 rows)
-</code></pre><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stored-procedure-transaction-management.html">Gerenciamento de transações</div><div id="next" class="next-link" accesskey="n" href="./c_PLpgSQL-logging.html">Registro em log de procedimentos armazenados</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+</code></pre><p>O exemplo a seguir mostra como usar o manipulador de exceções CONTINUE. Esse exemplo cria duas tabelas e as usa em um procedimento armazenado. O manipulador CONTINUE controla o fluxo de execução em um procedimento armazenado com comportamento de gerenciamento de transações NONATOMIC.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE tbl_1 (a int);
+CREATE TABLE tbl_error_logging(info varchar, err_state varchar, err_msg varchar);
+
+CREATE OR REPLACE PROCEDURE sp_exc_handling_1() NONATOMIC AS
+$$
+BEGIN
+    INSERT INTO tbl_1 VALUES (1);
+    -- Expect an error for the insert statement following, because of the invalid value
+    INSERT INTO tbl_1 VALUES ("val");
+    INSERT INTO tbl_1 VALUES (2);
+EXCEPTION CONTINUE_HANDLER WHEN OTHERS THEN
+    INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+END;
+$$ LANGUAGE plpgsql;</code></pre><p>Chame o procedimento armazenado:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CALL sp_exc_handling_1();</code></pre><p>O fluxo avança assim:</p><div class="orderedlist">
+         
+         
+     <ol><li><p>Ocorre um erro porque é feita uma tentativa de inserir um tipo de dados incompatível em uma coluna. O controle passa para o bloco EXCEPTION. Quando o bloco de tratamento de exceções é acessado, a transação atual é revertida e uma nova transação implícita é criada para executar as instruções nela.</p></li><li><p>Se as instruções em CONTINUE_HANDLER forem executadas sem erros, o controle passará imediatamente para a instrução depois da instrução que estiver causando a exceção. (Se uma instrução em CONTINUE_HANDLER gerar uma nova exceção, você poderá tratá-la com um manipulador de exceções dentro do bloco EXCEPTION.)</p></li></ol></div><p>Depois de você chamar o procedimento armazenado de amostra, as tabelas conterão os seguintes registros:</p><div class="itemizedlist">
+         
+         
+     <ul class="itemizedlist"><li class="listitem"><p>Se você executar <code class="code">SELECT * FROM tbl_1;</code>, ele retornará dois registros. Eles contêm os valores <code class="code">1</code> e <code class="code">2</code>.</p></li><li class="listitem"><p>Se você executar <code class="code">SELECT * FROM tbl_error_logging;</code>, ele retornará um registro com estes valores: <em>Erro encontrado</em>, <em>42703</em> e <em>A coluna "val" não existe em tbl_1</em>.</p></li></ul></div><p>O exemplo adicional do tratamento de erros a seguir usa um manipulador EXIT e um manipulador CONTINUE. Ele cria duas tabelas: uma tabela de dados e uma tabela de logs. Ele também cria um procedimento armazenado que demonstra o tratamento de erros:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE tbl_1 (a int);
+CREATE TABLE tbl_error_logging(info varchar, err_state varchar, err_msg varchar);
+
+CREATE OR REPLACE PROCEDURE sp_exc_handling_2() NONATOMIC AS
+$$
+BEGIN
+    INSERT INTO tbl_1 VALUES (1);
+    BEGIN
+        INSERT INTO tbl_1 VALUES (100);
+        -- Expect an error for the insert statement following, because of the invalid value
+        INSERT INTO tbl_1 VALUES ("val");
+        INSERT INTO tbl_1 VALUES (101);
+    EXCEPTION EXIT_HANDLER WHEN OTHERS THEN
+        INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+    END;
+    INSERT INTO tbl_1 VALUES (2);
+    -- Expect an error for the insert statement following, because of the invalid value
+    INSERT INTO tbl_1 VALUES ("val");
+    INSERT INTO tbl_1 VALUES (3);
+EXCEPTION CONTINUE_HANDLER WHEN OTHERS THEN
+    INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+END;
+$$ LANGUAGE plpgsql;</code></pre><p>Depois de criar o procedimento armazenado, chame-o com o seguinte:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CALL sp_exc_handling_2();</code></pre><p>Quando ocorre um erro no bloco de exceção interno, delimitado pelo conjunto interno de BEGIN e END, ele é tratado pelo manipulador EXIT. Qualquer erro ocorrido no bloco externo é tratado pelo manipulador CONTINUE. </p><p>Depois de você chamar o procedimento armazenado de amostra, as tabelas conterão os seguintes registros:</p><div class="itemizedlist">
+         
+         
+     <ul class="itemizedlist"><li class="listitem"><p>Se você executar <code class="code">SELECT * FROM tbl_1;</code>, ele retornará quatro registros, com os valores 1, 2, 3 e 100.</p></li><li class="listitem"><p>Se você executar <code class="code">SELECT * FROM tbl_error_logging;</code>, ele retornará dois registros. Eles têm estes valores: <em>Erro encontrado</em>, <em>42703</em> e <em>A coluna "val" não existe em tbl_1</em>.</p></li></ul></div><p>Se a tabela <b>tbl_error_logging</b> não existir, ela vai gerar uma exceção.</p><p>O exemplo a seguir mostra como usar o manipulador de exceções CONTINUE com o loop FOR. Esse exemplo cria três tabelas e as usa em um loop FOR dentro de um procedimento armazenado. O loop FOR é uma variante do conjunto de resultados, o que significa que itera nos resultados de uma consulta:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE tbl_1 (a int);
+INSERT INTO tbl_1 VALUES (1), (2), (3);
+CREATE TABLE tbl_2 (a int);
+CREATE TABLE tbl_error_logging(info varchar, err_state varchar, err_msg varchar);
+
+CREATE OR REPLACE PROCEDURE sp_exc_handling_loop() NONATOMIC AS
+$$
+DECLARE
+ rec RECORD;
+BEGIN
+    FOR rec IN SELECT a FROM tbl_1
+    LOOP
+        IF rec.a = 2 THEN
+            -- Expect an error for the insert statement following, because of the invalid value
+            INSERT INTO tbl_2 VALUES("val");
+        ELSE
+            INSERT INTO tbl_2 VALUES (rec.a);
+        END IF;
+    END LOOP;
+EXCEPTION CONTINUE_HANDLER WHEN OTHERS THEN
+    INSERT INTO tbl_error_logging VALUES ('Encountered error', SQLSTATE, SQLERRM);
+END;
+$$ LANGUAGE plpgsql;</code></pre><p>Chame o procedimento armazenado:</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CALL sp_exc_handling_loop();</code></pre><p>Depois de você chamar o procedimento armazenado de amostra, as tabelas conterão os seguintes registros:</p><div class="itemizedlist">
+         
+         
+     <ul class="itemizedlist"><li class="listitem"><p> Se você executar <code class="code">SELECT * FROM tbl_2;</code>, ele retornará dois registros. Eles contêm os valores 1 e 3.</p></li><li class="listitem"><p>Se você executar <code class="code">SELECT * FROM tbl_error_logging;</code>, ele retornará um registro com estes valores: <em>Erro encontrado</em>, <em>42703</em> e <em>A coluna "val" não existe em tbl_2</em>.</p></li></ul></div><p>Observações sobre o uso referente ao manipulador CONTINUE:</p><div class="itemizedlist">
+         
+ 
+         
+     <ul class="itemizedlist"><li class="listitem"><p>As palavras-chave CONTINUE_HANDLER e EXIT_HANDLER só podem ser usadas em procedimentos armazenados NONATOMIC.</p></li><li class="listitem"><p>As palavras-chave CONTINUE_HANDLER e EXIT_HANDLER são opcionais. EXIT_HANDLER é o padrão.</p></li></ul></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stored-procedure-transaction-management.html">Gerenciamento de transações</div><div id="next" class="next-link" accesskey="n" href="./c_PLpgSQL-logging.html">Registro em log de procedimentos armazenados</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/stored-procedure-trapping-errors.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

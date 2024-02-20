@@ -83,7 +83,7 @@
          <h2 id="declare-constraints">Restrições de cursor</h2>
          <p>Quando a primeira linha de um cursor é buscada, o conjunto inteiro de resultados é materializado no nó líder. Se o resultado não couber na memória, ele será gravado em disco conforme necessário. Para proteger a integridade do nó líder, o Amazon Redshift aplica restrições de tamanho a todos os conjuntos de resultados de cursor com base no tipo de nó do cluster.</p>
          <p>A tabela a seguir mostra o tamanho total máximo do conjunto de resultados para cada tipo de nó do cluster. O tamanho máximo do conjunto de resultados é fornecido em megabytes.</p>
-         <div class="table-container"><div class="table-contents"><table id="w317aac45b9d107c17b7"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac47b9d113c17b7"><thead>
                   <tr>
                      <th>Tipo de nó</th>
                      <th>Conjunto máximo de resultados por cluster (MB)</th>
@@ -197,8 +197,8 @@
                   </tr>
                   
                      <tr>
-                            <td tabindex="-1"><p>Amazon Redshift Serverless</p></td>
-                            <td tabindex="-1"><p>150000</p></td>
+                            <td tabindex="-1"><p>Amazon Redshift sem servidor</p></td>
+                            <td tabindex="-1"><p>150 mil</p></td>
                         </tr>
                </table></div></div>
          <p>Para visualizar a configuração de cursor ativa para um cluster, consulte a tabela de sistema <a href="./r_STV_CURSOR_CONFIGURATION.html">STV_CURSOR_CONFIGURATION</a> como superusuário. Para exibir o estado de cursores ativos, consulte a tabela de sistema <a href="./r_STV_ACTIVE_CURSORS.html">STV_ACTIVE_CURSORS</a>. Somente as linhas dos cursores do próprio usuário são visíveis para ele, mas um superusuário pode visualizar todos os cursores.</p>

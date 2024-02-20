@@ -46,7 +46,7 @@
             <p>Consulte a qual fila uma consulta foi atribuída.</p>
          </li><li class="listitem">
             <p>Exiba o status de uma consulta que esteja sendo acompanhada no momento pelo gerenciador do workload.</p>
-         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w317aac41c59b9"><thead>
+         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w319aac43c59b9"><thead>
                <tr>
                   <th>Nome da tabela </th>
                   <th>Descrição </th>
@@ -100,7 +100,19 @@
                   <td tabindex="-1">
                      <a href="./r_STV_WLM_SERVICE_CLASS_STATE.html">STV_WLM_SERVICE_CLASS_STATE</a>
                   </td>
-                  <td tabindex="-1">Contém o estado atual das classes de serviço. </td>
+                  <td tabindex="-1">Contém o estado atual das classes de serviço.</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STL_WLM_RULE_ACTION.html">STL_WLM_RULE_ACTION</a>
+                  </td>
+                  <td tabindex="-1">Registra detalhes sobre as ações resultantes das regras de monitoramento de consultas de WLM associadas às filas definidas pelo usuário.</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STV_WLM_QMR_CONFIG.html">STV_WLM_QMR_CONFIG</a>
+                  </td>
+                  <td tabindex="-1">Registra a configuração das regras de monitoramento de consultas (QMR) para o WLM.</td>
                </tr>
             </table></div></div><p> Você usa o ID da tarefa para acompanhar uma consulta nas tabelas de sistema. O seguinte exemplo mostra como obter o ID da tarefa da consulta de usuário enviada mais recentemente: </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select task from stl_wlm_query where exec_start_time =(select max(exec_start_time) from stl_wlm_query); 
 
@@ -124,7 +136,7 @@ xid |task|query|service_| wlm_start_  |  state  |queue_ | exec_
          
        <p>A tabela a seguir lista os IDs atribuídos a classes de serviço.</p>  
          
-         <div class="table-container"><div class="table-contents"><table id="w317aac41c59c19b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac43c59c19b5"><thead>
                   <tr>
                      <th>ID </th>
                      <th>Classe de serviço </th>

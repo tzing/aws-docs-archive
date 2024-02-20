@@ -36,10 +36,10 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#sys_view_migration" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#sys_view_migration-use_cases">Casos de uso para migrar para visualizações de monitoramento de SYS</a><a href="#sys_view_migration-SYS_QUERY_HISTORY">SYS_QUERY_HISTORY</a><a href="#sys_view_migration-SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</a><a href="#sys_view_migration-SYS_TRANSACTION_HISTORY">SYS_TRANSACTION_HISTORY</a><a href="#sys_view_migration-SYS_QUERY_TEXT">SYS_QUERY_TEXT</a><a href="#sys_view_migration-SYS_CONNECTION_LOG">SYS_CONNECTION_LOG</a><a href="#sys_view_migration-SYS_SESSION_HISTORY">SYS_SESSION_HISTORY</a><a href="#sys_view_migration-SYS_LOAD_DETAIL">SYS_LOAD_DETAIL</a><a href="#sys_view_migration-SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</a><a href="#sys_view_migration-SYS_LOAD_ERROR_DETAIL">SYS_LOAD_ERROR_DETAIL</a><a href="#sys_view_migration-SYS_UNLOAD_HISTORY">SYS_UNLOAD_HISTORY</a><a href="#sys_view_migration-SYS_UNLOAD_DETAIL">SYS_UNLOAD_DETAIL</a><a href="#sys_view_migration-SYS_COPY_REPLACEMENTS">SYS_COPY_REPLACEMENTS</a><a href="#sys_view_migration-SYS_DATASHARE_USAGE_CONSUMER">SYS_DATASHARE_USAGE_CONSUMER</a><a href="#sys_view_migration-SYS_DATASHARE_USAGE_PRODUCER">SYS_DATASHARE_USAGE_PRODUCER</a><a href="#sys_view_migration-SYS_DATASHARE_CROSS_REGION_USAGE">SYS_DATASHARE_CROSS_REGION_USAGE</a><a href="#sys_view_migration-SYS_DATASHARE_CHANGE_LOG">SYS_DATASHARE_CHANGE_LOG</a><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</a><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_ERROR">SYS_EXTERNAL_QUERY_ERROR</a><a href="#sys_view_migration-SYS_VACUUM_HISTORY">SYS_VACUUM_HISTORY</a><a href="#sys_view_migration-SYS_ANALYZE_HISTORY">SYS_ANALYZE_HISTORY</a><a href="#sys_view_migration-SYS_ANALYZE_COMPRESSION_HISTORY">SYS_ANALYZE_COMPRESSION_HISTORY</a><a href="#sys_view_migration-SYS_MV_REFRESH_HISTORY">SYS_MV_REFRESH_HISTORY</a><a href="#sys_view_migration-SYS_MV_STATE">SYS_MV_STATE</a><a href="#sys_view_migration-SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</a><a href="#sys_view_migration-SYS_PROCEDURE_MESSAGES">SYS_PROCEDURE_MESSAGES</a><a href="#sys_view_migration-SYS_UDF_LOG">SYS_UDF_LOG</a><a href="#sys_view_migration-SYS_USERLOG">SYS_USERLOG</a><a href="#sys_view_migration-SYS_SCHEMA_QUOTA_VIOLATIONS">SYS_SCHEMA_QUOTA_VIOLATIONS</a><a href="#sys_view_migration-SYS_SPATIAL_SIMPLIFY">SYS_SPATIAL_SIMPLIFY</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="sys_view_migration">Migrar para visualizações de monitoramento de SYS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p> Quando você migra o cluster provisionado do Amazon Redshift para o Amazon Redshift sem servidor, as consultas de monitoramento ou diagnóstico podem se referir a visualizações do sistema que só estão disponíveis em clusters provisionados. É possível atualizar as consultas para usar as visualizações de monitoramento de SYS. Esta página fornece mapeamentos de visualização provisionados para SYS para você consultar ao atualizar consultas.</p><div class="highlights" id="inline-topiclist"><h6>Tópicos</h6><ul><li><a href="#sys_view_migration-use_cases">Casos de uso para migrar para visualizações de monitoramento de SYS</a></li><li><a href="#sys_view_migration-SYS_QUERY_HISTORY">SYS_QUERY_HISTORY</a></li><li><a href="#sys_view_migration-SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</a></li><li><a href="#sys_view_migration-SYS_TRANSACTION_HISTORY">SYS_TRANSACTION_HISTORY</a></li><li><a href="#sys_view_migration-SYS_QUERY_TEXT">SYS_QUERY_TEXT</a></li><li><a href="#sys_view_migration-SYS_CONNECTION_LOG">SYS_CONNECTION_LOG</a></li><li><a href="#sys_view_migration-SYS_SESSION_HISTORY">SYS_SESSION_HISTORY</a></li><li><a href="#sys_view_migration-SYS_LOAD_DETAIL">SYS_LOAD_DETAIL</a></li><li><a href="#sys_view_migration-SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</a></li><li><a href="#sys_view_migration-SYS_LOAD_ERROR_DETAIL">SYS_LOAD_ERROR_DETAIL</a></li><li><a href="#sys_view_migration-SYS_UNLOAD_HISTORY">SYS_UNLOAD_HISTORY</a></li><li><a href="#sys_view_migration-SYS_UNLOAD_DETAIL">SYS_UNLOAD_DETAIL</a></li><li><a href="#sys_view_migration-SYS_COPY_REPLACEMENTS">SYS_COPY_REPLACEMENTS</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_USAGE_CONSUMER">SYS_DATASHARE_USAGE_CONSUMER</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_USAGE_PRODUCER">SYS_DATASHARE_USAGE_PRODUCER</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_CROSS_REGION_USAGE">SYS_DATASHARE_CROSS_REGION_USAGE</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_CHANGE_LOG">SYS_DATASHARE_CHANGE_LOG</a></li><li><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</a></li><li><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_ERROR">SYS_EXTERNAL_QUERY_ERROR</a></li><li><a href="#sys_view_migration-SYS_VACUUM_HISTORY">SYS_VACUUM_HISTORY</a></li><li><a href="#sys_view_migration-SYS_ANALYZE_HISTORY">SYS_ANALYZE_HISTORY</a></li><li><a href="#sys_view_migration-SYS_ANALYZE_COMPRESSION_HISTORY">SYS_ANALYZE_COMPRESSION_HISTORY</a></li><li><a href="#sys_view_migration-SYS_MV_REFRESH_HISTORY">SYS_MV_REFRESH_HISTORY</a></li><li><a href="#sys_view_migration-SYS_MV_STATE">SYS_MV_STATE</a></li><li><a href="#sys_view_migration-SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</a></li><li><a href="#sys_view_migration-SYS_PROCEDURE_MESSAGES">SYS_PROCEDURE_MESSAGES</a></li><li><a href="#sys_view_migration-SYS_UDF_LOG">SYS_UDF_LOG</a></li><li><a href="#sys_view_migration-SYS_USERLOG">SYS_USERLOG</a></li><li><a href="#sys_view_migration-SYS_SCHEMA_QUOTA_VIOLATIONS">SYS_SCHEMA_QUOTA_VIOLATIONS</a></li><li><a href="#sys_view_migration-SYS_SPATIAL_SIMPLIFY">SYS_SPATIAL_SIMPLIFY</a></li></ul></div>        
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#sys_view_migration" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#sys_view_migration-use_cases">Casos de uso para migrar para visualizações de monitoramento de SYS</a><a href="#sys_view_migration-query-id">Melhoria do rastreamento do identificador de consultas usando as exbições de monitoramento SYS</a><a href="#sys_view_migration-SYS_QUERY_HISTORY">SYS_QUERY_HISTORY</a><a href="#sys_view_migration-SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</a><a href="#sys_view_migration-SYS_TRANSACTION_HISTORY">SYS_TRANSACTION_HISTORY</a><a href="#sys_view_migration-SYS_QUERY_TEXT">SYS_QUERY_TEXT</a><a href="#sys_view_migration-SYS_CONNECTION_LOG">SYS_CONNECTION_LOG</a><a href="#sys_view_migration-SYS_SESSION_HISTORY">SYS_SESSION_HISTORY</a><a href="#sys_view_migration-SYS_LOAD_DETAIL">SYS_LOAD_DETAIL</a><a href="#sys_view_migration-SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</a><a href="#sys_view_migration-SYS_LOAD_ERROR_DETAIL">SYS_LOAD_ERROR_DETAIL</a><a href="#sys_view_migration-SYS_UNLOAD_HISTORY">SYS_UNLOAD_HISTORY</a><a href="#sys_view_migration-SYS_UNLOAD_DETAIL">SYS_UNLOAD_DETAIL</a><a href="#sys_view_migration-SYS_COPY_REPLACEMENTS">SYS_COPY_REPLACEMENTS</a><a href="#sys_view_migration-SYS_DATASHARE_USAGE_CONSUMER">SYS_DATASHARE_USAGE_CONSUMER</a><a href="#sys_view_migration-SYS_DATASHARE_USAGE_PRODUCER">SYS_DATASHARE_USAGE_PRODUCER</a><a href="#sys_view_migration-SYS_DATASHARE_CROSS_REGION_USAGE">SYS_DATASHARE_CROSS_REGION_USAGE</a><a href="#sys_view_migration-SYS_DATASHARE_CHANGE_LOG">SYS_DATASHARE_CHANGE_LOG</a><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</a><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_ERROR">SYS_EXTERNAL_QUERY_ERROR</a><a href="#sys_view_migration-SYS_VACUUM_HISTORY">SYS_VACUUM_HISTORY</a><a href="#sys_view_migration-SYS_ANALYZE_HISTORY">SYS_ANALYZE_HISTORY</a><a href="#sys_view_migration-SYS_ANALYZE_COMPRESSION_HISTORY">SYS_ANALYZE_COMPRESSION_HISTORY</a><a href="#sys_view_migration-SYS_MV_REFRESH_HISTORY">SYS_MV_REFRESH_HISTORY</a><a href="#sys_view_migration-SYS_MV_STATE">SYS_MV_STATE</a><a href="#sys_view_migration-SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</a><a href="#sys_view_migration-SYS_PROCEDURE_MESSAGES">SYS_PROCEDURE_MESSAGES</a><a href="#sys_view_migration-SYS_UDF_LOG">SYS_UDF_LOG</a><a href="#sys_view_migration-SYS_USERLOG">SYS_USERLOG</a><a href="#sys_view_migration-SYS_SCHEMA_QUOTA_VIOLATIONS">SYS_SCHEMA_QUOTA_VIOLATIONS</a><a href="#sys_view_migration-SYS_SPATIAL_SIMPLIFY">SYS_SPATIAL_SIMPLIFY</a><a href="#sys_view_migration-examples">Exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="sys_view_migration">Migrar para visualizações de monitoramento de SYS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p> Quando você migra o cluster provisionado do Amazon Redshift para o Amazon Redshift sem servidor, as consultas de monitoramento ou diagnóstico podem se referir a visualizações do sistema que só estão disponíveis em clusters provisionados. É possível atualizar as consultas para usar as visualizações de monitoramento de SYS. Esta página fornece mapeamentos de visualização provisionados para SYS para você consultar ao atualizar consultas.</p><div class="highlights" id="inline-topiclist"><h6>Tópicos</h6><ul><li><a href="#sys_view_migration-use_cases">Casos de uso para migrar para visualizações de monitoramento de SYS</a></li><li><a href="#sys_view_migration-query-id">Melhoria do rastreamento do identificador de consultas usando as exbições de monitoramento SYS</a></li><li><a href="#sys_view_migration-SYS_QUERY_HISTORY">SYS_QUERY_HISTORY</a></li><li><a href="#sys_view_migration-SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</a></li><li><a href="#sys_view_migration-SYS_TRANSACTION_HISTORY">SYS_TRANSACTION_HISTORY</a></li><li><a href="#sys_view_migration-SYS_QUERY_TEXT">SYS_QUERY_TEXT</a></li><li><a href="#sys_view_migration-SYS_CONNECTION_LOG">SYS_CONNECTION_LOG</a></li><li><a href="#sys_view_migration-SYS_SESSION_HISTORY">SYS_SESSION_HISTORY</a></li><li><a href="#sys_view_migration-SYS_LOAD_DETAIL">SYS_LOAD_DETAIL</a></li><li><a href="#sys_view_migration-SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</a></li><li><a href="#sys_view_migration-SYS_LOAD_ERROR_DETAIL">SYS_LOAD_ERROR_DETAIL</a></li><li><a href="#sys_view_migration-SYS_UNLOAD_HISTORY">SYS_UNLOAD_HISTORY</a></li><li><a href="#sys_view_migration-SYS_UNLOAD_DETAIL">SYS_UNLOAD_DETAIL</a></li><li><a href="#sys_view_migration-SYS_COPY_REPLACEMENTS">SYS_COPY_REPLACEMENTS</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_USAGE_CONSUMER">SYS_DATASHARE_USAGE_CONSUMER</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_USAGE_PRODUCER">SYS_DATASHARE_USAGE_PRODUCER</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_CROSS_REGION_USAGE">SYS_DATASHARE_CROSS_REGION_USAGE</a></li><li><a href="#sys_view_migration-SYS_DATASHARE_CHANGE_LOG">SYS_DATASHARE_CHANGE_LOG</a></li><li><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</a></li><li><a href="#sys_view_migration-SYS_EXTERNAL_QUERY_ERROR">SYS_EXTERNAL_QUERY_ERROR</a></li><li><a href="#sys_view_migration-SYS_VACUUM_HISTORY">SYS_VACUUM_HISTORY</a></li><li><a href="#sys_view_migration-SYS_ANALYZE_HISTORY">SYS_ANALYZE_HISTORY</a></li><li><a href="#sys_view_migration-SYS_ANALYZE_COMPRESSION_HISTORY">SYS_ANALYZE_COMPRESSION_HISTORY</a></li><li><a href="#sys_view_migration-SYS_MV_REFRESH_HISTORY">SYS_MV_REFRESH_HISTORY</a></li><li><a href="#sys_view_migration-SYS_MV_STATE">SYS_MV_STATE</a></li><li><a href="#sys_view_migration-SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</a></li><li><a href="#sys_view_migration-SYS_PROCEDURE_MESSAGES">SYS_PROCEDURE_MESSAGES</a></li><li><a href="#sys_view_migration-SYS_UDF_LOG">SYS_UDF_LOG</a></li><li><a href="#sys_view_migration-SYS_USERLOG">SYS_USERLOG</a></li><li><a href="#sys_view_migration-SYS_SCHEMA_QUOTA_VIOLATIONS">SYS_SCHEMA_QUOTA_VIOLATIONS</a></li><li><a href="#sys_view_migration-SYS_SPATIAL_SIMPLIFY">SYS_SPATIAL_SIMPLIFY</a></li><li><a href="#sys_view_migration-examples">Exemplo</a></li></ul></div>        
         <h2 id="sys_view_migration-use_cases">Casos de uso para migrar para visualizações de monitoramento de SYS</h2>
          
-            <h3 id="w215aac67c15b7b3">Migrar clusters provisionados para o Amazon Redshift sem servidor</h3>
+            <h3 id="w268aac69c15b7b3">Migrar clusters provisionados para o Amazon Redshift sem servidor</h3>
             <p>Se você estiver migrando um cluster provisionado para o Amazon Redshift sem servidor, poderá ter consultas usando as visualizações de sistema a seguir, que só estão disponíveis em clusters provisionados. </p>
     <div class="itemizedlist">
          
@@ -53,10 +53,20 @@
     <p> Para continuar usando suas consultas, redefina-as para utilizar colunas definidas nas visualizações de monitoramento de SYS que correspondam às colunas em suas visualizações somente provisionadas. </p>
          
                      
-            <h3 id="w215aac67c15b7b5">Atualizar consultas enquanto estiver em um cluster provisionado</h3>
+            <h3 id="w268aac69c15b7b5">Atualizar consultas enquanto estiver em um cluster provisionado</h3>
             <p>Se você não estiver migrando para o Amazon Redshift sem servidor, ainda assim deveria atualizar as consultas existentes. As visualizações de monitoramento de SYS foram projetadas para serem fáceis de usar e diminuir a complexidade, fornecendo um conjunto completo de métricas para contribuir para a eficácia de monitoramento e solução de problemas. Usando visualizações SYS como <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> e <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>, que consolidam as informações de várias visualizações somente provisionadas, você pode simplificar suas consultas.</p>
          
-    <p>A seguir estão as listas de visualizações STL/SVCS/SVL/SVV com uma ou mais colunas que também são definidas na exibição de monitoramento SYS fornecida. </p>      
+             
+        <h2 id="sys_view_migration-query-id">Melhoria do rastreamento do identificador de consultas usando as exbições de monitoramento SYS</h2>
+                <p> As exibições de monitoramento SYS, como <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> e <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>, contêm a coluna query_id, que contém o identificador das consultas dos usuários. Da mesma forma, as exibições somente provisionadas, como <a href="./r_STL_QUERY.html">STL_QUERY</a> e <a href="./r_SVL_QLOG.html">SVL_QLOG</a>, contêm a coluna de consulta, que também contém os identificadores de consulta. No entanto, os identificadores de consulta registrados nas exibições de sistema SYS são diferentes daqueles registrados nas exibições somente provisionadas. </p>
+        <p>A diferença entre os valores da coluna query_id das exibições SYS e os valores da coluna de consulta das exibições somente provisionadas é a seguinte:</p>
+        <div class="itemizedlist">
+             
+             
+        <ul class="itemizedlist"><li class="listitem"><p> Em exibições SYS, a coluna query_id registra as consultas enviadas pelo usuário no formato original. O otimizador do Amazon Redshift pode dividi-las em consultas secundárias tendo em vista um desempenho melhor, mas uma única consulta executada por você ainda terá apenas uma única linha em <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a>. Se quiser ver as consultas filho individuais, você poderá encontrá-las em <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>.</p></li><li class="listitem"><p> Em exibições somente provisionadas, a coluna de consulta registra consultas no nível da consulta filho. Se o otimizador do Amazon Redshift reescrever a consulta original em várias consultas filho, haverá várias linhas em <a href="./r_STL_QUERY.html">STL_QUERY</a> com valores identificadores de consulta diferentes para uma única consulta executada por você. </p></li></ul></div>
+        <p>Ao migrar as consultas de monitoramento e diagnóstico de exibições somente provisionadas para exibições SYS, considere essa diferença e edite as consultas de acordo. Para obter mais informações sobre como o Amazon Redshift processa as consultas, consulte <a href="./c-query-planning.html">Planejamento de consulta e fluxo de trabalho de execução</a>.</p>
+        
+           
             <h2 id="sys_view_migration-SYS_QUERY_HISTORY">SYS_QUERY_HISTORY</h2>
             <p>Algumas ou todas as colunas das tabelas a seguir também são definidas em <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a>.</p>
             <div class="itemizedlist">
@@ -214,7 +224,7 @@
             <ul class="itemizedlist"><li class="listitem">
                     <p><a href="./r_STL_COMMIT_STATS.html">STL_COMMIT_STATS</a></p>
                 </li><li class="listitem">
-                    <p><a href="./r_STL_UNDONE.html">STL_TR_CONFLICT</a></p>
+                    <p><a href="./r_STL_TR_CONFLICT.html">STL_TR_CONFLICT</a></p>
                 </li><li class="listitem">
                     <p><a href="./r_STL_UNDONE.html">STL_UNDONE</a></p>
                 </li></ul></div>
@@ -455,4 +465,175 @@
             <ul class="itemizedlist"><li class="listitem">
                     <p><a href="./r_SVL_SPATIAL_SIMPLIFY.html">SVL_SPATIAL_SIMPLIFY</a></p>
                 </li></ul></div>
-        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./SYS_VACUUM_HISTORY.html">SYS_VACUUM_HISTORY</div><div id="next" class="next-link" accesskey="n" href="./c_intro_system_views.html">Monitoramento do sistema (somente provisionado)</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sys_view_migration.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sys_view_migration.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+         
+            <h2 id="sys_view_migration-examples">Exemplo</h2>
+            
+             
+                <h3 id="sys_view_migration-examples-query-id">Exibição de como o Amazon Redshift registra consultas de maneira diferente em exibições somente provisionadas e de monitoramento SYS</h3>
+                <p>Consulte o código de exemplo a seguir. Esta é a consulta escrita como você a executaria no Amazon Redshift.</p>
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SELECT  
+  s_name
+  , COUNT(*) AS numwait
+FROM    
+  supplier,
+  lineitem l1,
+  orders,
+  nation
+WHERE    s_suppkey = l1.l_suppkey
+         AND o_orderkey = l1.l_orderkey
+         AND o_orderstatus = 'F'
+         AND l1.l_receiptdate &gt; l1.l_commitdate
+         AND EXISTS (SELECT
+                       *
+                     FROM  
+                       lineitem l2
+                     WHERE  l2.l_orderkey = l1.l_orderkey
+                            AND l2.l_suppkey &lt;&gt; l1.l_suppkey )
+         AND NOT EXISTS (SELECT
+                           *
+                         FROM  
+                           lineitem l3
+                         WHERE  l3.l_orderkey = l1.l_orderkey
+                                AND l3.l_suppkey &lt;&gt; l1.l_suppkey
+                                AND l3.l_receiptdate &gt; l3.l_commitdate )
+         AND s_nationkey = n_nationkey
+         AND n_name = 'UNITED STATES'
+GROUP BY
+  s_name
+ORDER BY
+  numwait DESC
+  , s_name LIMIT 100;</code></pre>
+                <p>Nos bastidores, o otimizador de consultas do Amazon Redshift reescreve a consulta enviada pelo usuário acima em cinco consultas filho.</p>
+                <p>A primeira consulta filho cria uma tabela temporária para materializar uma subconsulta.</p>
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE TEMP TABLE volt_tt_606590308b512(l_orderkey 
+                                        , l_suppkey
+                                        , s_name   ) AS SELECT
+                                                         l1.l_orderkey
+                                                         , l1.l_suppkey
+                                                         , public.supplier.s_name
+                                                       FROM  
+                                                         public.lineitem AS l1,
+                                                         public.nation,
+                                                         public.orders,
+                                                         public.supplier
+                                                       WHERE  l1.l_commitdate &lt; l1.l_receiptdate
+                                                              AND l1.l_orderkey = public.orders.o_orderkey
+                                                              AND l1.l_suppkey = public.supplier.s_suppkey
+                                                              AND public.nation.n_name = 'UNITED STATES'::CHAR(8)
+                                                              AND public.nation.n_nationkey = public.supplier.s_nationkey
+                                                              AND public.orders.o_orderstatus = 'F'::CHAR(1);</code></pre>
+                <p>A segunda consulta filho coleta estatísticas da tabela temporária.</p>
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">padb_fetch_sample: select count(*) from volt_tt_606590308b512;</code></pre>
+                <p>A terceira consulta filho cria outra tabela temporária para materializar outra subconsulta, referenciando a tabela temporária criada acima.</p>
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE TEMP TABLE volt_tt_606590308c2ef(l_orderkey 
+                                        , l_suppkey) AS (SELECT
+                                                          volt_tt_606590308b512.l_orderkey
+                                                          , volt_tt_606590308b512.l_suppkey
+                                                        FROM  
+                                                          public.lineitem AS l2,
+                                                          volt_tt_606590308b512
+                                                        WHERE  l2.l_suppkey &lt;&gt; volt_tt_606590308b512.l_suppkey
+                                                               AND l2.l_orderkey = volt_tt_606590308b512.l_orderkey) 
+                                                               EXCEPT distinct (SELECT volt_tt_606590308b512.l_orderkey, volt_tt_606590308b512.l_suppkey
+                                                               FROM public.lineitem AS l3, volt_tt_606590308b512 
+                                                               WHERE l3.l_commitdate &lt; l3.l_receiptdate 
+                                                                 AND l3.l_suppkey &lt;&gt; volt_tt_606590308b512.l_suppkey 
+                                                                 AND l3.l_orderkey = volt_tt_606590308b512.l_orderkey);</code></pre>
+             
+            <p>A quarta consulta filho coleta novamente estatísticas da tabela temporária.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">padb_fetch_sample: select count(*) from volt_tt_606590308c2ef</code></pre>
+            <p>A última consulta filho usa as tabelas temporárias criadas acima para gerar a saída.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SELECT  
+  volt_tt_606590308b512.s_name AS s_name
+  , COUNT(*) AS numwait
+FROM    
+  volt_tt_606590308b512,
+  volt_tt_606590308c2ef
+WHERE    volt_tt_606590308b512.l_orderkey = volt_tt_606590308c2ef.l_orderkey
+         AND volt_tt_606590308b512.l_suppkey = volt_tt_606590308c2ef.l_suppkey
+GROUP BY
+  1
+ORDER BY
+  2 DESC
+  , 1 ASC LIMIT 100;</code></pre>
+            <p>Na exibição do sistema somente provisionada STL_QUERY, o Amazon Redshift registra cinco linhas no nível da consulta filho, da seguinte maneira:</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SELECT userid, xid, pid, query, querytxt::varchar(100); 
+FROM stl_query 
+WHERE xid = 48237350 
+ORDER BY xid, starttime;
+
+<code class="code" copy="false"> userid |   xid    |    pid     |  query   |                                               querytxt
+--------+----------+------------+----------+------------------------------------------------------------------------------------------------------
+    101 | 48237350 | 1073840810 | 12058151 | CREATE TEMP TABLE volt_tt_606590308b512(l_orderkey, l_suppkey, s_name) AS SELECT l1.l_orderkey, l1.l
+    101 | 48237350 | 1073840810 | 12058152 | padb_fetch_sample: select count(*) from volt_tt_606590308b512
+    101 | 48237350 | 1073840810 | 12058156 | CREATE TEMP TABLE volt_tt_606590308c2ef(l_orderkey, l_suppkey) AS (SELECT volt_tt_606590308b512.l_or
+    101 | 48237350 | 1073840810 | 12058168 | padb_fetch_sample: select count(*) from volt_tt_606590308c2ef
+    101 | 48237350 | 1073840810 | 12058170 | SELECT s_name , COUNT(*) AS numwait FROM supplier, lineitem l1, orders, nation WHERE s_suppkey = l1.
+(5 rows)</code></code></pre>
+            <p>Na exibição de monitoramento SYS SYS_QUERY_HISTORY, o Amazon Redshift registra a consulta da seguinte maneira:</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SELECT user_id, transaction_id, session_id, query_id, query_text::varchar(100) 
+FROM sys_query_history 
+WHERE transaction_id = 48237350 
+ORDER BY start_time;
+
+<code class="code" copy="false"> user_id | transaction_id | session_id | query_id |                                              query_text
+---------+----------------+------------+----------+------------------------------------------------------------------------------------------------------
+     101 |       48237350 | 1073840810 | 12058149 | SELECT s_name , COUNT(*) AS numwait FROM supplier, lineitem l1, orders, nation WHERE s_suppkey = l1.</code></code></pre>
+        <p>Em SYS_QUERY_DETAIL, você pode encontrar detalhes no nível da consulta filho usando o valor query_id de SYS_QUERY_HISTORY. A coluna child_query_sequence mostra a ordem na qual as consultas filho são executadas. Para obter mais informações sobre as colunas em SYS_QUERY_DETAIL, consulte <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select user_id,
+       query_id,
+       child_query_sequence,
+       stream_id,
+       segment_id,
+       step_id,
+       start_time,
+       end_time,
+       duration,
+       blocks_read,
+       blocks_write,
+       local_read_io,
+       remote_read_io,
+       data_skewness,
+       time_skewness,
+       is_active,
+       spilled_block_local_disk,
+       spilled_block_remote_disk
+from sys_query_detail
+where query_id = 12058149
+      and step_id = -1
+order by query_id,
+         child_query_sequence,
+         stream_id,
+         segment_id,
+         step_id;
+
+<code class="code" copy="false"> user_id | query_id | child_query_sequence | stream_id | segment_id | step_id |         start_time         |          end_time          | duration | blocks_read | blocks_write | local_read_io | remote_read_io | data_skewness | time_skewness | is_active | spilled_block_local_disk | spilled_block_remote_disk
+---------+----------+----------------------+-----------+------------+---------+----------------------------+----------------------------+----------+-------------+--------------+---------------+----------------+---------------+---------------+-----------+--------------------------+---------------------------
+     101 | 12058149 |                    1 |         0 |          0 |      -1 | 2023-09-27 15:40:38.512415 | 2023-09-27 15:40:38.533333 |    20918 |           0 |            0 |             0 |              0 |             0 |            44 | f         |                        0 |                         0
+     101 | 12058149 |                    1 |         1 |          1 |      -1 | 2023-09-27 15:40:39.931437 | 2023-09-27 15:40:39.972826 |    41389 |          12 |            0 |            12 |              0 |             0 |            77 | f         |                        0 |                         0
+     101 | 12058149 |                    1 |         2 |          2 |      -1 | 2023-09-27 15:40:40.584412 | 2023-09-27 15:40:40.613982 |    29570 |          32 |            0 |            32 |              0 |             0 |            25 | f         |                        0 |                         0
+     101 | 12058149 |                    1 |         2 |          3 |      -1 | 2023-09-27 15:40:40.582038 | 2023-09-27 15:40:40.615758 |    33720 |           0 |            0 |             0 |              0 |             0 |             1 | f         |                        0 |                         0
+     101 | 12058149 |                    1 |         3 |          4 |      -1 | 2023-09-27 15:40:46.668766 | 2023-09-27 15:40:46.705456 |    36690 |          24 |            0 |            15 |              0 |             0 |            17 | f         |                        0 |                         0
+     101 | 12058149 |                    1 |         4 |          5 |      -1 | 2023-09-27 15:40:46.707209 | 2023-09-27 15:40:46.709176 |     1967 |           0 |            0 |             0 |              0 |             0 |            18 | f         |                        0 |                         0
+     101 | 12058149 |                    1 |         4 |          6 |      -1 | 2023-09-27 15:40:46.70656  | 2023-09-27 15:40:46.71289  |     6330 |           0 |            0 |             0 |              0 |             0 |             0 | f         |                        0 |                         0
+     101 | 12058149 |                    1 |         5 |          7 |      -1 | 2023-09-27 15:40:46.71405  | 2023-09-27 15:40:46.714343 |      293 |           0 |            0 |             0 |              0 |             0 |             0 | f         |                        0 |                         0
+     101 | 12058149 |                    2 |         0 |          0 |      -1 | 2023-09-27 15:40:52.083907 | 2023-09-27 15:40:52.087854 |     3947 |           0 |            0 |             0 |              0 |             0 |            35 | f         |                        0 |                         0
+     101 | 12058149 |                    2 |         1 |          1 |      -1 | 2023-09-27 15:40:52.089632 | 2023-09-27 15:40:52.091129 |     1497 |           0 |            0 |             0 |              0 |             0 |            11 | f         |                        0 |                         0
+     101 | 12058149 |                    2 |         1 |          2 |      -1 | 2023-09-27 15:40:52.089008 | 2023-09-27 15:40:52.091306 |     2298 |           0 |            0 |             0 |              0 |             0 |             0 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         0 |          0 |      -1 | 2023-09-27 15:40:56.882013 | 2023-09-27 15:40:56.897282 |    15269 |           0 |            0 |             0 |              0 |             0 |            29 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         1 |          1 |      -1 | 2023-09-27 15:40:59.718554 | 2023-09-27 15:40:59.722789 |     4235 |           0 |            0 |             0 |              0 |             0 |            13 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         2 |          2 |      -1 | 2023-09-27 15:40:59.800382 | 2023-09-27 15:40:59.807388 |     7006 |           0 |            0 |             0 |              0 |             0 |            58 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         3 |          3 |      -1 | 2023-09-27 15:41:06.488685 | 2023-09-27 15:41:06.493825 |     5140 |           0 |            0 |             0 |              0 |             0 |            56 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         3 |          4 |      -1 | 2023-09-27 15:41:06.486206 | 2023-09-27 15:41:06.497756 |    11550 |           0 |            0 |             0 |              0 |             0 |             2 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         4 |          5 |      -1 | 2023-09-27 15:41:06.499201 | 2023-09-27 15:41:06.500851 |     1650 |           0 |            0 |             0 |              0 |             0 |            15 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         4 |          6 |      -1 | 2023-09-27 15:41:06.498609 | 2023-09-27 15:41:06.500949 |     2340 |           0 |            0 |             0 |              0 |             0 |             0 | f         |                        0 |                         0
+     101 | 12058149 |                    3 |         5 |          7 |      -1 | 2023-09-27 15:41:06.502945 | 2023-09-27 15:41:06.503282 |      337 |           0 |            0 |             0 |              0 |             0 |             0 | f         |                        0 |                         0
+     101 | 12058149 |                    4 |         0 |          0 |      -1 | 2023-09-27 15:41:06.62899  | 2023-09-27 15:41:06.631452 |     2462 |           0 |            0 |             0 |              0 |             0 |            22 | f         |                        0 |                         0
+     101 | 12058149 |                    4 |         1 |          1 |      -1 | 2023-09-27 15:41:06.632313 | 2023-09-27 15:41:06.63391  |     1597 |           0 |            0 |             0 |              0 |             0 |            20 | f         |                        0 |                         0
+     101 | 12058149 |                    4 |         1 |          2 |      -1 | 2023-09-27 15:41:06.631726 | 2023-09-27 15:41:06.633813 |     2087 |           0 |            0 |             0 |              0 |             0 |             0 | f         |                        0 |                         0
+     101 | 12058149 |                    5 |         0 |          0 |      -1 | 2023-09-27 15:41:12.571974 | 2023-09-27 15:41:12.584234 |    12260 |           0 |            0 |             0 |              0 |             0 |            39 | f         |                        0 |                         0
+     101 | 12058149 |                    5 |         0 |          1 |      -1 | 2023-09-27 15:41:12.569815 | 2023-09-27 15:41:12.585391 |    15576 |           0 |            0 |             0 |              0 |             0 |             4 | f         |                        0 |                         0
+     101 | 12058149 |                    5 |         1 |          2 |      -1 | 2023-09-27 15:41:13.758513 | 2023-09-27 15:41:13.76401  |     5497 |           0 |            0 |             0 |              0 |             0 |            39 | f         |                        0 |                         0
+     101 | 12058149 |                    5 |         1 |          3 |      -1 | 2023-09-27 15:41:13.749    | 2023-09-27 15:41:13.772987 |    23987 |           0 |            0 |             0 |              0 |             0 |            32 | f         |                        0 |                         0
+     101 | 12058149 |                    5 |         2 |          4 |      -1 | 2023-09-27 15:41:13.799526 | 2023-09-27 15:41:13.813506 |    13980 |           0 |            0 |             0 |              0 |             0 |            62 | f         |                        0 |                         0
+     101 | 12058149 |                    5 |         2 |          5 |      -1 | 2023-09-27 15:41:13.798823 | 2023-09-27 15:41:13.813651 |    14828 |           0 |            0 |             0 |              0 |             0 |             0 | f         |                        0 |                         0
+(28 rows)</code></code></pre><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./SYS_VACUUM_HISTORY.html">SYS_VACUUM_HISTORY</div><div id="next" class="next-link" accesskey="n" href="./c_intro_system_views.html">Monitoramento do sistema (somente provisionado)</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sys_view_migration.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/sys_view_migration.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

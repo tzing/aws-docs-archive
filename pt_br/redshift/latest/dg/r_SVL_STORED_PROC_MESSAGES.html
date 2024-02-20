@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_STORED_PROC_MESSAGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_STORED_PROC_MESSAGES-table-columns">Colunas da tabela</a><a href="#r_SVL_STORED_PROC_MESSAGES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_STORED_PROC_MESSAGES">SVL_STORED_PROC_MESSAGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>É possível consultar a visualização do sistema SVL_STORED_PROC_MESSAGES para obter informações sobre mensagens de procedimento armazenado. As mensagens geradas são registradas mesmo se a chamada de procedimento armazenado for cancelada. Cada chamada de procedimento armazenado recebe um ID de consulta. Para obter mais informações sobre como definir o nível mínimo para mensagens registradas em log, consulte stored_proc_log_min_messages.</p><p>SVL_STORED_PROC_MESSAGES está visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_PROCEDURE_MESSAGES.html">SYS_PROCEDURE_MESSAGES</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_STORED_PROC_MESSAGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_STORED_PROC_MESSAGES-table-columns">Colunas da tabela</a><a href="#r_SVL_STORED_PROC_MESSAGES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_STORED_PROC_MESSAGES">SVL_STORED_PROC_MESSAGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>É possível consultar a visualização do sistema SVL_STORED_PROC_MESSAGES para obter informações sobre mensagens de procedimento armazenado. As mensagens geradas são registradas mesmo se a chamada de procedimento armazenado for cancelada. Cada chamada de procedimento armazenado recebe um ID de consulta. Para obter mais informações sobre como definir o nível mínimo para mensagens registradas em log, consulte stored_proc_log_min_messages.</p><p>SVL_STORED_PROC_MESSAGES está visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_PROCEDURE_MESSAGES.html">SYS_PROCEDURE_MESSAGES</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_STORED_PROC_MESSAGES-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c65b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c65b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,17 +61,17 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário cujos privilégios foram usados para executar a instrução. Se essa chamada tiver sido aninhada dentro de um procedimento armazenado DEFINIDOR DE SEGURANÇA, esse será o userid do proprietário desse procedimento armazenado. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">session_userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que criou a sessão e é o invocador da chamada de procedimento armazenado de nível superior. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">pid</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do processo. </td>
                         </tr>
                         <tr>
@@ -82,7 +82,7 @@
 
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID da consulta da chamada de procedimento. </td>
                         </tr>   
                         <tr>
@@ -92,7 +92,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">loglevel</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O valor numérico do nível de log da mensagem gerada. Valores possíveis: 20 – para LOG 30 – para INFO 40 – para NOTICE 50 – para WARNING 60 – para EXCEPTION</td>
                         </tr>
                         
@@ -102,13 +102,13 @@
                             <td tabindex="-1">O nível de log que corresponde ao valor numérico em loglevel. Valores possíveis: LOG, INFO, NOTICE, WARNING e EXCEPTION.</td>
                         </tr>                         
                         <tr>
-                            <td tabindex="-1">mensagem</td>
+                            <td tabindex="-1">message</td>
                             <td tabindex="-1">character(1024)</td>
                             <td tabindex="-1">O texto da mensagem gerada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">linenum</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número da linha da instrução gerada.</td>
                         </tr>
                         <tr>
@@ -124,7 +124,7 @@
   
                         <tr>
                             <td tabindex="-1">aborted </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se um procedimento armazenado tiver sido interrompido pelo sistema ou cancelado pelo usuário, essa coluna conterá o valor 1. Se a chamada for concluída, essa coluna terá o valor 0. </td>
                         </tr>
 

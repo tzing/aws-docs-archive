@@ -53,10 +53,11 @@
                     </li><li class="listitem">
                         <p>A maioria das funções SQL integradas, especificamente aquelas que são imutáveis, visto que têm os mesmos argumentos de entrada e sempre produzem a mesma saída. </p>
                     </li></ul></div>
+                <p>A atualização incremental também é compatível para uma visão materializada baseada em uma tabela da unidade de compartilhamento de dados.</p>
             </li><li class="listitem">
                 <p>Se uma atualização incremental não for possível, o Amazon Redshift executa uma atualização completa. Uma <em>atualização total</em> executa novamente a instrução SQL subjacente substituindo todos os dados na visualização materializada.</p>
             </li><li class="listitem">
-                <p>O Amazon Redshift escolhe automaticamente o método de atualização para uma visualização materializada, dependendo da consulta SELECT usada para definir a visualização materializada. </p>
+                <p>O Amazon Redshift seleciona automaticamente o método de atualização para uma visão materializada, dependendo da consulta SELECT usada para defini-la. </p>
             </li></ul></div><p>Atualizar uma visão materializada em uma visão materializada não é um processo em cascata. Em outras palavras, suponha que você tenha uma visão materializada A que depende da visão materializada B. Neste caso, quando o REFRESH MATERIALIZED VIEW A é invocado, A é atualizado usando a versão atual de B, mesmo quando B está desatualizado. Para atualizar A totalmente, antes de atualizar A, primeiro atualize B em uma transação separada.</p><p>O exemplo a seguir mostra como criar um plano de atualização completo para uma visualização materializada programaticamente. Para atualizar a visualização materializada v, primeiro atualize a visualização materializada u. Para atualizar a visualização materializada w, primeiro atualize a visualização materializada u e, em seguida, a visualização materializada v.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE TABLE t(a INT);
 CREATE MATERIALIZED VIEW u AS SELECT * FROM t;
 CREATE MATERIALIZED VIEW v AS SELECT * FROM u;
@@ -100,7 +101,18 @@ INFO:  Materialized view c was incrementally updated successfully.</code></pre><
                     <p>As funções de agregação MEDIAN, PERCENTILE_CONT, LISTAGG, STDDEV_SAMP, STDDEV_POP, APPROXIMATE COUNT e APPROXIMATE PERCENTILE e funções de agregação bit a bit.</p>
                     <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>As funções agregadas COUNT, SUM e AVG são aceitas.</p></div></div>
                 </li><li class="listitem">
-                    <p>Funções agregadas DISTINCT, como DISTINCT COUNT, DISTINCT SUM e assim por diante.</p></li><li class="listitem"><p>Funções de janela.</p></li><li class="listitem"><p>Uma consulta que usa tabelas temporárias para otimização de consultas, como para otimizar subexpressões comuns.</p></li><li class="listitem"><p>Subconsultas em qualquer outro lugar além da cláusula FROM.</p></li><li class="listitem"><p>Tabelas externas referenciadas como tabelas base na consulta que define a visualização materializada.</p></li></ul></div>
+                    <p>Funções agregadas DISTINCT, como DISTINCT COUNT, DISTINCT SUM e assim por diante.</p></li><li class="listitem"><p>Funções de janela.</p></li><li class="listitem"><p>Uma consulta que usa tabelas temporárias para otimização de consultas, como para otimizar subexpressões comuns.</p></li><li class="listitem"><p>Subconsultas em qualquer outro lugar além da cláusula FROM.</p></li><li class="listitem">
+                    <p>Tabelas externas referenciando os formatos a seguir na consulta que define a visão materializada. </p>
+                    <div class="itemizedlist">
+                         
+                         
+                    <ul class="itemizedlist"><li class="listitem">
+                            <p> Delta Lake </p>
+                        </li><li class="listitem">
+                            <p> Hudi </p>
+                        </li></ul></div>
+                    <p>A atualização incremental é compatível na faixa de visualização para visões materializadas definidas usando formatos diferentes dos listados acima. Para obter mais informações sobre como configurar clusters de visualização, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#cluster-preview">Creating a preview cluster</a> no <em>Guia de gerenciamento do Amazon Redshift</em>. Para obter mais informações sobre como configurar grupos de trabalho de visualização, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">Creating a preview workgroup</a> no <em>Guia de gerenciamento do Amazon Redshift</em>. </p>
+                </li></ul></div>
             <h2 id="materialized-view-auto-refresh">Atualizar automaticamente uma visualização materializada</h2>
         <p>O Amazon Redshift pode atualizar automaticamente as visualizações materializadas com dados atualizados de suas tabelas base quando as visualizações materializadas são criadas ou alteradas para ter a opção de atualização automática. O Amazon Redshift atualiza automaticamente as visualizações materializadas o mais rápido possível após as alterações nas tabelas base.</p>
             <p>Para concluir a atualização das visualizações materializadas mais importantes com impacto mínimo nos workloads ativos em seu cluster, o Amazon Redshift considera vários fatores. Esses fatores incluem a carga atual do sistema, os recursos necessários para atualização, os recursos de cluster disponíveis e a frequência com que as visualizações materializadas são usadas. </p>

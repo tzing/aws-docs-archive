@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_DATASHARE_CHANGE_LOG" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_DATASHARE_CHANGE_LOG-table-rows">Colunas da tabela</a><a href="#SYS_DATASHARE_CHANGE_LOG-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_DATASHARE_CHANGE_LOG">SYS_DATASHARE_CHANGE_LOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Regista a exibição consolidada para rastrear alterações nos conjuntos de dados em clusters de produtores e consumidores.</p><p>Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_DATASHARE_CHANGE_LOG" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_DATASHARE_CHANGE_LOG-table-rows">Colunas da tabela</a><a href="#SYS_DATASHARE_CHANGE_LOG-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_DATASHARE_CHANGE_LOG">SYS_DATASHARE_CHANGE_LOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Regista a exibição consolidada para rastrear alterações nos conjuntos de dados em clusters de produtores e consumidores.</p><p>SYS_DATASHARE_CHANGE_LOG permanece visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_DATASHARE_CHANGE_LOG-table-rows">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c23b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c21b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que executa a ação.</td>
                         </tr>
                         <tr>
@@ -67,7 +67,7 @@
                             <td tabindex="-1">
                                 <p>session_id</p>
                             </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID da sessão.</td>
                         </tr>
                         <tr>
@@ -77,7 +77,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">share_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do datashare afetado.</td>
                         </tr>
                         <tr>
@@ -87,7 +87,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">source_database_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do banco de dados ao qual o datashare pertence.</td>
                         </tr>
                         <tr>
@@ -97,7 +97,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">consumer_database_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do banco de dados importado do datashare.</td>
                         </tr>
                         <tr>
@@ -116,14 +116,14 @@
                             <td tabindex="-1">O timestamp da ação.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">action</td>
+                            <td tabindex="-1">ação</td>
                             <td tabindex="-1">varchar(128)</td>
                             <td tabindex="-1">A ação que está sendo executada. Os valores possíveis são CREATE DATASHARE, DROP DATASHARE, GRANT ALTER, REVOKE ALTER, GRANT SHARE, REVOKE SHARE, ALTER ADD, ALTER REMOVE, ALTER SET, GRANT USAGE, REVOKE USAGE, CREATE DATABASE, GRANT ou REVOAKE USAGE em um banco de dados compartilhado, DROP SHARED DATABASE, ALTER SHARED DATABASE. </td>
                             
                         </tr>
                         <tr>
                             <td tabindex="-1">status</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O status da ação. Os valores possíveis são SUCESS e ERROR-ERROR CODE.</td>
                         </tr>
                         <tr>
@@ -133,7 +133,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">share_object_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do objeto de banco de dados que foi adicionado ou removido do datashare. Este é um campo para o cluster produtor.</td>
                         </tr>
                         <tr>
@@ -148,7 +148,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">target_user_id </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID de usuários ou grupos aos quais um privilégio foi concedido. Este é um campo para o cluster do produtor e do consumidor.</td>
                         </tr>
                         <tr>
@@ -194,7 +194,7 @@
                             <td tabindex="-1">O valor de um atributo do datashare ou do banco de dados compartilhado.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">mensagem</td>
+                            <td tabindex="-1">message</td>
                             <td tabindex="-1">varchar(512)</td>
                             <td tabindex="-1">A mensagem de erro quando uma ação falha.</td>
                         </tr>
@@ -211,4 +211,4 @@ WHERE share_object_name LIKE 'tickit%';
          action
  -----------------------
   "ALTER DATASHARE ADD"</code></pre>
-        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_SYS_DATASHARE_CROSS_REGION_USAGE.html">SYS_DATASHARE_CROSS_REGION_USAGE</div><div id="next" class="next-link" accesskey="n" href="./SYS_DATASHARE_USAGE_CONSUMER.html">SYS_DATASHARE_USAGE_CONSUMER</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/SYS_DATASHARE_CHANGE_LOG.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/SYS_DATASHARE_CHANGE_LOG.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./SYS_COPY_REPLACEMENTS.html">SYS_COPY_REPLACEMENTS</div><div id="next" class="next-link" accesskey="n" href="./r_SYS_DATASHARE_CROSS_REGION_USAGE.html">SYS_DATASHARE_CROSS_REGION_USAGE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/SYS_DATASHARE_CHANGE_LOG.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/SYS_DATASHARE_CHANGE_LOG.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

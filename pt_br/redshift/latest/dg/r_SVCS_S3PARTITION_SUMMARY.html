@@ -52,7 +52,7 @@
             <h2 id="r_SVCS_S3PARTITION_SUMMARY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c13c23c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c13c23c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,12 +61,12 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">consulta</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID da consulta. Este valor pode ser usado para unir várias outras tabelas e exibições do sistema. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número do segmento. Uma consulta consiste em vários segmentos. </td>
                         </tr>
                         <tr>
@@ -101,22 +101,22 @@
                         </tr>  
                         <tr>
                             <td tabindex="-1">total_partitions</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número total de partições em uma tabela externa. </td>
                         </tr>  
                         <tr>
                             <td tabindex="-1">qualified_partitions</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número total de partições qualificadas. </td>
                         </tr> 
                         <tr>
                             <td tabindex="-1">min_assigned_partitions</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número mínimo de partições atribuídas em um nó. </td>
                         </tr>  
                         <tr>
                             <td tabindex="-1">max_assigned_partitions</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número máximo de partições atribuídas em um nó. </td>
                         </tr> 
                         <tr>
@@ -131,7 +131,7 @@
             
             
             <p>O exemplo a seguir obtém os detalhes da varredura de partições da última consulta realizada.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select query, segment, assignment, min_starttime, max_endtime, min_dureation, avg_duration 
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select query, segment, assignment, min_starttime, max_endtime, min_duration, avg_duration 
 from svcs_s3partition_summary 
 where query = pg_last_query_id() 
 order by query,segment;</code></pre>

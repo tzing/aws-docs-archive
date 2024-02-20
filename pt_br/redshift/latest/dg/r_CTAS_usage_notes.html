@@ -80,7 +80,7 @@
                   <p>As colunas definidas como CHAR, VARCHAR ou VARBYTE recebem a compactação LZO.</p>
                </li></ul></div>
             <p>Para obter mais informações, consulte <a href="./c_Compression_encodings.html">Codificações de compactação</a> e <a href="./c_Supported_data_types.html">Tipos de dados</a>. </p>
-            <p>Para atribuir explicitamente codificações de coluna, use <a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a>.</p>
+            <p>Para atribuir explicitamente codificações de coluna, use <a href="./r_CREATE_TABLE_NEW.html">CRIAR TABELA</a>.</p>
             <p>O CTAS determina o estilo de distribuição e a chave de classificação para a nova tabela com base no plano de consulta para a cláusula SELECT. </p>
             <p>Para consultas complexas, como consultas incluindo junções, agregações, classificação por cláusula ou uma cláusula de limite, o CTAS se esforça para escolher o melhor estilo de distribuição e chave de classificação com base no plano de consulta. </p>
             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Para uma melhor performance com grandes conjuntos de dados ou consultas complexas, recomendamos testar usando conjuntos de dados típicos.</p></div></div>
@@ -176,7 +176,7 @@ explain create table sales5_groupby as select listid, dateid, sum(qtysold) from 
  sales5_groupby       | sum        | f       |       0
             </code></pre>
             <p>A tabela a seguir resume os resultados. Para simplificar, omitimos os custos, as linhas e os detalhes de largura do plano de explicação.</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45b9c99c13b5c35"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47b9d105c13b5c35"><thead>
                      <tr>
                         <th>
                            <p>Tabela</p>

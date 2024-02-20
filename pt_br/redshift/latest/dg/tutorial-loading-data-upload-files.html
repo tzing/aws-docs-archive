@@ -47,17 +47,20 @@
 
             <div class="procedure"><h6>Para carregar arquivos para um bucket do Amazon S3</h6><ol><li>
                     <p>Crie um bucket no Amazon S3.</p>
+                    <p>Para obter mais informações sobre como criar um bucket, consulte <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">Criar um bucket</a>, no <em>Guia do usuário do Amazon Simple Storage Service</em>.</p>
                     
                     <ol><li> <p>Faça login no AWS Management Console e abra o console do Amazon S3 em <a href="https://console.aws.amazon.com/s3/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/s3/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p> </li><li>
-                            <p>Clique em <b>Create Bucket</b>.</p>
+                            <p>Escolha <b>Criar bucket</b>.</p>
                         </li><li>
-                            <p>Na caixa <b>Bucket Name</b> da caixa de diálogo <b>Create a Bucket</b>, digite o nome de um bucket. </p>
-                            <p>O nome de bucket que você escolher deve ser único entre todos os nomes de bucket existentes no Amazon S3. Uma forma de ajudar a garantir a exclusividade é prefixar seus nomes de bucket com o nome de sua organização. Os nomes de bucket devem estar em conformidade com determinadas regras. Para obter mais informações, acesse <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">Restrições e limitações de bucket</a> no <em>Guia do usuário do Amazon Simple Storage Service</em>. </p>
-                        </li><li>
-                            <p>Selecione uma Region (Região). </p>
+                            <p>Escolha um Região da AWS. </p>
                             <p>Crie o bucket na mesma região do cluster. Se o cluster estiver na região Oeste dos EUA (Oregon), escolha <b>US West (Oregon) Region (us-west-2)</b>.</p>
                         </li><li>
-                            <p>Escolha <b>Create</b> (Criar). </p>
+                            <p>Na caixa <b>Nome do bucket</b> da caixa de diálogo <b>Criar um bucket</b>, digite o nome de um bucket. </p>
+                            <p>O nome de bucket que você escolher deve ser único entre todos os nomes de bucket existentes no Amazon S3. Uma forma de ajudar a garantir a exclusividade é prefixar seus nomes de bucket com o nome de sua organização. Os nomes de bucket devem estar em conformidade com determinadas regras. Para obter mais informações, acesse <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">Restrições e limitações de bucket</a> no <em>Guia do usuário do Amazon Simple Storage Service</em>. </p>
+                        </li><li>
+                            <p>Escolha os padrões recomendados para o restante das opções.</p>
+                        </li><li>
+                            <p>Escolha <b>Criar bucket</b>. </p>
                             <p>Quando o Amazon S3 cria seu bucket com sucesso, o console exibe seu bucket vazio no painel <b>Buckets</b>. </p>
                         </li></ol>
                 </li><li>
@@ -65,7 +68,7 @@
                     <ol><li>
                             <p>Escolha o nome do novo bucket.</p>
                         </li><li>
-                            <p>Escolha o botão <b>Actions</b> (Ações) e clique em <b>Create Folder</b> (Criar pasta) na lista suspensa.</p>
+                            <p>Selecione o botão <b>Criar pasta</b>.</p>
                         </li><li>
                             <p>Nomeie a nova pasta como <code class="userinput">load</code>.</p>
                             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>O bucket que você criou não está em um sandbox. Neste exercício, você adiciona objetos a um bucket real. Um valor nominal é cobrado pelo tempo em que você armazena os objetos no bucket. Para obter mais informações sobre preços do Amazon S3, consulte <a href="https://aws.amazon.com/s3/pricing/" rel="noopener noreferrer" target="_blank"><span>Preço do Amazon S3</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p></div></div>
@@ -75,11 +78,11 @@
                     <ol><li>
                             <p>Escolha o nome da pasta de dados.</p>
                         </li><li>
-                            <p>No assistente Upload - Select Files (Carregar - Selecionar arquivos), escolha <b>Add Files</b> (Adicionar arquivos).</p>
+                            <p>No assistente de upload, escolha <b>Adicionar arquivos</b>.</p>
 
                             <p>Siga as instruções do console do Amazon S3 para carregar todos os arquivos que você baixou e extraiu.</p>
                         </li><li>
-                            <p>Escolha <b>Iniciar upload</b>.</p>
+                            <p>Escolha <b>Carregar</b>.</p>
                         </li></ol>
                 </li></ol></div>
 

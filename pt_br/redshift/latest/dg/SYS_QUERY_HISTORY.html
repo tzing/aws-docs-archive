@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_HISTORY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_QUERY_HISTORY-table-columns">Colunas da tabela</a><a href="#SYS_QUERY_HISTORY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_HISTORY">SYS_QUERY_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_QUERY_HISTORY para visualizar detalhes das consultas do usuário. Cada linha representa uma consulta de usuário com estatísticas acumuladas para alguns dos campos. Essa visualizações contêm muitos tipos de consultas, como linguagem de definição de dados (DDL), linguagem de manipulação de dados (DML), cópia, descarregamento e Amazon Redshift Spectrum. Contém tanto consultas em execução como finalizadas.</p><p>SYS_QUERY_HISTORY é visível para todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_HISTORY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_QUERY_HISTORY-table-columns">Colunas da tabela</a><a href="#SYS_QUERY_HISTORY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_HISTORY">SYS_QUERY_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_QUERY_HISTORY para visualizar detalhes das consultas do usuário. Cada linha representa uma consulta de usuário com estatísticas acumuladas para alguns dos campos. Essa visualizações contêm muitos tipos de consultas, como linguagem de definição de dados (DDL), linguagem de manipulação de dados (DML), cópia, descarregamento e Amazon Redshift Spectrum. Contém tanto consultas em execução como finalizadas.</p><p>SYS_QUERY_HISTORY é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_QUERY_HISTORY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c51b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c53b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário que enviou a consulta.</td>
                         </tr>
                         <tr>
@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do processo que está executando a consulta.</td>
                         </tr>
                         <tr>
@@ -95,7 +95,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">result_cache_hit</td>
-                            <td tabindex="-1">Booliano</td>
+                            <td tabindex="-1">Booleano</td>
                             <td tabindex="-1">Indica se a consulta corresponde ao cache de resultados.</td>
                         </tr>
                         <tr>
@@ -157,7 +157,7 @@
                         <tr>
                             <td tabindex="-1">compute_type</td>
                             <td tabindex="-1">varchar(32)</td>
-                            <td tabindex="-1">Indica se a consulta é executada no cluster principal ou em um cluster de escalabilidade da simultaneidade. Os valores possíveis são <code class="code">primary</code> (a consulta é executada no cluster principal) ou <code class="code">primary-scale</code> (a consulta é executada no cluster de simultaneidade). Isso só se aplica ao cluster provisionado.</td>
+                            <td tabindex="-1">Indica se a consulta é executada no cluster principal ou em um cluster de escalabilidade da simultaneidade. Os valores possíveis são <code class="code">primary</code> (a consulta é executada no cluster principal), <code class="code">secondary</code> (a consulta é executada no cluster de simultaneidade) ou <code class="code">primary-scale</code> (a consulta é executada no cluster de simultaneidade). Isso só se aplica ao cluster provisionado.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">compile_time</td>

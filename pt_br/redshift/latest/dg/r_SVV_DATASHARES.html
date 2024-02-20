@@ -42,10 +42,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_DATASHARES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_DATASHARES-table-columns">Colunas da tabela</a><a href="#r_SVV_DATASHARES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_DATASHARES">SVV_DATASHARES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_DATASHARES para visualizar uma lista de unidades de compartilhamento de dados criadas no cluster e unidades de compartilhamento de dados compartilhadas com o cluster. </p><p>SVV_DATASHARES é visível para superusuários, proprietários de unidades de compartilhamento de dados ou usuários que tenham a permissão ALTER ou USAGE na unidade de compartilhamento de dados. Outros usuários não podem ver nenhuma linha. Para obter informações sobre o privilégio ALTER ou USAGE, consulte <a href="./r_GRANT.html">GRANT</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_DATASHARES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_DATASHARES-table-columns">Colunas da tabela</a><a href="#r_SVV_DATASHARES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_DATASHARES">SVV_DATASHARES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_DATASHARES para visualizar uma lista de unidades de compartilhamento de dados criadas no cluster e unidades de compartilhamento de dados compartilhadas com o cluster. </p><p>SVV_DATASHARES permanece visível para os seguintes usuários:</p><div class="itemizedlist">
+             
+             
+             
+            <ul class="itemizedlist"><li class="listitem"><p>Superusuários</p></li><li class="listitem"><p>Proprietários da unidade de compartilhamento de dados</p></li><li class="listitem"><p>Usuários com permissões ALTER ou USAGE em uma unidade de compartilhamento de dados</p></li></ul></div><p>Outros usuários não podem ver nenhuma linha. Para obter informações sobre as permissões ALTER e USAGE, consulte o <a href="./r_GRANT.html">GRANT</a>.</p>
             <h2 id="r_SVV_DATASHARES-table-columns">Colunas da tabela</h2>
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c29b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c29c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,12 +65,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">share_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do datashare. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">share_owner</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O proprietário do datashare. </td>
                         </tr>
                         <tr>
@@ -94,7 +98,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">is_publicaccessible</td>
-                            <td tabindex="-1">booleano</td>
+                            <td tabindex="-1">boolean</td>
                             <td tabindex="-1">A propriedade que especifica se um datashare pode ser compartilhado para um cluster acessível publicamente.</td>
                         </tr>
                         <tr>

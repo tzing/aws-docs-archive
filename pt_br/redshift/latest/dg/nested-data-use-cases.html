@@ -46,63 +46,45 @@
                       <h2 id="ingesting-nested-data">Ingerir dados aninhados</h2>
                       <p>Você pode usar uma declaração <code class="code">CREATE TABLE AS</code> para ingerir dados de uma tabela externa que contenha tipos de dados complexos. A consulta a seguir extrai todos os clientes e seus números de telefone da tabela externa, usando <code class="code">LEFT
                     JOIN</code> e os armazena na tabela <code class="code">CustomerPhones</code>. do Amazon Redshift. </p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE CustomerPhones AS
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE CustomerPhones AS
 SELECT  c.name.given, c.name.family, p AS phone
-FROM    spectrum.customers c LEFT JOIN c.phones p ON true                      
-                    </code></pre>
+FROM    spectrum.customers c LEFT JOIN c.phones p ON true;     </code></pre>
                   
                
                       <h2 id="aggregating-with-subquery"> Agregar dados aninhados com subconsultas </h2>
                       <p>Você pode usar uma subconsulta para agregar dados aninhados. O exemplo a seguir ilustra essa abordagem. </p>
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
-FROM   spectrum.customers c
-                     
-                      </code></pre>
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
+FROM   spectrum.customers c;</code></pre>
             <p>Os dados a seguir são retornados.</p>   
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-given   |  family  |  ordercount
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">given   |  family  |  ordercount
 --------|----------|--------------
  Jenny  |  Doe     |       0
  John   |  Smith   |       2
  Andy   |  Jones   |       1
- (3 rows)                              
-                          </code></pre>
+ (3 rows)              </code></pre>
                      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Quando você agrega dados aninhados agrupando os pela linha pai, a forma mais eficiente é a exibida no exemplo anterior. Nesse caso, as linhas aninhadas de <code class="code">c.orders</code> são agrupadas em sua linha pai <code class="code">c</code>. Ou, se você sabe que <code class="code">id</code> é exclusivo para cada <code class="code">customer</code> e <code class="code">o.shipdate</code> e nunca nulo, você pode agregar conforme exibido no seguinte exemplo. Contudo, esta abordagem não é geralmente mais eficiente que o exemplo anterior. </p></div></div>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
 FROM      spectrum.customers c LEFT JOIN c.orders o ON true 
-GROUP BY  c.id, c.name.given, c.name.family
-            </code></pre>
-                      <p>Você também pode gravar consultas usando uma subconsulta na cláusula que refere-se a um alias (<code class="code">c</code>) da consulta antecessora e extrai dados de array. O exemplo a seguir demonstra essa abordagem.</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, s.count AS ordercount
-FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s                       
-                      </code></pre>
+GROUP BY  c.id, c.name.given, c.name.family;</code></pre>
+                      <p>Você também pode gravar a consulta usando uma subconsulta na cláusula <code class="code">FROM</code> que refere-se a um alias (<code class="code">c</code>) da consulta antecessora e extrai dados da matriz. O exemplo a seguir demonstra essa abordagem.</p>
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, s.count AS ordercount
+FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s;    </code></pre>
                    
                       <h2 id="joining-redshift-data"> Unir o Amazon Redshift e dados aninhados </h2>
                       <p>Você também pode adicionar dados do Amazon Redshift com dados aninhados em uma tabela externa. Por exemplo, digamos que você tenha os dados a seguir aninhados no Amazon S3. </p>    
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers2 (
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE EXTERNAL TABLE spectrum.customers2 (
   id      int,
   name    struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones  array&lt;varchar(20)&gt;,
   orders  array&lt;struct&lt;shipdate:timestamp, item:int&gt;&gt;
-)
-                       </code></pre>
+);</code></pre>
                       <p>Digamos também que possui a tabela a seguir no Amazon Redshift.</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE prices (
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE prices (
   id int,
   price double precision
-)
-                       </code></pre>
+);</code></pre>
                       <p>A consulta a seguir encontra o número total e a quantidade de compras de cada cliente com base em precedência. O exemplo a seguir é apenas uma ilustração. Só retorna dados se você tiver criado as tabelas descritas anteriormente. </p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
 FROM     spectrum.customers2 c, c.orders o, prices p ON o.item = p.id  
-GROUP BY c.id, c.name.given, c.name.family
-            
-                  </code></pre>
-                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">Tutorial: Consultar dados aninhados com o Amazon Redshift Spectrum </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">Limitações de dados aninhados</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+GROUP BY c.id, c.name.given, c.name.family;</code></pre>
+                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">Tutorial: Consultar dados aninhados com o Amazon Redshift Spectrum </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">Limitações de dados aninhados (visualização)</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

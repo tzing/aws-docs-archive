@@ -42,7 +42,25 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">Sintaxe</a><a href="#r_GRANT-parameters">Parâmetros</a><a href="#r_GRANT-usage-notes-link">Observações de uso</a><a href="#r_GRANT-examples-link">Exemplos</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Define permissões de acesso para um usuário ou grupo de usuários.</p><p>As permissões incluem opções de acesso como leitura de dados em tabelas e visualizações, gravação de dados e criação de tabelas. Use este comando para fornecer permissões específicas para uma tabela, banco de dados, esquema, função, procedimento, linguagem ou coluna. Para revogar permissões de um objeto de banco de dados, use o comando <a href="./r_REVOKE.html">REVOKE</a>. </p><p>As permissões também incluem opções de acesso, como a capacidade de adicionar ou remover objetos ou consumidores de uma unidade de compartilhamento de dados. Para adicionar ou remover objetos de banco de dados de uma unidade de compartilhamento de dados para um usuário ou grupo de usuários, use a permissão ALTER. Da mesma forma, para adicionar ou remover consumidores de uma unidade de compartilhamento de dados, use a permissão SHARE. Para revogar permissões de um objeto de banco de dados, use o comando <a href="./r_REVOKE.html">REVOKE</a>. ALTER e SHARE são as únicas permissões que você pode conceder aos usuários e grupos de usuários. </p><p>Você também pode conceder perfis para gerenciar permissões de banco de dados e controlar o que os usuários podem fazer em relação aos seus dados. Ao definir perfis e atribuí-los aos usuários, você pode limitar as ações que esses usuários podem realizar, como limitar os usuários somente aos comandos CREATE TABLE e INSERT. Para obter mais informações sobre o comando CREATE ROLE, consulte <a href="./r_CREATE_ROLE.html">CREATE ROLE</a>. O Amazon Redshift tem alguns perfis definidos pelo sistema que você também pode usar para conceder permissões específicas aos seus usuários. Para obter mais informações, consulte <a href="./r_roles-default.html">Funções definidas pelo sistema do Amazon Redshift</a>.</p><p>Só é possível CONCEDER ou REVOGAR permissões de USO em um esquema externo para usuários de banco de dados e grupos de usuários que usam a sintaxe ON SCHEMA. Ao usar ON EXTERNAL SCHEMA com AWS Lake Formation, só é possível conceder (GRANT) e revogar (REVOKE) permissões para um perfil do AWS Identity and Access Management (IAM). Para obter a lista de permissões, consulte a sintaxe.</p><p>Para procedimentos armazenados, a única permissão que pode ser concedida é EXECUTE.</p><p>Não é possível executar GRANT (em um recurso externo) em um bloco de transação (BEGIN ... END). Para obter mais informações sobre transações, consulte <a href="./c_serial_isolation.html">Isolamento serializável</a>. </p><p>Para ver quais permissões os usuários receberam para um banco de dados, use <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>. Para ver quais permissões os usuários receberam para um esquema, use <a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a>. Para ver quais permissões os usuários receberam para uma tabela, use <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">Sintaxe</a><a href="#r_GRANT-parameters">Parâmetros</a><a href="#r_GRANT-usage-notes-link">Observações de uso</a><a href="#r_GRANT-examples-link">Exemplos</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Define permissões de acesso para um usuário ou uma função.</p><p>As permissões incluem opções de acesso como leitura de dados em tabelas e visualizações, gravação de dados e criação de tabelas. Use este comando para fornecer permissões específicas para uma tabela, banco de dados, esquema, função, procedimento, linguagem ou coluna. Para revogar permissões de um objeto de banco de dados, use o comando <a href="./r_REVOKE.html">REVOKE</a>. </p><p>As permissões também incluem as seguintes opções de acesso do produtor da unidade de compartilhamento de dados:</p><div class="itemizedlist">
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p> Concessão de acesso à unidade de compartilhamento de dados para namespaces e contas de consumidores. </p>
+         </li><li class="listitem">
+            <p> Concessão de permissão para alterar uma unidade de compartilhamento de dados adicionando ou removendo objetos da unidade de compartilhamento de dados. </p>
+         </li><li class="listitem">
+            <p> Concessão de permissão para compartilhar uma unidade de compartilhamento de dados adicionando ou removendo namespaces de consumidores da unidade de compartilhamento de dados. </p>
+         </li></ul></div><p>As opções de acesso do consumidor à unidade de compartilhamento de dados são as seguintes:</p><div class="itemizedlist">
+          
+         
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>Concessão a usuários de acesso total a bancos de dados criados a partir de uma unidade de compartilhamento de dados ou a esquemas externos que apontem para esses bancos de dados.</p>
+         </li><li class="listitem">
+            <p>Concessão a usuários de permissões no nível do objeto em bancos de dados criados a partir de uma unidade de compartilhamento de dados como a que você pode para objetos de banco de dados. Para conceder esse nível de permissão, você deve usar a cláusula WITH PERMISSIONS ao criar um banco de dados a partir da unidade de compartilhamento de dados. Para obter mais informações, consulte <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>.</p>
+         </li></ul></div><p>Para obter mais informações sobre permissões da unidade de compartilhamento de dados, consulte <a href="./share_datashare.html">Compartilhar unidades de compartilhamento de dados</a>.</p><p>Você também pode conceder perfis para gerenciar permissões de banco de dados e controlar o que os usuários podem fazer em relação aos seus dados. Ao definir perfis e atribuí-los aos usuários, você pode limitar as ações que esses usuários podem realizar, como limitar os usuários somente aos comandos CREATE TABLE e INSERT. Para obter mais informações sobre o comando CREATE ROLE, consulte <a href="./r_CREATE_ROLE.html">CRIAR PERFIL</a>. O Amazon Redshift tem alguns perfis definidos pelo sistema que você também pode usar para conceder permissões específicas aos seus usuários. Para obter mais informações, consulte <a href="./r_roles-default.html">Funções definidas pelo sistema do Amazon Redshift</a>.</p><p>Só é possível CONCEDER ou REVOGAR permissões de USO em um esquema externo para usuários de banco de dados e grupos de usuários que usam a sintaxe ON SCHEMA. Ao usar ON EXTERNAL SCHEMA com AWS Lake Formation, só é possível conceder (GRANT) e revogar (REVOKE) permissões para um perfil do AWS Identity and Access Management (IAM). Para obter a lista de permissões, consulte a sintaxe.</p><p>Para procedimentos armazenados, a única permissão que pode ser concedida é EXECUTE.</p><p>Não é possível executar GRANT (em um recurso externo) em um bloco de transação (BEGIN ... END). Para obter mais informações sobre transações, consulte <a href="./c_serial_isolation.html">Isolamento serializável</a>. </p><p>Para ver quais permissões os usuários receberam para um banco de dados, use <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>. Para ver quais permissões os usuários receberam para um esquema, use <a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a>. Para ver quais permissões os usuários receberam para uma tabela, use <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>. </p>
          <h2 id="r_GRANT-synopsis">Sintaxe</h2>
          <p></p>
          
@@ -87,11 +105,46 @@ GRANT <span>{</span> <span>{</span> SELECT | ALTER | DROP | DELETE | INSERT }  [
 
 GRANT <span>{</span> <span>{</span> CREATE | ALTER | DROP }  [, ...] | ALL [ PRIVILEGES ] }
     ON EXTERNAL SCHEMA <em>schema_name</em> [, ...]
-    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Conceder permissões da unidade de compartilhamento de dados" id="grant-datashare-syntax" expanded="false"><p>A seguir está a sintaxe para usar GRANT para permissões de unidade de compartilhamento de dados no Amazon Redshift. ALTER e SHARE são as únicas permissões que você pode conceder aos usuários e grupos de usuários neste caso.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
+    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Conceder permissões da unidade de compartilhamento de dados" id="grant-datashare-syntax" expanded="false">
+               <h6>Permissões da unidade de compartilhamento de dados no lado do produtor</h6>
+               <p>Esta é a sintaxe para usar GRANT a fim de conceder permissões ALTER ou SHARE a um usuário ou perfil. O usuário pode alterar a unidade de compartilhamento de dados com a permissão ALTER ou conceder o uso a um consumidor com a permissão SHARE. ALTER e SHARE são as únicas permissões que você pode conceder em uma unidade de compartilhamento de dados a usuários e funções.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <code class="code" copy="true">group_name</code> | PUBLIC } [, ...]</code></pre><p>A seguir está a sintaxe para usar GRANT para permissões de uso de unidade de compartilhamento de dados no Amazon Redshift. Você concede acesso de uma unidade de compartilhamento de dados a um consumidor usando a permissão USAGE. Você não pode conceder essa permissão a usuários ou grupos de usuários. Essa permissão também não é compatível com WITH GRANT OPTION para a instrução GRANT. Somente usuários ou grupos de usuários com a permissão SHARE concedida anteriormente a eles para (FOR) a unidade de compartilhamento de dados podem executar esse tipo de instrução GRANT.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE
     ON DATASHARE <em>datashare_name</em>
-    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>Veja a seguir um exemplo de como conceder o uso de uma unidade de compartilhamento de dados a uma conta do Lake Formation.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre><p>A seguir está a sintaxe para permissões de uso de compartilhamento de dados GRANT em um banco de dados específico ou esquema criado a partir de um datashare. Esta permissão USAGE não concede permissão de uso a bancos de dados que não são criados a partir do datashare especificado. Só é possível CONCEDER ou REVOGAR permissões ALTER ou SHARE em um datashare para usuários e grupos de usuários.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
-    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Conceder permissões de machine learning" id="grant-model-syntax" expanded="false"><p>A seguir está a sintaxe para permissões de modelos de machine learning no Amazon Redshift.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
+    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>Veja a seguir um exemplo de como conceder o uso de uma unidade de compartilhamento de dados a uma conta do Lake Formation.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>            
+               <h6>Permissões da unidade de compartilhamento de dados no lado do consumidor</h6>
+               <p>A seguir está a sintaxe para permissões de uso de compartilhamento de dados GRANT em um banco de dados específico ou esquema criado a partir de um datashare. </p><p>Outras permissões necessárias para consumidores terem acesso a um banco de dados criado a partir de uma unidade de compartilhamento de dados variam dependendo do comando CREATE DATABASE usado para criar o banco de dados a partir da unidade de compartilhamento de dados ter usado ou não a cláusula WITH PERMISSIONS. Para obter mais informações sobre o comando CREATE DATABASE e a cláusula WITH PERMISSIONS, consulte <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>.</p>
+               <h6>Bancos de dados criados sem usar a cláusula WITH PERMISSIONS</h6>
+               <p>Ao conceder USAGE em um banco de dados criado a partir de uma unidade de compartilhamento de dados sem a cláusula WITH PERMISSIONS, você não precisa conceder permissões separadamente nos objetos no banco de dados compartilhado. As entidades com uso concedido em bancos de dados criados a partir de unidades de compartilhamento de dados sem a cláusula WITH PERMISSIONS têm acesso automático a todos os objetos no banco de dados.</p>
+             
+               <h6>Bancos de dados criados usando a cláusula WITH PERMISSIONS</h6>
+               <p>Quando você concede USAGE em um banco de dados no qual o banco de dados compartilhado foi criado a partir de uma unidade de compartilhamento de dados com a cláusula WITH PERMISSIONS, as identidades no lado do consumidor ainda devem receber as permissões relevantes para objetos de banco de dados no banco de dados compartilhado para terem acesso a eles, assim como você concederia permissões para objetos de banco de dados locais. Para conceder permissões a objetos em um banco de dados criado a partir de uma unidade de compartilhamento de dados, use a sintaxe de três partes <code class="code">database_name.schema_name.object_name</code>. Para conceder permissões a objetos em um esquema externo apontando para um esquema compartilhado no banco de dados compartilhado, use a sintaxe de duas partes <code class="code">schema_name.object_name</code>.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
+    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Concessão de permissões em escopo " id="grant-scoped-syntax" expanded="false"><p>Use permissões em escopo para alterar permissões de um usuário ou uma função em um escopo de banco de dados ou esquema. </p><p>As permissões em escopo se aplicam a objetos no escopo selecionado quando você concede ou revoga a permissão, bem como a novos objetos criados após a concessão ou a revogação da permissão. Por exemplo, a concessão a uma função de permissão em escopo para selecionar tabelas em um banco de dados permite aos usuários com essa função selecionar tabelas que serão criadas no futuro, além de permitir que selecionem tabelas atualmente existentes no banco de dados. </p><p>Você pode usar permissões em escopo para definir as permissões padrão em um banco de dados compartilhado criado a partir de uma unidade de compartilhamento de dados. Um usuário da unidade de compartilhamento de dados no lado do consumidor que recebe permissões em escopo em um banco de dados compartilhado vai receber automaticamente essas permissões para qualquer novo objeto adicionado à unidade de compartilhamento de dados no lado do produtor.</p><p>Esta é a sintaxe para concessão de permissões em escopo para usuários ou perfis. Para ter mais informações sobre permissões com escopo definido, consulte <a href="./t_scoped-permissions.html">Permissões em escopo </a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT <span>{</span> CREATE | USAGE | ALTER } [,...] | ALL [ PRIVILEGES ] }
+FOR SCHEMAS IN
+DATABASE db_name 
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]
+
+GRANT 
+<span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | ALTER | TRUNCATE | REFERENCES } [, ...] } | ALL [PRIVILEGES] } }
+FOR TABLES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name} [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR FUNCTIONS IN 
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR PROCEDURES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT USAGE
+FOR LANGUAGES IN
+<span>{</span>DATABASE db_name}
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]  </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="Conceder permissões de machine learning" id="grant-model-syntax" expanded="false"><p>A seguir está a sintaxe para permissões de modelos de machine learning no Amazon Redshift.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
 
 GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
@@ -102,6 +155,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     <span>{</span> CREATE USER | DROP USER | ALTER USER |
     CREATE SCHEMA | DROP SCHEMA |
     ALTER DEFAULT PRIVILEGES |
+    ACCESS CATALOG | 
     CREATE TABLE | DROP TABLE | ALTER TABLE |
     CREATE OR REPLACE FUNCTION | CREATE OR REPLACE EXTERNAL FUNCTION |
     DROP FUNCTION |
@@ -110,7 +164,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     CREATE MODEL | DROP MODEL |
     CREATE DATASHARE | ALTER DATASHARE | DROP DATASHARE |
     CREATE LIBRARY | DROP LIBRARY |
-    CREATE ROLE | DROP ROLE
+    CREATE ROLE | DROP ROLE |
     TRUNCATE TABLE
     VACUUM | ANALYZE | CANCEL }[, ...]
   }
@@ -182,8 +236,13 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
 
                    
             
+            
+    
+            
              
 
+             
+            
              
 
             
@@ -218,21 +277,14 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>Concede permissão para excluir uma linha de dados de uma tabela. As operações DELETE também necessitam do privilégio SELECT, pois devem fazer referência a colunas da tabela para determinar que linhas excluir.</p>
                </dd>
              
+               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dd>
+                  <p>Concede permissão para remover uma tabela. Essa permissão se aplica no Amazon Redshift e em um AWS Glue Data Catalog que está habilitado para o Lake Formation.</p>
+               </dd>
+             
                <dt id="grant-references"><span class="term">REFERENCES </span></dt>
                <dd>
                   <p>Concede permissão para criar uma restrição de chave estrangeira. Você precisa conceder essa permissão na tabela referenciada e na tabela que faz a referência. Caso contrário, o usuário não poderá criar a restrição. </p>
-               </dd>
-             
-               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
-               <dd>
-                  <p>Concede permissão para truncar uma tabela. Sem essa permissão, somente o proprietário de uma tabela ou um superusuário pode truncar uma tabela. Para obter mais informações sobre o comando TRUNCATE, consulte <a href="./r_TRUNCATE.html">TRUNCATE</a>.</p>
-               </dd>
-             
-               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
-               <dd>
-                  <p>Concede todas as permissões disponíveis de uma vez ao usuário ou ao grupo de usuários especificado. A palavra-chave PRIVILEGES é opcional.</p>
-                  <p>GRANT ALL ON SCHEMA não concede permissões CREATE para esquemas externos.</p>
-                  <p>É possível conceder a permissão ALL para uma tabela em um AWS Glue Data Catalog habilitado para o Lake Formation. Nesse caso, permissões individuais (como SELECT, ALTER e assim por diante) são registradas no catálogo de dados. </p>
                </dd>
              
                <dt id="grant-alter"><span class="term">ALTER</span></dt>
@@ -253,12 +305,19 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                      </li><li class="listitem">
                         <p>Para tabelas externas, ALTER concede permissão para alterar uma tabela em um AWS Glue Data Catalog habilitado para o Lake Formation. Essa permissão só é aplicada ao usar o Lake Formation.</p>
                      </li></ul></div>
-
+                  
                </dd>
              
-               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
                <dd>
-                  <p>Concede permissão para remover uma tabela. Essa permissão se aplica no Amazon Redshift e em um AWS Glue Data Catalog que está habilitado para o Lake Formation.</p>
+                  <p>Concede permissão para truncar uma tabela. Sem essa permissão, somente o proprietário de uma tabela ou um superusuário pode truncar uma tabela. Para obter mais informações sobre o comando TRUNCATE, consulte <a href="./r_TRUNCATE.html">TRUNCATE</a>.</p>
+               </dd>
+             
+               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
+               <dd>
+                  <p>Concede todas as permissões disponíveis de uma vez ao usuário ou ao grupo de usuários especificado. A palavra-chave PRIVILEGES é opcional.</p>
+                  <p>GRANT ALL ON SCHEMA não concede permissões CREATE para esquemas externos.</p>
+                  <p>É possível conceder a permissão ALL para uma tabela em um AWS Glue Data Catalog habilitado para o Lake Formation. Nesse caso, permissões individuais (como SELECT, ALTER e assim por diante) são registradas no catálogo de dados. </p>
                </dd>
              
                <dt id="assumerole"><span class="term">ASSUMEROLE</span></dt>
@@ -443,12 +502,23 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                         <p>Concede as permissões especificadas no esquema especificado que é criado na unidade de compartilhamento de dados especificada.</p>
                      </dd>
                    
+               <dt><span class="term">FOR <span>{</span> SCHEMAS | TABLES | FUNCTIONS | PROCEDURES | LANGUAGES } IN </span></dt>
+               <dd>
+                  <p>Especifica os objetos de banco de dados aos quais conceder permissão. Os parâmetros após IN definem o escopo da permissão concedida.</p>
+               </dd>
+             
                <dt><span class="term">CREATE MODEL</span></dt>
                <dd><p>Concede a permissão CREATE MODEL a usuários ou grupos de usuários específicos.</p></dd>
              
                <dt><span class="term">ON MODEL <em>model_name</em></span></dt>
 
                <dd><p>Concede a permissão EXECUTE em um modelo específico. </p></dd>
+             
+               <dt><span class="term">ACCESS CATALOG</span></dt>
+               <dd>
+                  <p>Concede a permissão para exibir metadados relevantes de objetos aos quais a função tem acesso.</p>
+               </dd>
+             
                <dt><span class="term"><span>{</span> role } [, ...]</span></dt>
                <dd><p>A função a ser concedida a outra função, um usuário ou PUBLIC.</p>
                   <p>PUBLIC representa um grupo que inclui sempre todos os usuários. As permissões de um usuário individual consistem na soma das permissões concedidas a PUBLIC, das permissões concedidas a todos os grupos aos quais o usuário pertence e de quaisquer permissões concedidas ao usuário individualmente.</p>

@@ -52,7 +52,7 @@
             <h2 id="r_STV_WLM_SERVICE_CLASS_CONFIG-table-columns2">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c57b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c57b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,7 +61,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">service_class </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da classe de serviço. Para obter uma lista dos IDs de classe de serviço, consulte <a href="./cm-c-wlm-system-tables-and-views.html#wlm-service-class-ids">IDs da classe de serviço do WLM</a>. </td>
                         </tr>
                         <tr>
@@ -71,12 +71,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">num_query_tasks </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O nível de simultaneidade atual da classe de serviço. Se <code class="code">num_query_tasks</code> e <code class="code">target_num_query_tasks</code> são diferentes, uma transição dinâmica do WLM está em andamento. Um valor de <code class="code">-1</code> indica que <b>Auto WLM (WLM automático)</b> está configurado. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">target_num_query_tasks </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O nível de simultaneidade definido pela alteração de configuração mais recente do WLM. </td>
                         </tr>
                         <tr>
@@ -91,17 +91,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">query_working_mem </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A quantidade atual de memória de trabalho, em MB por slot, por nó, atribuída à classe de serviço. Se <code class="code">query_working_mem</code> e <code class="code">target_query_working_mem</code> são diferentes, uma transição dinâmica do WLM está em andamento. Um valor de <code class="code">-1</code> indica que <b>Auto WLM (WLM automático)</b> está configurado.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">target_query_working_mem </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A quantidade de memória de trabalho, em MB por slot, por nó, definida pela alteração de configuração mais recente do WLM. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">min_step_mem </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Reservada para uso do sistema.</td>
                         </tr>
                         <tr>
@@ -118,12 +118,12 @@
 
                         <tr>
                             <td tabindex="-1">user_group_wild_card </td>
-                            <td tabindex="-1">Booliano</td>
+                            <td tabindex="-1">Booleano</td>
                             <td tabindex="-1">Se esta coluna for definida como <code class="code">TRUE</code>, a fila do WLM tratará o asterisco (*) como um caractere curinga em strings de grupos de usuários na configuração do WLM.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">query_group_wild_card </td>
-                            <td tabindex="-1">Booliano</td>
+                            <td tabindex="-1">Booleano</td>
                             <td tabindex="-1">Se esta coluna for definida como <code class="code">TRUE</code>, a fila do WLM tratará o asterisco (*) como um caractere curinga em strings de grupos de consultas na configuração do WLM.</td>
                         </tr>
                         <tr>
@@ -138,7 +138,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">user_role_wild_card</td>
-                            <td tabindex="-1">Booliano</td>
+                            <td tabindex="-1">Booleano</td>
                             <td tabindex="-1">Se esta coluna for definida como <code class="code">TRUE</code>, a fila do WLM tratará o asterisco (*) como um caractere curinga em strings de perfil de usuário na configuração do WLM.</td>
                         </tr>
                     </table></div></div>

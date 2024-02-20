@@ -48,10 +48,10 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ANALYZE_COMPRESSION" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_ANALYZE_COMPRESSION-table-columns2">Colunas da tabela</a><a href="#r_STL_ANALYZE_COMPRESSION-sample-queries2">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ANALYZE_COMPRESSION">STL_ANALYZE_COMPRESSION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra os detalhes das operações de análise de compactação durante os comandos COPY ou ANALYZE COMPRESSION.</p><p>Esta visualização é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./r_SYS_ANALYZE_COMPRESSION_HISTORY.html">SYS_ANALYZE_COMPRESSION_HISTORY</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ANALYZE_COMPRESSION" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_ANALYZE_COMPRESSION-table-columns2">Colunas da tabela</a><a href="#r_STL_ANALYZE_COMPRESSION-sample-queries2">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ANALYZE_COMPRESSION">STL_ANALYZE_COMPRESSION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra os detalhes das operações de análise de compactação durante os comandos COPY ou ANALYZE COMPRESSION.</p><p>STL_ANALYZE_COMPRESSION permanece visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./r_SYS_ANALYZE_COMPRESSION_HISTORY.html">SYS_ANALYZE_COMPRESSION_HISTORY</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_STL_ANALYZE_COMPRESSION-table-columns2">Colunas da tabela</h2>
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c17b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c17b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -60,7 +60,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada.</td>
                         </tr>
                         <tr>
@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">tbl</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID da tabela da tabela que foi analisada.</td>
                         </tr>
                         <tr>
@@ -86,7 +86,7 @@
 
                         <tr>
                             <td tabindex="-1">col</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O índice da coluna na tabela que foi analisada para determinar a codificação de compactação.</td>
                         </tr>
                         <tr>
@@ -124,6 +124,27 @@
                                     </dd>
                                 </dl></div>    
                            </td>
+                        </tr>     
+                        
+                        <tr>
+                            <td tabindex="-1">best_compression_encoding</td>
+                            <td tabindex="-1">character(15)</td>
+                            <td tabindex="-1">O tipo de codificação que oferece a melhor taxa de compactação.</td>
+                        </tr>                        
+                        <tr>
+                            <td tabindex="-1">recommended_bytes</td>
+                            <td tabindex="-1">character(15)</td>
+                            <td tabindex="-1">Os bytes usados ao adotar a nova codificação.</td>
+                        </tr>                        
+                        <tr>
+                            <td tabindex="-1">best_compression_bytes</td>
+                            <td tabindex="-1">character(15)</td>
+                            <td tabindex="-1">Os bytes usados ao adotar a melhor codificação de compactação.</td>
+                        </tr>                        
+                        <tr>
+                            <td tabindex="-1">ndv</td>
+                            <td tabindex="-1">bigint</td>
+                            <td tabindex="-1">O número de valores distintos nas linhas com amostras.</td>
                         </tr>                        
                         
                         
@@ -133,28 +154,27 @@
             
             
             <p>O exemplo a seguir inspeciona os detalhes da análise de compactação na tabela <code class="code">lineitem</code> pelo último comando COPY executado na mesma sessão. </p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select xid, tbl, btrim(tablename) as tablename, col, old_encoding, new_encoding, mode 
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select xid, tbl, btrim(tablename) as tablename, col, old_encoding, new_encoding, best_compression_encoding, mode 
 from stl_analyze_compression 
 where xid = (select xid from stl_query where query = pg_last_copy_id()) order by col;
-                
- xid  |  tbl   | tablename | col |  old_encoding   |  new_encoding   |      mode
-======+========+===========+=====+=================+=================+=============
- 8196 | 248126 | lineitem  |   0 | mostly32        | mostly32        | ON
- 8196 | 248126 | lineitem  |   1 | mostly32        | lzo             | ON
- 8196 | 248126 | lineitem  |   2 | lzo             | delta32k        | ON
- 8196 | 248126 | lineitem  |   3 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |   4 | bytedict        | bytedict        | ON
- 8196 | 248126 | lineitem  |   5 | mostly32        | mostly32        | ON
- 8196 | 248126 | lineitem  |   6 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |   7 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |   8 | lzo             | zstd            | ON
- 8196 | 248126 | lineitem  |   9 | runlength       | zstd            | ON
- 8196 | 248126 | lineitem  |  10 | delta           | lzo             | ON
- 8196 | 248126 | lineitem  |  11 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |  12 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |  13 | bytedict        | zstd            | ON
- 8196 | 248126 | lineitem  |  14 | bytedict        | zstd            | ON
- 8196 | 248126 | lineitem  |  15 | text255         | zstd            | ON
-(16 rows)                
-</code></pre>
+
+ xid  |  tbl   | tablename | col |  old_encoding   |  new_encoding   | best_compression_encoding |      mode      
+------+--------+-----------+-----+-----------------+-----------------+---------------------------+----------------
+ 5308 | 158961 | $lineitem |   0 | mostly32        | az64            | delta                     | ON            
+ 5308 | 158961 | $lineitem |   1 | mostly32        | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   2 | lzo             | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   3 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   4 | bytedict        | az64            | bytedict                  | ON            
+ 5308 | 158961 | $lineitem |   5 | mostly32        | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   6 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   7 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   8 | lzo             | lzo             | lzo                       | ON            
+ 5308 | 158961 | $lineitem |   9 | runlength       | runlength       | runlength                 | ON            
+ 5308 | 158961 | $lineitem |  10 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |  11 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |  12 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |  13 | bytedict        | bytedict        | bytedict                  | ON            
+ 5308 | 158961 | $lineitem |  14 | bytedict        | bytedict        | bytedict                  | ON            
+ 5308 | 158961 | $lineitem |  15 | text255         | text255         | text255                   | ON   
+(16 rows)                </code></pre>
         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_STL_ANALYZE.html">STL_ANALYZE</div><div id="next" class="next-link" accesskey="n" href="./r_STL_BCAST.html">STL_BCAST</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_STL_ANALYZE_COMPRESSION.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_STL_ANALYZE_COMPRESSION.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

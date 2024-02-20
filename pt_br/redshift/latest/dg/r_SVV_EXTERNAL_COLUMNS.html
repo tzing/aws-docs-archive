@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_EXTERNAL_COLUMNS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVV_EXTERNAL_COLUMNS-table-columns">Colunas da tabela</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_EXTERNAL_COLUMNS">SVV_EXTERNAL_COLUMNS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVV_EXTERNAL_COLUMNS para visualizar os detalhes das colunas em tabelas externas. Use SVV_EXTERNAL_COLUMNS também para consultas entre bancos de dados para exibir detalhes em todas as colunas da tabela em bancos de dados não conectados aos quais os usuários têm acesso. </p><p>SVV_EXTERNAL_COLUMNS é visível por todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso. Para obter mais informações, consulte <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_EXTERNAL_COLUMNS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVV_EXTERNAL_COLUMNS-table-columns">Colunas da tabela</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_EXTERNAL_COLUMNS">SVV_EXTERNAL_COLUMNS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVV_EXTERNAL_COLUMNS para visualizar os detalhes das colunas em tabelas externas. Use SVV_EXTERNAL_COLUMNS também para consultas entre bancos de dados para exibir detalhes em todas as colunas da tabela em bancos de dados não conectados aos quais os usuários têm acesso. </p><p>SVV_EXTERNAL_COLUMNS é visível por todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SVV_EXTERNAL_COLUMNS-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c39b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c39b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -80,12 +80,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">columnnum</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número da coluna externa, a partir de 1.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">part_key</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se a coluna é uma chave de partição, indica a ordem de chave. Se a coluna não for uma partição, o valor será <code class="userinput">0</code>.</td>
                         </tr>
                         

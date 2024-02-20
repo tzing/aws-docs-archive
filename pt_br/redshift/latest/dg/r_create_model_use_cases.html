@@ -310,7 +310,7 @@ S3_BUCKET 'bucket'
                     <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value’ (,..) ) }</span></dt>
                     <dd>
                         <p>Especifica se os parâmetros padrão do XGBoost são usados ou substituídos por valores especificados pelo usuário. Os valores devem ser colocados entre aspas simples. A seguir estão exemplos de parâmetros para XGBoost e seus padrões.</p>
-                        <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c17b9b9b3b7b3b3"><thead>
+                        <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c17b9b9b3b7b3b3"><thead>
                                     <tr>
                                         <th>Nome do parâmetro</th>
                                         <th>Valor do parâmetro </th>
@@ -343,7 +343,7 @@ S3_BUCKET 'bucket'
                                         <td tabindex="-1">
                                             <p>tree_method</p>
                                         </td>
-                                        <td tabindex="-1">Segmento</td>
+                                        <td tabindex="-1">String</td>
                                         <td tabindex="-1">Auto</td>
                                         <td tabindex="-1">N/D</td>
                                     </tr>
@@ -551,6 +551,24 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
           <h2 id="r_byom_create_model_remote">Traga seu próprio modelo (BYOM): inferência remota</h2>
           <p>O Amazon Redshift ML também é compatível com o uso de BYOM (traga seu próprio modelo) para inferência remota.</p>
           <p>A seguir o resumo das opções básicas da sintaxe CREATE MODEL para BYOM.</p>
+          <div class="awsdocs-note awsdocs-sticky-note awsdocs-warning"><div class="awsdocs-note-icon"><awsui-icon name="status-warning" variant="error"></awsui-icon></div><div class="awsdocs-note-text"><p><em><b>Esta é uma documentação de pré-lançamento do tipo de dados SUPER para entrada para modelos BYOM no Amazon Redshift ML, que está na versão de visualização. A documentação e o recurso estão sujeitos a alterações. Recomendamos que você use esse recurso apenas com clusters de teste e não em ambientes de produção. Para termos e condições de visualização, consulte <em>Beta and Previews</em> em <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS Service Terms</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. </b></em> </p></div></div>
+          
+          <p>A especificação para usar o tipo de dados SUPER como dados de entrada e o tipo de dados retornado indica que você deseja criar um grande modelo de linguagem (LLM) hospedado no Amazon SageMaker JumpStart. Atualmente, a criação de LLMs só está disponível como um recurso de visualização. Essa visualização está disponível nas seguintes Regiões da AWS:</p>
+          <div class="itemizedlist">
+              
+              
+              
+              
+              
+          <ul class="itemizedlist"><li class="listitem"><p>Leste dos EUA (Ohio) (us-east-2)</p></li><li class="listitem"><p>Leste dos EUA (Norte da Virgínia) (us-east-1)</p></li><li class="listitem"><p>Ásia Pacific (Tóquio) (ap-northeast-1)</p></li><li class="listitem"><p>Europa (Irlanda) (eu-west-1)</p></li><li class="listitem"><p>UE (Estocolmo) (eu-north-1)</p></li></ul></div>
+          <p>Você pode criar um cluster do Amazon Redshift em <b>Preview</b> (Pré-visualização) para testar novos recursos do Amazon Redshift. Você não pode usar esses recursos em produção nem mover seu cluster de <b>Preview</b> (Pré-visualização) para um cluster de produção ou um cluster em outra faixa. Para conferir os termos e condições da pré-visualização, consulte <em>Betas e pré-visualizações</em> nos <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>Termos de serviços da AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>            
+            <div class="procedure"><h6>Como criar um cluster em <b>Preview</b> (pré-visualização)</h6><ol><li><p>Faça login no AWS Management Console e abra o console do Amazon Redshift em <a href="https://console.aws.amazon.com/redshift/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/redshift/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p> </li><li><p>No menu de navegação, <b>Provisioned clusters dashboard</b> (Painel de clusters provisionados) e <b>Clusters</b>. Os clusters de sua conta na Região da AWS atual são listados. Um subconjunto de propriedades de cada cluster é exibido nas colunas na lista.</p></li><li><p>Um banner é exibido na página da lista <b>Clusters</b> que apresenta a pré-visualização. Escolha o botão <b>Create preview cluster</b> (Criar cluster de pré-visualização) para abrir a página de criação de cluster.</p></li><li><p>Insira as propriedades do cluster. Escolha a <b>Preview track</b> (Faixa de pré-visualização) que contém os recursos que deseja testar. Recomendamos inserir um nome que indique que o cluster está em uma faixa de pré-visualização. Escolha opções para o cluster, incluindo opções rotuladas como <b>-preview</b> (-pré-visualização), para os recursos que deseja testar. Para obter informações gerais sobre a criação de clusters, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#create-cluster">Criar um cluster</a> no <em>Guia de gerenciamento do Amazon Redshift</em>.</p></li><li><p>Escolha <b>Criar cluster</b> para criar um cluster em pré-visualização.</p>
+                       <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>A faixa <code class="code">preview_2023</code> é a faixa de pré-visualização mais recente disponível. Essa faixa só dá suporte à criação de clusters com tipos de nó RA3. Os tipos de nó DC2 e DS2 e qualquer tipo de nó mais antigo não são compatíveis.</p></div></div></li><li><p>Quando seu cluster de pré-visualização estiver disponível, use seu cliente SQL para carregar e consultar dados.</p></li></ol></div>
+          
+          <p>Você também pode criar um grupo de trabalho de visualização para criar um LLM. Você não pode usar esses recursos em produção nem mover o grupo de trabalho para outro grupo de trabalho. Para termos e condições de visualização, consulte Beta and Previews em <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>Termos de serviço da AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. Para obter instruções sobre como criar um grupo de trabalho de visualização, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">Creating a preview workgroup</a>.</p>
+            
+             
+          
          
             <h3 id="r_remote-create-model">Sintaxe CREATE MODEL para inferência remota </h3>
             <p>A seguir é descrito a sintaxe CREATE MODEL para inferência remota.</p>
@@ -577,12 +595,15 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                      
                         <dt><span class="term">FUNCTION <em>fn_name</em> ( [<em>data_type</em>] [, ...] )</span></dt>
                         <dd>
-                            <p>O nome da função e os tipos de dados dos argumentos de entrada. Você pode fornecer um nome de esquema.</p>
+                           <p>O nome da função e os tipos de dados dos argumentos de entrada. Consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">Tipos de dados</a> para obter todos os tipos de dados compatíveis. <code class="code">Geography</code>,<code class="code">geometry</code> e <code class="code">hllsketch</code> não são compatíveis. A especificação para usar o tipo de dados SUPER como dados de entrada e o tipo de dados retornado indica que você deseja criar um grande modelo de linguagem (LLM) hospedado no Amazon SageMaker JumpStart.</p>
+                           <p>Como alternativa, é possível especificar o uso apenas do tipo de dados SUPER como os dados de entrada sem também usá-lo como o tipo de dados exibido. O uso do tipo de dados SUPER como entrada está disponível somente como um recurso de visualização.</p>
+                           <p>Você também pode oferecer um nome de esquema, em vez de um nome da função.</p>
                         </dd>
                      
                         <dt><span class="term">RETURNS <em>tipo_dados</em></span></dt>
                         <dd>
-                            <p>Tipo de dados do valor retornado pela função.</p>
+                            <p>Tipo de dados do valor retornado pela função. Consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">Tipos de dados</a> para obter todos os tipos de dados compatíveis. <code class="code">Geography</code>,<code class="code">geometry</code> e <code class="code">hllsketch</code> não são compatíveis. A especificação para usar o tipo de dados SUPER como dados de entrada e o tipo de dados retornado indica que você deseja criar um grande modelo de linguagem (LLM) hospedado no Amazon SageMaker JumpStart.</p>
+                           <p>Como alternativa, é possível especificar o uso apenas do tipo de dados SUPER como o tipo de dados exibido sem também usá-lo como dados de entrada.</p>
                         </dd>
                      
                         <dt><span class="term">SAGEMAKER <em>'endpoint_name'</em>[:<em>'model_name'</em>] </span></dt>
@@ -603,16 +624,35 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                 <h4 id="r_remote-create-model-usage-notes">CREATE MODEL para observações de uso da inferência remota</h4>
                 <p>Antes de usar CREATE MODEL para inferência remota, considere o seguinte:</p>
                 <div class="itemizedlist">
+                    
+                     
+   
+                     
+                     
+                     
+   
+                     
+                    
+                    
+                  
+                   
 
-                     
-
-                     
-                     
-                     
-
-                     
-
-                <ul class="itemizedlist"><li class="listitem"><p>O modelo deve aceitar entradas no formato de valores separados por vírgulas (CSV) por meio de um tipo de conteúdo de texto/CSV no SageMaker.</p></li><li class="listitem"><p>O endpoint deve ser hospedado na mesma conta da AWS que possui o cluster do Amazon Redshift.</p></li><li class="listitem"><p>As saídas dos modelos devem ser um único valor do tipo especificado na criação da função, no formato de valores separados por vírgulas (CSV) por meio de um tipo de conteúdo de texto/CSV no SageMaker. Os tipos de dado varchar não devem estar entre aspas e cada saída precisa estar em uma nova linha. </p></li><li class="listitem"><p>Os modelos aceitam nulos como strings vazias.</p></li><li class="listitem"><p>Certifique-se de que o endpoint do Amazon SageMaker tenha recursos suficientes para acomodar chamadas de inferência do Amazon Redshift ou que o endpoint do Amazon SageMaker possa ser escalado automaticamente. </p></li></ul></div>
+                <ul class="itemizedlist"><li class="listitem">
+                      <p>Os modelos BYOM só poderão dar suporte a um argumento se você estiver usando o tipo de dados SUPER como dados de entrada, e a saída retornada também deve ser do tipo de dados SUPER.</p>
+                   </li><li class="listitem"><p>O modelo deve aceitar entradas no formato de valores separados por vírgulas (CSV) por meio de um tipo de conteúdo de texto/CSV no SageMaker. Só aplicável se você não estiver usando o tipo de dados SUPER como entrada.</p>
+                    </li><li class="listitem">
+                       <p>O endpoint deve ser hospedado na mesma conta da AWS que possui o cluster do Amazon Redshift.</p>
+                    </li><li class="listitem">
+                       <p>As saídas dos modelos devem ser um único valor do tipo especificado na criação da função, no formato de valores separados por vírgulas (CSV) por meio de um tipo de conteúdo de texto/CSV no SageMaker. Os tipos de dado varchar não devem estar entre aspas e cada saída precisa estar em uma nova linha. Só aplicável se você tiver especificado que o modelo não deve retornar o tipo de dados SUPER. </p>
+                    </li><li class="listitem">
+                       <p>Os modelos aceitam nulos como strings vazias.</p>
+                    </li><li class="listitem">
+                       <p>Certifique-se de que o endpoint do Amazon SageMaker tenha recursos suficientes para acomodar chamadas de inferência do Amazon Redshift ou que o endpoint do Amazon SageMaker possa ser escalado automaticamente.</p>
+                    </li><li class="listitem">
+                      <p>Quando o tipo retornado é SUPER, a saída do modelo deve ser JSON e o tipo de conteúdo <code class="code">application/jsonlines</code>.</p>
+                   </li><li class="listitem">
+                      <p>Quando os tipos de entrada e saída forem SUPER, o modelo deverá aceitar e retornar JSON por meio do tipo de conteúdo <code class="code">application/json</code>.</p>
+                   </li></ul></div>
                  
                     <h5 id="r_remote-create-model-example">CREATE MODEL para exemplo de inferências remotas</h5>
                     <p>O exemplo a seguir cria um modelo que usa um endpoint do SageMaker para fazer previsões. Certifique-se de que o endpoint está em execução para fazer previsões e especifique seu nome no comando CREATE MODEL.</p>
@@ -621,6 +661,12 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
     RETURNS int
     SAGEMAKER 'customer-churn-endpoint'
     IAM_ROLE default;</code></pre>
+                   <p>O exemplo a seguir cria um grande modelo de linguagem (LLM) usando o tipo de dados SUPER como dados de entrada e produz o tipo de dados SUPER. Os LLMs são hospedados no SageMaker Jumpstart. </p>
+                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL sample_super_data_model
+FUNCTION sample_super_data_model_predict(super)
+RETURNS super
+SAGEMAKER 'sample_super_data_model_endpoint'
+IAM_ROLE default;</code></pre>
                  
              
          

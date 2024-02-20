@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVCS_COMPILE" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVCS_COMPILE-table-rows">Colunas da tabela</a><a href="#r_SVCS_COMPILE-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVCS_COMPILE">SVCS_COMPILE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra o local e o tempo de compilação para cada segmento de consulta das consultas, incluindo aquelas executadas em um cluster de escalabilidade da simultaneidade e no cluster principal.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Visualizações do sistema com o prefixo SVCS fornecem detalhes sobre consultas nos clusters principal e de escalabilidade da simultaneidade. As visualizações são semelhantes às visualizações com o prefixo SVL, exceto que as visualizações SVL fornecem informações somente para consultas executadas no cluster principal.</p></div></div><p>A exibição SVCS_COMPILE é visível por todos os usuários.</p><p>Para obter informações sobre SCL_COMPILE, consulte <a href="./r_SVL_COMPILE.html">SVL_COMPILE</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVCS_COMPILE" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVCS_COMPILE-table-rows">Colunas da tabela</a><a href="#r_SVCS_COMPILE-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVCS_COMPILE">SVCS_COMPILE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra o local e o tempo de compilação para cada segmento de consulta das consultas, incluindo aquelas executadas em um cluster de escalabilidade da simultaneidade e no cluster principal.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Visualizações do sistema com o prefixo SVCS fornecem detalhes sobre consultas nos clusters principal e de escalabilidade da simultaneidade. As visualizações são semelhantes às visualizações com o prefixo SVL, exceto que as visualizações SVL fornecem informações somente para consultas executadas no cluster principal.</p></div></div><p>A exibição SVCS_COMPILE é visível por todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Para obter informações sobre SCL_COMPILE, consulte <a href="./r_SVL_COMPILE.html">SVL_COMPILE</a>.</p>
             <h2 id="r_SVCS_COMPILE-table-rows">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c13b9c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c13b9c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,7 +61,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada.</td>
                         </tr>
                         <tr>
@@ -71,22 +71,22 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do processo associado à instrução. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID da consulta. Este ID pode ser usado para unir várias outras tabelas e exibições do sistema. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O segmento de consulta a ser compilado. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">locus </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O local onde o segmento é executado: <code class="userinput">1</code> se for em um nó de computação e <code class="userinput">2</code> se for no nó líder. </td>
                         </tr>
                         <tr>
@@ -101,7 +101,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">compile </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Um valor que é <code class="userinput">0</code> se a compilação foi reutilizada e <code class="userinput">1</code> se o segmento foi compilado.</td>
                         </tr>
                     </table></div></div>

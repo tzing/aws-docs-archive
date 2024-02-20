@@ -117,13 +117,14 @@ iam_role 'arn:aws:iam::123456789012:role/mySpectrumRole';</code></pre>
             <div class="procedure"><h6>Visualizar o nome do grupo de segurança do nó principal do Amazon EMR</h6><ol><li><p>Abra o cluster do Amazon EMR. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html">Usar configurações de segurança para definir a segurança do cluster</a> no <em>Guia de gerenciamento do Amazon EMR</em>.</p></li><li><p>Em <b>Security and access</b> (Segurança e acesso), anote o nome do grupo de segurança do nó principal do Amazon EMR.</p>
                   <div class="mediaobject">
                       
-                        <img src="images/spectrum-emr-security-groups.png" class="aws-docs-img-whiteBg aws-docs-img-padding" />
+                        <img src="images/spectrum-emr-security-groups.png" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="Uma captura de tela realçando o nome do grupo de segurança do nó principal do Amazon EMR no console do Amazon EMR." />
+                      
                       
                   </div>
                </li></ol></div>
             
             <div class="procedure"><h6>Para criar ou modificar um grupo de segurança do Amazon EC2 para permitir a conexão entre o Amazon Redshift e o Amazon EMR</h6><ol><li><p>No painel do Amazon EC2, escolha <b>Security Groups</b> (Grupos de segurança). Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules.html">Regras dos grupos de segurança</a> no <em>Guia do usuário do Amazon EC2 para instâncias do Linux</em> </p>
-               </li><li><p>Escolha <b>Create grupo de segurança (Criar grupo de segurança)</b>. </p>
+               </li><li><p>Escolha <b>Criar grupo de segurança</b>. </p>
                </li><li><p>Se estiver usando a VPC, escolha a VPC na qual os clusters do Amazon Redshift e do Amazon EMR se encontram. </p>
                </li><li><p>Adicione uma regra de entrada. </p>
                <div class="orderedlist">
@@ -142,7 +143,7 @@ iam_role 'arn:aws:iam::123456789012:role/mySpectrumRole';</code></pre>
                      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>A porta padrão para um HMS no EMR é 9083. Se o HMS usa uma porta diferente, especifique essa porta na regra de entrada e na definição do esquema externo. </p></div></div>
                   </li><li><p>Em <b>Source</b>, escolha <b>Custom</b>. </p>
                   </li></ol></div>
-               </li><li><p>Insira o nome e a descrição do grupo de segurança. </p></li><li><p>Escolha <b>Create grupo de segurança (Criar grupo de segurança)</b>. </p>                  
+               </li><li><p>Insira o nome e a descrição do grupo de segurança. </p></li><li><p>Escolha <b>Criar grupo de segurança</b>. </p>                  
                </li></ol></div>
             
             <div class="procedure"><h6>Para adicionar o grupo de segurança do Amazon EC2 que você criou na etapa anterior ao cluster do Amazon Redshift e ao cluster do Amazon EMR</h6><ol><li><p>No Amazon Redshift, escolha seu cluster. </p></li><li><p>Escolha <b>Properties</b> (Propriedades). </p></li><li><p>Visualize a seção <b>Network and security</b> (Rede e segurança) e escolha <b>Edit</b> (Editar). </p></li><li><p>Em <b>VPC security group</b> (Grupo de segurança da VPC), escolha o novo nome do grupo de segurança. </p></li><li><p>Escolha <b>Save changes (Salvar alterações)</b>. </p></li></ol></div>
@@ -150,7 +151,8 @@ iam_role 'arn:aws:iam::123456789012:role/mySpectrumRole';</code></pre>
             <div class="procedure"><h6>Para adicionar o grupo de segurança do Amazon EC2 ao cluster do Amazon EMR</h6><ol><li><p>No Amazon EMR, escolha seu cluster. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html">Usar configurações de segurança para definir a segurança do cluster</a> no <em>Guia de gerenciamento do Amazon EMR</em>.</p></li><li><p>Em <b>Hardware</b>, escolha o link para o nó principal. </p></li><li><p>Escolha o link na coluna <b>EC2 Instance ID</b> (ID da instância do EC2). </p>
                   <div class="mediaobject">
                       
-                        <img src="images/spectrum-emr-add-security-group.png" class="aws-docs-img-whiteBg aws-docs-img-padding" />
+                        <img src="images/spectrum-emr-add-security-group.png" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="&#xA;                        Uma captura de tela realçando um valor do ID de instância do Amazon EC2 no console do Amazon EMR.&#xA;                     " />
+                      
                       
                   </div></li><li><p>Escolha <b>Actions</b> (Ações), <b>Security</b> (Segurança) e <b>Change security groups</b> (Alterar grupos de segurança). </p></li><li><p>Em <b>Associated sercurity groups</b> (Grupos de segurança associados), escolha o novo grupo de segurança e escolha <b>Add security group</b> (Adicionar grupo de segurança). </p></li><li><p>Escolha <b>Save</b> (Salvar). </p>
                   </li></ol></div>

@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_EXTERNAL_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_EXTERNAL_QUERY_DETAIL-table-columns">Colunas da tabela</a><a href="#SYS_EXTERNAL_QUERY_DETAIL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_EXTERNAL_QUERY_DETAIL para visualizar detalhes de consultas no nível do segmento. Cada linha representa um segmento de determinada consulta WLM com detalhes como o número de linhas processadas, número de bytes processados e as informações de partição de tabelas externas no Amazon S3. Cada linha nessa visualização também terá uma entrada correspondente na exibição SYS_QUERY_DETAIL, porém essa exibição contém mais informações detalhadas relacionadas ao processamento de consultas externas. </p><p>SYS_EXTERNAL_QUERY_DETAIL é visível a todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_EXTERNAL_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_EXTERNAL_QUERY_DETAIL-table-columns">Colunas da tabela</a><a href="#SYS_EXTERNAL_QUERY_DETAIL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_EXTERNAL_QUERY_DETAIL para visualizar detalhes de consultas no nível do segmento. Cada linha representa um segmento de determinada consulta WLM com detalhes como o número de linhas processadas, número de bytes processados e as informações de partição de tabelas externas no Amazon S3. Cada linha nessa visualização também terá uma entrada correspondente na exibição SYS_QUERY_DETAIL, porém essa exibição contém mais informações detalhadas relacionadas ao processamento de consultas externas. </p><p>SYS_EXTERNAL_QUERY_DETAIL é visível a todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_EXTERNAL_QUERY_DETAIL-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c29b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c29b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário que enviou a consulta.</td>
                         </tr>
                         <tr>
@@ -70,12 +70,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">child_query_sequence</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">A sequência da consulta de usuário regravada. Começa com 0, semelhante a segment_id.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do segmento da consulta.</td>
                         </tr>
                         <tr>
@@ -100,12 +100,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">total_partitions</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número de partições necessárias para uma consulta do Amazon S3.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">qualified_partitions</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número de partições que uma consulta do Amazon S3 verificou.</td>
                         </tr>
                         <tr>

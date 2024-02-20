@@ -68,6 +68,7 @@
             
              
              
+             
          <ul class="itemizedlist"><li class="listitem">
                <p>Para visualizações materializadas incrementais, o <code class="code">REFRESH MATERIALIZED VIEW</code> usa apenas as linhas da tabela base que já estão confirmadas. Portanto, se a operação de atualização for executada após uma instrução DML (Data Manipulation Language) na mesma transação, as alterações dessa instrução DML não serão visíveis para serem atualizadas. </p>
             </li><li class="listitem">
@@ -75,6 +76,8 @@
                      VIEW</code> vê todas as linhas da tabela base visíveis para a transação de atualização, de acordo com a semântica de transação usual do Amazon Redshift. </p>
             </li><li class="listitem">
                <p>Dependendo do tipo de argumento de entrada, o Amazon Redshift ainda oferece suporte à atualização incremental de visualizações materializadas para as seguintes funções com tipos específicos de argumentos de entrada: DATE (timestamp), DATE_PART (date, time, interval, time-tz), DATE_TRUNC (timestamp, interval).</p>
+            </li><li class="listitem">
+               <p>A atualização incremental é compatível em uma visão materializada na qual a tabela base está e uma unidade de compartilhamento de dados.</p>
             </li></ul></div>
          <p>Algumas operações no Amazon Redshift interagem com visualizações materializadas. Algumas dessas operações podem forçar uma operação <code class="code">REFRESH MATERIALIZED VIEW</code> a recalcular totalmente a visualização materializada, mesmo que a consulta que define a visualização materializada use apenas os recursos SQL qualificados para atualização incremental. Por exemplo:</p>
          <div class="itemizedlist">
@@ -98,7 +101,6 @@
              
              
              
-
              
             
             
@@ -122,7 +124,16 @@
             </li><li class="listitem">
                <p>Subconsultas em qualquer outro lugar além da cláusula FROM.</p>
             </li><li class="listitem">
-               <p>Tabelas externas referenciadas como tabelas base na consulta que define a visualização materializada.</p>
+               <p>Tabelas externas referenciando os formatos a seguir na consulta que define a visão materializada. </p>
+               <div class="itemizedlist">
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p> Delta Lake </p>
+                  </li><li class="listitem">
+                     <p> Hudi </p>
+                  </li></ul></div>
+               <p>A atualização incremental é compatível para visões materializadas definidas usando tabelas externas que referenciam outros formatos na faixa de visualização. Para obter mais informações sobre como configurar clusters de visualização, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#cluster-preview">Creating a preview cluster</a> no <em>Guia de gerenciamento do Amazon Redshift</em>. Para obter mais informações sobre como configurar grupos de trabalho de visualização, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">Creating a preview workgroup</a> no <em>Guia de gerenciamento do Amazon Redshift</em>. </p>
             </li><li class="listitem"><p>Funções mutáveis, como funções de data-hora, funções aleatórias e não-estáveis definidas pelo usuário.</p></li></ul></div>
          <p>Para obter mais informações sobre as limitações das visões materializadas, incluindo o efeito de operações em segundo plano, como VACUUM, nas operações de atualização de visões materializadas, consulte <a href="#mv_REFRESH_MARTERIALIZED_VIEW_usage">Observações de uso</a>.</p>
        

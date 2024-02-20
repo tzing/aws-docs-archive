@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_S3CLIENT_ERROR" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_S3CLIENT_ERROR-table-columns2">Colunas da tabela</a><a href="#w215aac67c17b9c97c11">Observações de uso</a><a href="#w215aac67c17b9c97c13">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_S3CLIENT_ERROR">STL_S3CLIENT_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra erros encontrados por uma fatia ao carregar um arquivo do Amazon S3.</p><p>Use STL_S3CLIENT_ERROR para encontrar detalhes para erros encontrados durante a transferência de dados do Amazon S3 como parte de um comando COPY.</p><p>Esta visualização é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_S3CLIENT_ERROR" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_S3CLIENT_ERROR-table-columns2">Colunas da tabela</a><a href="#w268aac69c17b9c97c11">Observações de uso</a><a href="#w268aac69c17b9c97c13">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_S3CLIENT_ERROR">STL_S3CLIENT_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra erros encontrados por uma fatia ao carregar um arquivo do Amazon S3.</p><p>Use STL_S3CLIENT_ERROR para encontrar detalhes para erros encontrados durante a transferência de dados do Amazon S3 como parte de um comando COPY.</p><p>STL_S3CLIENT_ERROR permanece visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="r_STL_S3CLIENT_ERROR-table-columns2">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c81b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c81b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,18 +61,18 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">ID da consulta. A coluna de consulta pode ser usada para unir outras tabelas e exibições do sistema. O ID da consulta -1 é para uso interno.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">sliceid</td>
                             
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número que identifica a fatia em que a consulta estava sendo executada.</td>
                         </tr>
                         <tr>
@@ -82,7 +82,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID do processo. Todas as consultas em uma sessão são executadas no mesmo processo, portanto esse valor permanece constante se você executa uma série de consultas na mesma sessão.</td>
                         </tr>
                         <tr>
@@ -97,11 +97,11 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">chave </td>
-                            <td tabindex="-1">character(256) </td>
+                            <td tabindex="-1">character (256) </td>
                             <td tabindex="-1">A chave que corresponde ao objeto do Amazon S3.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">error</td>
+                            <td tabindex="-1">erro</td>
                             
                             
                             <td tabindex="-1">character(1024)</td>
@@ -109,7 +109,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">is_parcial</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Valor que, se true (1), indica que o arquivo de entrada é dividido em intervalos durante uma operação COPY. Se esse valor for false (0), o arquivo de entrada não será dividido.</td>
                         </tr>
                         <tr>
@@ -119,11 +119,11 @@
                         </tr>
                     </table></div></div>
          
-            <h2 id="w215aac67c17b9c97c11">Observações de uso</h2>
+            <h2 id="w268aac69c17b9c97c11">Observações de uso</h2>
 
             <p>Se você encontrar vários erros com "Connection timed out", pode haver um problema de rede. Se você estiver usando o Roteamento por VPC aprimorado, verifique se existe um caminho de rede válido entre a VPC do cluster e seus recursos de dados. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Roteamento aprimorado de VPC do Amazon Redshift Spectrum</a>.</p>
          
-            <h2 id="w215aac67c17b9c97c13">Consulta de exemplo</h2>
+            <h2 id="w268aac69c17b9c97c13">Consulta de exemplo</h2>
 
 
             <p>A consulta a seguir retorna os erros dos comandos COPY concluídos durante a sessão atual.</p>
@@ -132,7 +132,7 @@ substring(error from 1 for 35) as error
 from stl_s3client_error 
 where pid = pg_backend_pid()
 order by query desc;</code></pre>
-            <p>Result</p>
+            <p>Resultado</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
  query  | sliceid |     file           |              error                             
 --------+---------+--------------------+------------------------------------

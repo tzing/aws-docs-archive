@@ -42,9 +42,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_DEFAULT_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_DEFAULT_PRIVILEGES-table-rows">Colunas da tabela</a><a href="#r_SVV_DEFAULT_PRIVILEGES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_DEFAULT_PRIVILEGES">SVV_DEFAULT_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p> Use SVV_DEFAULT_PRIVILEGES para visualizar os privilégios padrão aos quais um usuário tem acesso em um cluster do Amazon Redshift. </p><p> SVV_DEFAULT_PRIVILEGES é visível a todos os usuários. Superusuários podem ver todas as linhas. Os usuários regulares que têm a permissão ACCESS SYSTEM TABLE podem ver todas as linhas. Os usuários regulares só podem ver os privilégios padrão concedidos a eles. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_DEFAULT_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_DEFAULT_PRIVILEGES-table-rows">Colunas da tabela</a><a href="#r_SVV_DEFAULT_PRIVILEGES-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_DEFAULT_PRIVILEGES">SVV_DEFAULT_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p> Use SVV_DEFAULT_PRIVILEGES para visualizar os privilégios padrão aos quais um usuário tem acesso em um cluster do Amazon Redshift. </p><p> SVV_DEFAULT_PRIVILEGES permanece visível para os seguintes usuários:</p><div class="itemizedlist">
+             
+             
+        <ul class="itemizedlist"><li class="listitem"><p>Superusuários</p></li><li class="listitem"><p>Usuários com a permissão ACCESS SYSTEM TABLE</p></li></ul></div><p>Os outros usuários só podem ver permissões padrão concedidas a eles.</p>
             <h2 id="r_SVV_DEFAULT_PRIVILEGES-table-rows">Colunas da tabela</h2>
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c35b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c35c11b3"><thead>
                         <tr>
                             <th>Nome da coluna</th>
                             <th>Tipo de dados</th>
@@ -63,7 +66,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">owner_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do proprietário. O valor possível é o ID do usuário.</td>
                         </tr>
                         <tr>
@@ -83,7 +86,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">grantee_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID da entidade autorizada. Os valores possíveis são ID do usuário, ID da função ou ID do grupo.</td>
                         </tr>
                         <tr>
@@ -93,7 +96,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">admin_option</td>
-                            <td tabindex="-1">booleano</td>
+                            <td tabindex="-1">boolean</td>
                             <td tabindex="-1">O valor que indica se o usuário pode conceder permissões a outros usuários e funções. É sempre falso para o tipo de função e grupo.</td>
                         </tr>
                     </table></div></div>

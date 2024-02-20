@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_AUTO_WORKER_ACTION" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_AUTO_WORKER_ACTION-table-rows">Colunas da tabela</a><a href="#r_SVL_AUTO_WORKER_ACTION-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_AUTO_WORKER_ACTION">SVL_AUTO_WORKER_ACTION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Regista ações automatizadas executadas pelo Amazon Redshift em tabelas definidas para otimização automática. </p><p>SVL_AUTO_WORKER_ACTION está visível apenas para superusuários.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_AUTO_WORKER_ACTION" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_AUTO_WORKER_ACTION-table-rows">Colunas da tabela</a><a href="#r_SVL_AUTO_WORKER_ACTION-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_AUTO_WORKER_ACTION">SVL_AUTO_WORKER_ACTION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Regista ações automatizadas executadas pelo Amazon Redshift em tabelas definidas para otimização automática. </p><p>SVL_AUTO_WORKER_ACTION está visível apenas para superusuários. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="r_SVL_AUTO_WORKER_ACTION-table-rows">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c11b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c11b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,11 +61,11 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">table_id </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador da tabela. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">tipo </td>
+                            <td tabindex="-1">type </td>
                             <td tabindex="-1">character(32) </td>
                             <td tabindex="-1">O tipo de recomendação. Os valores possíveis são distkey e sortkey. </td>
                         </tr>
@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">sequence </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de sequência de um valor truncado <code class="code">previous_state</code>. Quando um único <code class="code">previous_state</code> contém mais de 200 caracteres, linhas adicionais são registradas para esse valor. A sequência 0 é a primeira linha, 1 é a segunda e assim por diante. </td>
                         </tr>
                         <tr>

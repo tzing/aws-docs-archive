@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_INFLIGHT" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STV_INFLIGHT_troubleshooting">Solução de problemas com STV_INFLIGHT</a><a href="#r_STV_INFLIGHT-table-columns">Colunas da tabela</a><a href="#r_STV_INFLIGHT-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_INFLIGHT">STV_INFLIGHT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a tabela STV_INFLIGHT para determinar quais consultas estão sendo executadas no cluster no momento. Se você estiver solucionando problemas, é útil verificar o status de consultas de longa duração. </p><p>A tabela STV_INFLIGHT não mostra as consultas executadas apenas nos nós de liderança. Para obter mais informações, consulte <a href="./c_SQL_functions_leader_node_only.html">Função de apenas nó líder</a>. STV_INFLIGHT é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_INFLIGHT" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STV_INFLIGHT_troubleshooting">Solução de problemas com STV_INFLIGHT</a><a href="#r_STV_INFLIGHT-table-columns">Colunas da tabela</a><a href="#r_STV_INFLIGHT-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_INFLIGHT">STV_INFLIGHT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a tabela STV_INFLIGHT para determinar quais consultas estão sendo executadas no cluster no momento. Se você estiver solucionando problemas, é útil verificar o status de consultas de longa duração. </p><p>A tabela STV_INFLIGHT não mostra as consultas executadas apenas nos nós de liderança. Para obter mais informações, consulte <a href="./c_SQL_functions_leader_node_only.html">Função de apenas nó líder</a>. STV_INFLIGHT é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_STV_INFLIGHT_troubleshooting">Solução de problemas com STV_INFLIGHT</h2>
             <p>Se você usa STV_INFLIGHT para solucionar problemas de performance de uma consulta ou de uma coleção de consultas, observe o seguinte:</p>
             <div class="itemizedlist">
@@ -59,7 +59,7 @@
             <p>Você também pode monitorar a execução de consultas usando o console do Amazon Redshift.</p>
          
             <h2 id="r_STV_INFLIGHT-table-columns">Colunas da tabela</h2>
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c17c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c17c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -68,17 +68,17 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">slice </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A fatia onde a consulta está sendo executada. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da consulta. Ele pode ser usado para unir várias outras tabelas e exibições do sistema. </td>
                         </tr>
                         <tr>
@@ -93,7 +93,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID do processo. Todas as consultas em uma sessão são executadas no mesmo processo, portanto esse valor permanece constante se você executa uma série de consultas na mesma sessão. Use esta coluna para unir a tabela <a href="./r_STL_ERROR.html">STL_ERROR</a>. </td>
                         </tr>
                         <tr>
@@ -108,17 +108,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">suspended </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se a consulta está suspensa ou não. 0 = false; 1 = true. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">insert_pristine </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se as consultas de gravação são/puderam ser executadas enquanto a consulta atual está/estava em execução. 1 = nenhuma consulta de gravação permitida. 0 = consultas de gravação permitidas. Essa coluna deve ser usada na depuração. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">concurrency_scaling_status</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1"><p>Indica se a consulta foi executada no cluster principal ou em um cluster de escalabilidade da simultaneidade. Os valores possíveis são os seguintes: </p>
                                 <p>0 - Executada no cluster principal </p>
                                 <p>1 — Executada em um cluster de escalabilidade da simultaneidade </p>

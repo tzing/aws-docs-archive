@@ -68,7 +68,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
              
              
          <dl>
-               <dt><b><span class="term">Custos</span></b></dt>
+               <dt><b><span class="term">Custo</span></b></dt>
                <dd>
                   <p>Um valor relativo que é útil para comparar operações em um plano. Custo consiste em dois valores decimais separados por dois pontos, por exemplo <code class="code">cost=131.97..133.41</code>. O primeiro valor, nesse caso 131,97, fornece o custo relativo de retornar a primeira linha para essa operação. O segundo valor, nesse caso 133,41, fornece o custo relativo de concluir a operação. Os custos em plano de consulta são cumulativos à medida que você lê o plano, portanto o custo HashAggregate neste exemplo (131,97..133,41) inclui o custo da Seq Scan abaixo dele (0.00..87.98).</p>
                </dd>
@@ -97,6 +97,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                    
                    
                    
+                   
                <ul class="itemizedlist"><li class="listitem">
                      <p><span class="topcom">Loop aninhado</span></p>
                      <p>Um loop aninhado, a junção menos ideal, é usado sobretudo para junções cruzadas (produtos cartesianos) e algumas junções de desigualdade.</p>
@@ -106,6 +107,9 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                   </li><li class="listitem">
                      <p><span class="topcom">Merge Join</span></p>
                      <p>Normalmente a junção mais rápida, uma junção de mesclagem é usada para junções internas e externas. A junção de mesclagem não é usada para junções completas. Este operador é usado para juntar tabelas onde as colunas de junção são chaves de distribuição <em>e</em> chaves de classificação e quando menos que 20 por cento das tabelas para junção não estão classificadas. Ele lê duas tabelas classificadas na ordem e localiza as linhas correspondentes. Para ver a porcentagem de linhas não classificadas, consulte a tabela de sistema <a href="./r_SVV_TABLE_INFO.html">SVV_TABLE_INFO</a>.</p>
+                  </li><li class="listitem"> 
+                     <p><span class="topcom">Junção espacial</span></p>
+                     <p>Normalmente, uma junção rápida com base na proximidade de dados espaciais, usados em tipos de dados <code class="code">GEOMETRY</code> e <code class="code">GEOGRAPHY</code>.</p>
                   </li></ul></div>
              
             <h3 id="aggregate-operators">Operadores de agregação</h3>
@@ -179,7 +183,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                      <p><span class="topcom">Window</span></p>
                      <p>Executa funções de janela.</p>
                   </li><li class="listitem">
-                     <p><span class="topcom">Result</span></p>
+                     <p><span class="topcom">Resultado</span></p>
                      <p>Executa funções escalares que não envolvem qualquer acesso à tabela.</p>
                   </li><li class="listitem">
                      <p><span class="topcom">Subplan</span></p>

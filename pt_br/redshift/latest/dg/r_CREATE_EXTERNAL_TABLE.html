@@ -90,7 +90,7 @@ LOCATION <span>{</span> 's3://<em>bucket/folder</em>/' }
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum_db.spectrum_schema.test (c1 int)
 stored as parquet
 location 's3://mybucket/myfolder/';</code></pre>
-                  <p>Se o banco de dados ou esquema especificado não existir, a tabela não será criada e a instrução retornará um erro. Não é possível criar tabelas ou exibições nos bancos de dados de sistema <code class="code">template0</code>, <code class="code">template1</code> e <code class="code">padb_harvest</code>.</p>
+                  <p>Se o banco de dados ou esquema especificado não existir, a tabela não será criada e a instrução retornará um erro. Você não pode criar tabelas ou exibições nos bancos de dados do sistema <code class="code">template0</code>, <code class="code">template1</code>, <code class="code">padb_harvest</code> ou <code class="code">sys:internal</code>.</p>
                   <p>O nome da tabela deve ser exclusivo para o esquema especificado. </p>
                   <p>Para obter mais informações sobre nomes válidos, consulte <a href="./r_names.html">Nomes e identificadores</a>.</p>
                </dd>
@@ -306,7 +306,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                      </li><li class="listitem">
                         <p>SEQUENCEFILE</p>
                      </li><li class="listitem">
-                        <p>TEXTFILE </p>
+                        <p>TEXTFILE (para arquivos de texto, inclusive arquivos JSON).</p> 
                      </li><li class="listitem">
                         <p>ORC </p>
                      </li><li class="listitem">
@@ -402,7 +402,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                               </li><li class="listitem">
                                  <p>gzip</p>
                               </li><li class="listitem">
-                                 <p>none</p>
+                                 <p>nenhum</p>
                               </li><li class="listitem">
                                  <p>snappy</p>
                               </li></ul></div>
@@ -433,7 +433,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                
 
                            <dl>
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DESATIVADA</span></dt>
                                  <dd><p>Não trata os caracteres inválidos.</p></dd>
                                
                                  <dt><span class="term">FAIL</span></dt>
@@ -464,7 +464,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                
                                
                            <dl>
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DESATIVADA</span></dt>
                                  <dd><p>O tratamento de caracteres inválidos é desativado.</p></dd>
                                
                                  <dt><span class="term">FAIL</span></dt>
@@ -495,7 +495,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                  <dt><span class="term">SET_TO_NULL</span></dt>
                                  <dd><p>Substitui os dados que excedem a largura da coluna por null.</p></dd>
                                
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DESATIVADA</span></dt>
                                  <dd><p>Não lida com excesso de bytes.</p></dd>
                                
                                  <dt><span class="term">FAIL</span></dt>
@@ -523,7 +523,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                  <dt><span class="term">SET_TO_NULL</span></dt>
                                  <dd><p>Substitui os dados que excedem a largura da coluna por null.</p></dd>
                                
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DESATIVADA</span></dt>
                                  <dd><p>Não trata de caracteres em excesso.</p></dd>
                                
                                  <dt><span class="term">FAIL</span></dt>
@@ -547,7 +547,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                
                                
                            <dl>
-                                 <dt><span class="term">DISABLED</span></dt>
+                                 <dt><span class="term">DESATIVADA</span></dt>
                                  <dd><p>O tratamento de incompatibilidade de contagem de colunas está desativado.</p></dd>
                                
                                  <dt><span class="term">FAIL</span></dt>

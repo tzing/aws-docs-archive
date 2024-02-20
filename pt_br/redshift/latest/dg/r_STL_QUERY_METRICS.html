@@ -58,12 +58,12 @@
                 <p>Se <code class="code">segment</code> não é <code class="code">-1</code> e <code class="code">step_type</code> é <code class="code">-1</code>, a linha relata as métricas no nível do segmento. </p>
             </li><li class="listitem">
                 <p>Se ambos <code class="code">segment</code> e <code class="code">step_type</code> são diferentes de <code class="code">-1</code>, a linha relata as métricas no nível da etapa. </p>
-            </li></ul></div><p>As visualizações <a href="./r_SVL_QUERY_METRICS.html">SVL_QUERY_METRICS</a> e <a href="./r_SVL_QUERY_METRICS_SUMMARY.html">SVL_QUERY_METRICS_SUMMARY</a> agregam os dados nesta visão e apresentam as informações de uma forma mais acessível.</p><p>Esta visualização é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> do SYS. </p>
+            </li></ul></div><p>As visualizações <a href="./r_SVL_QUERY_METRICS.html">SVL_QUERY_METRICS</a> e <a href="./r_SVL_QUERY_METRICS_SUMMARY.html">SVL_QUERY_METRICS_SUMMARY</a> agregam os dados nesta visão e apresentam as informações de uma forma mais acessível.</p><p>STL_QUERY_METRICS permanece visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_STL_QUERY_METRICS-table-rows2">Colunas da tabela</h2>
 
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c69c19b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c69c19b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -72,29 +72,29 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que executou a consulta que gerou a entrada. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">service_class </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da classe de serviço. As filas de consultas são definidas na configuração do WLM. As métricas são relatadas somente para as filas definidas pelo usuário.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da consulta. A coluna de consulta pode ser usada para unir outras tabelas e exibições do sistema.</td>
                         </tr>
 
 
                         <tr>
                             <td tabindex="-1">segment </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número do segmento. Uma consulta consiste em vários segmentos e cada segmento consiste em uma ou mais etapas. Os segmentos de uma consulta podem ser executados em paralelo. Cada segmento executa em um único processo. Se o valor do segmento é -1, os valores das métricas do segmento são acumulados no nível de consulta.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">step_type </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O tipo da etapa que foi executada. Para obter uma descrição dos tipos de etapas, consulte <a href="./r_STV_QUERY_METRICS.html#r_STV_QUERY_METRICS-step-type">Tipos de etapas</a>. </td>
                         </tr>
                         <tr>
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">slices </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de fatias do cluster. </td>
                         </tr>
                         <tr>
@@ -162,7 +162,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">etapa</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Etapa da consulta que foi executada.</td>
                         </tr>
                         <tr>
@@ -177,7 +177,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">query_priority </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A prioridade da consulta. Os valores possíveis são <code class="code">-1</code>, <code class="code">0</code>, <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> e <code class="code">4</code>, em que <code class="code">-1</code> significa que a prioridade da consulta não é compatível. </td>
                         </tr>
                         <tr>

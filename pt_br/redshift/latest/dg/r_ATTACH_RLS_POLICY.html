@@ -60,7 +60,7 @@ TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC } [, ...
              
                <dt><span class="term">ON [TABLE] <em>table_name</em> [, ...]</span></dt>
                <dd>
-                  <p>A tabela ou visualização à qual a política de segurança no nível da linha está anexada.</p>
+                  <p>A relação à qual a política de segurança no nível da linha está anexada.</p>
                </dd>
              
                <dt><span class="term">TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC} [, ...]</span></dt>
@@ -80,8 +80,16 @@ TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC } [, ...
              
 
          <ul class="itemizedlist"><li class="listitem"><p>A tabela que está sendo anexada deve ter todas as colunas listadas na cláusula WITH da instrução de criação da política.</p></li><li class="listitem">
-               <p>O Amazon Redshift RLS não é compatível com a anexação de políticas de RLS aos seguintes objetos: tabelas de catálogo, relações entre bancos de dados, tabelas externas, visualizações regulares, visualizações de vinculação tardia, tabelas temporárias e tabelas de pesquisa para políticas de RLS.</p>
-            </li><li class="listitem"><p>Não é possível anexar uma política de RLS a superusuários ou a um sys:secadmin.</p></li></ul></div>
+               <p>O Amazon Redshift RLS não dá suporte à anexação de políticas RLS para os seguintes objetos:</p>
+               <div class="itemizedlist">
+                   
+                   
+                   
+                   
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem"><p> Tabelas de catálogo </p></li><li class="listitem"><p> Relações entre bancos de dados </p></li><li class="listitem"><p> Tabelas externas </p></li><li class="listitem"><p> Visualizações materializadas </p></li><li class="listitem"><p> Tabelas temporárias </p></li><li class="listitem"><p> Tabelas de pesquisa </p></li></ul></div>
+            </li><li class="listitem"><p>Você não pode anexar uma política RLS a superusuários ou usuários com a permissão <code class="code">sys:secadmin</code>.</p></li></ul></div>
        
          <h2 id="r_ATTACH_RLS_POLICY-examples">Exemplos</h2>
          <p>O exemplo a seguir anexa uma política de uma tabela a uma função.</p>

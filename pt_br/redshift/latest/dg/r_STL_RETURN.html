@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_RETURN" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_RETURN-table-columns">Colunas da tabela</a><a href="#r_STL_RETURN-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_RETURN">STL_RETURN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Contém detalhes das etapas de <em>retorno</em> nas consultas. Uma etapa de retorno obtém os resultados das consultas concluídas nos nós de computação para o nó líder. O nó de liderança, em seguida, mescla os dados e retorna os resultados ao cliente que fez a solicitação. Para as consultas concluídas em um nó líder, a etapa de retorno obtém os resultados para o cliente.</p><p>Uma consulta consiste em vários segmentos e cada segmento consiste em uma ou mais etapas. Para obter mais informações, consulte <a href="./c-query-processing.html">Processamento de consulta</a>. </p><p>O STL_RETURNS é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_RETURN" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_RETURN-table-columns">Colunas da tabela</a><a href="#r_STL_RETURN-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_RETURN">STL_RETURN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Contém detalhes das etapas de <em>retorno</em> nas consultas. Uma etapa de retorno obtém os resultados das consultas concluídas nos nós de computação para o nó líder. O nó de liderança, em seguida, mescla os dados e retorna os resultados ao cliente que fez a solicitação. Para as consultas concluídas em um nó líder, a etapa de retorno obtém os resultados para o cliente.</p><p>Uma consulta consiste em vários segmentos e cada segmento consiste em uma ou mais etapas. Para obter mais informações, consulte <a href="./c-query-processing.html">Processamento de consulta</a>. </p><p>O STL_RETURNS é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>STL_RETURN só contém consultas executadas em clusters principais. Ele não contém consultas executadas em clusters de escalabilidade de simultaneidade. Para acessar consultas executadas em clusters de escalabilidade principais e de simultaneidade, é recomendável usar a exibição de monitoramento SYS <a href="./SYS_QUERY_DETAIL.html#SYS_QUERY_DETAIL.title">SYS_QUERY_DETAIL</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender.</p></div></div>
             <h2 id="r_STL_RETURN-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c77c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c77c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,27 +61,27 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">ID da consulta. A coluna de consulta pode ser usada para unir outras tabelas e exibições do sistema.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">slice</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número que identifica a fatia em que a consulta estava sendo executada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número que identifica o segmento da consulta.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">etapa</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Etapa da consulta que foi executada.</td>
                         </tr>
                         <tr>
@@ -96,7 +96,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">tasknum</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Número do processo de tarefa de consulta que foi atribuído para executar a etapa.</td>
                         </tr>
                         <tr>
@@ -111,7 +111,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">packets</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número total de pacotes enviados pela rede.</td>
                         </tr>
                         <tr>

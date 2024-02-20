@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_STARTUP_RECOVERY_STATE" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STV_STARTUP_RECOVERY_STATE-table-columns">Colunas da tabela</a><a href="#r_STV_STARTUP_RECOVERY_STATE-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_STARTUP_RECOVERY_STATE">STV_STARTUP_RECOVERY_STATE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra o estado das tabelas que estão temporariamente bloqueadas durante as operações de reinício do cluster. O Amazon Redshift aplica um bloqueio temporário nas tabelas, enquanto elas estão sendo processadas, para resolver transações velhas depois que um cluster é reiniciado. </p><p>STV_STARTUP_RECOVERY_STATE é visível somente aos superusuários. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_STARTUP_RECOVERY_STATE" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STV_STARTUP_RECOVERY_STATE-table-columns">Colunas da tabela</a><a href="#r_STV_STARTUP_RECOVERY_STATE-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_STARTUP_RECOVERY_STATE">STV_STARTUP_RECOVERY_STATE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra o estado das tabelas que estão temporariamente bloqueadas durante as operações de reinício do cluster. O Amazon Redshift aplica um bloqueio temporário nas tabelas, enquanto elas estão sendo processadas, para resolver transações velhas depois que um cluster é reiniciado. </p><p>STV_STARTUP_RECOVERY_STATE permanece visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="r_STV_STARTUP_RECOVERY_STATE-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c41b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c41b7b3"><thead>
                         <tr>
                             <th>Nome da coluna</th>
                             <th>Tipo de dados</th>
@@ -61,12 +61,12 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">db_id </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID do banco de dados. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">table_id </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da tabela. </td>
                         </tr>
                         <tr>

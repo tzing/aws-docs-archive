@@ -72,6 +72,7 @@ IS '<em>text</em>' | NULL</code></pre>
                       
                       
                       
+                      
                   <ul class="itemizedlist"><li class="listitem">
                         <p>TABLE</p>
                      </li><li class="listitem">
@@ -82,6 +83,8 @@ IS '<em>text</em>' | NULL</code></pre>
                         <p>DATABASE</p>
                      </li><li class="listitem">
                         <p>VIEW</p>
+                     </li><li class="listitem">
+                        <p>SCHEMA</p>
                      </li></ul></div>
                </dd>
              
@@ -112,6 +115,8 @@ IS '<em>text</em>' | NULL</code></pre>
          <p>É necessário ser um superusuário ou o proprietário de um objeto de banco de dados para adicionar ou atualizar um comentário.</p>
 
          <p>Comentários sobre bancos de dados podem ser aplicados somente ao banco de dados atual. Uma mensagem de advertência é exibida se você tentar fazer comentários sobre um banco de dados diferente. A mesma mensagem é exibida para comentários sobre bancos de dados que não existem.</p>
+         
+         <p>Comentários em tabelas externas, colunas externas e colunas de visões de vinculação tardia não são compatíveis.</p> 
        
          <h2 id="r_COMMENT-example">Exemplos</h2>
 

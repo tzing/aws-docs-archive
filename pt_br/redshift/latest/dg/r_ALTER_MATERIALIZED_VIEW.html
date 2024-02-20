@@ -47,7 +47,7 @@
 
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER MATERIALIZED VIEW <em>mv_name</em>
 [ AUTO REFRESH <span>{</span> YES | NO } ]
-[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [FOR DATASHARES] ];</code></pre>
+[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [FOR DATASHARES] ];</code></pre>
 
         
 
@@ -56,6 +56,7 @@
 
          <div class="variablelist">
              
+             
     
              
              
@@ -63,18 +64,29 @@
 
 
          <dl>
+               <dt><span class="term"><em>mv_name</em></span></dt>
+               <dd><p>O nome da visualização materializada a ser alterada.</p></dd>
+             
                <dt><span class="term">AUTO REFRESH <span>{</span> YES | NO }</span></dt>
                <dd>
                   <p>Uma cláusula que ativa ou desativa a atualização automática de uma visão materializada. Para obter informações sobre atualização automática ou visualizações materializadas, consulte <a href="./materialized-view-refresh.html">Atualizar uma visualização materializada</a>.</p></dd>
              
-               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF }</span></dt>
-               <dd>
-                  <p>Uma cláusula que ativa ou desativa a segurança em nível de linha para uma visão materializada. Quando a segurança em nível de linha estiver ativada, você só poderá ler as linhas às quais a política em nível de linha permite acesso. Quando não houver nenhuma política que conceda ao usuário acesso à tabela ou à visualização, o usuário não poderá ver nenhum registro. Somente superusuários e usuários ou perfis que tenham o perfil <code class="code">sys:secadmin</code> podem definir a cláusula ROW LEVEL SECURITY. Para obter mais informações, consulte <a href="./r_CREATE_RLS_POLICY.html">CREATE RLS POLICY</a>.</p></dd>
-             
-               <dt><span class="term">PARA UNIDADES DE COMPARTILHAMENTO DE DADOS</span></dt>
-               <dd><p>Uma cláusula que determina se uma visão materializada é protegida por RLS em unidades de compartilhamento de dados. Por padrão, uma visão materializada protegida por RLS também é protegida por RLS por meio de unidades de compartilhamento de dados.</p>
-
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+               <dd><p>Uma cláusula que ativa ou desativa a segurança no nível da linha para uma relação.</p>
+                  <p>Quando a segurança no nível da linha é ativada para uma relação, você só pode ler as linhas às quais a política de segurança no nível da linha permite acesso. Quando não há política que conceda acesso à relação, você não consegue ver nenhuma linha da tabela. Somente superusuários e usuários ou perfis que tenham o perfil <code class="code">sys:secadmin</code> podem definir a cláusula ROW LEVEL SECURITY. Para obter mais informações, consulte <a href="./t_rls.html">Segurança no nível da linha</a>.</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>Uma cláusula que permite a você escolher o tipo de conjunção da política de segurança no nível da linha para uma relação. Quando várias políticas de segurança no nível da linha são anexadas a uma relação, você pode combinar as políticas com a cláusula AND ou OR. Por padrão, o Amazon Redshift combina políticas RLS com a cláusula AND. Superusuários, usuários ou funções que tenham a função <code class="code">sys:secadmin</code> podem usar essa cláusula para definir o tipo de conjunção da política de segurança no nível da linha para uma relação. Para obter mais informações, consulte <a href="./t_rls_combine_policies.html">Combinar várias políticas por usuário</a>. </p></li><li class="listitem">
+                        <p>PARA UNIDADES DE COMPARTILHAMENTO DE DADOS</p>
+                        <p> Uma cláusula que determina se uma relação protegida por RLS pode ser acessada por meio das unidades de compartilhamento de dados. Por padrão, uma relação protegida por RLS não pode ser acessada por meio de uma unidade de compartilhamento de dados. Um comando ALTER MATERIALIZED VIEW ROW LEVEL SECURITY executado com essa cláusula só afeta a propriedade de acessibilidade da unidade de compartilhamento de dados da relação. A propriedade ROW LEVEL SECURITY não foi alterada.</p>
+                        <p> Se você tornar uma relação protegida por RLS acessível por meio de unidades de compartilhamentos de dados, a relação não terá segurança no nível da linha no banco de dados compartilhado no lado do consumidor. A relação mantém a propriedade RLS do lado do produtor. </p>
+                     </li></ul></div>
                </dd>
+             
+               <dt><span class="term">SPECTRUM MAX ERRORS <em>number_of_errors</em></span></dt>
+               <dd><p> Uma cláusula que especifica o número máximo de erros que devem ser aceitos antes que uma consulta seja cancelada na visão materializada. <em>number_of_errors</em> aceita inteiros. Os valores negativos desativam o tratamento de erros máximo. Os resultados estão registrados em <a href="./r_SVL_SPECTRUM_SCAN_ERROR.html">SVL_SPECTRUM_SCAN_ERROR</a>. </p> </dd>
             </dl></div>
 
        

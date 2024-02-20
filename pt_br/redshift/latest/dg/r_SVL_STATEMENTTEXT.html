@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_STATEMENTTEXT" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_STATEMENTTEXT-table-columns">Colunas da tabela</a><a href="#r_SVL_STATEMENTTEXT-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_STATEMENTTEXT">SVL_STATEMENTTEXT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVL_STATEMENTTEXT para obter um registro completo de todos os comandos SQL que foram executados no sistema.</p><p>A exibição SVL_STATEMENTTEXT contém a união de todas as linhas nas tabelas <a href="./r_STL_DDLTEXT.html">STL_DDLTEXT</a>, <a href="./r_STL_QUERYTEXT.html">STL_QUERYTEXT</a> e <a href="./r_STL_UTILITYTEXT.html">STL_UTILITYTEXT</a>. Essa exibição também inclui uma junção com a tabela STL_QUERY.</p><p>SVL_STATEMENTTEXT é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_STATEMENTTEXT" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_STATEMENTTEXT-table-columns">Colunas da tabela</a><a href="#r_SVL_STATEMENTTEXT-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_STATEMENTTEXT">SVL_STATEMENTTEXT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVL_STATEMENTTEXT para obter um registro completo de todos os comandos SQL que foram executados no sistema.</p><p>A exibição SVL_STATEMENTTEXT contém a união de todas as linhas nas tabelas <a href="./r_STL_DDLTEXT.html">STL_DDLTEXT</a>, <a href="./r_STL_QUERYTEXT.html">STL_QUERYTEXT</a> e <a href="./r_STL_UTILITYTEXT.html">STL_UTILITYTEXT</a>. Essa exibição também inclui uma junção com a tabela STL_QUERY.</p><p>SVL_STATEMENTTEXT é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_STATEMENTTEXT-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c61c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c61c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,7 +61,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada. </td>
                         </tr>
                         <tr>
@@ -71,7 +71,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID de processo para a instrução. </td>
                         </tr>
                         <tr>
@@ -91,11 +91,11 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">sequence </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Quando uma única instrução contém mais de 200 caracteres, são registradas linhas adicionais para essa instrução. O valor 0 da sequência é a primeira linha, 1 é a segunda, e assim por diante. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">tipo </td>
+                            <td tabindex="-1">type </td>
                             <td tabindex="-1">varchar(10) </td>
                             <td tabindex="-1">O tipo da instrução SQL: <code class="userinput">QUERY</code>, <code class="userinput">DDL</code> ou <code class="userinput">UTILITY</code>. </td>
                         </tr>

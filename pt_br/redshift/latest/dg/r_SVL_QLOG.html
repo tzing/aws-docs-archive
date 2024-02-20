@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_QLOG" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_QLOG-table-columns">Colunas da tabela</a><a href="#r_SVL_QLOG-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_QLOG">SVL_QLOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>A exibição SVL_QLOG contém um log de todas as consultas executadas para o banco de dados.</p><p>O Amazon Redshift cria a exibição SVL_QLOG como um subconjunto legível de informações da tabela <a href="./r_STL_QUERY.html">STL_QUERY</a>. Use esta tabela para encontrar o ID de uma consulta executada recentemente ou para ver em quanto tempo uma consulta foi concluída.</p><p>SVL_QLOG é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_QLOG" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_QLOG-table-columns">Colunas da tabela</a><a href="#r_SVL_QLOG-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_QLOG">SVL_QLOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>A exibição SVL_QLOG contém um log de todas as consultas executadas para o banco de dados.</p><p>O Amazon Redshift cria a exibição SVL_QLOG como um subconjunto legível de informações da tabela <a href="./r_STL_QUERY.html">STL_QUERY</a>. Use esta tabela para encontrar o ID de uma consulta executada recentemente ou para ver em quanto tempo uma consulta foi concluída.</p><p>SVL_QLOG é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_QLOG-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c31c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c31c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,12 +61,12 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da consulta. Este ID pode ser usado para unir várias outras tabelas e exibições do sistema. </td>
                         </tr>
                         <tr>
@@ -76,7 +76,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do processo associado à consulta. </td>
                         </tr>
                         <tr>
@@ -96,7 +96,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">aborted </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se uma consulta for interrompida pelo sistema ou cancelada pelo usuário, essa coluna terá o valor <code class="userinput">1</code>. Se a consulta foi executada até o final, essa coluna conterá <code class="userinput">0</code>. As consultas que são canceladas para fins de gerenciamento de workload e reiniciadas posteriormente também têm um valor <code class="userinput">1</code> nesta coluna. </td>
                         </tr>
                         <tr>
@@ -111,7 +111,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">source_query</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se a consulta tiver usado o armazenamento em cache do resultado, este é o ID da consulta que originou os resultados armazenados em cache. Se o armazenamento em cache de resultados não foi usado, o valor desse campo é <code class="code">NULL</code>. </td>
                         </tr>
                         <tr>
@@ -121,7 +121,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">from_sp_call</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se a consulta foi chamada a partir de um procedimento armazenado, o ID da consulta da chamada de procedimento. Se a consulta não tiver sido executada como parte de um procedimento armazenado, esse campo será <code class="code">NULL</code>. </td>
                         </tr>                        
                     </table></div></div>

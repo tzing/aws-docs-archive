@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_UNLOAD_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_UNLOAD_DETAIL-table-columns">Colunas da tabela</a><a href="#SYS_UNLOAD_DETAIL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_UNLOAD_DETAIL">SYS_UNLOAD_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_UNLOAD_DETAIL para visualizar detalhes de uma operação UNLOAD. Ela registra uma linha para cada arquivo criado por uma instrução UNLOAD. Por exemplo, se uma UNLOAD criar 12 arquivos, a SYS_UNLOAD_DETAIL conterá 12 linhas correspondentes.</p><p>SYS_UNLOAD_DETAIL é visível a todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_UNLOAD_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_UNLOAD_DETAIL-table-columns">Colunas da tabela</a><a href="#SYS_UNLOAD_DETAIL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_UNLOAD_DETAIL">SYS_UNLOAD_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_UNLOAD_DETAIL para visualizar detalhes de uma operação UNLOAD. Ela registra uma linha para cada arquivo criado por uma instrução UNLOAD. Por exemplo, se uma UNLOAD criar 12 arquivos, a SYS_UNLOAD_DETAIL conterá 12 linhas correspondentes.</p><p>SYS_UNLOAD_DETAIL é visível a todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_UNLOAD_DETAIL-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c73b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c77b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,17 +55,17 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário que gerou a entrada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">query_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador de consulta do comando UNLOAD.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do processo associado à instrução da consulta.</td>
                         </tr> 
                         <tr>

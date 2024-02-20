@@ -124,7 +124,7 @@ order by c1;</code></pre>
             <div class="itemizedlist">
                 
                 
-                
+               
                 
                 
             <ul class="itemizedlist"><li class="listitem">
@@ -132,13 +132,6 @@ order by c1;</code></pre>
                   
                </li><li class="listitem">
                   <p>Uma expressão de consulta que preceda um operador de conjunto não deve conter uma cláusula ORDER BY. Uma cláusula ORDER BY produz resultados significativos classificados somente quando é usada no final de uma consulta que contenha operadores de conjunto. Nesse caso, a cláusula ORDER BY se aplica a resultados finais de todas as operações de conjunto. A consulta mais externa também pode conter as cláusulas LIMIT e OFFSET padrão. </p>
-               </li><li class="listitem">
-                  <p>As cláusulas LIMIT e OFFSET não são maneiras aceitas de restringir o número de linhas que um resultado imediato de uma operação de conjunto retorna. Por exemplo, a consulta a seguir retorna um erro:</p>
-                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">(select listid from listing
-limit 10)
-intersect
-select listid from sales;
-ERROR:  LIMIT may not be used within input to set operations.</code></pre>
                </li><li class="listitem">
                   <p>Quando as consultas do operador de conjunto retornam resultados decimais, as colunas de resultados correspondentes são promovidas para retornar a mesma precisão e escala. Por exemplo, na consulta a seguir, em que T1.REVENUE é uma coluna DECIMAL(10,2) e T2.REVENUE é uma coluna DECIMAL(8,4), o resultado decimal é atualizado para DECIMAL(12,4): </p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select t1.revenue union select t2.revenue;</code></pre>

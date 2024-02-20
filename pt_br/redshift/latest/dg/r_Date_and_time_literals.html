@@ -60,14 +60,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_Date_and_time_literals" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_Date_and_time_literals-dates">Datas</a><a href="#r_Date_and_time_literals-times">Times</a><a href="#r_Date_and_time_literals-timestamps">Timestamps</a><a href="#r_Date_and_time_literals-special-datetime-values">Valores especiais de datetime</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_Date_and_time_literals">Literais de data, hora e timestamp</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>A seguir, estão as regras para trabalhar com literais de data, hora e timestamp compatíveis com o Amazon Redshift. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_Date_and_time_literals" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_Date_and_time_literals-dates">Datas</a><a href="#r_Date_and_time_literals-times">Times</a><a href="#r_Date_and_time_literals-timestamps">Carimbos de data/hora</a><a href="#r_Date_and_time_literals-special-datetime-values">Valores especiais de datetime</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_Date_and_time_literals">Literais de data, hora e timestamp</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>A seguir, estão as regras para trabalhar com literais de data, hora e timestamp compatíveis com o Amazon Redshift. </p>
                      <h2 id="r_Date_and_time_literals-dates">Datas</h2>
 
 
                      <p>As datas de entrada a seguir são exemplos válidos de valores de data literais que você pode carregar nas tabelas do Amazon Redshift. O modo <code class="code">MDY
                            DateStyle</code> é considerado em vigor. Este modo significa que o valor do mês precede o valor do dia em strings tais como <code class="code">1999-01-08</code> e <code class="code">01/02/00</code>. </p>
                      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Um literal de data ou timestamp deve ser colocado entre aspas ao carregá-lo em uma tabela.</p></div></div>
-                     <div class="table-container"><div class="table-contents"><table id="w317aac45b7b9c13c19c21b5b7"><thead>
+                     <div class="table-container"><div class="table-contents"><table id="w319aac47b7b9c13c19c21b5b7"><thead>
                               <tr>
                                  <th>Data de entrada </th>
                                  <th>Data completa </th>
@@ -119,7 +119,7 @@
 
 
                      <p>Os tempos de entrada a seguir são exemplos válidos de valores de tempo literais que você pode carregar nas tabelas do Amazon Redshift. </p>
-                     <div class="table-container"><div class="table-contents"><table id="w317aac45b7b9c13c19c21b7b5"><thead>
+                     <div class="table-container"><div class="table-contents"><table id="w319aac47b7b9c13c19c21b7b5"><thead>
                               <tr>
                                  <th>Tempos de entrada </th>
                                  <th>Descrição (da parte da hora) </th>
@@ -155,11 +155,11 @@
                               </tr>
                            </table></div></div>
                    
-                     <h2 id="r_Date_and_time_literals-timestamps">Timestamps</h2>
+                     <h2 id="r_Date_and_time_literals-timestamps">Carimbos de data/hora</h2>
                      
                      
                      <p>As seguintes timestamps de entrada são exemplos válidos de valores de hora literais que você pode carregar em tabelas do Amazon Redshift. Todos os literais de data válidos podem ser combinados com os seguintes literais de hora. </p>
-                     <div class="table-container"><div class="table-contents"><table id="w317aac45b7b9c13c19c21b9b5"><thead>
+                     <div class="table-container"><div class="table-contents"><table id="w319aac47b7b9c13c19c21b9b5"><thead>
                               <tr>
                                  <th>Time stamps de entrada (datas e horas concatenadas) </th>
                                  <th>Descrição (da parte da hora) </th>
@@ -203,7 +203,7 @@
 
 
                      <p>Os seguintes valores especiais podem ser usados como literais de data e hora e como argumentos para funções de data. Eles exigem aspas simples e são convertidos em valores de timestamp regulares durante o processamento da consulta. </p>
-                     <div class="table-container"><div class="table-contents"><table id="w317aac45b7b9c13c19c21c11b5"><thead>
+                     <div class="table-container"><div class="table-contents"><table id="w319aac47b7b9c13c19c21c11b5"><thead>
                               <tr>
                                  <th>Valor especial</th>
                                  <th>Descrição </th>

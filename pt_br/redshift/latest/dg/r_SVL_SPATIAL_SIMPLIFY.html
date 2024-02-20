@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_SPATIAL_SIMPLIFY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_SPATIAL_SIMPLIFY-table-columns">Colunas da tabela</a><a href="#r_SVL_SPATIAL_SIMPLIFY-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_SPATIAL_SIMPLIFY">SVL_SPATIAL_SIMPLIFY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Você pode consultar a visualização do sistema SVL_SPATIAL_SIMPLIFY para obter informações sobre objetos de geometria espacial simplificada usando o comando COPY. Quando você usa COPY em um shapefile, você pode especificar as opções de ingestão SIMPLIFY <code class="code">tolerance</code>, SIMPLIFY AUTO e SIMPLIFY AUTO <code class="code">max_tolerance</code>. O resultado da simplificação é resumido na exibição de sistema SVL_SPATIAL_SIMPLIFY. </p><p>Quando SIMPLIFY AUTO <code class="code">max_tolerance</code> estiver definido, essa visualização contém uma linha para cada geometria que excedeu o tamanho máximo. Quando SIMPLIFY <code class="code">tolerance</code> estiver definido, então uma linha para toda a operação COPY é armazenada. Esta linha faz referência ao ID da consulta COPY e à tolerância de simplificação especificada.</p><p>SVL_SPATIAL_SIMPLIFY é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_SPATIAL_SIMPLIFY.html">SYS_SPATIAL_SIMPLIFY</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_SPATIAL_SIMPLIFY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_SPATIAL_SIMPLIFY-table-columns">Colunas da tabela</a><a href="#r_SVL_SPATIAL_SIMPLIFY-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_SPATIAL_SIMPLIFY">SVL_SPATIAL_SIMPLIFY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Você pode consultar a visualização do sistema SVL_SPATIAL_SIMPLIFY para obter informações sobre objetos de geometria espacial simplificada usando o comando COPY. Quando você usa COPY em um shapefile, você pode especificar as opções de ingestão SIMPLIFY <code class="code">tolerance</code>, SIMPLIFY AUTO e SIMPLIFY AUTO <code class="code">max_tolerance</code>. O resultado da simplificação é resumido na exibição de sistema SVL_SPATIAL_SIMPLIFY. </p><p>Quando SIMPLIFY AUTO <code class="code">max_tolerance</code> estiver definido, essa visualização contém uma linha para cada geometria que excedeu o tamanho máximo. Quando SIMPLIFY <code class="code">tolerance</code> estiver definido, então uma linha para toda a operação COPY é armazenada. Esta linha faz referência ao ID da consulta COPY e à tolerância de simplificação especificada.</p><p>SVL_SPATIAL_SIMPLIFY é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_SPATIAL_SIMPLIFY.html">SYS_SPATIAL_SIMPLIFY</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_SPATIAL_SIMPLIFY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c57c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c57c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,22 +61,22 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID da consulta (comando COPY) que gerou essa linha. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">line_number </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Quando COPY <code class="code">SIMPLIFY AUTO</code>for especificado, esse valor será o número de registro do registro simplificado no shapefile. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">maximum_tolerance </td>
-                            <td tabindex="-1">double </td>
+                            <td tabindex="-1">duplo </td>
                             <td tabindex="-1">O valor da tolerância de distância especificado no comando COPY. Este é o valor máximo de tolerância usando a opção <code class="code">SIMPLIFY AUTO</code> ou o valor de tolerância fixa usando a opção <code class="code">SIMPLIFY</code>. </td>
                         </tr>   
                         <tr>
                             <td tabindex="-1">initial_size </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O tamanho em bytes do valor de dados <code class="code">GEOMETRY</code> antes da simplificação. </td>
                         </tr>                         
                         <tr>
@@ -86,12 +86,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">final_size </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Quando a opção COPY<code class="code">SIMPLIFY AUTO</code> for especificada, este é o tamanho em bytes da geometria após a simplificação.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">final_tolerance </td>
-                            <td tabindex="-1">double </td>
+                            <td tabindex="-1">duplo </td>
                             <td tabindex="-1"> </td>
                         </tr>
                     </table></div></div>

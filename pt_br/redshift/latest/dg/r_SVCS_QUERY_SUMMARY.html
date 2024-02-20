@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVCS_QUERY_SUMMARY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVCS_QUERY_SUMMARY-table-columns">Colunas da tabela</a><a href="#r_SVCS_QUERY_SUMMARY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVCS_QUERY_SUMMARY">SVCS_QUERY_SUMMARY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVCS_QUERY_SUMMARY para encontrar informações gerais sobre a execução de uma consulta.</p><p> Observe que as informações em SVCS_QUERY_SUMMARY são agregadas de todos os nós. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p> A visualização SVCS_QUERY_SUMMARY contém apenas informações sobre as consultas concluídas pelo Amazon Redshift, e não por outros comandos de utilitário e DDL. Para obter uma lista completa e informações sobre todas as instruções concluídas pelo Amazon Redshift, inclusive comandos de DDL e utilitário, você pode consultar a visualização SVL_STATEMENTTEXT.</p><p>Visualizações do sistema com o prefixo SVCS fornecem detalhes sobre consultas nos clusters principal e de escalabilidade da simultaneidade. As visualizações são semelhantes às visualizações com o prefixo SVL, exceto que as visualizações SVL fornecem informações somente para consultas executadas no cluster principal.</p></div></div><p>SVCS_QUERY_SUMMARY é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> do SYS. </p><p>Para obter informações sobre SVL_QUERY_SUMMARY, consulte <a href="./r_SVL_QUERY_SUMMARY.html">SVL_QUERY_SUMMARY</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVCS_QUERY_SUMMARY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVCS_QUERY_SUMMARY-table-columns">Colunas da tabela</a><a href="#r_SVCS_QUERY_SUMMARY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVCS_QUERY_SUMMARY">SVCS_QUERY_SUMMARY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a exibição SVCS_QUERY_SUMMARY para encontrar informações gerais sobre a execução de uma consulta.</p><p> Observe que as informações em SVCS_QUERY_SUMMARY são agregadas de todos os nós. </p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p> A visualização SVCS_QUERY_SUMMARY contém apenas informações sobre as consultas concluídas pelo Amazon Redshift, e não por outros comandos de utilitário e DDL. Para obter uma lista completa e informações sobre todas as instruções concluídas pelo Amazon Redshift, inclusive comandos de DDL e utilitário, você pode consultar a visualização SVL_STATEMENTTEXT.</p><p>Visualizações do sistema com o prefixo SVCS fornecem detalhes sobre consultas nos clusters principal e de escalabilidade da simultaneidade. As visualizações são semelhantes às visualizações com o prefixo SVL, exceto que as visualizações SVL fornecem informações somente para consultas executadas no cluster principal.</p></div></div><p>SVCS_QUERY_SUMMARY é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p><p>Para obter informações sobre SVL_QUERY_SUMMARY, consulte <a href="./r_SVL_QUERY_SUMMARY.html">SVL_QUERY_SUMMARY</a>.</p>
             <h2 id="r_SVCS_QUERY_SUMMARY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c13c17c15b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c13c17c15b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,27 +61,27 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da consulta. Ele pode ser usado para unir várias outras tabelas e exibições do sistema. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">stm </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Stream: um conjunto de segmentos simultâneos em uma consulta. Uma consulta tem um ou mais streams.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">seg </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número do segmento. Uma consulta consiste em vários segmentos e cada segmento consiste em uma ou mais etapas. Os segmentos de uma consulta podem ser executados em paralelo. Cada segmento executa em um único processo. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">etapa </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Etapa da consulta que foi executada. </td>
                         </tr>
                         <tr>
@@ -115,7 +115,7 @@
                             <td tabindex="-1">A taxa de execução da consulta por byte. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">label </td>
+                            <td tabindex="-1">rótulo </td>
                             <td tabindex="-1">text </td>
                             <td tabindex="-1">O rótulo da etapa, que consiste no nome da etapa da consulta e, se for aplicável, no ID e no nome da tabela (por exemplo, scan tbl=100448 name =user). Os IDs de tabela com três dígitos geralmente indicam varreduras de tabelas transitórias. Quando você vê<code class="code"> tbl=0</code>, isso normalmente indica uma varredura de um valor constante.</td>
                         </tr>

@@ -90,16 +90,16 @@ delimiter '|' COMPUPDATE ON;</code></pre>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select "column", type, encoding 
 from pg_table_def where tablename = 'biglist';
 
-   Column      |            Type               | Encoding 
----------------+-----------------------------+----------
-listid         | integer                     | delta    
-sellerid       | integer                     | delta32k 
-eventid        | integer                     | delta32k 
-dateid         | smallint                    | delta    
-+numtickets    | smallint                    | delta    
-priceperticket | numeric(8,2)                | delta32k 
-totalprice     | numeric(8,2)                | mostly32 
-listtime       | timestamp without time zone | none     </code></pre>
+     Column     |            Type             | Encoding 
+----------------+-----------------------------+----------
+ listid         | integer                     | az64
+ sellerid       | integer                     | az64
+ eventid        | integer                     | az64
+ dateid         | smallint                    | none
+ numtickets     | smallint                    | az64
+ priceperticket | numeric(8,2)                | az64
+ totalprice     | numeric(8,2)                | az64
+ listtime       | timestamp without time zone | az64</code></pre>
                </li><li>
                   <p>Verifique que o número esperado de linhas foi carregado: </p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*) from biglist;

@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">Colunas da tabela</a><a href="#SYS_PROCEDURE_CALL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a visão SYS_PROCEDURE_CALL para obter informações sobre as chamadas de procedimento armazenado, inclusive a hora de início, a hora de término, o status de uma chamada de procedimento armazenado e a hierarquia de chamadas de procedimento armazenado aninhado. Cada chamada de procedimento armazenado recebe um ID de consulta.</p><p>SYS_PROCEDURE_CALL está visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">Colunas da tabela</a><a href="#SYS_PROCEDURE_CALL-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a visão SYS_PROCEDURE_CALL para obter informações sobre as chamadas de procedimento armazenado, inclusive a hora de início, a hora de término, o status de uma chamada de procedimento armazenado e a hierarquia de chamadas de procedimento armazenado aninhado. Cada chamada de procedimento armazenado recebe um ID de consulta.</p><p>SYS_PROCEDURE_CALL está visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_PROCEDURE_CALL-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c45b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c47b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,17 +55,17 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">session_user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário que criou a sessão e é o invocador da chamada de procedimento armazenado de nível superior.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">security_user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário cujos privilégios foram usados para executar a instrução dentro do procedimento armazenado. Se o procedimento armazenado for DEFINER, esse será o user_id proprietário do procedimento armazenado.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">query_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador da consulta da chamada do procedimento armazenado.</td>
                         </tr> 
                         
@@ -92,7 +92,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">caller_procedure_query_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se o procedimento armazenado tiver sido invocado por outro procedimento armazenado, essa coluna terá o ID de consulta da chamada externa. Caso contrário, o campo será NULL.</td>
                         </tr>
                         

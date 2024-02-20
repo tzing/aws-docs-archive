@@ -46,7 +46,7 @@
             <h2 id="r_SVV_DISKUSAGE-table-rows">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c37c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c37c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">db_id </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID do banco de dados. </td>
                         </tr>
                         <tr>
@@ -65,27 +65,27 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">slice </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A fatia dos dados alocada para a tabela. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">col </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Um índice com base zero para a coluna. Toda tabela que é criada tem três colunas ocultas anexadas a ela: INSERT_XID, DELETE_XID e ROW_ID (OID). Uma tabela com 3 colunas definidas pelo usuário contém na realidade 6 colunas, e as colunas definidas pelo usuário são numeradas internamente com 0, 1 e 2. As colunas INSERT_XID, DELETE_XID e ROW_ID são numeradas com 3, 4 e 5, respectivamente, neste exemplo. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">tbl </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da tabela. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">blocknum </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do bloco de dados. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">num_values </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de valores contidos no bloco. </td>
                         </tr>
                         <tr>
@@ -100,52 +100,52 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">sb_pos </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O identificador interno para a posição do superbloco no disco. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">pinned </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se o bloco é fixado ou não na memória como parte do pré-carregamento. 0 = false; 1 = true. O padrão é falso. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">on_disk </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se o bloco é ou não armazenado automaticamente no disco. 0 = false; 1 = true. O padrão é falso. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">modified </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se o bloco foi modificado ou não. 0 = false; 1 = true. O padrão é falso. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">hdr_modified </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se o cabeçalho do bloco foi modificado ou não. 0 = false; 1 = true. O padrão é falso. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">unsorted </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se um bloco está ou não desordenado. 0 = false; 1 = true. O padrão é true (verdadeiro). </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">tombstone </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Para uso interno.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">preferred_diskno </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número do disco onde o bloco se encontra, a menos que o disco esteja com uma falha. Uma vez consertado o disco, o bloco voltará para ele. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">temporary </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Se o bloco contém ou não dados temporários, como de uma tabela temporária ou resultados de consulta intermediários. 0 = false; 1 = true. O padrão é falso. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">newblock </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Indica se um bloco é ou não novo (true) ou nunca foi confirmado no disco (false). 0 = false; 1 = true. </td>
                         </tr>
                     </table></div></div>

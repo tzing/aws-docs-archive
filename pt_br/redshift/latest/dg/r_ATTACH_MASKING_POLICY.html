@@ -45,16 +45,19 @@
 </script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ATTACH_MASKING_POLICY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_ATTACH_MASKING_POLICY-synopsis">Sintaxe</a><a href="#r_ATTACH_MASKING_POLICY-parameters">Parâmetros</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ATTACH_MASKING_POLICY">ATTACH MASKING POLICY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Anexa uma política de mascaramento dinâmico de dados existente a uma coluna. Para obter mais informações sobre mascaramento dinâmico de dados, consulte <a href="./t_ddm.html">Mascaramento dinâmico de dados</a>.</p><p>Superusuários e usuários ou perfis que têm a função sys:secadmin podem anexar uma política de mascaramento.</p>
          <h2 id="r_ATTACH_MASKING_POLICY-synopsis">Sintaxe</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ATTACH MASKING POLICY <em>policy_name</em>
-   ON <span>{</span> <em>table_name</em> }
-   ( <em>output_columns_names</em> ) [ USING ( <em>input_column_names</em> ) ]
+   ON <span>{</span> <em>relation_name</em> }
+   ( <span>{</span><em>output_columns_names</em> | <em>output_path</em>} ) [ USING ( <span>{</span><em>input_column_names</em> | <em>input_path</em> )} ]
    TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC }
    [ PRIORITY <em>priority</em> ];</code></pre>
        
          <h2 id="r_ATTACH_MASKING_POLICY-parameters">Parâmetros</h2>
+         
          <div class="variablelist">
              
              
             
+             
+             
              
              
              
@@ -68,9 +71,9 @@
 
                </dd>
              
-               <dt><span class="term"> <em>table_name</em> </span></dt>
+               <dt><span class="term"> <em>relation_name</em> </span></dt>
                <dd>
-                  <p>O nome da tabela à qual deseja anexar a política de mascaramento.</p>
+                  <p>O nome da relação à qual a política de mascaramento deve ser anexada.</p>
 
                </dd>
              
@@ -79,14 +82,24 @@
                   <p>Os nomes das colunas às quais a política de mascaramento se aplicará.</p>
                </dd>
              
+               <dt><span class="term"><em>output_paths</em> </span></dt>
+               <dd>
+                  <p>O caminho completo do objeto SUPER ao qual a política de mascaramento será aplicada, inclusive o nome da coluna. Por exemplo, para uma relação com uma coluna do tipo SUPER chamada <code class="code">person</code>, <em>output_path</em> pode ser <code class="code">person.name.first_name</code>. </p>
+               </dd>
+             
                <dt><span class="term"><em>input_column_names</em> </span></dt>
                <dd>
-                  <p>Os nomes das colunas que a política de mascaramento vai receber como entrada. Esse parâmetro é opcional. Se não for especificado, a política de mascaramento usará output_column_names como entradas.</p>
+                  <p>Os nomes das colunas que a política de mascaramento vai receber como entrada. Esse parâmetro é opcional. Se não for especificado, a política de mascaramento usará <em>output_column_names</em> como entradas.</p>
+               </dd>
+             
+               <dt><span class="term"><em>input_paths</em> </span></dt>
+               <dd>
+                  <p>O caminho completo do objeto SUPER que a política de mascaramento vai utilizar como entrada. Esse parâmetro é opcional. Se não for especificado, a política de mascaramento usará <em>output_path</em> como entradas.</p>
                </dd>
              
                <dt><span class="term"><em>user_name</em> </span></dt>
                <dd>
-                  <p>O nome do usuário ao qual a política de mascaramento será anexada. Não é possível anexar duas políticas ao mesmo par de coluna/usuário. Você pode anexar uma política a um usuário e outra política ao perfil do usuário. Nesse caso, a política com maior prioridade se aplicará.</p>
+                  <p>O nome do usuário ao qual a política de mascaramento será anexada. Você não pode anexar duas políticas à mesma combinação de usuário e coluna ou função e coluna. Você pode anexar uma política a um usuário e outra política ao perfil do usuário. Nesse caso, a política com maior prioridade se aplicará.</p>
                   <p>Só é possível definir uma opção entre user_name, role_name e PUBLIC em um comando ATTACH MASKING POLICY. </p>
                </dd>
              
@@ -105,6 +118,7 @@
                <dt><span class="term"><em>priority</em> </span></dt>
                <dd>
                   <p>A prioridade da política de mascaramento. Quando várias políticas de mascaramento se aplicam à consulta de um determinado usuário, a política de maior prioridade se aplica.</p>
+                  <p>Você não pode anexar duas políticas diferentes à mesma coluna com prioridade igual, mesmo se as duas políticas estiverem anexadas a usuários ou funções diferentes. Você pode anexar a mesma política várias vezes ao mesmo conjunto de parâmetros de tabela, coluna de saída, coluna de entrada e prioridade, desde que o usuário ou a função à qual a política esteja anexada seja sempre diferente. </p>
                   <p>Você não pode aplicar uma política a uma coluna com a mesma prioridade de outra política anexada a essa coluna, mesmo que ela seja para perfis diferentes. Esse campo é opcional. Se você não especificar uma prioridade, a política de mascaramento será anexada com prioridade 0 por padrão.</p>
                </dd>
             </dl></div>

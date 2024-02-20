@@ -51,6 +51,7 @@
                  
    
    
+                 
             <ul class="itemizedlist"><li class="listitem"><p>Uma visão materializada automática pode ser iniciada e criada por uma consulta ou subconsulta, desde que contenha uma cláusula <code class="code">GROUP BY</code> ou uma das seguintes funções agregadas: SUM, COUNT, MIN, MAX ou AVG. No entanto, ela não pode conter nenhum destes itens:</p>
                 <div class="itemizedlist">
                      
@@ -58,10 +59,10 @@
                      
                      
                      
+                
                      
-                     
-                <ul class="itemizedlist"><li class="listitem"><p>Esquerda, direita ou junções externas completas</p></li><li class="listitem"><p>Funções agregadas, como SUM, COUNT, MIN, MAX e AVG. (Essas funções específicas funcionam com a regravação de consulta automática.)</p></li><li class="listitem"><p>Qualquer função agregada que inclua DISTINCT.</p></li><li class="listitem"><p>Todas as funções da janela</p></li><li class="listitem"><p>Cláusulas SELECT DISTINCT ou HAVING</p></li><li class="listitem"><p>Tabelas externas, como unidades de compartilhamento de dados e tabelas federadas.</p></li><li class="listitem"><p>Outras visualizações materializadas</p></li></ul></div>
-                    <p>Não é garantido que uma consulta que atenda aos critérios iniciará a criação de uma visão materializada automática. O sistema determina de quais candidatos se deve criar uma visão, com base no benefício esperado para a workload e no custo dos recursos a serem mantidos, o que inclui o custo de atualização do sistema. Cada visão materializada resultante é utilizável pela regravação de consulta automática.</p></li><li class="listitem"><p>Mesmo que a AutoMV possa ser iniciada por uma subconsulta ou trechos individuais de operadores de conjunto, a visão materializada resultante não conterá subconsultas nem operadores de conjunto.</p></li><li class="listitem"><p>Para determinar se a AutoMV foi usada para consultas, veja o plano EXPLAIN e procure <code class="code">%_auto_mv_%</code> na saída. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_EXPLAIN.html">EXPLAIN</a>.</p></li></ul></div>
+                <ul class="itemizedlist"><li class="listitem"><p>Esquerda, direita ou junções externas completas</p></li><li class="listitem"><p>Funções agregadas, como SUM, COUNT, MIN, MAX e AVG. (Essas funções específicas funcionam com a regravação de consulta automática.)</p></li><li class="listitem"><p>Qualquer função agregada que inclua DISTINCT.</p></li><li class="listitem"><p>Todas as funções da janela</p></li><li class="listitem"><p>Cláusulas SELECT DISTINCT ou HAVING</p></li><li class="listitem"><p>Outras visualizações materializadas</p></li></ul></div>
+                    <p>Não é garantido que uma consulta que atenda aos critérios iniciará a criação de uma visão materializada automática. O sistema determina de quais candidatos se deve criar uma visão, com base no benefício esperado para a workload e no custo dos recursos a serem mantidos, o que inclui o custo de atualização do sistema. Cada visão materializada resultante é utilizável pela regravação de consulta automática.</p></li><li class="listitem"><p>Mesmo que a AutoMV possa ser iniciada por uma subconsulta ou trechos individuais de operadores de conjunto, a visão materializada resultante não conterá subconsultas nem operadores de conjunto.</p></li><li class="listitem"><p>Para determinar se a AutoMV foi usada para consultas, veja o plano EXPLAIN e procure <code class="code">%_auto_mv_%</code> na saída. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_EXPLAIN.html">EXPLAIN</a>.</p></li><li class="listitem"><p>As visões materializadas automatizadas não são compatíveis em tabelas externas, como unidades de compartilhamento de dados e tabelas federadas.</p></li></ul></div>
          
             <h2 id="materialized-view-auto-mv-limitations">Visualizações materializadas automatizadas</h2>
             <p>Veja a seguir as limitações para trabalhar com visualizações materializadas:</p>

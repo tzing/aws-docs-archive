@@ -66,11 +66,11 @@
                 
                 
                 
-           <ul class="itemizedlist"><li class="listitem"><p><a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a></p></li><li class="listitem"><p><a href="./r_DROP_DATABASE.html">DROP DATABASE</a></p></li><li class="listitem"><p><a href="./r_ALTER_TABLE_APPEND.html">ALTER TABLE APPEND</a></p></li><li class="listitem"><p><a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a></p></li><li class="listitem"><p>DROP EXTERNAL TABLE</p></li><li class="listitem"><p>RENAME EXTERNAL TABLE</p></li><li class="listitem"><p>ALTER EXTERNAL TABLE</p></li><li class="listitem"><p>CREATE TABLESPACE</p></li><li class="listitem"><p>DROP TABLESPACE</p></li><li class="listitem"><p><a href="./r_CREATE_LIBRARY.html">CREATE LIBRARY</a></p></li><li class="listitem"><p><a href="./r_DROP_LIBRARY.html">DROP LIBRARY</a></p></li><li class="listitem"><p>REBUILDCAT</p></li><li class="listitem"><p>INDEXCAT</p></li><li class="listitem"><p>REINDEX DATABASE</p></li><li class="listitem"><p><a href="./r_VACUUM_command.html">VACUUM</a></p></li><li class="listitem"><p><a href="./r_GRANT.html">GRANT</a></p></li><li class="listitem"><p><a href="./r_COPY.html">COPY</a></p></li></ul></div><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Se houver alguma entrada nesta exibição, altere suas aplicações e scripts SQL correspondentes. Recomendamos alterar o código da aplicação para mover o uso desses comandos SQL restritos para fora do bloco de transação. Se precisar de assistência adicional, entre em contato com o AWS Support.</p></div></div><p>SVL_MULTI_STATEMENT_VIOLATIONS é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> do SYS. </p>
+           <ul class="itemizedlist"><li class="listitem"><p><a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a></p></li><li class="listitem"><p><a href="./r_DROP_DATABASE.html">DROP DATABASE</a></p></li><li class="listitem"><p><a href="./r_ALTER_TABLE_APPEND.html">ALTER TABLE APPEND</a></p></li><li class="listitem"><p><a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a></p></li><li class="listitem"><p>DROP EXTERNAL TABLE</p></li><li class="listitem"><p>RENAME EXTERNAL TABLE</p></li><li class="listitem"><p>ALTER EXTERNAL TABLE</p></li><li class="listitem"><p>CREATE TABLESPACE</p></li><li class="listitem"><p>DROP TABLESPACE</p></li><li class="listitem"><p><a href="./r_CREATE_LIBRARY.html">CREATE LIBRARY</a></p></li><li class="listitem"><p><a href="./r_DROP_LIBRARY.html">DROP LIBRARY</a></p></li><li class="listitem"><p>REBUILDCAT</p></li><li class="listitem"><p>INDEXCAT</p></li><li class="listitem"><p>REINDEX DATABASE</p></li><li class="listitem"><p><a href="./r_VACUUM_command.html">VACUUM</a></p></li><li class="listitem"><p><a href="./r_GRANT.html">GRANT</a></p></li><li class="listitem"><p><a href="./r_COPY.html">COPY</a></p></li></ul></div><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Se houver alguma entrada nesta exibição, altere suas aplicações e scripts SQL correspondentes. Recomendamos alterar o código da aplicação para mover o uso desses comandos SQL restritos para fora do bloco de transação. Se precisar de assistência adicional, entre em contato com o AWS Support.</p></div></div><p>SVL_MULTI_STATEMENT_VIOLATIONS é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_MULTI_STATEMENT_VIOLATIONS-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c25c15b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c25c15b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -79,7 +79,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que causou a violação. </td>
                         </tr>
                         <tr>
@@ -101,7 +101,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do processo para a instrução. </td>
                         </tr>
                         <tr>
@@ -121,11 +121,11 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">sequence </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Quando uma única instrução contém mais de 200 caracteres, são registradas linhas adicionais para essa instrução. O valor 0 da sequência é a primeira linha, 1 é a segunda, e assim por diante. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">tipo </td>
+                            <td tabindex="-1">type </td>
                             <td tabindex="-1">varchar(10) </td>
                             <td tabindex="-1">O tipo da instrução SQL: <code class="userinput">QUERY</code>, <code class="userinput">DDL</code> ou <code class="userinput">UTILITY</code>. </td>
                         </tr>

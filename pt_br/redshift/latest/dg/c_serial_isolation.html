@@ -57,9 +57,9 @@
          <ul class="itemizedlist"><li class="listitem">
                <p>ALTER TABLE (para adicional ou descartar colunas)</p>
             </li><li class="listitem">
-               <p>CREATE TABLE</p>
+               <p>CRIAR TABELA</p>
             </li><li class="listitem">
-               <p>DROP TABLE</p>
+               <p>DESCARTAR TABELA</p>
             </li><li class="listitem">
                <p>TRUNCATE TABLE</p>
             </li></ul></div><p>Se qualquer execução serial das transações simultâneas produzir os mesmos resultados que sua execução simultânea, essas transações são consideradas "serializáveis" e podem ser executadas com segurança. Se nenhuma execução serial dessas transações pode produzir os mesmos resultados, a transação que executa uma instrução que pode quebrar a capacidade de serializar é interrompida e revertida.</p><p>As tabelas de catálogo de sistema (PG) e outras tabelas de sistema do Amazon Redshift (STL e STV) não são bloqueadas em uma transação. Portanto, alterações nos objetos do banco de dados decorrentes de operações DDL e TRUNCATE são visíveis na confirmação para quaisquer transações simultâneas.</p><p>Por exemplo, suponha que a tabela A exista no banco de dados quando duas transações simultâneas, T1 e T2, começam. Suponha que T2 retorna uma lista de tabelas selecionando na tabela de catálogo PG_TABLES. Em seguida, T1 descarta a tabela A e confirmações e, em seguida, T2 lista as tabelas novamente. A tabela A agora não está mais listada. Se T2 tentar consultar a tabela descartada, o Amazon Redshift retornará um erro "relação não existe". A consulta de catálogo que retorna a lista de tabelas para T2 ou verifica se a tabela A existe não está sujeita às mesmas regras de isolamento que as operações realizadas nas tabelas do usuário.</p><p>Transações para atualizações dessas tabelas são executadas em um modo de isolamento de leitura confirmada. As tabelas de catálogo com prefixo PG não oferecem suporte ao isolamento de snapshot.</p>

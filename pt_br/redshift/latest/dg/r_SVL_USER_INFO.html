@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_USER_INFO" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVL_USER_INFO-table-columns">Colunas da tabela</a><a href="#SVL_USER_INFO-sample-queries">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_USER_INFO">SVL_USER_INFO</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Você pode recuperar dados sobre os usuários do banco de dados Amazon Redshift com a exibição SVL_USER_INFO.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_USER_INFO" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVL_USER_INFO-table-columns">Colunas da tabela</a><a href="#SVL_USER_INFO-sample-queries">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_USER_INFO">SVL_USER_INFO</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Você pode recuperar dados sobre os usuários do banco de dados Amazon Redshift com a exibição SVL_USER_INFO.</p><p>SVL_USER_INFO só permanece visível para superusuários. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SVL_USER_INFO-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c71b5b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c71b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -66,22 +66,22 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">usesysid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">usecreatedb</td>
-                            <td tabindex="-1">booleano</td>
+                            <td tabindex="-1">boolean</td>
                             <td tabindex="-1">Um valor que indica se o usuário tem permissões para criar bancos de dados. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">usesuper</td>
-                            <td tabindex="-1">booleano</td>
+                            <td tabindex="-1">boolean</td>
                             <td tabindex="-1">Um valor que indica se o usuário é um superusuário.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">usecatupd</td>
-                            <td tabindex="-1">booleano</td>
+                            <td tabindex="-1">boolean</td>
                             <td tabindex="-1">Um valor que indica se o usuário pode atualizar catálogos do sistema. </td>
                         </tr>
                         <tr>
@@ -101,7 +101,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">sessiontimeout</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O tempo máximo em segundos em que uma sessão permanece inativa ou ociosa antes do tempo limite. 0 indica que nenhum tempo limite está definido. Para obter informações sobre a configuração de tempo limite ocioso ou inativo do cluster, consulte “<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Cotas e limites no Amazon Redshift</a>” no <em>Guia de gerenciamento de clusters do Amazon Redshift</em>.</td>
                         </tr>
                         <tr>

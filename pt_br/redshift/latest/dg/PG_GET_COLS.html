@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#PG_GET_COLS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#PG_GET_COLS-synopsis">Sintaxe</a><a href="#PG_GET_COLS-arguments">Argumentos</a><a href="#PG_GET_COLS-return-type">Tipo de retorno</a><a href="#PG_GET_COLS-usage-notes">Observações sobre o uso</a><a href="#PG_GET_COLS-example">Exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="PG_GET_COLS">PG_GET_COLS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Retorna os metadados de coluna para uma definição de tabela ou de exibição.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#PG_GET_COLS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#PG_GET_COLS-synopsis">Sintaxe</a><a href="#PG_GET_COLS-arguments">Argumentos</a><a href="#PG_GET_COLS-return-type">Tipo de retorno</a><a href="#PG_GET_COLS-usage-notes">Observações sobre o uso</a><a href="#PG_GET_COLS-example">Exemplos</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="PG_GET_COLS">PG_GET_COLS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Retorna os metadados de coluna para uma definição de tabela ou de exibição.</p>
             <h2 id="PG_GET_COLS-synopsis">Sintaxe</h2>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">pg_get_cols('<em>name</em>')</code></pre>
           
@@ -59,7 +59,7 @@
             <dl>
                   <dt><span class="term"> <em>name</em> </span></dt>
                   <dd>
-                     <p>O nome de uma tabela ou visualização do Amazon Redshift.</p>
+                     <p>O nome de uma tabela ou visualização do Amazon Redshift. Para obter mais informações, consulte <a href="./r_names.html">Nomes e identificadores</a>.</p>
                   </dd>
                </dl></div>
           
@@ -67,12 +67,14 @@
             <p>VARCHAR </p>
           
             <h2 id="PG_GET_COLS-usage-notes">Observações de uso</h2>
-            <p>A função PG_GET_COLS retorna uma linha para cada coluna em uma definição de tabela ou de exibição. A linha contém uma lista, separada por vírgulas, com nome do esquema, nome do relacionamento, nome da coluna, tipo de dados e número da coluna. </p>
+            <p>A função PG_GET_COLS retorna uma linha para cada coluna em uma definição de tabela ou de exibição. A linha contém uma lista, separada por vírgulas, com nome do esquema, nome do relacionamento, nome da coluna, tipo de dados e número da coluna. A formatação do resultado do SQL depende do cliente SQL utilizado.</p>
           
-            <h2 id="PG_GET_COLS-example">Exemplo</h2>
-            <p>O seguinte exemplo retorna os metadados de coluna para uma exibição chamada SALES_VW.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select pg_get_cols('sales_vw');
-
+            <h2 id="PG_GET_COLS-example">Exemplos</h2>
+            <p>Os exemplos a seguir exibem resultados de uma visualização denominada <code class="code">SALES_VW</code> no esquema <code class="code">public</code> e uma tabela de tabela denominada <code class="code">sales</code> no esquema <code class="code">mytickit1</code> que são criadas pelo usuário no banco de dados conectado <code class="code">dev</code>.</p>
+            
+            <p>O exemplo a seguir exibe os metadados de coluna para uma visualização chamada <code class="code">SALES_VW</code>.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select pg_get_cols('sales_vw');</code>
+<code class="computeroutput" copy="false">
 pg_get_cols                                                
 -----------------------------------------------------------
 (public,sales_vw,salesid,integer,1)                        
@@ -84,11 +86,13 @@ pg_get_cols
 (public,sales_vw,qtysold,smallint,7)                       
 (public,sales_vw,pricepaid,"numeric(8,2)",8)               
 (public,sales_vw,commission,"numeric(8,2)",9)              
-(public,sales_vw,saletime,"timestamp without time zone",10)</code></pre>
-            <p>O seguinte exemplo retorna os metadados de coluna para a exibição SALES_VW em formato de tabela.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from pg_get_cols('sales_vw') 
-cols(view_schema name, view_name name, col_name name, col_type varchar, col_num int);
+(public,sales_vw,saletime,"timestamp without time zone",10)
+</code></code></pre>
 
+            <p>O exemplo a seguir exibe os metadados de coluna para a visualização <code class="code">SALES_VW</code> em formato de tabela.</p>           
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select * from pg_get_cols('sales_vw') 
+cols(view_schema name, view_name name, col_name name, col_type varchar, col_num int);</code>
+<code class="computeroutput" copy="false">
 view_schema | view_name | col_name   | col_type                    | col_num
 ------------+-----------+------------+-----------------------------+--------
 public      | sales_vw  | salesid    | integer                     |       1
@@ -100,5 +104,26 @@ public      | sales_vw  | dateid     | smallint                    |       6
 public      | sales_vw  | qtysold    | smallint                    |       7
 public      | sales_vw  | pricepaid  | numeric(8,2)                |       8
 public      | sales_vw  | commission | numeric(8,2)                |       9
-public      | sales_vw  | saletime   | timestamp without time zone |      10</code></pre>
+public      | sales_vw  | saletime   | timestamp without time zone |      10
+</code></code></pre>
+            
+            <p>O exemplo a seguir exibe os metadados de coluna para a tabela <code class="code">SALES</code> no esquema <code class="code">mytickit1</code> em formato de tabela.</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select * from pg_get_cols('"mytickit1"."sales"') 
+cols(view_schema name, view_name name, col_name name, col_type varchar, col_num int);</code>
+<code class="computeroutput" copy="false">
+view_schema | view_name | col_name   | col_type                    | col_num
+------------+-----------+------------+-----------------------------+--------
+mytickit1   | sales     | salesid    | integer                     |       1
+mytickit1   | sales     | listid     | integer                     |       2
+mytickit1   | sales     | sellerid   | integer                     |       3
+mytickit1   | sales     | buyerid    | integer                     |       4
+mytickit1   | sales     | eventid    | integer                     |       5
+mytickit1   | sales     | dateid     | smallint                    |       6
+mytickit1   | sales     | qtysold    | smallint                    |       7
+mytickit1   | sales     | pricepaid  | numeric(8,2)                |       8
+mytickit1   | sales     | commission | numeric(8,2)                |       9
+mytickit1   | sales     | saletime   | timestamp without time zone |      10
+</code></code></pre>
+            
+            
          <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./PG_BACKEND_PID.html">PG_BACKEND_PID</div><div id="next" class="next-link" accesskey="n" href="./PG_GET_GRANTEE_BY_IAMROLE.html">PG_GET_GRANTEE_BY_IAM_ROLE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/PG_GET_COLS.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/PG_GET_COLS.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

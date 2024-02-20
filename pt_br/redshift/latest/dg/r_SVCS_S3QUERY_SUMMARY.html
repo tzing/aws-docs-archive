@@ -52,7 +52,7 @@
             <h2 id="r_SVCS_S3QUERY_SUMMARY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c13c25c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c13c25c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,12 +61,12 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que gerou determinada entrada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID da consulta. Este valor pode ser usado para unir várias outras tabelas e exibições do sistema. </td>
                         </tr>
                         <tr>
@@ -76,17 +76,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do processo.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número do segmento. Uma consulta consiste em vários segmentos e cada segmento consiste em uma ou mais etapas. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">etapa</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">A etapa da consulta que foi executada. </td>
                         </tr>
                         <tr>
@@ -101,12 +101,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">elapsed</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O tempo que a consulta do Redshift Spectrum levou para ser executada neste segmento (em microssegundos).</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">aborted</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se uma consulta for interrompida pelo sistema ou cancelada pelo usuário, essa coluna terá o valor <code class="userinput">1</code>. Se a consulta foi executada até o final, essa coluna conterá <code class="userinput">0</code>.</td>
                         </tr>
                         <tr>
@@ -156,19 +156,19 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">files</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número de arquivos que foram processados para esta consulta do Redshift Spectrum. Um número pequeno de arquivos limita os benefícios do processamento paralelo. </td>
                             
                         </tr>
                         <tr>
                             <td tabindex="-1">files_max</td>
-                            <td tabindex="-1">integer</td>                        
+                            <td tabindex="-1">inteiro</td>                        
                             <td tabindex="-1">O número máximo de arquivos processados em uma fatia.</td>
                             
                         </tr>
                         <tr>
                             <td tabindex="-1">files_avg</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número médio de arquivos processados em uma fatia.</td>
                         </tr>
                         <tr>
@@ -178,7 +178,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">splits_max</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número máximo de divisões processadas nesta fatia. </td>
                         </tr>
                         <tr>
@@ -208,7 +208,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">max_retries</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número máximo de novas tentativas para um arquivo individual processado.</td>
                         </tr>
                         <tr>
@@ -223,7 +223,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">max_request_parallelism</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número máximo de solicitações paralelas em uma fatia para esta consulta do Redshift Spectrum.</td>
                         </tr>
                         <tr>
@@ -238,7 +238,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">max_slowdown_count</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número máximo de solicitações do Amazon S3 com um erro de desaceleração que ocorreu durante a varredura de tabela externa em um slice. </td>
                         </tr>
 

@@ -62,8 +62,8 @@ AS query </pre>
                   <p>Uma cláusula que especifica se a visualização materializada é incluída em snapshots automatizados e manuais do cluster que são armazenados no Amazon S3.</p>
                   <p>O valor padrão para <code class="code">BACKUP</code> é <code class="code">YES</code>.</p>
                   <p>É possível especificar <code class="code">BACKUP NO</code>  para reduzir o tempo de processamento ao criar snapshots e restaurar de snapshots, e reduzir a quantidade de armazenamento necessário no Amazon S3.</p>
-                  <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>A configuração <code class="code">BACKUP NO</code> não tem efeito sobre a replicação automática de dados para outros nós no cluster. Portanto, as tabelas com <code class="code">BACKUP
-                           NO</code> especificado são restauradas em caso de falha no nó.</p></div></div>
+                  <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>A configuração <code class="code">BACKUP NO</code> não tem efeito ba replicação automática de dados para outros nós no cluster. Portanto, tabelas com <code class="code">BACKUP
+                           NO</code> especificado são restauradas em uma falha do nó.</p></div></div>
                </dd>
              
                <dt><span class="term"> <em>table_attributes</em> </span></dt>
@@ -149,7 +149,7 @@ AS query </pre>
             </li><li class="listitem">
                <p>A cláusula ORDER BY, LIMIT ou OFFSET.</p>
             </li><li class="listitem">
-               <p>Referências de vinculação tardia a tabelas base. Ou seja, todas as tabelas base ou colunas relacionadas referenciadas na definição da consulta SQL da visualização materializada devem existir e serem válidas. </p>
+               <p>referências de vinculação tardia a tabelas base. Ou seja, todas as tabelas base ou colunas relacionadas referenciadas na definição da consulta SQL da visualização materializada devem existir e serem válidas. </p>
             </li><li class="listitem">
                <p>Funções somente de nó líder: CURRENT_SCHEMA, CURRENT_SCHEMAS, HAS_DATABASE_PRIVILEGE, HAS_SCHEMA_PRIVILEGE, HAS_TABLE_PRIVILEGE.</p>
             </li><li class="listitem"><p>Você não pode usar a opção AUTO REFRESH YES quando a definição de visualização materializada incluir funções mutáveis ou esquemas externos. Você também não pode usá-lo ao definir uma visão materializada em outra visualização materializada.</p></li><li class="listitem"><p>Não é necessário executar manualmente o <a href="./r_ANALYZE.html">ANALYZE</a> com visões materializadas. Atualmente, isso acontece apenas via AUTO ANALYZE. Para obter mais informações, consulte <a href="./t_Analyzing_tables.html">Análise de tabelas</a>.</p></li></ul></div>

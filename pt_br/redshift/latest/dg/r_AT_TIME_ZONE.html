@@ -37,7 +37,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "Funções de data e hora",
+        "name" : "Perfis de data e hora",
         "item" : "https://docs.aws.amazon.com/pt_br/redshift/latest/dg/Date_functions_header.html"
       },
       {
@@ -72,16 +72,16 @@
       <h2 id="r_AT_TIME_ZONE-examples">Exemplos</h2>
          
          
-         <p>O exemplo a seguir converte um valor de carimbo de data/hora sem fuso horário e o interpreta como o fuso MST (UTC+7 em POSIX). O exemplo retorna um valor do tipo de dados TIMESTAMPTZ.</p>
+         <p>O exemplo a seguir converte um valor de carimbo de data/hora sem fuso horário e o interpreta como o fuso MST (UTC+7 em POSIX). O exemplo retorna um valor do tipo de dados TIMESTAMPTZ para o fuso horário UTC. Se configurar o fuso horário padrão como um fuso horário diferente de UTC, você poderá ver um resultado diferente.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT TIMESTAMP '2001-02-16 20:38:40' AT TIME ZONE 'MST';</code>
 
-<code class="computeroutput" copy="false">  timestamptz 
+<code class="computeroutput" copy="false">timezone
 ------------------------
-2001-02-16 19:38:40-08</code></code></pre>
+2001-02-17 03:38:40+00</code></code></pre>
          <p>O exemplo a seguir pega um time stamp de entrada com um valor de fuso horário em que o fuso horário especificado é EST (UTC+5 em POSIX) e o converte para MST (UTC+7 em POSIX). O exemplo retorna um valor do tipo de dados TIMESTAMP.</p>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT TIMESTAMP WITH TIME ZONE '2001-02-16 20:38:40-05' AT TIME ZONE 'MST';</code>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT TIMESTAMPTZ '2001-02-16 20:38:40-05' AT TIME ZONE 'MST';</code>
 
-<code class="computeroutput" copy="false">  timestamp
+<code class="computeroutput" copy="false">timezone
 ------------------------
 2001-02-16 18:38:40</code></code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ADD_MONTHS.html">ADD_MONTHS</div><div id="next" class="next-link" accesskey="n" href="./CONVERT_TIMEZONE.html">CONVERT_TIMEZONE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_AT_TIME_ZONE.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_AT_TIME_ZONE.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

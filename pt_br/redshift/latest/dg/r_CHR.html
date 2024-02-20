@@ -78,13 +78,13 @@
 
           
             <h2 id="r_CHR-example">Exemplos</h2>
-<p>Para retornar o caractere que corresponde ao ponto 65 do código ASCII, use o exemplo a seguir. </p>
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CHR(65);</code>
+<p>Para retornar o caractere correspondente ao ponto 0 do código ASCII, use o exemplo a seguir. A função CHR retorna <code class="code">NULL</code> para a entrada <code class="code">0</code>. </p>
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CHR(0);</code>
 
 <code class="computeroutput" copy="false">+-----+
 | chr |
 +-----+
-| A   |
+|     |
 +-----+</code></code></pre>
 
 <p>Para retornar o caractere que corresponde ao ponto 65 do código ASCII, use o exemplo a seguir.</p>

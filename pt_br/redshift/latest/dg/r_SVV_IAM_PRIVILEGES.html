@@ -42,11 +42,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_IAM_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVV_IAM_PRIVILEGES-table-columns">Colunas da tabela</a><a href="#SVV_IAM_PRIVILEGES-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_IAM_PRIVILEGES">SVV_IAM_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_IAM_PRIVILEGES para ver os privilégios do IAM concedidos explicitamente a usuários, perfis e grupos. SVV_IAM_PRIVILEGES fica visível para todos os usuários. Superusuários podem ver todas as linhas. Usuários regulares que têm a permissão ACCESS SYSTEM TABLE podem ver todas as linhas. Os usuários regulares só podem ver as entradas às quais têm acesso.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_IAM_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SVV_IAM_PRIVILEGES-table-columns">Colunas da tabela</a><a href="#SVV_IAM_PRIVILEGES-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_IAM_PRIVILEGES">SVV_IAM_PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_IAM_PRIVILEGES para ver os privilégios do IAM concedidos explicitamente a usuários, perfis e grupos.</p><p>SVV_IAM_PRIVILEGES permanece visível para os seguintes usuários:</p><div class="itemizedlist">
+             
+             
+        <ul class="itemizedlist"><li class="listitem"><p>Superusuários</p></li><li class="listitem"><p>Usuários com a permissão ACCESS SYSTEM TABLE</p></li></ul></div><p>Outros usuários só podem ver entradas às quais têm acesso.</p>
             <h2 id="SVV_IAM_PRIVILEGES-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c55b5b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c55c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -65,7 +68,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">identity_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">ID da identidade. Os valores possíveis são ID do usuário, ID da função ou ID do grupo. </td>
                         </tr>
                         <tr>

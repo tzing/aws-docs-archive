@@ -48,10 +48,10 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_DATASHARE_USAGE_PRODUCER" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-table-rows">Colunas da tabela</a><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_DATASHARE_USAGE_PRODUCER">SVL_DATASHARE_USAGE_PRODUCER</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra a atividade e o uso de datashares. Essa visualização é relevante apenas no cluster do produtor.</p><p>Esta tabela é visível para todos os usuários.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_DATASHARE_USAGE_PRODUCER.html">SYS_DATASHARE_USAGE_PRODUCER</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_DATASHARE_USAGE_PRODUCER" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-table-rows">Colunas da tabela</a><a href="#r_SVL_DATASHARE_USAGE_PRODUCER-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_DATASHARE_USAGE_PRODUCER">SVL_DATASHARE_USAGE_PRODUCER</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Registra a atividade e o uso de datashares. Essa visualização é relevante apenas no cluster do produtor.</p><p>SVL_DATASHARE_USAGE_PRODUER é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_DATASHARE_USAGE_PRODUCER.html">SYS_DATASHARE_USAGE_PRODUCER</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_DATASHARE_USAGE_PRODUCER-table-rows">Colunas da tabela</h2>
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c21b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c21b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -60,7 +60,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">share_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do objeto (OID) do datashare.</td>
 
                         </tr>
@@ -89,7 +89,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">object_oid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do objeto que está sendo compartilhado do datashare.</td>
                         </tr>
                         <tr>
@@ -123,13 +123,18 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">status</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O status do datashare.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">error</td>
+                            <td tabindex="-1">erro</td>
                             <td tabindex="-1">varchar(512)</td>
                             <td tabindex="-1">A mensagem para um erro.</td>
+                        </tr>
+                        <tr>
+                            <td tabindex="-1">consumer_region</td>
+                            <td tabindex="-1">char(64)</td>
+                            <td tabindex="-1">A região na qual o cluster do consumidor está.</td>
                         </tr>
                     </table></div></div>
          
@@ -145,6 +150,4 @@ WHERE object_name LIKE 'tickit%';
    request_type
  ------------------   
    "GET RELATION"</code></pre>
-            
-            
         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_SVL_DATASHARE_USAGE_CONSUMER.html">SVL_DATASHARE_USAGE_CONSUMER</div><div id="next" class="next-link" accesskey="n" href="./r_SVL_FEDERATED_QUERY.html">SVL_FEDERATED_QUERY</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_SVL_DATASHARE_USAGE_PRODUCER.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_SVL_DATASHARE_USAGE_PRODUCER.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

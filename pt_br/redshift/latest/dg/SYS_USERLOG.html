@@ -47,11 +47,11 @@
              
              
              
-        <ul class="itemizedlist"><li class="listitem"><p>Criar usuário</p></li><li class="listitem"><p>Descartar usuário</p></li><li class="listitem"><p>Alterar usuário (renomear)</p></li><li class="listitem"><p>Alterar usuário (alterar as propriedades)</p></li></ul></div><p>É possível consultar essa visualização para ver informações sobre grupos de trabalho sem servidor e clusters provisionados.</p><p>Esta visualização é visível somente aos superusuários. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
+        <ul class="itemizedlist"><li class="listitem"><p>Criar usuário</p></li><li class="listitem"><p>Descartar usuário</p></li><li class="listitem"><p>Alterar usuário (renomear)</p></li><li class="listitem"><p>Alterar usuário (alterar as propriedades)</p></li></ul></div><p>É possível consultar essa visualização para ver informações sobre grupos de trabalho sem servidor e clusters provisionados.</p><p>SYS_USERLOG só permanece visível para superusuários. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_USERLOG-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c77c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c81c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -60,7 +60,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário que enviou o descarregamento.</td>
                         </tr>
                         <tr>
@@ -74,23 +74,23 @@
                             <td tabindex="-1">O nome de usuário original em uma ação de renomear. Esse campo fica vazio para todas as outras ações.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">action</td>
+                            <td tabindex="-1">ação</td>
                             <td tabindex="-1">character(10)</td>
                             <td tabindex="-1">A ação ocorrida. Os valores válidos são alter, create, drop e rename.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">has_create_db_privs</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se for verdadeiro (um valor de 1), o usuário terá permissões para criar um banco de dados.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">is_superuser</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se verdadeiro (um valor de 1), o usuário poderá atualizar catálogos do sistema.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">has_update_catalog_privs</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Se verdadeiro (um valor de 1), o usuário poderá atualizar catálogos do sistema.</td>
                         </tr>
                         <tr>
@@ -100,7 +100,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do processo.</td>
                         </tr>
                         <tr>

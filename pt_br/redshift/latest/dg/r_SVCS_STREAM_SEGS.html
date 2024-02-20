@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVCS_STREAM_SEGS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVCS_STREAM_SEGS-table-columns">Colunas da tabela</a><a href="#r_SVCS_STREAM_SEGS-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVCS_STREAM_SEGS">SVCS_STREAM_SEGS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Lista a relação entre os streams e os segmentos simultâneos.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Visualizações do sistema com o prefixo SVCS fornecem detalhes sobre consultas nos clusters principal e de escalabilidade da simultaneidade. As visualizações são semelhantes às tabelas com o prefixo STL, exceto que as tabelas STL fornecem informações somente para consultas executadas no cluster principal.</p></div></div><p>Esta tabela é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVCS_STREAM_SEGS" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVCS_STREAM_SEGS-table-columns">Colunas da tabela</a><a href="#r_SVCS_STREAM_SEGS-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVCS_STREAM_SEGS">SVCS_STREAM_SEGS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Lista a relação entre os streams e os segmentos simultâneos.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Visualizações do sistema com o prefixo SVCS fornecem detalhes sobre consultas nos clusters principal e de escalabilidade da simultaneidade. As visualizações são semelhantes às tabelas com o prefixo STL, exceto que as tabelas STL fornecem informações somente para consultas executadas no cluster principal.</p></div></div><p>SVCS_STREAM_SEGS permanece visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="r_SVCS_STREAM_SEGS-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c13c27b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c13c27b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,22 +61,22 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">ID da consulta. A coluna de consulta pode ser usada para unir outras tabelas e exibições do sistema.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">stream </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">transmissão </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O conjunto de segmentos simultâneos de uma consulta. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número que identifica o segmento da consulta.</td>
                         </tr>
                     </table></div></div>

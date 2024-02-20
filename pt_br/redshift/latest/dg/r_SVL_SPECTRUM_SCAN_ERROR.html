@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_SPECTRUM_SCAN_ERROR" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_SPECTRUM_SCAN_ERROR-table-columns">Colunas da tabela</a><a href="#r_SVL_SPECTRUM_SCAN_ERROR-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_SPECTRUM_SCAN_ERROR">SVL_SPECTRUM_SCAN_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Você pode consultar a visualização do sistema SVL_SPECTRUM_SCAN_ERROR para obter informações sobre erros de escaneamento do Redshift Spectrum. </p><p>SVL_SPECTRUM_SCAN_ERROR é visível a todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_EXTERNAL_QUERY_ERROR.html">SYS_EXTERNAL_QUERY_ERROR</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_SPECTRUM_SCAN_ERROR" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_SPECTRUM_SCAN_ERROR-table-columns">Colunas da tabela</a><a href="#r_SVL_SPECTRUM_SCAN_ERROR-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_SPECTRUM_SCAN_ERROR">SVL_SPECTRUM_SCAN_ERROR</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Você pode consultar a visualização do sistema SVL_SPECTRUM_SCAN_ERROR para obter informações sobre erros de escaneamento do Redshift Spectrum. </p><p>SVL_SPECTRUM_SCAN_ERROR é visível a todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_EXTERNAL_QUERY_ERROR.html">SYS_EXTERNAL_QUERY_ERROR</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_SPECTRUM_SCAN_ERROR-table-columns">Colunas da tabela</h2>
             
             <p>Exibe uma amostra dos erros registrados. O padrão são 10 entradas por consulta.</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c59b9b5"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c59b9b5"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,16 +61,16 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que gerou essa linha. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID da consulta que gerou essa linha. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">location </td>
+                            <td tabindex="-1">local </td>
                             <td tabindex="-1">character(128) </td>
                             <td tabindex="-1">A localização dos dados que estão sendo consultados. </td>
                         </tr>
@@ -101,7 +101,7 @@
                             <td tabindex="-1">Opção de tratamento de dados especificada na consulta. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">action </td>
+                            <td tabindex="-1">ação </td>
                             <td tabindex="-1">character(128) </td>
                             <td tabindex="-1">Ação associada à opção de tratamento de dados especificada na consulta. </td>
                         </tr>
@@ -112,7 +112,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">error_code </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Código do resultado da opção de tratamento de dados especificada na consulta. </td>
                         </tr>
                     </table></div></div>

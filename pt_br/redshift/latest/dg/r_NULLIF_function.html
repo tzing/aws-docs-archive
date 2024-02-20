@@ -130,7 +130,7 @@ catgroup
 ----------
 null
 (1 row)</code></pre>
-            <p>NULLIF ignora espaços finais. Se uma string não está vazia, mas contém espaços, NULLIF ainda retorna nulo:</p>
+            <p>NULLIF ignora espaços em branco à direita. Se uma string não estiver vazia, mas contiver espaços em branco, NULLIF continuará retornando nulo:</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create table nulliftest(c1 char(2), c2 char(2));
 
 insert into nulliftest values ('a','a ');

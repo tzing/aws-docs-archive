@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_EXTERNAL_TABLES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_EXTERNAL_TABLES-table-columns">Colunas da tabela</a><a href="#r_SVV_EXTERNAL_TABLES-example">Exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_EXTERNAL_TABLES">SVV_EXTERNAL_TABLES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_EXTERNAL_TABLES para ver os detalhes das tabelas externas. Para obter mais informações, consulte <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>. Use SVV_EXTERNAL_TABLES também para consultas entre bancos de dados para exibir metadados em todas as tabelas em bancos de dados não conectados às quais os usuários têm acesso. </p><p>SVV_EXTERNAL_TABLES é visível por todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_EXTERNAL_TABLES" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_EXTERNAL_TABLES-table-columns">Colunas da tabela</a><a href="#r_SVV_EXTERNAL_TABLES-example">Exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_EXTERNAL_TABLES">SVV_EXTERNAL_TABLES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_EXTERNAL_TABLES para ver os detalhes das tabelas externas. Para obter mais informações, consulte <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>. Use SVV_EXTERNAL_TABLES também para consultas entre bancos de dados para exibir metadados em todas as tabelas em bancos de dados não conectados às quais os usuários têm acesso. </p><p>SVV_EXTERNAL_TABLES é visível por todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="r_SVV_EXTERNAL_TABLES-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c47b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c47b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -75,7 +75,7 @@
                             <td tabindex="-1">O tipo da tabela. Alguns valores são TABLE, VIEW, MATERIALIZED VIEW ou uma string vazia " " que não representa nenhuma informação.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">location</td>
+                            <td tabindex="-1">local</td>
                             <td tabindex="-1">text</td>
                             <td tabindex="-1">A localização da tabela.</td>
                         </tr>
@@ -101,7 +101,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">compressed</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Um valor que indica se a tabela é compactada; <code class="userinput">1</code> indica que é compactada, <code class="userinput">0</code> indica que não é compactada.</td>
                         </tr>
                         <tr>

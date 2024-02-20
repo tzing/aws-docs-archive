@@ -125,7 +125,7 @@ CREATEDB | NOCREATEDB
                   <p>Por padrão, os usuários podem alterar suas próprias senhas, a menos que a senha esteja desabilitada. Para desabilitar a senha de um usuário, especifique DISABLE. Quando a senha de um usuário for desabilitada, ela será excluída do sistema e o usuário poderá fazer logon apenas usando as credenciais temporárias do usuário do AWS Identity and Access Management (IAM). Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html">Uso da autenticação do IAM para gerar credenciais do usuário do banco de dados</a>. Apenas um superusuário pode habilitar ou desabilitar senhas. Não é possível desabilitar a senha de um superusuário. Para habilitar uma senha, execute ALTER USER e especifique uma senha.</p>
 
                   
-                  <p>Para obter detalhes sobre como usar o parâmetro PASSWORD, consulte <a href="./r_CREATE_USER.html">CREATE USER</a>. </p>
+                  <p>Para obter detalhes sobre como usar o parâmetro PASSWORD, consulte <a href="./r_CREATE_USER.html">CRIAR USUÁRIO</a>. </p>
                   
                   
                </dd>
@@ -144,7 +144,7 @@ CREATEDB | NOCREATEDB
                <dt><span class="term"> <em>new_name</em> </span></dt>
                <dd>
                   <p>Novo nome de usuário. Para obter mais informações sobre nomes válidos, consulte <a href="./r_names.html">Nomes e identificadores</a>.</p>
-                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Importante</h6></div><div class="awsdocs-note-text"><p>Ao renomear um usuário, você deve alterar a senha do usuário. O nome de usuário é usado como parte da criptografia da senha. Portanto, quando um usuário é renomeado, a senha é eliminada. O usuário só poderá fazer logon depois que a senha for redefinida. Por exemplo: </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user newuser password 'EXAMPLENewPassword11'; </code></pre></div></div>
+                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Importante</h6></div><div class="awsdocs-note-text"><p>Ao renomear um usuário, você também deve redefinir a senha do usuário. A senha redefinida não precisa ser diferente da senha anterior. O nome de usuário é usado como parte da criptografia da senha. Portanto, quando um usuário é renomeado, a senha é eliminada. O usuário só poderá fazer logon depois que a senha for redefinida. Por exemplo: </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user newuser password 'EXAMPLENewPassword11'; </code></pre></div></div>
                </dd>
              
                <dt><span class="term">CONNECTION LIMIT <span>{</span> <em>limite</em> | UNLIMITED } </span></dt>

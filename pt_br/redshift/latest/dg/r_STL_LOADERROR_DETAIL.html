@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_LOADERROR_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_LOADERROR_DETAIL-table-columns">Colunas da tabela</a><a href="#r_STL_LOADERROR_DETAIL-samplequery">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_LOADERROR_DETAIL">STL_LOADERROR_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Exibe um log de erros de análise de dados que ocorreram no uso do comando COPY para carregar tabelas. Para poupar espaço em disco, um máximo 20 erros por fatia de nó é registrado para cada operação de carga.</p><p> Um erro de análise ocorre quando o Amazon Redshift não consegue analisar um campo em uma linha de dados ao carregá-lo em uma tabela. Por exemplo, se uma coluna da tabela está esperando um tipo de dados inteiro e o arquivo de dados contém uma string de caracteres alfabéticos no campo, isso causa um erro de análise.</p><p>Consulte a tabela STL_LOADERROR_DETAIL para obter detalhes adicionais, como a linha e a coluna exatas de um erro de análise, depois de consultar a tabela <a href="./r_STL_LOAD_ERRORS.html">STL_LOAD_ERRORS</a> para obter as informações gerais sobre o erro.</p><p>A visualização STL_LOADERROR_DETAIL contém todas as colunas de dados, incluindo e antes da coluna onde ocorreu o erro de análise. Use o campo VALUE para visualizar os valores dos dados que foram analisados nesta coluna, incluindo as colunas que foram analisadas corretamente até o erro ocorrer.</p><p>Esta visualização é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_LOAD_ERROR_DETAIL.html">SYS_LOAD_ERROR_DETAIL</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_LOADERROR_DETAIL" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STL_LOADERROR_DETAIL-table-columns">Colunas da tabela</a><a href="#r_STL_LOADERROR_DETAIL-samplequery">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_LOADERROR_DETAIL">STL_LOADERROR_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Exibe um log de erros de análise de dados que ocorreram no uso do comando COPY para carregar tabelas. Para poupar espaço em disco, um máximo 20 erros por fatia de nó é registrado para cada operação de carga.</p><p> Um erro de análise ocorre quando o Amazon Redshift não consegue analisar um campo em uma linha de dados ao carregá-lo em uma tabela. Por exemplo, se uma coluna da tabela está esperando um tipo de dados inteiro e o arquivo de dados contém uma string de caracteres alfabéticos no campo, isso causa um erro de análise.</p><p>Consulte a tabela STL_LOADERROR_DETAIL para obter detalhes adicionais, como a linha e a coluna exatas de um erro de análise, depois de consultar a tabela <a href="./r_STL_LOAD_ERRORS.html">STL_LOAD_ERRORS</a> para obter as informações gerais sobre o erro.</p><p>A visualização STL_LOADERROR_DETAIL contém todas as colunas de dados, incluindo e antes da coluna onde ocorreu o erro de análise. Use o campo VALUE para visualizar os valores dos dados que foram analisados nesta coluna, incluindo as colunas que foram analisadas corretamente até o erro ocorrer.</p><p>Esta visualização é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>STL_LOADERROR_DETAIL só contém consultas executadas em clusters principais. Ele não contém consultas executadas em clusters de escalabilidade de simultaneidade. Para acessar consultas executadas em clusters de escalabilidade principais e de simultaneidade, é recomendável usar a exibição de monitoramento SYS <a href="./SYS_LOAD_ERROR_DETAIL.html#SYS_LOAD_ERROR_DETAIL.title">SYS_LOAD_ERROR_DETAIL</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender.</p></div></div>
             <h2 id="r_STL_LOADERROR_DETAIL-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c51c15b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c51c15b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,27 +61,27 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">slice</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">A fatia onde o erro ocorreu. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">session </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">sessão </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID de sessão para a sessão executando o carregamento. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">ID da consulta. A coluna de consulta pode ser usada para unir outras tabelas e exibições do sistema.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">filename </td>
-                            <td tabindex="-1">character(256) </td>
+                            <td tabindex="-1">character (256) </td>
                             <td tabindex="-1">O caminho completo do arquivo de entrada para a carga. </td>
                         </tr>
                         <tr>
@@ -91,7 +91,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">field </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O campo com erro. </td>
                         </tr>
                         <tr>
@@ -100,17 +100,17 @@
                             <td tabindex="-1">Nome da coluna. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">value </td>
+                            <td tabindex="-1">valor </td>
                             <td tabindex="-1">character(1024) </td>
                             <td tabindex="-1">O valor do dado analisado no campo. (Ele pode estar truncado). Os caracteres multibyte nos dados de carga são substituídos por um ponto.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">is_null </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Indica se o valor analisado é nulo. </td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">tipo </td>
+                            <td tabindex="-1">type </td>
                             <td tabindex="-1">character(10) </td>
                             <td tabindex="-1">O tipo de dados do campo. </td>
                         </tr>

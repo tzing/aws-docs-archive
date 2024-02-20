@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_DATASHARE_CHANGE_LOG" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_DATASHARE_CHANGE_LOG-table-rows">Colunas da tabela</a><a href="#r_SVL_DATASHARE_CHANGE_LOG-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_DATASHARE_CHANGE_LOG">SVL_DATASHARE_CHANGE_LOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Regista a exibição consolidada para rastrear alterações nos conjuntos de dados em clusters de produtores e consumidores.</p><p>Esta visualização é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_DATASHARE_CHANGE_LOG.html">SYS_DATASHARE_CHANGE_LOG</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_DATASHARE_CHANGE_LOG" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVL_DATASHARE_CHANGE_LOG-table-rows">Colunas da tabela</a><a href="#r_SVL_DATASHARE_CHANGE_LOG-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_DATASHARE_CHANGE_LOG">SVL_DATASHARE_CHANGE_LOG</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Regista a exibição consolidada para rastrear alterações nos conjuntos de dados em clusters de produtores e consumidores.</p><p>SVL_DATASHARE_CHANGE_LOG permanece visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_DATASHARE_CHANGE_LOG.html">SYS_DATASHARE_CHANGE_LOG</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_SVL_DATASHARE_CHANGE_LOG-table-rows">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c15b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c15b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,7 +61,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do usuário que executa a ação.</td>
                         </tr>
                         <tr>
@@ -73,7 +73,7 @@
                             <td tabindex="-1">
                                 <p>pid</p>
                             </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do processo.</td>
                         </tr>
                         <tr>
@@ -83,7 +83,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">share_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do datashare afetado.</td>
                         </tr>
                         <tr>
@@ -93,7 +93,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">source_database_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do banco de dados ao qual o datashare pertence.</td>
                         </tr>
                         <tr>
@@ -103,7 +103,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">consumer_database_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do banco de dados importado do datashare.</td>
                         </tr>
                         <tr>
@@ -122,14 +122,14 @@
                             <td tabindex="-1">O timestamp da ação.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">action</td>
+                            <td tabindex="-1">ação</td>
                             <td tabindex="-1">varchar(128)</td>
                             <td tabindex="-1">A ação que está sendo executada. Os valores possíveis são CREATE DATASHARE, DROP DATASHARE, GRANT ALTER, REVOKE ALTER, GRANT SHARE, REVOKE SHARE, ALTER ADD, ALTER REMOVE, ALTER SET, GRANT USAGE, REVOKE USAGE, CREATE DATABASE, GRANT ou REVOAKE USAGE em um banco de dados compartilhado, DROP SHARED DATABASE, ALTER SHARED DATABASE. </td>
 
                         </tr>
                         <tr>
                             <td tabindex="-1">status</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O status da ação. Os valores possíveis são SUCESS e ERROR-ERROR CODE.</td>
                         </tr>
                         <tr>
@@ -140,7 +140,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">share_object_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID do objeto de banco de dados que foi adicionado ou removido do datashare. Este é um campo para o cluster produtor.</td>
                         </tr>
                         <tr>
@@ -155,7 +155,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">target_userid </td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O ID de usuários ou grupos aos quais um privilégio foi concedido. Este é um campo para o cluster do produtor e do consumidor.</td>
                         </tr>
                         <tr>
@@ -201,7 +201,7 @@
                             <td tabindex="-1">O valor de um atributo do datashare ou do banco de dados compartilhado.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">mensagem</td>
+                            <td tabindex="-1">message</td>
                             <td tabindex="-1">varchar(512)</td>
                             <td tabindex="-1">A mensagem de erro quando uma ação falha.</td>
                         </tr>

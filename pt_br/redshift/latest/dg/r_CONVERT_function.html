@@ -57,7 +57,7 @@
                 
                 
             <dl>
-                  <dt><span class="term"> <em>type</em> </span></dt>
+                  <dt><span class="term"> <em>tipo</em> </span></dt>
                   <dd>
                      <p>Um dos <a href="./c_Supported_data_types.html">Tipos de dados</a> compatíveis. </p>
                   </dd>
@@ -93,7 +93,7 @@ getdate
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CONVERT(time, saletime), salesid
 FROM sales order by salesid limit 10;</code>
 </code></pre>
-            <p>Para obter informações sobre como converter um carimbo de data/hora de um fuso horário para outro, consulte <a href="./CONVERT_TIMEZONE.html">Função CONVERT_TIMEZONE</a>. Para funções adicionais de data e hora, consulte <a href="./Date_functions_header.html">Funções de data e hora</a>.</p>
+            <p>Para obter informações sobre como converter um carimbo de data/hora de um fuso horário para outro, consulte <a href="./CONVERT_TIMEZONE.html">Função CONVERT_TIMEZONE</a>. Para funções adicionais de data e hora, consulte <a href="./Date_functions_header.html">Perfis de data e hora</a>.</p>
             <p>O exemplo a seguir converte dados de caracteres variáveis em objetos de data e hora.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="userinput">SELECT CONVERT(datetime, '2008-02-18 02:36:48') as mysaletime;</code></code></pre>
             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Não é possível executar uma operação CAST ou CONVERT no tipo de dados <code class="code">GEOMETRY</code> para alterá-lo para outro tipo de dados. No entanto, você pode fornecer uma representação hexadecimal de uma string literal em formato binário bem-conhecido estendido (EWKB - extended well-known binary) como entrada para funções que aceitam um argumento <code class="code">GEOMETRY</code>. Por exemplo, a função <code class="code">ST_AsText</code> seguinte espera um tipo de dados <code class="code">GEOMETRY</code>. </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT ST_AsText('01010000000000000000001C400000000000002040');</code></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><code class="computeroutput" copy="false">st_astext  

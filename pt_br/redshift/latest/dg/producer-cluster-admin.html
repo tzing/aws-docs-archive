@@ -82,14 +82,14 @@ ALTER DATASHARE salesshare ADD TABLE public.sales_data_summary_view;
 
 -- Add all existing tables and views under schema to datashare (does not include future table)
 ALTER DATASHARE salesshare ADD ALL TABLES in schema public;</code></pre>
-               <p>Também é possível usar o console do Amazon Redshift para criar ou editar datashares. Para obter mais informações, consulte <a href="./datashare-creation.html#create-datashare-console">Criar datashares</a> e <a href="./manage-datashare-existing-console.html#edit-datashare-console">Editar datashares criados em sua conta</a>.</p></li><li><p>Delegue permissões para operar no datashare. Para ter mais informações, consulte <a href="./r_GRANT.html">GRANT</a> ou <a href="./r_REVOKE.html">REVOKE</a>.</p>
+               <p>Também é possível usar o console do Amazon Redshift para criar ou editar datashares. Para obter mais informações, consulte <a href="./datashare-creation.html#create-datashare-console">Criar datashares</a> e <a href="./manage-datashare-existing-console.html#edit-datashare-console">Editar datashares criados em sua conta</a>.</p></li><li><p>Delegue permissões para operar no datashare. Para obter mais informações, consulte <a href="./r_GRANT.html">GRANT</a> ou <a href="./r_REVOKE.html">REVOKE</a>.</p>
 
                <p>O exemplo a seguir concede permissões para <code class="code">dbuser</code> em <code class="code">salesshare</code>.</p>
                
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT ALTER, SHARE ON DATASHARE salesshare TO dbuser;</code></pre>
                <p>Os superusuários do cluster e os proprietários da unidade de compartilhamento de dados podem conceder ou revogar permissões de modificação na unidade de compartilhamento de dados para usuários adicionais.</p>
 
-            </li><li><p>Adicione consumidores ou remova consumidores de datashares. O exemplo a seguir adiciona o ID da Conta da AWS a <code class="code">salesshare</code>. Para ter mais informações, consulte <a href="./r_GRANT.html">GRANT</a> ou <a href="./r_REVOKE.html">REVOKE</a>.</p>
+            </li><li><p>Adicione consumidores ou remova consumidores de datashares. O exemplo a seguir adiciona o ID da Conta da AWS a <code class="code">salesshare</code>. Para obter mais informações, consulte <a href="./r_GRANT.html">GRANT</a> ou <a href="./r_REVOKE.html">REVOKE</a>.</p>
                
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012';</code></pre>
 

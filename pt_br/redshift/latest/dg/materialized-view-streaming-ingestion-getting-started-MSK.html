@@ -94,7 +94,7 @@
                                 
                                 <p>A autenticação do cliente com mTLS não é compatível com ingestão de streaming. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html#materialized-view-streaming-ingestion-limitations">Limitações</a>.</p>
                             <p>A seguinte tabela mostra as opções de configuração complementares a serem definidas para a ingestão de streaming do Amazon MSK:</p>
-                                <div class="table-container"><div class="table-contents"><table id="w317aac21c47c15c15b5b3b6"><thead>
+                                <div class="table-container"><div class="table-contents"><table id="w319aac21c47c15c15b5b3b6"><thead>
                                             <tr>
                                                 <th>Configuração do Amazon Redshift</th>
                                                 <th>Configuração do Amazon MSK</th>
@@ -119,7 +119,9 @@
                                         </table></div></div>
                                 <p>A autenticação do Amazon Redshift é definida na instrução CREATE EXTERNAL SCHEMA.</p>
                                 <p>Quando o cluster do Amazon MSK tiver a autenticação Mutual Transport Layer Security (mTLS) habilitada, a configuração do Amazon Redshift para usar AUTHENTICATION NONE o direcionará a usar a porta 9094 para acesso não autenticado. No entanto, isso apresentará falha, já que a porta está sendo usada pela autenticação mTLS. Por isso, recomendamos que você mude para AUTHENTICATION IAM ao usar mTLS.</p>    
-                            </li><li><p>Habilite o roteamento de VPC avançado no cluster do Amazon Redshift ou no grupo de trabalho do Amazon Redshift sem servidor. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-enabling-cluster.html">Habilitar o roteamento aprimorado de VPC</a>.</p></li><li><p>No Amazon Redshift, crie um esquema externo para mapear ao cluster do Amazon MSK. </p>
+                            </li><li><p>Habilite o roteamento de VPC avançado no cluster do Amazon Redshift ou no grupo de trabalho do Amazon Redshift sem servidor. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-enabling-cluster.html">Habilitar o roteamento aprimorado de VPC</a>.</p>
+                                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Para recuperar o URL dos agentes de bootstrap do Amazon MSK, o Amazon Redshift faz uma chamada de API <a href="https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-bootstrap-brokers.html#GetBootstrapBrokers">GetBootstrapBrokers</a> usando as permissões fornecidas pelo perfil do IAM anexado. Observe que, para que essa solicitação seja bem-sucedida quando o roteamento de VPC aprimorado estiver habilitado, a sub-rede do cluster provisionado do Amazon Redshift ou do grupo de trabalho do Amazon Redshift sem servidor deve ter um gateway NAT ou um gateway da Internet. Suas ACLs da rede e regras de saída de grupos de segurança para a sub-rede mencionada acima também devem permitir o acesso aos endpoints do serviço de API do Amazon MSK. Para ter mais informações, consulte <a href="https://docs.aws.amazon.com/general/latest/gr/msk.html">Amazon Managed Streaming for Apache Kafka endpoints and quotas</a>.</p></div></div>
+                            </li><li><p>No Amazon Redshift, crie um esquema externo para mapear ao cluster do Amazon MSK. </p>
                                 
                                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL SCHEMA MySchema
 FROM MSK
@@ -150,7 +152,7 @@ FROM MySchema."mytopic"
 WHERE CAN_JSON_PARSE(kafka_value);</code></pre>
                     <p>Para ativar a atualização automática, use <code class="code">AUTO REFRESH YES</code>. O comportamento padrão é atualização manual. </p>
                                 <p>As colunas de metadados incluem o seguinte:</p>
-                                <div class="table-container"><div class="table-contents"><table id="w317aac21c47c15c15b5b9b9"><thead>
+                                <div class="table-container"><div class="table-contents"><table id="w319aac21c47c15c15b5b9b9"><thead>
                                             <tr>
                                                 <th>Coluna de metadados</th>
                                                 <th>Tipo de dados</th>

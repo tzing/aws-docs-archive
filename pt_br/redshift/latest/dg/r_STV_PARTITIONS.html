@@ -52,7 +52,7 @@
             <h2 id="r_STV_PARTITIONS-table-rows2">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c31b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c31b9b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,17 +61,17 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">proprietário </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O nó do disco que é proprietário da partição. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">host </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O nó que está fisicamente vinculado à partição. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">diskno </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O disco que contém a partição. </td>
                         </tr>
                         <tr>
@@ -86,17 +86,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">used </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de blocos de 1 MB do disco em uso na partição no momento. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">tossed </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de blocos que estão prontos para serem excluídos mas não foram removidos ainda porque não é seguro liberar seus endereços de disco. Se os endereços fossem liberados imediatamente, uma transação pendente poderia gravar no mesmo local do disco. Portanto, esses blocos descartados são liberados somente a partir da próxima confirmação. Os blocos de disco podem ser descartados, por exemplo, quando uma coluna da tabela é descartada durante operações de INSERT ou de consultas no disco. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">capacity </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A capacidade total da partição em blocos de 1 MB no disco. </td>
                         </tr>
                         <tr>
@@ -111,27 +111,27 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">seek_forward </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de vezes que uma solicitação não é feita para o endereço subsequente em relação a um dado endereço anterior. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">seek_back </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de vezes que uma solicitação não é feita para o endereço anterior em relação a um dado endereço subsequente. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">is_san </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Indica se a partição pertence a um SAN. Os valores válidos são <code class="userinput">0</code> (false) ou <code class="userinput">1</code> (true). </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">com falha </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">Essa coluna está suspensa. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">mbps </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A velocidade do disco em megabytes por segundo. </td>
                         </tr>
                         <tr>

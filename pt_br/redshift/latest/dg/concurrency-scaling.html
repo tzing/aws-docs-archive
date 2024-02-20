@@ -42,7 +42,9 @@
         
             <h3 id="concurrency-scaling-capabilities-write-operations">Recursos de escalabilidade de simultaneidade para operações de gravação</h3>
             <p>A escalabilidade de simultaneidade oferece suporte a operações de gravação usadas com frequência, como instruções de extrair, transformar e carregar (ETL). A escalabilidade de simultaneidade para operações de gravação é especialmente útil quando você deseja manter tempos de resposta consistentes quando o cluster recebe um grande número de solicitações. Ele melhora a taxa de transferência para operações de gravação disputando recursos no cluster principal.</p>
-            <p>A escalabilidade de simultaneidade oferece suporte a instruções COPY, INSERT, DELETE e UPDATE. Em alguns casos, você pode seguir instruções DDL, como CREATE, com instruções de gravação no mesmo bloco de confirmação. Nesses casos, as instruções de gravação não são enviadas para o cluster de escalabilidade de simultaneidade.</p>
+          
+          <p>A escalabilidade de simultaneidade dá suporte a instruções COPY, INSERT, DELETE, UPDATE e CREATE TABLE AS (CTAS). Além disso, a escalabilidade de simultaneidade dá suporte à atualização de visão materializada para MVs que não usam agregações. Outras instruções Data Manipulation Language (DML) e Data Definition Language (DDL) não são compatíveis. Quando instruções de gravação não compatíveis, como CREATE sem TABLE AS, são incluídas em uma transação explícita antes das instruções de gravação compatíveis, nenhuma das instruções de gravação será executada em clusters de escalabilidade de simultaneidade. </p>
+
             <p>Quando você provisiona crédito para escalabilidade de simultaneidade, essa provisão de crédito se aplica a operações de leitura e gravação.</p>
              
        
@@ -64,7 +66,8 @@
              
              
              
-             
+            
+   
             
          <ul class="itemizedlist"><li class="listitem">
                <p>Ela não oferece suporte a consultas em tabelas que usam chaves de classificação intercaladas.</p>
@@ -94,8 +97,6 @@
                <p>Ela não suporta operações de gravação em tabelas com colunas de identidade.</p>
             </li><li class="listitem">
                <p>O Amazon Redshift suporta escalabilidade de simultaneidade para operações de gravação em apenas nós do Amazon Redshift RA3, especificamente ra3.16xlarge, ra3.4xlarge e ra3.xlplus. A escalabilidade de simultaneidade para operações de gravação não é aceita em outros tipos de nó.</p>
-            </li><li class="listitem">
-               <p>Não há suporte à Escalabilidade Simultânea do Amazon Redshift para atualização automática de visões materializadas. Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html">Ingestão de streaming</a>.</p>
             </li></ul></div> 
          
       <p>Para obter mais informações sobre a escalabilidade de simultaneidade, consulte os seguintes tópicos no <em>Guia de gerenciamento de clusters do Amazon Redshift</em>.</p><div class="itemizedlist">

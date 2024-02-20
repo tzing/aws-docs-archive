@@ -41,8 +41,7 @@
                 
         <p>O Amazon Redshift Spectrum oferece suporte a consulta de dados aninhados em formatos de arquivo Parquet, ORC, JSON e Ion. O Redshift Spectrum acessa dados usando tabelas externas. Você pode criar tabelas externas usando os tipos de dados complexos <code class="code">struct</code>, <code class="code">array</code> e <code class="code">map</code>.</p>
         <p>Por exemplo, suponha que o arquivo de dados contém os seguintes dados no Amazon S3 em uma pasta nomeada <code class="code">customers</code>. Embora não haja um elemento raiz único, cada objeto JSON nestes dados de exemplo representa uma linha em uma tabela. </p>
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
-<span>{</span>"id": 1,
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>"id": 1,
  "name": <span>{</span>"given": "John", "family": "Smith"},
  "phones": ["123-457789"],
  "orders": [<span>{</span>"shipdate": "2018-03-01T11:59:59.000Z", "price": 100.50},
@@ -57,10 +56,10 @@
  "name": <span>{</span>"given": "Andy", "family": "Jones"},
  "phones": [],
  "orders": [<span>{</span>"shipdate": "2018-03-02T08:02:15.000Z", "price": 13.50}]
-}    
-</code></pre>        
-         
-        <p>Você pode usar o Redshift Spectrum para consultar esses dados. O tutorial a seguir mostra como fazê-lo.</p>
+}  </code></pre>        
+   
+        
+        <p>Você pode usar o Amazon Redshift Spectrum para consultar dados aninhados em arquivos. O tutorial a seguir mostra como fazer isso com dados do Apache Parquet.</p> 
         <p>Para pré-condições de tutorial, etapas e casos de uso de dados aninhados, consulte os seguintes tópicos:</p>
         <div class="itemizedlist">
              
@@ -78,7 +77,7 @@
             </li><li class="listitem">
                 <p><a href="./nested-data-use-cases.html">Casos de uso de dados aninhados </a></p>
             </li><li class="listitem">
-                <p><a href="./nested-data-restrictions.html">Limitações de dados aninhados</a></p>
+                <p><a href="./nested-data-restrictions.html">Limitações de dados aninhados (visualização)</a></p>
             </li><li class="listitem">
                 <p><a href="./serializing-complex-JSON.html">Serializar JSON aninhado complexo</a></p>
             </li></ul></div>
@@ -104,34 +103,28 @@ create external database if not exists;</code></pre>
         <p>Você pode visualizar a <a href="https://s3.amazonaws.com/redshift-downloads/tickit/spectrum/customers/customer_file1" rel="noopener noreferrer" target="_blank"><span>fonte de dados</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> baixando-a do Amazon S3. </p>
 
         <p>Para criar a tabela externa para este tutorial, execute o seguinte comando. </p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers (
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones array&lt;varchar(20)&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';            
-        </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';     </code></pre>
         
-        <p>No exemplo que precede, a tabela externa <code class="code">spectrum.customers</code> usa os tipos de dados <code class="code">struct</code> e <code class="code">array</code> para definir colunas com dados aninhados. O Amazon Redshift Spectrum oferece suporte a consulta de dados aninhados em formatos de arquivo Parquet, ORC, JSON e Ion. O parâmetro <code class="code">LOCATION</code> deve se referir à pasta do Amazon S3 que contém os dados ou arquivos aninhados. </p>
+        <p>No exemplo que precede, a tabela externa <code class="code">spectrum.customers</code> usa os tipos de dados <code class="code">struct</code> e <code class="code">array</code> para definir colunas com dados aninhados. O Amazon Redshift Spectrum oferece suporte a consulta de dados aninhados em formatos de arquivo Parquet, ORC, JSON e Ion. O parâmetro <code class="code">STORED AS</code> é <code class="code">PARQUET</code> para arquivos do Apache Parquet. O parâmetro <code class="code">LOCATION</code> deve se referir à pasta do Amazon S3 que contém os dados ou arquivos aninhados. Para obter mais informações, consulte <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>.</p>
         
-        <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>O Amazon Redshift não oferece suporte a tipos de dados complexos em uma tabela de banco de dados do Amazon Redshift. Você pode usar tipos de dados complexos somente com as tabelas externas de Redshift Spectrum.</p></div></div>
+        
         <p>Você pode aninhar os tipos <code class="code">array</code> e <code class="code">struct</code> em qualquer nível. Por exemplo, você pode definir uma coluna nomeada <code class="code">toparray</code> conforme exibido no seguinte exemplo.</p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-toparray array&lt;struct&lt;nestedarray:
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">toparray array&lt;struct&lt;nestedarray:
          array&lt;struct&lt;morenestedarray: 
-         array&lt;string&gt;&gt;&gt;&gt;&gt;                
-            </code></pre>
+         array&lt;string&gt;&gt;&gt;&gt;&gt;</code></pre>
         <p>Você também pode aninhar os tipos <code class="code">struct</code> como exibido na coluna <code class="code">x</code> no exemplo a seguir.</p>
-        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-x struct&lt;a: string,
+        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">x struct&lt;a: string,
          b: struct&lt;c: integer,
                    d: struct&lt;e: string&gt;
                   &gt;
-        &gt;
-            </code></pre>
+        &gt;</code></pre>
    
      
                 <h2 id="tutorial-query-nested-data-sqlextensions">Etapa 2: Consultar os dados aninhados no Amazon S3 com extensões SQL</h2>
@@ -139,143 +132,112 @@ x struct&lt;a: string,
                  
                     <h3 id="nested-data-sqlextension1">Extensão 1: Acesso a colunas de estruturas</h3>
                     <p>Você pode extrair dados das colunas <code class="code">struct</code> usando uma notação de ponto que concatene nomes de campo em caminhos. Por exemplo, a consulta a seguir retorna nomes e nomes de família de clientes. O nome é acessado pelo caminho longo <code class="code">c.name.given</code>. O nome de família é acessado pelo caminho longo <code class="code">c.name.family</code>. </p>    
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, c.name.given, c.name.family
-FROM   spectrum.customers c;
-          
-                    </code></pre>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, c.name.given, c.name.family
+FROM   spectrum.customers c;</code></pre>
                     <p>A consulta anterior retorna os dados a seguir.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id | given | family
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id | given | family
 ---|-------|-------
 1  | John  | Smith
 2  | Jenny | Doe
 3  | Andy  | Jones
-(3 rows)
-</code></pre>
+(3 rows)</code></pre>
                     <p>Uma <code class="code">struct</code> pode ser uma coluna de outro <code class="code">struct</code>, que pode ser uma coluna de outro <code class="code">struct</code>, em qualquer nível. Os caminhos que acessa as colunas em <code class="code">struct</code> aninhados de forma profunda podem ser arbitrariamente longos. Por exemplo, consulte a definição da coluna <code class="code">x</code> no seguinte exemplo.</p>     
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-x struct&lt;a: string,
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">x struct&lt;a: string,
          b: struct&lt;c: integer, 
                       d: struct&lt;e: string&gt;
                   &gt;
-        &gt;
-</code></pre>        
+        &gt;</code></pre>        
         <p>Você pode acessar os dados em <code class="code">e</code> como <code class="code">x.b.d.e</code>.</p>
     
-    
-                    <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Você usa <code class="code">struct</code>somente para descrever o caminho dos campos que eles contêm. Você não pode alcançá-los diretamente em uma consulta ou retorná-los de uma consulta.</p></div></div>    
+                    
                     
                    
                  
                     <h3 id="nested-data-sqlextension2">Extensão 2: Variação sobre matriz em uma cláusula FROM</h3>
-                    <p>Você pode extrair dados das colunas <code class="code">array</code> (e, por extensão, colunas <code class="code">map</code>) especificando as colunas <code class="code">array</code> em uma cláusula <code class="code">FROM</code> no lugar de nomes de tabela. A extensão aplica-se à cláusula <code class="code">FROM</code> da consulta principal, e também as cláusulas <code class="code">FROM</code> das subconsultas. Você não pode fazer referência a elementos <code class="code">array</code> por posição, como <code class="code">c.orders[0]</code>. </p>
+                    <p>Você pode extrair dados das colunas <code class="code">array</code> (e, por extensão, colunas <code class="code">map</code>) especificando as colunas <code class="code">array</code> em uma cláusula <code class="code">FROM</code> no lugar de nomes de tabela. A extensão aplica-se à cláusula <code class="code">FROM</code> da consulta principal, e também as cláusulas <code class="code">FROM</code> das subconsultas.</p>
+                        
+                <p>Você pode referenciar elementos <code class="code">array</code> por posição, como <code class="code">c.orders[0]</code>. (visualização)</p>
                     <p>Ao combinar a variação do <code class="code">arrays</code> com junções, você pode alcançar vários tipos de não-aninhamento, como explicado os seguintes casos de uso. </p>
                      
                         <h4 id="unnest-inner-joins">Não aninhamento usando junções internas</h4>
                         <p>A consulta a seguir selecione IDs de cliente e datas de envio de pedido de clientes que têm pedidos. A extensão do SQL na cláusula FROM <code class="code">c.orders
                         o</code> depende do alias <code class="code">c</code>.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, o.shipdate
-FROM   spectrum.customers c, c.orders o 
-
-                    </code></pre> 
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, o.shipdate
+FROM   spectrum.customers c, c.orders o </code></pre> 
                         <p>Para cada cliente <code class="code">c</code> que possui pedidos, a cláusula <code class="code">FROM</code> retorna uma linha para cada pedido <code class="code">o</code> do cliente <code class="code">c</code>. Essa linha combina a linha do cliente <code class="code">c</code> e a linha de pedidos <code class="code">o</code>. Em seguida, a cláusula <code class="code">SELECT</code> mantém somente <code class="code">c.id</code> e <code class="code">o.shipdate</code>. O resultado é o seguinte.</p>
-                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id|      shipdate
+                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id|      shipdate
 --|----------------------
 1 |2018-03-01  11:59:59
 1 |2018-03-01  09:10:00
 3 |2018-03-02  08:02:15
-(3 rows)
-                         </code></pre>   
+(3 rows) </code></pre>   
                         <p>O alias <code class="code">c</code> fornece acesso aos campos de clientes, e o alias <code class="code">o</code> fornece acesso aos campos de pedidos. </p>
                         <p>A semântica é semelhante ao SQL padrão. Você pode pensar na cláusula <code class="code">FROM</code> como executando o loop aninhado a seguir, que é acompanhado por <code class="code">SELECT</code> escolhendo os campos para saída. </p>
-                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-for each customer c in spectrum.customers
+                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">for each customer c in spectrum.customers
   for each order o in c.orders
-     output c.id and o.shipdate
-                        </code></pre>
+     output c.id and o.shipdate </code></pre>
                         <p>Portanto, se um cliente não tiver um pedido, o cliente não aparece no resultado.</p>
                         <p>Você também pode considerá-lo como cláusula <code class="code">FROM</code> da execução <code class="code">JOIN</code> com a tabela <code class="code">customers</code> e o array <code class="code">orders</code>. Na verdade, você também pode escrever a consulta, conforme mostrado no exemplo a seguir.</p>
-                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, o.shipdate
-FROM   spectrum.customers c INNER JOIN c.orders o ON true
-                        </code></pre>
+                        <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, o.shipdate
+FROM   spectrum.customers c INNER JOIN c.orders o ON true </code></pre>
                         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Se um esquema nomeado <code class="code">c</code> existe com uma tabela nomeada <code class="code">orders</code>, então <code class="code">c.orders</code> refere-se a tabela <code class="code">orders</code>, e não a coluna de matriz de <code class="code">customers</code>.</p></div></div>
                  
                  
                     <h4 id="unnest-left-joins">Não aninhamento usando junções à esquerda</h4>
-                    <p>A consulta a seguir exibe todos os nomes de clientes e seus pedidos. Se um cliente não fez um pedido, o nome do cliente ainda é retornado. Contudo, nesse caso as colunas de pedidos são NULL, conforme exibido no seguinte exemplo para Jenny Doe.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.id, c.name.given, c.name.family, o.shipdate, o.price
-FROM   spectrum.customers c LEFT JOIN c.orders o ON true
-                    </code></pre>
+                    <p>A consulta a seguir exibe todos os nomes de clientes e seus pedidos. Se um cliente não fez um pedido, o nome do cliente ainda é retornado. Contudo, nesse caso, as colunas de pedido são NULL, conforme mostrado no exemplo a seguir para Jenny Doe.</p>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.id, c.name.given, c.name.family, o.shipdate, o.price
+FROM   spectrum.customers c LEFT JOIN c.orders o ON true</code></pre>
                     
                     <p>A consulta anterior retorna os dados a seguir.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-id  |  given  | family  |    shipdate          | price
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">id  |  given  | family  |    shipdate          | price
 ----|---------|---------|----------------------|--------
  1  |  John   | Smith   | 2018-03-01  11:59:59 | 100.5
  1  |  John   | Smith   | 2018-03-01  09:10:00 |  99.12
  2  |  Jenny  | Doe     |                      |
  3  |  Andy   | Jones   | 2018-03-02  08:02:15 |  13.5
- (4 rows)
-                    </code></pre>
+ (4 rows)</code></pre>
                  
                 
                  
                     <h3 id="nested-data-sqlextension3">Extensão 3: Acessar uma matriz de escalares usando diretamente um alias </h3>
-                    <p>Quando um alias <code class="code">p</code> em intervalos de cláusula <code class="code">FROM</code> sob uma matriz de escalares, a consulta refere-se aos valores de <code class="code">p</code> simplesmente como <code class="code">p</code>. Por exemplo, a consulta a seguir produz pares de nomes de clientes e de números de telefone.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-SELECT c.name.given, c.name.family, p AS phone
-FROM   spectrum.customers c LEFT JOIN c.phones p ON true                        
-                    </code></pre>
+                    <p>Quando um alias <code class="code">p</code> em intervalos de uma cláusula <code class="code">FROM</code> percorre uma matriz de escalares, a consulta se refere aos valores de <code class="code">p</code> como <code class="code">p</code>. Por exemplo, a consulta a seguir produz pares de nomes de clientes e de números de telefone.</p>
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT c.name.given, c.name.family, p AS phone
+FROM   spectrum.customers c LEFT JOIN c.phones p ON true  </code></pre>
                     <p>A consulta anterior retorna os dados a seguir.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-given  |  family  |  phone
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">given  |  family  |  phone
 -------|----------|-----------
 John   | Smith    | 123-4577891
 Jenny  | Doe      | 858-8675309
 Jenny  | Doe      | 415-9876543
 Andy   | Jones    | 
-(4 rows)
-                    </code></pre>
+(4 rows) </code></pre>
                      
                  
                     <h3 id="nested-data-sqlextension4">Extensão 4: Acessar elementos de mapas </h3>
                     <p>Redshift Spectrum trata o tipo de dados <code class="code">map</code> como um tipo <code class="code">array</code> que contém tipos <code class="code">struct</code> com uma coluna <code class="code">key</code> e uma coluna <code class="code">value</code>. O <code class="code">key</code> deve ser um <code class="code">scalar</code>; o valor pode ser qualquer tipo de dados. </p>
                     <p>Por exemplo, o seguinte código criar uma tabela externa com um <code class="code">map</code> para armazenar números de telefone.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-
-CREATE EXTERNAL TABLE spectrum.customers2 (
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers2 (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones map&lt;varchar(20), varchar(20)&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';
-                    </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';</code></pre>
                     <p>Como um tipo <code class="code">map</code> se comporta como um tipo <code class="code">array</code> com colunas <code class="code">key</code> e <code class="code">value</code>, você pode entender os esquemas anteriores como os seguintes.</p>
-                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers3 (
+                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.customers3 (
   id     int,
   name   struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones array&lt;struct&lt;key:varchar(20), value:varchar(20)&gt;&gt;,
   orders array&lt;struct&lt;shipdate:timestamp, price:double precision&gt;&gt;
 )
 STORED AS PARQUET
-LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';  
-                    </code></pre>
+LOCATION 's3://redshift-downloads/tickit/spectrum/customers/';   </code></pre>
                     
                     <p>A consulta a seguir retorna os nomes de clientes com um número de celular e retorna a quantidade para cada nome. A consulta de mapeamento é tratada como o equivalente de consulta dos tipos <code class="code">array</code> de <code class="code">struct</code> aninhados. A consulta a seguir retorna somente dados se você tiver criado a tabela externa como descrito previamente. </p>   
-                     <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, p.value 
+                     <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, p.value 
 FROM   spectrum.customers c, c.phones p 
-WHERE  p.key = 'mobile'                    
-                         
-                     </code></pre>   
+WHERE  p.key = 'mobile';  </code></pre>   
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>O <code class="code">key</code> de um <code class="code">map</code> é um <code class="code">string</code> para tipos de arquivo Ion e JSON.</p></div></div>      
                     
                     

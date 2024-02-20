@@ -51,7 +51,7 @@
 [ CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED } ]
 [ COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ]
 [ ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT } ]
-[ FROM DATASHARE datashare_name OF [ ACCOUNT account_id ] NAMESPACE namespace_guid ]
+[ [ WITH PERMISSIONS ] FROM DATASHARE datashare_name ] OF [ ACCOUNT account_id ] NAMESPACE namespace_guid 
 | [ FROM ARN '&lt;arn&gt;' <span>{</span> WITH DATA CATALOG SCHEMA '&lt;schema&gt;' | WITH NO DATA CATALOG SCHEMA } 
 [ IAM_ROLE  default | 'SESSION' | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' ] ]</code></pre>
 
@@ -102,7 +102,7 @@
              
                <dt><span class="term">CONNECTION LIMIT <span>{</span> <em>limite</em> | UNLIMITED } </span></dt>
                <dd>
-                  <p>Número máximo de conexões de banco de dados que os usuários podem abrir simultaneamente. Não há aplicação de limite para superusuários. Use a palavra-chave UNLIMITED para permitir o número máximo de conexões simultâneas. Um limite no número de conexões para cada usuário também pode ser aplicável. Para obter mais informações, consulte <a href="./r_CREATE_USER.html">CREATE USER</a>. O valor padrão é UNLIMITED. Para visualizar as conexões atuais, consulte a exibição <a href="./r_STV_SESSIONS.html">STV_SESSIONS</a> do sistema.</p>
+                  <p>Número máximo de conexões de banco de dados que os usuários podem abrir simultaneamente. Não há aplicação de limite para superusuários. Use a palavra-chave UNLIMITED para permitir o número máximo de conexões simultâneas. Um limite no número de conexões para cada usuário também pode ser aplicável. Para obter mais informações, consulte <a href="./r_CREATE_USER.html">CRIAR USUÁRIO</a>. O valor padrão é UNLIMITED. Para visualizar as conexões atuais, consulte a exibição <a href="./r_STV_SESSIONS.html">STV_SESSIONS</a> do sistema.</p>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Se limites de usuário e de conexão de banco de dados forem aplicáveis, um slot de conexão não utilizado que esteja dentro de ambos os limites deve estar disponível quando um usuário tenta se conectar.</p></div></div>
                </dd>
              
@@ -134,9 +134,9 @@
                   <p>Nos bancos de dados do Amazon Redshift, tanto o isolamento SERIALIZABLE quanto o SNAPSHOT são tipos de níveis de isolamento serializáveis. Ou seja, leituras contaminadas, leituras não repetíveis e leituras fantasmas são evitadas de acordo com o padrão do SQL. Isso garante que uma transação opere em um snapshot de dados da forma como ele existe quando a transação começa e que nenhuma outra transação possa alterá-lo. No entanto, o isolamento SNAPSHOT não fornece serialização total, pois ele não impede inserções de distorção de gravação e atualizações em diferentes linhas de tabela.</p>
                   <p>O cenário a seguir mostra atualizações de distorção de gravação usando o nível de isolamento SNAPSHOT. Uma tabela chamada <code class="code">Numbers</code> contém uma coluna denominada <code class="code">digits</code> que inclui os valores <code class="code">0</code> e <code class="code">1</code>. A instrução UPDATE de cada usuário não se sobrepõe à do outro usuário. No entanto, os valores <code class="code">0</code> e <code class="code">1</code> são trocados. O SQL que eles executam segue essa linha do tempo com os seguintes resultados:</p>
                   
-                  <div class="table-container"><div class="table-contents disable-scroll"><table id="w317aac45b9c65c11b3c15b3c13"><thead>
+                  <div class="table-container"><div class="table-contents disable-scroll"><table id="w319aac47b9c69c11b3c15b3c13"><thead>
                            <tr>
-                              <th>Tempo </th>
+                              <th>Time </th>
                               <th>Ação do usuário 1 </th>
                               <th>Ação do usuário 2 </th>
                            </tr>
@@ -305,17 +305,18 @@ digits
 
                <p>A sintaxe a seguir descreve o comando CREATE DATABASE usado para criar bancos de dados a partir de uma unidade de compartilhamento de dados para compartilhar dados na mesma conta da AWS.</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CREATE DATABASE <em>database_name</em>
-FROM DATASHARE <em>datashare_name</em> OF [ ACCOUNT account_id ] NAMESPACE <em>namespace_guid</em></code></pre>
+[ [ WITH PERMISSIONS ] FROM DATASHARE <em>datashare_name</em> ] OF [ ACCOUNT account_id ] NAMESPACE <em>namespace_guid</em></code></pre>  
                <p>A sintaxe a seguir descreve o comando CREATE DATABASE usado para criar bancos de dados a partir de uma unidade de compartilhamento de dados para compartilhar dados entre contas da AWS.</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CREATE DATABASE <em>database_name</em>
-FROM DATASHARE <em>datashare_name</em> OF ACCOUNT <em>account_id</em> NAMESPACE <em>namespace_guid</em></code></pre>
-               
+[ [ WITH PERMISSIONS ] FROM DATASHARE <em>datashare_name</em> ] OF ACCOUNT <em>account_id</em> NAMESPACE <em>namespace_guid</em></code></pre>
 
                 
                   <h3 id="r_CREATE_DATABASE-parameters-datashare">Parâmetros para usar CREATE DATABASE com um datashare</h3>
                   <div class="variablelist">
                    
              
+                     
+                        
                       
              
          <dl>
@@ -329,6 +330,13 @@ FROM DATASHARE <em>datashare_name</em> OF ACCOUNT <em>account_id</em> NAMESPACE 
                   <p>O nome do datashare no qual o banco de dados do consumidor é criado.</p>
                </dd>
              
+                        <dt><span class="term">WITH PERMISSIONS</span></dt>
+
+                        <dd>
+                           <p>Especifica que o banco de dados criado a partir da unidade de compartilhamento de dados requer permissões no nível de objeto para ter acesso a objetos do banco de dados individuais. Sem essa cláusula, os usuários ou as funções que receberem a permissão USAGE no banco de dados terão acesso automático a todos os objetos no banco de dados.</p>
+                           
+                        </dd>
+                      
                         <dt><span class="term"> NAMESPACE <em>namespace_guid</em> </span></dt>
                         <dd>
                            <p>Valor que especifica o namespace de produtor ao qual a unidade de compartilhamento de dados pertence.</p>
@@ -402,7 +410,7 @@ Amazon
 AMAZON
 AmaZon
 (4 rows)</code></pre>
-         <p>Para obter informações sobre como criar tabelas usando o agrupamento de banco de dados, consulte <a href="./r_CREATE_TABLE_NEW.html">CREATE TABLE</a>.</p>
+         <p>Para obter informações sobre como criar tabelas usando o agrupamento de banco de dados, consulte <a href="./r_CREATE_TABLE_NEW.html">CRIAR TABELA</a>.</p>
          <p>Para obter mais informações sobre funções COLLATE, consulte <a href="./r_COLLATE.html">Função COLLATE</a>.</p>
 
 

@@ -84,6 +84,7 @@
     FROM <span>{</span> table_name | ( select_statement )  | 'job_name' }
     [ TARGET column_name ]
     FUNCTION function_name ( data_type [, ...] ) 
+    [ RETURNS super ]
     IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }
     [ AUTO ON / OFF ]
       -- default is AUTO ON
@@ -135,6 +136,7 @@
              
              
              
+            
              
              
              
@@ -161,9 +163,14 @@
              
                 <dt><span class="term">FUNCTION <em>function_name</em> ( <em>data_type</em> [, ...] )</span></dt>
                 <dd>
-                    <p>O nome da função a ser criada e os tipos de dados dos argumentos de entrada. Você pode fornecer um nome de esquema.</p>
+                    <p>O nome da função a ser criada e os tipos de dados dos argumentos de entrada. É possível fornecer o nome de um esquema no banco de dados em vez de um nome de função.</p>
                 </dd>
              
+              <dt><span class="term">RETURNS <em>SUPER</em> (versão prévia)</span></dt>
+              <dd>
+                 <p>O tipo de dados a ser retornado pelo modelo. O tipo de dados SUPER retornado só se aplica a modelos BYOM remotos.</p>
+              </dd>
+            
                <dt><span class="term">IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }</span></dt>
                 <dd>
                     <p> Use a palavra-chave padrão para que o Amazon Redshift use a função do IAM definida como padrão e associada ao cluster quando o comando CREAT MODEL for executado. Como alternativa, você pode especificar o ARN de um perfil do IAM para usar esse perfil.</p>
@@ -234,7 +241,7 @@ SETTINGS (
                 <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value’ (,..) ) }</span></dt>
                 <dd>
                     <p>Especifica se os parâmetros padrão do XGBoost são usados ou substituídos por valores especificados pelo usuário. Os valores devem ser colocados entre aspas simples. A seguir estão exemplos de parâmetros para XGBoost e seus padrões.</p>
-                    <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c13b3c21b3b3"><thead>
+                    <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c13b3c23b3b3"><thead>
                                 <tr>
                                     <th>Nome do parâmetro</th>
                                     <th>Valor do parâmetro </th>
@@ -267,7 +274,7 @@ SETTINGS (
                                     <td tabindex="-1">
                                         <p>tree_method</p>
                                     </td>
-                                    <td tabindex="-1">Segmento</td>
+                                    <td tabindex="-1">String</td>
                                     <td tabindex="-1">Auto</td>
                                     <td tabindex="-1">N/D</td>
                                 </tr>

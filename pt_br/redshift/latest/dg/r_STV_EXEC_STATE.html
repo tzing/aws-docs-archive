@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_EXEC_STATE" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STV_EXEC_STATE-table-columns">Colunas da tabela</a><a href="#r_STV_EXEC_STATE-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_EXEC_STATE">STV_EXEC_STATE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a tabela STV_EXEC_STATE para encontrar informações sobre as consultas e as etapas de consulta em execução nos nós de computação.</p><p>Em geral, essas informações são usadas somente para resolver problemas de engenharia. As exibições SVV_QUERY_STATE e SVL_QUERY_SUMMARY extraem suas informações da tabela STV_EXEC_STATE.</p><p>STV_EXEC_STATE é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Algumas ou todas as colunas dessa tabela também são definidas na visualização de monitoramento <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> do SYS. </p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_EXEC_STATE" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_STV_EXEC_STATE-table-columns">Colunas da tabela</a><a href="#r_STV_EXEC_STATE-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_EXEC_STATE">STV_EXEC_STATE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use a tabela STV_EXEC_STATE para encontrar informações sobre as consultas e as etapas de consulta em execução nos nós de computação.</p><p>Em geral, essas informações são usadas somente para resolver problemas de engenharia. As exibições SVV_QUERY_STATE e SVL_QUERY_SUMMARY extraem suas informações da tabela STV_EXEC_STATE.</p><p>STV_EXEC_STATE é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p><p>Alguns ou todos os dados nessa tabela também podem ser encontrados na exibição de monitoramento SYS <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>. Os dados na exibição de monitoramento SYS são formatados para serem mais fáceis de usar e compreender. É recomendável usar a exibição de monitoramento SYS nas consultas.</p>
             <h2 id="r_STV_EXEC_STATE-table-columns">Colunas da tabela</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c15c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c15c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -61,27 +61,27 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O ID do usuário que gerou a entrada. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">ID da consulta. Ele pode ser usado para unir várias outras tabelas e exibições do sistema. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">slice </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A fatia do nó onde a etapa foi concluída. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O segmento da consulta que foi executado. Um segmento de consulta é uma série de etapas. </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">etapa </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">A etapa do segmento da consulta que foi concluída. Uma etapa é a menor unidade que uma consulta realiza. </td>
                         </tr>
                         <tr>
@@ -96,7 +96,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">tasknum </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O processo da tarefa de consulta que foi atribuído para concluir a etapa. </td>
                         </tr>
                         <tr>
@@ -112,7 +112,7 @@
                         <tr>
                             
                             
-                            <td tabindex="-1">label </td>
+                            <td tabindex="-1">rótulo </td>
                             <td tabindex="-1">char(256) </td>
                             <td tabindex="-1">O rótulo da etapa, que consiste no nome da etapa da consulta e, se for aplicável, no ID e no nome da tabela (por exemplo, <code class="code">scan tbl=100448 name =user</code>). Os IDs de tabela com três dígitos geralmente indicam varreduras de tabelas transitórias. Quando você vê <code class="code">tbl=0</code>, isso normalmente indica uma varredura de um valor constante.</td>
                         </tr>
@@ -128,7 +128,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">num_parts </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">inteiro </td>
                             <td tabindex="-1">O número de partições em que a tabela hash é particionada durante uma etapa de hash. Um número positivo nessa coluna não significa que a etapa de hash foi executada como uma operação em disco. Verifique o valor na coluna IS_DISKBASED para ver se a etapa de hash foi executada em disco. </td>
                         </tr>
                         <tr>

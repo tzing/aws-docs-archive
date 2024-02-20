@@ -37,7 +37,7 @@
       {
         "@type" : "ListItem",
         "position" : 6,
-        "name" : "Funções de data e hora",
+        "name" : "Perfis de data e hora",
         "item" : "https://docs.aws.amazon.com/pt_br/redshift/latest/dg/Date_functions_header.html"
       },
       {
@@ -103,7 +103,7 @@
          2
 </code></code></pre>
          
-         <p>O exemplo a seguir encontra o dia da semana de um literal do carimbo de data/hora. O cálculo do número da semana segue o padrão ISO 8601. Para obter mais informações, consulte <a href="https://en.wikipedia.org/wiki/ISO_8601" rel="noopener noreferrer" target="_blank"><span>ISO 8601</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> na Wikipédia.</p>             
+         <p>O exemplo a seguir encontra o dia da semana de um literal do carimbo de data/hora. O cálculo do número do dia da semana é um inteiro de 0 a 6, começando no domingo.</p>             
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT DATE_PART(dayofweek, timestamp '20220502 04:05:06.789');</code>
             
 <code class="computeroutput" copy="false">pgdate_part

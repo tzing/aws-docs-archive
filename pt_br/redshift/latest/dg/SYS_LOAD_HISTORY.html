@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_LOAD_HISTORY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_LOAD_HISTORY-table-columns">Colunas da tabela</a><a href="#SYS_LOAD_HISTORY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_LOAD_HISTORY para visualizar detalhes dos comandos COPY. Cada linha representa um comando COPY com estatísticas acumuladas para alguns dos campos. Contém tanto comandos COPY em execução como finalizados.</p><p>SYS_LOAD_HISTORY é visível para todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_LOAD_HISTORY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_LOAD_HISTORY-table-columns">Colunas da tabela</a><a href="#SYS_LOAD_HISTORY-sample-queries">Consultas de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_LOAD_HISTORY">SYS_LOAD_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SYS_LOAD_HISTORY para visualizar detalhes dos comandos COPY. Cada linha representa um comando COPY com estatísticas acumuladas para alguns dos campos. Contém tanto comandos COPY em execução como finalizados.</p><p>SYS_LOAD_HISTORY é visível para todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_LOAD_HISTORY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c39b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c41b7b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do usuário que enviou a cópia.</td>
                         </tr>
                         <tr>
@@ -70,7 +70,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O identificador do processo que está executando a cópia.</td>
                         </tr>
                         <tr>
@@ -126,7 +126,7 @@
                         </tr> 
                         <tr>
                             <td tabindex="-1">source_file_count</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número da contagem de arquivos nos arquivos de origem. </td>
                         </tr> 
                         <tr>
@@ -136,7 +136,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">file_count_scanned</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O número de arquivos processados na varredura do Amazon S3.</td>
                         </tr> 
                         <tr>

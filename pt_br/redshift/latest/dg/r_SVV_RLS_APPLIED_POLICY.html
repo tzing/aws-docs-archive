@@ -42,11 +42,15 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_RLS_APPLIED_POLICY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_RLS_APPLIED_POLICY-table-columns">Colunas da tabela</a><a href="#r_SVV_RLS_APPLIED_POLICY-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_RLS_APPLIED_POLICY">SVV_RLS_APPLIED_POLICY </h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_RLS_APPLIED_POLICY para monitorar a aplicação de políticas RLS em consultas que fazem referência a relações protegidas por RLS.</p><p>Somente um superusuário sys:operator ou usuários com privilégios de sistema ACCESS SYSTEM TABLE podem consultar essa exibição. Observe que sys:secadmin não recebe essa permissão do sistema.</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_RLS_APPLIED_POLICY" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#r_SVV_RLS_APPLIED_POLICY-table-columns">Colunas da tabela</a><a href="#r_SVV_RLS_APPLIED_POLICY-sample-query">Consulta de exemplo</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_RLS_APPLIED_POLICY">SVV_RLS_APPLIED_POLICY </h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Use SVV_RLS_APPLIED_POLICY para monitorar a aplicação de políticas RLS em consultas que fazem referência a relações protegidas por RLS.</p><p>SVV_RLS_APPLIED_POLICY permanece visível para os seguintes usuários:</p><div class="itemizedlist">
+             
+             
+             
+        <ul class="itemizedlist"><li class="listitem"><p>Superusuários</p></li><li class="listitem"><p>Usuários com a função <code class="code">sys:operator</code></p></li><li class="listitem"><p>Usuários com a permissão ACCESS SYSTEM TABLE</p></li></ul></div><p>Observe que sys:secadmin não recebe essa permissão do sistema.</p>
             <h2 id="r_SVV_RLS_APPLIED_POLICY-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c95b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c95c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -60,7 +64,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">consulta</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">A ID da consulta.</td>
                         </tr>
                         <tr>
@@ -70,12 +74,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">O processo líder que executa a consulta.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">recordtime</td>
-                            <td tabindex="-1">time</td>
+                            <td tabindex="-1">horário</td>
                             <td tabindex="-1">A hora quando a consulta foi gravada.</td>
                         </tr>
                         <tr>

@@ -55,7 +55,7 @@ select * from svv_role_grants;</code></pre>
          <h2 id="cm-c-executing-queries-assigning-queries-to-queues-based-on-user-groups">Atribuir consultas a filas com base em grupos de usuários</h2>
 
 
-         <p>Se o nome de um grupo de usuários estiver listado em uma definição de fila, as consultas executadas por membros desse grupo de usuários são atribuídas à fila correspondente. O exemplo a seguir cria grupos de usuários e adiciona usuários a grupos usando os comandos SQL <a href="./r_CREATE_USER.html">CREATE USER</a>, <a href="./r_CREATE_GROUP.html">CREATE GROUP</a> e <a href="./r_ALTER_GROUP.html">ALTER GROUP</a>.</p>
+         <p>Se o nome de um grupo de usuários estiver listado em uma definição de fila, as consultas executadas por membros desse grupo de usuários são atribuídas à fila correspondente. O exemplo a seguir cria grupos de usuários e adiciona usuários a grupos usando os comandos SQL <a href="./r_CREATE_USER.html">CRIAR USUÁRIO</a>, <a href="./r_CREATE_GROUP.html">CREATE GROUP</a> e <a href="./r_ALTER_GROUP.html">ALTER GROUP</a>.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create group admin_group with user admin246, admin135, sec555;
 create user vp1234 in group ad_hoc_group password 'vpPass1234';
 alter group admin_group add user analyst44, analyst45, analyst46;  </code></pre>

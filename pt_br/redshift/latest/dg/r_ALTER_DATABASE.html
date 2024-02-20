@@ -53,11 +53,13 @@
        
          <h2 id="r_ALTER_DATABASE-synopsis">Sintaxe</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER DATABASE <em>database_name</em>
-[ RENAME TO <em>new_name</em>
+<span>{</span> RENAME TO <em>new_name</em>
 | OWNER TO <em>new_owner</em>
 | CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED }
-| COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ]
-[ ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT } ]</code></pre>
+| COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE }
+| ISOLATION LEVEL <span>{</span> SERIALIZABLE | SNAPSHOT }
+| INTEGRATION REFRESH <span>{</span><span>{</span> ALL | INERROR } TABLES [IN SCHEMA <em>schema</em> [, ...]] | TABLE <em>schema.table</em> [, ...]}
+}</code></pre>
          
        
          <h2 id="r_ALTER_DATABASE-parameters">Parâmetros</h2>
@@ -73,7 +75,9 @@
              
 
              
-
+            
+            
+             
 
          <dl>
                <dt><span class="term"> <em>database_name</em> </span></dt>
@@ -85,7 +89,7 @@ ERROR:  current database may not be renamed</code></pre>
              
                <dt><span class="term">RENAME TO </span></dt>
                <dd>
-                  <p>Renomeia o banco de dados especificado. Para obter mais informações sobre nomes válidos, consulte <a href="./r_names.html">Nomes e identificadores</a>. Você não pode renomear bancos de dados dev, padb_harvest, template0, template1 e o banco de dados atual. Somente o proprietário do banco de dados ou um <a href="./r_superusers.html#def_superusers">superuser</a> pode renomear o banco de dados. Proprietários que não forem superusuários também devem ter o privilégio CREATEDB.</p>
+                  <p>Renomeia o banco de dados especificado. Para obter mais informações sobre nomes válidos, consulte <a href="./r_names.html">Nomes e identificadores</a>. Você não pode renomear os bancos de dados dev, padb_harvest, template0, template1 ou sys:internal, além do banco de dados atual. Somente o proprietário do banco de dados ou um <a href="./r_superusers.html#def_superusers">superuser</a> pode renomear o banco de dados. Proprietários que não forem superusuários também devem ter o privilégio CREATEDB.</p>
                </dd>
              
                <dt><span class="term"> <em>new_name</em> </span></dt>
@@ -105,7 +109,7 @@ ERROR:  current database may not be renamed</code></pre>
              
                <dt><span class="term">CONNECTION LIMIT <span>{</span> <em>limite</em> | UNLIMITED } </span></dt>
                <dd>
-                  <p>Número máximo de conexões de banco de dados que os usuários podem abrir simultaneamente. Não há aplicação de limite para superusuários. Use a palavra-chave UNLIMITED para permitir o número máximo de conexões simultâneas. Um limite no número de conexões para cada usuário também pode ser aplicável. Para obter mais informações, consulte <a href="./r_CREATE_USER.html">CREATE USER</a>. O valor padrão é UNLIMITED. Para visualizar as conexões atuais, consulte a exibição <a href="./r_STV_SESSIONS.html">STV_SESSIONS</a> do sistema.</p>
+                  <p>Número máximo de conexões de banco de dados que os usuários podem abrir simultaneamente. Não há aplicação de limite para superusuários. Use a palavra-chave UNLIMITED para permitir o número máximo de conexões simultâneas. Um limite no número de conexões para cada usuário também pode ser aplicável. Para obter mais informações, consulte <a href="./r_CREATE_USER.html">CRIAR USUÁRIO</a>. O valor padrão é UNLIMITED. Para visualizar as conexões atuais, consulte a exibição <a href="./r_STV_SESSIONS.html">STV_SESSIONS</a> do sistema.</p>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>nota</h6></div><div class="awsdocs-note-text"><p>Se limites de usuário e de conexão de banco de dados forem aplicáveis, um slot de conexão não utilizado que esteja dentro de ambos os limites deve estar disponível quando um usuário tenta se conectar.</p></div></div>
                </dd>
              
@@ -138,6 +142,11 @@ ERROR:  current database may not be renamed</code></pre>
                   <ul class="itemizedlist"><li class="listitem"><p>Você deve ter o privilégio de superusuário ou CREATE DATABASE para o banco de dados atual a fim de alterar o nível de isolamento do banco de dados.</p></li><li class="listitem"><p>Você não pode alterar o nível de isolamento do banco de dados <code class="code">dev</code>. </p></li><li class="listitem"><p>Você não pode alterar o nível de isolamento em um bloco de transação.</p></li><li class="listitem"><p>O comando para alterar o nível de isolamento falhará se outros usuários estiverem conectados ao banco de dados.</p></li><li class="listitem"><p>O comando para alterar o nível de isolamento pode alterar as configurações de nível de isolamento da sessão atual.</p></li></ul></div>
 
                </dd>
+             
+               <dt><span class="term">INTEGRATION REFRESH <span>{</span><span>{</span> ALL | INERROR } TABLES [IN SCHEMA <em>schema</em> [, ...]] | TABLE <em>schema.table</em> [, ...]}</span></dt>
+               <dd><p>Uma cláusula que especifica se o Amazon Redshift vai atualizar todas as tabelas ou as tabelas com erros na tabela ou no esquema especificado. A atualização vai acionar as tabelas na tabela ou no esquema especificado para serem totalmente replicadas pelo banco de dados de origem.</p>
+               <p>Para obter mais informações, consulte <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/zero-etl-using.html"> Working with zero-ETL integrations </a> no <em>Guia de gerenciamento do Amazon Redshift</em>. Para obter mais informações sobre estados de integração, consulte <a href="./r_SVV_INTEGRATION_TABLE_STATE.html">SVV_INTEGRATION_TABLE_STATE</a> e <a href="./r_SVV_INTEGRATION.html">SVV_INTEGRATION</a>.</p>
+               </dd>
             </dl></div>
        
          <h2 id="r_ALTER_DATABASE-usage-notes">Observações de uso</h2>
@@ -155,4 +164,13 @@ ERROR:  current database may not be renamed</code></pre>
          
          <p>O exemplo a seguir altera um banco de dados chamado <code class="userinput">sampledb</code> com o nível de isolamento SNAPSHOT.</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER DATABASE sampledb ISOLATION LEVEL SNAPSHOT;</code></pre>
+      
+         <p>O exemplo a seguir atualiza as tabelas <code class="userinput">sample_table1</code> e <code class="userinput">sample_table2</code> no banco de dados <code class="userinput">sample_integration_db</code> na integração ETL zero.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE sample_integration_db INTEGRATION REFRESH TABLES sample_table1, sample_table2;</code></pre>
+         
+         <p>O exemplo a seguir atualiza todas as tabelas sincronizadas e com falha na integração ETL zero.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE sample_integration_db INTEGRATION REFRESH ALL tables;</code></pre>
+         
+         <p>O exemplo a seguir atualiza todas as tabelas presentes em <code class="computeroutput">ErrorState</code> no esquema<code class="userinput">sample_schema</code>.</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copiar"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER DATABASE INTEGRATION REFRESH IN ERROR TABLES in SCHEMA sample_schema;</code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Atenção" /> <strong>O Javascript está desativado ou não está disponível no seu navegador.</strong></p><p>Para usar a documentação da AWS, o Javascript deve estar ativado. Consulte as páginas de Ajuda do navegador para obter instruções.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Convenções do documento</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ABORT.html">ABORT</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Essa página foi útil? - Sim</div><div class="content"><p>Obrigado por nos informar que estamos fazendo um bom trabalho!</p><p>Se tiver tempo, conte-nos sobre o que você gostou para que possamos melhorar ainda mais.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_ALTER_DATABASE.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Essa página foi útil? - Não</div><div class="content"><p>Obrigado por nos informar que precisamos melhorar a página. Lamentamos ter decepcionado você.</p><p>Se tiver tempo, conte-nos como podemos melhorar a documentação.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_ALTER_DATABASE.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

@@ -42,15 +42,15 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_COPY_JOB" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_COPY_JOB-table-columns">Colunas da tabela</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_COPY_JOB">SYS_COPY_JOB (pré-visualização)</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="table-container"><div class="table-contents"><table id="w317aac47c13c17b3">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_COPY_JOB" target="_blank" rel="noopener noreferrer" title="Abrir em PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentação</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">Guia do desenvolvedor de banco de dados</a></div><div id="page-toc-src"><a href="#SYS_COPY_JOB-table-columns">Colunas da tabela</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_COPY_JOB">SYS_COPY_JOB (pré-visualização)</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="table-container"><div class="table-contents"><table id="w319aac49c13c17b3">
       <tr>
-        <td tabindex="-1"><em><b>Esta é uma documentação de pré-lançamento para cópia automática (SQL COPY JOB), que está em versão de pré-visualização. A documentação e o recurso estão sujeitos a alterações. Recomendamos o uso desse recurso somente em ambientes de teste, e não em ambientes de produção. A pré-visualização pública terminará em 15 de outubro de 2023. Os clusters de pré-visualização serão removidos automaticamente duas semanas após o final da prévia. Para conferir os termos e condições da pré-visualização, consulte <em>Betas e pré-visualizações</em> nos <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>Termos de serviços da AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</b></em> </td>
+        <td tabindex="-1"><em><b>Esta é uma documentação de pré-lançamento para cópia automática (SQL COPY JOB), que está em versão de pré-visualização. A documentação e o atributo estão sujeitos a alterações. Recomendamos o uso desse atributo somente em ambientes de teste, e não em ambientes de produção. A versão prévia pública terminará em 27 de março de 2024. Os clusters de pré-visualização serão removidos automaticamente duas semanas após o final da prévia. Para conferir os termos e condições da pré-visualização, consulte <em>Betas e pré-visualizações</em> nos <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>Termos de serviços da AWS</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</b></em> </td>
       </tr>
-    </table></div></div><p>Use SYS_COPY_JOB para visualizar detalhes dos comandos COPY JOB.</p><p>Essa visão contém os comandos COPY JOB que foram criados.</p><p>SYS_COPY_JOB é visível a todos os usuários. Os superusuários podem ver todas as linhas e os usuários comuns podem ver somente os metadados aos quais eles têm acesso.</p>
+    </table></div></div><p>Use SYS_COPY_JOB para visualizar detalhes dos comandos COPY JOB.</p><p>Essa visão contém os comandos COPY JOB que foram criados.</p><p>SYS_COPY_JOB é visível a todos os usuários. Os superusuários podem ver todas as linhas; usuários regulares podem ver somente seus próprios dados. Para obter mais informações, consulte <a href="./cm_chap_system-tables.html#c_visibility-of-data">Visibilidade de dados em tabelas e visualizações de sistema</a>.</p>
             <h2 id="SYS_COPY_JOB-table-columns">Colunas da tabela</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c17c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c17c11b3"><thead>
                         <tr>
                             <th>Nome da coluna </th>
                             <th>Tipo de dados </th>
@@ -79,12 +79,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">is_auto</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Indica se COPY JOB é executada automaticamente pelo Amazon Redshift. <code class="code">1</code> indica verdadeiro, <code class="code">0</code> indica falso.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">on_error_suspend</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">inteiro</td>
                             <td tabindex="-1">Essas informações são somente para uso interno. </td>
                         </tr>
                         
