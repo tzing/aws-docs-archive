@@ -93,9 +93,9 @@
                   </p>
                   <p>清单是一个 JSON 格式的文本文件，其中包含 Amazon Redshift 连接到主机并提取数据所需的详细信息。</p>
                </li><li class="listitem">
-                  <p><b><a href="./load-from-host-steps-upload-manifest.html">步骤 6：将清单文件上载到 Simple Storage Service（Amazon S3）存储桶</a></b>
+                  <p><b><a href="./load-from-host-steps-upload-manifest.html">步骤 6：将清单文件上载到 Amazon S3 桶</a></b>
                   </p>
-                  <p>Amazon Redshift 将读取清单文件并使用该信息连接到远程主机。如果 Simple Storage Service（Amazon S3）存储桶不在您的 Amazon Redshift 集群所在的区域内，则必须使用 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 选项指定数据所在的区域。</p>
+                  <p>Amazon Redshift 将读取清单文件并使用该信息连接到远程主机。如果 Amazon S3 桶不在您的 Amazon Redshift 集群所在的区域内，则必须使用 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 选项指定数据所在的区域。</p>
                </li><li class="listitem">
                   <p><b><a href="./load-from-host-steps-run-copy.html">步骤 7：运行 COPY 命令以加载数据</a></b></p>
                   <p>从 Amazon Redshift 数据库运行 COPY 命令，以便将数据加载到 Amazon Redshift 表中。</p>

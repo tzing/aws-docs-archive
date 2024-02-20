@@ -91,7 +91,7 @@
             </li><li class="listitem">
                <p><a href="#copy-orc">ORC</a>
                </p>
-            </li></ul></div><p>除标准数据格式以外，COPY 支持 Simple Storage Service（Amazon S3）中有关 COPY 的以下列式数据格式：</p><div class="itemizedlist">
+            </li></ul></div><p>除标准数据格式以外，COPY 支持 Amazon S3 中有关 COPY 的以下列式数据格式：</p><div class="itemizedlist">
              
              
             
@@ -117,7 +117,7 @@
          <dl>
                <dt id="copy-format"><span class="term">FORMAT [AS]</span></dt>
                <dd>
-                  <p>(可选) 标识数据格式关键字。FORMAT 参数如下所述。</p>
+                  <p>（可选）标识数据格式关键字。FORMAT 参数如下所述。</p>
                </dd>
              
                <dt id="copy-csv"><span class="term">CSV [ QUOTE [AS] <em>'quote_character'</em> ]</span></dt>
@@ -298,7 +298,7 @@
                       
                         <dt id="copy-json-pathfile"><span class="term">'s3://<em>jsonpaths_file</em>'</span></dt>
                         <dd>
-                           <p>通过此选项，COPY 使用命名的 JSONPaths 文件将 JSON 源数据中的数据元素映射到目标表中的列。<em><code class="code">s3://jsonpaths_file</code></em> 参数必须是显式引用单个文件的 Simple Storage Service（Amazon S3）对象键。示例是 <code class="code">'s3://mybucket/jsonpaths.txt</code>'。参数不能为键前缀。有关使用 JSONPaths 文件的更多信息，请参阅 <a href="#copy-json-jsonpaths">JSONPaths 文件</a>。</p>
+                           <p>通过此选项，COPY 使用命名的 JSONPaths 文件将 JSON 源数据中的数据元素映射到目标表中的列。<em><code class="code">s3://jsonpaths_file</code></em> 参数必须是显式引用单个文件的 Amazon S3 对象键。示例是 <code class="code">'s3://mybucket/jsonpaths.txt</code>'。参数不能为键前缀。有关使用 JSONPaths 文件的更多信息，请参阅 <a href="#copy-json-jsonpaths">JSONPaths 文件</a>。</p>
                          
                            <p>在某些情况下，由 <code class="code">jsonpaths_file</code> 指定的文件的前缀与由 <code class="code">copy_from_s3_objectpath</code> 为数据文件指定的路径的前缀相同。如果是这样，COPY 会将 JSONPaths 文件作为数据文件读取并返回错误。例如，假设您的数据文件使用对象路径 <code class="code">s3://mybucket/my_data.json</code>，并且您的 JSONPaths 文件是 <code class="code">s3://mybucket/my_data.jsonpaths</code>。在这种情况下，COPY 会尝试加载 <code class="code">my_data.jsonpaths</code> 作为数据文件。</p>
                            
@@ -375,8 +375,8 @@
 FROM 'data_source' 
 CREDENTIALS '<code class="replaceable">credentials-args</code>' 
 FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></pre>
-            <p><code class="code"><code class="code">s3://jsonpaths_file</code></code> 参数必须是显式引用单个文件（如 <code class="code">'s3://mybucket/jsonpaths.txt'</code>）的 Simple Storage Service（Amazon S3）对象键。它不能是键前缀。</p>
-            <p>在某些情况下，如果您从 Simple Storage Service（Amazon S3）加载，由 <code class="code">jsonpaths_file</code> 指定的文件的前缀与由 <code class="code">copy_from_s3_objectpath</code> 为数据文件指定的路径的前缀相同。如果是这样，COPY 会将 JSONPaths 文件作为数据文件读取并返回错误。例如，假设您的数据文件使用对象路径 <code class="code">s3://mybucket/my_data.json</code>，并且您的 JSONPaths 文件是 <code class="code">s3://mybucket/my_data.jsonpaths</code>。在这种情况下，COPY 会尝试加载 <code class="code">my_data.jsonpaths</code> 作为数据文件。</p>
+            <p><code class="code"><code class="code">s3://jsonpaths_file</code></code> 参数必须是显式引用单个文件（如 <code class="code">'s3://mybucket/jsonpaths.txt'</code>）的 Amazon S3 对象键。它不能是键前缀。</p>
+            <p>在某些情况下，如果您从 Amazon S3 加载，由 <code class="code">jsonpaths_file</code> 指定的文件的前缀与由 <code class="code">copy_from_s3_objectpath</code> 为数据文件指定的路径的前缀相同。如果是这样，COPY 会将 JSONPaths 文件作为数据文件读取并返回错误。例如，假设您的数据文件使用对象路径 <code class="code">s3://mybucket/my_data.json</code>，并且您的 JSONPaths 文件是 <code class="code">s3://mybucket/my_data.jsonpaths</code>。在这种情况下，COPY 会尝试加载 <code class="code">my_data.jsonpaths</code> 作为数据文件。</p>
             <p> 如果键名称是除 <code class="code">"jsonpaths"</code> 以外的任何字符串，则 COPY 命令不会返回错误，但会忽略 <em>jsonpaths_file</em> 并改为使用 <code class="code">'auto'</code> 参数。</p>
             <p>如果出现以下任一情况，COPY 命令将失败：</p>
             <div class="itemizedlist">
@@ -513,7 +513,7 @@ FORMAT AS <span>{</span> AVRO | JSON } 's3://<em>jsonpaths_file</em>';</code></p
 "$.friends[0].name"</code></pre>
           
             <h2 id="copy-parameters-columnar-data">列式数据格式参数</h2>
-            <p>除标准数据格式以外，COPY 支持 Simple Storage Service（Amazon S3）中有关 COPY 的以下列式数据格式。支持列式中的 COPY，其中带有特定限制。有关更多信息，请参阅<a href="./copy-usage_notes-copy-from-columnar.html">从列式数据格式中执行 COPY 操作</a>。</p>
+            <p>除标准数据格式以外，COPY 支持 Amazon S3 中有关 COPY 的以下列式数据格式。支持列式中的 COPY，其中带有特定限制。有关更多信息，请参阅<a href="./copy-usage_notes-copy-from-columnar.html">从列式数据格式中执行 COPY 操作</a>。</p>
             <div class="variablelist">
                 
                 

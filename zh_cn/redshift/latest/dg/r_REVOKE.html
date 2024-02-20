@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>REVOKE - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_REVOKE" /><meta name="default_state" content="r_REVOKE" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="description" content="从用户或用户组删除访问权限，例如，用于创建、删除或更新表的权限。" /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="数据库开发人员指南" /><meta name="abstract" content="使用 Amazon Redshift – 一种完全托管的企业 PB 级数据仓库服务 – 创建和管理数据仓库。" /><meta name="guide-locale" content="zh_cn" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_REVOKE.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_REVOKE.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_REVOKE.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_REVOKE.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_REVOKE.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_REVOKE.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_REVOKE.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_REVOKE.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_REVOKE.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_REVOKE.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_REVOKE.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_REVOKE.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_REVOKE.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_REVOKE.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_REVOKE.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_REVOKE.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_REVOKE.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_REVOKE.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_REVOKE.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_REVOKE.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="数据库开发人员指南" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="数据库开发人员指南" /><meta id="panorama-serviceConsolePage" value="REVOKE" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>REVOKE - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_REVOKE" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,集群,数据仓库,开发人员,示例数据,数据库,数据库开发人员,HLL" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>REVOKE - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_REVOKE" /><meta name="default_state" content="r_REVOKE" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="description" content="从用户或角色删除访问权限，例如，用于创建、删除或更新表的权限。" /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="数据库开发人员指南" /><meta name="abstract" content="使用 Amazon Redshift – 一种完全托管的企业 PB 级数据仓库服务 – 创建和管理数据仓库。" /><meta name="guide-locale" content="zh_cn" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_REVOKE.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_REVOKE.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_REVOKE.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_REVOKE.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_REVOKE.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_REVOKE.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_REVOKE.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_REVOKE.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_REVOKE.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_REVOKE.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_REVOKE.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_REVOKE.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_REVOKE.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_REVOKE.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_REVOKE.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_REVOKE.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_REVOKE.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_REVOKE.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_REVOKE.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_REVOKE.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="数据库开发人员指南" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="数据库开发人员指南" /><meta id="panorama-serviceConsolePage" value="REVOKE" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>REVOKE - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_REVOKE" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_REVOKE.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,集群,数据仓库,开发人员,示例数据,数据库,数据库开发人员,HLL" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_REVOKE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_REVOKE-synopsis">语法</a><a href="#r_REVOKE-parameters">参数</a><a href="#r_REVOKE-usage-notes-link">使用说明</a><a href="#r_REVOKE-examples-link">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_REVOKE">REVOKE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>从用户或用户组删除访问权限，例如，用于创建、删除或更新表的权限。</p><p>您只能使用 ON SCHEMA 语法将针对外部架构的 GRANT 或 REVOKE USAGE 权限授予数据库用户和用户组。将 ON EXTERNAL SCHEMA 与 AWS Lake Formation 搭配使用时，您只能向 AWS Identity and Access Management（IAM）角色授予 GRANT 和 REVOKE 权限。有关权限的列表，请参阅“语法”。</p><p>对于存储过程，默认情况下，向 PUBLIC 授予 USAGE ON LANGUAGE <code class="code">plpgsql</code> 权限。EXECUTE ON PROCEDURE 权限默认情况下只授予拥有者和超级用户。</p><p>在 REVOKE 命令中指定要删除的权限。要授予权限，请使用 <a href="./r_GRANT.html">GRANT</a> 命令。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_REVOKE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_REVOKE-synopsis">语法</a><a href="#r_REVOKE-parameters">参数</a><a href="#r_REVOKE-usage-notes-link">使用说明</a><a href="#r_REVOKE-examples-link">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_REVOKE">REVOKE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>从用户或角色删除访问权限，例如，用于创建、删除或更新表的权限。</p><p>您只能使用 ON SCHEMA 语法将针对外部架构的 GRANT 或 REVOKE USAGE 权限授予数据库用户和角色。将 ON EXTERNAL SCHEMA 与 AWS Lake Formation 搭配使用时，您只能向 AWS Identity and Access Management (IAM) 角色授予 GRANT 和 REVOKE 权限。有关权限的列表，请参阅“语法”。</p><p>对于存储过程，默认情况下，向 PUBLIC 授予 USAGE ON LANGUAGE <code class="code">plpgsql</code> 权限。EXECUTE ON PROCEDURE 权限默认情况下只授予拥有者和超级用户。</p><p>在 REVOKE 命令中指定要删除的权限。要授予权限，请使用 <a href="./r_GRANT.html">GRANT</a> 命令。</p>
          <h2 id="r_REVOKE-synopsis">语法</h2>
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE [ GRANT OPTION FOR ]
@@ -105,11 +105,41 @@ REVOKE [ GRANT OPTION FOR ]
 REVOKE [ GRANT OPTION FOR ]
 <span>{</span> <span>{</span> CREATE | ALTER | DROP }  [, ...] | ALL [ PRIVILEGES ] }
     ON EXTERNAL SCHEMA <em>schema_name</em> [, ...]
-    FROM <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="撤销数据共享权限" id="revoke-datashare-permissions" expanded="false"><p>以下是使用 REVOKE 撤销 Amazon Redshift 的数据共享权限的语法。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
- FROM <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <code class="code" copy="true">group_name</code> | PUBLIC } [, ...]</code></pre><p>以下是使用 REVOKE 撤销 Amazon Redshift 的数据共享使用权限的语法。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE USAGE
+    FROM <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="撤销数据共享权限" id="revoke-datashare-permissions" expanded="false">
+            <h6>生产者端数据共享权限</h6>
+            <p>以下是使用 REVOKE 删除用户或角色的 ALTER 或 SHARE 权限的语法。权限已被撤销的用户无法再更改数据共享，也无法向使用者授予使用权限。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
+ FROM <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <code class="code" copy="true">group_name</code> | PUBLIC } [, ...]</code></pre><p>以下是使用 REVOKE 删除使用者对数据共享的访问权限的语法。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE USAGE
  ON DATASHARE <em>datashare_name</em>
- FROM NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>以下是如何从 Lake Formation 账户中撤销数据共享使用权的示例。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">REVOKE USAGE ON salesshare FROM ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre><p>以下是根据数据共享创建的特定数据库或 schema 的 REVOKE 数据共享使用权限的语法。此 USAGE 权限不会撤销非从指定数据共享创建的数据库的使用权限。您只能将针对数据共享的权限 REVOKE、ALTER 或 SHARE 给用户和用户组。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
- FROM <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="撤销机器学习权限" id="revoke-model-permissions" expanded="false"><p>以下是有关 Amazon Redshift 上机器学习模型权限的语法。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE [ GRANT OPTION FOR ]
+ FROM NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>以下是从 Lake Formation 账户中撤销数据共享使用权限的示例。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">REVOKE USAGE ON DATASHARE salesshare FROM ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>
+            
+            <h6>使用者端数据共享权限</h6>
+            <p>以下是根据数据共享创建的特定数据库或 schema 的 REVOKE 数据共享使用权限的语法。撤销使用 WITH PERMISSIONS 子句创建的数据库的使用权限并不能撤销您授予用户或角色的任何其他权限，包括为基础对象授予的对象级权限。如果您向该用户或角色重新授予使用权限，他们将保留在您撤销使用权限之前拥有的所有其他权限。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
+ FROM <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="撤销范围限定的权限" id="revoke-scoped-permissions" expanded="false"><p>使用范围限定的权限来更改用户或角色在数据库或架构范围的权限。</p><p>当您授予或撤销权限时，范围限定的权限适用于选定范围内的对象，也适用于在授予或撤销权限后创建的新对象。例如，授予某个角色从数据库的表中进行选择的范围限定权限，可以让具有该角色的用户从将来创建的表中进行选择，也可以让他们从数据库中当前存在的表中进行选择。</p><p>您可以使用范围限定的权限为通过数据共享创建的共享数据库设置默认权限。被授予对共享数据库的范围限定权限的使用者端数据共享用户将自动获得对生产者端添加到数据共享的任何新对象的这些权限。</p><p>以下是撤销用户和角色的范围限定的权限的语法。有关范围限定权限的更多信息，请参阅<a href="./t_scoped-permissions.html">范围限定的权限 </a>。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">REVOKE [ GRANT OPTION FOR ] 
+<span>{</span> CREATE | USAGE | ALTER } [,...] | ALL [ PRIVILEGES ] }
+FOR SCHEMAS IN
+DATABASE db_name 
+FROM <span>{</span> username | ROLE role_name } [, ...]
+
+REVOKE [ GRANT OPTION FOR ]
+<span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | ALTER | TRUNCATE | REFERENCES } [, ...] } | ALL [PRIVILEGES] } }
+FOR TABLES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+FROM <span>{</span> username] | ROLE role_name} [, ...]
+
+REVOKE [ GRANT OPTION FOR ] <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR FUNCTIONS IN 
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+FROM <span>{</span> username | ROLE role_name | } [, ...]
+
+REVOKE [ GRANT OPTION FOR ] <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR PROCEDURES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+FROM <span>{</span> username | ROLE role_name | } [, ...]
+
+REVOKE [ GRANT OPTION FOR ] USAGE
+FOR LANGUAGES IN
+<span>{</span>DATABASE db_name}
+FROM <span>{</span> username | ROLE role_name } [, ...]  </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="撤销机器学习权限" id="revoke-model-permissions" expanded="false"><p>以下是有关 Amazon Redshift 上机器学习模型权限的语法。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REVOKE [ GRANT OPTION FOR ]
     CREATE MODEL FROM <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
     [ RESTRICT ]
 
@@ -123,6 +153,7 @@ REVOKE [ GRANT OPTION FOR ]
     <span>{</span> CREATE USER | DROP USER | ALTER USER |
     CREATE SCHEMA | DROP SCHEMA |
     ALTER DEFAULT PRIVILEGES |
+    ACCESS CATALOG |
     CREATE TABLE | DROP TABLE | ALTER TABLE |
     CREATE OR REPLACE FUNCTION | CREATE OR REPLACE EXTERNAL FUNCTION |
     DROP FUNCTION |
@@ -207,9 +238,13 @@ FROM <span>{</span> ROLE <em>role_name</em> } [, ...]</code></pre></awsui-expand
                    
             
              
-
+            
              
 
+             
+            
+             
+            
 
 
 
@@ -239,7 +274,7 @@ FROM <span>{</span> ROLE <em>role_name</em> } [, ...]</code></pre></awsui-expand
                   <p>撤消用于通过 INSERT 语句或 COPY 语句将数据加载到表中的权限。</p>
                </dd>
              
-               <dt><span class="term">更新 </span></dt>
+               <dt><span class="term">UPDATE </span></dt>
                <dd>
                   <p>撤消用于通过 UPDATE 语句更新表列的权限。</p>
                </dd>
@@ -347,7 +382,7 @@ FROM <span>{</span> ROLE <em>role_name</em> } [, ...]</code></pre></awsui-expand
                   <p>从 Lake Formation 外部表中撤销 PUBLIC 会将该权限从 Lake Formation <em>所有人</em>组撤销。</p>
                </dd>
              
-               <dt><span class="term">创建 </span></dt>
+               <dt><span class="term">CREATE </span></dt>
                <dd>
                   <p>根据数据库对象，从用户或组撤销以下权限：</p>
                   <div class="itemizedlist">
@@ -452,6 +487,11 @@ grant usage on language sql to group udf_devs;</code></pre>
                         <p>撤销对在指定数据共享中创建的指定架构的指定权限。</p>
                      </dd>
                    
+               <dt><span class="term">FOR <span>{</span> SCHEMAS | TABLES | FUNCTIONS | PROCEDURES | LANGUAGES } IN </span></dt>
+               <dd>
+                  <p>指定要撤销权限的数据库对象。IN 后面的参数定义了所撤销权限的范围。</p>
+               </dd>
+             
 
                <dt><span class="term">CREATE MODEL</span></dt>
                <dd><p>撤销 CREATE MODEL 在指定数据库中创建机器学习模型的权限。</p></dd>
@@ -461,6 +501,11 @@ grant usage on language sql to group udf_devs;</code></pre>
 
                <dd><p>撤销特定模型的 EXECUTE 权限。</p></dd>
 
+             
+               <dt><span class="term">ACCESS CATALOG</span></dt>
+               <dd>
+                  <p>撤销查看该角色可访问对象的相关元数据的权限。</p>
+               </dd>
              
                <dt><span class="term">[ ADMIN OPTION FOR ] <span>{</span> role } [, ...]</span></dt>
 

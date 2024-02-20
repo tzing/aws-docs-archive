@@ -48,21 +48,27 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#CAN_JSON_PARSE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#CAN_JSON_PARSE-synopsis">语法</a><a href="#CAN_JSON_PARSE-arguments">Arguments</a><a href="#CAN_JSON_PARSE-return">返回类型</a><a href="#CAN_JSON_PARSE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="CAN_JSON_PARSE">CAN_JSON_PARSE 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>CAN_JSON_PARSE 函数以 JSON 格式解析数据，如果可以使用 JSON_PARSE 函数将结果转换为 <code class="code">SUPER</code> 值，则返回 <code class="code">true</code>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#CAN_JSON_PARSE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#CAN_JSON_PARSE-synopsis">语法</a><a href="#CAN_JSON_PARSE-arguments">参数</a><a href="#CAN_JSON_PARSE-return">返回类型</a><a href="#CAN_JSON_PARSE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="CAN_JSON_PARSE">CAN_JSON_PARSE 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>CAN_JSON_PARSE 函数以 JSON 格式解析数据，如果可以使用 JSON_PARSE 函数将结果转换为 <code class="code">SUPER</code> 值，则返回 <code class="code">true</code>。</p>
             <h2 id="CAN_JSON_PARSE-synopsis">语法</h2>
             
             
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CAN_JSON_PARSE(<em>json_string</em>)</code></pre>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CAN_JSON_PARSE( <span>{</span><em>json_string</em> | <em>binary_value</em>} )</code></pre>
           
-            <h2 id="CAN_JSON_PARSE-arguments">Arguments</h2>
+            <h2 id="CAN_JSON_PARSE-arguments">参数</h2>
             
             
             <div class="variablelist">
+                
                 
             <dl>
                   <dt><span class="term"> <em>json_string</em></span></dt>
                   <dd>
                      <p>以 <code class="code">VARBYTE</code> 或 <code class="code">VARCHAR</code> 形式返回序列化 JSON 的表达式。</p>
+                  </dd>
+                
+                  <dt><span class="term"> <em>binary_value</em></span></dt>
+                  <dd>
+                     <p>VARBYTE 类型的二进制值。</p>
                   </dd>
                </dl></div>
           

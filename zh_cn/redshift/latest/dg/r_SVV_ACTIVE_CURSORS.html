@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_ACTIVE_CURSORS" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_SVV_ACTIVE_CURSORS-table-columns">表列</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_ACTIVE_CURSORS">SVV_ACTIVE_CURSORS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVV_ACTIVE_CURSORS 显示当前打开的游标的详细信息。有关更多信息，请参阅<a href="./declare.html">DECLARE</a>。</p><p>STV_ACTIVE_CURSORS 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。用户只能查看自己打开的光标。超级用户可以查看所有光标。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_ACTIVE_CURSORS" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_SVV_ACTIVE_CURSORS-table-columns">表列</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_ACTIVE_CURSORS">SVV_ACTIVE_CURSORS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>SVV_ACTIVE_CURSORS 显示当前打开的游标的详细信息。有关更多信息，请参阅<a href="./declare.html">DECLARE</a>。</p><p>SVV_ACTIVE_CURSORS 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。用户只能查看自己打开的光标。超级用户可以查看所有光标。</p>
             <h2 id="r_SVV_ACTIVE_CURSORS-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11b9b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11b9b7b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -55,7 +55,7 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">创建游标的用户的 ID。</td>
                         </tr>
                         <tr>
@@ -70,12 +70,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">游标处于活动状态的进程的 ID。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">declare_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">声明游标的时间。</td>
                         </tr>
                         <tr>
@@ -95,7 +95,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">cursor_storage_limit_used_percent</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">游标当前使用的磁盘空间的百分比。</td>
                         </tr>
                     </table></div></div>

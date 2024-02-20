@@ -48,10 +48,10 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ANALYZE_COMPRESSION" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_ANALYZE_COMPRESSION-table-columns2">表列</a><a href="#r_STL_ANALYZE_COMPRESSION-sample-queries2">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ANALYZE_COMPRESSION">STL_ANALYZE_COMPRESSION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>记录在 COPY 或 ANALYZE COMPRESSION 命令期间压缩分析操作的详细信息。</p><p>此视图对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部列也在 SYS 监控视图 <a href="./r_SYS_ANALYZE_COMPRESSION_HISTORY.html">SYS_ANALYZE_COMPRESSION_HISTORY</a> 中定义。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_ANALYZE_COMPRESSION" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_ANALYZE_COMPRESSION-table-columns2">表列</a><a href="#r_STL_ANALYZE_COMPRESSION-sample-queries2">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_ANALYZE_COMPRESSION">STL_ANALYZE_COMPRESSION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>记录在 COPY 或 ANALYZE COMPRESSION 命令期间压缩分析操作的详细信息。</p><p>STL_ANALYZE_COMPRESSION 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部数据也可以在 SYS 监控视图 <a href="./r_SYS_ANALYZE_COMPRESSION_HISTORY.html">SYS_ANALYZE_COMPRESSION_HISTORY</a> 中找到。SYS 监控视图中的数据经过格式化处理，便于使用和理解。我们建议您使用 SYS 监控视图进行查询。</p>
             <h2 id="r_STL_ANALYZE_COMPRESSION-table-columns2">表列</h2>
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c17b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c17b9b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -124,6 +124,27 @@
                                     </dd>
                                 </dl></div>    
                            </td>
+                        </tr>     
+                        
+                        <tr>
+                            <td tabindex="-1">best_compression_encoding</td>
+                            <td tabindex="-1">character(15)</td>
+                            <td tabindex="-1">提供最佳压缩比的编码类型。</td>
+                        </tr>                        
+                        <tr>
+                            <td tabindex="-1">recommended_bytes</td>
+                            <td tabindex="-1">character(15)</td>
+                            <td tabindex="-1">采用新编码所使用的字节。</td>
+                        </tr>                        
+                        <tr>
+                            <td tabindex="-1">best_compression_bytes</td>
+                            <td tabindex="-1">character(15)</td>
+                            <td tabindex="-1">采用最佳压缩编码所使用的字节。</td>
+                        </tr>                        
+                        <tr>
+                            <td tabindex="-1">ndv</td>
+                            <td tabindex="-1">bigint</td>
+                            <td tabindex="-1">采样行中独特值的数量。</td>
                         </tr>                        
                         
                         
@@ -133,28 +154,27 @@
             
             
             <p>以下示例检查在同一个会话中运行的最后一个 COPY 命令对 <code class="code">lineitem</code> 表执行压缩分析的详细信息。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select xid, tbl, btrim(tablename) as tablename, col, old_encoding, new_encoding, mode 
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select xid, tbl, btrim(tablename) as tablename, col, old_encoding, new_encoding, best_compression_encoding, mode 
 from stl_analyze_compression 
 where xid = (select xid from stl_query where query = pg_last_copy_id()) order by col;
-                
- xid  |  tbl   | tablename | col |  old_encoding   |  new_encoding   |      mode
-======+========+===========+=====+=================+=================+=============
- 8196 | 248126 | lineitem  |   0 | mostly32        | mostly32        | ON
- 8196 | 248126 | lineitem  |   1 | mostly32        | lzo             | ON
- 8196 | 248126 | lineitem  |   2 | lzo             | delta32k        | ON
- 8196 | 248126 | lineitem  |   3 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |   4 | bytedict        | bytedict        | ON
- 8196 | 248126 | lineitem  |   5 | mostly32        | mostly32        | ON
- 8196 | 248126 | lineitem  |   6 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |   7 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |   8 | lzo             | zstd            | ON
- 8196 | 248126 | lineitem  |   9 | runlength       | zstd            | ON
- 8196 | 248126 | lineitem  |  10 | delta           | lzo             | ON
- 8196 | 248126 | lineitem  |  11 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |  12 | delta           | delta           | ON
- 8196 | 248126 | lineitem  |  13 | bytedict        | zstd            | ON
- 8196 | 248126 | lineitem  |  14 | bytedict        | zstd            | ON
- 8196 | 248126 | lineitem  |  15 | text255         | zstd            | ON
-(16 rows)                
-</code></pre>
+
+ xid  |  tbl   | tablename | col |  old_encoding   |  new_encoding   | best_compression_encoding |      mode      
+------+--------+-----------+-----+-----------------+-----------------+---------------------------+----------------
+ 5308 | 158961 | $lineitem |   0 | mostly32        | az64            | delta                     | ON            
+ 5308 | 158961 | $lineitem |   1 | mostly32        | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   2 | lzo             | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   3 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   4 | bytedict        | az64            | bytedict                  | ON            
+ 5308 | 158961 | $lineitem |   5 | mostly32        | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   6 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   7 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |   8 | lzo             | lzo             | lzo                       | ON            
+ 5308 | 158961 | $lineitem |   9 | runlength       | runlength       | runlength                 | ON            
+ 5308 | 158961 | $lineitem |  10 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |  11 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |  12 | delta           | az64            | az64                      | ON            
+ 5308 | 158961 | $lineitem |  13 | bytedict        | bytedict        | bytedict                  | ON            
+ 5308 | 158961 | $lineitem |  14 | bytedict        | bytedict        | bytedict                  | ON            
+ 5308 | 158961 | $lineitem |  15 | text255         | text255         | text255                   | ON   
+(16 rows)                </code></pre>
         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_STL_ANALYZE.html">STL_ANALYZE</div><div id="next" class="next-link" accesskey="n" href="./r_STL_BCAST.html">STL_BCAST</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_STL_ANALYZE_COMPRESSION.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_STL_ANALYZE_COMPRESSION.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

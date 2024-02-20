@@ -48,12 +48,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Area-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Area-function-syntax">语法</a><a href="#ST_Area-function-arguments">Arguments</a><a href="#ST_Area-function-return">返回类型</a><a href="#ST_Area-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Area-function">ST_Area</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>对于输入几何体，ST_Area 返回 2D 投影的笛卡尔面积。面积单位与用于表示输入几何体坐标的单位相同。对于点、线串、多点和多线串，此函数返回 0。对于几何体集合，它返回集合中几何体的面积之和。</p><p>对于输入地理，ST_Area 返回由 SRID 确定的在椭球体上计算的输入平面地理的 2D 投影的测地线面积。长度以平方米为单位。对于点、多点和线性地理，此函数返回零（0）。当输入为几何体集合时，此函数返回集合中的平面地理面积之和。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Area-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Area-function-syntax">语法</a><a href="#ST_Area-function-arguments">参数</a><a href="#ST_Area-function-return">返回类型</a><a href="#ST_Area-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Area-function">ST_Area</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>对于输入几何体，ST_Area 返回 2D 投影的笛卡尔面积。面积单位与用于表示输入几何体坐标的单位相同。对于点、线串、多点和多线串，此函数返回 0。对于几何体集合，它返回集合中几何体的面积之和。</p><p>对于输入地理，ST_Area 返回由 SRID 确定的在椭球体上计算的输入平面地理的 2D 投影的测地线面积。长度以平方米为单位。对于点、多点和线性地理，此函数返回零 (0)。当输入为几何体集合时，此函数返回集合中的平面地理面积之和。</p>
             <h2 id="ST_Area-function-syntax">语法</h2>       
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_Area(<em>geo</em>)</code></pre>
           
-            <h2 id="ST_Area-function-arguments">Arguments</h2>           
+            <h2 id="ST_Area-function-arguments">参数</h2>           
             
             <div class="variablelist">
                 

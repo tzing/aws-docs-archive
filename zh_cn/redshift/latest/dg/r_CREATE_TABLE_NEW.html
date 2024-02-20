@@ -149,7 +149,7 @@ and <em>table_attributes</em> are:
                   <p>表名称的最大长度为 127 个字节；更长的名称将被截断为 127 个字节。您可以使用 UTF-8 多字节字符，每个字符最多为四个字节。Amazon Redshift 按节点类型对每个集群强制实施表数量的配额，包括用户定义的临时表以及查询处理或系统维护期间由 Amazon Redshift 创建的临时表。也可使用数据库名称和 schema 名称来限定表名称。在下面的示例中，<code class="code">tickit</code> 是数据库名称，<code class="code">public</code> 是 schema 名称，而 <code class="code">test</code> 是表名称。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create table tickit.public.test (c1 int);
 </code></pre>
-                  <p>如果数据库或 schema 不存在，则不会创建表，并且语句将返回错误。您无法在系统数据库 <code class="code">template0</code>、<code class="code">template1</code> 和 <code class="code">padb_harvest</code> 中创建表或视图。</p>
+                  <p>如果数据库或 schema 不存在，则不会创建表，并且语句将返回错误。您无法在系统数据库 <code class="code">template0</code>、<code class="code">template1</code>、<code class="code">padb_harvest</code> 或 <code class="code">sys:internal</code> 中创建表或视图。</p>
                   <p>如果提供 schema 名称，则在该 schema 中创建新表（假定创建者有权访问 schema）。表名称必须是该 schema 中的唯一名称。如果未指定 schema，则可使用当前数据库 schema 创建表。如果您创建的是临时表，则无法指定 schema 名称，因为特定 schema 中存在临时表。</p>
                   <p>同一个数据库中可同时存在多个同名的临时表，前提是这些临时表是在单独的会话中创建的，因为这些表将分配给不同的 schema。有关有效名称的更多信息，请参阅<a href="./r_names.html">名称和标识符</a>。</p>
                </dd>
@@ -464,7 +464,7 @@ and <em>table_attributes</em> are:
                 
                
             <ul class="itemizedlist"><li class="listitem">
-                  <p>集群中按节点类型的最大表数有限制。有关更多信息，请参阅《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">限制</a>。</p>
+                  <p>集群中按节点类型的最大表数有限制。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">限制</a>。</p>
                </li><li class="listitem">
                   <p>表名的最大字符数为 127。</p>
                </li><li class="listitem">

@@ -43,7 +43,7 @@
       {
         "@type" : "ListItem",
         "position" : 7,
-        "name" : "使用 COPY 命令从 Simple Storage Service（Amazon S3）中加载",
+        "name" : "使用 COPY 命令从 Amazon S3 中加载",
         "item" : "https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_loading-tables-from-s3.html"
       },
       {
@@ -54,7 +54,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#loading-data-files-using-manifest" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#loading-data-files-using-unload-manifest">使用 UNLOAD 创建的清单</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="loading-data-files-using-manifest">使用清单指定数据文件</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>您可以对数据加载使用清单以确保 COPY 命令加载所有需要的文件，且仅加载需要的文件。您可以使用清单来加载不同存储桶或文件中的未共享相同前缀的文件。您可以提供明确列出要加载的文件的 JSON 格式的文本文件的名称，而不必提供 COPY 命令的对象路径。清单中的 URL 必须指定存储桶名称和文件的完整对象路径，而不仅仅是前缀。</p><p>有关清单文件的更多信息，请参阅 COPY 示例<a href="./r_COPY_command_examples.html#copy-command-examples-manifest">使用清单指定数据文件</a>。</p><p>以下示例展示了用于加载不同存储桶中的文件名以日期戳开头的文件的 JSON。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#loading-data-files-using-manifest" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#loading-data-files-using-unload-manifest">使用 UNLOAD 创建的清单</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="loading-data-files-using-manifest">使用清单指定数据文件</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>您可以对数据加载使用清单以确保 COPY 命令加载所有需要的文件，且仅加载需要的文件。您可以使用清单来加载不同桶或文件中的未共享相同前缀的文件。您可以提供明确列出要加载的文件的 JSON 格式的文本文件的名称，而不必提供 COPY 命令的对象路径。清单中的 URL 必须指定桶名称和文件的完整对象路径，而不仅仅是前缀。</p><p>有关清单文件的更多信息，请参阅 COPY 示例<a href="./r_COPY_command_examples.html#copy-command-examples-manifest">使用清单指定数据文件</a>。</p><p>以下示例展示了用于加载不同桶中的文件名以日期戳开头的文件的 JSON。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
   "entries": [
     <span>{</span>"url":"s3://mybucket-alpha/2013-10-04-custdata", "mandatory":true},
     <span>{</span>"url":"s3://mybucket-alpha/2013-10-05-custdata", "mandatory":true},

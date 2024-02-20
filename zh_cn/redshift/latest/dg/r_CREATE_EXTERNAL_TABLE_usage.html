@@ -50,9 +50,9 @@
 }
 </script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_EXTERNAL_TABLE_usage" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_CETAS">CREATE EXTERNAL TABLE AS</a><a href="#r_CREATE_EXTERNAL_TABLE_usage-permissions">创建和查询外部表的权限</a><a href="#r_CREATE_EXTERNAL_TABLE_usage-pseudocolumns">Pseudocolumns </a><a href="#r_CREATE_EXTERNAL_TABLE_usage-data-handling">设置数据处理选项 </a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_EXTERNAL_TABLE_usage">使用说明</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>本主题包含 <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> 的用法说明。您无法使用用于标准 Amazon Redshift 表（如 <a href="./r_PG_TABLE_DEF.html">PG_TABLE_DEF</a>、<a href="./r_STV_TBL_PERM.html">STV_TBL_PERM</a>、PG_CLASS 或 information_schema）的同一资源查看 Amazon Redshift Spectrum 表的详细信息。如果您的商业智能或分析工具无法识别 Redshift Spectrum 外部表，请将您的应用程序为配置查询 <a href="./r_SVV_EXTERNAL_TABLES.html">SVV_EXTERNAL_TABLES</a> 和 <a href="./r_SVV_EXTERNAL_COLUMNS.html">SVV_EXTERNAL_COLUMNS</a>。</p>
             <h2 id="r_CETAS">CREATE EXTERNAL TABLE AS</h2>
-            <p>在某些情况下，您可能会对 AWS Glue Data Catalog、AWS Lake Formation 外部目录或 Apache Hive 元存储运行 CREATE EXTERNAL TABLE AS 命令。在这种情况下，您使用 AWS Identity and Access Management (IAM) 角色创建外部架构。此 IAM 角色必须同时具有在 Simple Storage Service（Amazon S3）上读取和写入的权限。</p>
-            <p>如果您使用 Lake Formation 目录，则 IAM 角色必须具有在目录中创建表的权限。在这种情况下，它还必须对目标 Simple Storage Service（Amazon S3）路径具有数据湖位置权限。此 IAM 角色成为新 AWS Lake Formation 表的所有者。</p>
-            <p>为确保文件名是唯一的，Amazon Redshift 预设情况下对上载到 Simple Storage Service（Amazon S3）的每个文件的名称使用以下格式。</p>
+            <p>在某些情况下，您可能会对 AWS Glue Data Catalog、AWS Lake Formation 外部目录或 Apache Hive 元存储运行 CREATE EXTERNAL TABLE AS 命令。在这种情况下，您使用 AWS Identity and Access Management (IAM) 角色创建外部架构。此 IAM 角色必须同时具有在 Amazon S3 上读取和写入的权限。</p>
+            <p>如果您使用 Lake Formation 目录，则 IAM 角色必须具有在目录中创建表的权限。在这种情况下，它还必须对目标 Amazon S3 路径具有数据湖位置权限。此 IAM 角色成为新 AWS Lake Formation 表的所有者。</p>
+            <p>为确保文件名是唯一的，Amazon Redshift 预设情况下对上载到 Amazon S3 的每个文件的名称使用以下格式。</p>
             <p><code class="code"><code class="replaceable">&lt;date&gt;</code>_<code class="replaceable">&lt;time&gt;</code>_<code class="replaceable">&lt;microseconds&gt;</code>_<code class="replaceable">&lt;query_id&gt;</code>_<code class="replaceable">&lt;slice-number&gt;</code>_part_<code class="replaceable">&lt;part-number&gt;</code>.<code class="replaceable">&lt;format&gt;</code></code>.</p>
             <p> 示例是 <code class="code">20200303_004509_810669_1007_0001_part_00.parquet</code>。</p>
             <p>运行 CREATE EXTERNAL TABLE AS 命令时，请考虑以下事项：</p>
@@ -70,7 +70,7 @@
                 
                 
             <ul class="itemizedlist"><li class="listitem">
-                  <p>Simple Storage Service（Amazon S3）位置必须为空。</p>
+                  <p>Amazon S3 位置必须为空。</p>
                </li><li class="listitem">
                   <p>Amazon Redshift 仅在使用 STORED AS 子句时才支持 PARQUET 和 TEXTFILE 格式。</p>
                </li><li class="listitem">
@@ -84,7 +84,7 @@
                </li><li class="listitem">
                   <p>不支持 ROW FORMAT SERDE 'serde_name' 子句。</p>
                </li><li class="listitem">
-                  <p>不支持使用清单文件。因此，您无法在 Simple Storage Service（Amazon S3）上的清单文件中定义 LOCATION 子句。</p>
+                  <p>不支持使用清单文件。因此，您无法在 Amazon S3 上的清单文件中定义 LOCATION 子句。</p>
                </li><li class="listitem">
                   <p>Amazon Redshift 自动在命令末尾更新“numRows”表属性。</p>
                </li><li class="listitem">
@@ -92,7 +92,7 @@
                </li><li class="listitem">
                   <p>Amazon Redshift 不允许在外部 SELECT 查询中使用 LIMIT 子句。相反，您可以使用嵌套的 LIMIT 子句。</p>
                </li><li class="listitem">
-                  <p>您可以使用 STL_UNLOAD_LOG 跟踪由每个 CREATE EXTERNAL TABLE AS 操作写入到 Simple Storage Service（Amazon S3）的文件。</p>
+                  <p>您可以使用 STL_UNLOAD_LOG 跟踪由每个 CREATE EXTERNAL TABLE AS 操作写入到 Amazon S3 的文件。</p>
                </li></ul></div>
           
             <h2 id="r_CREATE_EXTERNAL_TABLE_usage-permissions">创建和查询外部表的权限</h2>
@@ -113,12 +113,12 @@
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">grant temp on database spectrumdb to group spectrumusers;</code></pre>
           
             <h2 id="r_CREATE_EXTERNAL_TABLE_usage-pseudocolumns">Pseudocolumns </h2>
-            <p>预设情况下，Amazon Redshift 使用伪列 <em>$path</em> 和 <em>$size</em> 创建外部表。选择这些列可针对查询返回的每行查看 Simple Storage Service（Amazon S3）上数据文件的路径以及数据文件的大小。<em>$path</em> 和 <em>$size</em> 列名称必须用双引号分隔。<em>SELECT *</em> 子句不返回 pseudocolumns。如下例所示，必须在查询中显式包含 <em>$path</em> 和 <em>$size</em> 列名称。</p>
+            <p>预设情况下，Amazon Redshift 使用伪列 <em>$path</em> 和 <em>$size</em> 创建外部表。选择这些列可针对查询返回的每行查看 Amazon S3 上数据文件的路径以及数据文件的大小。<em>$path</em> 和 <em>$size</em> 列名称必须用双引号分隔。<em>SELECT *</em> 子句不返回 pseudocolumns。如下例所示，必须在查询中显式包含 <em>$path</em> 和 <em>$size</em> 列名称。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select "$path", "$size"
 from spectrum.sales_part
 where saledate = '2008-12-01';</code></pre>
             <p>您可以通过将 <em>spectrum_enable_pseudo_columns</em> 配置参数设置为 <em>false</em> 来禁用为会话创建 pseudocolumns 的功能。</p>
-            <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>选择 <em>$size</em> 或 <em>$path</em> 将产生费用，因为 Redshift Spectrum 会扫描 Simple Storage Service（Amazon S3）中的数据文件来确定结果集的大小。有关更多信息，请参阅 <a href="https://aws.amazon.com/redshift/pricing/" rel="noopener noreferrer" target="_blank"><span>Amazon Redshift 定价</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p></div></div>
+            <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>选择 <em>$size</em> 或 <em>$path</em> 将产生费用，因为 Redshift Spectrum 会扫描 Amazon S3 中的数据文件来确定结果集的大小。有关更多信息，请参阅 <a href="https://aws.amazon.com/redshift/pricing/" rel="noopener noreferrer" target="_blank"><span>Amazon Redshift 定价</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p></div></div>
           
             <h2 id="r_CREATE_EXTERNAL_TABLE_usage-data-handling">设置数据处理选项 </h2>
             <p>您可以设置表参数以指定外部表中查询的数据的输入处理，其中包括：</p>

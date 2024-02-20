@@ -53,6 +53,7 @@
                     </li><li class="listitem">
                         <p>大多数内置 SQL 函数（尤其是那些不可变的 SQL 函数），假定它们具有相同的输入参数并始终产生相同的输出。</p>
                     </li></ul></div>
+                <p>基于数据共享表的实体化视图也支持增量刷新。</p>
             </li><li class="listitem">
                 <p>如果无法执行递增刷新，Amazon Redshift 将执行完全刷新。<em>完全刷新</em> 将重新运行基础 SQL 语句，并替换实体化视图中的所有数据。</p>
             </li><li class="listitem">
@@ -100,7 +101,18 @@ INFO:  Materialized view c was incrementally updated successfully.</code></pre><
                     <p>聚合函数 MEDIAN、PERCENTILE_CONT、LISTAGG、STDDEV_SAMP、STDDEV_POP、APPROXIMATE COUNT、APPROXIMATE PERCENTILE 以及按位聚合函数。</p>
                     <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>支持 COUNT、SUM 和 AVG 聚合函数。</p></div></div>
                 </li><li class="listitem">
-                    <p>DISTINCT 聚合函数，如 DISTINCT COUNT、DISTINCT SUM 等等。</p></li><li class="listitem"><p>窗口函数。</p></li><li class="listitem"><p>使用临时表进行查询优化的查询，例如优化常用的子表达式。</p></li><li class="listitem"><p>在 FROM 子句以外的任何位置的子查询。</p></li><li class="listitem"><p>在定义实体化视图的查询中作为基表引用的外部表。</p></li></ul></div>
+                    <p>DISTINCT 聚合函数，如 DISTINCT COUNT、DISTINCT SUM 等等。</p></li><li class="listitem"><p>窗口函数。</p></li><li class="listitem"><p>使用临时表进行查询优化的查询，例如优化常用的子表达式。</p></li><li class="listitem"><p>在 FROM 子句以外的任何位置的子查询。</p></li><li class="listitem">
+                    <p>在定义实体化视图的查询中引用以下格式的外部表。</p>
+                    <div class="itemizedlist">
+                         
+                         
+                    <ul class="itemizedlist"><li class="listitem">
+                            <p> Delta Lake </p>
+                        </li><li class="listitem">
+                            <p> Hudi </p>
+                        </li></ul></div>
+                    <p>对于使用上述格式以外的格式定义的实体化视图，预览版跟踪支持增量刷新。有关设置预览版集群的更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#cluster-preview">创建预览版集群</a>。有关设置预览工作组的信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">创建预览工作组</a>。</p>
+                </li></ul></div>
             <h2 id="materialized-view-auto-refresh">自动刷新实体化视图</h2>
         <p>当使用自动刷新选项创建实体化视图或将其更改为具有自动刷新选项时，Amazon Redshift 可以使用其基表中的最新数据自动刷新实体化视图。Amazon Redshift 会在基表更改后尽快自动刷新实体化视图。</p>
             <p>为了完成最重要的实体化视图的刷新，同时最大限度地减少对集群中的活动工作负载的影响，Amazon Redshift 会考虑多个因素。这些因素包括当前系统负载、刷新所需的资源、可用集群资源以及实体化视图的使用频率。</p>

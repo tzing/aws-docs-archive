@@ -84,7 +84,7 @@ ADD <em>table_constraint</em>
   [ NOT NULL | NULL ]
   [ COLLATE <span>{</span> CASE_SENSITIVE | CASE_INSENSITIVE } ] |
 | DROP [ COLUMN ] <em>column_name</em> [ RESTRICT | CASCADE ] 
-| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ FOR DATASHARES ]}
+| ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]}
 
 where <em>table_constraint</em> is:
 
@@ -172,7 +172,7 @@ ALTER TABLE <em>tablename</em> ALTER DISTSTYLE ALL, ALTER SORTKEY (<em>column_li
          <dl>
                <dt><span class="term"> <em>table_name</em> </span></dt>
                <dd>
-                  <p>要修改的表的名称。只指定表的名称，或者通过格式 <em>schema_name.table_name</em> 使用特定 schema。外部表必须通过一个外部 schema 名称进行限定。如果您使用 ALTER TABLE 语句重命名视图或更改其所有者，您还可以指定视图名称。表名称的最大长度为 127 个字节；更长的名称将被截断为 127 个字节。您可以使用 UTF-8 多字节字符，每个字符最多为四个字节。有关有效名称的更多信息，请参阅<a href="./r_names.html">名称和标识符</a>。</p>
+                  <p>要修改的表的名称。只指定表的名称，或者通过格式 <em>schema_name.table_name</em> 使用特定 schema。外部表必须通过一个外部 schema 名称进行限定。如果您使用 ALTER TABLE 语句重命名视图或更改其拥有者，您还可以指定视图名称。表名称的最大长度为 127 个字节；更长的名称将被截断为 127 个字节。您可以使用 UTF-8 多字节字符，每个字符最多为四个字节。有关有效名称的更多信息，请参阅<a href="./r_names.html">名称和标识符</a>。</p>
                </dd>
              
                <dt><span class="term">ADD <em>table_constraint</em> </span></dt>
@@ -200,12 +200,12 @@ from information_schema.table_constraints;</code></pre>
              
                <dt><span class="term">OWNER TO <em>new_owner</em> </span></dt>
                <dd>
-                  <p>用于将表 (或视图) 的所有者更改为 <em>new_owner</em> 值的子句。</p>
+                  <p>用于将表（或视图）的所有者更改为 <em>new_owner</em> 值的子句。</p>
                </dd>
              
                <dt><span class="term">RENAME TO <em>new_name</em> </span></dt>
                <dd>
-                  <p>用于将表 (或视图) 重命名为 <em>new_name</em> 中指定的值的子句。表名称的最大长度为 127 个字节；更长的名称将被截断为 127 个字节。</p>
+                  <p>用于将表（或视图）重命名为 <em>new_name</em> 中指定的值的子句。表名称的最大长度为 127 个字节；更长的名称将被截断为 127 个字节。</p>
                   <p>您不能将永久表重命名为以“#”开头的表。名称以“#”开头的表是临时表。</p>
                   <p>您无法重命名外部表。</p>
                </dd>
@@ -661,8 +661,6 @@ from information_schema.table_constraints;</code></pre>
 
              
 
-             
-
 
 
 
@@ -675,7 +673,7 @@ from information_schema.table_constraints;</code></pre>
          <dl>
                <dt><span class="term">SET LOCATION <span>{</span> 's3://<em>bucket/folder</em>/' | 's3://<em>bucket/manifest_file</em>' }</span></dt>
                <dd>
-                  <p>包含数据文件的 Simple Storage Service（Amazon S3）文件夹的路径或包含 Simple Storage Service（Amazon S3）对象路径列表的清单文件。桶必须与 Amazon Redshift 集群位于同一 AWS 区域。有关受支持的 AWS 区域的列表，请参阅<a href="./c-using-spectrum.html#c-spectrum-considerations">Amazon Redshift Spectrum 注意事项</a>。有关使用清单文件的更多信息，请参阅 CREATE EXTERNAL TABLE <a href="./r_CREATE_EXTERNAL_TABLE.html#r_CREATE_EXTERNAL_TABLE-parameters">参数</a> 参考中的 LOCATION。</p>
+                  <p>包含数据文件的 Amazon S3 文件夹的路径或包含 Amazon S3 对象路径列表的清单文件。桶必须与 Amazon Redshift 集群位于同一 AWS 区域。有关受支持的 AWS 区域的列表，请参阅<a href="./c-using-spectrum.html#c-spectrum-considerations">Amazon Redshift Spectrum 注意事项</a>。有关使用清单文件的更多信息，请参阅 CREATE EXTERNAL TABLE <a href="./r_CREATE_EXTERNAL_TABLE.html#r_CREATE_EXTERNAL_TABLE-parameters">参数</a> 参考中的 LOCATION。</p>
                </dd>
              
                <dt><span class="term">SET FILE FORMAT <em>format</em></span></dt>
@@ -738,13 +736,17 @@ from information_schema.table_constraints;</code></pre>
                   <p>用于删除指定分区的子句。删除分区只会更改外部表元数据。Amazon S3 上的数据不受影响。</p>
                </dd>
              
-               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } </span></dt>
-               <dd><p>一个对表开启或关闭行级安全性的子句。</p>
-                  <p>在为表开启行级安全性后，您只能读取行级安全策略允许您访问的行。如果没有策略向您授予对表的访问权限，您将看不到表中的任何行。只有超级用户和拥有 <code class="code">sys:secadmin</code> 角色的用户或角色才能设置 ROW LEVEL SECURITY 子句。有关更多信息，请参阅<a href="./t_rls.html">行级别安全性</a>。</p>
-               </dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>一个子句，用于确定表是否受通过数据共享实施的 RLS 保护。原定设置情况下，受 RLS 保护的表也受通过数据共享实施的 RLS 保护。</p>
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+                     <dd><p>一个对关系开启或关闭行级安全性的子句。</p>
+                        <p>在为关系开启行级安全性后，您只能读取行级安全策略允许您访问的行。如果没有策略向您授予对关系的访问权限，您将看不到关系中的任何行。只有超级用户和拥有 <code class="code">sys:secadmin</code> 角色的用户或角色才能设置 ROW LEVEL SECURITY 子句。有关更多信息，请参阅<a href="./t_rls.html">行级别安全性</a>。</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>一个允许您为关系选择行级安全策略的联接类型的子句。将多个行级安全策略附加到关系时，可以将这些策略与 AND 或 OR 子句合并。默认情况下，Amazon Redshift 将 RLS 策略与 AND 子句合并。具有 <code class="code">sys:secadmin</code> 角色的超级用户、用户或角色可以使用此子句为关系定义行级安全策略的联接类型。有关更多信息，请参阅<a href="./t_rls_combine_policies.html">为每个用户组合多个策略</a>。</p></li><li class="listitem"><p>FOR DATASHARES</p>
+                        <p>一个子句，用于确定是否可以通过数据共享访问受 RLS 保护的关系。默认情况下，无法通过数据共享访问受 RLS 保护的关系。使用此子句运行的 ALTER TABLE ROW LEVEL SECURITY 命令只会影响关系的数据共享可访问性属性。ROW LEVEL SECURITY 属性未更改。</p>
+                        <p> 如果您允许通过数据共享访问受 RLS 保护的关系，则该关系在使用者端数据共享数据库中没有行级安全性。该关系在生产者端保留其 RLS 属性。</p>
+                     </li></ul></div>
                </dd>
             </dl></div>
        

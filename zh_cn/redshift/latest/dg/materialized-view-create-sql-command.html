@@ -59,9 +59,9 @@ AS query </pre>
             <dl>
                <dt><span class="term">BACKUP</span></dt>
                <dd>
-                  <p>一个子句，用于指定实体化视图是否包含在存储于 Simple Storage Service（Amazon S3）中的自动和手动集群快照中。</p>
+                  <p>一个子句，用于指定实体化视图是否包含在存储于 Amazon S3 中的自动和手动集群快照中。</p>
                   <p><code class="code">BACKUP</code> 的默认值为 <code class="code">YES</code>。</p>
-                  <p>您可以指定 <code class="code">BACKUP NO</code> 来节省创建快照和从快照还原时的处理时间，并减少 Simple Storage Service（Amazon S3）中所需的存储量。</p>
+                  <p>您可以指定 <code class="code">BACKUP NO</code> 来节省创建快照和从快照还原时的处理时间，并减少 Amazon S3 中所需的存储量。</p>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p><code class="code">BACKUP NO</code> 设置不会影响自动将数据复制到集群内的其他节点，因此当发生节点故障时，指定了 <code class="code">BACKUP
                            NO</code> 的表将被还原。</p></div></div>
                </dd>
@@ -176,7 +176,7 @@ AS query </pre>
 
 SELECT name, state FROM STV_MV_INFO;</code></pre>
 
-         <p>以下示例使用 UNION ALL 子句联接 Amazon Redshift <code class="code">public_sales</code> 表和 Redshift Spectrum <code class="code">spectrum.sales</code> 表来创建实体化视图 <code class="code">mv_sales_vw</code>。有关适用于 Amazon Redshift Spectrum 的 CREATE EXTERNAL TABLE 命令的信息，请参阅<a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>。Redshift Spectrum 外部表引用 Simple Storage Service（Amazon S3）上的数据。</p>
+         <p>以下示例使用 UNION ALL 子句联接 Amazon Redshift <code class="code">public_sales</code> 表和 Redshift Spectrum <code class="code">spectrum.sales</code> 表来创建实体化视图 <code class="code">mv_sales_vw</code>。有关适用于 Amazon Redshift Spectrum 的 CREATE EXTERNAL TABLE 命令的信息，请参阅<a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>。Redshift Spectrum 外部表引用 Amazon S3 上的数据。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MATERIALIZED VIEW mv_sales_vw as
 select salesid, qtysold, pricepaid, commission, saletime from public.sales
 union all

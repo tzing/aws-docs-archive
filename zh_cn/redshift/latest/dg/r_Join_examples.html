@@ -126,7 +126,7 @@ listid | price  |  comm
      1 | 728.00 | 109.20
      4 |  76.00 |  11.40
      5 | 525.00 |  78.75
-</code></pre><p>以下查询是 LIST 表和 SALES 表的交叉联接或笛卡尔联接，其中包含限制结果的谓词。此查询匹配 SALES 表和 LISTING 表中的 LISTID 列值，对应于这两个表中的 LISTID 1、2、3、4 和 5。结果显示 20 个行符合条件。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select sales.listid as sales_listid, listing.listid as listing_listid
+</code></pre><p>以下查询是 LISTING 表和 SALES 表的交叉联接或笛卡尔联接，其中包含限制结果的谓词。此查询匹配 SALES 表和 LISTING 表中的 LISTID 列值，对应于这两个表中的 LISTID 1、2、3、4 和 5。结果显示 20 个行符合条件。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select sales.listid as sales_listid, listing.listid as listing_listid
 from sales cross join listing
 where sales.listid between 1 and 5
 and listing.listid between 1 and 5

@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DATE_PART_function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_DATE_PART_function-synopsis">语法</a><a href="#r_DATE_PART_function-arguments">Arguments</a><a href="#r_DATE_PART_function-return-type">返回类型</a><a href="#r_DATE_PART_function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_DATE_PART_function">DATE_PART 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>DATE_PART 从表达式中提取日期部分值。DATE_PART 是 PGDATE_PART 函数的同义词。</p><h2 id="r_DATE_PART_function-synopsis">语法</h2>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DATE_PART_function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_DATE_PART_function-synopsis">语法</a><a href="#r_DATE_PART_function-arguments">参数</a><a href="#r_DATE_PART_function-return-type">返回类型</a><a href="#r_DATE_PART_function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_DATE_PART_function">DATE_PART 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>DATE_PART 从表达式中提取日期部分值。DATE_PART 是 PGDATE_PART 函数的同义词。</p><h2 id="r_DATE_PART_function-synopsis">语法</h2>
          
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">DATE_PART(<em>datepart</em>, <span>{</span><em>date</em>|<em>timestamp</em>})</code></pre>
-      <h2 id="r_DATE_PART_function-arguments">Arguments</h2>
+      <h2 id="r_DATE_PART_function-arguments">参数</h2>
          
          
          <div class="variablelist">
@@ -103,7 +103,7 @@
          2
 </code></code></pre>
          
-         <p>下面的示例从时间戳文本中查找星期几信息。周编号计算遵循 ISO 8601 标准。有关更多信息，请参阅 Wikipedia 中的 <a href="https://en.wikipedia.org/wiki/ISO_8601" rel="noopener noreferrer" target="_blank"><span>ISO 8601</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>             
+         <p>下面的示例从时间戳文本中查找星期几信息。星期几的计算是 0-6 之间的整数，从星期日开始。</p>             
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT DATE_PART(dayofweek, timestamp '20220502 04:05:06.789');</code>
             
 <code class="computeroutput" copy="false">pgdate_part

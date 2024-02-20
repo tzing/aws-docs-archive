@@ -87,7 +87,7 @@ ALTER DATASHARE salesshare SET INCLUDENEW = TRUE FOR SCHEMA PUBLIC;</code></pre>
 --data-share-arn arn:aws:redshift:us-east-1:<span>{</span>PRODUCER_ACCOUNT}:datashare:<span>{</span>PRODUCER_CLUSTER_NAMESPACE}/salesshare 
 --consumer-identifier ADX</code></pre>
                            
-                           <p>您可以将条件密钥 <code class="code">ConsumerIdentifier</code> 用于 <code class="code">AuthorizeDataShare</code> 和 <code class="code">DeauthorizeDataShare</code>，以明确允许或拒绝 AWS Data Exchange 调用 IAM policy 中的两个 API。</p>
+                           <p>您可以将条件密钥 <code class="code">ConsumerIdentifier</code> 用于 <code class="code">AuthorizeDataShare</code> 和 <code class="code">DeauthorizeDataShare</code>，以明确允许或拒绝 AWS Data Exchange 调用 IAM 策略中的两个 API。</p>
                          
                            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "Version": "2012-10-17",

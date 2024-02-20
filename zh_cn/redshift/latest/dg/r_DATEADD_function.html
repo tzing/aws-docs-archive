@@ -48,12 +48,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DATEADD_function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_DATEADD_function-synopsis">语法</a><a href="#r_DATEADD_function-arguments">Arguments</a><a href="#r_DATEADD_function-return-type">返回类型</a><a href="#r_DATEADD_function-examples">具有 DATE 列的示例</a><a href="#r_DATEADD_function-examples-time">具有 TIME 列的示例</a><a href="#r_DATEADD_function-examples-timetz">具有 TIMETZ 列的示例</a><a href="#r_DATEADD_function-examples-timestamp">具有 TIMESTAMP 列的示例</a><a href="#r_DATEADD_usage_notes">使用说明</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_DATEADD_function">DATEADD 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>按指定的时间间隔递增 DATE、TIME、TIMETZ 或 TIMESTAMP 值。</p><h2 id="r_DATEADD_function-synopsis">语法</h2>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_DATEADD_function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_DATEADD_function-synopsis">语法</a><a href="#r_DATEADD_function-arguments">参数</a><a href="#r_DATEADD_function-return-type">返回类型</a><a href="#r_DATEADD_function-examples">具有 DATE 列的示例</a><a href="#r_DATEADD_function-examples-time">具有 TIME 列的示例</a><a href="#r_DATEADD_function-examples-timetz">具有 TIMETZ 列的示例</a><a href="#r_DATEADD_function-examples-timestamp">具有 TIMESTAMP 列的示例</a><a href="#r_DATEADD_usage_notes">使用说明</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_DATEADD_function">DATEADD 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>按指定的时间间隔递增 DATE、TIME、TIMETZ 或 TIMESTAMP 值。</p><h2 id="r_DATEADD_function-synopsis">语法</h2>
          
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">DATEADD( <em>datepart</em>, <em>interval</em>, <span>{</span><em>date</em>|<em>time</em>|<em>timetz</em>|<em>timestamp</em>} )</code></pre>
          
-      <h2 id="r_DATEADD_function-arguments">Arguments</h2>
+      <h2 id="r_DATEADD_function-arguments">参数</h2>
          
          
          <div class="variablelist">
@@ -105,7 +105,7 @@ date_add
 date_add
 ---------------------
 2008-02-28 00:30:00
-(1 row)</code></pre><p>您可以可以用全名或缩写来命名日期部分。在此情况下，<em>m</em> 代表几分钟，而不是几个月。</p>
+(1 row)</code></pre><p>您可以用全名或缩写来命名日期部分。在此情况下，<em>m</em> 代表几分钟，而不是几个月。</p>
       <h2 id="r_DATEADD_function-examples-time">具有 TIME 列的示例</h2>
          
          <p>下面的示例表 TIME_TEST 具有一个列 TIME_VAL（类型 TIME），其中插入了三个值。</p>

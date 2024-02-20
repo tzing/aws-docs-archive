@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_DEFAULT_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_ALTER_DEFAULT_PRIVILEGES-privileges">所需的权限</a><a href="#r_ALTER_DEFAULT_PRIVILEGES-synopsis">语法</a><a href="#r_ALTER_DEFAULT_PRIVILEGES-parameters">参数</a><a href="#r_ALTER_DEFAULT_PRIVILEGES-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_DEFAULT_PRIVILEGES">ALTER DEFAULT PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>定义默认访问权限集，这些权限将应用于指定的用户在以后创建的对象。默认情况下，用户只能更改他们自己的默认访问权限。只有超级用户能够为其他用户指定默认权限。</p><p>您可以将默认权限应用到角色、用户或用户组。您可以为在当前数据库中创建的所有对象全局设置默认权限，也可以仅为在指定的 schemas 中创建的对象进行设置。</p><p>默认权限仅应用于新对象。运行 ALTER DEFAULT PRIVILEGES 时不会更改现有对象的权限。</p><p>要查看有关数据库用户的默认权限的信息，请查询 <a href="./r_PG_DEFAULT_ACL.html">PG_DEFAULT_ACL</a> 系统目录表。</p><p>有关权限的更多信息，请参阅 <a href="./r_GRANT.html">GRANT</a>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_DEFAULT_PRIVILEGES" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_ALTER_DEFAULT_PRIVILEGES-privileges">所需的权限</a><a href="#r_ALTER_DEFAULT_PRIVILEGES-synopsis">语法</a><a href="#r_ALTER_DEFAULT_PRIVILEGES-parameters">参数</a><a href="#r_ALTER_DEFAULT_PRIVILEGES-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_DEFAULT_PRIVILEGES">ALTER DEFAULT PRIVILEGES</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>定义默认访问权限集，这些权限将应用于指定的用户在以后创建的对象。默认情况下，用户只能更改他们自己的原定设置访问权限。只有超级用户能够为其他用户指定默认权限。</p><p>您可以将默认权限应用到角色、用户或用户组。您可以为在当前数据库中创建的所有对象全局设置默认权限，也可以仅为在指定的架构中创建的对象进行此设置。</p><p>默认权限仅应用于新对象。运行 ALTER DEFAULT PRIVILEGES 时不会更改现有对象的权限。要授予对数据库或架构中任何用户创建的所有当前和将来对象的权限，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/dg/t_scoped-permissions.html">范围限定的权限</a>。</p><p>要查看有关数据库用户的默认权限的信息，请查询 <a href="./r_PG_DEFAULT_ACL.html">PG_DEFAULT_ACL</a> 系统目录表。</p><p>有关权限的更多信息，请参阅 <a href="./r_GRANT.html">GRANT</a>。</p>
          <h2 id="r_ALTER_DEFAULT_PRIVILEGES-privileges">所需的权限</h2>
          <p>以下是 ALTER DEFAULT PRIVILEGES 所需的权限：</p>
          <div class="itemizedlist">
@@ -60,7 +60,7 @@
 
 where <em>grant_or_revoke_clause</em> is one of:
 
-GRANT <span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | REFERENCES } [,...] | ALL [ PRIVILEGES ] }
+GRANT <span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | REFERENCES | TRUNCATE } [,...] | ALL [ PRIVILEGES ] }
 	ON TABLES
 	TO <span>{</span> <em>user_name</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
 
@@ -72,11 +72,11 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
 	ON PROCEDURES
 	TO <span>{</span> <em>user_name</em> [ WITH GRANT OPTION ] |  ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
 
-REVOKE [ GRANT OPTION FOR ] <span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | REFERENCES } [,...] | ALL [ PRIVILEGES ] }
+REVOKE [ GRANT OPTION FOR ] <span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | REFERENCES | TRUNCATE } [,...] | ALL [ PRIVILEGES ] }
 	ON TABLES
 	FROM <em>user_name</em> [, ...] [ RESTRICT ]
 
-REVOKE  <span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | REFERENCES } [,...] | ALL [ PRIVILEGES ] }
+REVOKE  <span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | REFERENCES | TRUNCATE } [,...] | ALL [ PRIVILEGES ] }
 	ON TABLES
 	FROM <span>{</span> ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...] [ RESTRICT ]
 
@@ -121,7 +121,7 @@ REVOKE <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
              
                <dt id="default-grant"><span class="term">GRANT </span></dt>
                <dd>
-                  <p>针对指定用户创建的所有新表、函数或存储过程，向指定的用户或组授予权限集。与使用 <a href="./r_GRANT.html">GRANT</a> 命令一样，您可以使用 GRANT 子句来设置相同的权限和选项。</p>
+                  <p>针对指定用户创建的所有新表和视图、函数或存储过程，向指定的用户或组授予的权限集。与使用 <a href="./r_GRANT.html">GRANT</a> 命令一样，您可以使用 GRANT 子句来设置相同的权限和选项。</p>
 
                </dd>
              
@@ -159,9 +159,9 @@ REVOKE <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
             </dl></div>
        
          <h2 id="r_ALTER_DEFAULT_PRIVILEGES-examples">示例</h2>
-         <p>假设您希望允许用户组 <code class="code">report_readers</code> 中的所有用户查看用户 <code class="code">report_admin</code> 创建的所有表。在这种情况下，以超级用户身份执行以下命令。</p>
+         <p>假设您希望允许用户组 <code class="code">report_readers</code> 中的所有用户查看用户 <code class="code">report_admin</code> 创建的所有表和视图。在这种情况下，以超级用户身份执行以下命令。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter default privileges for user report_admin grant select on tables to group report_readers; </code></pre>
-         <p>在以下示例中，第一个命令授予对您创建的所有新表的 SELECT 权限。</p>
+         <p>在以下示例中，第一个命令授予对您创建的所有新表和视图的 SELECT 权限。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter default privileges grant select on tables to public; </code></pre>
          <p>以下示例针对您在 <code class="code">sales_admin</code> schema 中创建的所有新表和视图，将 INSERT 权限授予 <code class="code">sales</code> 用户组。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter default privileges in schema sales grant insert on tables to group sales_admin; </code></pre>
@@ -170,4 +170,4 @@ REVOKE <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
          <p>默认情况下，PUBLIC 用户组对所有新的用户定义的函数具有执行权限。要撤消对您的新函数的 <code class="code">public</code> 执行权限，然后只将执行权限授予 <code class="code">dev_test</code> 用户组，请运行以下命令。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter default privileges revoke execute on functions from public;
 alter default privileges grant execute on functions to group dev_test; </code></pre>
-      <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_GROUP.html">ALTER GROUP</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ALTER_DEFAULT_PRIVILEGES.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ALTER_DEFAULT_PRIVILEGES.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+      <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_EXTERNAL_VIEW.html">ALTER EXTERNAL VIEW（预览版）</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ALTER_DEFAULT_PRIVILEGES.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ALTER_DEFAULT_PRIVILEGES.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

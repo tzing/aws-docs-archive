@@ -46,63 +46,45 @@
                       <h2 id="ingesting-nested-data">提取嵌套数据</h2>
                       <p>您可以使用 <code class="code">CREATE TABLE AS</code> 语句从包含复杂数据类型的外部表中提取数据。以下查询使用 <code class="code">LEFT
                     JOIN</code> 从外部表中提取所有客户及其电话号码，并将它们存储在 Amazon Redshift 表 <code class="code">CustomerPhones</code> 中。</p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE CustomerPhones AS
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE CustomerPhones AS
 SELECT  c.name.given, c.name.family, p AS phone
-FROM    spectrum.customers c LEFT JOIN c.phones p ON true                      
-                    </code></pre>
+FROM    spectrum.customers c LEFT JOIN c.phones p ON true;     </code></pre>
                   
                
                       <h2 id="aggregating-with-subquery"> 使用子查询聚合嵌套数据 </h2>
                       <p>您可以使用子查询聚合嵌套数据。以下示例说明了此方法。</p>
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
-FROM   spectrum.customers c
-                     
-                      </code></pre>
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, (SELECT COUNT(*) FROM c.orders o) AS ordercount 
+FROM   spectrum.customers c;</code></pre>
             <p>将返回以下数据。</p>   
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-given   |  family  |  ordercount
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">given   |  family  |  ordercount
 --------|----------|--------------
  Jenny  |  Doe     |       0
  John   |  Smith   |       2
  Andy   |  Jones   |       1
- (3 rows)                              
-                          </code></pre>
+ (3 rows)              </code></pre>
                      <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>当您通过按父行进行分组来聚合嵌套数据时，最高效的方法是前面示例中所示的方法。在该示例中，<code class="code">c.orders</code> 的嵌套行按其父行 <code class="code">c</code> 分组。或者，如果您知道 <code class="code">id</code> 对于每个 <code class="code">customer</code> 是唯一的且 <code class="code">o.shipdate</code> 从不为 Null，则您可以按下例中所示进行聚合。但一般而言，这种方法的效率比不上前面的示例。</p></div></div>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT    c.name.given, c.name.family, COUNT(o.shipdate) AS ordercount 
 FROM      spectrum.customers c LEFT JOIN c.orders o ON true 
-GROUP BY  c.id, c.name.given, c.name.family
-            </code></pre>
-                      <p>您也可以在 FROM 子句中使用一个子查询来编写查询，此子查询引用原级查询的别名 (<code class="code">c</code>) 并提取数组数据。以下示例演示了此方法。</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT c.name.given, c.name.family, s.count AS ordercount
-FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s                       
-                      </code></pre>
+GROUP BY  c.id, c.name.given, c.name.family;</code></pre>
+                      <p>您也可以在 <code class="code">FROM</code> 子句中使用一个子查询来编写查询，此子查询引用原级查询的别名 (<code class="code">c</code>) 并提取数组数据。以下示例演示了此方法。</p>
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT c.name.given, c.name.family, s.count AS ordercount
+FROM   spectrum.customers c, (SELECT count(*) AS count FROM c.orders o) s;    </code></pre>
                    
                       <h2 id="joining-redshift-data"> 联接 Amazon Redshift 和嵌套数据 </h2>
                       <p>您还可以在外部表中联接 Amazon Redshift 数据以及嵌套数据。例如，假设您在 Amazon S3 中具有以下嵌套数据。</p>    
-                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE EXTERNAL TABLE spectrum.customers2 (
+                          <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE EXTERNAL TABLE spectrum.customers2 (
   id      int,
   name    struct&lt;given:varchar(20), family:varchar(20)&gt;,
   phones  array&lt;varchar(20)&gt;,
   orders  array&lt;struct&lt;shipdate:timestamp, item:int&gt;&gt;
-)
-                       </code></pre>
+);</code></pre>
                       <p>此外，假设您在 Amazon Redshift 中具有下面的表。</p>
-                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-CREATE TABLE prices (
+                      <pre class="programlisting"><div class="code-btn-container"></div><code class="">CREATE TABLE prices (
   id int,
   price double precision
-)
-                       </code></pre>
+);</code></pre>
                       <p>以下查询根据前面的内容查找每个客户的采购总数和购买金额。下例仅用于举例说明。仅当您创建了前面介绍的表时，它才返回数据。</p>
-                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">
-SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
+                  <pre class="programlisting"><div class="code-btn-container"></div><code class="">SELECT   c.name.given, c.name.family, COUNT(o.date) AS ordercount, SUM(p.price) AS ordersum 
 FROM     spectrum.customers2 c, c.orders o, prices p ON o.item = p.id  
-GROUP BY c.id, c.name.given, c.name.family
-            
-                  </code></pre>
-                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">教程：使用 Amazon Redshift Spectrum 查询嵌套数据 </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">嵌套数据限制</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+GROUP BY c.id, c.name.given, c.name.family;</code></pre>
+                  <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./tutorial-query-nested-data.html">教程：使用 Amazon Redshift Spectrum 查询嵌套数据 </div><div id="next" class="next-link" accesskey="n" href="./nested-data-restrictions.html">嵌套数据限制（预览版）</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/nested-data-use-cases.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

@@ -94,7 +94,7 @@
                                 
                                 <p>请注意，对于串流摄取，不支持通过 mTLS 进行客户端身份验证。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html#materialized-view-streaming-ingestion-limitations">限制</a>。</p>
                             <p>下表显示了为从 Amazon MSK 进行串流摄取所要设置的免费配置选项：</p>
-                                <div class="table-container"><div class="table-contents"><table id="w317aac21c47c15c15b5b3b6"><thead>
+                                <div class="table-container"><div class="table-contents"><table id="w319aac21c47c15c15b5b3b6"><thead>
                                             <tr>
                                                 <th>Amazon Redshift 配置</th>
                                                 <th>Amazon MSK 配置</th>
@@ -118,8 +118,10 @@
                                             </tr>
                                         </table></div></div>
                                 <p>Amazon Redshift 身份验证是在 CREATE EXTERNAL SCHEMA 语句中设置的。</p>
-                                <p>如果 Amazon MSK 集群启用了相互传输层安全性协议（mTLS）身份验证，则将 Amazon Redshift 配置为使用 AUTHENTICATION NONE 会指示它使用端口 9094 进行未经身份验证的访问。但是，由于 mTLS 身份验证正在使用该端口，因此这一过程将失败。因此，当您使用 mTLS 时，我们建议您切换到 AUTHENTICATION IAM。</p>    
-                            </li><li><p>在 Amazon Redshift 集群或 Amazon Redshift Serverless 工作组中启用增强型 VPC 路由。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-enabling-cluster.html">启用增强型 VPC 路由</a>。</p></li><li><p>在 Amazon Redshift 中，创建一个外部 Schema 以映射到 Amazon MSK 集群。</p>
+                                <p>如果 Amazon MSK 集群启用了相互传输层安全性协议 (mTLS) 身份验证，则将 Amazon Redshift 配置为使用 AUTHENTICATION NONE 会指示它使用端口 9094 进行未经身份验证的访问。但是，由于 mTLS 身份验证正在使用该端口，因此这一过程将失败。因此，当您使用 mTLS 时，我们建议您切换到 AUTHENTICATION IAM。</p>    
+                            </li><li><p>在 Amazon Redshift 集群或 Amazon Redshift Serverless 工作组中启用增强型 VPC 路由。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-enabling-cluster.html">启用增强型 VPC 路由</a>。</p>
+                                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>为了检索 Amazon MSK 引导程序代理 URL，Amazon Redshift 使用附加的 IAM 角色提供的权限进行 <a href="https://docs.aws.amazon.com/msk/1.0/apireference/clusters-clusterarn-bootstrap-brokers.html#GetBootstrapBrokers">GetBootstrapBrokers</a> API 调用。请注意，为了使此请求在启用增强型 VPC 路由时获得成功，您的 Amazon Redshift 预调配集群或 Amazon Redshift Serverless 工作组的子网必须具有 NAT 网关或互联网网关。您的网络 ACL 和上述子网的安全组出站规则还必须允许访问 Amazon MSK API 服务端点。有关更多信息，请参阅 <a href="https://docs.aws.amazon.com/general/latest/gr/msk.html">Amazon Managed Streaming for Apache Kafka 端点和限额</a>。</p></div></div>
+                            </li><li><p>在 Amazon Redshift 中，创建一个外部 Schema 以映射到 Amazon MSK 集群。</p>
                                 
                                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL SCHEMA MySchema
 FROM MSK
@@ -132,7 +134,7 @@ CLUSTER_ARN 'msk-cluster-arn';</code></pre>
                                     <div class="itemizedlist">
                                          
                                          
-                                    <ul class="itemizedlist"><li class="listitem"><p><b>none</b>（无）– 指定没有身份验证步骤。</p></li><li class="listitem"><p><b>iam</b> – 指定 IAM 身份验证。选择此选项时，请确保 IAM 角色具有 IAM 身份验证的权限。</p></li></ul></div>
+                                    <ul class="itemizedlist"><li class="listitem"><p><b>无</b> – 指定没有身份验证步骤。</p></li><li class="listitem"><p><b>iam</b> – 指定 IAM 身份验证。选择此选项时，请确保 IAM 角色具有 IAM 身份验证的权限。</p></li></ul></div>
                                 <p>串流摄取不支持其他 Amazon MSK 身份验证方法，例如 TLS 身份验证或用户名和密码。</p>
                                 <p> <code class="code">CLUSTER_ARN</code> 指定要从中进行流式传输的 Amazon MSK 集群。</p>       
                             </li><li>
@@ -150,7 +152,7 @@ FROM MySchema."mytopic"
 WHERE CAN_JSON_PARSE(kafka_value);</code></pre>
                     <p>要开启自动刷新，请使用 <code class="code">AUTO REFRESH YES</code>。原定设置行为是手动刷新。</p>
                                 <p>元数据列包括以下内容：</p>
-                                <div class="table-container"><div class="table-contents"><table id="w317aac21c47c15c15b5b9b9"><thead>
+                                <div class="table-container"><div class="table-contents"><table id="w319aac21c47c15c15b5b9b9"><thead>
                                             <tr>
                                                 <th>元数据列</th>
                                                 <th>数据类型</th>
@@ -178,7 +180,7 @@ WHERE CAN_JSON_PARSE(kafka_value);</code></pre>
                                                          
                                                          
                                                          
-                                                    <ul class="itemizedlist"><li class="listitem"><p><em>C</em> – 客户端的记录创建时间 (CREATE_TIME)</p></li><li class="listitem"><p><em>L</em> – Kafka 服务器端的记录追加时间（LOG_APPEND_TIME） </p></li><li class="listitem"><p><em>U</em> – 记录创建时间不可用 (NO_TIMESTAMP_TYPE)</p></li></ul></div>
+                                                    <ul class="itemizedlist"><li class="listitem"><p><em>C</em> – 客户端的记录创建时间 (CREATE_TIME)</p></li><li class="listitem"><p><em>L</em> – Kafka 服务器端的记录追加时间 (LOG_APPEND_TIME) </p></li><li class="listitem"><p><em>U</em> – 记录创建时间不可用 (NO_TIMESTAMP_TYPE)</p></li></ul></div>
                                                 </td>
                                                 
                                             </tr>

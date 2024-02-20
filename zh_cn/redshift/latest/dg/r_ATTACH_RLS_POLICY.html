@@ -55,12 +55,12 @@ TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC } [, ...
          <dl>
                <dt><span class="term"> <em>policy_name</em> </span></dt>
                <dd>
-                  <p> 策略的名称。</p>
+                  <p>策略的名称。</p>
                </dd>
              
                <dt><span class="term">ON [TABLE]<em>table_name</em> [, ...]</span></dt>
                <dd>
-                  <p>行级别安全性策略附加到的表或视图。</p>
+                  <p>行级安全策略所附加到的关系。</p>
                </dd>
              
                <dt><span class="term">TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC} [, ...]</span></dt>
@@ -80,8 +80,16 @@ TO <span>{</span> <em>user_name</em> | ROLE <em>role_name</em> | PUBLIC } [, ...
              
 
          <ul class="itemizedlist"><li class="listitem"><p>附加的表应该包含策略创建语句的 WITH 子句中列出的所有列。</p></li><li class="listitem">
-               <p>Amazon Redshift RLS 不支持将 RLS 策略附加到以下对象：目录表、跨数据库关系、外部表、常规视图、后期绑定视图、临时表和 RLS 策略的查找表。</p>
-            </li><li class="listitem"><p>您无法将 RLS 策略附加到超级用户或 sys:secadmin。</p></li></ul></div>
+               <p>Amazon Redshift RLS 不支持将 RLS 策略附加到以下对象：</p>
+               <div class="itemizedlist">
+                   
+                   
+                   
+                   
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem"><p> 目录表 </p></li><li class="listitem"><p> 跨数据库关系 </p></li><li class="listitem"><p> 外部表 </p></li><li class="listitem"><p> 实体化视图 </p></li><li class="listitem"><p> 临时表 </p></li><li class="listitem"><p> 查找表 </p></li></ul></div>
+            </li><li class="listitem"><p>不能将 RLS 策略附加到超级用户或具有 <code class="code">sys:secadmin</code> 权限的用户。</p></li></ul></div>
        
          <h2 id="r_ATTACH_RLS_POLICY-examples">示例</h2>
          <p>以下示例将表上的策略附加到了角色。</p>

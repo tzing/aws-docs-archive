@@ -92,11 +92,11 @@
                 <p>SHOW</p>
             </li><li class="listitem">
                 <p>TRUNCATE</p>
-            </li></ul></div><p>另请参阅 <a href="./r_STL_DDLTEXT.html">STL_DDLTEXT</a>、<a href="./r_STL_QUERYTEXT.html">STL_QUERYTEXT</a> 和 <a href="./r_SVL_STATEMENTTEXT.html">SVL_STATEMENTTEXT</a>。</p><p>使用 STARTTIME 和 ENDTIME 列了解在某个给定时间段内记录了哪些语句。SQL 文本的长数据块已分为 200 个字符长的行；SEQUENCE 列标识了属于一个语句的文本片段。</p><p>此视图对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部列也在 SYS 监控视图 <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> 中定义。</p>
+            </li></ul></div><p>另请参阅 <a href="./r_STL_DDLTEXT.html">STL_DDLTEXT</a>、<a href="./r_STL_QUERYTEXT.html">STL_QUERYTEXT</a> 和 <a href="./r_SVL_STATEMENTTEXT.html">SVL_STATEMENTTEXT</a>。</p><p>使用 STARTTIME 和 ENDTIME 列了解在某个给定时间段内记录了哪些语句。SQL 文本的长数据块已分为 200 个字符长的行；SEQUENCE 列标识了属于一个语句的文本片段。</p><p>STL_UTILITYTEXT 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部数据也可以在 SYS 监控视图 <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> 中找到。SYS 监控视图中的数据经过格式化处理，便于使用和理解。我们建议您使用 SYS 监控视图进行查询。</p>
             <h2 id="r_STL_UTILITYTEXT-table-columns">表列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9d109c17b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9d109c17b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -125,12 +125,12 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">starttime</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询开始的时间（采用 UTC 表示）。总时间包括排队和执行时间。秒的小数部分以 6 位精度表示。例如：<code class="userinput">2009-06-12 11:29:19.131358</code>。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">endtime</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询完成的时间（采用 UTC 表示）。总时间包括排队和执行时间。秒的小数部分以 6 位精度表示。例如：<code class="userinput">2009-06-12 11:29:19.131358</code>。</td>
                         </tr>
                         <tr>

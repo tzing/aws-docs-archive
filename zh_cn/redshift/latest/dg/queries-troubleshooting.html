@@ -51,28 +51,28 @@
          </li></ul></div><div class="itemizedlist">
           
       <ul class="itemizedlist"><li class="listitem">
-            <p><a href="./tutorial-loading-data.html">教程：从 Simple Storage Service（Amazon S3）加载数据</a></p>
+            <p><a href="./tutorial-loading-data.html">教程：从 Amazon S3 加载数据</a></p>
          </li></ul></div><h2 id="queries-troubleshooting-connection-fails">连接失败</h2>
          
          <p>由于以下原因，您的查询连接可能会失败；我们建议您使用以下故障排除方法。</p>
           
             <h6>客户端无法连接到服务器</h6>
-            <p>如果您使用了 SSL 或服务器证书，请在开始排查连接问题之前将其删除以降低复杂性。待您找到解决方案后，再重新添加 SSL 或服务器证书。有关更多信息，请转至《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-ssl-support.html">配置连接的安全选项</a>。</p>
+            <p>如果您使用了 SSL 或服务器证书，请在开始排查连接问题之前将其删除以降低复杂性。待您找到解决方案后，再重新添加 SSL 或服务器证书。有关更多信息，请转至《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-ssl-support.html">配置连接的安全选项</a>。</p>
           
           
             <h6>连接被拒绝</h6>
-            <p>通常情况下，当您收到提示连接建立失败的错误消息时，意味着您没有访问集群的权限。有关更多信息，请转至《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-refusal-failure-issues.html">连接被拒绝或失败</a>。</p>
+            <p>通常情况下，当您收到提示连接建立失败的错误消息时，意味着您没有访问集群的权限。有关更多信息，请转至《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-refusal-failure-issues.html">连接被拒绝或失败</a>。</p>
           
       <h2 id="queries-troubleshooting-query-hangs">查询挂起</h2>
          
          <p>由于以下原因，您的查询可能会挂起或停止响应；我们建议您使用以下故障排除方法。</p>
           
             <h6>到数据库的连接中断</h6>
-            <p>减小最大传输单元 (MTU) 的大小。MTU 大小确定可通过网络连接在单个以太网帧中传输的数据包的最大大小（以字节为单位）。有关更多信息，请转至《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-drop-issues.html">至数据库的连接被删除</a>。</p>
+            <p>减小最大传输单元 (MTU) 的大小。MTU 大小确定可通过网络连接在单个以太网帧中传输的数据包的最大大小（以字节为单位）。有关更多信息，请转至《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-drop-issues.html">至数据库的连接被删除</a>。</p>
           
           
             <h6>到数据库的连接超时</h6>
-            <p>在运行 COPY 命令等较长的查询时，客户端到数据库的连接会挂起或超时。此时，您可能会发现，Amazon Redshift 控制台显示查询已完成，而客户端工具仍然显示正在运行查询。查询结果可能会丢失或不完整，具体取决于连接停止的时间。如果中间网络组件终止空闲连接，则会出现这种情况。有关更多信息，请转至《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-firewall-guidance.html">防火墙超时问题</a>。</p>
+            <p>在运行 COPY 命令等较长的查询时，客户端到数据库的连接会挂起或超时。此时，您可能会发现，Amazon Redshift 控制台显示查询已完成，而客户端工具仍然显示正在运行查询。查询结果可能会丢失或不完整，具体取决于连接停止的时间。如果中间网络组件终止空闲连接，则会出现这种情况。有关更多信息，请转至《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-firewall-guidance.html">防火墙超时问题</a>。</p>
           
           
             <h6>ODBC 出现客户端内存不足错误</h6>
@@ -146,7 +146,7 @@
          <p>您的数据加载可能会因以下原因而失败；我们建议您使用以下故障排除方法。</p>
           
             <h6>数据源在不同的 AWS 区域</h6>
-            <p>预设情况下，COPY 命令中指定的 Amazon S3 存储桶或 Amazon DynamoDB 表必须位于集群所在的 AWS 区域。如果您的数据和集群位于不同的区域，您将收到如下所示的错误消息：</p>
+            <p>预设情况下，COPY 命令中指定的 Amazon S3 桶或 Amazon DynamoDB 表必须位于集群所在的 AWS 区域。如果您的数据和集群位于不同的区域，您将收到如下所示的错误消息：</p>
           
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">The bucket you are attempting to access must be addressed using the specified endpoint.</code></pre>
          <p>尽量确保集群和数据源位于同一区域。您可以通过在 COPY 命令中使用 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 选项来指定其他区域。</p>

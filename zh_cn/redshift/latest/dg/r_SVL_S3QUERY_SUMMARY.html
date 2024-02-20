@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_S3QUERY_SUMMARY" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_SVL_S3QUERY_SUMMARY-table-columns">表列</a><a href="#r_SVL_S3QUERY_SUMMARY-sample-query">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_S3QUERY_SUMMARY">SVL_S3QUERY_SUMMARY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SVL_S3QUERY_SUMMARY 视图可获取已在系统上运行的所有 Amazon Redshift Spectrum 查询（S3 查询）的汇总。SVL_S3QUERY_SUMMARY 汇总段级别的 SVL_S3QUERY 的详细信息。</p><p>SVL_S3QUERY_SUMMARY 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部列也在 SYS 监控视图 <a href="./SYS_EXTERNAL_QUERY_DETAIL.html">SYS_EXTERNAL_QUERY_DETAIL</a> 中定义。</p><p>对于 SVCS_S3QUERY_SUMMARY，请参阅 <a href="./r_SVCS_S3QUERY_SUMMARY.html">SVCS_S3QUERY_SUMMARY</a>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVL_S3QUERY_SUMMARY" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_SVL_S3QUERY_SUMMARY-table-columns">表列</a><a href="#r_SVL_S3QUERY_SUMMARY-sample-query">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVL_S3QUERY_SUMMARY">SVL_S3QUERY_SUMMARY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SVL_S3QUERY_SUMMARY 视图可获取已在系统上运行的所有 Amazon Redshift Spectrum 查询（S3 查询）的汇总。SVL_S3QUERY_SUMMARY 汇总段级别的 SVL_S3QUERY 的详细信息。</p><p>SVL_S3QUERY_SUMMARY 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部数据也可以在 SYS 监控视图 <a href="./SYS_EXTERNAL_QUERY_DETAIL.html">SYS_EXTERNAL_QUERY_DETAIL</a> 中找到。SYS 监控视图中的数据经过格式化处理，便于使用和理解。我们建议您使用 SYS 监控视图进行查询。</p><p>对于 SVCS_S3QUERY_SUMMARY，请参阅 <a href="./r_SVCS_S3QUERY_SUMMARY.html">SVCS_S3QUERY_SUMMARY</a>。</p>
             <h2 id="r_SVL_S3QUERY_SUMMARY-table-columns">表列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c15c53c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c15c53c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -92,12 +92,12 @@
                         <tr>
                             <td tabindex="-1">starttime</td>
                             <td tabindex="-1">timestamp</td>
-                            <td tabindex="-1">开始执行查询的时间 (采用 UTC 表示)。</td>
+                            <td tabindex="-1">开始执行查询的时间（采用 UTC 表示）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">endtime</td>
                             <td tabindex="-1">timestamp</td>
-                            <td tabindex="-1">查询完成的时间 (采用 UTC 表示)。</td>
+                            <td tabindex="-1">查询完成的时间（采用 UTC 表示）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">elapsed</td>
@@ -137,12 +137,12 @@
                         <tr>
                             <td tabindex="-1">s3_scanned_rows</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">已从 Simple Storage Service（Amazon S3）扫描并发送到 Redshift Spectrum 层的行数量。</td>
+                            <td tabindex="-1">已从 Amazon S3 扫描并发送到 Redshift Spectrum 层的行数量。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">s3_scanned_bytes</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">已从 Simple Storage Service（Amazon S3）扫描并发送到 Redshift Spectrum 层的基于压缩数据的字节的数量。</td>
+                            <td tabindex="-1">已从 Amazon S3 扫描并发送到 Redshift Spectrum 层的基于压缩数据的字节的数量。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">s3query_returned_rows</td>
@@ -175,7 +175,7 @@
                         <tr>
                             <td tabindex="-1">splits</td>
                             <td tabindex="-1">int</td>
-                            <td tabindex="-1">为此分段处理的拆分数。在此切片上处理的拆分数。对于大型可拆分数据文件 (例如，大于 512 MB 左右的数据文件)，Redshift Spectrum 会尝试将文件拆分为多个 S3 请求以便进行并行处理。</td>
+                            <td tabindex="-1">为此分段处理的拆分数。在此切片上处理的拆分数。对于大型可拆分数据文件（例如，大于 512 MB 左右的数据文件），Redshift Spectrum 会尝试将文件拆分为多个 S3 请求以便进行并行处理。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">splits_max</td>
@@ -195,12 +195,12 @@
                         <tr>
                             <td tabindex="-1">max_split_size</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">处理的最大拆分大小 (以字节为单位)。</td>
+                            <td tabindex="-1">处理的最大拆分大小（以字节为单位）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">avg_split_size</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">处理的平均拆分大小 (以字节为单位)。</td>
+                            <td tabindex="-1">处理的平均拆分大小（以字节为单位）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">total_retries</td>
@@ -215,12 +215,12 @@
                         <tr>
                             <td tabindex="-1">max_request_duration</td>
                             <td tabindex="-1">integer</td>
-                            <td tabindex="-1">单个文件请求的最长持续时间 (以微秒为单位)。长时间运行的查询可能表示瓶颈。</td>
+                            <td tabindex="-1">单个文件请求的最长持续时间（以微秒为单位）。长时间运行的查询可能表示瓶颈。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">avg_request_duration</td>
                             <td tabindex="-1">double precision</td>
-                            <td tabindex="-1">文件请求的平均持续时间 (以微秒为单位)。</td>
+                            <td tabindex="-1">文件请求的平均持续时间（以微秒为单位）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">max_request_parallelism</td>
@@ -235,12 +235,12 @@
                         <tr>
                             <td tabindex="-1">total_slowdown_count</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">在外部表扫描期间出现减速错误的总 Simple Storage Service（Amazon S3）请求数。</td>
+                            <td tabindex="-1">在外部表扫描期间出现减速错误的总 Amazon S3 请求数。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">max_slowdown_count</td>
                             <td tabindex="-1">integer</td>
-                            <td tabindex="-1">在一个切片上的外部表扫描期间出现减速错误的最大 Simple Storage Service（Amazon S3）请求数。</td>
+                            <td tabindex="-1">在一个切片上的外部表扫描期间出现减速错误的最大 Amazon S3 请求数。</td>
                         </tr>
 
                     </table></div></div>

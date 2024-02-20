@@ -104,7 +104,7 @@ order by col;</code></pre>
    5 |  72
    6 |  20
 (7 rows)</code></pre>
-                </li></ol></div><p>如果您现有的表中包含数据，则您可以使用 <a href="./r_ANALYZE_COMPRESSION.html">ANALYZE COMPRESSION</a> 命令查看针对该表的建议编码。例如，下面的示例显示了对于 VENUE 表的副本 CARTESIAN_VENUE (包含 3800 万行数据) 建议的编码。注意，ANALYZE COMPRESSION 为 VENUENAME 列推荐 LZO 编码。ANALYZE COMPRESSION 基于多个因素选择最佳压缩，包括减少百分比。在这种特定情况下，BYTEDICT 提供更好的压缩，但 LZO 也会生成大于 90% 的压缩。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">analyze compression cartesian_venue;
+                </li></ol></div><p>如果您现有的表中包含数据，则您可以使用 <a href="./r_ANALYZE_COMPRESSION.html">ANALYZE COMPRESSION</a> 命令查看针对该表的建议编码。例如，下面的示例显示了对于 VENUE 表的副本 CARTESIAN_VENUE（包含 3800 万行数据）建议的编码。注意，ANALYZE COMPRESSION 为 VENUENAME 列推荐 LZO 编码。ANALYZE COMPRESSION 基于多个因素选择最佳压缩，包括减少百分比。在这种特定情况下，BYTEDICT 提供更好的压缩，但 LZO 也会生成大于 90% 的压缩。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">analyze compression cartesian_venue;
 
 Table          | Column     | Encoding | Est_reduction_pct
 ---------------+------------+----------+------------------

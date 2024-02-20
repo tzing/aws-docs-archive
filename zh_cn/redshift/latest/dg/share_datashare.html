@@ -36,12 +36,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#share_datashare" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#manage-permissions">管理数据共享的权限</a><a href="#datashare-views">在 Amazon Redshift 数据共享中使用视图</a><a href="#iam-policy">使用 IAM policy 管理对数据共享 API 操作的访问</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="share_datashare">共享数据共享</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>仅当您在不同的 Amazon Redshift 预置集群或无服务器工作组之间共享数据时才需要使用数据共享。在同一个集群中，只要您对另一个数据库中的对象具有所需的权限，就可以使用由三部分组成的简单表示法 <code class="code">database.schema.table</code> 查询另一个数据库。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#share_datashare" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#manage-permissions">管理数据共享的权限</a><a href="#datashare-views">在 Amazon Redshift 数据共享中使用视图</a><a href="#iam-policy">使用 IAM 策略管理对数据共享 API 操作的访问</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="share_datashare">共享数据共享</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>仅当您在不同的 Amazon Redshift 预置集群或无服务器工作组之间共享数据时才需要使用数据共享。在同一个集群中，只要您对另一个数据库中的对象具有所需的权限，就可以使用由三部分组成的简单表示法 <code class="code">database.schema.table</code> 查询另一个数据库。</p>
          <h2 id="manage-permissions">在 Amazon Redshift 中管理数据共享的权限</h2>
          
          <p>作为创建器集群管理员，您可以保留对正在共享的数据集的控制权。您可以将新对象添加到数据共享中或将其从数据共享中删除。您还可以授予或撤消对使用者集群、AWS 账户或 AWS 区域的整体数据共享的访问权。当权限被撤消时，使用者集群立即失去对共享对象的访问权限，并且不能在 SVV_DATASHARES 中的 INBOUND 数据共享列表中看到它们。</p>
-         <p>以下示例创建数据共享 <code class="code">salesshare</code> 并添加表 <code class="code">public.tickit_sales_redshift</code> 至 <code class="code">salesshare</code>。它还授予集群命名空间对 <code class="code">salesshare</code> 的使用权限。</p>
+         <p>以下示例创建数据共享 <code class="code">salesshare</code>，添加架构 <code class="code">public</code>，然后将表 <code class="code">public.tickit_sales_redshift</code> 添加到 <code class="code">salesshare</code>。它还授予指定的集群命名空间对 <code class="code">salesshare</code> 的使用权限。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE DATASHARE salesshare;
+            
+ALTER DATASHARE salesshare ADD SCHEMA public;
 
 ALTER DATASHARE salesshare ADD TABLE public.tickit_sales_redshift; 
 
@@ -49,20 +51,34 @@ GRANT USAGE ON DATASHARE salesshare TO NAMESPACE '13b8833d-17c6-4f16-8fe4-1a018f
          <p>对于 CREATE DATASHARE，超级用户和数据库拥有者可以创建数据共享。有关更多信息，请参阅<a href="./r_CREATE_DATASHARE.html">CREATE DATASHARE</a>。对于 ALTER DATASHARE，对要添加或删除的数据共享具有所需权限的数据共享拥有者可以更改数据共享。有关更多信息，请参阅 <a href="./r_ALTER_DATASHARE.html">ALTER DATASHARE</a>。</p>
          
          <p>作为创建器管理员，当您删除数据共享时，它将停止在使用者集群上列出。在使用者集群上通过删除的数据共享中创建的数据库和 schema 引用继续存在，其中没有对象。使用者集群管理员必须手动删除这些数据库。</p>
-         <p>在使用者方面，使用者集群管理员可以确定哪些用户和组应该访问共享数据。管理员可以在数据库或 schema 级别控制访问权限。要控制 Schema 级别的访问权限，管理员必须通过从数据共享创建的 Amazon Redshift 数据库创建外部 Schema。</p>
+         <p>在使用者方面，使用者集群管理员可以通过从数据共享创建数据库来确定哪些用户和角色应该访问共享数据。根据您在创建数据库时选择的选项，您可以按如下方式控制对数据库的访问。有关从数据共享创建数据库的更多信息，请参阅<a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>。</p>
+          
+            <h6>在不使用 WITH PERMISSIONS 子句的情况下创建数据库</h6>
+            <p>管理员可以在数据库或 schema 级别控制访问权限。要控制 Schema 级别的访问权限，管理员必须通过从数据共享创建的 Amazon Redshift 数据库创建外部 Schema。</p>
+          
          <p>以下示例授予在数据库级别和 schema 级别访问共享表的权限。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATABASE sales_db TO Bob;
 
 CREATE EXTERNAL SCHEMA sales_schema FROM REDSHIFT DATABASE sales_db;
 
-GRANT USAGE ON SCHEMA sales_schema TO GROUP Analyst_group;</code></pre>
-         <p>要进一步限制访问，您可以基于共享对象创建视图，以仅显示必要的数据。然后，您可以使用这些视图向用户和组授予访问权限。</p>
-         <p>授予用户访问数据库或 Schema 的权限后，他们将有权访问该数据库或 Schema 中的所有共享对象。</p>   
+GRANT USAGE ON SCHEMA sales_schema TO ROLE Analyst_role;</code></pre>
+         <p>要进一步限制访问，您可以基于共享对象创建视图，以仅显示必要的数据。然后，您可以使用这些视图向用户和角色授予访问权限。</p>
+         <p>授予用户访问数据库或 Schema 的权限后，他们将有权访问该数据库或 Schema 中的所有共享对象。</p>
+         
+          
+            <h6>使用 WITH PERMISSIONS 子句创建数据库</h6>
+            <p>在授予对数据库或架构的使用权限后，管理员可以使用与本地数据库或架构相同的权限授予过程来进一步控制访问权限。如果没有单个对象的权限，用户即使获得了 USAGE 权限，也无法访问数据共享数据库或架构中的任何对象。</p>            
+          
+         <p>以下示例授予在数据库级别访问共享表的权限。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">GRANT USAGE ON DATABASE sales_db TO Bob;
+GRANT USAGE FOR SCHEMAS IN DATABASE sales_db TO Bob;
+GRANT SELECT ON sales_db.public.tickit_sales_redshift TO Bob;</code></pre>
+         <p>在授予用户访问数据库或架构的权限后，还需要授予他们访问数据库或架构中任何对象的相关权限。</p>
        
          <h2 id="datashare-views">在 Amazon Redshift 数据共享中使用视图</h2>
          <p>创建器集群可以共享常规视图、后期绑定视图和实体化视图。共享常规或后期绑定视图时，不必共享基表。下表介绍了数据共享如何支持视图。</p>
          
-         <div class="table-container"><div class="table-contents"><table id="w317aac33c13b7b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac35c13b7b5"><thead>
                   <tr>
                      <th>视图名称</th>
                      <th>可以将此视图添加到数据共享中吗？</th>
@@ -136,15 +152,15 @@ current_user | current_namespace
 dwuser       | 86b5169f-01dc-4a6f-9fbb-e2e24359e9a8
 (1 row)</code></pre>
        
-         <h2 id="iam-policy">使用 IAM policy 管理对数据共享 API 操作的访问</h2>
-         <p>要控制对数据共享 API 操作的访问，请使用基于 IAM 操作的策略。有关如何管理 IAM policy的信息，请参阅 <em>IAM 用户指南</em>中的<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html">管理 IAM policy</a>。</p>
-         <p>有关使用数据共享 API 操作所需的权限信息，请参阅《Amazon Redshift 管理指南》中的<em>使用数据共享 API 操作所需的权限</em>。</p>
+         <h2 id="iam-policy">使用 IAM 策略管理对数据共享 API 操作的访问</h2>
+         <p>要控制对数据共享 API 操作的访问，请使用基于 IAM 操作的策略。有关如何管理 IAM 策略的信息，请参阅《IAM 用户指南》<em></em>中的<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html">管理 IAM 策略</a>。</p>
+         <p>有关使用数据共享 API 操作所需的权限信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html">使用数据共享 API 操作所需的权限</a>。</p>
          
          
          
          
          <p>为了提高跨账户数据共享的安全性，您可以将条件密钥 <code class="code">ConsumerIdentifier</code> 用于 <code class="code">AuthorizeDataShare</code> 和 <code class="code">DeauthorizeDataShare</code> API 操作。这样您就可以明确控制哪些 AWS 账户 可以调用两个 API 操作。</p>
-         <p>您可以拒绝授权或取消授权任何不属于您自己账户的使用者数据共享。为此，请指定 IAM policy 中的 AWS 账户 数字。</p>
+         <p>您可以拒绝授权或取消授权任何不属于您自己账户的使用者数据共享。为此，请指定 IAM 策略中的 AWS 账户 数字。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "Version": "2012-10-17",
     "Statement": [
@@ -164,7 +180,7 @@ dwuser       | 86b5169f-01dc-4a6f-9fbb-e2e24359e9a8
         }
     ]
 }</code></pre>
-         <p>您可以允许拥有 DataShareArn <code class="userinput">testshare2</code> 的创建者明确与拥有 IAM policy 中 111122223333 的 AWS 账户 使用者共享。</p>
+         <p>您可以允许拥有 DataShareArn <code class="userinput">testshare2</code> 的创建者明确与拥有 IAM 策略中 111122223333 的 AWS 账户 使用者共享。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "Version": "2012-10-17",
     "Statement": [

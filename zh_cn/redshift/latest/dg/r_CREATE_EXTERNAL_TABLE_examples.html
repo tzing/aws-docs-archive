@@ -62,7 +62,7 @@ saletime timestamp)
 row format delimited
 fields terminated by '\t'
 stored as textfile
-location 's3://awssampledbuswest2/tickit/spectrum/sales/'
+location 's3://redshift-downloads/tickit/spectrum/sales/'
 table properties ('numRows'='170000');</code></pre><p>以下示例创建一个使用 JsonSerDe 以 JSON 格式引用数据的表。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.cloudtrail_json (
 event_version int,
 event_id bigint,
@@ -78,7 +78,7 @@ row format serde 'org.openx.data.jsonserde.JsonSerDe'
 with serdeproperties (
 'dots.in.keys' = 'true',
 'mapping.requesttime' = 'requesttimestamp'
-) location 's3://mybucket/json/cloudtrail';</code></pre><p>以下 CREATE EXTERNAL TABLE AS 示例创建一个未分区的外部表。然后，它将 SELECT 查询的结果以 Apache Parquet 格式写入到目标 Simple Storage Service（Amazon S3）位置。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.lineitem
+) location 's3://mybucket/json/cloudtrail';</code></pre><p>以下 CREATE EXTERNAL TABLE AS 示例创建一个未分区的外部表。然后，它将 SELECT 查询的结果以 Apache Parquet 格式写入到目标 Amazon S3 位置。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.lineitem
 STORED AS parquet
 LOCATION 'S3://mybucket/cetas/lineitem/'
 AS SELECT * FROM local_lineitem;</code></pre><p>以下示例创建分区的外部表，并在 SELECT 查询中包含分区列。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE EXTERNAL TABLE spectrum.partitioned_lineitem
@@ -92,8 +92,8 @@ AS SELECT l_orderkey, l_shipmode, l_shipdate, l_partkey FROM local_table;</code>
      1 | spectrumdb   | <span>{</span>"REGION":"us-west-2","IAM_ROLE":"arn:aws:iam::123456789012:role/mySpectrumRole"}
 </code></pre><p>要查看外部表的详细信息，请查询 <a href="./r_SVV_EXTERNAL_TABLES.html">SVV_EXTERNAL_TABLES</a> 和 <a href="./r_SVV_EXTERNAL_COLUMNS.html">SVV_EXTERNAL_COLUMNS</a> 系统视图。</p><p>以下示例将查询 SVV_EXTERNAL_TABLES 视图。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select schemaname, tablename, location from svv_external_tables;</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename            | location
 -----------+----------------------+--------------------------------------------------------
-spectrum   | sales                | s3://awssampledbuswest2/tickit/spectrum/sales
-spectrum   | sales_part           | s3://awssampledbuswest2/tickit/spectrum/sales_partition</code></pre><p>以下示例将查询 SVV_EXTERNAL_COLUMNS 视图。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from svv_external_columns where schemaname like 'spectrum%' and tablename ='sales';</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename | columnname | external_type | columnnum | part_key
+spectrum   | sales                | s3://redshift-downloads/tickit/spectrum/sales
+spectrum   | sales_part           | s3://redshift-downloads/tickit/spectrum/sales_partition</code></pre><p>以下示例将查询 SVV_EXTERNAL_COLUMNS 视图。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select * from svv_external_columns where schemaname like 'spectrum%' and tablename ='sales';</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename | columnname | external_type | columnnum | part_key
 -----------+-----------+------------+---------------+-----------+---------
 spectrum   | sales     | salesid    | int           |         1 |        0
 spectrum   | sales     | listid     | int           |         2 |        0
@@ -108,25 +108,25 @@ spectrum   | sales     | saletime   | timestamp     |        10 |        0</code
 from svv_external_partitions
 where tablename = 'sales_part';</code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename  | values         | location
 -----------+------------+----------------+-------------------------------------------------------------------------
-spectrum   | sales_part | ["2008-01-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01
-spectrum   | sales_part | ["2008-02-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02
-spectrum   | sales_part | ["2008-03-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-03
-spectrum   | sales_part | ["2008-04-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-04
-spectrum   | sales_part | ["2008-05-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-05
-spectrum   | sales_part | ["2008-06-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-06
-spectrum   | sales_part | ["2008-07-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-07
-spectrum   | sales_part | ["2008-08-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-08
-spectrum   | sales_part | ["2008-09-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-09
-spectrum   | sales_part | ["2008-10-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-10
-spectrum   | sales_part | ["2008-11-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-11
-spectrum   | sales_part | ["2008-12-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-12</code></pre><p>以下示例将为外部表返回相关数据文件的总大小。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select distinct "$path", "$size"
+spectrum   | sales_part | ["2008-01-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01
+spectrum   | sales_part | ["2008-02-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02
+spectrum   | sales_part | ["2008-03-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03
+spectrum   | sales_part | ["2008-04-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-04
+spectrum   | sales_part | ["2008-05-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-05
+spectrum   | sales_part | ["2008-06-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-06
+spectrum   | sales_part | ["2008-07-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-07
+spectrum   | sales_part | ["2008-08-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-08
+spectrum   | sales_part | ["2008-09-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-09
+spectrum   | sales_part | ["2008-10-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-10
+spectrum   | sales_part | ["2008-11-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-11
+spectrum   | sales_part | ["2008-12-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-12</code></pre><p>以下示例将为外部表返回相关数据文件的总大小。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select distinct "$path", "$size"
    from spectrum.sales_part;
 
  $path                                                                    | $size
 --------------------------------------------------------------------------+-------
-s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01/ |  1616
-s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
-s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
+s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01/ |  1616
+s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
+s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02/ |  1444
 </code></pre>
             <h2 id="r_CREATE_EXTERNAL_TABLE_examples-partitioning">分区示例</h2>
             <p>要创建按日期分区的外部表，请运行以下命令。</p>
@@ -145,45 +145,45 @@ partitioned by (saledate date)
 row format delimited
 fields terminated by '|'
 stored as textfile
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/'
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/'
 table properties ('numRows'='170000');</code></pre>
             <p>要添加分区，请运行以下 ALTER TABLE 命令。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter table spectrum.sales_part
 add if not exists partition (saledate='2008-01-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-02-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-03-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-03/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-04-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-04/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-04/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-05-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-05/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-05/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-06-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-06/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-06/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-07-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-07/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-07/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-08-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-08/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-08/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-09-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-09/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-09/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-10-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-10/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-10/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-11-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-11/';
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-11/';
 alter table spectrum.sales_part
 add if not exists partition (saledate='2008-12-01')
-location 's3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-12/';</code></pre>
+location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-12/';</code></pre>
             <p>要从分区表中选择数据，请运行以下查询。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select top 10 spectrum.sales_part.eventid, sum(spectrum.sales_part.pricepaid)
 from spectrum.sales_part, event
@@ -209,18 +209,18 @@ order by 2 desc;</code></pre>
 where tablename = 'sales_part';</code></pre>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">schemaname | tablename  | values         | location
 -----------+------------+----------------+--------------------------------------------------
-spectrum   | sales_part | ["2008-01-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-01
-spectrum   | sales_part | ["2008-02-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-02
-spectrum   | sales_part | ["2008-03-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-03
-spectrum   | sales_part | ["2008-04-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-04
-spectrum   | sales_part | ["2008-05-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-05
-spectrum   | sales_part | ["2008-06-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-06
-spectrum   | sales_part | ["2008-07-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-07
-spectrum   | sales_part | ["2008-08-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-08
-spectrum   | sales_part | ["2008-09-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-09
-spectrum   | sales_part | ["2008-10-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-10
-spectrum   | sales_part | ["2008-11-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-11
-spectrum   | sales_part | ["2008-12-01"] | s3://awssampledbuswest2/tickit/spectrum/sales_partition/saledate=2008-12</code></pre>
+spectrum   | sales_part | ["2008-01-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01
+spectrum   | sales_part | ["2008-02-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-02
+spectrum   | sales_part | ["2008-03-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03
+spectrum   | sales_part | ["2008-04-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-04
+spectrum   | sales_part | ["2008-05-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-05
+spectrum   | sales_part | ["2008-06-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-06
+spectrum   | sales_part | ["2008-07-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-07
+spectrum   | sales_part | ["2008-08-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-08
+spectrum   | sales_part | ["2008-09-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-09
+spectrum   | sales_part | ["2008-10-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-10
+spectrum   | sales_part | ["2008-11-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-11
+spectrum   | sales_part | ["2008-12-01"] | s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-12</code></pre>
           
             <h2 id="r_CREATE_EXTERNAL_TABLE_examples-row-format">行格式示例</h2>
             <p>下面显示为以 AVRO 格式存储的数据文件指定 ROW FORMAT SERDE 参数的示例。</p>
@@ -258,7 +258,7 @@ with serdeproperties ('input.format'='[DFEWI], \\[%<span>{</span>TIMESTAMP_ISO86
 stored as textfile
 location 's3://mybucket/grok/logs';</code></pre>
             
-            <p>下面显示了一个有关在 S3 桶中定义 Simple Storage Service（Amazon S3）服务器访问日志的示例。您可以使用 Redshift Spectrum 查询 Simple Storage Service（Amazon S3）访问日志。</p>
+            <p>下面显示了一个有关在 S3 桶中定义 Amazon S3 服务器访问日志的示例。您可以使用 Redshift Spectrum 查询 Amazon S3 访问日志。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE EXTERNAL TABLE spectrum.mybucket_s3_logs(
 bucketowner varchar(255),
 bucket varchar(255),
@@ -299,7 +299,7 @@ LOCATION '<code class="replaceable">s3://s3-bucket/prefix</code>'
 
           
             <h2 id="r_CREATE_EXTERNAL_TABLE_examples-data-handling">数据处理示例</h2>
-            <p>以下示例访问该文件：<a href="https://s3.amazonaws.com/redshift-downloads/docs-downloads/spi_global_rankings.csv" rel="noopener noreferrer" target="_blank"><span>spi_global_rankings.csv</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。您可以将 <code class="code">spi_global_rankings.csv</code> 文件上载到 Simple Storage Service（Amazon S3）桶以尝试这些示例。</p>
+            <p>以下示例访问该文件：<a href="https://s3.amazonaws.com/redshift-downloads/docs-downloads/spi_global_rankings.csv" rel="noopener noreferrer" target="_blank"><span>spi_global_rankings.csv</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。您可以将 <code class="code">spi_global_rankings.csv</code> 文件上载到 Amazon S3 桶以尝试这些示例。</p>
             <p>以下示例创建外部架构 <code class="code">schema_spectrum_uddh</code> 和数据库 <code class="code">spectrum_db_uddh</code>。对于 <code class="code">aws-account-id</code>，请输入您的 AWS 账户 ID，而对于 <code class="code">role-name</code>，请输入您的 Redshift Spectrum 角色名称。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="SQL ">create external schema schema_spectrum_uddh
 from data catalog
@@ -344,14 +344,14 @@ where league_rank between 1 and 10;</code></pre>
 8		NULL	        Spanish Primera Divi            31321
 9		RB Leipzig	German Bundesliga		31014
 10		Paris Saint-Ger	French Ligue 1			30929</code></pre>
-            <p>以下示例更改了 <code class="code">soccer_league</code> 表，以指定用于插入一个问号（?）来替换意外字符的 <code class="code">invalid_char_handling</code>、<code class="code">replacement_char</code> 和 <code class="code">data_cleansing_enabled</code> 外部表属性。</p>
+            <p>以下示例更改了 <code class="code">soccer_league</code> 表，以指定用于插入一个问号 (?) 来替换意外字符的 <code class="code">invalid_char_handling</code>、<code class="code">replacement_char</code> 和 <code class="code">data_cleansing_enabled</code> 外部表属性。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="SQL ">alter  table schema_spectrum_uddh.soccer_league
 set table properties ('invalid_char_handling'='REPLACE','replacement_char'='?','data_cleansing_enabled'='true');</code></pre>
             <p>以下示例将查询排名从 1 到 10 的团队的表 <code class="code">soccer_league</code>。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="SQL ">select league_rank,club_name,league_name,league_nspi
 from schema_spectrum_uddh.soccer_league
 where league_rank between 1 and 10;</code></pre>
-            <p>由于表属性已更改，结果显示了前 10 位俱乐部，在第八行中对于俱乐部 <code class="code">Barcelona</code> 采用问号（?）替换字符。</p>
+            <p>由于表属性已更改，结果显示了前 10 位俱乐部，在第八行中对于俱乐部 <code class="code">Barcelona</code> 采用问号 (?) 替换字符。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">league_rank	club_name	league_name		league_nspi
 1		Manchester City	Barclays Premier Lea	34595
 2		Bayern Munich	German Bundesliga	34151
@@ -384,4 +384,4 @@ league_rank   club_name         league_name            league_nspi
 10            Paris Saint-Ger   French Ligue 1         30929
 </code></pre>
 
-         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_CREATE_EXTERNAL_TABLE_usage.html">使用说明</div><div id="next" class="next-link" accesskey="n" href="./r_CREATE_FUNCTION.html">CREATE FUNCTION</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_CREATE_EXTERNAL_TABLE_usage.html">使用说明</div><div id="next" class="next-link" accesskey="n" href="./r_CREATE_EXTERNAL_VIEW.html">CREATE EXTERNAL VIEW（预览版）</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_CREATE_EXTERNAL_TABLE_examples.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

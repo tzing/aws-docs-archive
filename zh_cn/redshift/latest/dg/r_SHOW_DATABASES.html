@@ -72,7 +72,7 @@ DATA CATALOG [ ACCOUNT  '&lt;id1&gt;', '&lt;id2&gt;', ... ]
                   <p>指定 <code class="code">default</code> 关键字表示要使用设置为默认并与集群关联的 IAM 角色。</p>
                   <p>如果您使用联合身份连接到 Amazon Redshift 集群并访问使用 <a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a> 命令创建的外部数据库中的表，则使用 <code class="code">'SESSION'</code>。有关使用联合身份的示例，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/authorization-fas-spectrum.html">使用联合身份管理 Amazon Redshift 对本地资源和 Amazon Redshift Spectrum 外部表的访问权限</a>，其中说明了如何配置联合身份。</p>
                   
-                  <p>使用 IAM 角色的 Amazon Resource Name（ARN），您的集群使用该角色进行身份验证和授权。IAM 角色至少必须有权在要访问的 Simple Storage Service（Amazon S3）桶上执行 LIST 操作和有权在该桶包含的 Simple Storage Service（Amazon S3）对象上执行 GET 操作。要了解有关从 AWS Glue Data Catalog 中为数据共享创建并使用 IAM_ROLE 的数据库的更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/dg/lake-formation-getting-started-consumer.html">以使用者身份使用 Lake Formation 托管式数据共享</a>。</p>
+                  <p>使用 IAM 角色的 Amazon 资源名称 (ARN)，您的集群使用该角色进行身份验证和授权。IAM 角色至少必须有权在要访问的 Amazon S3 桶上执行 LIST 操作和有权在该桶包含的 Amazon S3 对象上执行 GET 操作。要了解有关从 AWS Glue Data Catalog 中为数据共享创建并使用 IAM_ROLE 的数据库的更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/dg/lake-formation-getting-started-consumer.html">以使用者身份使用 Lake Formation 托管式数据共享</a>。</p>
                   <p>下面显示了单个 ARN 的 IAM_ROLE 参数字符串的语法。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">IAM_ROLE 'arn:aws:iam::<code class="replaceable">&lt;aws-account-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>'
                   </code></pre>

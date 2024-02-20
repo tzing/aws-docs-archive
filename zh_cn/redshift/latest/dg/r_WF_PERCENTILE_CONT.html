@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_PERCENTILE_CONT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_PERCENTILE_CONT-synopsis">语法</a><a href="#r_WF_PERCENTILE_CONT-arguments">Arguments</a><a href="#r_WF_PERCENTILE_CONT-returns">返回值</a><a href="#r_WF_PERCENTILE_CONT-usage-notes">使用说明</a><a href="#r_WF_PERCENTILE_CONT-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_PERCENTILE_CONT">PERCENTILE_CONT 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>PERCENTILE_CONT 是一种假定连续分布模型的逆分布函数。该函数具有一个百分比值和一个排序规范，并返回一个在有关排序规范的给定百分比值范围内的内插值。</p><p>PERCENTILE_CONT 在对值进行排序后计算值之间的线性内插。通过在聚合组中使用百分比值 <code class="code">(P)</code> 和非 null 行数 <code class="code">(N)</code>，该函数会在根据排序规范对行进行排序后计算行号。根据公式 <code class="code">(RN)</code> 计算此行号 <code class="code">RN = (1+ (P*(N-1))</code>。聚合函数的最终结果通过行号 <code class="code">CRN = CEILING(RN)</code> 和 <code class="code">FRN = FLOOR(RN)</code> 的行中的值之间的线性内插计算。</p><p>最终结果将如下所示。</p><p>如果 <code class="code">(CRN = FRN = RN)</code>，则结果为 <code class="code">(value of expression from
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_PERCENTILE_CONT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_PERCENTILE_CONT-synopsis">语法</a><a href="#r_WF_PERCENTILE_CONT-arguments">参数</a><a href="#r_WF_PERCENTILE_CONT-returns">返回值</a><a href="#r_WF_PERCENTILE_CONT-usage-notes">使用说明</a><a href="#r_WF_PERCENTILE_CONT-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_PERCENTILE_CONT">PERCENTILE_CONT 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>PERCENTILE_CONT 是一种假定连续分布模型的逆分布函数。该函数具有一个百分比值和一个排序规范，并返回一个在有关排序规范的给定百分比值范围内的内插值。</p><p>PERCENTILE_CONT 在对值进行排序后计算值之间的线性内插。通过在聚合组中使用百分比值 <code class="code">(P)</code> 和非 null 行数 <code class="code">(N)</code>，该函数会在根据排序规范对行进行排序后计算行号。根据公式 <code class="code">(RN)</code> 计算此行号 <code class="code">RN = (1+ (P*(N-1))</code>。聚合函数的最终结果通过行号 <code class="code">CRN = CEILING(RN)</code> 和 <code class="code">FRN = FLOOR(RN)</code> 的行中的值之间的线性内插计算。</p><p>最终结果将如下所示。</p><p>如果 <code class="code">(CRN = FRN = RN)</code>，则结果为 <code class="code">(value of expression from
                row at RN)</code> </p><p>否则，结果将如下所示：</p><p><code class="code">(CRN - RN) * (value of expression for row at FRN) + (RN - FRN) * (value of
                expression for row at CRN)</code>.</p><p>您在 OVER 子句中只能指定 PARTITION 子句。如果为每个行指定 PARTITION，则 PERCENTILE_CONT 会返回位于给定分区内一组值中的指定百分比范围内的值。</p><p>PERCENTILE_CONT 是仅计算节点函数。如果查询不引用用户定义的表或 Amazon Redshift 系统表，该函数将返回错误。</p>
             <h2 id="r_WF_PERCENTILE_CONT-synopsis">语法</h2>
@@ -59,7 +59,7 @@ WITHIN GROUP (ORDER BY <em>expr</em>)
 OVER (  [ PARTITION BY <em>expr_list</em> ]  )
 </code></pre>
           
-            <h2 id="r_WF_PERCENTILE_CONT-arguments">Arguments</h2>
+            <h2 id="r_WF_PERCENTILE_CONT-arguments">参数</h2>
 
 
             <div class="variablelist">
@@ -92,7 +92,7 @@ OVER (  [ PARTITION BY <em>expr_list</em> ]  )
             <h2 id="r_WF_PERCENTILE_CONT-returns">返回值</h2>
 
             <p>返回类型由 WITHIN GROUP 子句中的 ORDER BY 表达式的数据类型决定。下表显示了每种个 ORDER BY 表达式数据类型的返回类型。</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45c11c45c49c23b5"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47c11c45c49c23b5"><thead>
                      <tr>
                         <th>输入类型</th>
                         <th>返回类型</th>

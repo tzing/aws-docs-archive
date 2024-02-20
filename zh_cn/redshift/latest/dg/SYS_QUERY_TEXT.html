@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_TEXT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_QUERY_TEXT-table-columns">表列</a><a href="#SYS_QUERY_TEXT-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_TEXT">SYS_QUERY_TEXT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_QUERY_TEXT 查看所有查询的查询文本。每行代表最多 4000 个字符的查询的查询文本（从序列号 0 开始）。当查询语句包含超过 4000 个字符时，通过增加每行的序列号来为该语句记录额外的行。此视图记录所有用户查询文本，例如 DDL、实用程序、Amazon Redshift 查询和仅限领导节点的查询。</p><p>SYS_QUERY_TEXT 对所有用户均可见。超级用户可以查看所有行；普通用户只能查看其具有访问权限的元数据。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_TEXT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_QUERY_TEXT-table-columns">表列</a><a href="#SYS_QUERY_TEXT-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_TEXT">SYS_QUERY_TEXT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_QUERY_TEXT 查看所有查询的查询文本。每行代表最多 4000 个字符的查询的查询文本（从序列号 0 开始）。当查询语句包含超过 4000 个字符时，通过增加每行的序列号来为该语句记录额外的行。此视图记录所有用户查询文本，例如 DDL、实用程序、Amazon Redshift 查询和仅限领导节点的查询。</p><p>SYS_QUERY_TEXT 对所有用户均可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p>
             <h2 id="SYS_QUERY_TEXT-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c53b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c55b7b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -71,23 +71,23 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">运行查询的会话的进程标识符。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">start_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询开始的时间。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">sequence</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">当单个语句包含超过 4000 个字符时，将为该语句记录额外的行。序列 0 是第一行，1 是第二行，依此类推。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">text</td>
                             <td tabindex="-1">character (4000)</td>
-                            <td tabindex="-1">以 4000 个字符为增量的 SQL 查询文本。此字段可能包含反斜杠（\）和换行符（\n）等特殊字符。</td>
+                            <td tabindex="-1">以 4000 个字符为增量的 SQL 查询文本。此字段可能包含反斜杠 (\) 和换行符 (\n) 等特殊字符。</td>
                         </tr>
                    
                         
@@ -130,4 +130,4 @@ WHERE (text LIKE 'GRANT%' OR text LIKE 'REVOKE%') AND text LIKE '%GROUP%';</code
 | GRANT       | bi_group | SELECT | TABLE t1 |
 +-------------+----------+--------+----------+</code></code></pre>
             
-        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</div><div id="next" class="next-link" accesskey="n" href="./SYS_RESTORE_STATE.html">SYS_RESTORE_STATE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/SYS_QUERY_TEXT.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/SYS_QUERY_TEXT.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</div><div id="next" class="next-link" accesskey="n" href="./SYS_RESTORE_LOG.html">SYS_RESTORE_LOG</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/SYS_QUERY_TEXT.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/SYS_QUERY_TEXT.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

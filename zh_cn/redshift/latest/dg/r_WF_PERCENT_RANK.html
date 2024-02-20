@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_PERCENT_RANK" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_PERCENT_RANK-synopsis">语法</a><a href="#r_WF_PERCENT_RANK-arguments">Arguments</a><a href="#r_WF_PERCENT_RANK-return-type">返回类型</a><a href="#r_WF_PERCENT_RANK-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_PERCENT_RANK">PERCENT_RANK 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>计算给定行的百分比排名。使用以下公式确定百分比排名：</p><p><code class="code">(x - 1) / (the number of rows in the window or partition - 1)</code></p><p>其中，<em>x</em> 为当前行的排名。以下数据集说明了此公式的使用：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">Row#	Value	Rank	Calculation	PERCENT_RANK
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_PERCENT_RANK" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_PERCENT_RANK-synopsis">语法</a><a href="#r_WF_PERCENT_RANK-arguments">参数</a><a href="#r_WF_PERCENT_RANK-return-type">返回类型</a><a href="#r_WF_PERCENT_RANK-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_PERCENT_RANK">PERCENT_RANK 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>计算给定行的百分比排名。使用以下公式确定百分比排名：</p><p><code class="code">(x - 1) / (the number of rows in the window or partition - 1)</code></p><p>其中，<em>x</em> 为当前行的排名。以下数据集说明了此公式的使用：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">Row#	Value	Rank	Calculation	PERCENT_RANK
 1	15	1	(1-1)/(7-1)	0.0000
 2	20	2	(2-1)/(7-1)	0.1666
 3	20	2	(2-1)/(7-1)	0.1666
@@ -66,7 +66,7 @@ OVER (
 [ ORDER BY <em>order_list</em> ]
 ) </code></pre>
           
-            <h2 id="r_WF_PERCENT_RANK-arguments">Arguments</h2>
+            <h2 id="r_WF_PERCENT_RANK-arguments">参数</h2>
 
 
             <div class="variablelist">

@@ -75,7 +75,7 @@ userid | username | lastname  |     city     | state | likesports | liketheatre
 1 | JSG99FHE | Taylor    | Kent         | WA    | t          | t
 9 | MSD36KVR | Watkins   | Port Orford  | MD    | t          | f</code></pre>
             <p>假定新版本的 USERS 表是以不同的方式构建的。在此新版本中，包含一个整数列，该列定义（以二进制格式）每个用户喜欢或不喜欢的 8 种类型的事件。在此设计中，每个位位置均代表一类活动。某个喜欢全部 8 种类型的用户已将全部 8 个位设置为 1（如下表的第一行中所示）。不喜欢任何这些活动的用户已将全部 8 个位设置为 0（请见第二行）。仅喜欢运动和爵士乐的用户显示在以下第三行中：</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45c11c17c11c11"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47c11c17c11c11"><thead>
                      <tr valign="top">
                         <th></th>
                         <th>SPORTS</th>
@@ -123,7 +123,7 @@ userid | username | lastname  |     city     | state | likesports | liketheatre
                      </tr>
                   </table></div></div>
             <p>在数据库表中，这些二进制值可作为整数存储在一个 LIKES 列中，如下所示。</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45c11c17c11c15"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47c11c17c11c15"><thead>
                      <tr valign="top">
                         <th>User</th>
                         <th>二进制值</th>

@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_RECENTS" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STV_RECENTS_troubleshooting">使用 STV_RECENTS 进行故障排除</a><a href="#r_STV_RECENTS-table-columns">表列</a><a href="#r_STV_RECENTS-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_RECENTS">STV_RECENTS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 STV_RECENTS 表可以了解有关当前活动的和最近运行的数据库查询的信息。</p><p>STV_RECENTS 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部列也在 SYS 监控视图 <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> 中定义。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STV_RECENTS" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STV_RECENTS_troubleshooting">使用 STV_RECENTS 进行故障排除</a><a href="#r_STV_RECENTS-table-columns">表列</a><a href="#r_STV_RECENTS-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STV_RECENTS">STV_RECENTS</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 STV_RECENTS 表可以了解有关当前活动的和最近运行的数据库查询的信息。</p><p>STV_RECENTS 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部数据也可以在 SYS 监控视图 <a href="./SYS_QUERY_HISTORY.html">SYS_QUERY_HISTORY</a> 中找到。SYS 监控视图中的数据经过格式化处理，便于使用和理解。我们建议您使用 SYS 监控视图进行查询。</p>
             <h2 id="r_STV_RECENTS_troubleshooting">使用 STV_RECENTS 进行故障排除</h2>
             <p>STV_RECENTS 对于确定一个查询或一组查询当前是正在运行还是已完成特别有用。它还显示查询运行的持续时间。这有助于了解哪些查询是长时间运行的。</p>
             <p>您可以将 STV_RECENTS 联接到其他系统视图（例如 <a href="./r_STV_INFLIGHT.html">STV_INFLIGHT</a>），以收集有关正在运行的查询的其他元数据。（示例查询部分中有一个示例显示了如何执行此操作。） 您还可以使用从该视图返回的记录以及 Amazon Redshift 控制台中的监控功能来实时排除故障。</p>
@@ -57,7 +57,7 @@
             <h2 id="r_STV_RECENTS-table-columns">表列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c35c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c35c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>

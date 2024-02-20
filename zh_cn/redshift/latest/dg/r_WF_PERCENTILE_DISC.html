@@ -48,14 +48,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_PERCENTILE_DISC" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_PERCENTILE_DISC-synopsis">语法</a><a href="#r_WF_PERCENTILE_DISC-arguments">Arguments</a><a href="#r_WF_PERCENTILE_DISC-returns">返回值</a><a href="#r_WF_PERCENTILE_DISC-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_PERCENTILE_DISC">PERCENTILE_DISC 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>PERCENTILE_DISC 是一种假定离散分布模型的逆分布函数。该函数具有一个百分比值和一个排序规范，并返回给定集合中的元素。</p><p>对于给定的百分比值 P，PERCENTILE_DISC 在 ORDER BY 子句中对表达式的值进行排序，并返回带有大于或等于 P 的最小累积分布值（相对于同一排序规范）的值。</p><p>您在 OVER 子句中只能指定 PARTITION 子句。</p><p>PERCENTILE_DISC 是仅计算节点函数。如果查询不引用用户定义的表或 Amazon Redshift 系统表，该函数将返回错误。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_PERCENTILE_DISC" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_PERCENTILE_DISC-synopsis">语法</a><a href="#r_WF_PERCENTILE_DISC-arguments">参数</a><a href="#r_WF_PERCENTILE_DISC-returns">返回值</a><a href="#r_WF_PERCENTILE_DISC-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_PERCENTILE_DISC">PERCENTILE_DISC 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>PERCENTILE_DISC 是一种假定离散分布模型的逆分布函数。该函数具有一个百分比值和一个排序规范，并返回给定集合中的元素。</p><p>对于给定的百分比值 P，PERCENTILE_DISC 在 ORDER BY 子句中对表达式的值进行排序，并返回带有大于或等于 P 的最小累积分布值（相对于同一排序规范）的值。</p><p>您在 OVER 子句中只能指定 PARTITION 子句。</p><p>PERCENTILE_DISC 是仅计算节点函数。如果查询不引用用户定义的表或 Amazon Redshift 系统表，该函数将返回错误。</p>
             <h2 id="r_WF_PERCENTILE_DISC-synopsis">语法</h2>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">PERCENTILE_DISC ( <em>percentile</em> )
 WITHIN GROUP (ORDER BY <em>expr</em>)
 OVER (  [ PARTITION BY <em>expr_list</em> ]  )
 </code></pre>
           
-            <h2 id="r_WF_PERCENTILE_DISC-arguments">Arguments</h2>
+            <h2 id="r_WF_PERCENTILE_DISC-arguments">参数</h2>
 
 
             <div class="variablelist">

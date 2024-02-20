@@ -36,11 +36,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-spectrum-iam-policies" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#spectrum-iam-policies-s3">Amazon S3 权限</a><a href="#spectrum-iam-policies-cross-account">跨账户 Simple Storage Service（Amazon S3）权限</a><a href="#spectrum-iam-policies-spectrum-only">授予或限制使用 Redshift Spectrum 的访问权限</a><a href="#spectrum-iam-policies-minimum-permissions">最小权限</a><a href="#c-spectrum-chaining-roles">串联 IAM 角色</a><a href="#c-spectrum-glue-acess">访问 AWS Glue 数据</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="c-spectrum-iam-policies">适用于 Amazon Redshift Spectrum 的 IAM 策略</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>预设情况下，Amazon Redshift Spectrum 在支持 AWS Glue 的 AWS 区域中使用 AWS Glue Data Catalog。在其他 AWS 区域中，Redshift Spectrum 使用 Athena Data Catalog。您的集群需要授权才能访问您在 AWS Glue 或 Athena 中的外部数据目录以及您在 Simple Storage Service（Amazon S3）中的数据文件。您通过引用附加到集群的 AWS Identity and Access Management (IAM) 角色来提供授权。如果您使用 Apache Hive 元存储管理您的数据目录，则无需提供对 Athena 的访问权限。</p><p>您可以串联角色，以便集群可以承担其他未附加到集群的角色。有关更多信息，请参阅<a href="#c-spectrum-chaining-roles">在 Amazon Redshift Spectrum 中链接 IAM 角色</a>。</p><p>您访问的 AWS Glue 目录可能已加密以提高安全性。如果 AWS Glue 目录已加密，则您需要使用 AWS KMS 的 AWS Glue 密钥来访问 AWS Glue Data Catalog。有关更多信息，请参阅 <em><a href="https://docs.aws.amazon.com/glue/latest/dg/">AWS Glue 开发人员指南</a>中的<a href="https://docs.aws.amazon.com/glue/latest/dg/encrypt-glue-data-catalog.html">加密您的 AWS Glue Data Catalog</a>。</em></p><div class="highlights" id="inline-topiclist"><h6>主题</h6><ul><li><a href="#spectrum-iam-policies-s3">Simple Storage Service（Amazon S3）权限</a></li><li><a href="#spectrum-iam-policies-cross-account">跨账户 Simple Storage Service（Amazon S3）权限</a></li><li><a href="#spectrum-iam-policies-spectrum-only">授予或限制使用 Redshift Spectrum 的访问权限的策略</a></li><li><a href="#spectrum-iam-policies-minimum-permissions">授予最低权限的策略</a></li><li><a href="#c-spectrum-chaining-roles">在 Amazon Redshift Spectrum 中链接 IAM 角色</a></li><li><a href="#c-spectrum-glue-acess">控制对 AWS Glue 数据目录的访问</a></li></ul></div><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>如果您当前在 Athena Data Catalog 中有 Redshift Spectrum 外部表，则可以将您的 Athena Data Catalog 迁移到 AWS Glue Data Catalog。要将 AWS Glue 数据目录用于 Redshift Spectrum，您可能需要更改您的 IAM 策略。有关更多信息，请参阅 <em>Athena 用户指南</em>中的<a href="https://docs.aws.amazon.com/athena/latest/ug/glue-athena.html#glue-upgrade">升级到 AWS Glue Data Catalog</a>。</p></div></div>
-         <h2 id="spectrum-iam-policies-s3">Simple Storage Service（Amazon S3）权限</h2>
-         <p>您的集群至少需要对 Simple Storage Service（Amazon S3）桶的 GET 和 LIST 访问权限。如果您的桶与您的集群没有位于同一个AWS账户中，则您的桶还必须授权您的集群访问数据。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html">代表您授权 Amazon Redshift 访问其他 AWS 服务</a>。</p>
-         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>Simple Storage Service（Amazon S3）桶不能使用将访问限制为仅通过特定 VPC 端点的桶策略。</p></div></div>
-         <p>以下策略将授予对任何 Simple Storage Service（Amazon S3）桶的 GET 和 LIST 访问权限。该策略允许访问 Simple Storage Service（Amazon S3）桶以进行 Redshift Spectrum 和 COPY 操作。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#c-spectrum-iam-policies" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#spectrum-iam-policies-s3">Amazon S3 权限</a><a href="#spectrum-iam-policies-cross-account">跨账户 Amazon S3 权限</a><a href="#spectrum-iam-policies-spectrum-only">授予或限制使用 Redshift Spectrum 的访问权限</a><a href="#spectrum-iam-policies-minimum-permissions">最小权限</a><a href="#c-spectrum-chaining-roles">串联 IAM 角色</a><a href="#c-spectrum-glue-acess">访问 AWS Glue 数据</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="c-spectrum-iam-policies">适用于 Amazon Redshift Spectrum 的 IAM 策略</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>预设情况下，Amazon Redshift Spectrum 在支持 AWS Glue 的 AWS 区域中使用 AWS Glue Data Catalog。在其他 AWS 区域中，Redshift Spectrum 使用 Athena Data Catalog。您的集群需要授权才能访问您在 AWS Glue 或 Athena 中的外部数据目录以及您在 Amazon S3 中的数据文件。您通过引用附加到集群的 AWS Identity and Access Management (IAM) 角色来提供授权。如果您使用 Apache Hive 元存储管理您的数据目录，则无需提供对 Athena 的访问权限。</p><p>您可以串联角色，以便集群可以承担其他未附加到集群的角色。有关更多信息，请参阅<a href="#c-spectrum-chaining-roles">在 Amazon Redshift Spectrum 中链接 IAM 角色</a>。</p><p>您访问的 AWS Glue 目录可能已加密以提高安全性。如果 AWS Glue 目录已加密，则您需要使用 AWS KMS 的 AWS Glue 密钥来访问 AWS Glue Data Catalog。有关更多信息，请参阅 <em><a href="https://docs.aws.amazon.com/glue/latest/dg/">AWS Glue 开发人员指南</a>中的<a href="https://docs.aws.amazon.com/glue/latest/dg/encrypt-glue-data-catalog.html">加密您的 AWS Glue Data Catalog</a>。</em></p><div class="highlights" id="inline-topiclist"><h6>主题</h6><ul><li><a href="#spectrum-iam-policies-s3">Amazon S3 权限</a></li><li><a href="#spectrum-iam-policies-cross-account">跨账户 Amazon S3 权限</a></li><li><a href="#spectrum-iam-policies-spectrum-only">授予或限制使用 Redshift Spectrum 的访问权限的策略</a></li><li><a href="#spectrum-iam-policies-minimum-permissions">授予最低权限的策略</a></li><li><a href="#c-spectrum-chaining-roles">在 Amazon Redshift Spectrum 中链接 IAM 角色</a></li><li><a href="#c-spectrum-glue-acess">控制对 AWS Glue 数据目录的访问</a></li></ul></div><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>如果您当前在 Athena Data Catalog 中有 Redshift Spectrum 外部表，则可以将您的 Athena Data Catalog 迁移到 AWS Glue Data Catalog。要将 AWS Glue 数据目录用于 Redshift Spectrum，您可能需要更改您的 IAM 策略。有关更多信息，请参阅《Athena 用户指南》<em></em>中的<a href="https://docs.aws.amazon.com/athena/latest/ug/glue-athena.html#glue-upgrade">升级到 AWS Glue Data Catalog</a>。</p></div></div>
+         <h2 id="spectrum-iam-policies-s3">Amazon S3 权限</h2>
+         <p>您的集群至少需要对 Amazon S3 桶的 GET 和 LIST 访问权限。如果您的桶与您的集群没有位于同一个AWS账户中，则您的桶还必须授权您的集群访问数据。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html">代表您授权 Amazon Redshift 访问其他 AWS 服务</a>。</p>
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>Amazon S3 桶不能使用将访问限制为仅通过特定 VPC 端点的桶策略。</p></div></div>
+         <p>以下策略将授予对任何 Amazon S3 桶的 GET 和 LIST 访问权限。该策略允许访问 Amazon S3 桶以进行 Redshift Spectrum 和 COPY 操作。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
 	"Version": "2012-10-17",
 	"Statement": [<span>{</span>
@@ -50,7 +50,7 @@
 	}]
 }</code></pre>
 
-         <p>以下策略将授予对您的名为 <code class="code">myBucket</code> 的 Simple Storage Service（Amazon S3）桶的 GET 和 LIST 访问权限。</p>
+         <p>以下策略将授予对您的名为 <code class="code">myBucket</code> 的 Amazon S3 桶的 GET 和 LIST 访问权限。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
 	"Version": "2012-10-17",
 	"Statement": [<span>{</span>
@@ -60,8 +60,8 @@
 	}]
 }</code></pre>
        
-         <h2 id="spectrum-iam-policies-cross-account">跨账户 Simple Storage Service（Amazon S3）权限</h2>
-         <p>要向 Redshift Spectrum 授权访问属于其他 AWS 账户的 Simple Storage Service（Amazon S3）桶中的数据，请将以下策略添加到 Simple Storage Service（Amazon S3）桶中。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html">授予跨账户桶权限</a>。</p>
+         <h2 id="spectrum-iam-policies-cross-account">跨账户 Amazon S3 权限</h2>
+         <p>要向 Redshift Spectrum 授权访问属于其他 AWS 账户的 Amazon S3 桶中的数据，请将以下策略添加到 Amazon S3 桶中。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html">授予跨账户桶权限</a>。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
     "Version": "2012-10-17",
     "Statement": [
@@ -87,7 +87,7 @@
 }</code></pre>
        
          <h2 id="spectrum-iam-policies-spectrum-only">授予或限制使用 Redshift Spectrum 的访问权限的策略</h2>
-         <p>要仅使用 Redshift Spectrum 授予对 Simple Storage Service（Amazon S3）桶的访问权限，请包括允许访问用户代理 <code class="code">AWS Redshift/Spectrum</code> 的条件。以下策略仅允许 Redshift Spectrum 访问 Simple Storage Service（Amazon S3）桶。它排除其他访问，例如 COPY 操作。</p>
+         <p>要仅使用 Redshift Spectrum 授予对 Amazon S3 桶的访问权限，请包括允许访问用户代理 <code class="code">AWS Redshift/Spectrum</code> 的条件。以下策略仅允许 Redshift Spectrum 访问 Amazon S3 桶。它排除其他访问，例如 COPY 操作。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "Version": "2012-10-17",
     "Statement": [<span>{</span>
@@ -97,7 +97,7 @@
                 "Condition": <span>{</span>"StringEquals": <span>{</span>"aws:UserAgent": "AWS Redshift/Spectrum"}}
     }]
 }</code></pre>
-         <p>同样，您可能需要创建 IAM 角色来允许 COPY 操作，但排除 Redshift Spectrum 访问。为此，请包含拒绝用户代理 <code class="userinput">AWS Redshift/Spectrum</code> 访问权限的条件。以下策略允许访问 Simple Storage Service（Amazon S3）桶，但排除了 Redshift Spectrum。</p>
+         <p>同样，您可能需要创建 IAM 角色来允许 COPY 操作，但排除 Redshift Spectrum 访问。为此，请包含拒绝用户代理 <code class="userinput">AWS Redshift/Spectrum</code> 访问权限的条件。以下策略允许访问 Amazon S3 桶，但排除了 Redshift Spectrum。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
     "Version": "2012-10-17",
     "Statement": [<span>{</span>
@@ -109,7 +109,7 @@
 }</code></pre>
        
          <h2 id="spectrum-iam-policies-minimum-permissions">授予最低权限的策略</h2>
-         <p>以下策略授予将 Redshift Spectrum 用于 Simple Storage Service（Amazon S3）、AWS Glue 和 Athena 所需的最低权限。</p>
+         <p>以下策略授予将 Redshift Spectrum 用于 Amazon S3 、AWS Glue 和 Athena 所需的最低权限。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
     "Version": "2012-10-17",
     "Statement": [
@@ -168,7 +168,7 @@
        
          <h2 id="c-spectrum-chaining-roles">在 Amazon Redshift Spectrum 中链接 IAM 角色</h2>
 
-         <p>当您将角色附加到集群时，集群可以代入该角色以您的名义访问 Simple Storage Service（Amazon S3）、Athena 和 AWS Glue。如果附加到集群的角色无法访问必要的资源，则可以串联到另一个角色 (可能属于其他账户)。然后，您的集群临时代入串联的角色来访问数据。您还可以通过串联角色来授予跨账户访问权限。您可以串联最多 10 个角色。链中的每个角色都会代入链中的下一个角色，直到集群承担位于链尾的角色。</p>
+         <p>当您将角色附加到集群时，集群可以代入该角色以您的名义访问 Amazon S3、Athena 和 AWS Glue。如果附加到集群的角色无法访问必要的资源，则可以串联到另一个角色 (可能属于其他账户)。然后，您的集群临时代入串联的角色来访问数据。您还可以通过串联角色来授予跨账户访问权限。您可以串联最多 10 个角色。链中的每个角色都会代入链中的下一个角色，直到集群承担位于链尾的角色。</p>
          <p>要串联角色，您可以在角色之间建立信任关系。代入另一个角色的角色必须具有允许其代入指定角色的权限策略。反过来，传递权限的角色必须具有允许其将权限传递给另一个角色的信任策略。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/authorizing-redshift-service.html#authorizing-redshift-service-chaining-roles">在 Amazon Redshift 中链接 IAM 角色</a>。</p>
 
          <p>当您运行 CREATE EXTERNAL SCHEMA 命令时，可以通过包括一个逗号分隔的角色 ARN 列表来串联角色。</p>

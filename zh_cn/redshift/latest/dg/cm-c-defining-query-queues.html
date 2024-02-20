@@ -45,7 +45,7 @@
          </li><li class="listitem">
             <p> <b>一个默认用户队列</b> </p>
             <p>默认队列初始配置为并发运行五个查询。在使用手动 WLM 时，您可以更改默认队列的并发、超时和内存分配属性，但不能指定用户组或查询组。默认队列必须是 WLM 配置中最后一个队列。未路由到其他队列的查询在默认队列中运行。</p>
-         </li></ul></div><p>查询队列在 WLM 配置中定义。WLM 配置是参数组中的可编辑参数 (<code class="code">wlm_json_configuration</code>)，可与一个或多个集群关联。有关更多信息，请参阅《Amazon Redshift 管理指南》中的<em>配置工作负载管理</em>。</p><p>您可以向默认 WLM 配置添加其他查询队列，最多可添加八个用户队列。您可以为每个查询队列配置以下内容：</p><div class="itemizedlist">
+         </li></ul></div><p>查询队列在 WLM 配置中定义。WLM 配置是参数组中的可编辑参数 (<code class="code">wlm_json_configuration</code>)，可与一个或多个集群关联。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/workload-mgmt-config.html">配置工作负载管理</a>。</p><p>您可以向默认 WLM 配置添加其他查询队列，最多可添加八个用户队列。您可以为每个查询队列配置以下内容：</p><div class="itemizedlist">
           
           
           
@@ -77,7 +77,7 @@
        
          <h2 id="cm-c-defining-query-queues-concurrency-level">并发级别</h2>
          <p>队列中的查询以并发方式运行，直到它们达到为该队列定义的 WLM 队列插槽计数或<em>并发</em> 级别。达到并发级别后，后续查询将在队列中等待。</p>
-         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>WLM 并发级别不同于一个集群可以拥有的并行用户连接数。有关更多信息，请参阅《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-to-cluster.html">连接到集群</a>。</p></div></div>
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>WLM 并发级别不同于一个集群可以拥有的并行用户连接数。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-to-cluster.html">连接到集群</a>。</p></div></div>
          <p>在自动 WLM 配置（推荐）中，并发级别设置为<b>自动</b>。Amazon Redshift 为查询动态分配内存，这会随之确定同时运行多少个查询。此数量基于运行查询和排队查询所需的资源。自动 WLM 不可配置。有关更多信息，请参阅<a href="./automatic-wlm.html">实施自动 WLM</a>。</p>
         
          <p>在手动 WLM 配置中，Amazon Redshift 向每个队列静态分配固定数量的内存。队列的内存在查询槽之间均匀分配。举例来说，如果向队列分配了 20% 的集群内存并且有 10 个插槽，则每个查询将分配 2% 的集群内存。内存分配保持固定，不论并行运行的查询数量是多少。由于此固定内存分配，对于插槽计数为 5 时可完全在内存中运行的查询，如果将其插槽计数提高到 20，则可能需要将中间结果写入磁盘。在这个例子中，每个查询的队列内存份额从 1/5 减少到 1/20。额外的磁盘 I/O 会降低性能。</p>

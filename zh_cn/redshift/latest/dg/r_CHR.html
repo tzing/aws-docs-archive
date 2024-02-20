@@ -78,13 +78,13 @@
 
           
             <h2 id="r_CHR-example">示例</h2>
-<p>要返回与 ASCII 码位 65 对应的字符，请使用以下示例。</p>
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CHR(65);</code>
+<p>要返回与 ASCII 码位 0 对应的字符，请使用以下示例。请注意，对于输入 <code class="code">0</code>，CHR 函数会返回 <code class="code">NULL</code>。</p>
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">SELECT CHR(0);</code>
 
 <code class="computeroutput" copy="false">+-----+
 | chr |
 +-----+
-| A   |
+|     |
 +-----+</code></code></pre>
 
 <p>要返回与 ASCII 码位 65 对应的字符，请使用以下示例。</p>

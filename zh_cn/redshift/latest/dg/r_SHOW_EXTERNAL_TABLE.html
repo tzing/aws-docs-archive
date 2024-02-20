@@ -44,15 +44,21 @@
 }
 </script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SHOW_EXTERNAL_TABLE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_SHOW_EXTERNAL_TABLE-synopsis">语法</a><a href="#r_SHOW_EXTERNAL_TABLE-parameters">参数</a><a href="#r_SHOW_EXTERNAL_TABLE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SHOW_EXTERNAL_TABLE">SHOW EXTERNAL TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>显示外部表的定义，包括表属性和列属性。您可以使用 SHOW EXTERNAL TABLE 语句的输出来重新创建表。</p><p>有关外部表创建的更多信息，请参阅<a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>。</p>
          <h2 id="r_SHOW_EXTERNAL_TABLE-synopsis">语法</h2>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">SHOW EXTERNAL TABLE <em>external_schema</em>.<em>table_name</em> [ PARTITION ]</code></pre>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">SHOW EXTERNAL TABLE [<em>external_database</em>].<em>external_schema</em>.<em>table_name</em> [ PARTITION ]</code></pre>
        
          <h2 id="r_SHOW_EXTERNAL_TABLE-parameters">参数</h2>
          <div class="variablelist">
+             
              
 
              
              
          <dl>
+               <dt><span class="term"> <em>external_database</em> </span></dt>
+               <dd>
+                  <p>关联的外部数据库的名称。此参数为可选的。</p>
+               </dd>
+             
                <dt><span class="term"> <em>external_schema</em> </span></dt>
                <dd>
                   <p>关联的外部 schema 的名称。</p>
@@ -92,7 +98,7 @@ LOCATION 's3://mybucket-test-copy/alldatatypes_parquet_partitioned';
 
          <p>以下是 SHOW EXTERNAL TABLE 命令和表 <code class="code">my_schema.alldatatypes_parquet_test_partitioned</code> 的输出示例。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SHOW EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned;</code></pre>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
+         <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
     csmallint smallint,
     cint int,
     cbigint bigint,
@@ -112,9 +118,32 @@ STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFo
 OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
 LOCATION 's3://mybucket-test-copy/alldatatypes_parquet_partitioned';"</code></pre>
 
+         <p>以下是同一个表的 SHOW EXTERNAL TABLE 命令和输出的示例，但参数中也指定了数据库。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SHOW EXTERNAL TABLE my_database.my_schema.alldatatypes_parquet_test_partitioned;</code></pre>
+         <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_database.my_schema.alldatatypes_parquet_test_partitioned (
+    csmallint smallint,
+    cint int,
+    cbigint bigint,
+    cfloat float4,
+    cdouble float8,
+    cchar char(10),
+    cvarchar varchar(255),
+    cdecimal_small decimal(18,9),
+    cdecimal_big decimal(30,15),
+    ctimestamp timestamp,
+    cboolean boolean,
+    cstring varchar(16383)
+)
+PARTITIONED BY (cdate date, ctime timestamp)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION 's3://mybucket-test-copy/alldatatypes_parquet_partitioned';"</code></pre>
+         
+
          <p>以下是使用 <code class="code">PARTITION</code> 参数时的 SHOW EXTERNAL TABLE 命令和输出的示例。输出包含 ALTER TABLE 语句，可用于将分区添加到表定义。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">SHOW EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned PARTITION;</code></pre>
-         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
+         <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">"CREATE EXTERNAL TABLE my_schema.alldatatypes_parquet_test_partitioned (
     csmallint smallint,
     cint int,
     cbigint bigint,

@@ -121,7 +121,7 @@ ERROR:  A table may be outer joined to at most one other table.</code></pre>
                   </li></ul></div>
              
                <h2 id="r_WHERE_oracle_outer-examples">示例</h2>
-               <p>以下联接查询指定 SALES 和 LISTING 表的左外部联接 (基于其 LISTID 列)：</p>
+               <p>以下联接查询指定 SALES 和 LISTING 表的左外部联接（基于其 LISTID 列）：</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*)
 from sales, listing
 where sales.listid = listing.listid(+);

@@ -68,6 +68,7 @@
             
              
              
+             
          <ul class="itemizedlist"><li class="listitem">
                <p>对于增量实体化视图，<code class="code">REFRESH MATERIALIZED VIEW</code> 操作仅使用那些已提交的基表行。因此，如果刷新操作在同一事务中的数据操作语言 (DML) 语句之后运行，则对该 DML 语句的更改将对于刷新不可见。</p>
             </li><li class="listitem">
@@ -75,6 +76,8 @@
                      VIEW</code> 会看到对刷新事务可见的所有基表行。</p>
             </li><li class="listitem">
                <p>根据输入参数类型，Amazon Redshift 仍支持以下采用特定输入参数类型的函数所对应的实体化视图的增量刷新：DATE（时间戳）、DATE_PART（日期、时间、间隔、time-tz）、DATE_TRUNC（时间戳、间隔）。</p>
+            </li><li class="listitem">
+               <p>基表位于数据共享中的实例化视图支持增量刷新。</p>
             </li></ul></div>
          <p>Amazon Redshift 中的一些操作会与实体化视图进行交互。这些操作中的某些操作可能会强制 <code class="code">REFRESH MATERIALIZED VIEW</code> 完全重新计算实体化视图，即使定义该视图的查询仅使用可以用于增量刷新的 SQL 功能。例如：</p>
          <div class="itemizedlist">
@@ -98,7 +101,6 @@
              
              
              
-
              
             
             
@@ -122,7 +124,16 @@
             </li><li class="listitem">
                <p>在 FROM 子句以外的任何位置的子查询。</p>
             </li><li class="listitem">
-               <p>在定义实体化视图的查询中作为基表引用的外部表。</p>
+               <p>在定义实体化视图的查询中引用以下格式的外部表。</p>
+               <div class="itemizedlist">
+                   
+                   
+               <ul class="itemizedlist"><li class="listitem">
+                     <p> Delta Lake </p>
+                  </li><li class="listitem">
+                     <p> Hudi </p>
+                  </li></ul></div>
+               <p>对于使用引用其他格式的外部表定义的实体化视图，预览版跟踪支持增量刷新。有关设置预览版集群的更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#cluster-preview">创建预览版集群</a>。有关设置预览工作组的信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">创建预览工作组</a>。</p>
             </li><li class="listitem"><p>可变函数，如日期-时间函数，RANDOM 和非 STABLE 用户定义函数。</p></li></ul></div>
          <p>有关实体化视图限制的更多信息，包括 VACUUM 等后台操作对实体化视图刷新操作的影响，请参阅<a href="#mv_REFRESH_MARTERIALIZED_VIEW_usage">使用说明</a>。</p>
        

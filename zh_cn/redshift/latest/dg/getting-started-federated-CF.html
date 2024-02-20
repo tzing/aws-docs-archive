@@ -36,15 +36,15 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#getting-started-federated-CF" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#getting-started-federated-CF-stack">为 Redshift 联合查询启动 CloudFormation 堆栈</a><a href="#getting-started-federated-CF-stack-query">从外部架构中查询数据</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="getting-started-federated-CF">开始使用 AWS CloudFormation 联合查询 PostgreSQL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>您可以使用联合查询，以跨操作数据库进行查询。在本入门指南中，您可以使用示例 AWS CloudFormation 堆栈自动进行设置，以启用从 Amazon Redshift 集群到 Aurora PostgreSQL 无服务器数据库的联合查询。无需运行 SQL 语句，即可快速启动并运行，从而配置资源。</p><p>堆栈创建了一个外部架构，引用了 Aurora PostgreSQL 实例，其中包括带示例数据的表。您可以从 Redshift 集群中查询外部架构中的表。</p><p>相反，如果您想通过运行 SQL 语句来设置外部架构，以便开始使用联合查询，而不使用 CloudFormation，请参阅<a href="./getting-started-federated.html">开始使用对 PostgreSQL 的联合查询</a>。</p><p>运行 CloudFormation 堆栈进行联合查询之前，请确保您拥有已开启数据 API 的 Amazon Aurora PostgreSQL 兼容版无服务器数据库。您可以在数据库属性中打开数据 API。如果找不到设置，请仔细检查是否正在运行 Aurora PostgreSQL 的无服务器实例。另外，请确保您有一个使用 RA3 节点的 Amazon Redshift 集群。我们建议 Redshift 集群和无服务器 Aurora PostgreSQL 实例位于相同的 Virtual Private Cloud（VPC）和子网组中。这样一来，您就可以将 Amazon Redshift 集群的安全组添加到 Aurora PostgreSQL 数据库实例的安全组的入站规则中。</p><p>有关开始设置 Amazon Redshift 集群的更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html">开始使用 Amazon Redshift</a>。有关使用 CloudFormation 设置资源的更多信息，请参阅 <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html">AWS CloudFormation 是什么？</a>。有关设置 Aurora 数据库的更多信息，请参阅<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.create.html">创建 Aurora Serverless v1 数据库集群</a>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#getting-started-federated-CF" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#getting-started-federated-CF-stack">为 Redshift 联合查询启动 CloudFormation 堆栈</a><a href="#getting-started-federated-CF-stack-query">从外部架构中查询数据</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="getting-started-federated-CF">开始使用 AWS CloudFormation 联合查询 PostgreSQL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>您可以使用联合查询，以跨操作数据库进行查询。在本入门指南中，您可以使用示例 AWS CloudFormation 堆栈自动进行设置，以启用从 Amazon Redshift 集群到 Aurora PostgreSQL 无服务器数据库的联合查询。无需运行 SQL 语句，即可快速启动并运行，从而配置资源。</p><p>堆栈创建了一个外部架构，引用了 Aurora PostgreSQL 实例，其中包括带示例数据的表。您可以从 Redshift 集群中查询外部架构中的表。</p><p>相反，如果您想通过运行 SQL 语句来设置外部架构，以便开始使用联合查询，而不使用 CloudFormation，请参阅<a href="./getting-started-federated.html">开始使用对 PostgreSQL 的联合查询</a>。</p><p>运行 CloudFormation 堆栈进行联合查询之前，请确保您拥有已开启数据 API 的 Amazon Aurora PostgreSQL 兼容版无服务器数据库。您可以在数据库属性中打开数据 API。如果找不到设置，请仔细检查是否正在运行 Aurora PostgreSQL 的无服务器实例。另外，请确保您有一个使用 RA3 节点的 Amazon Redshift 集群。我们建议 Redshift 集群和无服务器 Aurora PostgreSQL 实例位于相同的 Virtual Private Cloud (VPC) 和子网组中。这样一来，您就可以将 Amazon Redshift 集群的安全组添加到 Aurora PostgreSQL 数据库实例的安全组的入站规则中。</p><p>有关开始设置 Amazon Redshift 集群的更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html">开始使用 Amazon Redshift</a>。有关使用 CloudFormation 设置资源的更多信息，请参阅 <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html">AWS CloudFormation 是什么？</a>。有关设置 Aurora 数据库的更多信息，请参阅<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless.create.html">创建 Aurora Serverless v1 数据库集群</a>。</p>
          <h2 id="getting-started-federated-CF-stack">为 Redshift 联合查询启动 CloudFormation 堆栈</h2>
          <p>使用以下过程启动适用于 Amazon Redshift 的 CloudFormation 堆栈，以启用联合查询。执行此操作之前，请确保您已设置 Amazon Redshift 集群和无服务器 Aurora PostgreSQL 实例。</p>
          
          
-         <div class="procedure"><h6>启动 CloudFormation 堆栈，以进行联合查询</h6><ol><li><p>在这里单击<a href="https://console.aws.amazon.com/cloudformation/home?#/stacks/new?stackName=FederatedQuery&amp;templateURL=https://s3.amazonaws.com/redshift-downloads/docs-downloads/FederatedQuery.yml" rel="noopener noreferrer" target="_blank"><span><b>Launch CFN stack</b></span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>（启动 CFN 堆栈），以启动 AWS Management Console 中的 CloudFormation 服务。</p>
+         <div class="procedure"><h6>启动 CloudFormation 堆栈，以进行联合查询</h6><ol><li><p>在这里单击<a href="https://console.aws.amazon.com/cloudformation/home?#/stacks/new?stackName=FederatedQuery&amp;templateURL=https://s3.amazonaws.com/redshift-downloads/docs-downloads/FederatedQuery.yml" rel="noopener noreferrer" target="_blank"><span><b>启动 CFN 堆栈</b></span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>，以启动 AWS Management Console 中的 CloudFormation 服务。</p>
                <p>如果出现登录提示，请登录。</p>
-               <p>堆栈创建过程启动，引用存储在 Simple Storage Service（Amazon S3）中的 CloudFormation 模板文件。CloudFormation <em>模板</em>指的是声明组建堆栈的 AWS 资源的 JSON 格式文本文件。</p></li><li><p>选择 <b>Next</b>（下一步），输入堆栈详细信息。</p></li><li>
-               <p>在集群 <b>Parameters</b>（参数）下，请输入以下内容：</p>
+               <p>堆栈创建过程启动，引用存储在 Amazon S3 中的 CloudFormation 模板文件。CloudFormation <em>模板</em>指的是声明组建堆栈的 AWS 资源的 JSON 格式文本文件。</p></li><li><p>选择<b>下一步</b>，输入堆栈详细信息。</p></li><li>
+               <p>在集群<b>参数</b>下，请输入以下内容：</p>
                
                <div class="itemizedlist">
                    
@@ -58,8 +58,8 @@
                      <p>数据库用户名，例如 <code class="userinput">consumeruser</code></p>
                   </li></ul></div>
                <p>同时输入 Aurora 数据库参数，包括用户、数据库名称、端口和端点。我们建议使用测试集群以及测试无服务器数据库，因为堆栈会创建多个数据库对象。</p>
-               <p>选择 <b>Next (下一步)</b>。</p>
-               <p>此时将显示堆栈选项。</p></li><li><p>选择 <b>Next</b>（下一步）以接受原定设置。</p></li><li><p>在 <b>Capabilities</b>（功能）下，选择 <b>I acknowledge that AWS CloudFormation might create IAM resources</b>（我确认 AWS CloudFormation 可能会创建 IAM 资源）。</p></li><li><p>选择<b>创建堆栈</b>。</p></li></ol></div>
+               <p>选择<b>下一步</b>。</p>
+               <p>此时将显示堆栈选项。</p></li><li><p>选择<b>下一步</b>以接受原定设置。</p></li><li><p>在<b>功能</b>下，选择<b>我确认 AWS CloudFormation 可能会创建 IAM 资源</b>。</p></li><li><p>选择<b>创建堆栈</b>。</p></li></ol></div>
 
          <p>选择<b>创建堆栈</b>。CloudFormation 配置模板资源（大约需要 10 分钟）并创建外部架构。</p>
          
@@ -70,7 +70,7 @@
              
              
              
-         <ul class="itemizedlist"><li class="listitem"><p>查看 CloudFormation <b>Events</b>（事件）选项卡，以获取可以帮助解决错误的信息。</p></li><li class="listitem"><p>确保您输入了正确的 Redshift 集群名称、数据库名称和数据库用户名。同时检查 Aurora PostgreSQL 实例的参数。</p></li><li class="listitem"><p>确保您的集群有 RA3 节点。</p></li><li class="listitem"><p>确保您的数据库和 Redshift 集群位于同一子网和安全组中。</p></li></ul></div>
+         <ul class="itemizedlist"><li class="listitem"><p>查看 CloudFormation <b>事件</b>选项卡，以获取可以帮助解决错误的信息。</p></li><li class="listitem"><p>确保您输入了正确的 Redshift 集群名称、数据库名称和数据库用户名。同时检查 Aurora PostgreSQL 实例的参数。</p></li><li class="listitem"><p>确保您的集群有 RA3 节点。</p></li><li class="listitem"><p>确保您的数据库和 Redshift 集群位于同一子网和安全组中。</p></li></ul></div>
        
          <h2 id="getting-started-federated-CF-stack-query">从外部架构中查询数据</h2>
      

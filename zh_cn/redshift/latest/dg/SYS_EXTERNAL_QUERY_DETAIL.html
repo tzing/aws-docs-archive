@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_EXTERNAL_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_EXTERNAL_QUERY_DETAIL-table-columns">表列</a><a href="#SYS_EXTERNAL_QUERY_DETAIL-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_EXTERNAL_QUERY_DETAILS 查看段级别查询的详细信息。每行代表来自特定 WLM 查询的一段，其中包含 Amazon S3 中处理的行数、处理的字节数以及外部表的分区信息等详细信息。此视图除了具有与外部查询处理相关的更多详细信息之外，每一行还将在 SYS_QUERY_DETAILS 视图中有一个相应条目。</p><p>SYS_EXTERNAL_QUERY_DETAILY 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其具有访问权限的元数据。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_EXTERNAL_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_EXTERNAL_QUERY_DETAIL-table-columns">表列</a><a href="#SYS_EXTERNAL_QUERY_DETAIL-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_EXTERNAL_QUERY_DETAIL">SYS_EXTERNAL_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_EXTERNAL_QUERY_DETAILS 查看段级别查询的详细信息。每行代表来自特定 WLM 查询的一段，其中包含 Amazon S3 中处理的行数、处理的字节数以及外部表的分区信息等详细信息。此视图除了具有与外部查询处理相关的更多详细信息之外，每一行还将在 SYS_QUERY_DETAILS 视图中有一个相应条目。</p><p>SYS_EXTERNAL_QUERY_DETAILY 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p>
             <h2 id="SYS_EXTERNAL_QUERY_DETAIL-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c29b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c29b7b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -101,37 +101,37 @@
                         <tr>
                             <td tabindex="-1">total_partitions</td>
                             <td tabindex="-1">integer</td>
-                            <td tabindex="-1">Simple Storage Service（Amazon S3）查询所需的分区数。</td>
+                            <td tabindex="-1">Amazon S3 查询所需的分区数。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">qualified_partitions</td>
                             <td tabindex="-1">integer</td>
-                            <td tabindex="-1">Simple Storage Service（Amazon S3）查询扫描的分区数。</td>
+                            <td tabindex="-1">Amazon S3 查询扫描的分区数。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">scanned_file</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">扫描的 Simple Storage Service（Amazon S3）文件数。</td>
+                            <td tabindex="-1">扫描的 Amazon S3 文件数。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">returned_rows</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">Simple Storage Service（Amazon S3）查询的扫描行数，或联合查询返回的行数。</td>
+                            <td tabindex="-1">Amazon S3 查询的扫描行数，或联合查询返回的行数。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">returned_bytes</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">Simple Storage Service（Amazon S3）查询的扫描字节数或联合查询返回的字节数。</td>
+                            <td tabindex="-1">Amazon S3 查询的扫描字节数或联合查询返回的字节数。</td>
                         </tr> 
                         <tr>
                             <td tabindex="-1">file_format</td>
                             <td tabindex="-1">text</td>
-                            <td tabindex="-1">Simple Storage Service（Amazon S3）文件的文件格式。</td>
+                            <td tabindex="-1">Amazon S3 文件的文件格式。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">file_location</td>
                             <td tabindex="-1">text</td>
-                            <td tabindex="-1">外部表的 Simple Storage Service（Amazon S3）位置。</td>
+                            <td tabindex="-1">外部表的 Amazon S3 位置。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">external_query_text</td>

@@ -42,10 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_SYSTEM" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_ALTER_SYSTEM-privileges">所需的权限</a><a href="#r_ALTER_SYSTEM-synopsis">语法</a><a href="#r_ALTER_SYSTEM-parameters">参数</a><a href="#r_ALTER_SYSTEM-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_SYSTEM">ALTER SYSTEM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>更改 Amazon Redshift 集群或 Redshift Serverless 工作组的系统级配置选项。</p><p>系统值更改的生效时间如下所示：</p><div class="itemizedlist">
-          
-          
-      <ul class="itemizedlist"><li class="listitem"><p>对于预置集群，新值将在集群下次重新引导时生效。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#reboot-cluster">重新引导集群</a>。</p></li><li class="listitem"><p>对于无服务器工作组，新值将在下次工作组暂停然后恢复时生效。当工作组未执行任何工作时，Redshift Serverless 将暂停工作组。</p></li></ul></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ALTER_SYSTEM" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_ALTER_SYSTEM-privileges">所需的权限</a><a href="#r_ALTER_SYSTEM-synopsis">语法</a><a href="#r_ALTER_SYSTEM-parameters">参数</a><a href="#r_ALTER_SYSTEM-usage-notes">使用说明</a><a href="#r_ALTER_SYSTEM-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ALTER_SYSTEM">ALTER SYSTEM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>更改 Amazon Redshift 集群或 Redshift Serverless 工作组的系统级配置选项。</p>
          <h2 id="r_ALTER_SYSTEM-privileges">所需的权限</h2>
          <p>以下用户类型之一可以运行 ALTER SYSTEM 命令：</p>
          <div class="itemizedlist">
@@ -63,7 +60,7 @@
          <dl>
                <dt><span class="term"> <em>system-level-configuration</em> </span></dt>
                <dd>
-                  <p>系统级配置。有效值：<code class="code">data_catalog_auto_mount</code>。</p>
+                  <p>系统级配置。有效值：<code class="code">data_catalog_auto_mount</code> 和 <code class="code">metadata_security</code>。</p>
                </dd>
              
                <dt><span class="term"><span>{</span>true| t | on | false | f | off} </span></dt>
@@ -72,7 +69,13 @@
                </dd>
             </dl></div>
        
+         <h2 id="r_ALTER_SYSTEM-usage-notes">使用说明</h2>
+         <p>对于预置集群，对 <code class="code">data_catalog_auto_mount</code> 的更改将在集群下次重新引导时生效。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#reboot-cluster">重新引导集群</a>。</p>
+         <p>对于无服务器工作组，对 <code class="code">data_catalog_auto_mount</code> 的更改不会立即生效。</p>
+       
          <h2 id="r_ALTER_SYSTEM-examples">示例</h2>
          <p>以下示例开启了自动挂载 AWS Glue Data Catalog 的功能。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER SYSTEM SET data_catalog_auto_mount = true;</code></pre>
+         <p>以下示例开启了元数据安全性。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER SYSTEM SET metadata_security = true;</code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ALTER_SCHEMA.html">ALTER SCHEMA</div><div id="next" class="next-link" accesskey="n" href="./r_ALTER_TABLE.html">ALTER TABLE</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ALTER_SYSTEM.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ALTER_SYSTEM.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

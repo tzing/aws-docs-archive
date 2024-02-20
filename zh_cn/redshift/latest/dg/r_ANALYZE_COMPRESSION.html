@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ANALYZE_COMPRESSION" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_ANALYZE_COMPRESSION-synopsis">语法</a><a href="#r_ANALYZE_COMPRESSION-parameters">参数</a><a href="#r_ANALYZE_COMPRESSION_usage_notes">使用说明</a><a href="#r_ANALYZE_COMPRESSION-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ANALYZE_COMPRESSION">ANALYZE COMPRESSION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>执行压缩分析，并针对所分析的表使用建议的压缩编码生成报告。报告会针对每一列估计与当前编码相比磁盘空间的可能压缩量。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_ANALYZE_COMPRESSION" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_ANALYZE_COMPRESSION-synopsis">语法</a><a href="#r_ANALYZE_COMPRESSION-parameters">参数</a><a href="#r_ANALYZE_COMPRESSION_usage_notes">使用说明</a><a href="#r_ANALYZE_COMPRESSION-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_ANALYZE_COMPRESSION">ANALYZE COMPRESSION</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>执行压缩分析，并针对所分析的表使用建议的压缩编码生成报告。报告会针对每一列估计与原始编码相比磁盘空间的潜在压缩量。</p>
          <h2 id="r_ANALYZE_COMPRESSION-synopsis">语法</h2>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ANALYZE COMPRESSION
 [ [ <em>table_name</em> ]
@@ -88,33 +88,30 @@
          <h2 id="r_ANALYZE_COMPRESSION-examples">示例</h2>
          <p>以下示例说明了仅 LISTING 表中列的编码和预计减少的百分比：</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">analyze compression listing;
-
-Table   | Column         | Encoding | Est_reduction_pct
---------+----------------+----------+------------------
-listing | listid         | delta    | 75.00
-listing | sellerid       | delta32k | 38.14
-listing | eventid        | delta32k | 5.88
-listing | dateid         | zstd     | 31.73
-listing | numtickets     | zstd     | 38.41
-listing | priceperticket | zstd     | 59.48
-listing | totalprice     | zstd     | 37.90
-listing | listtime       | zstd     | 13.39
-         </code></pre>
+  
+  Table  |     Column     | Encoding | Est_reduction_pct 
+---------+----------------+----------+-------------------
+ listing | listid         | az64     | 40.96
+ listing | sellerid       | az64     | 46.92
+ listing | eventid        | az64     | 53.37
+ listing | dateid         | raw      | 0.00
+ listing | numtickets     | az64     | 65.66
+ listing | priceperticket | az64     | 72.94
+ listing | totalprice     | az64     | 68.05
+ listing | listtime       | az64     | 49.74</code></pre>
          <p>以下示例分析了 SALES 表中的 QTYSOLD、COMMISSION 和 SALETIME 列。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">analyze compression sales(qtysold, commission, saletime);
 
-Table | Column     | Encoding | Est_reduction_pct
-------+------------+----------+------------------
-sales | salesid    | N/A      | 0.00
-sales | listid     | N/A      | 0.00
-sales | sellerid   | N/A      | 0.00
-sales | buyerid    | N/A      | 0.00
-sales | eventid    | N/A      | 0.00
-sales | dateid     | N/A      | 0.00
-sales | qtysold    | zstd     | 67.14
-sales | pricepaid  | N/A      | 0.00
-sales | commission | zstd     | 13.94
-sales | saletime   | zstd     | 13.38
-
-</code></pre>
+ Table |   Column   | Encoding | Est_reduction_pct 
+-------+------------+----------+-------------------
+ sales | salesid    | N/A      | 0.00
+ sales | listid     | N/A      | 0.00
+ sales | sellerid   | N/A      | 0.00
+ sales | buyerid    | N/A      | 0.00
+ sales | eventid    | N/A      | 0.00
+ sales | dateid     | N/A      | 0.00
+ sales | qtysold    | az64     | 83.06
+ sales | pricepaid  | N/A      | 0.00
+ sales | commission | az64     | 71.85
+ sales | saletime   | az64     | 49.63</code></pre>
       <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_ANALYZE.html">ANALYZE</div><div id="next" class="next-link" accesskey="n" href="./r_ATTACH_MASKING_POLICY.html">ATTACH MASKING POLICY</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ANALYZE_COMPRESSION.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_ANALYZE_COMPRESSION.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

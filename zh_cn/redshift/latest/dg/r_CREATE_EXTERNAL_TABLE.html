@@ -42,7 +42,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_EXTERNAL_TABLE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_CREATE_EXTERNAL_TABLE-privileges">所需的权限</a><a href="#r_CREATE_EXTERNAL_TABLE-synopsis">语法</a><a href="#r_CREATE_EXTERNAL_TABLE-parameters">参数</a><a href="#r_CREATE_EXTERNAL_TABLE_examples_link">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_EXTERNAL_TABLE">CREATE EXTERNAL TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>在指定 schema 中创建一个新外部表。所有外部表必须在外部 schema 中创建。外部 schema 和外部表不支持搜索路径。有关更多信息，请参阅<a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>。</p><p>除了使用 CREATE EXTERNAL TABLE 命令创建的外部表之外，Amazon Redshift 还可引用在 AWS Glue 或 AWS Lake Formation 目录或 Apache Hive 元存储中定义的外部表。使用 <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a> 命令可注册在外部目录中定义的外部数据库并使外部表可在 Amazon Redshift 中使用。如果外部表已存在于 AWS Glue 或 AWS Lake Formation 目录或 Hive 元存储中，您无需使用 CREATE EXTERNAL TABLE 创建该表。要查看外部表，请查询 <a href="./r_SVV_EXTERNAL_TABLES.html">SVV_EXTERNAL_TABLES</a> 系统视图。</p><p>通过运行 CREATE EXTERNAL TABLE AS 命令，可以根据查询中的列定义创建外部表，并将该查询的结果写入 Simple Storage Service（Amazon S3）中。结果采用 Apache Parquet 或分隔的文本格式。如果外部表具有一个或多个分区键，Amazon Redshift 会根据这些分区键对新文件进行分区，并自动将新分区注册到外部目录中。有关 CREATE EXTERNAL TABLE AS 的更多信息，请参阅<a href="./r_CREATE_EXTERNAL_TABLE_usage.html">使用说明</a>。</p><p>您可使用用于其他 Amazon Redshift 表的同一 SELECT 语法查询外部表。您还可以使用 INSERT 语法将新文件写入 Simple Storage Service（Amazon S3）上外部表的位置。有关更多信息，请参阅<a href="./r_INSERT_external_table.html">插入（外部表）</a>。</p><p>要使用外部表创建视图，请在 <a href="./r_CREATE_VIEW.html">CREATE VIEW</a> 语句中包含 WITH NO SCHEMA BINDING 子句。</p><p>您无法在事务 (BEGIN … END) 内运行 CREATE EXTERNAL TABLE。有关事务的更多信息，请参阅 <a href="./c_serial_isolation.html">可序列化的隔离</a>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_EXTERNAL_TABLE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_CREATE_EXTERNAL_TABLE-privileges">所需的权限</a><a href="#r_CREATE_EXTERNAL_TABLE-synopsis">语法</a><a href="#r_CREATE_EXTERNAL_TABLE-parameters">参数</a><a href="#r_CREATE_EXTERNAL_TABLE_examples_link">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_EXTERNAL_TABLE">CREATE EXTERNAL TABLE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>在指定 schema 中创建一个新外部表。所有外部表必须在外部 schema 中创建。外部 schema 和外部表不支持搜索路径。有关更多信息，请参阅<a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>。</p><p>除了使用 CREATE EXTERNAL TABLE 命令创建的外部表之外，Amazon Redshift 还可引用在 AWS Glue 或 AWS Lake Formation 目录或 Apache Hive 元存储中定义的外部表。使用 <a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a> 命令可注册在外部目录中定义的外部数据库并使外部表可在 Amazon Redshift 中使用。如果外部表已存在于 AWS Glue 或 AWS Lake Formation 目录或 Hive 元存储中，您无需使用 CREATE EXTERNAL TABLE 创建该表。要查看外部表，请查询 <a href="./r_SVV_EXTERNAL_TABLES.html">SVV_EXTERNAL_TABLES</a> 系统视图。</p><p>通过运行 CREATE EXTERNAL TABLE AS 命令，可以根据查询中的列定义创建外部表，并将该查询的结果写入 Amazon S3 中。结果采用 Apache Parquet 或分隔的文本格式。如果外部表具有一个或多个分区键，Amazon Redshift 会根据这些分区键对新文件进行分区，并自动将新分区注册到外部目录中。有关 CREATE EXTERNAL TABLE AS 的更多信息，请参阅<a href="./r_CREATE_EXTERNAL_TABLE_usage.html">使用说明</a>。</p><p>您可使用用于其他 Amazon Redshift 表的同一 SELECT 语法查询外部表。您还可以使用 INSERT 语法将新文件写入 Amazon S3 上外部表的位置。有关更多信息，请参阅<a href="./r_INSERT_external_table.html">INSERT（外部表）</a>。</p><p>要使用外部表创建视图，请在 <a href="./r_CREATE_VIEW.html">CREATE VIEW</a> 语句中包含 WITH NO SCHEMA BINDING 子句。</p><p>您无法在事务 (BEGIN … END) 内运行 CREATE EXTERNAL TABLE。有关事务的更多信息，请参阅 <a href="./c_serial_isolation.html">可序列化的隔离</a>。</p>
          <h2 id="r_CREATE_EXTERNAL_TABLE-privileges">所需的权限</h2>
          <p>要创建外部表，您必须是外部 schema 的所有者或是超级用户。要移交外部 schema 的所有权，请使用 ALTER SCHEMA 更改所有者。对外部表的访问由对外部 schema 的访问权限控制。您无法对外部表的权限执行 <a href="./r_GRANT.html">GRANT</a> 或 <a href="./r_REVOKE.html">REVOKE</a> 操作。但是，您可授予或撤销对外部 schema 的 USAGE 权限。</p>
          <p><a href="./r_CREATE_EXTERNAL_TABLE_usage.html">使用说明</a> 包含有关外部表特定权限的更多信息。</p>
@@ -85,12 +85,12 @@ LOCATION <span>{</span> 's3://<em>bucket/folder</em>/' }
          <dl>
                <dt><span class="term"> <em>external_schema.table_name</em> </span></dt>
                <dd>
-                  <p>要创建的表的名称 (由外部 schema 名称进行限定)。外部表必须在外部 schema 中创建。有关更多信息，请参阅<a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>。</p>
+                  <p>要创建的表的名称（由外部 schema 名称进行限定）。外部表必须在外部 schema 中创建。有关更多信息，请参阅<a href="./r_CREATE_EXTERNAL_SCHEMA.html">CREATE EXTERNAL SCHEMA</a>。</p>
                   <p>表名称的最大长度为 127 个字节；更长的名称将被截断为 127 个字节。您可以使用 UTF-8 多字节字符，每个字符最多为四个字节。Amazon Redshift 对每个集群强制实施 9900 个表的限制，包括用户定义的临时表以及查询处理或系统维护期间由 Amazon Redshift 创建的临时表。您也可以使用数据库名称限定表名称。在下面的示例中，<code class="code">spectrum_db</code> 是数据库名称，<code class="code">spectrum_schema</code> 是外部 schema 名称，而 <code class="code">test</code> 是表名称。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum_db.spectrum_schema.test (c1 int)
 stored as parquet
 location 's3://mybucket/myfolder/';</code></pre>
-                  <p>如果指定数据库或 schema 不存在，则不会创建表，并且语句将返回错误。您无法在系统数据库 <code class="code">template0</code>、<code class="code">template1</code> 和 <code class="code">padb_harvest</code> 中创建表或视图。</p>
+                  <p>如果指定数据库或 schema 不存在，则不会创建表，并且语句将返回错误。您无法在系统数据库 <code class="code">template0</code>、<code class="code">template1</code>、<code class="code">padb_harvest</code> 或 <code class="code">sys:internal</code> 中创建表或视图。</p>
                   <p>表名称对于指定 schema 必须是唯一名称。</p>
                   <p>有关有效名称的更多信息，请参阅<a href="./r_names.html">名称和标识符</a>。</p>
                </dd>
@@ -192,11 +192,11 @@ max
                <dt><span class="term">PARTITIONED BY (<em>col_name</em> <em>data_type</em> [, … ] )</span></dt>
                <dd>
                   <p>用于定义包含一个或多个分区列的已分区表的子句。单独的数据目录用于每个指定的组合，这在某些情况下可提高查询性能。已分区列在表数据本身中不存在。如果您将与表列相同的某个值用于 <em>col_name</em>，则会产生错误。</p>
-                  <p>创建分区表后，使用 <a href="./r_ALTER_TABLE.html">ALTER TABLE</a> … ADD PARTITION 语句更改表，以将新分区注册到外部目录。在添加分区时，您应定义包含分区数据的子文件夹在 Simple Storage Service（Amazon S3）上的位置。</p>
+                  <p>创建分区表后，使用 <a href="./r_ALTER_TABLE.html">ALTER TABLE</a> … ADD PARTITION 语句更改表，以将新分区注册到外部目录。在添加分区时，您应定义包含分区数据的子文件夹在 Amazon S3 上的位置。</p>
                   <p>例如，如果表 <code class="code">spectrum.lineitem_part</code> 是使用 <code class="code">PARTITIONED BY (l_shipdate date)</code> 定义的，请运行以下 ALTER TABLE 命令来添加分区。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER TABLE spectrum.lineitem_part ADD PARTITION (l_shipdate='1992-01-29')
 LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code></pre>
-                  <p>如果您使用 CREATE EXTERNAL TABLE AS，则不需要运行 ALTER TABLE...ADD PARTITION。Amazon Redshift 会自动在外部目录中注册新分区。Amazon Redshift 还会根据表中定义的一个或多个分区键自动将相应的数据写入 Simple Storage Service（Amazon S3）中的分区。</p>
+                  <p>如果您使用 CREATE EXTERNAL TABLE AS，则不需要运行 ALTER TABLE...ADD PARTITION。Amazon Redshift 会自动在外部目录中注册新分区。Amazon Redshift 还会根据表中定义的一个或多个分区键自动将相应的数据写入 Amazon S3 中的分区。</p>
 
                   <p>要查看分区，请查询 <a href="./r_SVV_EXTERNAL_PARTITIONS.html">SVV_EXTERNAL_PARTITIONS</a> 系统视图。</p>
                   <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>对于 CREATE EXTERNAL TABLE AS 命令，您不需要指定分区列的数据类型，因为此列是从查询派生的。</p></div></div>
@@ -214,7 +214,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                      </li><li class="listitem">
                         <p>FIELDS TERMINATED BY '<em>delimiter</em>'</p>
                      </li></ul></div>
-                  <p>为 '<em>delimiter</em>' 指定一个 ASCII 字符。您可以指定八进制格式的非打印 ASCII 字符，具体格式为 <code class="code">'\</code><em><code class="code">ddd</code></em><code class="code">'</code>，其中 <em><code class="code">d</code></em> 是一个八进制数（0–7），最大为“\177”。以下示例使用八进制形式指定 BEL (响铃) 字符。</p>
+                  <p>为 '<em>delimiter</em>' 指定一个 ASCII 字符。您可以指定八进制格式的非打印 ASCII 字符，具体格式为 <code class="code">'\</code><em><code class="code">ddd</code></em><code class="code">'</code>，其中 <em><code class="code">d</code></em> 是一个八进制数 (0–7)，最大为“\177”。以下示例使用八进制形式指定 BEL（响铃）字符。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ROW FORMAT DELIMITED FIELDS TERMINATED BY '\007'</code></pre>
                   <p>如果省略了 ROW FORMAT，则默认格式为 DELIMITED FIELDS TERMINATED BY '\A'（标题开头）和 LINES TERMINATED BY '\n'（换行符）。</p>
                   
@@ -246,7 +246,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                  <p>org.apache.hadoop.hive.serde2.OpenCSVSerde </p>
                                  <p>此参数支持 OpenCSVSerde 的以下 SerDe 属性：</p>
                                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">'wholeFile' = 'true' </code></pre>
-                                 <p>将 <code class="code">wholeFile</code> 属性设置为 <code class="code">true</code>，以正确解析 OpenCSV 请求的引号字符串中的新行字符（\n）。</p>
+                                 <p>将 <code class="code">wholeFile</code> 属性设置为 <code class="code">true</code>，以正确解析 OpenCSV 请求的引号字符串中的新行字符 (\n)。</p>
 
                               </li><li class="listitem">
                                  <p>org.openx.data.jsonserde.JsonSerDe</p>
@@ -280,7 +280,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                   <dl>
                         <dt><span class="term">WITH SERDEPROPERTIES ( '<em>property_name</em>' = '<em>property_value</em>' [, ...] ) ]</span></dt>
                         <dd>
-                           <p>(可选) 指定以逗号分隔的属性名称和值。</p>
+                           <p>（可选）指定以逗号分隔的属性名称和值。</p>
                         </dd>
                      </dl></div>
                   <p>如果省略了 ROW FORMAT，则默认格式为 DELIMITED FIELDS TERMINATED BY '\A'（标题开头）和 LINES TERMINATED BY '\n'（换行符）。</p>
@@ -306,7 +306,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                      </li><li class="listitem">
                         <p>SEQUENCEFILE</p>
                      </li><li class="listitem">
-                        <p>TEXTFILE </p>
+                        <p>TEXTFILE（针对文本文件，包括 JSON 文件）。</p> 
                      </li><li class="listitem">
                         <p>ORC </p>
                      </li><li class="listitem">
@@ -321,14 +321,14 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
              
                <dt id="create-external-table-location"><span class="term">LOCATION <span>{</span> 's3://<em>bucket/folder</em>/' | 's3://<em>bucket/manifest_file</em>'}</span></dt>
                <dd>
-                  <p>包含数据文件的 Simple Storage Service（Amazon S3）桶或文件夹的路径或包含 Simple Storage Service（Amazon S3）对象路径列表的清单文件。桶必须与 Amazon Redshift 集群位于同一 AWS 区域。有关受支持的 AWS 区域的列表，请参阅<a href="./c-using-spectrum.html#c-spectrum-considerations">Amazon Redshift Spectrum 注意事项</a>。</p>
+                  <p>包含数据文件的 Amazon S3 桶或文件夹的路径或包含 Amazon S3 对象路径列表的清单文件。桶必须与 Amazon Redshift 集群位于同一 AWS 区域。有关受支持的 AWS 区域的列表，请参阅<a href="./c-using-spectrum.html#c-spectrum-considerations">Amazon Redshift Spectrum 注意事项</a>。</p>
 
 
                   
                   <p>如果路径指定桶或文件夹，例如 <code class="code">'s3://mybucket/custdata/'</code>，Redshift Spectrum 会扫描指定的桶或文件夹和任意子文件夹中的文件。Redshift Spectrum 将忽略隐藏文件和以句点或下划线开头的文件。</p>
                   <p>如果路径指定清单文件，则 <code class="code">'s3://bucket/manifest_file'</code> 参数必须显式引用单个文件，例如 <code class="code">'s3://mybucket/manifest.txt'</code>。它不能引用键前缀。</p>
                   
-                  <p>清单是 JSON 格式的文本文件，其中列出了要从 Simple Storage Service（Amazon S3）加载的每个文件的 URL 以及文件的大小 (以字节为单位)。URL 包含文件的桶名称和完整对象路径。在清单中指定的文件可以位于不同的桶中，但所有桶都必须位于 Amazon Redshift 集群所在的同一 AWS 区域。如果某个文件被列出两次，那么该文件也会被加载两次。以下示例显示了加载三个文件的清单的 JSON。</p>
+                  <p>清单是 JSON 格式的文本文件，其中列出了要从 Amazon S3 加载的每个文件的 URL 以及文件的大小（以字节为单位）。URL 包含文件的桶名称和完整对象路径。在清单中指定的文件可以位于不同的桶中，但所有桶都必须位于 Amazon Redshift 集群所在的同一 AWS 区域。如果某个文件被列出两次，那么该文件也会被加载两次。以下示例显示了加载三个文件的清单的 JSON。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class=""><span>{</span>
   "entries": [
     <span>{</span>"url":"s3://mybucket-alpha/custdata.1", "meta": <span>{</span> "content_length": 5956875 } },
@@ -346,7 +346,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
     <span>{</span>"url":"s3://mybucket-beta/custdata.1", "meta": <span>{</span> "content_length": 5978675 } }
   ]
 }</code></pre>
-                  <p>要引用使用 UNLOAD 创建的文件，您可以使用通过 <a href="./r_UNLOAD.html">UNLOAD</a> 和 MANIFEST 参数创建的清单。该清单文件与 <a href="./copy-parameters-data-source-s3.html">从 Simple Storage Service（Amazon S3）执行 COPY 操作</a> 的清单文件兼容，但使用不同的密钥。不使用的密钥会被忽略。</p>
+                  <p>要引用使用 UNLOAD 创建的文件，您可以使用通过 <a href="./r_UNLOAD.html">UNLOAD</a> 和 MANIFEST 参数创建的清单。该清单文件与 <a href="./copy-parameters-data-source-s3.html">从 Amazon S3 执行 COPY 操作</a> 的清单文件兼容，但使用不同的密钥。不使用的密钥会被忽略。</p>
                </dd>
              
                <dt><span class="term">TABLE PROPERTIES ( '<em>property_name</em>'='<em>property_value</em>' [, ...] ) </span></dt>
@@ -418,7 +418,7 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                                
                                
                            <ul class="itemizedlist"><li class="listitem"><p>column_count_mismatch_handling</p></li><li class="listitem"><p>invalid_char_handling</p></li><li class="listitem"><p>numeric_overflow_handling</p></li><li class="listitem"><p>replacement_char</p></li><li class="listitem"><p>surplus_char_handling</p></li></ul></div>
-                           <p>有关示例，请参阅 <a href="./r_CREATE_EXTERNAL_TABLE_examples.html#r_CREATE_EXTERNAL_TABLE_examples-data-handling">数据处理示例</a>。</p>
+                           <p>有关示例，请参阅<a href="./r_CREATE_EXTERNAL_TABLE_examples.html#r_CREATE_EXTERNAL_TABLE_examples-data-handling">数据处理示例</a>。</p>
                         </dd>
 
                       
@@ -594,25 +594,25 @@ LOCATION 's3://spectrum-public/lineitem_partition/l_shipdate=1992-01-29';</code>
                       
                         <dt><span class="term">'write.parallel'='on / off’</span></dt>
                         <dd>
-                           <p>一个属性，用于设置是否 CREATE EXTERNAL TABLE AS 应并行写入数据。默认情况下，CREATE EXTERNAL TABLE AS 根据集群中的切片数量将数据并行写入到多个文件。默认选项为打开。当“write.parallel”设置为关闭时，CREATE EXTERNAL TABLE AS 以串行方式将一个或多个数据文件写入到Simple Storage Service（Amazon S3）。该表属性还适用于指向同一外部表的所有后续 INSERT 语句。</p>
+                           <p>一个属性，用于设置是否 CREATE EXTERNAL TABLE AS 应并行写入数据。默认情况下，CREATE EXTERNAL TABLE AS 根据集群中的切片数量将数据并行写入到多个文件。默认选项为打开。当“write.parallel”设置为关闭时，CREATE EXTERNAL TABLE AS 以串行方式将一个或多个数据文件写入到 Amazon S3。该表属性还适用于指向同一外部表的所有后续 INSERT 语句。</p>
                         </dd>
                       
                         <dt><span class="term">‘write.maxfilesize.mb’=‘size’</span></dt>
                         <dd>
-                           <p>设置由 CREATE EXTERNAL TABLE AS 写入到 Simple Storage Service（Amazon S3）中的每个文件的最大大小（以 MB 为单位）的属性。大小必须是介于 5 到 6200 之间的有效整数。默认最大文件大小为 6,200 MB。该表属性还适用于指向同一外部表的所有后续 INSERT 语句。</p>
+                           <p>设置由 CREATE EXTERNAL TABLE AS 写入到 Amazon S3 中的每个文件的最大大小（以 MB 为单位）的属性。大小必须是介于 5 到 6200 之间的有效整数。默认最大文件大小为 6,200 MB。该表属性还适用于指向同一外部表的所有后续 INSERT 语句。</p>
                         </dd>
                       
                         <dt><span class="term">‘write.kms.key.id’=‘<em>value</em>’</span></dt>
                         <dd>
-                           <p>您可以指定一个 AWS Key Management Service 密钥，为 Simple Storage Service（Amazon S3）对象启用服务器端加密（SSE），其中 <em>value</em> 为以下值之一：</p>
+                           <p>您可以指定一个 AWS Key Management Service 密钥，为 Amazon S3 对象启用服务器端加密 (SSE)，其中 <em>value</em> 为以下值之一：</p>
                            <div class="itemizedlist">
                                
-                                                                     <ul class="itemizedlist"><li class="listitem"><p><code class="code">auto</code>，使用存储在 Simple Storage Service（Amazon S3）桶中的默认 AWS KMS 密钥。</p></li><li class="listitem"><p><em>kms-key</em>，用于指定加密数据。</p></li></ul></div>
+                                                                     <ul class="itemizedlist"><li class="listitem"><p><code class="code">auto</code>，使用存储在 Amazon S3 桶中的默认 AWS KMS 密钥。</p></li><li class="listitem"><p><em>kms-key</em>，用于指定加密数据。</p></li></ul></div>
                         </dd>
                       
                         <dt><span class="term"><em>select_statement</em></span></dt>
                         <dd>
-                           <p>通过定义任何查询将一行或多行插入外部表的语句。查询生成的所有行都将根据表定义以文本或 Parquet 格式写入到 Simple Storage Service（Amazon S3）。</p>
+                           <p>通过定义任何查询将一行或多行插入外部表的语句。查询生成的所有行都将根据表定义以文本或 Parquet 格式写入到 Amazon S3。</p>
                         </dd>
                      </dl></div>
                </dd>

@@ -43,7 +43,7 @@
     ]
 }
 </script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#concurrency-scaling-monitoring" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="concurrency-scaling-monitoring">监控并发扩展</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>您可以通过以下方式查看查询运行在主集群还是并发扩展集群上：在 Amazon Redshift 控制台中，导航到<b>集群</b>，选择一个集群。然后选择<b>查询监控</b>选项卡和<b>工作负载并发</b>以查看有关正在运行的查询和排队查询的信息。</p><p>要查找执行时间，请查询 STL_QUERY 表并筛选 <code class="code">concurrency_scaling_status</code> 列。以下查询比较在并发扩展集群上运行的查询与在主集群上运行的查询的队列时间和执行时间。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">SELECT w.service_class AS queue
-, CASE WHEN q.concurrency_scaling_status = 1 THEN'concurrency scaling cluster' ELSE 'main cluster' END as concurrency_scaling_status
+, CASE WHEN q.concurrency_scaling_status = 1 THEN 'concurrency scaling cluster' ELSE 'main cluster' END as concurrency_scaling_status
 , COUNT( * ) AS queries
 , SUM( q.aborted ) AS aborted
 , SUM( ROUND( total_queue_time::NUMERIC / 1000000,2) ) AS queue_secs

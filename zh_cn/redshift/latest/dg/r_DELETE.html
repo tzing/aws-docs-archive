@@ -86,7 +86,7 @@ DELETE [ FROM ] <em><span>{</span> table_name | materialized_view_name }</em>
                <dt><span class="term"> <em>materialized_view_name</em> </span></dt>
                <dd>
                   <p>实体化视图。DELETE 语句适用于用于<a href="./materialized-view-streaming-ingestion.html">串流摄取</a>的实体化视图。只有实体化视图的所有者或对实体化视图具有 DELETE 权限的用户才能从中删除行。</p>
-                  <p>如果行级别安全性（RLS）策略未向用户授予 IGNORE RLS 权限，则您无法在用于串流摄取的实体化视图上运行 DELETE。但有一个例外：如果向执行 DELETE 操作的用户授予了 IGNORE RLS，则此操作会成功运行。有关更多信息，请参阅 <a href="https://docs.aws.amazon.com/redshift/latest/dg/t_rls_ownership.html">RLS 策略拥有权和管理</a>。</p>
+                  <p>如果行级别安全性 (RLS) 策略未向用户授予 IGNORE RLS 权限，则您无法在用于串流摄取的实体化视图上运行 DELETE。但有一个例外：如果向执行 DELETE 操作的用户授予了 IGNORE RLS，则此操作会成功运行。有关更多信息，请参阅 <a href="https://docs.aws.amazon.com/redshift/latest/dg/t_rls_ownership.html">RLS 策略拥有权和管理</a>。</p>
                </dd>
              
                <dt><span class="term">USING <em>table_name</em>, ...</span></dt>

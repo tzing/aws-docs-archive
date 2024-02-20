@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_RATIO_TO_REPORT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_RATIO_TO_REPORT-synopsis">语法</a><a href="#r_WF_RATIO_TO_REPORT-arguments">Arguments</a><a href="#r_WF_RATIO_TO_REPORT-return-type">返回类型</a><a href="#r_WF_RATIO_TO_REPORT-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_RATIO_TO_REPORT">RATIO_TO_REPORT 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>计算某个窗口或分区中的某个值与所有值的和的比率。使用以下公式确定报表值的比率：</p><p><code class="code">value of </code><em>ratio_expression</em> <code class="code">argument for the current row / sum of</code> <em>ratio_expression</em> <code class="code">argument for the window or partition</code></p><p>以下数据集说明了此公式的使用：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">Row#	Value	Calculation	RATIO_TO_REPORT
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_RATIO_TO_REPORT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_RATIO_TO_REPORT-synopsis">语法</a><a href="#r_WF_RATIO_TO_REPORT-arguments">参数</a><a href="#r_WF_RATIO_TO_REPORT-return-type">返回类型</a><a href="#r_WF_RATIO_TO_REPORT-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_RATIO_TO_REPORT">RATIO_TO_REPORT 开窗函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>计算某个窗口或分区中的某个值与所有值的和的比率。使用以下公式确定报表值的比率：</p><p><code class="code">value of </code><em>ratio_expression</em> <code class="code">argument for the current row / sum of</code> <em>ratio_expression</em> <code class="code">argument for the window or partition</code></p><p>以下数据集说明了此公式的使用：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">Row#	Value	Calculation	RATIO_TO_REPORT
 1	2500	(2500)/(13900)	0.1798
 2	2600	(2600)/(13900)	0.1870
 3	2800	(2800)/(13900)	0.2014
@@ -60,7 +60,7 @@
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">RATIO_TO_REPORT ( <em>ratio_expression</em> )
 OVER ( [ PARTITION BY <em>partition_expression</em> ] )</code></pre>
           
-            <h2 id="r_WF_RATIO_TO_REPORT-arguments">Arguments</h2>
+            <h2 id="r_WF_RATIO_TO_REPORT-arguments">参数</h2>
 
 
             <div class="variablelist">
@@ -92,25 +92,48 @@ OVER ( [ PARTITION BY <em>partition_expression</em> ] )</code></pre>
           
             <h2 id="r_WF_RATIO_TO_REPORT-examples">示例</h2>
 
-
-            <p>以下示例计算每个卖家的销售数量的比率：</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select sellerid, qty, ratio_to_report(qty) 
-over (partition by sellerid) 
-from winsales;
-
-sellerid	qty		ratio_to_report
+            <p>以下各示例使用 WINSALES 表。有关如何创建 WINSALES 表的信息，请参阅<a href="./c_Window_functions.html#r_Window_function_example">窗口函数示例的示例表</a>。</p>
+            
+            <p>以下示例计算每行卖家数量占所有卖家总数量的比率值。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select sellerid, qty, ratio_to_report(qty) 
+over()
+from winsales
+order by sellerid;</code>
+<code class="computeroutput" copy="false">
+sellerid  qty    ratio_to_report
+--------------------------------------
+1         30     0.13953488372093023	
+1         10     0.046511627906976744	
+1         10     0.046511627906976744	
+2         20     0.09302325581395349	
+2         20     0.09302325581395349	
+3         30     0.13953488372093023	
+3         20     0.09302325581395349	
+3         15     0.06976744186046512	
+3         10     0.046511627906976744	
+4         10     0.046511627906976744	
+4         40     0.18604651162790697	
+</code></code></pre>
+            
+            <p>以下示例按分区计算每个卖家的销售数量的比率。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql "><code class="userinput">select sellerid, qty, ratio_to_report(qty) 
+over(partition by sellerid) 
+from winsales;</code>
+<code class="computeroutput" copy="false">
+sellerid   qty    ratio_to_report
 -------------------------------------------
-2		20.12312341      0.5
-2		20.08630000      0.5
-4		10.12414400      0.2
-4		40.23000000      0.8
-1		30.37262000      0.6
-1		10.64000000      0.21
-1		10.00000000      0.2
-3		10.03500000      0.13
-3		15.14660000      0.2
-3		30.54790000      0.4
-3		20.74630000      0.27
-</code></pre>
-            <p>有关 WINSALES 表的说明，请参阅<a href="./c_Window_functions.html#r_Window_function_example">窗口函数示例的示例表</a>。</p>
+2          20     0.5	
+2          20     0.5	
+4          40     0.8	
+4          10     0.2	
+1          10     0.2	
+1          30     0.6	
+1          10     0.2	
+3          10     0.13333333333333333	
+3          15     0.2	
+3          20     0.26666666666666666	
+3          30     0.4	
+</code></code></pre>
+
+            
          <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_WF_RANK.html">RANK</div><div id="next" class="next-link" accesskey="n" href="./r_WF_ROW_NUMBER.html">ROW_NUMBER</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_WF_RATIO_TO_REPORT.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_WF_RATIO_TO_REPORT.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

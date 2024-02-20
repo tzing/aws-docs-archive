@@ -61,7 +61,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
 
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><em>expression</em> [ NOT ] SIMILAR TO <em>pattern</em> [ ESCAPE '<em>escape_char</em>' ]</code></pre>
                 
-                  <h2 id="pattern-matching-conditions-similar-to-arguments">Arguments</h2>
+                  <h2 id="pattern-matching-conditions-similar-to-arguments">参数</h2>
 
 
                   <div class="variablelist">
@@ -93,7 +93,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
                   <p>如果 <em>pattern</em> 不包含元字符，则模式仅表示字符串本身。</p>
                   <p>其中一个字符表达式可以是 CHAR 或 VARCHAR 数据类型。如果它们不同，Amazon Redshift 会将 <em>pattern</em> 转换为 <em>expression</em> 的数据类型。</p>
                   <p>SIMILAR TO 支持下列模式匹配元字符：</p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c15c13c11"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c15c13c11"><thead>
                            <tr>
                               <th>操作符 </th>
                               <th>描述 </th>
@@ -149,7 +149,7 @@ select count(*) from event where eventname LIKE '%Ring%' OR eventname LIKE '%Die
 
 
                   <p>下表显示了使用 SIMILAR TO 的模式匹配的示例：</p>
-                  <div class="table-container"><div class="table-contents"><table id="w317aac45b7c13c15c15c15b5"><thead>
+                  <div class="table-container"><div class="table-contents"><table id="w319aac47b7c13c15c15c15b5"><thead>
                            <tr>
                               <th>表达式 </th>
                               <th>返回值 </th>

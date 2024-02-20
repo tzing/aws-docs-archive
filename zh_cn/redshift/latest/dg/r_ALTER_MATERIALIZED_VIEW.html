@@ -47,7 +47,7 @@
 
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ALTER MATERIALIZED VIEW <em>mv_name</em>
 [ AUTO REFRESH <span>{</span> YES | NO } ]
-[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [FOR DATASHARES] ];</code></pre>
+[ ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [FOR DATASHARES] ];</code></pre>
 
         
 
@@ -56,6 +56,7 @@
 
          <div class="variablelist">
              
+             
     
              
              
@@ -63,18 +64,29 @@
 
 
          <dl>
+               <dt><span class="term"><em>mv_name</em></span></dt>
+               <dd><p>要更改的实体化视图的名称。</p></dd>
+             
                <dt><span class="term">AUTO REFRESH <span>{</span> YES | NO }</span></dt>
                <dd>
                   <p>开启或关闭实体化视图的自动刷新的子句。有关自动刷新实体化视图的更多信息，请参阅<a href="./materialized-view-refresh.html">刷新实体化视图</a>。</p></dd>
              
-               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF }</span></dt>
-               <dd>
-                  <p>开启或关闭实体化视图的行级安全性的子句。开启行级安全性后，您只能读取行级策略允许访问的行。如果没有任何策略授予用户访问表或视图的权限，则用户无法看到任何记录。只有超级用户和拥有 <code class="code">sys:secadmin</code> 角色的用户或角色才能设置 ROW LEVEL SECURITY 子句。有关更多信息，请参阅<a href="./r_CREATE_RLS_POLICY.html">CREATE RLS POLICY</a>。</p></dd>
-             
-               <dt><span class="term">FOR DATASHARES</span></dt>
-               <dd><p>一个子句，用于确定实体化视图是否受通过数据共享实施的 RLS 保护。原定设置情况下，受 RLS 保护的实体化视图也受通过数据共享实施的 RLS 保护。</p>
-
+               <dt><span class="term">ROW LEVEL SECURITY <span>{</span> ON | OFF } [ CONJUNCTION TYPE <span>{</span> AND | OR } ] [ FOR DATASHARES ]</span></dt>
+               <dd><p>一个对关系开启或关闭行级安全性的子句。</p>
+                  <p>在为关系开启行级安全性后，您只能读取行级安全策略允许您访问的行。如果没有策略向您授予对关系的访问权限，您将看不到关系中的任何行。只有超级用户和拥有 <code class="code">sys:secadmin</code> 角色的用户或角色才能设置 ROW LEVEL SECURITY 子句。有关更多信息，请参阅<a href="./t_rls.html">行级别安全性</a>。</p>
+                  <div class="itemizedlist">
+                      
+                      
+                  <ul class="itemizedlist"><li class="listitem"><p>[ CONJUNCTION TYPE <span>{</span> AND | OR } ] </p>
+                        <p>一个允许您为关系选择行级安全策略的联接类型的子句。将多个行级安全策略附加到关系时，可以将这些策略与 AND 或 OR 子句合并。默认情况下，Amazon Redshift 将 RLS 策略与 AND 子句合并。具有 <code class="code">sys:secadmin</code> 角色的超级用户、用户或角色可以使用此子句为关系定义行级安全策略的联接类型。有关更多信息，请参阅<a href="./t_rls_combine_policies.html">为每个用户组合多个策略</a>。</p></li><li class="listitem">
+                        <p>FOR DATASHARES</p>
+                        <p> 一个子句，用于确定是否可以通过数据共享访问受 RLS 保护的关系。默认情况下，无法通过数据共享访问受 RLS 保护的关系。使用此子句运行的 ALTER MATERIALIZED VIEW ROW LEVEL SECURITY 命令只会影响关系的数据共享可访问性属性。ROW LEVEL SECURITY 属性未更改。</p>
+                        <p> 如果您允许通过数据共享访问受 RLS 保护的关系，则该关系在使用者端数据共享数据库中没有行级安全性。该关系在生产者端保留其 RLS 属性。</p>
+                     </li></ul></div>
                </dd>
+             
+               <dt><span class="term">SPECTRUM MAX ERRORS <em>number_of_errors</em></span></dt>
+               <dd><p> 一个子句，指定取消实体化视图中的查询之前要接受的最大错误数。<em>number_of_errors</em> 接受整数。负值会关闭最大错误处理。结果已记录在 <a href="./r_SVL_SPECTRUM_SCAN_ERROR.html">SVL_SPECTRUM_SCAN_ERROR</a> 中。</p> </dd>
             </dl></div>
 
        

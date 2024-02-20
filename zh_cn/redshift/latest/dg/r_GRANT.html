@@ -42,7 +42,25 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">语法</a><a href="#r_GRANT-parameters">参数</a><a href="#r_GRANT-usage-notes-link">使用说明</a><a href="#r_GRANT-examples-link">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>为用户或用户组定义访问权限。</p><p>权限包括各种访问选项，例如读取表和视图中的数据、写入数据、创建表和删除表的功能。使用此命令可授予对表、数据库、架构、函数、过程、语言或列的特定权限。要撤销对数据库对象的权限，请使用 <a href="./r_REVOKE.html">REVOKE</a> 命令。</p><p>权限还包括各种访问选项，例如将对象或使用者添加到数据共享或从数据共享中删除对象或使用者的能力。要向用户或用户组的数据共享中添加数据库对象或从中删除数据库对象，请使用 ALTER 权限。同样，要从数据共享中添加或删除使用者，请使用 SHARE 权限。要撤销对数据库对象的权限，请使用 <a href="./r_REVOKE.html">REVOKE</a> 命令。您只能向用户和用户组授予 ALTER 和 SHARE 权限。</p><p>您还可以授予角色来管理数据库权限，以及控制用户可以对您的数据执行的操作。通过定义角色并向用户分配角色，您可以限制这些用户能够执行的操作，例如限制用户只能使用 CREATE TABLE 和 INSERT 命令。有关 CREATE ROLE 命令的更多信息，请参阅 <a href="./r_CREATE_ROLE.html">CREATE ROLE</a>。Amazon Redshift 有一些系统定义的角色，您也可以使用这些角色向用户授予特定权限。有关更多信息，请参阅<a href="./r_roles-default.html">Amazon Redshift 系统定义的角色</a>。</p><p>您只能将对于外部架构的 GRANT 或 REVOKE USAGE 权限授予使用 ON SCHEMA 语法的数据库用户和用户组。将 ON EXTERNAL SCHEMA 与 AWS Lake Formation 搭配使用时，您只能向 AWS Identity and Access Management（IAM）角色授予 GRANT 和 REVOKE 权限。有关权限的列表，请参阅“语法”。</p><p>对于存储过程，唯一可以授予的权限是 EXECUTE。</p><p>您不能在以下事务数据块内的（外部资源）上运行 GRANT：((BEGIN ... END)。有关事务的更多信息，请参阅 <a href="./c_serial_isolation.html">可序列化的隔离</a>。</p><p>要查看已向用户授予了数据库的哪些权限，请使用 <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>。要查看已向用户授予了针对架构的哪些权限，请使用 <a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a>。要查看已向用户授予了表的哪些权限，请使用 <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_GRANT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_GRANT-synopsis">语法</a><a href="#r_GRANT-parameters">参数</a><a href="#r_GRANT-usage-notes-link">使用说明</a><a href="#r_GRANT-examples-link">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_GRANT">GRANT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>为用户或角色定义访问权限。</p><p>权限包括各种访问选项，例如读取表和视图中的数据、写入数据、创建表和删除表的功能。使用此命令可授予对表、数据库、架构、函数、过程、语言或列的特定权限。要撤销对数据库对象的权限，请使用 <a href="./r_REVOKE.html">REVOKE</a> 命令。</p><p>权限还包括以下数据共享生产者访问选项：</p><div class="itemizedlist">
+          
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p> 向使用者命名空间和账户授予数据共享访问权限。</p>
+         </li><li class="listitem">
+            <p> 通过在数据共享中添加或删除对象来授予更改数据共享的权限。</p>
+         </li><li class="listitem">
+            <p> 通过在数据共享中添加或删除使用者命名空间来授予共享数据共享的权限。</p>
+         </li></ul></div><p>数据共享使用者访问选项如下：</p><div class="itemizedlist">
+          
+         
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p>向用户授予对通过数据共享创建的数据库或指向此类数据库的外部架构的完全访问权限。</p>
+         </li><li class="listitem">
+            <p>向用户授予对通过数据共享创建的数据库的对象级权限，就像对本地数据库对象一样。要授予此级别的权限，在从数据共享创建数据库时必须使用 WITH PERMISSIONS 子句。有关更多信息，请参阅<a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>。</p>
+         </li></ul></div><p>有关数据共享权限的更多信息，请参阅<a href="./share_datashare.html">共享数据共享</a>。</p><p>您还可以授予角色来管理数据库权限，以及控制用户可以对您的数据执行的操作。通过定义角色并向用户分配角色，您可以限制这些用户能够执行的操作，例如限制用户只能使用 CREATE TABLE 和 INSERT 命令。有关 CREATE ROLE 命令的更多信息，请参阅 <a href="./r_CREATE_ROLE.html">CREATE ROLE</a>。Amazon Redshift 有一些系统定义的角色，您也可以使用这些角色向用户授予特定权限。有关更多信息，请参阅<a href="./r_roles-default.html">Amazon Redshift 系统定义的角色</a>。</p><p>您只能将对于外部架构的 GRANT 或 REVOKE USAGE 权限授予使用 ON SCHEMA 语法的数据库用户和用户组。将 ON EXTERNAL SCHEMA 与 AWS Lake Formation 搭配使用时，您只能向 AWS Identity and Access Management (IAM) 角色授予 GRANT 和 REVOKE 权限。有关权限的列表，请参阅“语法”。</p><p>对于存储过程，唯一可以授予的权限是 EXECUTE。</p><p>您不能在以下事务数据块内的（外部资源）上运行 GRANT：(BEGIN ... END)。有关事务的更多信息，请参阅 <a href="./c_serial_isolation.html">可序列化的隔离</a>。</p><p>要查看已向用户授予了数据库的哪些权限，请使用 <a href="./r_HAS_DATABASE_PRIVILEGE.html">HAS_DATABASE_PRIVILEGE</a>。要查看已向用户授予了针对架构的哪些权限，请使用 <a href="./r_HAS_SCHEMA_PRIVILEGE.html">HAS_SCHEMA_PRIVILEGE</a>。要查看已向用户授予了表的哪些权限，请使用 <a href="./r_HAS_TABLE_PRIVILEGE.html">HAS_TABLE_PRIVILEGE</a>。</p>
          <h2 id="r_GRANT-synopsis">语法</h2>
          <p></p>
          
@@ -87,11 +105,46 @@ GRANT <span>{</span> <span>{</span> SELECT | ALTER | DROP | DELETE | INSERT }  [
 
 GRANT <span>{</span> <span>{</span> CREATE | ALTER | DROP }  [, ...] | ALL [ PRIVILEGES ] }
     ON EXTERNAL SCHEMA <em>schema_name</em> [, ...]
-    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="授予数据共享权限" id="grant-datashare-syntax" expanded="false"><p>以下是使用 GRANT 授予 Amazon Redshift 上的数据共享权限的语法。在此情况下，您只能向用户和组授予 ALTER 和 SHARE 权限。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
+    TO <span>{</span> IAM_ROLE <em>iam_role</em> } [, ...] [ WITH GRANT OPTION ]                </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="授予数据共享权限" id="grant-datashare-syntax" expanded="false">
+               <h6>生产者端数据共享权限</h6>
+               <p>以下是使用 GRANT 向用户或角色授予 ALTER 或 SHARE 权限的语法。用户可以使用 ALTER 权限更改数据共享，也可以向具有 SHARE 权限的使用者授予使用权限。您只能向用户和角色授予对数据共享的 ALTER 和 SHARE 权限。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT <span>{</span> ALTER | SHARE } ON DATASHARE <em>datashare_name</em>
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <code class="code" copy="true">group_name</code> | PUBLIC } [, ...]</code></pre><p>以下是使用 GRANT 授予 Amazon Redshift 上的数据共享使用权限的语法。您可以使用 USAGE 权限向使用者授予对数据共享的访问权限。您不能将此权限授予用户或用户组。此权限也不支持 GRANT 语句的 WITH GRANT OPTION。只有具有先前针对数据共享授予了他们 SHARE 权限的用户或用户组才能运行此类型的 GRANT 语句。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE
     ON DATASHARE <em>datashare_name</em>
-    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>以下是如何向 Lake Formation 账户授予数据共享使用权的一个示例。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre><p>以下是根据数据共享创建的特定数据库或 schema 的 GRANT 数据共享使用权限的语法。此 USAGE 权限不会将使用权限授予不是从指定数据共享创建的数据库。您只能将针对数据共享的权限 GRANT 或 REVOKE ALTER 或 SHARE 给用户和用户组。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
-    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="授予机器学习权限" id="grant-model-syntax" expanded="false"><p>以下是有关 Amazon Redshift 上机器学习模型权限的语法。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
+    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>以下是如何向 Lake Formation 账户授予数据共享使用权的一个示例。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>            
+               <h6>使用者端数据共享权限</h6>
+               <p>以下是根据数据共享创建的特定数据库或 schema 的 GRANT 数据共享使用权限的语法。</p><p>使用者访问通过数据共享创建的数据库所需的其他权限会有所不同，具体取决于用于从数据共享创建数据库的 CREATE DATABASE 命令是否使用 WITH PERMISSIONS 子句。有关 CREATE DATABASE 命令和 WITH PERMISSIONS 子句的更多信息，请参阅<a href="./r_CREATE_DATABASE.html">CREATE DATABASE</a>。</p>
+               <h6>未使用 WITH PERMISSIONS 子句创建的数据库</h6>
+               <p>在不使用 WITH PERMISSIONS 子句的情况下，对通过数据共享创建的数据库授予 USAGE 权限时，无需对共享数据库中的对象单独授予权限。在不使用 WITH PERMISSIONS 子句的情况下，获准使用从数据共享创建的数据库的实体可以自动访问数据库中的所有对象。</p>
+             
+               <h6>使用 WITH PERMISSIONS 子句创建的数据库</h6>
+               <p>如果共享数据库是使用 WITH PERMISSIONS 子句从数据共享中创建的，则在授予数据库 USAGE 权限时，使用者端实体仍必须获得共享数据库中数据库对象的相关权限才能访问这些对象，就像对本地数据库对象授予权限一样。要向通过数据共享创建的数据库中的对象授予权限，请使用由三部分组成的语法 <code class="code">database_name.schema_name.object_name</code>。要向外部架构中指向共享数据库中共享架构的对象授予权限，请使用由两部分组成的语法 <code class="code">schema_name.object_name</code>。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE ON <span>{</span> DATABASE <em>shared_database_name</em> [, ...] | SCHEMA <em>shared_schema</em>}
+    TO <span>{</span> <em>username</em> | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]</code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="授予范围限定的权限 " id="grant-scoped-syntax" expanded="false"><p>使用范围限定的权限来更改用户或角色在数据库或架构范围的权限。</p><p>当您授予或撤销权限时，范围限定的权限适用于选定范围内的对象，也适用于在授予或撤销权限后创建的新对象。例如，授予某个角色从数据库的表中进行选择的范围限定权限，可以让具有该角色的用户从将来创建的表中进行选择，也可以让他们从数据库中当前存在的表中进行选择。</p><p>您可以使用范围限定的权限为通过数据共享创建的共享数据库设置默认权限。被授予对共享数据库的范围限定权限的使用者端数据共享用户将自动获得对生产者端添加到数据共享的任何新对象的这些权限。</p><p>以下是向用户和角色授予范围限定的权限的语法。有关范围限定权限的更多信息，请参阅<a href="./t_scoped-permissions.html">范围限定的权限 </a>。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT <span>{</span> CREATE | USAGE | ALTER } [,...] | ALL [ PRIVILEGES ] }
+FOR SCHEMAS IN
+DATABASE db_name 
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]
+
+GRANT 
+<span>{</span> <span>{</span> SELECT | INSERT | UPDATE | DELETE | DROP | ALTER | TRUNCATE | REFERENCES } [, ...] } | ALL [PRIVILEGES] } }
+FOR TABLES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name} [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR FUNCTIONS IN 
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
+FOR PROCEDURES IN
+<span>{</span>SCHEMA schema_name [DATABASE db_name ] | DATABASE db_name }
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name | } [, ...]
+
+GRANT USAGE
+FOR LANGUAGES IN
+<span>{</span>DATABASE db_name}
+TO <span>{</span> username [ WITH GRANT OPTION ] | ROLE role_name } [, ...]  </code></pre></awsui-expandable-section><awsui-expandable-section variant="container" header="授予机器学习权限" id="grant-model-syntax" expanded="false"><p>以下是有关 Amazon Redshift 上机器学习模型权限的语法。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT CREATE MODEL
     TO <span>{</span> <em>username</em> [ WITH GRANT OPTION ] | ROLE <em>role_name</em> | GROUP <em>group_name</em> | PUBLIC } [, ...]
 
 GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
@@ -102,6 +155,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     <span>{</span> CREATE USER | DROP USER | ALTER USER |
     CREATE SCHEMA | DROP SCHEMA |
     ALTER DEFAULT PRIVILEGES |
+    ACCESS CATALOG | 
     CREATE TABLE | DROP TABLE | ALTER TABLE |
     CREATE OR REPLACE FUNCTION | CREATE OR REPLACE EXTERNAL FUNCTION |
     DROP FUNCTION |
@@ -110,7 +164,7 @@ GRANT <span>{</span> EXECUTE | ALL [ PRIVILEGES ] }
     CREATE MODEL | DROP MODEL |
     CREATE DATASHARE | ALTER DATASHARE | DROP DATASHARE |
     CREATE LIBRARY | DROP LIBRARY |
-    CREATE ROLE | DROP ROLE
+    CREATE ROLE | DROP ROLE |
     TRUNCATE TABLE
     VACUUM | ANALYZE | CANCEL }[, ...]
   }
@@ -182,8 +236,13 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
 
                    
             
+            
+    
+            
              
 
+             
+            
              
 
             
@@ -208,7 +267,7 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>授予使用 INSERT 语句或 COPY 语句将数据加载到表中的权限。</p>
                </dd>
              
-               <dt id="grant-update"><span class="term">更新 </span></dt>
+               <dt id="grant-update"><span class="term">UPDATE </span></dt>
                <dd>
                   <p>授予使用 UPDATE 语句更新表列的权限。UPDATE 操作也需要 SELECT 权限，因为这些操作必须引用表列才能确定要更新哪些行或者计算列的新值。</p>
                </dd>
@@ -218,21 +277,14 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>授予从表中删除数据行的权限。DELETE 操作也需要 SELECT 权限，因为这些操作必须引用表列才能确定要删除哪些行。</p>
                </dd>
              
+               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dd>
+                  <p>授予删除表的权限。此权限仅在 Amazon Redshift 以及为 Lake Formation 启用的 AWS Glue Data Catalog 中适用。</p>
+               </dd>
+             
                <dt id="grant-references"><span class="term">REFERENCES </span></dt>
                <dd>
                   <p>授予创建外键约束的权限。您必须授予对被引用表和引用表的此权限；否则，用户将无法创建约束。</p>
-               </dd>
-             
-               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
-               <dd>
-                  <p>授予截断表的权限。如果没有此权限，则只有表的拥有者或超级用户才可以截断表。有关 TRUNCATE 命令的更多信息，请参阅 <a href="./r_TRUNCATE.html">TRUNCATE</a>。</p>
-               </dd>
-             
-               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
-               <dd>
-                  <p>一次性向指定的用户或用户组授予所有可用权限。PRIVILEGES 关键字是可选的。</p>
-                  <p>GRANT ALL ON SCHEMA 不会授予对外部架构的 CREATE 权限。</p>
-                  <p>您可以针对为 Lake Formation 启用的 AWS Glue Data Catalog 中的表授予 ALL 权限。在这种情况下，各个权限（如 SELECT、ALTER 等）将记录在 Data Catalog 中。</p>
                </dd>
              
                <dt id="grant-alter"><span class="term">ALTER</span></dt>
@@ -253,12 +305,19 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                      </li><li class="listitem">
                         <p>对于外部表，ALTER 授予对为 Lake Formation 启用的 AWS Glue Data Catalog 中的表进行更改的权限。此权限仅在使用 Lake Formation 时适用。</p>
                      </li></ul></div>
-
+                  
                </dd>
              
-               <dt id="grant-drop"><span class="term">DROP</span></dt>
+               <dt id="grant-truncate"><span class="term">TRUNCATE</span></dt>
                <dd>
-                  <p>授予删除表的权限。此权限仅在 Amazon Redshift 以及为 Lake Formation 启用的 AWS Glue Data Catalog 中适用。</p>
+                  <p>授予截断表的权限。如果没有此权限，则只有表的拥有者或超级用户才可以截断表。有关 TRUNCATE 命令的更多信息，请参阅 <a href="./r_TRUNCATE.html">TRUNCATE</a>。</p>
+               </dd>
+             
+               <dt id="grant-all"><span class="term">ALL [ PRIVILEGES ] </span></dt>
+               <dd>
+                  <p>一次性向指定的用户或用户组授予所有可用权限。PRIVILEGES 关键字是可选的。</p>
+                  <p>GRANT ALL ON SCHEMA 不会授予对外部架构的 CREATE 权限。</p>
+                  <p>您可以针对为 Lake Formation 启用的 AWS Glue Data Catalog 中的表授予 ALL 权限。在这种情况下，各个权限（如 SELECT、ALTER 等）将记录在 Data Catalog 中。</p>
                </dd>
              
                <dt id="assumerole"><span class="term">ASSUMEROLE</span></dt>
@@ -334,7 +393,7 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                   <p>将 PUBLIC 授予 Lake Formation EXTERNAL TABLE 会将权限授予 Lake Formation <em>所有人</em>组。</p>
                </dd>
              
-               <dt id="grant-create"><span class="term">创建 </span></dt>
+               <dt id="grant-create"><span class="term">CREATE </span></dt>
                <dd>
                   <p>根据数据库对象，向用户或用户组授予以下权限：</p>
                   <div class="itemizedlist">
@@ -400,7 +459,7 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                <dd>
 
                   <p>授予对某种语言的 USAGE 权限。</p>
-                  <p>需要 USAGE ON LANGUAGE 权限才能运行 <a href="./r_CREATE_FUNCTION.html">CREATE FUNCTION</a> 命令来创建用户定义函数（UDF，User-Defined Function）。有关更多信息，请参阅<a href="./udf-security-and-privileges.html">UDF 安全性和权限</a>。</p>
+                  <p>需要 USAGE ON LANGUAGE 权限才能运行 <a href="./r_CREATE_FUNCTION.html">CREATE FUNCTION</a> 命令来创建用户定义函数 (UDF)。有关更多信息，请参阅<a href="./udf-security-and-privileges.html">UDF 安全性和权限</a>。</p>
 
                   <p>需要 USAGE ON LANGUAGE 权限才能通过运行 <a href="./r_CREATE_PROCEDURE.html">CREATE PROCEDURE</a> 命令来创建存储过程。有关更多信息，请参阅<a href="./stored-procedure-security-and-privileges.html">存储过程的安全性和权限 </a>。</p>
                   <p>对于 Python UDF，使用 <code class="code">plpythonu</code>。对于 SQL UDF，使用 <code class="code">sql</code>。对于存储过程，请使用 <code class="code">plpgsql</code>。</p>
@@ -443,12 +502,23 @@ TO RLS POLICY <em>policy_name</em> [, ...]</code></pre></awsui-expandable-sectio
                         <p>授予对在指定数据共享中创建的指定架构的指定权限。</p>
                      </dd>
                    
+               <dt><span class="term">FOR <span>{</span> SCHEMAS | TABLES | FUNCTIONS | PROCEDURES | LANGUAGES } IN </span></dt>
+               <dd>
+                  <p>指定要向其授予权限的数据库对象。IN 后面的参数定义了所授予权限的范围。</p>
+               </dd>
+             
                <dt><span class="term">CREATE MODEL</span></dt>
                <dd><p>向特定用户或用户组授予 CREATE MODEL 权限。</p></dd>
              
                <dt><span class="term">ON MODEL <em>model_name</em></span></dt>
 
                <dd><p>授予对特定模型的 EXECUTE 权限。</p></dd>
+             
+               <dt><span class="term">ACCESS CATALOG</span></dt>
+               <dd>
+                  <p>授予查看该角色可访问对象的相关元数据的权限。</p>
+               </dd>
+             
                <dt><span class="term"><span>{</span> role } [, ...]</span></dt>
                <dd><p>要向其他角色、用户或 PUBLIC 授予的角色。</p>
                   <p>PUBLIC 表示一个始终包含所有用户的组。单个用户的权限包含向 PUBLIC 授予的权限、向用户所属的所有组授予的权限以及向用户单独授予的任何权限。</p>

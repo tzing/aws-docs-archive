@@ -42,7 +42,39 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_rls_combine_policies" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_rls_combine_policies">为每个用户组合多个策略</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift 中的 RLS 支持为每个用户和对象附加多个策略，前提是所有附加的策略都具有相同的表别名。当为一个用户定义了多个策略时，Amazon Redshift 会使用 AND 语法应用所有策略。一个表上的多个策略可以与您关联。将多个策略直接附加到您，或是您属于多个角色，并且这些角色附加了不同策略。</p><p>由于附加到用户的所有 RLS 策略同时处于活动状态，因此可能会应用相互排斥的 RLS 策略，阻止您查看不打算隐藏的数据。考虑以下示例：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_rls_combine_policies" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_rls_combine_policies">为每个用户组合多个策略</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Amazon Redshift 中的 RLS 支持为每个用户和对象附加多个策略。当为一个用户定义了多个策略时，Amazon Redshift 会根据表的 RLS CONJUNCTION TYPE 设置，使用 AND 或 OR 语法应用所有策略。有关联接类型的更多信息，请参阅<a href="./r_ALTER_TABLE.html">ALTER TABLE</a>。</p><p>一个表上的多个策略可以与您关联。将多个策略直接附加到您，或是您属于多个角色，并且这些角色附加了不同策略。</p><p>当多个策略应限制给定关系中的行访问权限时，可以将该关系的 RLS CONJUNCTION TYPE 设置为 AND。考虑以下示例。Alice 只能看到策略指定的“catname”为 NBA 的体育赛事。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
+CREATE ROLE analyst;
+CREATE USER alice WITH PASSWORD 'Name_is_alice_1';
+GRANT ROLE analyst TO alice;
+
+-- Create an RLS policy that only lets the user see sports.
+CREATE RLS POLICY policy_sports
+WITH (catgroup VARCHAR(10))
+USING (catgroup = 'Sports');
+
+-- Create an RLS policy that only lets the user see NBA.
+CREATE RLS POLICY policy_nba
+WITH (catname VARCHAR(10))
+USING (catname = 'NBA');
+
+-- Attach both to the analyst role.
+ATTACH RLS POLICY policy_sports ON category TO ROLE analyst;
+ATTACH RLS POLICY policy_nba ON category TO ROLE analyst;
+
+-- Activate RLS on the category table with AND CONJUNCTION TYPE. 
+ALTER TABLE category ROW LEVEL SECURITY ON CONJUNCTION TYPE AND;
+
+-- Change session to Alice.
+SET SESSION AUTHORIZATION alice;
+
+-- Select all from the category table.
+SELECT catgroup, catname
+FROM category;
+
+ catgroup | catname 
+---------+---------
+ Sports   | NBA
+(1 row)</code></pre><p>当多个策略应允许用户查看给定关系中的更多行时，用户可以将该关系的 RLS CONJUNCTION TYPE 设置为 OR。考虑以下示例。Alice 只能看到策略指定的“Concerts”和“Sports”。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">-- Create an analyst role and grant it to a user named Alice.
 CREATE ROLE analyst;
 CREATE USER alice WITH PASSWORD 'Name_is_alice_1';
 GRANT ROLE analyst TO alice;
@@ -59,11 +91,10 @@ USING (catgroup = 'Sports');
 
 -- Attach both to the analyst role.
 ATTACH RLS POLICY policy_concerts ON category TO ROLE analyst;
-
 ATTACH RLS POLICY policy_sports ON category TO ROLE analyst;
 
--- Activate RLS on the category table. 
-ALTER TABLE category ROW LEVEL SECURITY ON;
+-- Activate RLS on the category table with OR CONJUNCTION TYPE. 
+ALTER TABLE category ROW LEVEL SECURITY ON CONJUNCTION TYPE OR;
 
 -- Change session to Alice.
 SET SESSION AUTHORIZATION alice;
@@ -71,4 +102,10 @@ SET SESSION AUTHORIZATION alice;
 -- Select all from the category table.
 SELECT catgroup, count(*)
 FROM category
-GROUP BY catgroup ORDER BY catgroup;</code></pre><p>由于分析师角色附加了两个相互冲突的 RLS 策略，因此拥有 RLS 角色的用户在查询类别表时不会看到任何结果。</p><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_rls_statements.html">在 SQL 语句中使用 RLS 策略</div><div id="next" class="next-link" accesskey="n" href="./t_rls_ownership.html">RLS 策略所有权和管理</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+GROUP BY catgroup ORDER BY catgroup;
+
+ catgroup | count 
+---------+-------
+ Concerts |  3
+ Sports   |  5
+(2 rows)</code></pre><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./t_rls_statements.html">在 SQL 语句中使用 RLS 策略</div><div id="next" class="next-link" accesskey="n" href="./t_rls_ownership.html">RLS 策略所有权和管理</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_rls_combine_policies.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

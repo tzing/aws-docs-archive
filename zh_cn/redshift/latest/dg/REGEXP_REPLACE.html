@@ -48,13 +48,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_REPLACE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#REGEXP_REPLACE-synopsis">语法</a><a href="#REGEXP_REPLACE-arguments">Arguments</a><a href="#REGEXP_REPLACE-return-type">返回类型</a><a href="#REGEXP_REPLACE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="REGEXP_REPLACE">REGEXP_REPLACE 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>在字符串中搜索正则表达式模式并将该模式的每个匹配项替换为指定字符串。REGEXP_REPLACE 与 <a href="./r_REPLACE.html">REPLACE 函数</a>相似，只不过前者可让您在字符串中搜索正则表达式模式。有关正则表达式的更多信息，请参阅 <a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p><p>REGEXP_REPLACE 与 <a href="./r_TRANSLATE.html">TRANSLATE 函数</a>和 <a href="./r_REPLACE.html">REPLACE 函数</a>相似，只不过 TRANSLATE 进行多次单字符替换，REPLACE 一次性将整个字符串替换为其他字符串，而 REGEXP_REPLACE 可让您在字符串中搜索正则表达式模式。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_REPLACE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#REGEXP_REPLACE-synopsis">语法</a><a href="#REGEXP_REPLACE-arguments">参数</a><a href="#REGEXP_REPLACE-return-type">返回类型</a><a href="#REGEXP_REPLACE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="REGEXP_REPLACE">REGEXP_REPLACE 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>在字符串中搜索正则表达式模式并将该模式的每个匹配项替换为指定字符串。REGEXP_REPLACE 与 <a href="./r_REPLACE.html">REPLACE 函数</a>相似，只不过前者可让您在字符串中搜索正则表达式模式。有关正则表达式的更多信息，请参阅 <a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p><p>REGEXP_REPLACE 与 <a href="./r_TRANSLATE.html">TRANSLATE 函数</a>和 <a href="./r_REPLACE.html">REPLACE 函数</a>相似，只不过 TRANSLATE 进行多次单字符替换，REPLACE 一次性将整个字符串替换为其他字符串，而 REGEXP_REPLACE 可让您在字符串中搜索正则表达式模式。</p>
             <h2 id="REGEXP_REPLACE-synopsis">语法</h2>
 
 
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REGEXP_REPLACE( <em>source_string</em>, <em>pattern</em> [, <em>replace_string</em> [ , <em>position</em> [, <em>parameters</em> ] ] ] )</code></pre>
           
-            <h2 id="REGEXP_REPLACE-arguments">Arguments</h2>
+            <h2 id="REGEXP_REPLACE-arguments">参数</h2>
 
 
             <div class="variablelist">
@@ -72,7 +72,7 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>表示正则表达式模式的 <code class="code">CHAR</code> 或 <code class="code">VARCHAR</code> 字符串文本。有关更多信息，请参阅<a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p>
+                     <p>表示正则表达式模式的 UTF-8 字符串文本。有关更多信息，请参阅<a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p>
                   </dd>
                 
                   <dt><span class="term"><em>replace_string</em></span></dt>

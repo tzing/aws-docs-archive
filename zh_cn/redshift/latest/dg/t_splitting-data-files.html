@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_splitting-data-files" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#t_splitting-data-files-compressed">从多个压缩文件中加载数据</a><a href="#t_splitting-data-files-uncompressed">从未压缩的分隔文件中加载数据</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_splitting-data-files">从压缩和未压缩文件中加载数据</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>加载压缩数据时，我们建议您将每个表的数据拆分成多个文件。当您加载未压缩的分隔数据时，COPY 命令使用大规模并行处理（MPP）和扫描范围，从 Simple Storage Service（Amazon S3）存储桶的大型文件中加载数据。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#t_splitting-data-files" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#t_splitting-data-files-compressed">从多个压缩文件中加载数据</a><a href="#t_splitting-data-files-uncompressed">从未压缩的分隔文件中加载数据</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="t_splitting-data-files">从压缩和未压缩文件中加载数据</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>加载压缩数据时，我们建议您将每个表的数据拆分成多个文件。当您加载未压缩的分隔数据时，COPY 命令使用大规模并行处理 (MPP) 和扫描范围，从 Amazon S3 桶的大型文件中加载数据。</p>
                <h2 id="t_splitting-data-files-compressed">从多个压缩文件中加载数据</h2>
                <p>如果您有压缩数据，我们建议您将每个表的数据拆分成多个文件。COPY 命令可以从多个文件并行加载数据。您可以通过指定一个通用前缀（对于集合，则为<em>前缀键</em>），或通过在清单文件中明确列出文件，从而加载多个文件。</p>
 
@@ -62,24 +62,24 @@ venue.txt.2
 venue.txt.3
 venue.txt.4</code></pre>
    
-               <p>如果您在存储桶中的一个文件夹中放置多个文件，则可以将该文件夹名称指定为前缀，COPY 会加载该文件夹中的所有文件。如果您使用清单文件明确列出要加载的文件，则这些文件可以位于不同的存储桶或文件夹中。</p>
+               <p>如果您在桶中的一个文件夹中放置多个文件，则可以将该文件夹名称指定为前缀，COPY 会加载该文件夹中的所有文件。如果您使用清单文件明确列出要加载的文件，则这些文件可以位于不同的桶或文件夹中。</p>
                <p>有关清单文件的更多信息，请参阅<a href="./r_COPY_command_examples.html#copy-command-examples-manifest">Example: COPY from Amazon S3 using a manifest</a>。</p>
              
                <h2 id="t_splitting-data-files-uncompressed">从未压缩的分隔文件中加载数据</h2>
                
     
 
-               <p>当您加载未压缩的、分隔的数据时，COPY 命令会使用 Amazon Redshift 中的大规模并行处理（MPP）架构。Amazon Redshift 会自动使用并行工作的切片，从 Simple Storage Service（Amazon S3）存储桶的大型文件中加载多个范围的数据。必须对文件进行分隔才能进行并行加载。例如，竖线分隔。使用 COPY 命令自动并行加载数据也适用于 CSV 文件。您还可以通过在表上设置分配键，从而充分利用并行处理。有关分配键的更多信息，请参阅<a href="./t_Distributing_data.html">使用数据分配样式</a>。</p>
+               <p>当您加载未压缩的、分隔的数据时，COPY 命令会使用 Amazon Redshift 中的大规模并行处理 (MPP) 架构。Amazon Redshift 会自动使用并行工作的切片，从 Amazon S3 桶的大型文件中加载多个范围的数据。必须对文件进行分隔才能进行并行加载。例如，竖线分隔。使用 COPY 命令自动并行加载数据也适用于 CSV 文件。您还可以通过在表上设置分配键，从而充分利用并行处理。有关分配键的更多信息，请参阅<a href="./t_Distributing_data.html">使用数据分配样式</a>。</p>
                <p>当 COPY 查询包含以下任何关键字时，不支持自动并行加载数据：ESCAPE、REMOVEQUOTES 和 FIXEDWIDH。</p>
                
                <p>一个或多个文件中的数据将加载到目标表中，一行数据占据表中的一行。数据文件中的字段按从左到右的顺序与表列相匹配。数据文件中的字段可以是固定宽度，也可以用字符分隔；默认分隔符为竖线 (|)。默认情况下，将加载所有表列，但您可以选择定义用逗号分隔的列列表。如果 COPY 命令中指定的列列表中不包括某个表列，则该表列将加载为默认值。有关更多信息，请参阅<a href="./c_loading_default_values.html">加载默认列值</a>。</p>
-               <p>在数据没有压缩和分隔时，请遵循此一般流程从 Simple Storage Service（Amazon S3）加载数据：</p>
+               <p>在数据没有压缩和分隔时，请遵循此一般流程从 Amazon S3 加载数据：</p>
                <div class="orderedlist">
                    
                    
                    
                <ol><li>
-                     <p>将您的文件上载到 Simple Storage Service（Amazon S3）。</p>
+                     <p>将您的文件上载到 Amazon S3 。</p>
                   </li><li>
                      <p>运行 COPY 命令以加载表。</p>
                   </li><li>

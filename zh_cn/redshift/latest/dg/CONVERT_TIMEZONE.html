@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#CONVERT_TIMEZONE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#CONVERT_TIMEZONE-syntax">语法</a><a href="#CONVERT_TIMEZONE-arguments">Arguments</a><a href="#CONVERT_TIMEZONE-return-type">返回类型</a><a href="#CONVERT_TIMEZONE-usage-notes">时区使用说明</a><a href="#CONVERT_TIMEZONE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="CONVERT_TIMEZONE">CONVERT_TIMEZONE 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>CONVERT_TIMEZONE 将一个时区的时间戳转换为另一个时区的时间戳。该功能会自动根据夏令时调整。</p><h2 id="CONVERT_TIMEZONE-syntax">语法</h2>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#CONVERT_TIMEZONE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#CONVERT_TIMEZONE-syntax">语法</a><a href="#CONVERT_TIMEZONE-arguments">参数</a><a href="#CONVERT_TIMEZONE-return-type">返回类型</a><a href="#CONVERT_TIMEZONE-usage-notes">时区使用说明</a><a href="#CONVERT_TIMEZONE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="CONVERT_TIMEZONE">CONVERT_TIMEZONE 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>CONVERT_TIMEZONE 将一个时区的时间戳转换为另一个时区的时间戳。该功能会自动根据夏令时调整。</p><h2 id="CONVERT_TIMEZONE-syntax">语法</h2>
          
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CONVERT_TIMEZONE( ['<em>source_timezone</em>',] '<em>target_timezone</em>', '<em>timestamp</em>')</code></pre>
-      <h2 id="CONVERT_TIMEZONE-arguments">Arguments</h2>
+      <h2 id="CONVERT_TIMEZONE-arguments">参数</h2>
          
          
          <div class="variablelist">
@@ -91,7 +91,7 @@
          <p>有关更多信息，请参阅<a href="./appendix-timezone-names.html">附录：时区名称和缩写</a>。</p>
          <h3 id="CONVERT_TIMEZONE-using-name">使用时区名称</h3>
             
-            <p>如果您使用时区名称指定时区，CONVERT_TIMEZONE 会根据夏令时（DST）或在 <em>timestamp</em> 指定的日期和时间期间为该时区实行的任何其他当地季节性协议，如夏令时、标准时间或冬令时，自动进行调整。例如，“欧洲/伦敦”在冬季表示 UTC，在夏季加一小时。</p>
+            <p>如果您使用时区名称指定时区，CONVERT_TIMEZONE 会根据夏令时 (DST) 或在 <em>timestamp</em> 指定的日期和时间期间为该时区实行的任何其他当地季节性协议，如夏令时、标准时间或冬令时，自动进行调整。例如，“欧洲/伦敦”在冬季表示 UTC，在夏季加一小时。</p>
           
          <h3 id="CONVERT_TIMEZONE-using-abbrev">使用时区缩写</h3>
             

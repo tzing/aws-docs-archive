@@ -124,7 +124,7 @@ order by c1;</code></pre>
             <div class="itemizedlist">
                 
                 
-                
+               
                 
                 
             <ul class="itemizedlist"><li class="listitem">
@@ -132,13 +132,6 @@ order by c1;</code></pre>
                   
                </li><li class="listitem">
                   <p>集合运算符之前的查询表达式不应包含 ORDER BY 子句。仅在包含集合运算符的查询结尾处使用 ORDER BY 子句时，该子句才会生成有意义的排序结果。在这种情况下，ORDER BY 子句应用于所有集合运算的最终结果。最外层的查询也可以包含标准 LIMIT 和 OFFSET 子句。</p>
-               </li><li class="listitem">
-                  <p>不能使用 LIMIT 和 OFFSET 子句来限制集合运算的中间结果返回的行数。例如，以下查询返回一个错误：</p>
-                  <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">(select listid from listing
-limit 10)
-intersect
-select listid from sales;
-ERROR:  LIMIT may not be used within input to set operations.</code></pre>
                </li><li class="listitem">
                   <p>当集合运算符查询返回小数结果时，将提升对应的结果列以返回相同的精度和小数位数。例如，在以下查询中，T1.REVENUE 为 DECIMAL(10,2) 列而 T2.REVENUE 为 DECIMAL(8,4) 列，小数结果将提升为 DECIMAL(12,4)：</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select t1.revenue union select t2.revenue;</code></pre>

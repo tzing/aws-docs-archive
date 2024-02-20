@@ -48,12 +48,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_ConvexHull-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_ConvexHull-function-syntax">语法</a><a href="#ST_ConvexHull-function-arguments">Arguments</a><a href="#ST_ConvexHull-function-return">返回类型</a><a href="#ST_ConvexHull-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_ConvexHull-function">ST_ConvexHull</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_ConvexHull 返回一个几何体，该几何体表示输入几何体中包含的非空点的凸包。</p><p>对于空输入，生成的几何体与输入几何体相同。对于所有非空输入，该函数在输入几何体的 2D 投影上运行。但是，输出几何体的维度取决于输入几何体的维度。更具体地说，当输入几何体为非空 3DM 或 3D 几何体时，<code class="code">m</code> 坐标将被删除。也就是说，返回的几何体的维度分别为 2D 或 3DZ。如果输入为非空 2D 或 3DZ 几何体，则生成的几何体具有相同的维度。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_ConvexHull-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_ConvexHull-function-syntax">语法</a><a href="#ST_ConvexHull-function-arguments">参数</a><a href="#ST_ConvexHull-function-return">返回类型</a><a href="#ST_ConvexHull-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_ConvexHull-function">ST_ConvexHull</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_ConvexHull 返回一个几何体，该几何体表示输入几何体中包含的非空点的凸包。</p><p>对于空输入，生成的几何体与输入几何体相同。对于所有非空输入，该函数在输入几何体的 2D 投影上运行。但是，输出几何体的维度取决于输入几何体的维度。更具体地说，当输入几何体为非空 3DM 或 3D 几何体时，<code class="code">m</code> 坐标将被删除。也就是说，返回的几何体的维度分别为 2D 或 3DZ。如果输入为非空 2D 或 3DZ 几何体，则生成的几何体具有相同的维度。</p>
             <h2 id="ST_ConvexHull-function-syntax">语法</h2>       
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_ConvexHull(<em>geom</em>)</code></pre>
           
-            <h2 id="ST_ConvexHull-function-arguments">Arguments</h2>           
+            <h2 id="ST_ConvexHull-function-arguments">参数</h2>           
             
             <div class="variablelist">
                 
@@ -71,7 +71,7 @@
             <p>如果 <em>geom</em> 为 null，则返回 null。</p>
             
             <p>返回的值如下所示。</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45c11c37c55c11c11"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47c11c37c61c11c11"><thead>
                      <tr>
                         <th>凸包上的点数</th>
                         <th>几何体子类型</th>

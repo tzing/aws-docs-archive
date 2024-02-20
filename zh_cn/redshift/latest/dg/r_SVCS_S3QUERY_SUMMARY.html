@@ -52,7 +52,7 @@
             <h2 id="r_SVCS_S3QUERY_SUMMARY-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c13c25c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c13c25c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -137,12 +137,12 @@
                         <tr>
                             <td tabindex="-1">s3_scanned_rows</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">已从 Simple Storage Service（Amazon S3）扫描并发送到 Redshift Spectrum 层的行数量。</td>
+                            <td tabindex="-1">已从 Amazon S3 扫描并发送到 Redshift Spectrum 层的行数量。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">s3_scanned_bytes</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">已从 Simple Storage Service（Amazon S3）扫描并发送到 Redshift Spectrum 层的基于压缩数据的字节的数量。</td>
+                            <td tabindex="-1">已从 Amazon S3 扫描并发送到 Redshift Spectrum 层的基于压缩数据的字节的数量。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">s3query_returned_rows</td>
@@ -174,7 +174,7 @@
                         <tr>
                             <td tabindex="-1">splits</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">为此分段处理的拆分数。在此切片上处理的拆分数。对于大型可拆分数据文件 (例如，大于 512 MB 左右的数据文件)，Redshift Spectrum 会尝试将文件拆分为多个 S3 请求以便进行并行处理。</td>
+                            <td tabindex="-1">为此分段处理的拆分数。在此切片上处理的拆分数。对于大型可拆分数据文件（例如，大于 512 MB 左右的数据文件），Redshift Spectrum 会尝试将文件拆分为多个 S3 请求以便进行并行处理。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">splits_max</td>
@@ -194,12 +194,12 @@
                         <tr>
                             <td tabindex="-1">max_split_size</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">处理的最大拆分大小 (以字节为单位)。</td>
+                            <td tabindex="-1">处理的最大拆分大小（以字节为单位）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">avg_split_size</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">处理的平均拆分大小 (以字节为单位)。</td>
+                            <td tabindex="-1">处理的平均拆分大小（以字节为单位）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">total_retries</td>
@@ -214,12 +214,12 @@
                         <tr>
                             <td tabindex="-1">max_request_duration</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">单个文件请求的最长持续时间 (以微秒为单位)。长时间运行的查询可能表示瓶颈。</td>
+                            <td tabindex="-1">单个文件请求的最长持续时间（以微秒为单位）。长时间运行的查询可能表示瓶颈。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">avg_request_duration</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">文件请求的平均持续时间 (以微秒为单位)。</td>
+                            <td tabindex="-1">文件请求的平均持续时间（以微秒为单位）。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">max_request_parallelism</td>
@@ -234,12 +234,12 @@
                         <tr>
                             <td tabindex="-1">total_slowdown_count</td>
                             <td tabindex="-1">bigint</td>
-                            <td tabindex="-1">在外部表扫描期间出现减速错误的总 Simple Storage Service（Amazon S3）请求数。</td>
+                            <td tabindex="-1">在外部表扫描期间出现减速错误的总 Amazon S3 请求数。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">max_slowdown_count</td>
                             <td tabindex="-1">integer</td>
-                            <td tabindex="-1">在一个切片上的外部表扫描期间出现减速错误的最大 Simple Storage Service（Amazon S3）请求数。</td>
+                            <td tabindex="-1">在一个切片上的外部表扫描期间出现减速错误的最大 Amazon S3 请求数。</td>
                         </tr>
 
                         

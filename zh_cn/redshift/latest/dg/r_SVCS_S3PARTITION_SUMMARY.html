@@ -52,7 +52,7 @@
             <h2 id="r_SVCS_S3PARTITION_SUMMARY-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c13c23c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c13c23c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -131,7 +131,7 @@
             
             
             <p>以下示例获取上次执行的查询的分区扫描详细信息。</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select query, segment, assignment, min_starttime, max_endtime, min_dureation, avg_duration 
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select query, segment, assignment, min_starttime, max_endtime, min_duration, avg_duration 
 from svcs_s3partition_summary 
 where query = pg_last_query_id() 
 order by query,segment;</code></pre>

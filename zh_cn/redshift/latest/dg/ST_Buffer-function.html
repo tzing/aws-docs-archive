@@ -48,13 +48,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Buffer-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Buffer-function-syntax">语法</a><a href="#ST_Buffer-function-arguments">Arguments</a><a href="#ST_Buffer-function-return">返回类型</a><a href="#ST_Buffer-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Buffer-function">ST_Buffer</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_Buffer 返回 2D 几何体，该几何表示与 xy 笛卡尔平面上投影的输入几何体之间的距离小于或等于输入距离的所有点。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Buffer-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Buffer-function-syntax">语法</a><a href="#ST_Buffer-function-arguments">参数</a><a href="#ST_Buffer-function-return">返回类型</a><a href="#ST_Buffer-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Buffer-function">ST_Buffer</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_Buffer 返回 2D 几何体，该几何表示与 xy 笛卡尔平面上投影的输入几何体之间的距离小于或等于输入距离的所有点。</p>
             <h2 id="ST_Buffer-function-syntax">语法</h2>       
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_Buffer(<em>geom</em>, <em>distance</em>)</code></pre>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_Buffer(<em>geom</em>, <em>distance</em>, <em>number_of_segments_per_quarter_circle</em>)</code></pre>
           
-            <h2 id="ST_Buffer-function-arguments">Arguments</h2>           
+            <h2 id="ST_Buffer-function-arguments">参数</h2>           
             
             <div class="variablelist">
                 
@@ -73,13 +73,13 @@
                 
                   <dt><span class="term"> <em>number_of_segments_per_quarter_circle</em> </span></dt>
                   <dd>
-                     <p>一个  数据类型的  值<code class="code">INTEGER</code> 此值确定了围绕输入几何体的每个顶点大致四分之一圆的点数。负值默认为零。默认值为 8。</p>
+                     <p>数据类型 <code class="code">INTEGER</code> 的值。此值确定了围绕输入几何体的每个顶点大致四分之一圆的点数。负值默认为零。默认值为 8。</p>
                   </dd>
                </dl></div>
           
             <h2 id="ST_Buffer-function-return">返回类型</h2>  
             <p><code class="code">GEOMETRY</code></p>
-            <p>ST_Buffer 函数返回 xy 笛卡尔平面中的二维（2D）几何体。</p>
+            <p>ST_Buffer 函数返回 xy 笛卡尔平面中的二维 (2D) 几何体。</p>
             
             <p>如果 <em>geom</em> 为 <code class="code">GEOMETRYCOLLECTION</code>，则返回一个错误。</p>
             

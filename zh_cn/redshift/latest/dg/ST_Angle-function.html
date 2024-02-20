@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Angle-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Angle-function-syntax">语法</a><a href="#ST_Angle-function-arguments">Arguments</a><a href="#ST_Angle-function-return">返回类型</a><a href="#ST_Angle-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Angle-function">ST_Angle</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_Angle 返回顺时针方向测量的点之间的角度（以弧度为单位），如下所示：</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Angle-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Angle-function-syntax">语法</a><a href="#ST_Angle-function-arguments">参数</a><a href="#ST_Angle-function-return">返回类型</a><a href="#ST_Angle-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Angle-function">ST_Angle</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_Angle 返回顺时针方向测量的点之间的角度（以弧度为单位），如下所示：</p><div class="itemizedlist">
              
                         
          <ul class="itemizedlist"><li class="listitem"><p>如果输入三个点，则测量返回的角度 P1-P2-P3，就好像通过围绕 P2 顺时针从 P1 旋转到 P3 获得角度一样。</p></li><li class="listitem"><p>如果输入四个点，则返回有向线段 P1-P2 和 P3-P4 形成的返回顺时针角度。如果输入为退化情况（即，P1 等于 P2，或 P3 等于 P4），则返回 null。</p></li></ul></div><p>返回值以弧度为单位且在 [0, 2π) 范围内。</p><p>ST_Angle 对输入几何体的 2D 投影进行操作。</p>
@@ -56,7 +56,7 @@
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_Angle(<em>geom1</em>, <em>geom2</em>, <em>geom3</em>)</code></pre>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_Angle(<em>geom1</em>, <em>geom2</em>, <em>geom3</em>, <em>geom4</em>)</code></pre>
           
-            <h2 id="ST_Angle-function-arguments">Arguments</h2>           
+            <h2 id="ST_Angle-function-arguments">参数</h2>           
             
             <div class="variablelist">
                  
@@ -94,7 +94,7 @@
             
             
             <p>如果 <em>geom1</em>、<em>geom2</em>、<em>geom3</em> 或 <em>geom4</em> 中的任何一个为空点，则返回一个错误。</p>
-            <p>如果 <em>geom1</em>、<em>geom2</em>、<em>geom3</em> 和 <em>geom4</em> 不具有相同的空间参考系统标识符（SRID）值，则返回一个错误。</p>
+            <p>如果 <em>geom1</em>、<em>geom2</em>、<em>geom3</em> 和 <em>geom4</em> 不具有相同的空间参考系统标识符 (SRID) 值，则返回一个错误。</p>
           
             <h2 id="ST_Angle-function-examples">示例</h2>
             

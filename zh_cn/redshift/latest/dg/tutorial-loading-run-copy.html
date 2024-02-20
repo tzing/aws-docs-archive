@@ -31,7 +31,7 @@
       {
         "@type" : "ListItem",
         "position" : 5,
-        "name" : "教程：从 Simple Storage Service（Amazon S3）加载数据",
+        "name" : "教程：从 Amazon S3 加载数据",
         "item" : "https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/tutorial-loading-data.html"
       },
       {
@@ -58,20 +58,20 @@
                 <p>默认情况下，COPY 按顺序将源数据中的字段加载到表列中。您可以选择指定一个<em>列列表</em>（该列表是列名称的以逗号分隔的列表）以将数据字段映射到特定列。您在本教程中不使用列列表。有关更多信息，请参阅 COPY 命令参考中的<a href="./copy-parameters-column-mapping.html#copy-column-list">Column List</a>。</p>
              
             <p><span class="topcon">数据源</span></p>
-            <p>您可以使用 COPY 命令从 Simple Storage Service（Amazon S3）存储桶、Amazon EMR 集群、使用 SSH 连接的远程主机或 Amazon DynamoDB 表加载数据。在本教程中，您将从 Simple Storage Service（Amazon S3）存储桶中的数据文件进行加载。在从 Simple Storage Service（Amazon S3）进行加载时，您必须提供存储桶的名称和数据文件的位置。为此，请提供数据文件的对象路径或清单文件的位置，该清单文件明确列出了各个数据文件及其位置。</p>
+            <p>您可以使用 COPY 命令从 Amazon S3 桶、Amazon EMR 集群、使用 SSH 连接的远程主机或 Amazon DynamoDB 表加载数据。在本教程中，您将从 Amazon S3 桶中的数据文件进行加载。在从 Amazon S3 进行加载时，您必须提供桶的名称和数据文件的位置。为此，请提供数据文件的对象路径或清单文件的位置，该清单文件明确列出了各个数据文件及其位置。</p>
             <div class="itemizedlist">
                  
                  
             <ul class="itemizedlist"><li class="listitem">
                     <p>键前缀 </p>
-                    <p>存储在 Simple Storage Service（Amazon S3）中的对象由对象键唯一标识，其中包括存储桶名称、文件夹名称（如果有）和对象名称。<em>键前缀</em> 是指一组带有相同前缀的对象。对象路径是 COPY 命令用于加载共享键前缀的所有对象的键前缀。例如，键前缀 <code class="code">custdata.txt</code> 可以是一个文件或一组文件，包括 <code class="code">custdata.txt.001</code>、<code class="code">custdata.txt.002</code> 等。</p>
+                    <p>存储在 Amazon S3 中的对象由对象键唯一标识，其中包括桶名称、文件夹名称（如果有）和对象名称。<em>键前缀</em> 是指一组带有相同前缀的对象。对象路径是 COPY 命令用于加载共享键前缀的所有对象的键前缀。例如，键前缀 <code class="code">custdata.txt</code> 可以是一个文件或一组文件，包括 <code class="code">custdata.txt.001</code>、<code class="code">custdata.txt.002</code> 等。</p>
                 </li><li class="listitem">
                     <p>清单文件</p>
-                    <p>在某些情况下，您可能需要加载具有不同前缀的文件，例如，从多个存储桶或文件夹中进行加载。在其他情况下，您可能需要排除共享前缀的文件。在这些情况下，您可以使用清单文件。<em>清单文件</em> 明确列出了每个加载文件及其唯一对象键。在本教程的后面，您将使用清单文件来加载 PART 表。</p>
+                    <p>在某些情况下，您可能需要加载具有不同前缀的文件，例如，从多个桶或文件夹中进行加载。在其他情况下，您可能需要排除共享前缀的文件。在这些情况下，您可以使用清单文件。<em>清单文件</em> 明确列出了每个加载文件及其唯一对象键。在本教程的后面，您将使用清单文件来加载 PART 表。</p>
                 </li></ul></div>
              
                 <h6>凭证</h6>
-                <p>要访问包含要加载的数据的 AWS 资源，您必须为具有足够权限的用户提供 AWS 访问凭证。这些凭证包括 IAM 角色的 Amazon Resource Name（ARN）。要从 Simple Storage Service（Amazon S3）加载数据，凭证必须包括 ListBucket 和 GetObject 权限。如果数据已加密，则需要其它凭证。有关更多信息，请参阅 COPY 命令参考中的<a href="./copy-parameters-authorization.html">授权参数</a>。有关管理访问的更多信息，请转到<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">管理对 Simple Storage Service（Amazon S3）资源的访问权限</a>。</p>
+                <p>要访问包含要加载的数据的 AWS 资源，您必须为具有足够权限的用户提供 AWS 访问凭证。这些凭证包括 IAM 角色的 Amazon 资源名称 (ARN)。要从 Amazon S3 加载数据，凭证必须包括 ListBucket 和 GetObject 权限。如果数据已加密，则需要其它凭证。有关更多信息，请参阅 COPY 命令参考中的<a href="./copy-parameters-authorization.html">授权参数</a>。有关管理访问的更多信息，请转到<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">管理对 Amazon S3 资源的访问权限</a>。</p>
              
             <p><span class="topcon">选项</span></p>
             <p>您可以为 COPY 命令指定大量参数，以指定文件格式、管理数据格式、管理错误和控制其他功能。在本教程中，您将使用以下 COPY 命令选项和功能：</p>
@@ -142,7 +142,7 @@
                  
                  
             <ol><li>
-                    <p><a href="#tutorial-loading-run-copy-replaceables">替换存储桶名称和 AWS 凭证</a></p>
+                    <p><a href="#tutorial-loading-run-copy-replaceables">替换桶名称和 AWS 凭证</a></p>
 
                 </li><li>
                     <p><a href="#tutorial-loading-load-part">使用 NULL AS 加载 PART 表</a></p>
@@ -161,7 +161,7 @@
 
                 </li></ol></div>
              
-                <h3 id="tutorial-loading-run-copy-replaceables">替换存储桶名称和 AWS 凭证</h3>
+                <h3 id="tutorial-loading-run-copy-replaceables">替换桶名称和 AWS 凭证</h3>
 
                 <p>本教程中的 COPY 命令采用以下格式显示。</p>
                 
@@ -174,8 +174,8 @@ options;</code></pre>
                      
                      
                 <ol><li>
-                        <p>将 <code class="replaceable">&lt;your-bucket-name&gt;</code> 替换为您的集群所在区域中的存储桶名称。</p>
-                        <p>此步骤假定存储桶和集群位于同一区域中。或者，您也可以通过对 COPY 命令使用 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 选项来指定区域。</p>
+                        <p>将 <code class="replaceable">&lt;your-bucket-name&gt;</code> 替换为您的集群所在区域中的桶名称。</p>
+                        <p>此步骤假定桶和集群位于同一区域中。或者，您也可以通过对 COPY 命令使用 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 选项来指定区域。</p>
                     </li><li>
                         <p>用您自己的 AWS 账户 和 IAM 角色替换 <code class="replaceable">&lt;aws-account-id&gt;</code> 和 <code class="replaceable">&lt;role-name&gt;</code>。用单引号引起来的凭证字符串的区段不得包含任何空格或换行符。请注意，ARN 格式可能与示例略有不同。运行 COPY 命令时，最好从 IAM 控制台复制角色的 ARN，以确保其准确无误。</p>
                         
@@ -227,7 +227,7 @@ Execution time: 1.46s
 
 1 statement(s) failed.
 1 statement(s) failed.</code></pre>
-                <p>要获取有关错误的更多信息，请查询 STL_LOAD_ERRORS 表。以下查询使用 SUBSTRING 函数缩短列以方便阅读，并使用 LIMIT 10 减少返回的行数。您可以调整 <code class="code">substring(filename,22,25)</code> 中的值以允许您的存储桶名称的长度。</p>
+                <p>要获取有关错误的更多信息，请查询 STL_LOAD_ERRORS 表。以下查询使用 SUBSTRING 函数缩短列以方便阅读，并使用 LIMIT 10 减少返回的行数。您可以调整 <code class="code">substring(filename,22,25)</code> 中的值以允许您的桶名称的长度。</p>
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select query, substring(filename,22,25) as filename,line_number as line, 
 substring(colname,0,12) as column, type, position as pos, substring(raw_line,0,30) as line_text,
 substring(raw_field_value,0,15) as field_text, 
@@ -271,7 +271,7 @@ null as '\000';</code></pre>
                 <h3 id="tutorial-loading-load-supplier">使用 REGION 加载 SUPPLIER 表</h3>
 
                 <p>在此步骤中，您将使用 DELIMITER 和 REGION 选项来加载 SUPPLIER 表。</p>
-                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>我们在 AWS 示例存储桶中提供了加载 SUPPLIER 表的文件。因此，在此步骤中，您无需上传文件。</p></div></div>
+                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>我们在 AWS 示例桶中提供了加载 SUPPLIER 表的文件。因此，在此步骤中，您无需上传文件。</p></div></div>
                  
                     <h6>字符分隔的格式</h6>
                     <p>字符分隔的文件中的字段由某个特定字符（如竖线字符 (|)、逗号 (,) 或制表符 (\t)）分隔。字符分隔文件的可使用任一 ASCII 字符（包括非打印 ASCII 字符之一）作为分隔符。通过使用 DELIMITER 选项指定分隔符。默认分隔符是竖线字符 (|)。</p>
@@ -286,14 +286,14 @@ null as '\000';</code></pre>
                     <p>只要可能，您应在 Amazon Redshift 集群所在的 AWS 区域中找到加载数据。如果您的数据和集群位于同一区域中，则将减少延迟并避免跨区域数据传输成本。有关更多信息，请参阅<a href="./c_loading-data-best-practices.html">Amazon Redshift 加载数据的最佳实践</a>。</p>
                  
                 <p>如果您必须从另一个 AWS 区域加载数据，可使用 REGION 选项指定从中查找加载数据的 AWS 区域。如果您指定一个区域，则所有加载数据（包括清单文件）必须位于已命名的区域中。有关更多信息，请参阅<a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a>。</p>
-                <p>如果您的集群位于美国东部（弗吉尼亚北部）区域，请运行以下命令来从位于美国西部（俄勒冈）区域中的 Simple Storage Service（Amazon S3）存储桶中用竖线分隔的数据加载 SUPPLIER 表。在本示例中，请不要更改存储桶名称。</p>
+                <p>如果您的集群位于美国东部（弗吉尼亚北部）区域，请运行以下命令来从位于美国西部（俄勒冈州）区域中的 Amazon S3 桶中用竖线分隔的数据加载 SUPPLIER 表。在本示例中，请不要更改桶名称。</p>
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">copy supplier from 's3://awssampledbuswest2/ssbgz/supplier.tbl' 
 credentials 'aws_iam_role=arn:aws:iam::<code class="replaceable">&lt;aws-account-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>' 
 delimiter '|' 
 gzip
 region 'us-west-2';</code></pre>
                 
-                <p>如果您的集群<em>未</em>位于美国东部（弗吉尼亚北部）区域，请运行以下命令来从位于美国东部（弗吉尼亚北部）区域中的 Simple Storage Service（Amazon S3）存储桶中用竖线分隔的数据加载 SUPPLIER 表。在本示例中，请不要更改存储桶名称。</p>
+                <p>如果您的集群<em>未</em>位于美国东部（弗吉尼亚北部）区域，请运行以下命令来从位于美国东部（弗吉尼亚北部）区域中的 Amazon S3 桶中用竖线分隔的数据加载 SUPPLIER 表。在本示例中，请不要更改桶名称。</p>
                 
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">copy supplier from 's3://awssampledb/ssbgz/supplier.tbl' 
 credentials 'aws_iam_role=arn:aws:iam::<code class="replaceable">&lt;aws-account-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>' 
@@ -418,9 +418,9 @@ limit 10;
                 <p>在此步骤中，您将使用替换字符 <code class="code">'^'</code> 添加 ACCEPTINVCHARS。</p>
                  
                     <h6>MANIFEST</h6>
-                    <p>当您使用键前缀从 Simple Storage Service（Amazon S3）执行 COPY 命令时，可能会加载不需要的表。例如，<code class="code">'s3://mybucket/load/</code> 文件夹包含 8 个数据文件，这些文件共享键前缀 <code class="code">customer-fw.tbl</code>：<code class="code">customer-fw.tbl0000</code>、<code class="code">customer-fw.tbl0001</code> 等。但是，同一文件夹也包含无关的文件：<code class="code">customer-fw.tbl.log</code> 和 <code class="code">customer-fw.tbl-0001.bak</code>。</p>
+                    <p>当您使用键前缀从 Amazon S3 执行 COPY 命令时，可能会加载不需要的表。例如，<code class="code">'s3://mybucket/load/</code> 文件夹包含 8 个数据文件，这些文件共享键前缀 <code class="code">customer-fw.tbl</code>：<code class="code">customer-fw.tbl0000</code>、<code class="code">customer-fw.tbl0001</code> 等。但是，同一文件夹也包含无关的文件：<code class="code">customer-fw.tbl.log</code> 和 <code class="code">customer-fw.tbl-0001.bak</code>。</p>
                  
-                <p>要确保您加载所有正确的文件且仅有正确的文件，请使用清单文件。清单是采用 JSON 格式的文本文件，可明确列出要加载的每个源文件的唯一对象键。文件对象可位于不同的文件夹或存储桶中，但它们必须位于同一区域内。有关更多信息，请参阅<a href="./copy-parameters-data-source-s3.html#copy-manifest">MANIFEST</a>。</p>
+                <p>要确保您加载所有正确的文件且仅有正确的文件，请使用清单文件。清单是采用 JSON 格式的文本文件，可明确列出要加载的每个源文件的唯一对象键。文件对象可位于不同的文件夹或桶中，但它们必须位于同一区域内。有关更多信息，请参阅<a href="./copy-parameters-data-source-s3.html#copy-manifest">MANIFEST</a>。</p>
                 <p>下面显示了 <code class="code">customer-fw-manifest</code> 文本。</p>
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight"><span>{</span>
   "entries": [
@@ -437,11 +437,11 @@ limit 10;
                 <div class="procedure"><h6>使用清单文件加载 CUSTOMER 表的数据</h6><ol><li>
                         <p>在文本编辑器中打开文件 <code class="code">customer-fw-manifest</code>。</p>
                     </li><li>
-                        <p>将 <code class="replaceable">&lt;your-bucket-name&gt;</code> 替换为您的存储桶的名称。</p>
+                        <p>将 <code class="replaceable">&lt;your-bucket-name&gt;</code> 替换为您的桶的名称。</p>
                     </li><li>
                         <p>保存该文件。</p>
                     </li><li>
-                        <p>将文件上传到您的存储桶上的加载文件夹中。</p>
+                        <p>将文件上传到您的桶上的加载文件夹中。</p>
                     </li><li>
                         <p>运行以下 COPY 命令。</p>
                         
@@ -480,7 +480,7 @@ dateformat 'auto';</code></pre>
 
                 <p>此步骤使用 GZIP 和 COMPUPDATE 选项加载 LINEORDER 表。</p>
                 <p>在本练习中，您将从一个数据文件中加载 LINEORDER 表，然后从多个文件再次加载该表。通过执行此操作，您可以比较两种方法的加载时间。</p>
-                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>我们在 AWS 示例存储桶中提供了加载 LINEORDER 表的文件。因此，在此步骤中，您无需上传文件。</p></div></div>
+                <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>我们在 AWS 示例桶中提供了加载 LINEORDER 表的文件。因此，在此步骤中，您无需上传文件。</p></div></div>
                  
                     <h6>GZIP、LZOP 和 BZIP2</h6>
                     <p>您可以使用 gzip、lzop 或 bzip2 压缩格式压缩您的文件。在从压缩文件加载时，COPY 会在加载过程中解压缩这些文件。压缩文件将节省存储空间并缩短上传时间。</p>
@@ -494,7 +494,7 @@ dateformat 'auto';</code></pre>
                     <p>COPY 命令可在从多个文件并行加载（而不是从一个文件加载）时非常高效地加载数据。您可以将数据拆分成多个文件，以便文件数是您的集群中的切片数的倍数。这样，Amazon Redshift 将划分工作负载并在切片之间均匀分配数据。每个节点的切片数取决于集群的节点大小。有关每个节点大小的切片数的更多信息，请转到《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">关于集群和节点</a>。</p>
                  
                 <p>例如，本教程中使用的每个 dc2.large 计算节点具有两个切片，因此 4 节点集群具有 8 个切片。在前面的步骤中，加载数据已包含在 8 个文件中，尽管这些文件非常小。在此步骤中，您将比较从一个大文件加载所需的时间与从多个文件加载所需的时间的差异。</p>
-                <p>您在本教程中使用的文件包含约 1500 万条记录，约占 1.2 GB 空间。这些文件在 Amazon Redshift 范围中非常小，但足以展示从多个文件加载的性能优势。这些文件过大，下载它们并将其上载到 Simple Storage Service（Amazon S3）所需的时间对于本教程来说过多。因此，您将直接从 AWS 示例存储桶加载这些文件。</p>
+                <p>您在本教程中使用的文件包含约 1500 万条记录，约占 1.2 GB 空间。这些文件在 Amazon Redshift 范围中非常小，但足以展示从多个文件加载的性能优势。这些文件过大，下载它们并将其上载到 Amazon S3 所需的时间对于本教程来说过多。因此，您将直接从 AWS 示例桶加载这些文件。</p>
                 <p>以下屏幕截图显示 LINEORDER 的数据文件。</p>
 
                 <div class="mediaobject">
@@ -503,7 +503,7 @@ dateformat 'auto';</code></pre>
                      
                 </div>
                 <div class="procedure"><h6>使用多个文件评估 COPY 的性能</h6><ol><li>
-                        <p>从一个文件运行针对 COPY 的以下命令。请不要更改存储桶名称。</p>
+                        <p>从一个文件运行针对 COPY 的以下命令。请不要更改桶名称。</p>
                         
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">copy lineorder from 's3://awssampledb/load/lo/lineorder-single.tbl' 
 credentials 'aws_iam_role=arn:aws:iam::<code class="replaceable">&lt;aws-account-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>' 
@@ -521,7 +521,7 @@ copy executed successfully
 
 Execution time: 51.56s</code></pre>
                     </li><li>
-                        <p>从多个文件运行针对 COPY 的以下命令。请不要更改存储桶名称。</p>
+                        <p>从多个文件运行针对 COPY 的以下命令。请不要更改桶名称。</p>
                         
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">copy lineorder from 's3://awssampledb/load/lo/lineorder-multi.tbl' 
 credentials 'aws_iam_role=arn:aws:iam::<code class="replaceable">&lt;aws-account-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>' 

@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_TR_CONFLICT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_TR_CONFLICT-table-columns">表列</a><a href="#r_STL_TR_CONFLICT-sample-query">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_TR_CONFLICT">STL_TR_CONFLICT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>显示用于确定并解决与数据库表的事务冲突的信息。</p><p>当两个或更多用户正在查询和修改表中的数据行 (以使其事务无法序列化) 时，会发生事务冲突。如果事务运行一个将会破坏可序列性的语句，将会被停止并回滚。每次发生事务冲突时，Amazon Redshift 都会在包含有关被取消事务详细信息的 STL_TR_CONFLICT 系统表中写入数据行。有关更多信息，请参阅<a href="./c_serial_isolation.html">可序列化的隔离</a>。</p><p>此视图仅对超级用户可见。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部列也在 SYS 监控视图 <a href="./SYS_TRANSACTION_HISTORY.html">SYS_TRANSACTION_HISTORY</a> 中定义。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_TR_CONFLICT" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_TR_CONFLICT-table-columns">表列</a><a href="#r_STL_TR_CONFLICT-sample-query">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_TR_CONFLICT">STL_TR_CONFLICT</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>显示用于确定并解决与数据库表的事务冲突的信息。</p><p>当两个或更多用户正在查询和修改表中的数据行（以使其事务无法序列化）时，会发生事务冲突。如果事务运行一个将会破坏可序列性的语句，将会被停止并回滚。每次发生事务冲突时，Amazon Redshift 都会在包含有关被取消事务详细信息的 STL_TR_CONFLICT 系统表中写入数据行。有关更多信息，请参阅<a href="./c_serial_isolation.html">可序列化的隔离</a>。</p><p>STL_TR_CONFLICT 仅对超级用户可见。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部数据也可以在 SYS 监控视图 <a href="./SYS_TRANSACTION_HISTORY.html">SYS_TRANSACTION_HISTORY</a> 中找到。SYS 监控视图中的数据经过格式化处理，便于使用和理解。我们建议您使用 SYS 监控视图进行查询。</p>
             <h2 id="r_STL_TR_CONFLICT-table-columns">表列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c97c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c97c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -71,13 +71,13 @@
                         </tr>
                         <tr>
                             <td tabindex="-1"> xact_start_ts </td>
-                            <td tabindex="-1">timestamp </td>
-                            <td tabindex="-1">事务开始的时间戳（UTC）。</td>
+                            <td tabindex="-1">时间戳 </td>
+                            <td tabindex="-1">事务开始的时间戳 (UTC)。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">abort_time </td>
-                            <td tabindex="-1">timestamp </td>
-                            <td tabindex="-1">事务停止的时间戳（UTC）。</td>
+                            <td tabindex="-1">时间戳 </td>
+                            <td tabindex="-1">事务停止的时间戳 (UTC)。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">table_id </td>

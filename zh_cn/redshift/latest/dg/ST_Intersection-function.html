@@ -48,13 +48,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Intersection-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Intersection-function-syntax">语法</a><a href="#ST_Intersection-function-arguments">Arguments</a><a href="#ST_Intersection-function-return">返回类型</a><a href="#ST_Intersection-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Intersection-function">ST_Intersection</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_Interction 返回一个表示两个几何体的点集交集的几何体。也就是说，它返回两个输入几何体间共享的部分。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Intersection-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Intersection-function-syntax">语法</a><a href="#ST_Intersection-function-arguments">参数</a><a href="#ST_Intersection-function-return">返回类型</a><a href="#ST_Intersection-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Intersection-function">ST_Intersection</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_Interction 返回一个表示两个几何体的点集交集的几何体。也就是说，它返回两个输入几何体间共享的部分。</p>
             <h2 id="ST_Intersection-function-syntax">语法</h2>       
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_Intersection(<em>geom1</em>, <em>geom2</em>)</code></pre>
           
             
-            <h2 id="ST_Intersection-function-arguments">Arguments</h2>           
+            <h2 id="ST_Intersection-function-arguments">参数</h2>           
             
             <div class="variablelist">
                 
@@ -79,7 +79,7 @@
             <p>如果 <em>geom1</em> 或 <em>geom2</em> 为空，则返回一个空的几何体。</p>
             <p>如果 <em>geom1</em> 和 <em>geom2</em> 不具有相同的空间参考系统标识符 (SRID) 值，则返回一个错误。</p>
             <p>如果 <em>geom1</em> 或 <em>geom2</em> 为几何体集合，则返回一个错误。</p>
-            <p>如果 <em>geom1</em> 或 <em>geom2</em> 非二维（2D）几何体，则返回一个错误。</p>
+            <p>如果 <em>geom1</em> 或 <em>geom2</em> 非二维 (2D) 几何体，则返回一个错误。</p>
             
             
           

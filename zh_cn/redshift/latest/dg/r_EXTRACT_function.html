@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_EXTRACT_function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_EXTRACT_function-synopsis">语法</a><a href="#r_EXTRACT_function-arguments">Arguments</a><a href="#r_EXTRACT_function-return-type">返回类型</a><a href="#r_EXTRACT_function-examples">TIMESTAMP 示例</a><a href="#r_EXTRACT_function-examples-timestamptz">TIMESTAMPZ 示例</a><a href="#r_EXTRACT_function-examples-time">TIME 示例</a><a href="#r_EXTRACT_function-examples-timetz">TIMEZ 示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_EXTRACT_function"> EXTRACT 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>EXTRACT 函数返回 TIMESTAMP、TIMESTAMPTZ、TIME 或 TIMETZ 值中的日期或时间部分。示例包括时间戳中的日、月、年、小时、分钟、秒、毫秒或微秒。</p><h2 id="r_EXTRACT_function-synopsis">语法</h2>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_EXTRACT_function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_EXTRACT_function-synopsis">语法</a><a href="#r_EXTRACT_function-arguments">参数</a><a href="#r_EXTRACT_function-return-type">返回类型</a><a href="#r_EXTRACT_function-examples">TIMESTAMP 示例</a><a href="#r_EXTRACT_function-examples-timestamptz">TIMESTAMPZ 示例</a><a href="#r_EXTRACT_function-examples-time">TIME 示例</a><a href="#r_EXTRACT_function-examples-timetz">TIMEZ 示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_EXTRACT_function"> EXTRACT 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>EXTRACT 函数返回 TIMESTAMP、TIMESTAMPTZ、TIME 或 TIMETZ 值中的日期或时间部分。示例包括时间戳中的日、月、年、小时、分钟、秒、毫秒或微秒。</p><h2 id="r_EXTRACT_function-synopsis">语法</h2>
          
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">EXTRACT(<em>datepart</em> FROM <em>source</em>)</code></pre>
-      <h2 id="r_EXTRACT_function-arguments">Arguments</h2>
+      <h2 id="r_EXTRACT_function-arguments">参数</h2>
          
          
          <div class="variablelist">
@@ -64,7 +64,7 @@
                   <p>要提取的日期或时间的子字段，例如日、月、年、小时、分钟、毫秒或微秒。有关可能的值，请参阅<a href="./r_Dateparts_for_datetime_functions.html">日期或时间戳函数的日期部分</a>。</p>
                </dd>
              
-               <dt><span class="term"> <em>source</em> </span></dt>
+               <dt><span class="term"> <em>源</em> </span></dt>
                <dd>
                   <p>计算结果为 TIMESTAMP、TIMESTAMPTZ、TIME 或 TIMETZ 数据类型的列或表达式。</p>
                </dd>
@@ -146,7 +146,7 @@ hours
 -----------
      123</code></pre>
          
-      <h2 id="r_EXTRACT_function-examples-timetz">TIMEZ 示例</h2>
+      <h2 id="r_EXTRACT_function-examples-timetz">TIMETZ 示例</h2>
          
          <p>下面的示例表 TIMETZ_TEST 具有一个列 TIMETZ_VAL（类型 TIMETZ），其中插入了三个值。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">select timetz_val from timetz_test;

@@ -132,7 +132,7 @@ salesshare |    100       | dev             |                   |  OUTBOUND  | 2
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">DROP DATASHARE salesshare;</code></pre>
 
-            <p>您还可以使用 Amazon Redshift 控制台删除数据共享。有关更多信息，请参阅<a href="./manage-datashare-existing-console.html#delete-datashare-console">删除在您的账户中创建的  数据共享</a>。</p>
+            <p>您还可以使用 Amazon Redshift 控制台删除数据共享。有关更多信息，请参阅<a href="./manage-datashare-existing-console.html#delete-datashare-console">删除在您的账户中创建的数据共享</a>。</p>
          </li><li><p>使用 ALTER DATASHARE 可以在任何时间点从数据共享中删除对象。使用 REVOKE USAGE ON 可撤销某些使用者对数据共享的权限。它可以撤消对数据共享内的对象的 USAGE 权限，并立即停止对所有使用者集群的访问。列出数据共享和元数据查询（如列出数据库和表）不会在撤销访问权限后返回共享对象。</p>
 
             
@@ -176,6 +176,9 @@ salesshare |    100       | dev             |                   |  OUTBOUND  | 2
 
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE DATABASE sales_db FROM DATASHARE salesshare OF NAMESPACE '13b8833d-17c6-4f16-8fe4-1a018f5ed00d';</code></pre>
+            
+            <p>如果您想更精细地控制对本地数据库中对象的访问权限，请在创建数据库时使用 WITH PERMISSIONS 子句。这允许您在步骤 4 中为数据库中的对象授予对象级权限。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE DATABASE sales_db WITH PERMISSIONS FROM DATASHARE salesshare OF NAMESPACE '13b8833d-17c6-4f16-8fe4-1a018f5ed00d';</code></pre>
 
             <p>您可以通过查询 <a href="./r_SVV_REDSHIFT_DATABASES.html">SVV_REDSHIFT_DATABASES</a> 视图查看从数据共享中创建的数据库。您无法连接到从数据共享创建的这些数据库，它们是只读的。但是，您可以连接到使用者集群上的本地数据库并执行跨数据库查询，以查询从数据共享创建的数据库中的数据。您不能基于从现有数据共享创建的数据库对象创建数据共享。但是，您可以将数据复制到使用者集群上的单独表中，执行所需的任何处理，然后共享创建的新对象。</p>
             <p>您还可以使用 Amazon Redshift 控制台从数据共享中创建数据库。有关更多信息，请参阅<a href="./query-datashare-console.html#create-database-from-datashare-console">通过数据共享创建数据库</a>。</p>
@@ -187,18 +190,20 @@ salesshare |    100       | dev             |                   |  OUTBOUND  | 2
 
      
 
-         </li><li><p>根据需要，向使用者集群中的用户组授权对从数据共享创建的数据库和 schema 引用的权限。有关更多信息，请参阅 <a href="./r_GRANT.html">GRANT</a> 或 <a href="./r_REVOKE.html">REVOKE</a>。</p>
+         </li><li><p>根据需要，向使用者集群中的用户和角色授权对从数据共享创建的数据库和架构引用的权限。有关更多信息，请参阅<a href="./r_GRANT.html">GRANT</a>或<a href="./r_REVOKE.html">REVOKE</a>。</p>
 
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATABASE sales_db TO Bob;</code></pre>
             
-<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON SCHEMA sales_schema TO GROUP Analyst_group;</code></pre>
+<pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON SCHEMA sales_schema TO ROLE Analyst_role;</code></pre>
 
-            <p>作为使用者集群管理员，您只能将对从数据共享创建的整个数据库的权限分配给您的用户和组。在某些情况下，您需要对根据数据共享创建的数据库对象子集进行精细控制。如果是这样，您可以创建一个外部 schema 引用，该引用指向数据共享中的特定 schema（如上一步所述），并在 schema 级别提供精细权限。</p>
+            <p>如果创建数据库时不使用 WITH PERMISSIONS，则只能将从数据共享创建的整个数据库的权限分配给用户和角色。在某些情况下，您需要对根据数据共享创建的数据库对象子集进行精细控制。如果是这样，您可以创建一个外部 schema 引用，该引用指向数据共享中的特定 schema（如上一步所述），并在 schema 级别提供精细权限。</p>
                   <p>您还可以基于共享的对象创建后期绑定视图，并使用这些视图来分配精细权限。您还可以考虑让创建器集群为您创建具有所需精细度的额外的数据共享。</p>
+            <p>如果您在步骤 2 中使用 WITH PERMISSIONS 创建了数据库，则必须为共享数据库中的对象分配对象级权限。只有 USAGE 权限的用户在获得其他对象级权限之前，无法访问使用 WITH PERMISSIONS 创建的数据库中的任何对象。</p>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT SELECT ON sales_db.public.tickit_sales_redshift to Bob;</code></pre>
 
          </li><li><p>在数据共享中查询共享对象中的数据。</p>
-            <p>对使用者集群上的使用者数据库和 schema 具有权限的用户和组可以浏览和导航任何共享对象的元数据。他们还可以浏览和导航使用者集群中的本地对象。为此，他们使用 JDBC 或 ODBC 驱动程序或 SVV_ALL 和 SVV_REDSHIFT 视图。</p>
+            <p>对使用者集群上的使用者数据库和架构具有权限的用户和角色可以浏览和导航任何共享对象的元数据。他们还可以浏览和导航使用者集群中的本地对象。为此，他们使用 JDBC 或 ODBC 驱动程序或 SVV_ALL 和 SVV_REDSHIFT 视图。</p>
                   <p>创建器集群在数据库中可能有许多 schema、表和每个 schema 中的视图。使用者端的用户只能看到通过数据共享提供的对象的子集。这些用户无法从创建器集群中看到整个元数据。此方法有助于通过数据共享提供精细的元数据安全控制。</p>
             <p>您将继续连接到本地集群数据库。但现在，您也可以使用三部分 database.schema.table 表示法从数据共享创建的数据库和 schema 中读取。您可以跨您可见的任何数据库和所有数据库执行查询。这些数据库可以是集群上的本地数据库，也可以是通过数据共享创建的数据库。使用者集群无法连接到从数据共享创建的数据库。</p>
             <p>您可以使用完全资格认证来访问数据。有关更多信息，请参阅<a href="./cross-database_example.html">使用跨数据库查询的示例</a>。</p>

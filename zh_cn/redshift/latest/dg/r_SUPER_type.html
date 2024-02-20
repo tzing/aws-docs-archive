@@ -61,21 +61,32 @@
                    
                <ul class="itemizedlist"><li class="listitem"><p> Parquet </p></li><li class="listitem"><p> JSON </p></li><li class="listitem"><p> TEXT </p></li><li class="listitem"><p> CSV </p></li></ul></div><p>SUPER 数据类型具有以下属性：</p><div class="itemizedlist"> 
                    
-                  
                    
                   
-               <ul class="itemizedlist"><li class="listitem"><p>Amazon Redshift 标量值：</p>
+               <ul class="itemizedlist"><li class="listitem">
+                     <p>Amazon Redshift 标量值：</p>
                      <div class="itemizedlist">
                          
                          
                          
                          
-                        
-                        
-                     <ul class="itemizedlist"><li class="listitem"><p>Null</p></li><li class="listitem"><p>布尔值</p></li><li class="listitem"><p>一个数字，如 smallint、整数、bigint、小数或浮点（如 float4 或 float8）</p></li><li class="listitem"><p>字符串值，如 varchar 或 char</p></li></ul></div>
-                  </li><li class="listitem"><p>一个复杂的值：</p>
+                     <ul class="itemizedlist"><li class="listitem">
+                           <p>Null</p>
+                        </li><li class="listitem">
+                           <p>布尔值</p>
+                        </li><li class="listitem">
+                           <p>一个数字，如 smallint、整数、bigint、小数或浮点（如 float4 或 float8）</p>
+                        </li><li class="listitem">
+                           <p>字符串值，如 varchar 或 char</p>
+                        </li></ul></div>
+                  </li><li class="listitem">
+                     <p>一个复杂的值：</p>
                      <div class="itemizedlist">
                          
                          
-                     <ul class="itemizedlist"><li class="listitem"><p>一个值数组，包括标量或复数</p></li><li class="listitem"><p>一个结构，也称为元组或对象，它是属性名称和值（标量或复数）的映射</p></li></ul></div>
-                  </li></ul></div><p>这两种类型的复数值中的任何一种都包含它们自己的标量或复数值，而对规则性没有任何限制。</p><p>SUPER 数据类型以无 schema 形式支持半结构化数据的持久性。虽然分层数据模型可以更改，但旧版本的数据可以共存在于同一个 SUPER 列中。</p><p>有关 Amazon Redshift 如何使用 PartiQL 启用导航到数组和结构的信息，请参阅<a href="./query-super.html#navigation">导航</a>。有关 Amazon Redshift 如何使用 PartiQL 语法通过使用查询的 FROM 子句导航数组来迭代 SUPER 数组的信息，请参阅<a href="./query-super.html#unnest">取消嵌套查询</a>。</p><p>有关 Amazon Redshift 如何使用动态键入处理无 schemal SUPER 数据而无需在查询中使用数据类型之前声明数据类型的信息，请参阅<a href="./query-super.html#dynamic-typing-lax-processing">动态键入</a>。</p><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_HLLSKTECH_type.html">HLLSKETCH 类型</div><div id="next" class="next-link" accesskey="n" href="./r_VARBYTE_type.html">VARBYTE 类型</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_SUPER_type.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_SUPER_type.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+                     <ul class="itemizedlist"><li class="listitem">
+                           <p>一个值数组，包括标量或复数</p>
+                        </li><li class="listitem">
+                           <p>一个结构，也称为元组或对象，它是属性名称和值（标量或复数）的映射</p>
+                        </li></ul></div>
+                  </li></ul></div><p>这两种类型的复数值中的任何一种都包含它们自己的标量或复数值，而对规则性没有任何限制。</p><p>SUPER 数据类型以无 schema 形式支持半结构化数据的持久性。虽然分层数据模型可以更改，但旧版本的数据可以共存在于同一个 SUPER 列中。</p><p>Amazon Redshift 使用 PartiQL 来实现数组和结构的导航。Amazon Redshift 还使用 PartiQL 语法遍历 SUPER 数组。有关更多信息，请参阅 <a href="./query-super.html#navigation">导航</a> 和 <a href="./query-super.html#unnest">取消嵌套查询</a>：</p><p>Amazon Redshift 使用动态键入来处理无架构的 SUPER 数据，而无需在查询中使用数据类型之前声明数据类型。有关更多信息，请参阅<a href="./query-super.html#dynamic-typing-lax-processing">动态键入</a>。</p><p>您可以将动态数据掩蔽策略应用于 SUPER 类型列路径上的 <code class="code">scalar</code> 值。有关动态数据掩蔽的更多信息，请参阅<a href="./t_ddm.html">动态数据掩蔽</a>。有关为 SUPER 数据类型使用动态数据掩蔽的信息，请参阅<a href="./t_ddm-super.html">对 SUPER 数据类型路径使用动态数据掩蔽</a>。</p><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./r_HLLSKTECH_type.html">HLLSKETCH 类型</div><div id="next" class="next-link" accesskey="n" href="./r_VARBYTE_type.html">VARBYTE 类型</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_SUPER_type.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_SUPER_type.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

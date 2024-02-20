@@ -88,7 +88,7 @@ CREATEDB | NOCREATEDB
              
              
          <dl>
-               <dt><span class="term"> <em> username</em> </span></dt>
+               <dt><span class="term"> <em>username</em> </span></dt>
                <dd>
                   <p>用户的名称。</p>
                </dd>
@@ -144,7 +144,7 @@ CREATEDB | NOCREATEDB
                <dt><span class="term"> <em>new_name</em> </span></dt>
                <dd>
                   <p>用户的新名称。有关有效名称的更多信息，请参阅<a href="./r_names.html">名称和标识符</a>。</p>
-                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>在重命名用户时，您还必须更改用户的密码。用户名用作密码加密的一部分，因此在重命名用户时，将会清除密码。用户将无法登录，直至重置密码。例如：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user newuser password 'EXAMPLENewPassword11'; </code></pre></div></div>
+                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>在重命名用户时，还必须重置用户的密码。重置密码不必与之前的密码不同。用户名用作密码加密的一部分，因此在重命名用户时，将会清除密码。用户将无法登录，直至重置密码。例如：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user newuser password 'EXAMPLENewPassword11'; </code></pre></div></div>
                </dd>
              
                <dt><span class="term">CONNECTION LIMIT <span>{</span> <em>limit</em> | UNLIMITED } </span></dt>
@@ -155,7 +155,7 @@ CREATEDB | NOCREATEDB
              
                <dt><span class="term">SESSION TIMEOUT <em>limit</em> | RESET SESSION TIMEOUT</span></dt>
                <dd>
-                  <p>会话保持非活动或空闲状态的最长时间（秒）。范围在 60 秒（1 分钟）到 1,728,000 秒（20 天）之间。如果没有为用户设置会话超时，则应用集群设置。有关更多信息，请参阅《Amazon Redshift 管理指南》中的 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Amazon Redshift 中的配额和限制</a>。</p>
+                  <p>会话保持非活动或空闲状态的最长时间（秒）。范围在 60 秒（1 分钟）到 1,728,000 秒（20 天）之间。如果没有为用户设置会话超时，则应用集群设置。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Amazon Redshift 中的配额和限制</a>。</p>
                   <p>设置会话超时时，它仅应用于新会话。</p>
                   <p>要查看有关活动用户会话的信息，包括开始时间、用户名和会话超时，请查询 <a href="./r_STV_SESSIONS.html">STV_SESSIONS</a> 系统视图。要查看有关用户会话历史记录的信息，请查询 <a href="./r_STL_SESSIONS.html">STL_SESSIONS</a> 视图。要检索有关数据库用户的信息（包括会话超时值），请查询 <a href="./r_SVL_USER_INFO.html">SVL_USER_INFO</a> 视图。</p>
                </dd>
@@ -204,7 +204,7 @@ CREATEDB | NOCREATEDB
              
                 
             
-         <ul class="itemizedlist"><li class="listitem"><p><b>尝试更改 rdsdb</b> - 您无法更改名为 <code class="code">rdsdb</code> 的用户。</p></li><li class="listitem"><p><b>创建未知密码</b> – 使用 AWS Identity and Access Management（IAM）身份验证创建数据库用户凭证时，您可能希望创建仅使用临时凭证便可以登录的超级用户。您不能禁用超级用户的密码，但可以使用随机生成的 MD5 哈希字符串创建一个未知密码。</p>
+         <ul class="itemizedlist"><li class="listitem"><p><b>尝试更改 rdsdb</b> - 您无法更改名为 <code class="code">rdsdb</code> 的用户。</p></li><li class="listitem"><p><b>创建未知密码</b> – 使用 AWS Identity and Access Management (IAM) 身份验证创建数据库用户凭证时，您可能希望创建仅使用临时凭证便可以登录的超级用户。您不能禁用超级用户的密码，但可以使用随机生成的 MD5 哈希字符串创建一个未知密码。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user iam_superuser password 'md51234567890123456780123456789012';</code></pre></li><li class="listitem"><p><b>设置 search_path</b> – 当您使用 ALTER USER 命令设置 <a href="./r_search_path.html">search_path</a> 参数时，所做修改将在指定的用户下次登录时生效。如果您希望更改当前用户和会话的 search_path 值，请使用 SET 命令。</p></li><li class="listitem"><p><b>设置时区</b> – 当您将 SET TIMEZONE 与 ALTER USER 命令一起使用时，所做修改将在指定的用户下次登录时生效。</p>
                </li><li class="listitem"><p><b>使用动态数据掩蔽和行级安全策略</b> – 当您的预调配集群或无服务器命名空间具有任何动态数据掩蔽或行级安全策略时，普通用户将无法使用以下命令：</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER &lt;current_user&gt; SET enable_case_sensitive_super_attribute/enable_case_sensitive_identifier/downcase_delimited_identifier</code></pre>
@@ -220,7 +220,7 @@ valid until '2017-12-31 23:59';</code></pre>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter user admin rename to sysadmin;</code></pre>
          <p>以下示例将用户的空闲会话超时更新为 300 秒。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER USER dbuser SESSION TIMEOUT 300;</code></pre>
-         <p>重置用户的空闲会话超时。重置它时，将应用集群设置。您必须是数据库超级用户才能执行此命令。有关更多信息，请参阅《Amazon Redshift 管理指南》中的 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Amazon Redshift 中的配额和限制</a>。</p>
+         <p>重置用户的空闲会话超时。重置它时，将应用集群设置。您必须是数据库超级用户才能执行此命令。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Amazon Redshift 中的配额和限制</a>。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER USER dbuser RESET SESSION TIMEOUT;</code></pre>
          <p>以下示例更新名为 <code class="code">bob</code> 的用户的外部 ID。命名空间为 <code class="code">myco_aad</code>。如果命名空间与注册的身份提供者没有关联，则会导致错误。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER USER myco_aad:bob EXTERNALID "ABC123" PASSWORD DISABLE;</code></pre>

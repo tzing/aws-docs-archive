@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_SESSION_HISTORY" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_SESSION_HISTORY-table-columns">表列</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_SESSION_HISTORY">SYS_SESSION_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_SESSION_HISTORY 查看有关当前活动的会话和会话历史记录的信息。</p><p>SYS_SESSION_HISTORY 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其具有访问权限的元数据。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_SESSION_HISTORY" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_SESSION_HISTORY-table-columns">表列</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_SESSION_HISTORY">SYS_SESSION_HISTORY</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_SESSION_HISTORY 查看有关当前活动的会话和会话历史记录的信息。</p><p>SYS_SESSION_HISTORY 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p>
             <h2 id="SYS_SESSION_HISTORY-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c61b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c65b7b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -62,7 +62,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">session_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">与语句关联的会话的 ID。</td>
                         </tr>
                         
@@ -72,23 +72,23 @@
                             <td tabindex="-1">数据库的名称。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">状态</td>
+                            <td tabindex="-1">status</td>
                             <td tabindex="-1">char</td>
                             <td tabindex="-1">会话的状态。可能的值为 <code class="code">active</code>、<code class="code">timed out</code> 和 <code class="code">closed</code>。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">session_timeout</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">超时前会话保持非活动状态或空闲状态的最长时间（秒）。0 表示未设置超时。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">start_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">建立连接的时间戳。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">end_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">停止连接的时间戳。</td>
                         </tr>
                     </table></div></div>

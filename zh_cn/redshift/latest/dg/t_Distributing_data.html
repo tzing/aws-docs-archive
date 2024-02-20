@@ -41,7 +41,7 @@
             <p>遵循 Amazon Redshift 的一些数据分配概念。</p>
             <p> <b>节点和切片</b> </p>
             <p> Amazon Redshift 集群是一组节点。集群中的每个节点拥有自己的操作系统、专用内存和专用磁盘存储。有个节点是<em>领导节点</em>，它负责将数据和查询处理任务分配到计算节点。<em>计算节点</em>提供完成这些任务的资源。</p>
-            <p> 计算节点的磁盘存储分成一系列<em>切片</em>。每个节点的切片数取决于集群的节点大小。例如，每个 DS2.XL 计算节点有两个切片，每个 DS2.8XL 计算节点有 16 个切片。所有节点均参与并行查询的运行，处理尽可能跨切片均匀分布的数据。有关每个节点大小拥有的切片数的更多信息，请转到《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">关于集群和节点</a>。</p>
+            <p> 计算节点的磁盘存储分成一系列<em>切片</em>。每个节点的切片数取决于集群的节点大小。例如，每个 DS2.XL 计算节点有两个切片，每个 DS2.8XL 计算节点有 16 个切片。所有节点均参与并行查询的运行，处理尽可能跨切片均匀分布的数据。有关每个节点大小拥有的切片数的更多信息，请转到《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">关于集群和节点</a>。</p>
             
             <p> <b>数据重新分配</b> </p>
             <p> 将数据加载到表中时，Amazon Redshift 根据表的分配方式将表中的行分配到各个节点切片。作为查询计划的一部分，优化程序确定必须将数据块放置在何处，以最好地运行查询。然后，在查询运行时，数据被实际移动或重新分配。重新分配可能涉及将特定的行发送到节点以进行联接，或将整个表广播到所有节点。</p>

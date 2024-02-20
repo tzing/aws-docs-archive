@@ -50,12 +50,12 @@
 }
 </script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#load-from-emr-steps-create-cluster" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="load-from-emr-steps-create-cluster">步骤 2：创建 Amazon EMR 集群</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>COPY 命令从 Amazon EMR Hadoop Distributed File System (HDFS) 上的文件加载数据。当您创建 Amazon EMR 集群时，请将集群配置为将数据文件输出到集群的 HDFS。</p><div class="procedure"><h6>要创建 Amazon EMR 集群</h6><ol><li>
                   <p>在与 Amazon Redshift 集群相同的 AWS 区域中创建 Amazon EMR 集群。</p>
-                  <p>如果 Amazon Redshift 集群在 VPC 中，则 Amazon EMR 集群必须在同一 VPC 组中。如果 Amazon Redshift 集群使用 EC2-Classic 模式（即，它不在 VPC 中），则 Amazon EMR 集群必须也使用 EC2-Classic 模式。有关更多信息，请参阅《Amazon Redshift 管理指南》中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-vpc.html">管理虚拟私有云 (VPC) 中的集群</a>。</p>
+                  <p>如果 Amazon Redshift 集群在 VPC 中，则 Amazon EMR 集群必须在同一 VPC 组中。如果 Amazon Redshift 集群使用 EC2-Classic 模式（即，它不在 VPC 中），则 Amazon EMR 集群必须也使用 EC2-Classic 模式。有关更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-vpc.html">管理 Virtual Private Cloud (VPC) 中的集群</a>。</p>
                </li><li>
                   <p>将集群配置为将数据文件输出到集群的 HDFS。HDFS 文件名不能包括星号 (*) 或问号 (?)。</p>
                   <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>文件名不能包括星号 (*) 或问号 (?)。</p></div></div>
                </li><li>
-                  <p>为 Amazon EMR 集群中的 <b>Auto-terminate</b>（自动终止）选项指定 <b>No</b>（否），以便集群在 COPY 命令运行时保持可用。</p>
+                  <p>在 Amazon EMR 集群配置中，将<b>自动终止</b>选项指定为<b>否</b>，以便集群在 COPY 命令运行时保持可用。</p>
                   <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>如果在 COPY 完成前更改或删除了任何数据文件，则您可能会遇到意外结果，或者 COPY 操作可能失败。</p></div></div>
                </li><li>
                   <p>请记下集群 ID 和主节点公有 DNS（托管集群的 Amazon EC2 实例的端点）。您将在后面的步骤中用到这些信息。</p>

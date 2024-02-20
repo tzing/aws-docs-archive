@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_DELETE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_DELETE-table-columns">表列</a><a href="#r_STL_DELETE-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_DELETE">STL_DELETE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>分析查询的删除执行步骤。</p><p>此视图对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部列也在 SYS 监控视图 <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a> 中定义。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_DELETE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_DELETE-table-columns">表列</a><a href="#r_STL_DELETE-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_DELETE">STL_DELETE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>分析查询的删除执行步骤。</p><p>STL_DELETE 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>STL_DELETE 仅包含在主集群上运行的查询。它不包含在并发扩展集群上运行的查询。要访问在主集群和并发扩展集群上运行的查询，我们建议您使用 SYS 监控视图 <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>。SYS 监控视图中的数据经过格式化处理，便于使用和理解。</p></div></div>
             <h2 id="r_STL_DELETE-table-columns">表列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9c27b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9c27b9b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -86,17 +86,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">starttime</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询开始的时间（采用 UTC 表示）。总时间包括排队和执行时间。秒的小数部分以 6 位精度表示。例如：<code class="userinput">2009-06-12 11:29:19.131358</code>。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">endtime</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询完成的时间（采用 UTC 表示）。总时间包括排队和执行时间。秒的小数部分以 6 位精度表示。例如：<code class="userinput">2009-06-12 11:29:19.131358</code>。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">tasknum</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">分配用于运行步骤的查询任务进程的数量。</td>
                         </tr>
                         <tr>

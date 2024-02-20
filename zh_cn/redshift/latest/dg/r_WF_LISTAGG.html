@@ -48,14 +48,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_LISTAGG" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_LISTAGG-synopsis">语法</a><a href="#r_WF_LISTAGG-arguments">Arguments</a><a href="#r_WF_LISTAGG-data-types">返回值</a><a href="#r_WF_LISTAGG-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_LISTAGG">LISTAGG 窗口函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>对于查询中的每个组，LISTAGG 窗口函数根据 ORDER BY 表达式对该组的行进行排序，然后将值串联成一个字符串。</p><p>LISTAGG 是仅计算节点函数。如果查询不引用用户定义的表或 Amazon Redshift 系统表，该函数将返回错误。有关更多信息，请参阅<a href="./c_join_PG.html">查询目录表</a>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_WF_LISTAGG" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_WF_LISTAGG-synopsis">语法</a><a href="#r_WF_LISTAGG-arguments">参数</a><a href="#r_WF_LISTAGG-data-types">返回值</a><a href="#r_WF_LISTAGG-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_WF_LISTAGG">LISTAGG 窗口函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>对于查询中的每个组，LISTAGG 窗口函数根据 ORDER BY 表达式对该组的行进行排序，然后将值串联成一个字符串。</p><p>LISTAGG 是仅计算节点函数。如果查询不引用用户定义的表或 Amazon Redshift 系统表，该函数将返回错误。有关更多信息，请参阅<a href="./c_join_PG.html">查询目录表</a>。</p>
             <h2 id="r_WF_LISTAGG-synopsis">语法</h2>
 
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">LISTAGG(<em> [DISTINCT] expression</em> [, '<em>delimiter</em>' ] ) 
 [ WITHIN GROUP (ORDER BY <em>order_list</em>) ] 
 OVER ( [PARTITION BY partition_expression] )     </code></pre>
           
-            <h2 id="r_WF_LISTAGG-arguments">Arguments</h2>
+            <h2 id="r_WF_LISTAGG-arguments">参数</h2>
 
 
             <div class="variablelist">
@@ -69,7 +69,7 @@ OVER ( [PARTITION BY partition_expression] )     </code></pre>
             <dl>
                   <dt><span class="term">DISTINCT</span></dt>
                   <dd>
-                     <p>(可选) 用于在串联之前消除指定表达式中重复值的子句。尾部空格将被忽略，因此会将字符串 <code class="code">'a'</code> 和 <code class="code">'a '</code> 视为重复值。LISTAGG 将使用遇到的第一个值。有关更多信息，请参阅<a href="./r_Character_types.html#r_Character_types-significance-of-trailing-blanks">尾部空格的意义</a>。</p>
+                     <p>（可选）用于在串联之前消除指定表达式中重复值的子句。尾部空格将被忽略，因此会将字符串 <code class="code">'a'</code> 和 <code class="code">'a '</code> 视为重复值。LISTAGG 将使用遇到的第一个值。有关更多信息，请参阅<a href="./r_Character_types.html#r_Character_types-significance-of-trailing-blanks">尾部空格的意义</a>。</p>
                   </dd>
                 
                   <dt><span class="term"></span></dt>
@@ -84,12 +84,12 @@ OVER ( [PARTITION BY partition_expression] )     </code></pre>
                 
                   <dt><span class="term"> <em>分隔符</em> </span></dt>
                   <dd>
-                     <p>(可选) 将用于分隔串联的值的字符串常数。默认值为 NULL。</p>
+                     <p>（可选）将用于分隔串联的值的字符串常数。默认值为 NULL。</p>
                   </dd>
                 
                   <dt><span class="term"> WITHIN GROUP (ORDER BY <em>order_list</em>) </span></dt>
                   <dd>
-                     <p>(可选) 用于指定聚合值的排序顺序的子句。仅在 ORDER BY 提供唯一排序时是确定性的。默认为聚合所有行并返回一个值。</p>
+                     <p>（可选）用于指定聚合值的排序顺序的子句。仅在 ORDER BY 提供唯一排序时是确定性的。默认为聚合所有行并返回一个值。</p>
                   </dd>
                 
                   <dt><span class="term"> OVER </span></dt>
@@ -99,7 +99,7 @@ OVER ( [PARTITION BY partition_expression] )     </code></pre>
                 
                   <dt><span class="term"> PARTITION BY <em>partition_expression</em> </span></dt>
                   <dd>
-                     <p>(可选) 设置 OVER 子句中每个组的记录范围。</p>
+                     <p>（可选）设置 OVER 子句中每个组的记录范围。</p>
                   </dd>
                </dl></div>
           

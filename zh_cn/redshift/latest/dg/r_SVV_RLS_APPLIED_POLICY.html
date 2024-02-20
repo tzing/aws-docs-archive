@@ -42,11 +42,15 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_RLS_APPLIED_POLICY" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_SVV_RLS_APPLIED_POLICY-table-columns">表列</a><a href="#r_SVV_RLS_APPLIED_POLICY-sample-query">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_RLS_APPLIED_POLICY">SVV_RLS_APPLIED_POLICY </h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SVV_RLS_APPLIED_POLICY 跟踪 RLS 策略在引用受 RLS 保护的关系的查询上的应用情况。</p><p>只有超级用户、sys:operator 或拥有系统权限 ACCESS SYSTEM TABLE 的用户才能查询此视图。请注意，sys:secadmin 未被授予此系统权限。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_SVV_RLS_APPLIED_POLICY" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_SVV_RLS_APPLIED_POLICY-table-columns">表列</a><a href="#r_SVV_RLS_APPLIED_POLICY-sample-query">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_SVV_RLS_APPLIED_POLICY">SVV_RLS_APPLIED_POLICY </h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SVV_RLS_APPLIED_POLICY 跟踪 RLS 策略在引用受 RLS 保护的关系的查询上的应用情况。</p><p>SVV_RLS_APPLIED_POLICY 对以下用户可见：</p><div class="itemizedlist">
+             
+             
+             
+        <ul class="itemizedlist"><li class="listitem"><p>超级用户</p></li><li class="listitem"><p>拥有 <code class="code">sys:operator</code> 角色的用户</p></li><li class="listitem"><p>拥有 ACCESS SYSTEM TABLE 权限的用户</p></li></ul></div><p>请注意，sys:secadmin 未被授予此系统权限。</p>
             <h2 id="r_SVV_RLS_APPLIED_POLICY-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c11c95b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c11c95c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -60,7 +64,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">query</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">查询的 ID。</td>
                         </tr>
                         <tr>
@@ -70,7 +74,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">pid</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">运行查询的领导进程。</td>
                         </tr>
                         <tr>

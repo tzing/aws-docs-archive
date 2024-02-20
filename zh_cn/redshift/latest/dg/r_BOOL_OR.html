@@ -48,13 +48,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_BOOL_OR" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_BOOL_OR-synopsis">语法</a><a href="#r_BOOL_OR-arguments">Arguments</a><a href="#r_bool_or_example">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_BOOL_OR">BOOL_OR 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>BOOL_OR 函数在单个布尔/整数列或表达式上运行。此函数将类似的逻辑应用于 BIT_AND 和 BIT_OR 函数。对于此函数，返回类型为布尔值（<code class="code">true</code>、<code class="code">false</code> 或 <code class="code">NULL</code>）。</p><p>如果集合中的某个值为 <code class="code">true</code>，则 BOOL_OR 函数返回 <code class="code">true</code>（<code class="code">t</code>)。如果集合中的某个值为 <code class="code">false</code>，则该函数返回 <code class="code">false</code>（<code class="code">f</code>)。如果值未知，则可以返回 NULL。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_BOOL_OR" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_BOOL_OR-synopsis">语法</a><a href="#r_BOOL_OR-arguments">参数</a><a href="#r_bool_or_example">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_BOOL_OR">BOOL_OR 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>BOOL_OR 函数在单个布尔/整数列或表达式上运行。此函数将类似的逻辑应用于 BIT_AND 和 BIT_OR 函数。对于此函数，返回类型为布尔值（<code class="code">true</code>、<code class="code">false</code> 或 <code class="code">NULL</code>）。</p><p>如果集合中的一个或多个值为 <code class="code">true</code>，则 BOOL_OR 函数返回 <code class="code">true</code>（<code class="code">t</code>）。如果集合中的所有值为 <code class="code">false</code>，则函数返回 <code class="code">false</code>（<code class="code">f</code>）。如果值未知，则可以返回 NULL。</p>
             <h2 id="r_BOOL_OR-synopsis">语法</h2>
 
 
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">BOOL_OR ( [DISTINCT | ALL] <em>expression</em> )</code></pre>
           
-            <h2 id="r_BOOL_OR-arguments">Arguments</h2>
+            <h2 id="r_BOOL_OR-arguments">参数</h2>
 
             <div class="variablelist">
                 

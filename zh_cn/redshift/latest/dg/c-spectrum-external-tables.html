@@ -43,7 +43,7 @@
             <p>schema 的使用权限 </p>
          </li><li class="listitem">
             <p>在当前数据库中创建临时表的权限 </p>
-         </li></ul></div><p>以下示例将 schema <code class="code">spectrum_schema</code> 的使用权限授予 <code class="code">spectrumusers</code> 用户组。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">grant usage on schema spectrum_schema to group spectrumusers;</code></pre><p>以下示例将数据库 <code class="code">spectrumdb</code> 的临时权限授予 <code class="code">spectrumusers</code> 用户组。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">grant temp on database spectrumdb to group spectrumusers;</code></pre><p>您可在 Amazon Redshift、AWS Glue、Amazon Athena 或 Apache Hive 元存储中创建外部表。有关更多信息，请参阅 <em>AWS Glue 开发人员指南</em>中的<a href="https://docs.aws.amazon.com/glue/latest/dg/getting-started.html">开始使用 AWS Glue</a>、<em>Amazon Athena 用户指南</em>中的<a href="https://docs.aws.amazon.com/athena/latest/ug/getting-started.html">入门</a>或 <em>Amazon EMR 开发人员指南</em>中的 <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hive.html">Apache Hive</a>。</p><p>如果您的外部表是在 AWS Glue、Athena 或 Hive 元存储中定义的，您首先应创建引用外部数据库的外部 schema。然后，您可通过使用 schema 名称作为表名称的前缀来在 SELECT 语句中引用外部表，无需在 Amazon Redshift 中创建表。有关更多信息，请参阅<a href="./c-spectrum-external-schemas.html">为 Amazon Redshift Spectrum 创建外部 schema</a>。</p><p>要允许 Amazon Redshift 在 AWS Glue Data Catalog 中查看表，添加 <code class="code">glue:GetTable</code> 到 Amazon Redshift IAM 角色。否则，您可能会遇到类似以下内容的错误。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">RedshiftIamRoleSession is not authorized to perform: glue:GetTable on resource: *;</code></pre><p>例如，假设您有一个在 Athena 外部目录中定义的名为 <code class="code">lineitem_athena</code> 的外部表。在这种情况下，您可以定义一个名为 <code class="code">athena_schema</code> 的外部 schema，然后使用以下 SELECT 语句查询表。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*) from athena_schema.lineitem_athena;</code></pre><p>要在 Amazon Redshift 中定义外部表，请使用 <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> 命令。外部表语句定义了表列、您的数据文件的格式和您的数据在 Simple Storage Service（Amazon S3）中的位置。Redshift Spectrum 扫描指定的文件夹和任意子文件夹中的文件。Redshift Spectrum 将忽略隐藏文件以及以句点、下划线或哈希标记 (.、_ 或 #) 开头或以波形符结尾的文件。</p><p>以下示例在名为 <code class="code">spectrum</code> 的 Amazon Redshift 外部 schema 中创建一个名为 SALES 的表。数据位于制表符分隔的文本文件中。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.sales(
+         </li></ul></div><p>以下示例将 schema <code class="code">spectrum_schema</code> 的使用权限授予 <code class="code">spectrumusers</code> 用户组。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">grant usage on schema spectrum_schema to group spectrumusers;</code></pre><p>以下示例将数据库 <code class="code">spectrumdb</code> 的临时权限授予 <code class="code">spectrumusers</code> 用户组。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">grant temp on database spectrumdb to group spectrumusers;</code></pre><p>您可在 Amazon Redshift、AWS Glue、Amazon Athena 或 Apache Hive 元存储中创建外部表。有关更多信息，请参阅《AWS Glue 开发人员指南》<em></em>中的<a href="https://docs.aws.amazon.com/glue/latest/dg/getting-started.html">开始使用 AWS Glue</a>、《Amazon Athena 用户指南》<em></em>中的<a href="https://docs.aws.amazon.com/athena/latest/ug/getting-started.html">入门</a>或《Amazon EMR 开发人员指南》<em></em>中的 <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hive.html">Apache Hive</a>。</p><p>如果您的外部表是在 AWS Glue、Athena 或 Hive 元存储中定义的，您首先应创建引用外部数据库的外部 schema。然后，您可通过使用 schema 名称作为表名称的前缀来在 SELECT 语句中引用外部表，无需在 Amazon Redshift 中创建表。有关更多信息，请参阅<a href="./c-spectrum-external-schemas.html">为 Amazon Redshift Spectrum 创建外部 schema</a>。</p><p>要允许 Amazon Redshift 在 AWS Glue Data Catalog 中查看表，添加 <code class="code">glue:GetTable</code> 到 Amazon Redshift IAM 角色。否则，您可能会遇到类似以下内容的错误。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">RedshiftIamRoleSession is not authorized to perform: glue:GetTable on resource: *;</code></pre><p>例如，假设您有一个在 Athena 外部目录中定义的名为 <code class="code">lineitem_athena</code> 的外部表。在这种情况下，您可以定义一个名为 <code class="code">athena_schema</code> 的外部 schema，然后使用以下 SELECT 语句查询表。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select count(*) from athena_schema.lineitem_athena;</code></pre><p>要在 Amazon Redshift 中定义外部表，请使用 <a href="./r_CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a> 命令。外部表语句定义了表列、您的数据文件的格式和您的数据在 Amazon S3 中的位置。Redshift Spectrum 扫描指定的文件夹和任意子文件夹中的文件。Redshift Spectrum 将忽略隐藏文件以及以句点、下划线或哈希标记 (.、_ 或 #) 开头或以波形符结尾的文件。</p><p>以下示例在名为 <code class="code">spectrum</code> 的 Amazon Redshift 外部 schema 中创建一个名为 SALES 的表。数据位于制表符分隔的文本文件中。</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external table spectrum.sales(
 salesid integer,
 listid integer,
 sellerid integer,
@@ -62,13 +62,13 @@ table properties ('numRows'='172000');</code></pre><p>要查看外部表，请�
          <h2 id="c-spectrum-external-tables-pseudocolumns">Pseudocolumns</h2>
 
          
-         <p>原定设置情况下，Amazon Redshift 使用伪列 <code class="code">$path</code>、<code class="code">$size</code> 和 <code class="code">$spectrum_oid</code> 创建外部表。选择 <code class="code">$path</code> 列可针对查询返回的每行查看 Simple Storage Service (Amazon S3) 上数据文件的路径，而选择 <code class="code">$size</code> 列可以查看每行的数据文件的大小。<code class="code">$spectrum_oid</code> 列提供了使用 Redshift Spectrum 执行相关查询的功能。有关示例，请参阅<a href="./c_performing-correlated-subqueries-spectrum.html">示例：在 Redshift Spectrum 中执行相关的子查询</a>。必须用双引号分隔 <code class="code">$path</code>、<code class="code">$size</code> 和 <code class="code">$spectrum_oid</code> 列名称。SELECT * 子句不返回伪列。如下例所示，必须在查询中显式包含 <code class="code">$path</code>、<code class="code">$size</code> 和 <code class="code">$spectrum_oid</code> 列名称。</p>
+         <p>原定设置情况下，Amazon Redshift 使用伪列 <code class="code">$path</code>、<code class="code">$size</code> 和 <code class="code">$spectrum_oid</code> 创建外部表。选择 <code class="code">$path</code> 列可针对查询返回的每行查看 Amazon S3 上数据文件的路径，而选择 <code class="code">$size</code> 列可以查看每行的数据文件的大小。<code class="code">$spectrum_oid</code> 列提供了使用 Redshift Spectrum 执行相关查询的功能。有关示例，请参阅<a href="./c_performing-correlated-subqueries-spectrum.html">示例：在 Redshift Spectrum 中执行相关的子查询</a>。必须用双引号分隔 <code class="code">$path</code>、<code class="code">$size</code> 和 <code class="code">$spectrum_oid</code> 列名称。SELECT * 子句不返回伪列。如下例所示，必须在查询中显式包含 <code class="code">$path</code>、<code class="code">$size</code> 和 <code class="code">$spectrum_oid</code> 列名称。</p>
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="SQL ">select "$path", "$size", "$spectrum_oid"
 from spectrum.sales_part where saledate = '2008-12-01';</code></pre>
          
          <p>您可以通过将 <code class="code">spectrum_enable_pseudo_columns</code> 配置参数设置为 <code class="code">false</code> 来禁用为会话创建伪列的功能。有关更多信息，请参阅<a href="./r_spectrum_enable_pseudo_columns.html">spectrum_enable_pseudo_columns</a>。还可以通过将 <code class="code">enable_spectrum_oid</code> 设置为 <code class="code">false</code> 来仅禁用 <code class="code">$spectrum_oid</code> 伪列。有关更多信息，请参阅<a href="./r_spectrum_enable_spectrum_oid.html">enable_spectrum_oid</a>。然而，禁用 <code class="code">$spectrum_oid</code> 伪列也会禁用使用 Redshift Spectrum 进行相关查询的支持。</p>
-         <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>选择 <code class="code">$size</code>、<code class="code">$path</code> 或 <code class="code">$spectrum_oid</code> 将产生费用，因为 Redshift Spectrum 会扫描 Simple Storage Service (Amazon S3) 中的数据文件来确定结果集的大小。有关更多信息，请参阅 <a href="https://aws.amazon.com/redshift/pricing/" rel="noopener noreferrer" target="_blank"><span>Amazon Redshift 定价</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p></div></div>
+         <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>选择 <code class="code">$size</code>、<code class="code">$path</code> 或 <code class="code">$spectrum_oid</code> 将产生费用，因为 Redshift Spectrum 会扫描 Amazon S3 中的数据文件来确定结果集的大小。有关更多信息，请参阅 <a href="https://aws.amazon.com/redshift/pricing/" rel="noopener noreferrer" target="_blank"><span>Amazon Redshift 定价</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p></div></div>
           
             <h3 id="c-spectrum-external-tables-pseudocolumns-example">Pseudocolumns 示例</h3>
 
@@ -89,7 +89,7 @@ s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03/ |  164
          <p>常见做法是根据时间对数据进行分区。例如，您可以选择按年、月、日和小时进行分区。如果您的数据来自多个源，您可以按数据源标识符和日期进行分区。</p>
          <p>以下过程介绍如何对您的数据进行分区。</p>
          <div class="procedure"><h6>对您的数据进行分区</h6><ol><li>
-               <p>根据分区键将您的数据存储在 Simple Storage Service（Amazon S3）文件夹中。</p>
+               <p>根据分区键将您的数据存储在 Amazon S3 文件夹中。</p>
                <p>为每个分区值创建一个文件夹并使用分区键和值为该文件夹命名。例如，如果您按日期分区，您可能具有名为 <code class="code">saledate=2017-04-01</code>、<code class="code">saledate=2017-04-02</code> 等的文件夹。Redshift Spectrum 扫描分区文件夹和任意子文件夹中的文件。Redshift Spectrum 将忽略隐藏文件以及以句点、下划线或哈希标记 (.、_ 或 #) 开头或以波形符结尾的文件。</p>
 
             </li><li>
@@ -97,7 +97,7 @@ s3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-03/ |  164
                <p>分区键不能是表列的名称。数据类型可以为 SMALLINT、INTEGER、BIGINT、DECIMAL、REAL、DOUBLE PRECISION、BOOLEAN、CHAR、VARCHAR、DATE 或 TIMESTAMP 数据类型。</p>
             </li><li>
                <p>添加分区。</p>
-               <p>通过使用 <a href="./r_ALTER_TABLE.html">ALTER TABLE</a> … ADD PARTITION，添加每个分区，以指定分区列和键值以及分区文件夹在 Simple Storage Service（Amazon S3）中的位置。您可以使用单个 ALTER TABLE … ADD 语句添加多个分区。以下示例为 <code class="code">'2008-01'</code> 和 <code class="code">'2008-03'</code> 添加分区。</p>
+               <p>通过使用 <a href="./r_ALTER_TABLE.html">ALTER TABLE</a> … ADD PARTITION，添加每个分区，以指定分区列和键值以及分区文件夹在 Amazon S3 中的位置。您可以使用单个 ALTER TABLE … ADD 语句添加多个分区。以下示例为 <code class="code">'2008-01'</code> 和 <code class="code">'2008-03'</code> 添加分区。</p>
                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">alter table spectrum.sales_part add
 partition(saledate='2008-01-01') 
 location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-01/'
@@ -112,7 +112,7 @@ location 's3://redshift-downloads/tickit/spectrum/sales_partition/saledate=2008-
 
             <p>在此示例中，您将创建一个由单个分区键进行分区的外部表和一个由两个分区键进行分区的外部表。</p>
 
-            <p>本示例的示例数据位于为所有经过身份验证的 AWS 用户提供读取访问权限的 Simple Storage Service（Amazon S3）桶中。您的集群和外部数据文件必须位于同一 AWS 区域中。示例数据桶位于美国东部（弗吉尼亚州北部）区域（us-east-1）中。要使用 Redshift Spectrum 访问数据，您的集群必须同样位于 us-east-1 中。要列出 Simple Storage Service（Amazon S3）中的文件夹，请运行以下命令。</p>
+            <p>本示例的示例数据位于为所有经过身份验证的 AWS 用户提供读取访问权限的 Amazon S3 桶中。您的集群和外部数据文件必须位于同一 AWS 区域中。示例数据桶位于美国东部（弗吉尼亚州北部）区域 (us-east-1) 中。要使用 Redshift Spectrum 访问数据，您的集群必须同样位于 us-east-1 中。要列出 Amazon S3 中的文件夹，请运行以下命令。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">aws s3 ls s3://redshift-downloads/tickit/spectrum/sales_partition/</code></pre>
             <pre class="screen">PRE saledate=2008-01/
 PRE saledate=2008-03/
@@ -120,7 +120,7 @@ PRE saledate=2008-04/
 PRE saledate=2008-05/
 PRE saledate=2008-06/
 PRE saledate=2008-12/</pre>
-            <p>如果您还没有外部架构，请运行以下命令。使用您的 AWS Identity and Access Management (IAM) 角色替换 Amazon Resource Name (ARN)。</p>
+            <p>如果您还没有外部架构，请运行以下命令。使用您的 AWS Identity and Access Management (IAM) 角色替换 Amazon 资源名称 (ARN)。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">create external schema spectrum
 from data catalog
 database 'spectrumdb'
@@ -298,7 +298,7 @@ location 's3://example/orc/files/';</code></pre>
             - value : float (id = 8)</pre>
             <p>在此示例中，您可以严格按位置将外部表中的每个列映射到 ORC 文件中的列。下面显示了映射。</p>
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac27c19c45c11c21"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac29c19c45c11c21"><thead>
                      <tr>
                         <th>外部表列名称</th>
                         <th>ORC 列 ID</th>
@@ -362,7 +362,7 @@ location 's3://example/orc/files/';</code></pre>
    o 'float_col' : float (id = 8)</pre>
 
             <p>使用位置映射，Redshift Spectrum 会尝试进行以下映射。</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac27c19c45c13c11"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac29c19c45c13c11"><thead>
                      <tr>
                         <th>外部表列名称</th>
                         <th>ORC 列 ID</th>
@@ -391,10 +391,10 @@ location 's3://example/orc/files/';</code></pre>
           
        
       <h2 id="c-spectrum-column-mapping-hudi">为 Apache Hudi 中管理的数据创建外部表</h2>
-      <p>要查询 Apache Hudi 写入时复制 (CoW) 格式的数据，您可以使用 Amazon Redshift Spectrum 外部表。Hudi 写入时复制表是存储在 Simple Storage Service（Amazon S3）中的 Apache Parquet 文件的集合。您可以在 Apache Hudi 版本 0.5.2、0.6.0、0.7.0、0.8.0、0.9.0、0.10.0、0.10.1、0.11.0 和 0.11.1 中读取写入时复制（CoW, Copy On Write）表，这些表通过 Insert、Delete 和 Upsert Write 操作创建和修改。例如，不支持引导表。有关更多信息，请参阅开源 Apache Hudi 文档中的<a href="https://hudi.apache.org/docs/next/table_types#copy-on-write-table" rel="noopener noreferrer" target="_blank"><span>写入时复制表</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>
+      <p>要查询 Apache Hudi 写入时复制 (CoW) 格式的数据，您可以使用 Amazon Redshift Spectrum 外部表。Hudi 写入时复制表是存储在 Amazon S3 中的 Apache Parquet 文件的集合。您可以在 Apache Hudi 版本 0.5.2、0.6.0、0.7.0、0.8.0、0.9.0、0.10.0、0.10.1、0.11.0 和 0.11.1 中读取写入时复制 (CoW) 表，这些表通过 Insert、Delete 和 Upsert Write 操作创建和修改。例如，不支持引导表。有关更多信息，请参阅开源 Apache Hudi 文档中的<a href="https://hudi.apache.org/docs/next/table_types#copy-on-write-table" rel="noopener noreferrer" target="_blank"><span>写入时复制表</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>
       <p>创建引用 Hudi CoW 格式的数据的外部表时，将外部表中的每个列映射到 Hudi 数据中的列。映射按列完成。</p>
 
-      <p>分区和未分区 Hudi 表的数据定义语言 (DDL) 语句与其他 Apache Parquet 文件格式的语句类似。对于 Hudi 表，您可以将 <code class="code">INPUTFORMAT</code> 定义为 <code class="code">org.apache.hudi.hadoop.HoodieParquetInputFormat</code>。<code class="code">LOCATION</code> 参数必须指向包含 <code class="code">.hoodie</code> 文件夹的 Hudi 表基本文件夹，建立 Hudi 提交时间线时需要此文件夹。在某些情况下，Hudi 表上的 SELECT 操作可能会失败，并显示消息 <strong class="errortext"><code>No valid Hudi commit timeline found</code></strong>（未找到有效的 Hudi 提交时间线）。如果是这样，请检查 <code class="code">.hoodie</code> 文件夹是否位于正确的位置，并且包含有效的 Hudi 提交时间线。</p>
+      <p>分区和未分区 Hudi 表的数据定义语言 (DDL) 语句与其他 Apache Parquet 文件格式的语句类似。对于 Hudi 表，您可以将 <code class="code">INPUTFORMAT</code> 定义为 <code class="code">org.apache.hudi.hadoop.HoodieParquetInputFormat</code>。<code class="code">LOCATION</code> 参数必须指向包含 <code class="code">.hoodie</code> 文件夹的 Hudi 表基本文件夹，建立 Hudi 提交时间线时需要此文件夹。在某些情况下，Hudi 表上的 SELECT 操作可能会失败，并显示消息<strong class="errortext"><code>未找到有效的 Hudi 提交时间线</code></strong>。如果是这样，请检查 <code class="code">.hoodie</code> 文件夹是否位于正确的位置，并且包含有效的 Hudi 提交时间线。</p>
       <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>Apache Hudi 格式仅在您使用 AWS Glue Data Catalog 时受到支持。当您使用 Apache Hive 元数据仓作为外部目录时，它不受支持。</p></div></div>
       <p>用于定义未分区表的 DDL 采用以下格式。</p>
       <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE EXTERNAL TABLE <em>tbl_name</em> (<em>columns</em>)
@@ -411,7 +411,7 @@ STORED AS
 INPUTFORMAT 'org.apache.hudi.hadoop.HoodieParquetInputFormat'
 OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
 LOCATION 's3://<em>s3-bucket</em>/<em>prefix</em>'</code></pre>
-      <p>若要将分区添加到分区的 Hudi 表，请运行 ALTER TABLE ADD PARTITION 命令，其中 <code class="code">LOCATION</code> 参数指向具有属于该分区的文件的 Simple Storage Service（Amazon S3）子文件夹。</p>
+      <p>若要将分区添加到分区的 Hudi 表，请运行 ALTER TABLE ADD PARTITION 命令，其中 <code class="code">LOCATION</code> 参数指向具有属于该分区的文件的 Amazon S3 子文件夹。</p>
       <p>用于添加分区的 DDL 采用以下格式。</p>
       <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER TABLE <em>tbl_name</em>
 ADD IF NOT EXISTS PARTITION(<em>pcolumn1</em>=<em>pvalue1</em>[,...])
@@ -419,7 +419,7 @@ LOCATION 's3://<em>s3-bucket</em>/<em>prefix</em>/<em>partition-path</em>'</code
     
       <h2 id="c-spectrum-column-mapping-delta">为 Delta Lake 中托管的数据创建外部表</h2>
       <p>要查询 Delta Lake 表中的数据，您可以使用 Amazon Redshift Spectrum 外部表。</p>
-         <p>要从 Redshift Spectrum 访问 Delta Lake 表，请在查询之前生成清单。Delta Lake <em>清单</em>包含构成 Delta Lake 表的一致快照的文件列表。在分区表中，每个分区都有一个清单。Delta Lake 表是存储在 Simple Storage Service（Amazon S3）中的 Apache Parquet 文件的集合。有关更多信息，请参阅开源 Delta Lake 文档中的 <a href="https://delta.io" rel="noopener noreferrer" target="_blank"><span>Delta Lake</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>
+         <p>要从 Redshift Spectrum 访问 Delta Lake 表，请在查询之前生成清单。Delta Lake <em>清单</em>包含构成 Delta Lake 表的一致快照的文件列表。在分区表中，每个分区都有一个清单。Delta Lake 表是存储在 Amazon S3 中的 Apache Parquet 文件的集合。有关更多信息，请参阅开源 Delta Lake 文档中的 <a href="https://delta.io" rel="noopener noreferrer" target="_blank"><span>Delta Lake</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>
       <p>创建引用 Delta Lake 表中的数据的外部表时，将外部表中的每个列映射到 Delta Lake 数据中的列。映射按列名称完成。</p>
       
       <p>分区和未分区的 Delta Lake 表的 DDL 与其他 Apache Parquet 文件格式的 DDL 类似。对于 Delta Lake 表，您可以将 <code class="code">INPUTFORMAT</code> 定义为 <code class="code">org.apache.hadoop.hive.ql.io.SymlinkTextInputFormat</code>，并将 <code class="code">OUTPUTFORMAT</code> 定义为 <code class="code">org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat</code>。<code class="code">LOCATION</code> 参数必须指向表基本文件夹中的清单文件夹。如果 Delta Lake 表上的 SELECT 操作失败，对于可能的原因，请参阅<a href="#c-spectrum-column-mapping-delta-limitations">Delta Lake 表的限制和故障排除</a>。</p>
@@ -438,7 +438,7 @@ STORED AS
 INPUTFORMAT 'org.apache.hadoop.hive.ql.io.SymlinkTextInputFormat'
 OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION 's3://<em>s3-bucket</em>&gt;/<em>prefix</em>/_symlink_format_manifest'</code></pre>
-      <p>若要将分区添加到已分区的 Delta Lake 表，请运行 ALTER TABLE ADD PARTITION 命令，其中 <code class="code">LOCATION</code> 参数指向包含分区清单的 Simple Storage Service（Amazon S3）子文件夹。</p>
+      <p>若要将分区添加到已分区的 Delta Lake 表，请运行 ALTER TABLE ADD PARTITION 命令，其中 <code class="code">LOCATION</code> 参数指向包含分区清单的 Amazon S3 子文件夹。</p>
       <p>用于添加分区的 DDL 采用以下格式。</p>
       <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">ALTER TABLE <em>tbl_name</em>
 ADD IF NOT EXISTS PARTITION(<em>pcolumn1</em>=<em>pvalue1</em>[,...])
@@ -459,7 +459,7 @@ LOCATION
           
       <ul class="itemizedlist"><li class="listitem"><p>如果清单指向不再存在的快照或分区，则查询将失败，直到生成新的有效清单。例如，这可能因基础表上的 VACUUM 操作所导致，</p></li><li class="listitem"><p>Delta Lake 清单仅提供分区级的一致性。</p></li></ul></div>
       <p>下表说明了查询 Delta Lake 表时出现某些错误的一些潜在原因。</p>
-      <div class="table-container"><div class="table-contents"><table id="w317aac27c19c49c37"><thead>
+      <div class="table-container"><div class="table-contents"><table id="w319aac29c19c49c37"><thead>
                <tr>
                   <th>错误消息</th>
                   <th>可能的原因</th>
@@ -469,25 +469,25 @@ LOCATION
                
                <tr>
                   <td tabindex="-1"><p><strong class="errortext"><code>桶 <em>s3-bucket-1</em> 中的 Delta Lake 清单不能包含桶 <em>s3-bucket-2</em> 中的条目。</code></strong></p></td>
-                  <td tabindex="-1"><p>清单条目指向与指定桶不同的 Simple Storage Service（Amazon S3）桶中的文件。</p></td>
+                  <td tabindex="-1"><p>清单条目指向与指定桶不同的 Amazon S3 桶中的文件。</p></td>
                </tr>
                <tr>
                   <td tabindex="-1"><p><strong class="errortext"><code>Delta Lake 文件应位于同一文件夹中。</code></strong></p></td>
-                  <td tabindex="-1"><p>清单条目指向具有与指定的 Simple Storage Service（Amazon S3）前缀不同的文件。</p></td>
+                  <td tabindex="-1"><p>清单条目指向具有与指定的 Amazon S3 前缀不同的文件。</p></td>
                </tr>
                <tr>
                   <td tabindex="-1"><p><strong class="errortext"><code>未找到 Delta Lake 清单 <em>manifest-path</em> 中所列的文件 <em>filename</em>。</code></strong></p></td>
-                  <td tabindex="-1"><p>在 Simple Storage Service（Amazon S3）中找不到清单中列出的文件。</p></td>
+                  <td tabindex="-1"><p>在 Amazon S3 中找不到清单中列出的文件。</p></td>
                </tr>
                <tr>
                   <td tabindex="-1"><p><strong class="errortext"><code>获取 Delta Lake 清单时出错。</code></strong></p></td>
-                  <td tabindex="-1"><p>在 Simple Storage Service（Amazon S3）中找不到清单。</p></td>
+                  <td tabindex="-1"><p>在 Amazon S3 中找不到清单。</p></td>
                </tr>
                <tr>
                   <td tabindex="-1"><p><strong class="errortext"><code>S3 路径无效。</code></strong></p></td>
-                  <td tabindex="-1"><p>清单文件中的条目不是有效的 Simple Storage Service（Amazon S3）路径，或者清单文件已损坏。</p></td>
+                  <td tabindex="-1"><p>清单文件中的条目不是有效的 Amazon S3 路径，或者清单文件已损坏。</p></td>
                </tr>
 
             </table></div></div>
       
-   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./c-spectrum-external-schemas.html">创建外部架构</div><div id="next" class="next-link" accesskey="n" href="./querying-iceberg.html">使用 Apache Iceberg 表（预览版）</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/c-spectrum-external-tables.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/c-spectrum-external-tables.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./c-spectrum-external-schemas.html">创建外部架构</div><div id="next" class="next-link" accesskey="n" href="./querying-iceberg.html">使用 Apache Iceberg 表</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/c-spectrum-external-tables.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/c-spectrum-external-tables.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

@@ -42,16 +42,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#serializing-complex-JSON" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#serializing-complex-JSON-strings">序列化包含 JSON 字符串的复杂类型</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="serializing-complex-JSON">序列化复杂嵌套 JSON</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>本教程中演示的方法的替代方法是以序列化 JSON 格式查询顶级嵌套集合列。您可以通过 Redshift Spectrum 使用序列化以 JSON 格式检查、转换和摄取嵌套数据。ORC、JSON、Ion 和 Parquet 格式支持此方法。使用会话配置参数 <code class="code">json_serialization_enable</code> 配置序列化行为。设置时，复杂的 JSON 数据类型将序列化为 VARCHAR(65535)。嵌套的 JSON 可以通过 <a href="./json-functions.html">JSON 函数</a> 访问。有关更多信息，请参阅<a href="./r_json_serialization_enable.html">json_serialization_enable</a>。</p><p>例如，如果不设置 <code class="code">json_serialization_enable</code>，则以下访问嵌套列的查询直接失败。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SELECT * FROM spectrum.customers LIMIT 1;
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#serializing-complex-JSON" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#serializing-complex-JSON-strings">序列化包含 JSON 字符串的复杂类型</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="serializing-complex-JSON">序列化复杂嵌套 JSON</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>本教程中演示的方法的替代方法是以序列化 JSON 格式查询顶级嵌套集合列。您可以通过 Redshift Spectrum 使用序列化以 JSON 格式检查、转换和摄取嵌套数据。ORC、JSON、Ion 和 Parquet 格式支持此方法。使用会话配置参数 <code class="code">json_serialization_enable</code> 配置序列化行为。设置时，复杂的 JSON 数据类型将序列化为 VARCHAR(65535)。嵌套的 JSON 可以通过 <a href="./json-functions.html">JSON 函数</a> 访问。有关更多信息，请参阅<a href="./r_json_serialization_enable.html">json_serialization_enable</a>。</p><p>例如，如果不设置 <code class="code">json_serialization_enable</code>，则以下访问嵌套列的查询直接失败。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SELECT * FROM spectrum.customers LIMIT 1;
 
 =&gt; ERROR:  Nested tables do not support '*' in the SELECT clause.
 
 SELECT name FROM spectrum.customers LIMIT 1;
 
-=&gt; ERROR:  column "name" does not exist in customers
-</code></pre><p>设置 <code class="code">json_serialization_enable</code> 允许直接查询顶级集合。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SET json_serialization_enable TO true;
+=&gt; ERROR:  column "name" does not exist in customers</code></pre><p>设置 <code class="code">json_serialization_enable</code> 允许直接查询顶级集合。</p><pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SET json_serialization_enable TO true;
 
 SELECT * FROM spectrum.customers order by id LIMIT 1;
 
@@ -63,8 +60,7 @@ SELECT name FROM spectrum.customers order by id LIMIT 1;
 
 name
 ---------
-<span>{</span>"given": "John", "family": "Smith"}                      
-</code></pre><p>在序列化嵌套 JSON 时，请考虑以下项目。</p><div class="itemizedlist">
+<span>{</span>"given": "John", "family": "Smith"}  </code></pre><p>在序列化嵌套 JSON 时，请考虑以下项目。</p><div class="itemizedlist">
              
              
              
@@ -81,29 +77,23 @@ name
             <h2 id="serializing-complex-JSON-strings">序列化包含 JSON 字符串的复杂类型</h2>
             <p>预设情况下，嵌套集合中包含的字符串值被序列化为转义 JSON 字符串。当字符串为有效的 JSON 时，转义可能是不可取的。相反，您可能希望直接将嵌套子元素或 VARCHAR 字段编写为 JSON。通过 <code class="code">json_serialization_parse_nested_strings</code> 会话级别配置启用此行为。设置 <code class="code">json_serialization_enable</code> 和 <code class="code">json_serialization_parse_nested_strings</code> 时，有效的 JSON 值将被内联序列化，没有转义字符。当该值是无效的 JSON 时，它会被转义，就好像未设置 <code class="code">json_serialization_parse_nested_strings</code> 配置值一样。有关更多信息，请参阅<a href="./r_json_serialization_parse_nested_strings.html">json_serialization_parse_nested_strings</a>。</p>  
             <p>例如，假设前面示例中的数据包含 JSON 作为 <code class="code">name</code> VARCHAR(20) 字段中的 <code class="code">structs</code> 复杂类型：</p>
-            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-name
+            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">name
 ---------
-<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}
-</code></pre>
+<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}</code></pre>
             <p>当设置 <code class="code">json_serialization_parse_nested_strings</code> 时，<code class="code">name</code> 列序列化如下：</p>
             
-            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SET json_serialization_enable TO true;
+            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SET json_serialization_enable TO true;
 SET json_serialization_parse_nested_strings TO true;
 SELECT name FROM spectrum.customers order by id LIMIT 1;
 
 name
 ---------
-<span>{</span>"given": <span>{</span>"first":"John","middle":"James"}, "family": "Smith"}
-</code></pre>
+<span>{</span>"given": <span>{</span>"first":"John","middle":"James"}, "family": "Smith"}</code></pre>
             <p>而不是像这样进行转义：</p>
-            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">
-SET json_serialization_enable TO true;
+            <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">SET json_serialization_enable TO true;
 SELECT name FROM spectrum.customers order by id LIMIT 1;
 
 name
 ---------
-<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}
-</code></pre>
-        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./nested-data-restrictions.html">嵌套数据限制</div><div id="next" class="next-link" accesskey="n" href="./hyperloglog-overview.html">在 Amazon Redshift 中使用 HyperLogLog 草图</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+<span>{</span>"given": "<span>{</span>\"first\":\"John\",\"middle\":\"James\"}", "family": "Smith"}</code></pre>
+        <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="警告" /> <strong>Javascript 在您的浏览器中被禁用或不可用。</strong></p><p>要使用 Amazon Web Services 文档，必须启用 Javascript。请参阅浏览器的帮助页面以了解相关说明。</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">文档惯例</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./nested-data-restrictions.html">嵌套数据限制（预览版）</div><div id="next" class="next-link" accesskey="n" href="./hyperloglog-overview.html">在 Amazon Redshift 中使用 HyperLogLog 草图</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">此页面对您有帮助吗？- 是</div><div class="content"><p>感谢您对我们工作的肯定！</p><p>如果不耽误您的时间，请告诉我们做得好的地方，让我们做得更好。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">此页面对您有帮助吗？- 否</div><div class="content"><p>感谢您告诉我们本页内容还需要完善。很抱歉让您失望了。</p><p>如果不耽误您的时间，请告诉我们如何改进文档。</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="反馈" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/serializing-complex-JSON.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

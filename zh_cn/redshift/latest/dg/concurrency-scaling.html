@@ -42,7 +42,9 @@
         
             <h3 id="concurrency-scaling-capabilities-write-operations">写操作的并发扩展功能</h3>
             <p>并发扩展支持经常使用的写操作，例如提取、转换和加载 (ETL) 语句。当您希望在集群收到大量请求时保持一致的响应时间时，写操作的并发扩展特别有用。它提高了在主集群上争夺资源的写操作的吞吐量。</p>
-            <p>并发扩展支持 COPY、INSERT、DELETE 和 UPDATE 语句。在某些情况下，您可能会遵循 DDL 语句（如 CREATE），以及同一提交数据块中的 write 语句。在这些情况下，write 语句不会发送到并发扩展集群。</p>
+          
+          <p>并发扩展支持 COPY、INSERT、DELETE、UPDATE 和 CREATE TABLE AS (CTAS) 语句。此外，并发扩展支持不使用聚合的 MV 的实体化视图刷新。不支持其他数据处理语言 (DML) 语句和数据定义语言 (DDL) 语句。如果不支持的写入语句（如 CREATE without TABLE AS）包含在支持的写入语句之前的显式事务中，则所有写入语句都不会在并发扩展集群上运行。</p>
+
             <p>当您为并发扩展累计积分时，此积分应计适用于读取和写操作。</p>
              
        
@@ -64,7 +66,8 @@
              
              
              
-             
+            
+   
             
          <ul class="itemizedlist"><li class="listitem">
                <p>它不支持查询使用交错排序键的表。</p>
@@ -77,7 +80,7 @@
             </li><li class="listitem">
                <p>它不支持访问系统表、PostgreSQL 目录表或非备份表的查询。</p>
             </li><li class="listitem">
-               <p>它不支持访问具有限制性资源策略的外部资源的 COPY 或 UNLOAD 查询。外部资源可以包括 Simple Storage Service（Amazon S3）存储桶或 DynamoDB 表。策略可以限制对特定源 VPC (<code class="code">aws:sourceVpc</code>）、源 VPC 终端节点 (<code class="code">aws:sourceVpce</code>) 或源 IP 地址 (<code class="code">aws:SourceIp</code>) 的访问。在部分情况下，您可能需要删除外部资源的策略。执行此操作意味着访问资源的 COPY 或 UNLOAD 查询将发送到并发扩展集群。</p>
+               <p>它不支持访问具有限制性资源策略的外部资源的 COPY 或 UNLOAD 查询。外部资源可以包括 Amazon S3 桶或 DynamoDB 表。策略可以限制对特定源 VPC (<code class="code">aws:sourceVpc</code>）、源 VPC 终端节点 (<code class="code">aws:sourceVpce</code>) 或源 IP 地址 (<code class="code">aws:SourceIp</code>) 的访问。在部分情况下，您可能需要删除外部资源的策略。执行此操作意味着访问资源的 COPY 或 UNLOAD 查询将发送到并发扩展集群。</p>
             </li><li class="listitem">
                <p>DDL 操作（如 CREATE TABLE 或 ALTER TABLE）不支持 Amazon Redshift 并发扩展用于写操作。</p>
             </li><li class="listitem">
@@ -94,11 +97,9 @@
                <p>它不支持对具有身份列的表进行写操作。</p>
             </li><li class="listitem">
                <p>Amazon Redshift 支持仅在 Amazon Redshift RA3 节点上执行写操作的并发扩展，特别是 ra3.16xlarge、ra3.4xlarge 和 ra3.xlplus。其他节点类型不支持写操作的并发扩展。</p>
-            </li><li class="listitem">
-               <p>实体化视图的自动刷新不支持 Amazon Redshift 并发扩展。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html">串流摄取</a>。</p>
             </li></ul></div> 
          
-      <p>有关并发扩展的更多信息，请参阅《Amazon Redshift 管理指南》中的以下主题。</p><div class="itemizedlist">
+      <p>有关并发扩展的更多信息，请参阅《Amazon Redshift 管理指南》<em></em>中的以下主题。</p><div class="itemizedlist">
              
              
              

@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_SERVERLESS_USAGE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_SERVERLESS_USAGE-table-columns">表列</a><a href="#SYS_SERVERLESS_USAGE-usage_notes">使用说明</a><a href="#SYS_SERVERLESS_USAGE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_SERVERLESS_USAGE">SYS_SERVERLESS_USAGE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_SERVERLESS_USAGE 查看资源的 Amazon Redshift Serverless 使用情况的详细信息。此系统视图不适用于预置 Amazon Redshift 集群。</p><p>此视图包含无服务器使用情况摘要，包括用于处理查询的计算容量数量以及以 1 分钟粒度使用的 Amazon Redshift 托管式存储量。计算容量以 Redshift 处理单元（RPU）为单位衡量，并按每秒计量以 RPU 秒为单位运行的工作负载。RPU 用于处理对数据仓库中加载数据的查询、从 Simple Storage Service（Amazon S3）数据湖查询或使用联合查询从操作数据库访问。Amazon Redshift Serverless 可在 SYS_SERVERLESS_USAGE 中将信息保留 7 天时间。</p><p>有关计算成本计费的示例，请参阅 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html">Amazon Redshift Serverless 的计费</a>。</p><p>SYS_SERVERLESS_USAGE 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其具有访问权限的元数据。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_SERVERLESS_USAGE" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_SERVERLESS_USAGE-table-columns">表列</a><a href="#SYS_SERVERLESS_USAGE-usage_notes">使用说明</a><a href="#SYS_SERVERLESS_USAGE-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_SERVERLESS_USAGE">SYS_SERVERLESS_USAGE</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_SERVERLESS_USAGE 查看资源的 Amazon Redshift Serverless 使用情况的详细信息。此系统视图不适用于预置 Amazon Redshift 集群。</p><p>此视图包含无服务器使用情况摘要，包括用于处理查询的计算容量数量以及以 1 分钟粒度使用的 Amazon Redshift 托管式存储量。计算容量以 Redshift 处理单元 (RPU) 为单位衡量，并按每秒计量以 RPU 秒为单位运行的工作负载。RPU 用于处理对数据仓库中加载数据的查询、从 Amazon S3 数据湖查询或使用联合查询从操作数据库访问。Amazon Redshift Serverless 可在 SYS_SERVERLESS_USAGE 中将信息保留 7 天时间。</p><p>有关计算成本计费的示例，请参阅 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html">Amazon Redshift Serverless 的计费</a>。</p><p>SYS_SERVERLESS_USAGE 仅对超级用户可见。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p>
             <h2 id="SYS_SERVERLESS_USAGE-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c59c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c63c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -68,7 +68,7 @@
                         <tr>
                             <td tabindex="-1">compute_seconds</td>
                             <td tabindex="-1">double precision</td>
-                            <td tabindex="-1">在此时间间隔内消耗的累计计算单位（RPU）秒数。此值考虑了为账户分配的基本 RPU 容量。</td>
+                            <td tabindex="-1">在此时间间隔内消耗的累计计算单位 (RPU) 秒数。此值考虑了为账户分配的基本 RPU 容量。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">compute_capacity</td>
@@ -77,18 +77,18 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">data_storage</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">在此时间间隔内使用的平均数据存储空间（以 MB 为单位）。<p>随着数据库加载或删除数据，使用的数据存储可能会动态更改。</p></td>
                         </tr>
                         <tr>
                             <td tabindex="-1">cross_region_transferred_data</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1"><p>在此时间间隔内为跨区域数据共享而传输的累积数据（以字节为单位）。</p></td>
                         </tr>
                         <tr>
                             <td tabindex="-1">charged_seconds</td>
-                            <td tabindex="-1">integer</td>
-                            <td tabindex="-1">在此时间间隔内收费的累计计算单位（RPU）秒数。这在事务结束后计算，因此在事务运行时此值可以是 0。使用 charged_seconds 计算 Amazon Redshift Serverless 工作组的成本。此值考虑了分配给 Amazon Redshift Serverless 工作组的 RPU 容量。</td>
+                            <td tabindex="-1">整数</td>
+                            <td tabindex="-1">在此时间间隔内收费的累计计算单位 (RPU) 秒数。这在事务结束后计算，因此在事务运行时此值可以是 0。使用 charged_seconds 计算 Amazon Redshift Serverless 工作组的成本。此值考虑了分配给 Amazon Redshift Serverless 工作组的 RPU 容量。</td>
                         </tr>
                     </table></div></div>
          

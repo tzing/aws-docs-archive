@@ -141,15 +141,15 @@ IAM_ROLE <span>{</span> default | ‘arn:aws:iam::<code class="replaceable">&lt;
                <dt><span class="term">LAMBDA <em>'lambda_fn_name'</em></span></dt>
                <dd>
                   <p> Amazon Redshift 调用的函数的名称。</p>
-                  <p>有关创建 AWS Lambda 函数的步骤，请参阅 <em>AWS Lambda 开发人员指南</em>中的<a href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">使用控制台创建 Lambda 函数</a>。</p>
-                 <p>有关 Lambda 函数所需权限的信息，请参阅 <em>AWS Lambda 开发人员指南</em>中的 <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html">AWS Lambda 权限</a>。</p>
+                  <p>有关创建 AWS Lambda 函数的步骤，请参阅《AWS Lambda 开发人员指南》<em></em>中的<a href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">使用控制台创建 Lambda 函数</a>。</p>
+                 <p>有关 Lambda 函数所需权限的信息，请参阅《AWS Lambda 开发人员指南》<em></em>中的 <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html">AWS Lambda 权限</a>。</p>
 
                </dd>
              
                <dt><span class="term">IAM_ROLE <span>{</span> default | ‘arn:aws:iam::<code class="replaceable">&lt;AWS 账户-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>’ </span></dt>
                <dd>
                   <p>使用默认关键字让 Amazon Redshift 使用 IAM 角色，该角色设置为默认值并在 CREATE EXTERNAL FUNCTION 命令运行时与集群关联。</p>
-                  <p>使用 IAM 角色的 Amazon Resource Name（ARN），您的集群使用该角色进行身份验证和授权。CREATE EXTERNAL FUNCTION 命令被授权通过此 IAM 角色调用 Lambda 函数。如果您的集群具有有权调用所附加 Lambda 函数的现有 IAM 角色，您可以替换您的角色的 ARN。有关更多信息，请参阅<a href="./udf-creating-a-lambda-sql-udf.html#udf-lambda-authorization">配置 Lambda UDF 的授权参数</a>。</p>
+                  <p>使用 IAM 角色的 Amazon 资源名称 (ARN)，您的集群使用该角色进行身份验证和授权。CREATE EXTERNAL FUNCTION 命令被授权通过此 IAM 角色调用 Lambda 函数。如果您的集群具有有权调用所附加 Lambda 函数的现有 IAM 角色，您可以替换您的角色的 ARN。有关更多信息，请参阅<a href="./udf-creating-a-lambda-sql-udf.html#udf-lambda-authorization">配置 Lambda UDF 的授权参数</a>。</p>
                   <p>以下显示 IAM_ROLE 参数的语法。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">IAM_ROLE 'arn:aws:iam::<em>aws-account-id</em>:role/<em>role-name</em>'</code></pre>
                </dd>
@@ -166,7 +166,7 @@ IAM_ROLE <span>{</span> default | ‘arn:aws:iam::<code class="replaceable">&lt;
                <dd>
                   <p> Amazon Redshift 在单个批处理请求中为单个 lambda 调用发送的最大行数。</p>
                   <p> 此参数的最小值为 1。最大值为 INT_MAX 或 2,147,483,647。</p>
-                  <p> 此参数为可选项。默认值为 INT_MAX 或 2,147,483,647。</p>
+                  <p> 此参数为可选的。默认值为 INT_MAX 或 2,147,483,647。</p>
                </dd>
              
             <dt><span class="term">MAX_BATCH_SIZE <em>size</em> [ KB | MB ] </span></dt>

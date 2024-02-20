@@ -48,12 +48,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_USER_IS_MEMBER_OF" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_USER_IS_MEMBER_OF-synopsis">语法</a><a href="#r_USER_IS_MEMBER_OF-arguments">Arguments</a><a href="#r_USER_IS_MEMBER_OF-return-type">返回类型</a><a href="#r_USER_IS_MEMBER_OF-example">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_USER_IS_MEMBER_OF">USER_IS_MEMBER_OF</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>如果用户是某个角色或组的成员，则返回 true。超级用户可以检查所有用户的成员身份。属于 sy:secadmin 或 sys:superuser 角色成员的普通用户可以检查所有用户的成员身份。否则，普通用户只能检查自己的成员身份。如果提供的身份不存在或当前用户无权访问该角色，则 Amazon Redshift 会发出错误消息。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_USER_IS_MEMBER_OF" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_USER_IS_MEMBER_OF-synopsis">语法</a><a href="#r_USER_IS_MEMBER_OF-arguments">参数</a><a href="#r_USER_IS_MEMBER_OF-return-type">返回类型</a><a href="#r_USER_IS_MEMBER_OF-example">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_USER_IS_MEMBER_OF">USER_IS_MEMBER_OF</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>如果用户是某个角色或组的成员，则返回 true。超级用户可以检查所有用户的成员身份。属于 sy:secadmin 或 sys:superuser 角色成员的普通用户可以检查所有用户的成员身份。否则，普通用户只能检查自己的成员身份。如果提供的身份不存在或当前用户无权访问该角色，则 Amazon Redshift 会发出错误消息。</p>
             <h2 id="r_USER_IS_MEMBER_OF-synopsis">语法</h2>
 
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">user_is_member_of( <em>user_name</em>,  <em>role_name</em> | <em>group_name</em>)</code></pre>
           
-            <h2 id="r_USER_IS_MEMBER_OF-arguments">Arguments</h2>
+            <h2 id="r_USER_IS_MEMBER_OF-arguments">参数</h2>
             
             
             <div class="variablelist">

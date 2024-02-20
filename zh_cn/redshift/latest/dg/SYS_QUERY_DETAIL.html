@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">表列</a><a href="#SYS_QUERY_DETAIL-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_QUERY_DETAILS 在步骤级别查看查询的详细信息。每一行代表特定 WLM 查询的一个步骤，其中包含详细信息。此视图包含许多类型的查询，例如 DDL、DML 和实用程序命令（例如：复制和卸载）。根据查询类型，某些列可能不相关。例如，external_scanned_bytes 与内部表无关。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>没有相应的重写查询的查询仅在 SYS_QUERY_HARISTISS 视图中具有条目，在 SYS_QUERY_DETAILS 视图没有条目。</p></div></div><p>SYS_QUERY_DETITIONS 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其具有访问权限的元数据。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_QUERY_DETAIL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_QUERY_DETAIL-table-columns">表列</a><a href="#SYS_QUERY_DETAIL-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_QUERY_DETAIL">SYS_QUERY_DETAIL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_QUERY_DETAILS 在步骤级别查看查询的详细信息。每一行代表特定 WLM 查询的一个步骤，其中包含详细信息。此视图包含许多类型的查询，例如 DDL、DML 和实用程序命令（例如：复制和卸载）。根据查询类型，某些列可能不相关。例如，external_scanned_bytes 与内部表无关。</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>没有相应的重写查询的查询仅在 SYS_QUERY_HARISTISS 视图中具有条目，在 SYS_QUERY_DETAILS 视图没有条目。</p></div></div><p>SYS_QUERY_DETITIONS 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p>
             <h2 id="SYS_QUERY_DETAIL-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c49b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c51b9b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -65,17 +65,17 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">child_query_sequence</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">重写的用户查询的顺序，从 1 开始。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">stream_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">查询流的流标识符。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">查询运行分段的分段标识符。</td>
                         </tr>
                         <tr>
@@ -99,18 +99,18 @@
                             <td tabindex="-1">正在操作的步骤的表名。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">is_rrsscan</td>
+                            <td tabindex="-1">is_rrscan</td>
                             <td tabindex="-1">字符</td>
-                            <td tabindex="-1">指示步骤是否为扫描步骤的值。True（t）则表示使用了限制范围的扫描。</td>
+                            <td tabindex="-1">指示步骤是否为扫描步骤的值。True (t) 则表示使用了限制范围的扫描。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">start_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询步骤开始的时间。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">end_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询步骤完成的时间。</td>
                         </tr>
                         <tr>
@@ -165,19 +165,19 @@
                         </tr>
                         
                         <tr>
-                            <td tabindex="-1">source</td>
+                            <td tabindex="-1">源</td>
                             <td tabindex="-1">text</td>
                             <td tabindex="-1">扫描的数据库对象的类型。只有当行的 <em>step_name</em> 值为 <code class="code">scan</code> 时，此列才有值。</td>
                         </tr>
                         
                         <tr>
                             <td tabindex="-1">data_skewness</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">所有步骤间输出行分布的偏度。这是一个介于 0% 到 100% 之间的数字。该数字越大，分布越不平衡。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">time_skewness</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">所有步骤间执行时间分布的偏度。这是一个介于 0% 到 100% 之间的数字。该数字越大，分布越不平衡。</td>
                         </tr>
                         
@@ -196,6 +196,12 @@
                             <td tabindex="-1">spilled_block_remote_disk</td>
                             <td tabindex="-1">bigint</td>
                             <td tabindex="-1">溢出到 Amazon Simple Storage Service 的块数。</td>
+                        </tr>
+                        <tr>
+                            
+                            <td tabindex="-1">step_attribute</td>
+                            <td tabindex="-1">character(64)</td>
+                            <td tabindex="-1">包含相关步骤的信息。扫描步骤的可能值：<code class="code">multi-dimensional</code>。</td>
                         </tr>
                         
      

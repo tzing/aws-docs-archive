@@ -48,13 +48,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#crc32-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#crc32-function-syntax">语法</a><a href="#crc32-function-arguments">Arguments</a><a href="#crc32-function-return-type">返回类型</a><a href="#crc32-function-example">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="crc32-function">CRC32 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>CRC32 是一个用于错误检测的函数。此函数使用 CRC32 算法来检测源数据和目标数据之间的变化。CRC32 函数会将长度可变的字符串转换为以 32 位二进制序列的十六进制值的文本表示形式表示的 8 字符字符串。要检测源数据和目标数据之间的变化，请对源数据使用 CRC32 函数并存储输出。然后，对目标数据使用 CRC32 函数，并将该输出与来自源数据的输出进行比较。如果数据未经修改，则输出将相同；如果修改了数据，则输出将有所不同。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#crc32-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#crc32-function-syntax">语法</a><a href="#crc32-function-arguments">参数</a><a href="#crc32-function-return-type">返回类型</a><a href="#crc32-function-example">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="crc32-function">CRC32 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>CRC32 是一个用于错误检测的函数。此函数使用 CRC32 算法来检测源数据和目标数据之间的变化。CRC32 函数会将长度可变的字符串转换为以 32 位二进制序列的十六进制值的文本表示形式表示的 8 字符字符串。要检测源数据和目标数据之间的变化，请对源数据使用 CRC32 函数并存储输出。然后，对目标数据使用 CRC32 函数，并将该输出与来自源数据的输出进行比较。如果数据未经修改，则输出将相同；如果修改了数据，则输出将有所不同。</p>
             <h2 id="crc32-function-syntax">语法</h2>
 
 
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">CRC32(<em>string</em>)</code></pre>
           
-            <h2 id="crc32-function-arguments">Arguments</h2>
+            <h2 id="crc32-function-arguments">参数</h2>
 
 
             <div class="variablelist">

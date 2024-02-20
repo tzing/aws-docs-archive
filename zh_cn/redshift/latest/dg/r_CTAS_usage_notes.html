@@ -48,8 +48,8 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CTAS_usage_notes" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_CTAS_usage_notes-limits">Limits</a><a href="#r_CTAS_usage_notes-inheritance-of-column-and-table-attributes">继承列和表属性</a><a href="#r_CTAS_usage_notes_encoding">压缩编码</a><a href="#r_CTAS_usage_notes-distribution-of-incoming-data">分配传入数据</a><a href="#r_CTAS_usage_notes-automatic-analyze-operations">自动 ANALYZE 操作</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CTAS_usage_notes">CTAS 使用说明</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
-            <h2 id="r_CTAS_usage_notes-limits">Limits</h2>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CTAS_usage_notes" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_CTAS_usage_notes-limits">限制</a><a href="#r_CTAS_usage_notes-inheritance-of-column-and-table-attributes">继承列和表属性</a><a href="#r_CTAS_usage_notes_encoding">压缩编码</a><a href="#r_CTAS_usage_notes-distribution-of-incoming-data">分配传入数据</a><a href="#r_CTAS_usage_notes-automatic-analyze-operations">自动 ANALYZE 操作</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CTAS_usage_notes">CTAS 使用说明</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div>
+            <h2 id="r_CTAS_usage_notes-limits">限制</h2>
 
 
             <p>Amazon Redshift 会按节点类型强制执行每个集群的表数量配额。</p>
@@ -176,7 +176,7 @@ explain create table sales5_groupby as select listid, dateid, sum(qtysold) from 
  sales5_groupby       | sum        | f       |       0
             </code></pre>
             <p>下表汇总了结果。为简便起见，我们在说明计划中忽略了成本、行和宽度详细信息。</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac45b9c99c13b5c35"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac47b9d105c13b5c35"><thead>
                      <tr>
                         <th>
                            <p>表</p>

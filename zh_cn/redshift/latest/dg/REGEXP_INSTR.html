@@ -48,13 +48,13 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_INSTR" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#REGEXP_INSTR-synopsis">语法</a><a href="#REGEXP_INSTR-arguments">Arguments</a><a href="#REGEXP_INSTR-return-type">返回类型</a><a href="#REGEXP_INSTR-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="REGEXP_INSTR">REGEXP_INSTR 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>在字符串中搜索正则表达式模式并返回指示匹配子字符串的开始位置的整数。如果未找到匹配项，此函数将返回 <code class="code">0</code>。REGEXP_SUBSTR 与 <a href="./r_POSITION.html"> 函数相似，只不过前者可让您在字符串中搜索正则表达式模式。</a>有关正则表达式的更多信息，请参阅 <a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#REGEXP_INSTR" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#REGEXP_INSTR-synopsis">语法</a><a href="#REGEXP_INSTR-arguments">参数</a><a href="#REGEXP_INSTR-return-type">返回类型</a><a href="#REGEXP_INSTR-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="REGEXP_INSTR">REGEXP_INSTR 函数</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>在字符串中搜索正则表达式模式并返回指示匹配子字符串的开始位置的整数。如果未找到匹配项，此函数将返回 <code class="code">0</code>。REGEXP_SUBSTR 与 <a href="./r_POSITION.html"> 函数相似，只不过前者可让您在字符串中搜索正则表达式模式。</a>有关正则表达式的更多信息，请参阅 <a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p>
             <h2 id="REGEXP_INSTR-synopsis">语法</h2>
 
 
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">REGEXP_INSTR( <em>source_string</em>, <em>pattern</em> [, <em>position</em> [, <em>occurrence</em>] [, <em>option</em> [, <em>parameters</em> ] ] ] ] )</code></pre>
           
-            <h2 id="REGEXP_INSTR-arguments">Arguments</h2>
+            <h2 id="REGEXP_INSTR-arguments">参数</h2>
 
 
             <div class="variablelist">
@@ -73,7 +73,7 @@
                   <dt><span class="term"> <em>pattern</em> </span></dt>
                   <dd>
                      
-                     <p>表示正则表达式模式的字符串文本。有关更多信息，请参阅<a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p>
+                     <p>表示正则表达式模式的 UTF-8 字符串文本。有关更多信息，请参阅<a href="./pattern-matching-conditions-posix.html">POSIX 运算符</a>。</p>
                   </dd>
                 
                   <dt><span class="term"> <em>position</em> </span></dt>

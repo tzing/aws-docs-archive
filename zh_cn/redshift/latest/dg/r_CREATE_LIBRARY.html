@@ -91,7 +91,7 @@ FROM
              
                <dt><span class="term">FROM</span></dt>
                <dd>
-                  <p>库文件的位置。您可以指定 Simple Storage Service（Amazon S3）桶和对象名称，也可以指定用于从公共网站下载文件的 URL。必须以 <code class="code">.zip</code> 文件的形式打包库。有关更多信息，请参阅 Python 文档中的<a href="https://docs.python.org/2/library/distutils.html?highlight=distutils#module-distutils" rel="noopener noreferrer" target="_blank"><span>构建和安装 Python 模块</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>
+                  <p>库文件的位置。您可以指定 Amazon S3 桶和对象名称，也可以指定用于从公共网站下载文件的 URL。必须以 <code class="code">.zip</code> 文件的形式打包库。有关更多信息，请参阅 Python 文档中的<a href="https://docs.python.org/2/library/distutils.html?highlight=distutils#module-distutils" rel="noopener noreferrer" target="_blank"><span>构建和安装 Python 模块</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>。</p>
                </dd>
              
                <dt><span class="term"> https://<em>file_url</em> </span></dt>
@@ -103,20 +103,20 @@ FROM
              
                <dt><span class="term"> s3://<em>bucket_name/file_name</em> </span></dt>
                <dd>
-                  <p>包含库文件的单个 Simple Storage Service（Amazon S3）对象的路径。以下是 Simple Storage Service（Amazon S3）对象路径的示例。</p>
+                  <p>包含库文件的单个 Amazon S3 对象的路径。以下是 Amazon S3 对象路径的示例。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">'s3://mybucket/my-pylib.zip'</code></pre>
-                  <p>如果您指定 Simple Storage Service（Amazon S3）桶，则还必须为有权下载该文件的 AWS 用户提供凭证。</p>
-                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p> 如果 Simple Storage Service（Amazon S3）桶不在您的 Amazon Redshift 集群所在的 AWS 区域内，则必须使用 REGION 选项指定数据所在的 AWS 区域。<em>aws_region</em> 的值必须匹配 COPY 命令的 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 参数描述中的表中所列的 AWS 区域。</p></div></div>
+                  <p>如果您指定 Amazon S3 桶，则还必须为有权下载该文件的 AWS 用户提供凭证。</p>
+                  <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p> 如果 Amazon S3 桶不在您的 Amazon Redshift 集群所在的 AWS 区域内，则必须使用 REGION 选项指定数据所在的 AWS 区域。<em>aws_region</em> 的值必须匹配 COPY 命令的 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 参数描述中的表中所列的 AWS 区域。</p></div></div>
                </dd>
              
                <dt><span class="term"><em> 授权</em> </span></dt>
                <dd>
-                  <p>一个子句，指示您的集群在访问包含库文件的 Simple Storage Service（Amazon S3）桶时使用的身份验证和授权方法。您的集群必须有权利用 LIST 和 GET 操作访问 Simple Storage Service（Amazon S3）。</p>
+                  <p>一个子句，指示您的集群在访问包含库文件的 Amazon S3 桶时使用的身份验证和授权方法。您的集群必须有权利用 LIST 和 GET 操作访问 Amazon S3。</p>
                   <p>authorization 的语法与 COPY 命令 authorization 的语法相同。有关更多信息，请参阅<a href="./copy-parameters-authorization.html">授权参数</a>。</p>
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">IAM_ROLE <span>{</span> default | ‘arn:aws:iam::<code class="replaceable">&lt;AWS 账户-id&gt;</code>:role/<code class="replaceable">&lt;role-name&gt;</code>’</code></pre>
                   <p> 使用默认关键字让 Amazon Redshift 使用设置为默认值并在 CREATE LIBRARY 命令运行时与集群关联的 IAM 角色。</p>
-                  <p>使用 IAM 角色的 Amazon Resource Name（ARN），您的集群使用该角色进行身份验证和授权。如果您指定 IAM_ROLE，则无法使用 ACCESS_KEY_ID 和 SECRET_ACCESS_KEY、SESSION_TOKEN 或 CREDENTIALS。</p>
-                  <p>(可选) 如果 Simple Storage Service（Amazon S3）桶使用服务器端加密，也可以在 credentials-args 字符串中提供加密密钥。如果您使用临时安全凭证，请在 <em>credentials-args</em> 字符串中提供临时令牌。</p>
+                  <p>使用 IAM 角色的 Amazon 资源名称 (ARN)，您的集群使用该角色进行身份验证和授权。如果您指定 IAM_ROLE，则无法使用 ACCESS_KEY_ID 和 SECRET_ACCESS_KEY、SESSION_TOKEN 或 CREDENTIALS。</p>
+                  <p>（可选）如果 Amazon S3 桶使用服务器端加密，也可以在 credentials-args 字符串中提供加密密钥。如果您使用临时安全凭证，请在 <em>credentials-args</em> 字符串中提供临时令牌。</p>
 
                   
                   
@@ -127,15 +127,15 @@ FROM
              
                <dt><span class="term"> REGION [AS] <em>aws_region</em> </span></dt>
                <dd>
-                  <p>Amazon S3 桶所在的 AWS 区域。当 Simple Storage Service（Amazon S3）桶与 Amazon Redshift 集群不在同一个 AWS 区域时，需要 REGION。<em>aws_region</em> 的值必须匹配 COPY 命令的 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 参数描述中的表中所列的 AWS 区域。</p>
-                  <p>预设情况下，CREATE LIBRARY 假定 Simple Storage Service（Amazon S3）桶位于 Amazon Redshift 集群所在的 AWS 区域。</p>
+                  <p>Amazon S3 桶所在的 AWS 区域。当 Amazon S3 桶与 Amazon Redshift 集群不在同一个 AWS 区域时，需要 REGION。<em>aws_region</em> 的值必须匹配 COPY 命令的 <a href="./copy-parameters-data-source-s3.html#copy-region">REGION</a> 参数描述中的表中所列的 AWS 区域。</p>
+                  <p>预设情况下，CREATE LIBRARY 假定 Amazon S3 桶位于 Amazon Redshift 集群所在的 AWS 区域。</p>
                </dd>
             </dl></div>
        
          <h2 id="r_CREATE_LIBRARY-examples">示例</h2>
          
          <p>以下两个示例将安装 <a href="https://docs.python.org/2/library/urlparse.html#module-urlparse" rel="noopener noreferrer" target="_blank"><span>urlparse</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> Python 模块，该模块会打包到名为 <code class="code">urlparse3-1.0.3.zip</code> 的文件中。</p>
-         <p>以下命令从已上载到位于美国东部区域的 Simple Storage Service（Amazon S3）桶的包安装名为 <code class="code">f_urlparse</code> 的 UDF 库。</p>
+         <p>以下命令从已上载到位于美国东部区域的 Amazon S3 桶的包安装名为 <code class="code">f_urlparse</code> 的 UDF 库。</p>
 
          
 

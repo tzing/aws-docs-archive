@@ -42,11 +42,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">表列</a><a href="#SYS_PROCEDURE_CALL-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_PROCEDURE_CALL 视图以获取有关存储过程调用的信息，包括开始时间、结束时间、存储过程调用的状态以及嵌套存储过程调用的调用层次结构。每个存储过程调用接受一个查询 ID。</p><p>SYS_PROCEDURE_CALL 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#SYS_PROCEDURE_CALL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#SYS_PROCEDURE_CALL-table-columns">表列</a><a href="#SYS_PROCEDURE_CALL-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="SYS_PROCEDURE_CALL">SYS_PROCEDURE_CALL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>使用 SYS_PROCEDURE_CALL 视图以获取有关存储过程调用的信息，包括开始时间、结束时间、存储过程调用的状态以及嵌套存储过程调用的调用层次结构。每个存储过程调用接受一个查询 ID。</p><p>SYS_PROCEDURE_CALL 对所有用户可见。超级用户可以查看所有行；普通用户只能查看其自己的数据。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p>
             <h2 id="SYS_PROCEDURE_CALL-table-columns">表列</h2>
             
             
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c13c45b7b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c13c47b7b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -55,17 +55,17 @@
                     </thead>
                         <tr>
                             <td tabindex="-1">session_user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">用户的标识符，该用户创建了会话并且是顶级存储过程调用的调用方。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">security_user_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">用户的标识符，该用户的权限用于在存储过程中运行语句。如果存储过程是 DEFINER，则这将是存储过程的拥有者 user_id。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">query_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">存储过程调用的查询标识符。</td>
                         </tr> 
                         
@@ -77,22 +77,22 @@
                         
                         <tr>
                             <td tabindex="-1">start_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询开始运行的时间（采用 UTC 表示）。时间戳使用六位数精度表示小数秒，例如：2009-06-12 11:29:19.131358。</td>
                         </tr> 
                         <tr>
                             <td tabindex="-1">end_time</td>
-                            <td tabindex="-1">timestamp</td>
+                            <td tabindex="-1">时间戳</td>
                             <td tabindex="-1">查询完成运行的时间（采用 UTC 表示）。时间戳使用六位数精度表示小数秒，例如：2009-06-12 11:29:19.131358。</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">状态</td>
+                            <td tabindex="-1">status</td>
                             <td tabindex="-1">char(10)</td>
                             <td tabindex="-1">存储过程调用的状态。当系统停止存储过程或用户取消存储过程时，该值将为已取消。如果存储过程调用运行至完成，则值为成功。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">caller_procedure_query_id</td>
-                            <td tabindex="-1">integer</td>
+                            <td tabindex="-1">整数</td>
                             <td tabindex="-1">如果对存储过程调用的调用是由其它存储过程调用执行的，则此列包含外部调用的查询 ID。否则该字段为 NULL。</td>
                         </tr>
                         

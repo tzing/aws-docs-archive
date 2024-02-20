@@ -46,7 +46,7 @@
             <p>查看查询被分配到哪个队列。</p>
          </li><li class="listitem">
             <p>查看工作负载管理器当前跟踪的查询的状态。</p>
-         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w317aac41c59b9"><thead>
+         </li></ul></div><div class="table-container"><div class="table-contents"><table id="w319aac43c59b9"><thead>
                <tr>
                   <th>表名称 </th>
                   <th>描述 </th>
@@ -102,12 +102,24 @@
                   </td>
                   <td tabindex="-1">包含服务类的当前状态。</td>
                </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STL_WLM_RULE_ACTION.html">STL_WLM_RULE_ACTION</a>
+                  </td>
+                  <td tabindex="-1">记录有关从 WLM 查询监控规则生成的与用户定义的队列关联的操作的详细信息。</td>
+               </tr>
+               <tr>
+                  <td tabindex="-1">
+                     <a href="./r_STV_WLM_QMR_CONFIG.html">STV_WLM_QMR_CONFIG</a>
+                  </td>
+                  <td tabindex="-1">记录 WLM 查询监控规则 (QMR) 的配置。</td>
+               </tr>
             </table></div></div><p> 您使用任务 ID 来跟踪系统表中的查询。下面的示例介绍如何获取最近提交的用户查询的任务 ID：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select task from stl_wlm_query where exec_start_time =(select max(exec_start_time) from stl_wlm_query); 
 
 task 
 ------ 
 137 
-(1 row)</code></pre><p> 下面的示例介绍当前正在各个服务类 (队列) 中执行或等待的查询。该查询在跟踪 Amazon Redshift 的整体并发工作负载时很有用：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+(1 row)</code></pre><p> 下面的示例介绍当前正在各个服务类（队列）中执行或等待的查询。该查询在跟踪 Amazon Redshift 的整体并发工作负载时很有用：</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
 select * from stv_wlm_query_state order by query;
 
 
@@ -124,7 +136,7 @@ xid |task|query|service_| wlm_start_  |  state  |queue_ | exec_
          
        <p>下表列出了分配到服务类的 ID 的列表。</p>  
          
-         <div class="table-container"><div class="table-contents"><table id="w317aac41c59c19b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac43c59c19b5"><thead>
                   <tr>
                      <th>ID </th>
                      <th>服务类 </th>

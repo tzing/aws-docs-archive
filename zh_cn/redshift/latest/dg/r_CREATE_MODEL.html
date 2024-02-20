@@ -42,14 +42,14 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_MODEL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_create_model_prereqs">先决条件</a><a href="#r_simple_create_model-privileges">所需的权限</a><a href="#r_create_model_cost">成本控制</a><a href="#r_full_create_model">Full CREATE MODEL </a><a href="#r_create_model_parameters">参数</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_MODEL">CREATE MODEL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="highlights"><h6>主题</h6><ul><li><a href="#r_create_model_prereqs">先决条件</a></li><li><a href="#r_simple_create_model-privileges">所需的权限</a></li><li><a href="#r_create_model_cost">成本控制</a></li><li><a href="#r_full_create_model">Full CREATE MODEL</a></li><li><a href="#r_create_model_parameters">参数</a></li><li><a href="./r_create_model_usage_notes.html">使用说明</a></li><li><a href="./r_create_model_use_cases.html">使用案例</a></li></ul></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_CREATE_MODEL" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_create_model_prereqs">先决条件</a><a href="#r_simple_create_model-privileges">所需的权限</a><a href="#r_create_model_cost">成本控制</a><a href="#r_full_create_model">Full CREATE MODEL </a><a href="#r_create_model_parameters">参数</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_CREATE_MODEL">CREATE MODEL</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="highlights"><h6>主题</h6><ul><li><a href="#r_create_model_prereqs">先决条件</a></li><li><a href="#r_simple_create_model-privileges">所需的权限</a></li><li><a href="#r_create_model_cost">成本控制</a></li><li><a href="#r_full_create_model">Full CREATE MODEL</a></li><li><a href="#r_create_model_parameters">参数</a></li><li><a href="./r_create_model_usage_notes.html">使用说明</a></li><li><a href="./r_create_model_use_cases.html">用例</a></li></ul></div>
        <h2 id="r_create_model_prereqs">先决条件</h2>
         <p>在使用 CREATE MODEL 语句之前，请完成 <a href="./admin-setup.html#cluster-setup">用于使用 Amazon Redshift ML 的集群设置</a> 中的先决条件。下面简要概述了这些先决条件。</p>
         <div class="itemizedlist">
              
              
              
-        <ul class="itemizedlist"><li class="listitem"><p>使用 AWS 管理控制台或 AWS 命令行界面 (AWS CLI).创建 Amazon Redshift 集群。</p></li><li class="listitem"><p>在创建集群时附加 AWS Identity and Access Management (IAM) policy。</p></li><li class="listitem"><p>要允许 Amazon Redshift 和 SageMaker 代入角色以便与其他服务交互，请向 IAM 角色添加相应的信任策略。</p></li></ul></div>
+        <ul class="itemizedlist"><li class="listitem"><p>使用 AWS 管理控制台或 AWS 命令行界面 (AWS CLI) 创建 Amazon Redshift 集群。</p></li><li class="listitem"><p>在创建集群时附加 AWS Identity and Access Management (IAM) policy。</p></li><li class="listitem"><p>要允许 Amazon Redshift 和 SageMaker 代入角色以便与其他服务交互，请向 IAM 角色添加相应的信任策略。</p></li></ul></div>
         <p>有关 IAM 角色、信任策略和其他先决条件的详细信息，请参阅<a href="./admin-setup.html#cluster-setup">用于使用 Amazon Redshift ML 的集群设置</a>。</p>
         <p>您可以在下面找到 CREATE MODEL 语句的不同使用案例。</p>
         <div class="itemizedlist">
@@ -59,7 +59,7 @@
              
              
              
-        <ul class="itemizedlist"><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_simple_create_model">简单 CREATE MODEL</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_user_guidance_create_model">根据用户指导创建模型</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_auto_off_create_model">带有 AUTO OFF 的 CREATE XGBoost 模型</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_byom_create_model">自带模型 (BYOM, Bring Your Own Model) – 本地推理</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_k-means_create_model">带有 K-MANES 的 CREATE MODEL</a></p></li><li class="listitem"><p><a href="#r_full_create_model">Full CREATE MODEL</a></p></li></ul></div>
+        <ul class="itemizedlist"><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_simple_create_model">简单 CREATE MODEL</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_user_guidance_create_model">根据用户指导创建模型</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_auto_off_create_model">带有 AUTO OFF 的 CREATE XGBoost 模型</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_byom_create_model">自带模型 (BYOM) – 本地推理</a></p></li><li class="listitem"><p><a href="./r_create_model_use_cases.html#r_k-means_create_model">带有 K-MANES 的 CREATE MODEL</a></p></li><li class="listitem"><p><a href="#r_full_create_model">Full CREATE MODEL</a></p></li></ul></div>
      
         <h2 id="r_simple_create_model-privileges">所需的权限</h2>
         <p>以下是 CREATE MODEL 所需的权限：</p>
@@ -84,6 +84,7 @@
     FROM <span>{</span> table_name | ( select_statement )  | 'job_name' }
     [ TARGET column_name ]
     FUNCTION function_name ( data_type [, ...] ) 
+    [ RETURNS super ]
     IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }
     [ AUTO ON / OFF ]
       -- default is AUTO ON
@@ -135,6 +136,7 @@
              
              
              
+            
              
              
              
@@ -161,9 +163,14 @@
              
                 <dt><span class="term">FUNCTION <em>function_name</em> ( <em>data_type</em> [, ...] )</span></dt>
                 <dd>
-                    <p>要创建的函数的名称以及输入参数的数据类型。您可以提供 schema 名称。</p>
+                    <p>要创建的函数的名称以及输入参数的数据类型。您可以提供数据库中架构的架构名称而不是函数名称。</p>
                 </dd>
              
+              <dt><span class="term">RETURNS <em>SUPER</em>（预览版）</span></dt>
+              <dd>
+                 <p>要从模型返回的数据类型。返回的 SUPER 数据类型仅适用于远程 BYOM 模型。</p>
+              </dd>
+            
                <dt><span class="term">IAM_ROLE <span>{</span> default | 'arn:aws:iam::&lt;account-id&gt;:role/&lt;role-name&gt;' }</span></dt>
                 <dd>
                     <p> 使用默认关键字让 Amazon Redshift 使用设置为默认值并在 CREAT MODEL 命令运行时与集群关联的 IAM 角色。或者，您可以指定 IAM 角色的 ARN 来使用该角色。</p>
@@ -176,7 +183,7 @@
              
                 <dt><span class="term"> <em>MODEL_TYPE <span>{</span> XGBOOST | MLP | LINEAR_LEARNER | KMEANS | FORECAST }</em> </span></dt>
                 <dd>
-                    <p>（可选）指定模型类型。您可以指定是否要训练特定模型类型的模型，如 XGBoost、多层感知机 (MLP, Multilayer Perceptron)、KMEANS 或线性学习器，这些都是 Amazon SageMaker Autopilot 支持的算法。如果未指定参数，则在训练期间搜索所有受支持的模型类型，以找到最佳模型。您还可以在 Redshift ML 中创建预测模型，以创建准确的时间序列预测。</p>
+                    <p>（可选）指定模型类型。您可以指定是否要训练特定模型类型的模型，如 XGBoost、多层感知机 (MLP)、KMEANS 或线性学习器，这些都是 Amazon SageMaker Autopilot 支持的算法。如果未指定参数，则在训练期间搜索所有受支持的模型类型，以找到最佳模型。您还可以在 Redshift ML 中创建预测模型，以创建准确的时间序列预测。</p>
                 </dd>
              
                 <dt><span class="term"> <em>PROBLEM_TYPE ( REGRESSION | BINARY_CLASSIFICATION | MULTICLASS_CLASSIFICATION )</em> </span></dt>
@@ -234,7 +241,7 @@ SETTINGS (
                 <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value’ (,..) ) }</span></dt>
                 <dd>
                     <p>指定默认的 XGBoost 参数是被使用还是被用户指定的值覆盖。值必须用单引号引起来。以下是 XGBoost 的参数示例及其默认值。</p>
-                    <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c13b3c21b3b3"><thead>
+                    <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c13b3c23b3b3"><thead>
                                 <tr>
                                     <th>参数名称</th>
                                     <th>参数值 </th>
@@ -348,8 +355,8 @@ SETTINGS (
                     <p>S3_BUCKET 子句指定用于存储中间结果的 Amazon S3 位置。</p>
                    <p>（可选）TAGS 参数是以逗号分隔的键/值对列表，可用于标记在 Amazon SageMaker 和 Amazon Forecast 中创建的资源。标签有助于组织资源和分配成本。键/值对中的值是可选的，因此您可以使用格式 <code class="code">key=value</code> 或只是通过创建键来创建标签。有关 Amazon Redshift 中的标签的更多信息，请参阅<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-tagging.html">标记概述</a>。</p>
                    <p>（可选）KMS_KEY_ID 指定 Amazon Redshift 是否将服务器端加密与 AWS KMS 键结合使用来保护静态数据。传输中的数据由安全套接字层 (SSL) 保护。</p>
-                   <p>（可选）S3_GARBAGE_COLLECT <span>{</span> ON | OFF } 指定 Amazon Redshift 是否对用于训练模型的生成数据集和模型执行垃圾回收。如果设置为 OFF，则用于训练模型的生成数据集和模型将保留在 Simple Storage Service（Amazon S3）中，并可用于其他目的。如果设置为 ON，则 Amazon Redshift 会在训练完成后删除 Simple Storage Service（Amazon S3）中的构件。默认为 ON。</p>
-                   <p>（可选）MAX_CELLS 指定训练数据中的单元格的数量。此值是记录数（在训练查询或表中）乘以列数的乘积。默认值为 1000000。</p>
+                   <p>（可选）S3_GARBAGE_COLLECT <span>{</span> ON | OFF } 指定 Amazon Redshift 是否对用于训练模型的生成数据集和模型执行垃圾回收。如果设置为 OFF，则用于训练模型的生成数据集和模型将保留在 Amazon S3 中，并可用于其他目的。如果设置为 ON，则 Amazon Redshift 会在训练完成后删除 Amazon S3 中的构件。默认为 ON。</p>
+                   <p>（可选）MAX_CELLS 指定训练数据中的单元格的数量。此值是记录数（在训练查询或表中）乘以列数的乘积。默认值是 1000000。</p>
 
                    <p>（可选）MAX_RUNTIME 指定最长训练时间。根据数据集的大小，训练任务通常可以更早完成。这将指定训练所需的最长时间。默认值为 5400（90 分钟）。</p>
                    <p>HORIZON 指定了预测模型可以返回的最大预测数。模型一旦经过训练，就无法更改此整数。如果训练预测模型，则此参数是必需的。</p>

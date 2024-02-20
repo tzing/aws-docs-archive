@@ -170,6 +170,8 @@ ERROR:  Alter of ADX-managed datashare salesshare requires session variable data
 
        
          <h2 id="r_ALTER_DATASHARE_examples">示例</h2>
+         <p>以下示例将 <code class="code">public</code> 架构添加到数据共享 <code class="code">salesshare</code> 中。</p>
+         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER DATASHARE salesshare ADD SCHEMA public;</code></pre>
          <p>以下示例将 <code class="code">public.tickit_sales_redshift</code> 表添加到了数据共享 <code class="code">salesshare</code> 中。</p>
          
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">ALTER DATASHARE salesshare ADD TABLE public.tickit_sales_redshift;</code></pre>

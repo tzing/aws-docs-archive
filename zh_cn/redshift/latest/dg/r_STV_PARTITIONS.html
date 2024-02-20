@@ -52,7 +52,7 @@
             <h2 id="r_STV_PARTITIONS-table-rows2">表列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c31b9b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c31b9b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -144,7 +144,7 @@
             <h2 id="r_STV_PARTITIONS-sample-query2">示例查询</h2>
 
 
-            <p>以下查询返回已用磁盘空间和容量（1 MB 磁盘块数），并计算磁盘利用率（占原始磁盘空间的百分比）。原始磁盘空间包括 Amazon Redshift 保留供内部使用的空间，因此它大于名义磁盘容量（可供用户使用的磁盘空间量）。Amazon Redshift 管理控制台的 <b>Performance</b>（性能）选项卡上的<b>已用磁盘空间百分比</b>指标报告集群使用的名义磁盘容量的百分比。建议您监控 <b>Percentage of Disk Space Used</b> 指标以维持集群的名义磁盘容量的使用量。</p>
+            <p>以下查询返回已用磁盘空间和容量（1 MB 磁盘块数），并计算磁盘利用率（占原始磁盘空间的百分比）。原始磁盘空间包括 Amazon Redshift 保留供内部使用的空间，因此它大于名义磁盘容量（可供用户使用的磁盘空间量）。Amazon Redshift 管理控制台的<b>性能</b>选项卡上的<b>已用磁盘空间百分比</b>指标报告集群使用的名义磁盘容量的百分比。建议您监控 <b>Percentage of Disk Space Used</b> 指标以维持集群的名义磁盘容量的使用量。</p>
             <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>重要</h6></div><div class="awsdocs-note-text"><p>我们强烈建议您不要超过集群的名义磁盘容量。尽管这在某些情况下在技术上可能是可行的，但超过名义磁盘容量会降低集群的容错能力并增加丢失数据的风险。</p></div></div>
             <p>此示例是在两个节点组成的集群上运行的（每个节点有六个逻辑磁盘分区）。各磁盘的空间使用非常平均，每个磁盘大约使用 25%。</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">select owner, host, diskno, used, capacity,

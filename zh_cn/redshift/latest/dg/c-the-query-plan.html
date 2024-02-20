@@ -97,6 +97,7 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                    
                    
                    
+                   
                <ul class="itemizedlist"><li class="listitem">
                      <p><span class="topcom">嵌套循环</span></p>
                      <p>最优化程度最差的联接，即嵌套循环，主要用于交叉联接（笛卡尔积）和一些不等式联接。</p>
@@ -106,6 +107,9 @@ XN HashAggregate  (cost=131.97..133.41 rows=576 width=17)
                   </li><li class="listitem">
                      <p><span class="topcom">合并联接</span></p>
                      <p>合并联接通常是最快的连接，用于内联接和外联接。合并联接不用于完全联接。此运算符在联接列都是分配键<em>和</em>排序键的情况下，以及未排序的联接表少于 20% 时用于联接表。它按顺序读取两个排序表并查找匹配的行。要查看未排序行的百分比，请查询 <a href="./r_SVV_TABLE_INFO.html">SVV_TABLE_INFO</a> 系统表。</p>
+                  </li><li class="listitem"> 
+                     <p><span class="topcom">空间联接</span></p>
+                     <p>通常是基于空间数据邻近度的快速联接，用于 <code class="code">GEOMETRY</code> 和 <code class="code">GEOGRAPHY</code> 数据类型。</p>
                   </li></ul></div>
              
             <h3 id="aggregate-operators">聚合运算符</h3>

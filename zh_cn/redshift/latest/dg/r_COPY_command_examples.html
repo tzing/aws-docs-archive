@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_COPY_command_examples" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_COPY_command_examples-load-favoritemovies-from-an-amazon-dynamodb-table">从 DynamoDB 表中加载 FAVORITEMOVIES</a><a href="#r_COPY_command_examples-load-listing-from-an-amazon-s3-bucket">从 Simple Storage Service（Amazon S3）桶中加载 LISTING</a><a href="#copy-command-examples-emr">从 Amazon EMR 集群中加载 LISTING</a><a href="#copy-command-examples-manifest">使用清单指定数据文件</a><a href="#r_COPY_command_examples-load-listing-from-a-pipe-delimited-file-default-delimiter">从以竖线（默认分隔符）分隔的文件中加载 LISTING</a><a href="#r_COPY_command_examples-load-listing-from-parquet">使用 Parquet 格式的列式数据加载 LISTING</a><a href="#r_COPY_command_examples-load-listing-from-orc">使用 ORC 格式的列式数据加载 LISTING</a><a href="#r_COPY_command_examples-load-event-with-options">使用选项加载 EVENT</a><a href="#r_COPY_command_examples-load-venue-from-a-fixed-width-data-file">从固定宽度的数据文件中加载 VENUE</a><a href="#load-from-csv">从 CSV 文件中加载 CATEGORY</a><a href="#r_COPY_command_examples-load-venue-with-explicit-values-for-an-identity-column">加载具有显式的 IDENTITY 列值的 VENUE</a><a href="#r_COPY_command_examples-load-time-from-a-pipe-delimited-gzip-file">从以竖线分隔的 GZIP 文件中加载 TIME</a><a href="#r_COPY_command_examples-load-a-time-datestamp">加载时间戳或日期戳</a><a href="#r_COPY_command_examples-load-data-from-a-file-with-default-values">从具有默认值的文件中加载数据</a><a href="#r_COPY_command_examples-copy-data-with-the-escape-option">使用 ESCAPE 选项复制数据</a><a href="#r_COPY_command_examples-copy-from-json">从 JSON 中复制的示例</a><a href="#r_COPY_command_examples-copy-from-avro">从 Avro 中复制的示例</a><a href="#r_COPY_preparing_data">使用 ESCAPE 选项为 COPY 准备文件</a><a href="#copy-example-spatial-copy-shapefile">加载一个 shapefile</a><a href="#r_COPY_command_examples-load-noload-option">带有 NOLOAD 选项的 COPY 命令</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_COPY_command_examples">COPY 示例</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>为便于阅读，这些示例包含换行符。请不要在您的 <em>credentials-args</em> 字符串中包含换行符或空格。</p></div></div><div class="highlights" id="inline-topiclist"><h6>主题</h6><ul><li><a href="#r_COPY_command_examples-load-favoritemovies-from-an-amazon-dynamodb-table">从 DynamoDB 表中加载 FAVORITEMOVIES</a></li><li><a href="#r_COPY_command_examples-load-listing-from-an-amazon-s3-bucket">从 Simple Storage Service（Amazon S3）桶中加载 LISTING</a></li><li><a href="#copy-command-examples-emr">从 Amazon EMR 集群中加载 LISTING</a></li><li><a href="#copy-command-examples-manifest">使用清单指定数据文件</a></li><li><a href="#r_COPY_command_examples-load-listing-from-a-pipe-delimited-file-default-delimiter">从以竖线（默认分隔符）分隔的文件中加载 LISTING</a></li><li><a href="#r_COPY_command_examples-load-listing-from-parquet">使用 Parquet 格式的列式数据加载 LISTING</a></li><li><a href="#r_COPY_command_examples-load-listing-from-orc">使用 ORC 格式的列式数据加载 LISTING</a></li><li><a href="#r_COPY_command_examples-load-event-with-options">使用选项加载 EVENT</a></li><li><a href="#r_COPY_command_examples-load-venue-from-a-fixed-width-data-file">从固定宽度的数据文件中加载 VENUE</a></li><li><a href="#load-from-csv">从 CSV 文件中加载 CATEGORY</a></li><li><a href="#r_COPY_command_examples-load-venue-with-explicit-values-for-an-identity-column">加载具有显式的 IDENTITY 列值的 VENUE</a></li><li><a href="#r_COPY_command_examples-load-time-from-a-pipe-delimited-gzip-file">从以竖线分隔的 GZIP 文件中加载 TIME</a></li><li><a href="#r_COPY_command_examples-load-a-time-datestamp">加载时间戳或日期戳</a></li><li><a href="#r_COPY_command_examples-load-data-from-a-file-with-default-values">从具有默认值的文件中加载数据</a></li><li><a href="#r_COPY_command_examples-copy-data-with-the-escape-option">使用 ESCAPE 选项复制数据</a></li><li><a href="#r_COPY_command_examples-copy-from-json">从 JSON 中复制的示例</a></li><li><a href="#r_COPY_command_examples-copy-from-avro">从 Avro 中复制的示例</a></li><li><a href="#r_COPY_preparing_data">使用 ESCAPE 选项为 COPY 准备文件</a></li><li><a href="#copy-example-spatial-copy-shapefile">将 shapefile 加载到 Amazon Redshift</a></li><li><a href="#r_COPY_command_examples-load-noload-option">带有 NOLOAD 选项的 COPY 命令</a></li></ul></div>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_COPY_command_examples" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_COPY_command_examples-load-favoritemovies-from-an-amazon-dynamodb-table">从 DynamoDB 表中加载 FAVORITEMOVIES</a><a href="#r_COPY_command_examples-load-listing-from-an-amazon-s3-bucket">从 Amazon S3 桶中加载 LISTING</a><a href="#copy-command-examples-emr">从 Amazon EMR 集群中加载 LISTING</a><a href="#copy-command-examples-manifest">使用清单指定数据文件</a><a href="#r_COPY_command_examples-load-listing-from-a-pipe-delimited-file-default-delimiter">从以竖线（默认分隔符）分隔的文件中加载 LISTING</a><a href="#r_COPY_command_examples-load-listing-from-parquet">使用 Parquet 格式的列式数据加载 LISTING</a><a href="#r_COPY_command_examples-load-listing-from-orc">使用 ORC 格式的列式数据加载 LISTING</a><a href="#r_COPY_command_examples-load-event-with-options">使用选项加载 EVENT</a><a href="#r_COPY_command_examples-load-venue-from-a-fixed-width-data-file">从固定宽度的数据文件中加载 VENUE</a><a href="#load-from-csv">从 CSV 文件中加载 CATEGORY</a><a href="#r_COPY_command_examples-load-venue-with-explicit-values-for-an-identity-column">加载具有显式的 IDENTITY 列值的 VENUE</a><a href="#r_COPY_command_examples-load-time-from-a-pipe-delimited-gzip-file">从以竖线分隔的 GZIP 文件中加载 TIME</a><a href="#r_COPY_command_examples-load-a-time-datestamp">加载时间戳或日期戳</a><a href="#r_COPY_command_examples-load-data-from-a-file-with-default-values">从具有默认值的文件中加载数据</a><a href="#r_COPY_command_examples-copy-data-with-the-escape-option">使用 ESCAPE 选项复制数据</a><a href="#r_COPY_command_examples-copy-from-json">从 JSON 中复制的示例</a><a href="#r_COPY_command_examples-copy-from-avro">从 Avro 中复制的示例</a><a href="#r_COPY_preparing_data">使用 ESCAPE 选项为 COPY 准备文件</a><a href="#copy-example-spatial-copy-shapefile">加载一个 shapefile</a><a href="#r_COPY_command_examples-load-noload-option">带有 NOLOAD 选项的 COPY 命令</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_COPY_command_examples">COPY 示例</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>注意</h6></div><div class="awsdocs-note-text"><p>为便于阅读，这些示例包含换行符。请不要在您的 <em>credentials-args</em> 字符串中包含换行符或空格。</p></div></div><div class="highlights" id="inline-topiclist"><h6>主题</h6><ul><li><a href="#r_COPY_command_examples-load-favoritemovies-from-an-amazon-dynamodb-table">从 DynamoDB 表中加载 FAVORITEMOVIES</a></li><li><a href="#r_COPY_command_examples-load-listing-from-an-amazon-s3-bucket">从 Amazon S3 桶中加载 LISTING</a></li><li><a href="#copy-command-examples-emr">从 Amazon EMR 集群中加载 LISTING</a></li><li><a href="#copy-command-examples-manifest">使用清单指定数据文件</a></li><li><a href="#r_COPY_command_examples-load-listing-from-a-pipe-delimited-file-default-delimiter">从以竖线（默认分隔符）分隔的文件中加载 LISTING</a></li><li><a href="#r_COPY_command_examples-load-listing-from-parquet">使用 Parquet 格式的列式数据加载 LISTING</a></li><li><a href="#r_COPY_command_examples-load-listing-from-orc">使用 ORC 格式的列式数据加载 LISTING</a></li><li><a href="#r_COPY_command_examples-load-event-with-options">使用选项加载 EVENT</a></li><li><a href="#r_COPY_command_examples-load-venue-from-a-fixed-width-data-file">从固定宽度的数据文件中加载 VENUE</a></li><li><a href="#load-from-csv">从 CSV 文件中加载 CATEGORY</a></li><li><a href="#r_COPY_command_examples-load-venue-with-explicit-values-for-an-identity-column">加载具有显式的 IDENTITY 列值的 VENUE</a></li><li><a href="#r_COPY_command_examples-load-time-from-a-pipe-delimited-gzip-file">从以竖线分隔的 GZIP 文件中加载 TIME</a></li><li><a href="#r_COPY_command_examples-load-a-time-datestamp">加载时间戳或日期戳</a></li><li><a href="#r_COPY_command_examples-load-data-from-a-file-with-default-values">从具有默认值的文件中加载数据</a></li><li><a href="#r_COPY_command_examples-copy-data-with-the-escape-option">使用 ESCAPE 选项复制数据</a></li><li><a href="#r_COPY_command_examples-copy-from-json">从 JSON 中复制的示例</a></li><li><a href="#r_COPY_command_examples-copy-from-avro">从 Avro 中复制的示例</a></li><li><a href="#r_COPY_preparing_data">使用 ESCAPE 选项为 COPY 准备文件</a></li><li><a href="#copy-example-spatial-copy-shapefile">将 shapefile 加载到 Amazon Redshift</a></li><li><a href="#r_COPY_command_examples-load-noload-option">带有 NOLOAD 选项的 COPY 命令</a></li></ul></div>
          <h2 id="r_COPY_command_examples-load-favoritemovies-from-an-amazon-dynamodb-table">从 DynamoDB 表中加载 FAVORITEMOVIES</h2>
 
 
@@ -57,10 +57,10 @@
 iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole' 
 readratio 50;</code></pre>
        
-         <h2 id="r_COPY_command_examples-load-listing-from-an-amazon-s3-bucket">从 Simple Storage Service（Amazon S3）桶中加载 LISTING</h2>
+         <h2 id="r_COPY_command_examples-load-listing-from-an-amazon-s3-bucket">从 Amazon S3 桶中加载 LISTING</h2>
 
 
-         <p>以下示例从 Simple Storage Service（Amazon S3）桶加载 LISTING。COPY 命令将加载 <code class="code">/data/listing/</code> 文件夹中的所有文件。</p>
+         <p>以下示例从 Amazon S3 桶加载 LISTING。COPY 命令将加载 <code class="code">/data/listing/</code> 文件夹中的所有文件。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">copy listing
 from 's3://mybucket/data/listing/' 
 iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole';</code></pre>
@@ -80,7 +80,7 @@ JSON 's3://mybucket/jsonpaths.txt';</code></pre>
        
          <h2 id="copy-command-examples-manifest">使用清单指定数据文件</h2>
 
-         <p>您可以使用清单确保 COPY 命令将从 Simple Storage Service（Amazon S3）加载所有必需的文件，而且仅加载必需的文件。当您需要从不同的桶加载多个文件或加载未共享相同前缀的文件时，您也可使用清单。</p>
+         <p>您可以使用清单确保 COPY 命令将从 Amazon S3 加载所有必需的文件，而且仅加载必需的文件。当您需要从不同的桶加载多个文件或加载未共享相同前缀的文件时，您也可使用清单。</p>
          <p>例如，假设您需要加载下列三个文件：<code class="code">custdata1.txt</code>、<code class="code">custdata2.txt</code> 和 <code class="code">custdata3.txt</code>。您可使用以下命令通过指定前缀来加载 <code class="code">mybucket</code> 中以 <code class="code">custdata</code> 开头的所有文件：</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">copy category
 from 's3://mybucket/custdata' 
@@ -156,7 +156,7 @@ from 's3://mybucket/data/listings_pipe.txt'
 iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole';</code></pre>
        
          <h2 id="r_COPY_command_examples-load-listing-from-parquet">使用 Parquet 格式的列式数据加载 LISTING</h2>
-         <p>以下示例从 Simple Storage Service（Amazon S3）上的名为 parquet 的文件夹加载数据。</p>
+         <p>以下示例从 Amazon S3 上的名为 parquet 的文件夹加载数据。</p>
          <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">copy listing 
 from 's3://mybucket/data/listings/parquet/' 
 iam_role 'arn:aws:iam::0123456789012:role/MyRedshiftRole'
@@ -214,7 +214,7 @@ fixedwidth 'venueid:3,venuename:25,venuecity:12,venuestate:2,venueseats:6';</cod
          <h2 id="load-from-csv">从 CSV 文件中加载 CATEGORY</h2>
 
          <p>假设您要加载具有下表中所示值的 CATEGORY。</p>
-         <div class="table-container"><div class="table-contents"><table id="w317aac45b9c63c31c25b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac47b9c67c31c25b5"><thead>
                   <tr>
                      <th>catid</th>
                      <th>catgroup</th>
@@ -417,7 +417,7 @@ infoid |       tableinfo
          <h2 id="r_COPY_command_examples-copy-from-json">从 JSON 中复制的示例</h2>
 
          <p>在以下示例中，您加载具有以下数据的 CATEGORY 表。</p>
-         <div class="table-container"><div class="table-contents"><table id="w317aac45b9c63c31c37b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac47b9c67c31c37b5"><thead>
                   <tr>
                      <th>CATID</th>
                      <th>CATGROUP</th>
@@ -618,7 +618,7 @@ json 's3://mybucket/category_array_jsonpath.json';</code></pre>
          <h2 id="r_COPY_command_examples-copy-from-avro">从 Avro 中复制的示例</h2>
 
          <p>在以下示例中，您加载具有以下数据的 CATEGORY 表。</p>
-         <div class="table-container"><div class="table-contents"><table id="w317aac45b9c63c31c39b5"><thead>
+         <div class="table-container"><div class="table-contents"><table id="w319aac47b9c67c31c39b5"><thead>
                   <tr>
                      <th>CATID</th>
                      <th>CATGROUP</th>
@@ -836,7 +836,7 @@ c1           |  c2
             <h3 id="copy-example-spatial-copy-shapefile-loading-copy">加载一个 shapefile</h3>
             
             
-            <p>以下步骤介绍如何使用 COPY 命令从 Simple Storage Service（Amazon S3）中摄取 OpenStreetMap 数据。此示例假定 <a href="https://download.geofabrik.de/europe.html" rel="noopener noreferrer" target="_blank"><span>Geofabrik 下载站点的</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> Norway shapefile 归档已经上载到 AWS 区域中的私有 Simple Storage Service（Amazon S3）桶。<code>.shp</code>、<code>.shx</code> 和 <code>.dbf</code> 文件必须共享相同的 Simple Storage Service（Amazon S3）前缀和文件名。</p>
+            <p>以下步骤介绍如何使用 COPY 命令从 Amazon S3 中摄取 OpenStreetMap 数据。此示例假定 <a href="https://download.geofabrik.de/europe.html" rel="noopener noreferrer" target="_blank"><span>Geofabrik 下载站点的</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> Norway shapefile 归档已经上载到 AWS 区域中的私有 Amazon S3 桶。<code>.shp</code>、<code>.shx</code> 和 <code>.dbf</code> 文件必须共享相同的 Amazon S3 前缀和文件名。</p>
             
              
                <h4 id="spatial-copy-shapefile-loading-copy-fits">无需简化即可摄取数据</h4>
@@ -950,7 +950,7 @@ INFO:  Load into table 'norway_water' completed, 1 record(s) could not be loaded
          
           
             <h3 id="copy-example-spatial-copy-shapefile-compressed">正在从压缩的 shapefile 文件加载</h3>
-            <p>Amazon Redshift COPY 支持从压缩的 shapefile 中摄取数据。所有 shapefile 组件必须具有相同的 Simple Storage Service（Amazon S3）前缀和相同的压缩后缀。例如，假设您要加载上面示例中的数据。在本例中，文件 <code>gis_osm_water_a_free_1.shp.gz</code>、<code>gis_osm_water_a_free_1.dbf.gz</code> 和 <code>gis_osm_water_a_free_1.shx.gz</code> 必须共享相同的 Simple Storage Service（Amazon S3）目录。COPY 命令需要 GZIP 选项，FROM 子句必须指定正确的压缩文件，如下所示。</p>
+            <p>Amazon Redshift COPY 支持从压缩的 shapefile 中摄取数据。所有 shapefile 组件必须具有相同的 Amazon S3 前缀和相同的压缩后缀。例如，假设您要加载上面示例中的数据。在本例中，文件 <code>gis_osm_water_a_free_1.shp.gz</code>、<code>gis_osm_water_a_free_1.dbf.gz</code> 和 <code>gis_osm_water_a_free_1.shx.gz</code> 必须共享相同的 Amazon S3 目录。COPY 命令需要 GZIP 选项，FROM 子句必须指定正确的压缩文件，如下所示。</p>
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">COPY norway_natural FROM 's3://<code class="replaceable">bucket_name</code>/shapefiles/norway/compressed/gis_osm_natural_free_1.shp.gz'
 FORMAT SHAPEFILE

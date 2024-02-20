@@ -48,12 +48,12 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Distance-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Distance-function-syntax">语法</a><a href="#ST_Distance-function-arguments">Arguments</a><a href="#ST_Distance-function-return">返回类型</a><a href="#ST_Distance-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Distance-function">ST_Distance</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>对于输入几何体，ST_Distance 返回两个输入几何体值的 2D 投影之间的最小欧氏距离。</p><p>对于 3DM、3DZ、4D 几何体，ST_Distance 返回两个输入几何体值的 2D 投影之间的欧氏距离。</p><p>对于输入地理，ST_Distance 返回两个 2D 点的测地线距离。距离以米为单位。对于点和空点以外的地理，将返回错误。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_Distance-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_Distance-function-syntax">语法</a><a href="#ST_Distance-function-arguments">参数</a><a href="#ST_Distance-function-return">返回类型</a><a href="#ST_Distance-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_Distance-function">ST_Distance</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>对于输入几何体，ST_Distance 返回两个输入几何体值的 2D 投影之间的最小欧氏距离。</p><p>对于 3DM、3DZ、4D 几何体，ST_Distance 返回两个输入几何体值的 2D 投影之间的欧氏距离。</p><p>对于输入地理，ST_Distance 返回两个 2D 点的测地线距离。距离以米为单位。对于点和空点以外的地理，将返回错误。</p>
             <h2 id="ST_Distance-function-syntax">语法</h2>       
 
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_Distance(<em>geo1</em>, <em>geo2</em>)</code></pre>
           
-            <h2 id="ST_Distance-function-arguments">Arguments</h2>           
+            <h2 id="ST_Distance-function-arguments">参数</h2>           
             
             <div class="variablelist">
                 
@@ -75,7 +75,7 @@
             <p><code class="code">DOUBLE PRECISION</code>，采用与输入几何体或地理相同的单位。</p>
             <p>如果 <em>geo1</em> 或 <em>geo2</em> 为 null 或为空，则返回 null。</p>
             
-            <p>如果 <em>geo1</em> 和 <em>geo2</em> 不具有相同的空间参考系统标识符（SRID）值，则返回一个错误。</p>
+            <p>如果 <em>geo1</em> 和 <em>geo2</em> 不具有相同的空间参考系统标识符 (SRID) 值，则返回一个错误。</p>
             <p>如果 <em>geo1</em> 或 <em>geo2</em> 为几何体集合，则返回一个错误。</p>
           
             <h2 id="ST_Distance-function-examples">示例</h2>

@@ -48,7 +48,7 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_GeometryN-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_GeometryN-function-syntax">语法</a><a href="#ST_GeometryN-function-arguments">Arguments</a><a href="#ST_GeometryN-function-return">返回类型</a><a href="#ST_GeometryN-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_GeometryN-function">ST_GeometryN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_GeometryN 返回由输入几何体的输入索引指向的几何体，如下所示：</p><div class="itemizedlist">
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#ST_GeometryN-function" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#ST_GeometryN-function-syntax">语法</a><a href="#ST_GeometryN-function-arguments">参数</a><a href="#ST_GeometryN-function-return">返回类型</a><a href="#ST_GeometryN-function-examples">示例</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ST_GeometryN-function">ST_GeometryN</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>ST_GeometryN 返回由输入几何体的输入索引指向的几何体，如下所示：</p><div class="itemizedlist">
              
              
          <ul class="itemizedlist"><li class="listitem"><p>当输入是点、线串或多边形时，如果索引等于一 (1)，则按原样返回几何体；如果索引不是一 (1)，则返回 null。</p></li><li class="listitem"><p>如果输入是多点、多线串、多边形或几何体集合，则返回由输入索引指向的点、线串、多边形或几何体集合。</p></li></ul></div><p>索引是从 1 开始的。结果的空间参考系统标识符 (SRID) 与输入几何体的相同。返回的几何体的维度与输入几何体的维度相同。</p>
@@ -56,7 +56,7 @@
             
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">ST_GeometryN(<em>geom</em>, <em>index</em>)</code></pre>
           
-            <h2 id="ST_GeometryN-function-arguments">Arguments</h2>           
+            <h2 id="ST_GeometryN-function-arguments">参数</h2>           
             
             <div class="variablelist">
                 

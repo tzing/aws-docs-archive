@@ -64,7 +64,7 @@
             <div class="itemizedlist">
                 
                 
-            <ul class="itemizedlist"><li class="listitem"><p>使用特定的 Aurora 实例端点（而不是使用 Aurora 集群端点）。此方法对来自 PostgreSQL 数据库的结果使用 REPEATABLE READ 事务隔离。</p></li><li class="listitem"><p>使用 Aurora 读取器端点并将会话的 <code class="code">pg_federation_repeatable_read</code> 设置为 false。此方法对来自 PostgreSQL 数据库的结果使用 READ COMMITTED 事务隔离。有关 Aurora 读取器端点的更多信息，请参阅《Amazon Aurora 用户指南》<em></em>中的 <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Overview.Endpoints.Types">Aurora 端点类型</a>。有关 <code class="code">pg_federation_repeatable_read</code> 的信息，请参阅 <a href="./r_pg_federation_repeatable_read.html">pg_federation_repeatable_read</a>。</p></li></ul></div></li></ul></div><p>以下是使用对 PostgreSQL 数据库的联合查询时事务的注意事项：</p><div class="itemizedlist">
+            <ul class="itemizedlist"><li class="listitem"><p>使用特定的 Aurora 实例端点（而不是使用 Aurora 集群端点）。此方法对来自 PostgreSQL 数据库的结果使用 REPEATABLE READ 事务隔离。</p></li><li class="listitem"><p>使用 Aurora 读取器端点并将会话的 <code class="code">pg_federation_repeatable_read</code> 设置为 false。此方法对来自 PostgreSQL 数据库的结果使用 READ COMMITTED 事务隔离。有关 Aurora 读取器端点的更多信息，请参阅《Amazon Aurora 用户指南》<em></em>中的 <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.Endpoints.html#Aurora.Overview.Endpoints.Types">Aurora 端点类型</a>。有关 <code class="code">pg_federation_repeatable_read</code> 的信息，请参阅<a href="./r_pg_federation_repeatable_read.html">pg_federation_repeatable_read</a>。</p></li></ul></div></li></ul></div><p>以下是使用对 PostgreSQL 数据库的联合查询时事务的注意事项：</p><div class="itemizedlist">
           
           
           

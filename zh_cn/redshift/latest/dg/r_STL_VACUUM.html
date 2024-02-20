@@ -48,11 +48,11 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_VACUUM" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_VACUUM-table-columns">表列</a><a href="#r_STL_VACUUM-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_VACUUM">STL_VACUUM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>显示已真空化的表的行和数据块统计数据。</p><p>该视图显示了特定于每个 vacuum 操作开始和完成时的信息，并演示了运行此操作的好处。有关运行该命令的要求的信息，请参阅 <a href="./r_VACUUM_command.html">VACUUM</a> 命令描述。</p><p>此视图仅对超级用户可见。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部列也在 SYS 监控视图 <a href="./SYS_VACUUM_HISTORY.html">SYS_VACUUM_HISTORY</a> 中定义。</p>
+</script></head><body><div id="main"><div style="display: none"><a href="redshift-dg.pdf#r_STL_VACUUM" target="_blank" rel="noopener noreferrer" title="打开 PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">文档</a><a href="/redshift/index.html">Amazon Redshift</a><a href="welcome.html">数据库开发人员指南</a></div><div id="page-toc-src"><a href="#r_STL_VACUUM-table-columns">表列</a><a href="#r_STL_VACUUM-sample-queries">示例查询</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="r_STL_VACUUM">STL_VACUUM</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>显示已真空化的表的行和数据块统计数据。</p><p>该视图显示了特定于每个 vacuum 操作开始和完成时的信息，并演示了运行此操作的好处。有关运行该命令的要求的信息，请参阅 <a href="./r_VACUUM_command.html">VACUUM</a> 命令描述。</p><p>STL_VACUUM 仅对超级用户可见。有关更多信息，请参阅<a href="./cm_chap_system-tables.html#c_visibility-of-data">系统表和视图中的数据可见性</a>。</p><p>此表中的部分或全部数据也可以在 SYS 监控视图 <a href="./SYS_VACUUM_HISTORY.html">SYS_VACUUM_HISTORY</a> 中找到。SYS 监控视图中的数据经过格式化处理，便于使用和理解。我们建议您使用 SYS 监控视图进行查询。</p>
             <h2 id="r_STL_VACUUM-table-columns">表列</h2>
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17b9d111c11b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17b9d111c11b3"><thead>
                         <tr>
                             <th>列名称 </th>
                             <th>数据类型 </th>
@@ -141,7 +141,7 @@
                         <tr>
                             <td tabindex="-1">sortedrows </td>
                             <td tabindex="-1">integer </td>
-                            <td tabindex="-1">表中已排序的行的数量。此列显示在“Status (状态)”列中具有 <code class="userinput">Started</code> 状态的行开始 vacuum 操作之前的计数以及在“Status (状态)”列中具有 <code class="userinput">Finished</code> 状态的行完成 vacuum 操作之后的计数。</td>
+                            <td tabindex="-1">表中已排序的行的数量。此列显示在“状态”列中具有 <code class="userinput">Started</code> 状态的行开始 vacuum 操作之前的计数，以及在“状态”列中具有 <code class="userinput">Finished</code> 状态的行完成 vacuum 操作之后的计数。</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">blocks </td>
@@ -176,8 +176,8 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">is_recluster </td>
-                            <td tabindex="-1">integer</td>
-                            <td tabindex="-1">如果为 1（true），则 VACUUM 操作执行重新聚类算法，如果为 0（false），则不执行此算法。</td>
+                            <td tabindex="-1">整数</td>
+                            <td tabindex="-1">如果为 1 (true)，则 VACUUM 操作执行重新聚类算法，如果为 0 (false)，则不执行此算法。</td>
                         </tr>
                     </table></div></div>
          
@@ -195,7 +195,7 @@ from stl_vacuum where table_id=108313 order by eventtime;
  14294 |   108313 | Finished                |  966 |        966 |     11 |  2016-05-19 18:26:13 |                0 |                    0 
  15126 |   108313 | Skipped(sorted&gt;=95%)    |  966 |        966 |     11 |  2016-05-19 18:26:38 |                0 |                    0 </code></pre>
             <p>在 VACUUM 启动时，表包含了存储在 28 个 1MB 数据块中的 1,950 行。Amazon Redshift 估计，它可以通过 vacuum 操作回收 984 行或 17 个数据块的磁盘空间。</p> 
-            <p>在状态为 Finished（完成）的行中，ROWS 列显示值 966，而 BLOCKS 列值为 11，低于 28。vacuum 回收了估计的磁盘空间量，在 vacuum 操作完成后，没有剩余可回收的行或空间。</p>
+            <p>在状态为“完成”的行中，ROWS 列显示值 966，而 BLOCKS 列值为 11，低于 28。vacuum 回收了估计的磁盘空间量，在 vacuum 操作完成后，没有剩余可回收的行或空间。</p>
             <p>在排序阶段（事务 15126），vacuum 无法跳过此表，因为行是按排序键顺序插入的。</p>
             <p>以下示例显示在大型 INSERT 操作之后，针对 SALES 表（在此示例中为表 110116）的 SORT ONLY vacuum 操作的统计数据：</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="复制"><awsui-icon name="copy"></awsui-icon></div></div><code class="">vacuum sort only sales;
