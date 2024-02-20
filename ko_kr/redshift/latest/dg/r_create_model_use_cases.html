@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>사용 사례 - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_create_model_use_cases" /><meta name="default_state" content="r_create_model_use_cases" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="description" content="CREATE 모델의 다양한 사례에 대한 정보입니다." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="데이터베이스 개발자 안내서" /><meta name="abstract" content="페타바이트 규모의 엔터프라이즈급 완전관리형 데이터 웨어하우징 서비스인 Amazon Redshift로 데이터 웨어하우스를 생성하고 관리합니다." /><meta name="guide-locale" content="ko_kr" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="데이터베이스 개발자 안내서" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="데이터베이스 개발자 안내서" /><meta id="panorama-serviceConsolePage" value="사용 사례" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>사용 사례 - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_create_model_use_cases" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,클러스터,데이터 웨어하우스,샘플 데이터,데이터베이스,HLL" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>사용 사례 - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_create_model_use_cases" /><meta name="default_state" content="r_create_model_use_cases" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="description" content="CREATE 모델의 다양한 사례에 대한 정보입니다." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="데이터베이스 개발자 안내서" /><meta name="abstract" content="페타바이트 규모의 엔터프라이즈급 완전관리형 데이터 웨어하우징 서비스인 Amazon Redshift로 데이터 웨어하우스를 생성하고 관리합니다." /><meta name="guide-locale" content="ko_kr" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_create_model_use_cases.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_create_model_use_cases.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_create_model_use_cases.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_create_model_use_cases.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_create_model_use_cases.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_create_model_use_cases.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_create_model_use_cases.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="데이터베이스 개발자 안내서" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="데이터베이스 개발자 안내서" /><meta id="panorama-serviceConsolePage" value="사용 사례" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>사용 사례 - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_create_model_use_cases" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_create_model_use_cases.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,cluster,데이터 웨어하우스,샘플 데이터,데이터베이스,HLL" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -310,12 +310,12 @@ S3_BUCKET 'bucket'
                     <dt><span class="term">HYPERPARAMETERS <span>{</span> DEFAULT | DEFAULT EXCEPT ( key ‘value’ (,..) ) }</span></dt>
                     <dd>
                         <p>기본 XGBoost 파라미터가 사용되는지 아니면 사용자 지정 값으로 재정의되는지를 지정합니다. 작은따옴표로 값을 묶여야 합니다. 다음은 XGBoost에 대한 파라미터와 해당 기본값의 예입니다.</p>
-                        <div class="table-container"><div class="table-contents"><table id="w317aac45b9c87c17b9b9b3b7b3b3"><thead>
+                        <div class="table-container"><div class="table-contents"><table id="w319aac47b9c93c17b9b9b3b7b3b3"><thead>
                                     <tr>
                                         <th>파라미터 이름</th>
                                         <th>파라미터 값 </th>
                                         <th>기본값</th>
-                                        <th>주의</th>
+                                        <th>참고</th>
                                     </tr>
                                 </thead>
                                     <tr>
@@ -326,7 +326,7 @@ S3_BUCKET 'bucket'
                                         <td tabindex="-1">
                                             <p>다중 클래스 분류에 필요합니다.</p>
                                         </td>
-                                        <td tabindex="-1">해당 사항 없음</td>
+                                        <td tabindex="-1">N/A</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">
@@ -336,16 +336,16 @@ S3_BUCKET 'bucket'
                                         <td tabindex="-1">
                                             <p>100</p>
                                         </td>
-                                        <td tabindex="-1">해당 사항 없음</td>
+                                        <td tabindex="-1">N/A</td>
                                     </tr>
                                     
                                     <tr>
                                         <td tabindex="-1">
                                             <p>tree_method</p>
                                         </td>
-                                        <td tabindex="-1">문자열</td>
+                                        <td tabindex="-1">String</td>
                                         <td tabindex="-1">자동</td>
-                                        <td tabindex="-1">해당 사항 없음</td>
+                                        <td tabindex="-1">N/A</td>
                                     </tr>
                                     <tr>
                                         <td tabindex="-1">
@@ -551,6 +551,24 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
           <h2 id="r_byom_create_model_remote">기존 보유 모델 사용(BYOM) - 원격 추론</h2>
           <p>또한 Amazon Redshift 기계 학습은 원격 추론에서도 기존 보유 모델 사용(BYOM)을 지원합니다.</p>
           <p>다음은 BYOM용 CREATE MODEL 구문에 대한 옵션을 요약한 것입니다.</p>
+          <div class="awsdocs-note awsdocs-sticky-note awsdocs-warning"><div class="awsdocs-note-icon"><awsui-icon name="status-warning" variant="error"></awsui-icon></div><div class="awsdocs-note-text"><p><em><b>미리 보기로 출시된 Amazon Redshift ML의 BYOM 모델에 대한 입력 유형의 SUPER 데이터 유형을 설명한 사전 릴리스 설명서입니다. 설명서 및 기능은 모두 변경될 수 있습니다. 이 기능은 테스트 클러스터에만 사용하고 프로덕션 환경에서는 사용하지 않는 것이 좋습니다. </b>미리 보기 이용 약관은 <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS 서비스 약관</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>의 <em>베타 및 미리 보기</em>를 참조하세요.</em></p></div></div>
+          
+          <p>SUPER 데이터 유형을 입력 데이터 및 반환된 데이터 유형으로 사용하도록 지정하는 것은 Amazon SageMaker JumpStart에서 호스팅되는 대규모 언어 모델(LLM)을 생성하고자 함을 나타냅니다. LLM 생성은 현재 미리 보기 기능으로만 사용할 수 있습니다. 이 미리 보기는 다음 AWS 리전에서 사용 가능합니다.</p>
+          <div class="itemizedlist">
+              
+              
+              
+              
+              
+          <ul class="itemizedlist"><li class="listitem"><p>미국 동부(오하이오)(us-east-2)</p></li><li class="listitem"><p>미국 동부(버지니아 북부)(us-east-1)</p></li><li class="listitem"><p>아시아 태평양(도쿄)(ap-northeast-1)</p></li><li class="listitem"><p>유럽(아일랜드)(eu-west-1)</p></li><li class="listitem"><p>유럽(스톡홀름)(eu-north-1)</p></li></ul></div>
+          <p><b>Preview</b>(미리 보기)에서 Amazon Redshift 클러스터를 생성하여 Amazon Redshift의 새로운 기능을 테스트할 수 있습니다. 프로덕션에서 이러한 기능을 사용하거나 <b>Preview</b>(미리 보기) 클러스터를 프로덕션 클러스터 또는 다른 트랙의 클러스터로 이동할 수 없습니다. 미리 보기 이용 약관은 <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS 서비스 약관</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>의 <em>베타 및 미리 보기</em>를 참조하세요.</p>            
+            <div class="procedure"><h6><b>Preview</b>(미리 보기)에서 클러스터 생성</h6><ol><li><p>AWS Management Console에 로그인한 후 <a href="https://console.aws.amazon.com/redshift/" rel="noopener noreferrer" target="_blank"><span>https://console.aws.amazon.com/redshift/</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>에서 Amazon Redshift 콘솔을 엽니다.</p> </li><li><p>탐색 메뉴에서 <b>Provisioned clusters dashboard</b>(프로비저닝된 클러스터 대시보드)를 선택하고 <b>Clusters</b>(클러스터)를 선택합니다. 현재 AWS 리전의 계정에 대한 클러스터가 나열됩니다. 각 클러스터의 속성 하위 집합이 목록의 열에 표시됩니다.</p></li><li><p><b>Clusters</b>(클러스터) 목록 페이지에 미리 보기를 소개하는 배너가 표시됩니다. <b>Create preview cluster</b>(미리 보기 클러스터 생성) 버튼을 선택하여 클러스터 생성 페이지를 엽니다.</p></li><li><p>클러스터의 속성을 입력합니다. 테스트하려는 기능이 포함된 <b>Preview track</b>(미리 보기 트랙)을 선택합니다. 미리 보기 트랙에 있음을 나타내는 클러스터 이름을 입력하는 것이 좋습니다. 테스트하려는 기능에 대해 <b>-preview</b> 레이블이 지정된 옵션을 포함하여 클러스터 옵션을 선택합니다. 클러스터 생성에 대한 일반적인 정보는 <em></em>Amazon Redshift 관리 안내서의 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#create-cluster">클러스터 생성</a>을 참조하세요.</p></li><li><p>미리 보기에서 클러스터를 생성하려면 <b>클러스터 생성</b>을 선택합니다.</p>
+                       <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>참고</h6></div><div class="awsdocs-note-text"><p><code class="code">preview_2023</code> 트랙은 사용 가능한 가장 최근의 미리 보기 트랙입니다. 이 트랙은 RA3 노드 유형의 클러스터 생성만 지원합니다. 노드 유형 DC2 및 DS2와 이전 노드 유형은 지원되지 않습니다.</p></div></div></li><li><p>미리 보기 클러스터를 사용할 수 있으면 SQL 클라이언트를 사용하여 데이터를 로드하고 쿼리합니다.</p></li></ol></div>
+          
+          <p>미리 보기 작업 그룹을 생성하여 LLM을 생성할 수도 있습니다. 이러한 기능을 프로덕션 환경에서 사용하거나 작업 그룹을 다른 작업 그룹으로 이동할 수 없습니다. 미리 보기 이용 약관은 <a href="https://aws.amazon.com/service-terms/" rel="noopener noreferrer" target="_blank"><span>AWS 서비스 약관</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>의 베타 및 미리 보기를 참조하세요. 미리 보기 작업 그룹을 만드는 방법에 대한 지침은 <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-workgroup-preview.html">미리 보기 작업 그룹 만들기</a>를 참조하세요.</p>
+            
+             
+          
          
             <h3 id="r_remote-create-model">원격 추론을 위한 CREATE MODEL 구문 </h3>
             <p>다음은 원격 추론을 위한 CREATE MODEL 구문에 대한 설명입니다.</p>
@@ -577,12 +595,15 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                      
                         <dt><span class="term">FUNCTION <em>fn_name</em> ( [<em>data_type</em>] [, ...] )</span></dt>
                         <dd>
-                            <p>함수의 이름과 입력 인수의 데이터 형식입니다. 스키마 이름을 제공할 수 있습니다.</p>
+                           <p>함수의 이름과 입력 인수의 데이터 형식입니다. 지원되는 모든 데이터 유형을 보려면 <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">데이터 유형</a>을 참조하세요. <code class="code">Geography</code>, <code class="code">geometry</code> 및 <code class="code">hllsketch</code>는 지원되지 않습니다. SUPER 데이터 유형을 입력 데이터 및 반환된 데이터 유형으로 사용하도록 지정하는 것은 Amazon SageMaker JumpStart에서 호스팅되는 대규모 언어 모델(LLM)을 생성하고자 함을 나타냅니다.</p>
+                           <p>또는 반환된 데이터 유형으로 사용하지 않고 SUPER 데이터 유형만 입력 데이터로 사용하도록 지정할 수도 있습니다. SUPER 데이터 유형을 입력으로 사용하는 것은 미리 보기 기능으로만 사용할 수 있습니다.</p>
+                           <p>함수 이름 대신 스키마 이름을 제공할 수도 있습니다.</p>
                         </dd>
                      
                         <dt><span class="term">RETURNS <em>data_type</em></span></dt>
                         <dd>
-                            <p>함수에 의해 반환되는 값의 데이터 형식입니다.</p>
+                            <p>함수에 의해 반환되는 값의 데이터 형식입니다. 지원되는 모든 데이터 유형을 보려면 <a href="https://docs.aws.amazon.com/redshift/latest/dg/c_Supported_data_types.html">데이터 유형</a>을 참조하세요. <code class="code">Geography</code>, <code class="code">geometry</code> 및 <code class="code">hllsketch</code>는 지원되지 않습니다. SUPER 데이터 유형을 입력 데이터 및 반환된 데이터 유형으로 사용하도록 지정하는 것은 Amazon SageMaker JumpStart에서 호스팅되는 대규모 언어 모델(LLM)을 생성하고자 함을 나타냅니다.</p>
+                           <p>또는 입력 데이터 유형으로 사용하지 않고 SUPER 데이터 유형만 반환된 데이터 유형으로 사용하도록 지정할 수도 있습니다.</p>
                         </dd>
                      
                         <dt><span class="term">SAGEMAKER <em>'endpoint_name'</em>[:<em>'model_name'</em>] </span></dt>
@@ -603,16 +624,35 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
                 <h4 id="r_remote-create-model-usage-notes">원격 추론을 위한 CREATE MODEL 사용 노트</h4>
                 <p>원격 추론을 위해 CREATE MODEL을 사용하기 전에 다음 사항을 고려하세요.</p>
                 <div class="itemizedlist">
+                    
+                     
+   
+                     
+                     
+                     
+   
+                     
+                    
+                    
+                  
+                   
 
-                     
-
-                     
-                     
-                     
-
-                     
-
-                <ul class="itemizedlist"><li class="listitem"><p>모델은 SageMaker에서 텍스트/CSV의 콘텐츠 형식을 통해 쉼표로 구분된 값(CSV) 형식의 입력을 수락해야 합니다.</p></li><li class="listitem"><p>엔드포인트는 Amazon Redshift 클러스터를 소유한 동일한 AWS 계정에서 호스팅되어야 합니다.</p></li><li class="listitem"><p>모델의 출력은 SageMaker에서 텍스트/CSV의 콘텐츠 형식을 통해 쉼표로 구분된 값(CSV) 형식으로 함수 생성 시 지정된 유형의 단일 값이어야 합니다. Varchar 데이터 유형은 따옴표로 묶어서는 안 되며 각 출력은 새 줄에 있어야 합니다.</p></li><li class="listitem"><p>모델은 null을 빈 문자열로 수락합니다.</p></li><li class="listitem"><p>Amazon SageMaker 엔드포인트에 Amazon Redshift의 추론 호출을 수용할 수 있는 충분한 리소스가 있는지 또는 Amazon SageMaker 엔드포인트가 자동으로 확장될 수 있는지 확인합니다.</p></li></ul></div>
+                <ul class="itemizedlist"><li class="listitem">
+                      <p>SUPER 데이터 유형을 입력 데이터로 사용하는 경우 BYOM 모델은 하나의 인수만 지원할 수 있으며 반환되는 출력도 SUPER 데이터 유형이어야 합니다.</p>
+                   </li><li class="listitem"><p>모델은 SageMaker에서 텍스트/CSV의 콘텐츠 형식을 통해 쉼표로 구분된 값(CSV) 형식의 입력을 수락해야 합니다. SUPER 데이터 유형을 입력으로 사용하지 않는 경우에만 해당됩니다.</p>
+                    </li><li class="listitem">
+                       <p>엔드포인트는 Amazon Redshift 클러스터를 소유한 동일한 AWS 계정에서 호스팅되어야 합니다.</p>
+                    </li><li class="listitem">
+                       <p>모델의 출력은 SageMaker에서 텍스트/CSV의 콘텐츠 형식을 통해 쉼표로 구분된 값(CSV) 형식으로 함수 생성 시 지정된 유형의 단일 값이어야 합니다. Varchar 데이터 유형은 따옴표로 묶어서는 안 되며 각 출력은 새 줄에 있어야 합니다. 모델이 SUPER 데이터 유형을 반환하지 않도록 지정한 경우에만 해당됩니다.</p>
+                    </li><li class="listitem">
+                       <p>모델은 null을 빈 문자열로 수락합니다.</p>
+                    </li><li class="listitem">
+                       <p>Amazon SageMaker 엔드포인트에 Amazon Redshift의 추론 호출을 수용할 수 있는 충분한 리소스가 있는지 또는 Amazon SageMaker 엔드포인트가 자동으로 확장될 수 있는지 확인합니다.</p>
+                    </li><li class="listitem">
+                      <p>반환된 유형이 SUPER인 경우 모델 출력은 JSON과 <code class="code">application/jsonlines</code> 콘텐츠 유형이어야 합니다.</p>
+                   </li><li class="listitem">
+                      <p>입력 및 출력 유형이 모두 SUPER인 경우 모델 출력은 <code class="code">application/json</code> 콘텐츠 유형을 통해 JSON을 수락하고 반환해야 합니다.</p>
+                   </li></ul></div>
                  
                     <h5 id="r_remote-create-model-example">원격 추론을 위한 CREATE MODEL 예</h5>
                     <p>다음 예에서는 SageMaker 엔드포인트를 사용하여 예측하는 모델을 생성합니다. 예측을 수행하고 CREATE MODEL 명령에서 해당 이름을 지정하기 위해 엔드포인트가 실행 중인지 확인합니다.</p>
@@ -621,6 +661,12 @@ from abalone_xgb where record_number &gt; 2500;</code></pre>
     RETURNS int
     SAGEMAKER 'customer-churn-endpoint'
     IAM_ROLE default;</code></pre>
+                   <p>다음 예시에서는 SUPER 데이터 유형을 입력 데이터로 사용하여 대규모 언어 모델(LLM)을 만들고 SUPER 데이터 유형을 출력합니다. LLM은 SageMaker Jumpstart에서 호스팅됩니다.</p>
+                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">CREATE MODEL sample_super_data_model
+FUNCTION sample_super_data_model_predict(super)
+RETURNS super
+SAGEMAKER 'sample_super_data_model_endpoint'
+IAM_ROLE default;</code></pre>
                  
              
          
@@ -723,7 +769,7 @@ customer_id | customers_cluster
           
            
            
-       <ul class="itemizedlist"><li class="listitem"><p>미국 동부(오하이오) (us-east-2)</p></li><li class="listitem"><p>미국 동부(버지니아 북부) (us-east-1)</p></li><li class="listitem"><p>미국 서부(오레곤) (us-west-2)</p></li><li class="listitem"><p>아시아 태평양(뭄바이) (ap-south-1)</p></li><li class="listitem"><p>아시아 태평양(서울) (ap-northeast-2)</p></li><li class="listitem"><p>아시아 태평양(싱가포르) (ap-southeast-1)</p></li><li class="listitem"><p>아시아 태평양(시드니) (ap-southeast-2)</p></li><li class="listitem"><p>아시아 태평양(도쿄) (ap-northeast-1)</p></li><li class="listitem"><p>유럽(프랑크푸르트) (eu-central-1)</p></li><li class="listitem"><p>유럽(아일랜드)(eu-west-1)</p></li></ul></div>
+       <ul class="itemizedlist"><li class="listitem"><p>미국 동부(오하이오)(us-east-2)</p></li><li class="listitem"><p>미국 동부(버지니아 북부)(us-east-1)</p></li><li class="listitem"><p>미국 서부(오레곤)(us-west-2)</p></li><li class="listitem"><p>아시아 태평양(뭄바이)(ap-south-1)</p></li><li class="listitem"><p>아시아 태평양(서울)(ap-northeast-2)</p></li><li class="listitem"><p>아시아 태평양(싱가포르)(ap-southeast-1)</p></li><li class="listitem"><p>아시아 태평양(시드니)(ap-southeast-2)</p></li><li class="listitem"><p>아시아 태평양(도쿄)(ap-northeast-1)</p></li><li class="listitem"><p>유럽(프랑크푸르트)(eu-central-1)</p></li><li class="listitem"><p>유럽(아일랜드)(eu-west-1)</p></li></ul></div>
         
           <h3 id="r_forecast_model-synopsis">예측 구문이 포함된 CREATE MODEL</h3>
           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sql ">CREATE [ OR REPLACE ] MODEL forecast_model_name 

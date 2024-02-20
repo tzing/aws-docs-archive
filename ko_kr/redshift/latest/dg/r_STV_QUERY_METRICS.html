@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>STV_QUERY_METRICS - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_STV_QUERY_METRICS" /><meta name="default_state" content="r_STV_QUERY_METRICS" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="description" content="Amazon Redshift의 디스크 속도 성능과 디스크 사용률을 확인합니다." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="데이터베이스 개발자 안내서" /><meta name="abstract" content="페타바이트 규모의 엔터프라이즈급 완전관리형 데이터 웨어하우징 서비스인 Amazon Redshift로 데이터 웨어하우스를 생성하고 관리합니다." /><meta name="guide-locale" content="ko_kr" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="데이터베이스 개발자 안내서" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="데이터베이스 개발자 안내서" /><meta id="panorama-serviceConsolePage" value="STV_QUERY_METRICS" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>STV_QUERY_METRICS - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_STV_QUERY_METRICS" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,클러스터,데이터 웨어하우스,샘플 데이터,데이터베이스,HLL" /><script type="application/ld+json">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>STV_QUERY_METRICS - Amazon Redshift</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="r_STV_QUERY_METRICS" /><meta name="default_state" content="r_STV_QUERY_METRICS" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="description" content="Amazon Redshift의 디스크 속도 성능과 디스크 사용률을 확인합니다." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Redshift" /><meta name="guide" content="데이터베이스 개발자 안내서" /><meta name="abstract" content="페타바이트 규모의 엔터프라이즈급 완전관리형 데이터 웨어하우징 서비스인 Amazon Redshift로 데이터 웨어하우스를 생성하고 관리합니다." /><meta name="guide-locale" content="ko_kr" /><meta name="tocs" content="toc-contents.json" /><link rel="canonical" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="id-id" /><link rel="alternative" href="https://docs.aws.amazon.com/id_id/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="id" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="de-de" /><link rel="alternative" href="https://docs.aws.amazon.com/de_de/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="de" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="en-us" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="en" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="es-es" /><link rel="alternative" href="https://docs.aws.amazon.com/es_es/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="es" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="fr-fr" /><link rel="alternative" href="https://docs.aws.amazon.com/fr_fr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="fr" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="it-it" /><link rel="alternative" href="https://docs.aws.amazon.com/it_it/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="it" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ja-jp" /><link rel="alternative" href="https://docs.aws.amazon.com/ja_jp/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ja" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ko-kr" /><link rel="alternative" href="https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="ko" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="pt-br" /><link rel="alternative" href="https://docs.aws.amazon.com/pt_br/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="pt" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="zh-cn" /><link rel="alternative" href="https://docs.aws.amazon.com/zh_tw/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="zh-tw" /><link rel="alternative" href="https://docs.aws.amazon.com/redshift/latest/dg/r_STV_QUERY_METRICS.html" hreflang="x-default" /><meta name="feedback-item" content="Redshift" /><meta name="this_doc_product" content="Amazon Redshift" /><meta name="this_doc_guide" content="데이터베이스 개발자 안내서" /><script defer="" src="/assets/r/vendor4.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor3.js?version=2021.12.02"></script><script defer="" src="/assets/r/vendor1.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-common.js?version=2021.12.02"></script><script defer="" src="/assets/r/awsdocs-doc-page.js?version=2021.12.02"></script><link href="/assets/r/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/r/awsdocs-doc-page.css?version=2021.12.02" rel="stylesheet" /><script async="" id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1','service':'redshift'}"></script><meta id="panorama-serviceSubSection" value="데이터베이스 개발자 안내서" /><meta id="panorama-serviceConsolePage" value="STV_QUERY_METRICS" /></head><body class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>STV_QUERY_METRICS - Amazon Redshift</title><meta name="pdf" content="redshift-dg.pdf#r_STV_QUERY_METRICS" /><meta name="rss" content="Dochistory.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=155" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Redshift&amp;topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=https://docs.aws.amazon.com/ko_kr/redshift/latest/dg/r_STV_QUERY_METRICS.html" /><meta name="keywords" content="Amazon Redshift,AWS Redshift,Redshift,Redshift Spectrum,cluster,데이터 웨어하우스,샘플 데이터,데이터베이스,HLL" /><script type="application/ld+json">
 {
     "@context" : "https://schema.org",
     "@type" : "BreadcrumbList",
@@ -58,51 +58,51 @@
                 <p><code class="code">segment</code> 열이 <code class="code">-1</code>이 아니고, <code class="code">step_type</code> 열이 <code class="code">-1</code>이면 행이 세그먼트 수준에서 지표를 보고합니다.</p>
             </li><li class="listitem">
                 <p><code class="code">segment</code> 열과 <code class="code">step_type</code> 열의 값이 모두 <code class="code">-1</code>이 아니면 행이 단계 수준에서 지표를 보고합니다.</p>
-            </li></ul></div><p>이 테이블은 모든 사용자에게 표시됩니다. 수퍼유저는 모든 행을 볼 수 있지만 일반 사용자는 자체 데이터만 볼 수 있습니다. 자세한 내용은 <a href="./cm_chap_system-tables.html#c_visibility-of-data">시스템 테이블 및 뷰에 있는 데이터의 가시성</a> 섹션을 참조하세요.</p><p>이 테이블의 열 중 일부 또는 전부는 SYS 모니터링 뷰 <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>에도 정의되어 있습니다.</p>
+            </li></ul></div><p>STV_QUERY_METRICS는 모든 사용자에게 표시됩니다. 수퍼유저는 모든 행을 볼 수 있지만 일반 사용자는 자체 데이터만 볼 수 있습니다. 자세한 내용은 <a href="./cm_chap_system-tables.html#c_visibility-of-data">시스템 테이블 및 뷰에 있는 데이터의 가시성</a> 섹션을 참조하세요.</p><p>이 테이블의 데이터 중 일부 또는 전부는 SYS 모니터링 뷰인 <a href="./SYS_QUERY_DETAIL.html">SYS_QUERY_DETAIL</a>에서도 찾아볼 수 있습니다. SYS 모니터링 뷰의 데이터는 사용 및 이해가 더 쉽도록 형식이 지정되어 있습니다. 쿼리에 SYS 모니터링 뷰를 사용하는 것이 좋습니다.</p>
             <h2 id="r_STV_QUERY_METRICS-table-rows2">테이블 열</h2>
 
 
 
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c33c17b3"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c33c17b3"><thead>
                         <tr>
-                            <th>열 이름 </th>
-                            <th>데이터 형식 </th>
+                            <th>열 명칭 </th>
+                            <th>데이터 유형 </th>
                             <th>설명 </th>
                         </tr>
                     </thead>
                         <tr>
                             <td tabindex="-1">userid </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">항목을 생성한 쿼리를 실행한 사용자의 ID.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">service_class </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">WLM 쿼리 대기열(서비스 클래스)의 ID. 쿼리 대기열은 WLM 구성에서 정의합니다. 지표는 사용자 정의 대기열에 대해서만 보고됩니다.</td>
                         </tr>
                         <tr>
-                            <td tabindex="-1">query</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">쿼리</td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">쿼리 ID. 쿼리 열을 사용하여 다른 시스템 테이블 및 보기를 조인할 수 있습니다.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">starttime </td>
-                            <td tabindex="-1">timestamp </td>
+                            <td tabindex="-1">타임스탬프 </td>
                             <td tabindex="-1">쿼리 실행이 시작된 UTC 시간으로 소수 초의 정밀도는 6자리입니다. 예: <code class="code">2009-06-12 11:29:19.131358</code>.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">슬라이스 </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">클러스터의 조각 수 </td>
                         </tr>
                         <tr>
                             <td tabindex="-1">segment </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">세그먼트 번호. 하나의 쿼리는 여러 세그먼트로 구성되며, 각각의 세그먼트는 하나 이상의 단계로 구성됩니다. 쿼리 세그먼트는 병렬로 실행될 수 있습니다. 각 세그먼트는 단일 프로세스에서 실행됩니다. 세그먼트 값이 -1인 경우, 지표 세그먼트 값은 쿼리 수준으로 롤업됩니다.</td>
                         </tr>
                         <tr>
                             <td tabindex="-1">step_type </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">실행된 단계의 유형입니다. 단계 유형에 대한 자세한 내용은 <a href="#r_STV_QUERY_METRICS-step-type">단계 유형</a> 섹션을 참조하세요.</td>
                         </tr>
                         <tr>
@@ -160,7 +160,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">step</td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">실행된 쿼리 단계입니다.</td>
                         </tr>
                         <tr>
@@ -175,7 +175,7 @@
                         </tr>
                         <tr>
                             <td tabindex="-1">query_priority </td>
-                            <td tabindex="-1">integer </td>
+                            <td tabindex="-1">정수 </td>
                             <td tabindex="-1">쿼리의 우선순위입니다. 가능한 값은 <code class="code">-1</code>, <code class="code">0</code>, <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> 및 <code class="code">4</code>입니다. 여기에서 <code class="code">-1</code>은 쿼리 우선 순위가 지원되지 않음을 뜻합니다.</td>
                         </tr>
                         <tr>
@@ -189,7 +189,7 @@
 
 
             <p>다음 표는 데이터베이스 사용자와 관련된 단계 유형을 나열한 것입니다. 내부 전용 단계 유형은 표에서 제외되었습니다. 단계 유형이 -1이면 단계 수준에서는 지표가 보고되지 않습니다.</p>
-            <div class="table-container"><div class="table-contents"><table id="w317aac47c17c11c33c19b5"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w319aac49c17c11c33c19b5"><thead>
                         <tr>
                             <th>단계 유형</th>
                             <th>설명 </th>
