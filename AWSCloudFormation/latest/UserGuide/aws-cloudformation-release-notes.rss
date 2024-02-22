@@ -7,7 +7,21 @@
       <atom:link href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss"
                  rel="self"
                  type="application/rss+xml"/>
-      <lastBuildDate>Thu, 15 Feb 2024 15:17:22 GMT</lastBuildDate>
+      <lastBuildDate>Thu, 22 Feb 2024 17:22:16 GMT</lastBuildDate>
+      <item>
+         <title>Updated resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resource was updated: AWS::CodePipeline::Pipeline.</description>
+         <pubDate>Thu, 15 Feb 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-02-15</guid>
+      </item>
+      <item>
+         <title>New properties</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following properties were added: AWS::Route53::RecordSet GeoProximityLocation and AWS::Route53::RecordSetGroup GeoProximityLocation.</description>
+         <pubDate>Thu, 15 Feb 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_properties_2024-02-15</guid>
+      </item>
       <item>
          <title>New resources</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
@@ -50,6 +64,13 @@
          <title>Updated resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
          <description>The following resource was updated: AWS::AutoScaling::AutoScalingGroup.</description>
+         <pubDate>Mon, 29 Jan 2024 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-01-29</guid>
+      </item>
+      <item>
+         <title>Updated resource</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resource was updated: AWS::GroundStation::MissionProfile.</description>
          <pubDate>Mon, 29 Jan 2024 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2024-01-29</guid>
       </item>
@@ -730,6 +751,14 @@
          <description>Use the following resource to create a data store in AWS HealthImaging.</description>
          <pubDate>Thu, 21 Sep 2023 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2023-09-21</guid>
+      </item>
+      <item>
+         <title>Updated resources</title>
+         <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
+         <description>The following resources were updated: &lt;code class="code"&gt;AWS::AppStream::Fleet&lt;/code&gt; and
+            &lt;code class="code"&gt;AWS::AppStream::Fleet ComputeCapacity&lt;/code&gt;.</description>
+         <pubDate>Thu, 14 Sep 2023 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resources_2023-09-14</guid>
       </item>
       <item>
          <title>Updated resources</title>
@@ -1577,15 +1606,15 @@
       <item>
          <title>Updated resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resources was updated: AWS::SSMContacts::Contact and
-                AWS::SSMContacts::Rotation</description>
+         <description>The following resource was updated: &lt;code class="code"&gt;AWS::InternetMonitor::Monitor&lt;/code&gt;.</description>
          <pubDate>Thu, 20 Apr 2023 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2023-04-20</guid>
       </item>
       <item>
          <title>Updated resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resource was updated: &lt;code class="code"&gt;AWS::InternetMonitor::Monitor&lt;/code&gt;.</description>
+         <description>The following resources was updated: AWS::SSMContacts::Contact and
+                AWS::SSMContacts::Rotation</description>
          <pubDate>Thu, 20 Apr 2023 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resource_2023-04-20</guid>
       </item>
@@ -2982,14 +3011,14 @@
       <item>
          <title>New resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resource was added: AWS::Synthetics::Group.</description>
+         <description>The AWS::Evidently::Segment resource was added.</description>
          <pubDate>Thu, 21 Jul 2022 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2022-07-21</guid>
       </item>
       <item>
          <title>New resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The AWS::Evidently::Segment resource was added.</description>
+         <description>The following resource was added: AWS::Synthetics::Group.</description>
          <pubDate>Thu, 21 Jul 2022 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2022-07-21</guid>
       </item>
@@ -3834,16 +3863,16 @@
       <item>
          <title>New resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resources were added: AWS::Connect::ContactFlow and
-            AWS::Connect::ContactFlowModule</description>
+         <description>The following resources were added: AWS::Evidently::Experiment, AWS::Evidently::Feature, 
+                AWS::Evidently::Launch, and AWS::Evidently::Project</description>
          <pubDate>Fri, 3 Dec 2021 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2021-12-03</guid>
       </item>
       <item>
          <title>New resource</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resources were added: AWS::Evidently::Experiment, AWS::Evidently::Feature, 
-                AWS::Evidently::Launch, and AWS::Evidently::Project</description>
+         <description>The following resources were added: AWS::Connect::ContactFlow and
+            AWS::Connect::ContactFlowModule</description>
          <pubDate>Fri, 3 Dec 2021 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#New_resource_2021-12-03</guid>
       </item>
@@ -3980,8 +4009,7 @@
       <item>
          <title>Updated resources</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resources were updated: &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::ComputeEnvironment&lt;/a&gt;, &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobDefinition&lt;/a&gt;,
-    and &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobQueue&lt;/a&gt;</description>
+         <description>The following resources were updated: &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::ComputeEnvironment&lt;/a&gt;, &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobDefinition&lt;/a&gt;, and &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobQueue&lt;/a&gt;</description>
          <pubDate>Thu, 11 Nov 2021 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resources_2021-11-11</guid>
       </item>
@@ -6228,8 +6256,7 @@
       <item>
          <title>Updated resources</title>
          <link>https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html</link>
-         <description>The following resources were updated: &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::ComputeEnvironment&lt;/a&gt;, &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobDefinition&lt;/a&gt;,
-    and &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobQueue&lt;/a&gt;.</description>
+         <description>The following resources were updated: &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::ComputeEnvironment&lt;/a&gt;, &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobDefinition&lt;/a&gt;, and &lt;a href="AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html" rel="noopener noreferrer" target="_blank"&gt;AWS::Batch::JobQueue&lt;/a&gt;.</description>
          <pubDate>Thu, 22 Oct 2020 19:00:00 GMT</pubDate>
          <guid isPermaLink="false">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/#Updated_resources_2020-10-22</guid>
       </item>

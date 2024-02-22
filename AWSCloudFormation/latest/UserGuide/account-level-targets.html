@@ -39,9 +39,9 @@
 </script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#account-level-cli-examples">AWS CLI examples</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="account-level-targets">Account level targets for service-managed Stack
    Sets</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>The <code class="code">AccountFilterType</code> allows you to limit deployment targets to individual
   accounts or include additional accounts with provided AWS Organizations units (OUs) with your
-  Create, Update, or Delete operations.</p><p>Service-managed Stack Sets, can deploy to individual accounts with the accounts parameter, to
-  all the accounts in specified OU, or a subset of accounts in the specified OU. For more
-  information about deployment targets, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeploymentTargets.html"><code class="code">DeploymentTargets</code></a> in the AWS CLI Command Reference.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+  Create, Update, or Delete operations.</p><p>Service-managed Stack Sets can deploy to individual accounts with the accounts parameter, to all the accounts in
+  specified OU, or to a subset of accounts in the specified OU. For more information about deployment targets, see
+   <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeploymentTargets.html"><code class="code">DeploymentTargets</code></a>.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "<a href="#accounts">Accounts</a>": ["string", ...],
   "<a href="#accountsurl">AccountsUrl</a>": "string", 
   "<a href="#org.unit">OrganizationalUnitIds</a>": ["string", ...] 
@@ -94,8 +94,7 @@
        update an entire OU and individual accounts from a different OU in one request, which used to
        be two separate requests.</p>
      </li><li class="listitem">
-      <p><code class="code">NONE</code>: Deploys to all the accounts in specified organizational units
-       (OU).</p>
+      <p><code class="code">NONE</code>: Deploys to all accounts in the specified organizational units (OU).</p>
      </li></ul></div>
    </dd>
   </dl></div>

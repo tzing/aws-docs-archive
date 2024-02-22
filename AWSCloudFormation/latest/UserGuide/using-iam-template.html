@@ -235,14 +235,12 @@ ec2:DescribeVpcs (for the AWS::EC2::VPC::Id parameter type)</code></pre>
             <dt><span class="term"><code class="code">cloudformation:ImportResourceTypes</code></span></dt>
             <dd>
                <p>The template resource types that you want to associate with a policy, such as
-                     <code class="code">AWS::EC2::Instance</code>. Use this condition to control which resource
-                  types users can work with when they import resources into a stack. This
-                  condition is checked against the resource types that users declare in the
-                     <code class="code">ResourcesToImport</code> parameter, which is currently supported only for
-                  AWS CLI and API requests. When using this parameter, you must specify all the
-                  resource types you want users to control during import operations. For more
-                  information about the <code class="code">ResourcesToImport</code> parameter, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html">CreateChangeSet</a> action in
-                  the <em>AWS CloudFormation API Reference</em>.</p>
+       <code class="code">AWS::EC2::Instance</code>. Use this condition to control which resource types users can work with when they
+      import resources into a stack. This condition is checked against the resource types that users declare in the
+       <code class="code">ResourcesToImport</code> parameter, which is currently supported only for AWS CLI and API requests. When
+      using this parameter, you must specify all the resource types you want users to control during import operations.
+      For more information about the <code class="code">ResourcesToImport</code> parameter, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html"><code class="code">CreateChangeSet</code></a> action in the
+       <em>AWS CloudFormation API Reference</em>.</p>
                <p>For a list of possible <code class="code">ResourcesToImport</code>, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html">Resources that support import operations</a>.</p>
                <p>Use the three-part resource naming convention to specify which resource types
                   users can work with, from all resources across an organization, down to an
@@ -296,15 +294,12 @@ ec2:DescribeVpcs (for the AWS::EC2::VPC::Id parameter type)</code></pre>
           
             <dt><span class="term"><code class="code">cloudformation:ResourceTypes</code></span></dt>
             <dd>
-               <p>The template resource types, such as <code class="code">AWS::EC2::Instance</code>, that you
-                  want to associate with a policy. Use this condition to control which resource
-                  types users can work with when they create or update a stack. This condition
-                  is checked against the resource types that users declare in the
-                     <code class="code">ResourceTypes</code> parameter, which is currently supported only for
-                  AWS CLI and API requests. When using this parameter, users must specify all the
-                  resource types that are in their template. For more information about the
-                     <code class="code">ResourceTypes</code> parameter, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html">CreateStack</a> action in the
-                     <em>AWS CloudFormation API Reference</em>.</p>
+               <p>The template resource types, such as <code class="code">AWS::EC2::Instance</code>, that you want to associate
+      with a policy. Use this condition to control which resource types users can work with when they create or update a
+      stack. This condition is checked against the resource types that users declare in the <code class="code">ResourceTypes</code>
+      parameter, which is currently supported only for AWS CLI and API requests. When using this parameter, users must
+      specify all the resource types that are in their template. For more information about the
+       <code class="code">ResourceTypes</code> parameter, see the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html"><code class="code">CreateStack</code></a> action in the <em>AWS CloudFormation API Reference</em>.</p>
                <p>For a list of resource types, see <a href="./aws-template-resource-type-ref.html">AWS resource and property types reference</a>.</p>
                <p>Use the three-part resource naming convention to specify which resource types
                   users can work with, from all resources across an organization, down to an
@@ -582,8 +577,10 @@ ec2:DescribeVpcs (for the AWS::EC2::VPC::Id parameter type)</code></pre>
                you can specify either capability. If your template includes custom names for IAM
                resources, you must specify <code class="code">CAPABILITY_NAMED_IAM</code>.</p>
          </li><li class="listitem">
-            <p>In the API, when you use the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html">CreateStack</a> and <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html">UpdateStack</a> actions, specify <code class="code">Capabilities.member.1=CAPABILITY_IAM</code> or <code class="code">Capabilities.member.1=CAPABILITY_NAMED_IAM</code>. If your template includes IAM resources, you can specify either capability. If your template includes
-               custom names for IAM resources, you must specify <code class="code">CAPABILITY_NAMED_IAM</code>.</p>
+            <p>In the API, when you use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html"><code class="code">CreateStack</code></a> and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html"><code class="code">UpdateStack</code></a> actions, specify <code class="code">Capabilities.member.1=CAPABILITY_IAM</code> or
+      <code class="code">Capabilities.member.1=CAPABILITY_NAMED_IAM</code>. If your template includes IAM resources, you can
+     specify either capability. If your template includes custom names for IAM resources, you must specify
+      <code class="code">CAPABILITY_NAMED_IAM</code>.</p>
          </li></ul></div>
       <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>If your template contains custom named IAM resources, don't create multiple stacks
             reusing the same template. IAM resources must be globally unique within your account.

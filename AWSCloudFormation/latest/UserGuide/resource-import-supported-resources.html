@@ -43,7 +43,7 @@
   version of the resource type <em>that you have registered in your account</em> must be provisionable. For
   more information about resource provision type, see the <code class="code">ProvisioningType</code> parameter of the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html"><code class="code">DescribeType</code></a> action in the AWS CloudFormation API Reference and of the <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-type.html"><code class="code">describe-type</code></a> command in the
   AWS CLI Command Reference.</p><p>For more information about resource import, see <a href="./resource-import.html">Bringing
-   existing resources into CloudFormation management</a>.</p><p>For more information about resource drift detection, see <a href="./using-cfn-stack-drift.html">Detecting unmanaged configuration changes to stacks and resources</a>.</p><p>For more information about the IaC generator, see <a href="./generate-IaC.html">Generating templates for existing resources</a>.</p><div class="table-container"><div class="table-contents disable-scroll"><table id="w1341aac25c28c15"><thead><tr><th class="table-header" colspan="100"><div class="title">Operations supported by resource types</div></th></tr>
+   existing resources into CloudFormation management</a>.</p><p>For more information about resource drift detection, see <a href="./using-cfn-stack-drift.html">Detecting unmanaged configuration changes to stacks and resources</a>.</p><p>For more information about the IaC generator, see <a href="./generate-IaC.html">Generating templates for existing resources</a>.</p><div class="table-container"><div class="table-contents disable-scroll"><table id="w1345aac25c28c15"><thead><tr><th class="table-header" colspan="100"><div class="title">Operations supported by resource types</div></th></tr>
    <tr>
     <th>Resource</th>
     <th>Import</th>
@@ -304,6 +304,12 @@
     <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
    </tr>
    <tr>
+    <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-environment.html"><code class="code">AWS::AppConfig::Environment</code></a></p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
+   </tr>
+   <tr>
     <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-extension.html"><code class="code">AWS::AppConfig::Extension</code></a></p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
@@ -311,6 +317,12 @@
    </tr>
    <tr>
     <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-extensionassociation.html"><code class="code">AWS::AppConfig::ExtensionAssociation</code></a></p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
+   </tr>
+   <tr>
+    <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appconfig-hostedconfigurationversion.html"><code class="code">AWS::AppConfig::HostedConfigurationVersion</code></a></p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
@@ -1078,6 +1090,12 @@
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
    </tr>
    <tr>
+    <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpoolriskconfigurationattachment.html"><code class="code">AWS::Cognito::UserPoolRiskConfigurationAttachment</code></a></p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
+   </tr>
+   <tr>
     <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpooluser.html"><code class="code">AWS::Cognito::UserPoolUser</code></a></p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
@@ -1268,6 +1286,12 @@
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+   </tr>
+   <tr>
+    <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-controltower-enabledbaseline.html"><code class="code">AWS::ControlTower::EnabledBaseline</code></a></p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
    </tr>
    <tr>
     <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-customerprofiles-calculatedattributedefinition.html"><code class="code">AWS::CustomerProfiles::CalculatedAttributeDefinition</code></a></p></td>
@@ -1853,6 +1877,12 @@
    </tr>
    <tr>
     <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-securitygroupegress.html"><code class="code">AWS::EC2::SecurityGroupEgress</code></a></p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
+   </tr>
+   <tr>
+    <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-securitygroupingress.html"><code class="code">AWS::EC2::SecurityGroupIngress</code></a></p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
@@ -2639,6 +2669,12 @@
    </tr>
    <tr>
     <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-ipset.html"><code class="code">AWS::GuardDuty::IPSet</code></a></p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
+    <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>
+   </tr>
+   <tr>
+    <td tabindex="-1"><p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-guardduty-master.html"><code class="code">AWS::GuardDuty::Master</code></a></p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-positive" variant="success"></awsui-icon> Yes</p></td>
     <td tabindex="-1"><p><awsui-icon name="status-negative" variant="warning"></awsui-icon> No</p></td>

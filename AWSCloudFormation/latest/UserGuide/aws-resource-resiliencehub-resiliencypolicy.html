@@ -50,7 +50,7 @@
       "<a href="#cfn-resiliencehub-resiliencypolicy-policy">Policy</a>" : <code class="replaceable"><span>{</span><code class="replaceable">Key</code>: <code class="replaceable">Value</code>, ...}</code>,
       "<a href="#cfn-resiliencehub-resiliencypolicy-policydescription">PolicyDescription</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-resiliencehub-resiliencypolicy-policyname">PolicyName</a>" : <code class="replaceable">String</code>,
-      "<a href="#cfn-resiliencehub-resiliencypolicy-tags">Tags</a>" : <code class="replaceable">String</code>,
+      "<a href="#cfn-resiliencehub-resiliencypolicy-tags">Tags</a>" : <code class="replaceable"><span>{</span><code class="replaceable">Key</code>: <code class="replaceable">Value</code>, ...}</code>,
       "<a href="#cfn-resiliencehub-resiliencypolicy-tier">Tier</a>" : <code class="replaceable">String</code>
     }
 }
@@ -61,7 +61,8 @@ Properties:
     <code class="replaceable">Key</code>: <code class="replaceable">Value</code></code>
   <a href="#cfn-resiliencehub-resiliencypolicy-policydescription">PolicyDescription</a>: <code class="replaceable">String</code>
   <a href="#cfn-resiliencehub-resiliencypolicy-policyname">PolicyName</a>: <code class="replaceable">String</code>
-  <a href="#cfn-resiliencehub-resiliencypolicy-tags">Tags</a>: <code class="replaceable">String</code>
+  <a href="#cfn-resiliencehub-resiliencypolicy-tags">Tags</a>: <code class="replaceable">
+    <code class="replaceable">Key</code>: <code class="replaceable">Value</code></code>
   <a href="#cfn-resiliencehub-resiliencypolicy-tier">Tier</a>: <code class="replaceable">String</code>
 </code></pre></div><h2 id="aws-resource-resiliencehub-resiliencypolicy-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-resiliencehub-resiliencypolicy-datalocationconstraint"><span class="term"><code class="code">DataLocationConstraint</code></span></dt><dd>
          <p>Specifies a high-level geographical location constraint for where your resilience policy
@@ -75,7 +76,7 @@ Properties:
       <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[A-Za-z0-9][A-Za-z0-9_\-]<span>{</span>1,59}$</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-resiliencehub-resiliencypolicy-tags"><span class="term"><code class="code">Tags</code></span></dt><dd>
          <p>Tags assigned to the resource. A tag is a label that you assign to an AWS resource. 
 Each tag consists of a key/value pair.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Maximum</em>: <code class="code">256</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-resiliencehub-resiliencypolicy-tier"><span class="term"><code class="code">Tier</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Object of String</p><p><em>Pattern</em>: <code class="code">.<span>{</span>1,128}</code></p><p><em>Maximum</em>: <code class="code">256</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-resiliencehub-resiliencypolicy-tier"><span class="term"><code class="code">Tier</code></span></dt><dd>
          <p>The tier for this resiliency policy, ranging from the highest severity
         (<code class="code">MissionCritical</code>) to lowest (<code class="code">NonCritical</code>).</p>
       <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">MissionCritical | Critical | Important | CoreServices | NonCritical</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-resiliencehub-resiliencypolicy-return-values">Return values</h2><h3 id="aws-resource-resiliencehub-resiliencypolicy-return-values-ref">Ref</h3><p>The returned Amazon Resource Name (ARN) for the resiliency policy.</p><h3 id="aws-resource-resiliencehub-resiliencypolicy-return-values-fn--getatt">Fn::GetAtt</h3><p>Amazon Resource Name (ARN) for the resiliency policy.</p><h4 id="aws-resource-resiliencehub-resiliencypolicy-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="PolicyArn-fn::getatt"><span class="term"><code class="code">PolicyArn</code></span></dt><dd>

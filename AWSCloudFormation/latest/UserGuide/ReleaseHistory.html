@@ -33,7 +33,38 @@
 </script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#release-history-earlier-updates">Earlier updates</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="ReleaseHistory">Release history</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>The following table describes important changes in each release of the AWS CloudFormation User Guide
       after May 2018. For notification about updates to this documentation, you can subscribe to an
          <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-cloudformation-release-notes.rss">RSS
-         feed</a>.</p><div class="table-container"><div class="table-contents"><table id="w1341aac42b5"><tr><th>Change</th><th>Description</th><th>Date</th></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_NeptuneGraph">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: <code class="code">AWS::NeptuneGraph::Graph</code> and 
+         feed</a>.</p><div class="table-container"><div class="table-contents"><table id="w1345aac42b5"><tr><th>Change</th><th>Description</th><th>Date</th></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_CodePipeline">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::CodePipeline::Pipeline.</p><div class="variablelist">
+           
+        <dl>
+            <dt><span class="term">
+              <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html">AWS::CodePipeline::Pipeline</a>
+            </span></dt>
+            <dd>
+              <p>Added new trigger filtering on branches, file paths, pull request status. Added
+                new PARALLEL and QUEUED execution modes for V2 type pipelines. Added field for
+                manual timeout configuration in minutes.</p>
+            </dd>
+          </dl></div></td><td tabindex="-1"><p>February 15, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Route53">New properties</a></p></td><td tabindex="-1"><p>The following properties were added: AWS::Route53::RecordSet GeoProximityLocation and AWS::Route53::RecordSetGroup GeoProximityLocation.</p><div class="variablelist">
+    				 
+    				
+    			<dl>
+    					<dt><span class="term">
+    						<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset-geoproximitylocation.html">AWS::Route53::RecordSet GeoProximityLocation</a>
+    					</span></dt>
+    					<dd>
+    						<p>Use the <code class="code">AWS::Route53::RecordSet GeoProximityLocation</code> property to specify a geoproximity resource recordset.</p>
+    					</dd>
+    				</dl></div><div class="variablelist">
+    				 
+    				
+    			<dl>
+    					<dt><span class="term">
+    						<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordsetgroup-geoproximitylocation.html">AWS::Route53::RecordSetGroup GeoProximityLocation</a>
+    					</span></dt>
+    					<dd>
+    						<p>Use the <code class="code">AWS::Route53::RecordSetGroup GeoProximityLocation</code> property to specify croperty to specify a geoproximity resource recordset.</p>
+    					</dd>
+    				</dl></div></td><td tabindex="-1"><p>February 15, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_NeptuneGraph">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: <code class="code">AWS::NeptuneGraph::Graph</code> and 
                         <code class="code">AWS::NeptuneGraph::PrivateGraphEndpoint</code>.</p><div class="variablelist">
                                  
                                  
@@ -103,7 +134,24 @@
               <p>Use the <code class="code">MaxSpotPriceAsPercentageOfOptimalOnDemandPrice</code> property
                 when using attribute-based instance type selection.</p>
             </dd>
-          </dl></div></td><td tabindex="-1"><p>January 29, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_RDS">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::RDS::Integration</p><div class="variablelist">
+          </dl></div></td><td tabindex="-1"><p>January 29, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_GroundStation">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::GroundStation::MissionProfile.</p><div class="variablelist">
+                           
+                           
+                       <dl>
+                             <dt><span class="term">
+                                <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-groundstation-missionprofile.html#cfn-groundstation-missionprofile-contactpostpassdurationseconds">ContactPostPassDurationSeconds property</a>
+                             </span></dt>
+                             <dd>
+                                 <p>Updated description of the ContactPostPassDurationSeconds property.</p>
+                             </dd>
+                           
+                             <dt><span class="term">
+                                <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-groundstation-missionprofile.html#cfn-groundstation-missionprofile-contactprepassdurationseconds">ContactPrePassDurationSeconds property</a>
+                             </span></dt>
+                             <dd>
+                                 <p>Updated description of the ContactPrePassDurationSeconds property.</p>
+                             </dd>
+                          </dl></div></td><td tabindex="-1"><p>January 29, 2024</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_RDS">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::RDS::Integration</p><div class="variablelist">
                      
                 <dl>
                         <dt><span class="term">
@@ -174,7 +222,7 @@
                      
                 <dl>
                         <dt><span class="term">
-                            <a href="https://docs.aws.amazon.com/aws-properties-dynamodb-globaltable-kinesisstreamspecification.html">AWS::DynamoDB::GlobalTable.KinesisStreamSpecification</a>
+                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-globaltable-kinesisstreamspecification.html">AWS::DynamoDB::GlobalTable.KinesisStreamSpecification</a>
                         </span></dt>
                         <dd>
                             <p>Use the
@@ -186,7 +234,7 @@
                      
                 <dl>
                         <dt><span class="term">
-                            <a href="https://docs.aws.amazon.com/aws-properties-dynamodb-table-kinesisstreamspecification.html">AWS::DynamoDB::Table.KinesisStreamSpecification</a>
+                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-dynamodb-table-kinesisstreamspecification.html">AWS::DynamoDB::Table.KinesisStreamSpecification</a>
                         </span></dt>
                         <dd>
                             <p>Use the
@@ -1305,7 +1353,33 @@
             <dd>
               <p>Creates a data store in AWS HealthImaging.</p>
             </dd>
-          </dl></div></td><td tabindex="-1"><p>September 21, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_MediaPackageV2">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::MediaPackageV2::Channel, AWS::MediaPackageV2::ChannelGroup, AWS::MediaPackageV2::ChannelPolicy, AWS::MediaPackageV2::OriginEndpoint, and AWS::MediaPackageV2::OriginEndpointPolicy.</p><div class="variablelist">
+          </dl></div></td><td tabindex="-1"><p>September 21, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_AppStream">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <code class="code">AWS::AppStream::Fleet</code> and
+            <code class="code">AWS::AppStream::Fleet ComputeCapacity</code>.</p><div class="variablelist">
+                 
+                
+                  
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-fleet.html">AWS::AppStream::Fleet</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">MaxSessionsPerInstance</code> property to specify the maximum number of user sessions on an instance. This is applicable only for multi-session fleets.</p>                    
+                  </dd>                
+                
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-appstream-fleet-computecapacity.html">AWS::AppStream::Fleet ComputeCapacity</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">DesiredSessions</code> property to specify the desired capacity in terms of number of user sessions for a multi-session fleet.</p>  
+                  </dd>                
+                
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-appstream-applicationfleetassociation.html">AWS::AppStream::ApplicationFleetAssociation</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">AWS::AppStream::ApplicationFleetAssociation</code> resource to specify an association between an application and fleet.</p>  
+                  </dd>                
+               </dl></div></td><td tabindex="-1"><p>September 14, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_MediaPackageV2">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::MediaPackageV2::Channel, AWS::MediaPackageV2::ChannelGroup, AWS::MediaPackageV2::ChannelPolicy, AWS::MediaPackageV2::OriginEndpoint, and AWS::MediaPackageV2::OriginEndpointPolicy.</p><div class="variablelist">
                      
                      
                      
@@ -1739,14 +1813,17 @@
                             <p>The <code class="code">AirflowVersion</code> property has been updated to include a new valid value for Apache Airflow version 2.6.3.</p>
                         </dd>
                     </dl></div></td><td tabindex="-1"><p>August 9, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">New resources</a></p></td><td tabindex="-1"><p>The following resource was updated: <code class="code">AWS::Batch:JobDefinition</code>.</p><div class="variablelist">
-      
-    <dl>
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-runtimeplatform.html#cfn-batch-jobdefinition-containerproperties-runtimeplatform-cpuarchitecture">AWS::Batch::JobDefinition RuntimePlatform</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">RuntimePlatform</code> property to specify the <code class="code">CpuArchitecture</code> and
-        <code class="code">OperatingSystemFamily</code> for AWS Batch jobs on AWS Fargate.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>August 8, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_BillingConductor">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::BillingConductor::BillingGroup AccountGrouping.</p><div class="variablelist">
+                
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-runtimeplatform.html#cfn-batch-jobdefinition-containerproperties-runtimeplatform-cpuarchitecture">AWS::Batch::JobDefinition RuntimePlatform</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">RuntimePlatform</code> property to specify the
+                           <code class="code">CpuArchitecture</code> and <code class="code">OperatingSystemFamily</code> for
+                           AWS Batch jobs on AWS Fargate.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>August 8, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_BillingConductor">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::BillingConductor::BillingGroup AccountGrouping.</p><div class="variablelist">
            
         <dl>
             <dt><span class="term">
@@ -2913,7 +2990,16 @@
                      <p>Use the <code class="code">AWS::Connect::EvaluationForm</code> resource to create an
                         evaluation form for the specified Amazon Connect instance. </p>
                   </dd>
-               </dl></div></td><td tabindex="-1"><p>April 25, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_SSMContacts">Updated resource</a></p></td><td tabindex="-1"><p>The following resources was updated: AWS::SSMContacts::Contact and
+               </dl></div></td><td tabindex="-1"><p>April 25, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_InternetMonitor">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <code class="code">AWS::InternetMonitor::Monitor</code>.</p><div class="variablelist">
+					 
+				<dl>
+						<dt><span class="term">
+							<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-internetmonitor-monitor.html">AWS::InternetMonitor::Monitor</a>
+						</span></dt>
+						<dd>
+							<p>Use <code class="code">Monitor.TrafficPercentageToMonitor</code> to set the percentage of your internet-facing traffic to monitor.</p>
+						</dd>
+					</dl></div></td><td tabindex="-1"><p>April 20, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_SSMContacts">Updated resource</a></p></td><td tabindex="-1"><p>The following resources was updated: AWS::SSMContacts::Contact and
                 AWS::SSMContacts::Rotation</p><div class="variablelist">
                      
                      
@@ -2933,16 +3019,7 @@
                             <p>Use the <code class="code">AWS::SSMContacts::Rotation</code> resource to
                                 specify a rotation in an on-call schedule.</p>
                         </dd>
-                    </dl></div></td><td tabindex="-1"><p>April 20, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_InternetMonitor">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <code class="code">AWS::InternetMonitor::Monitor</code>.</p><div class="variablelist">
-					 
-				<dl>
-						<dt><span class="term">
-							<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-internetmonitor-monitor.html">AWS::InternetMonitor::Monitor</a>
-						</span></dt>
-						<dd>
-							<p>Use <code class="code">Monitor.TrafficPercentageToMonitor</code> to set the percentage of your internet-facing traffic to monitor.</p>
-						</dd>
-					</dl></div></td><td tabindex="-1"><p>April 20, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_IVS">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::IVS::Channel</p><div class="variablelist">
+                    </dl></div></td><td tabindex="-1"><p>April 20, 2023</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_IVS">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::IVS::Channel</p><div class="variablelist">
                      
                 <dl>
                         <dt><span class="term">
@@ -4665,20 +4742,25 @@
                      <p>Use the <code class="code">CertificateBasedAuthProperties</code> property to specify the certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances.</p>                    
                   </dd>                  
                </dl></div></td><td tabindex="-1"><p>November 10, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a> and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></p><div class="variablelist">
-      
-      
-    <dl>
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">EksConfiguration</code> property to specify the details for the EKS cluster that supports the
-        compute environment.</p>
-      </dd>
-      
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">EksProperty</code> property to specify properties for Amazon EKS based jobs.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>November 10, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_EC2">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: AWS::EC2::SpotFleet, AWS::EC2::EC2Fleet, and AWS::EC2::LaunchTemplate.</p><div class="variablelist">
+                
+                
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">EksConfiguration</code> property to specify the details for
+                        the EKS cluster that supports the compute environment.</p>
+                  </dd>
+                
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">EksProperty</code> property to specify properties for
+                           Amazon EKS based jobs.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>November 10, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_EC2">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: AWS::EC2::SpotFleet, AWS::EC2::EC2Fleet, and AWS::EC2::LaunchTemplate.</p><div class="variablelist">
                 
                 
                 
@@ -5638,7 +5720,19 @@
                <dd>
                   <p>Updated the <code class="code">presetSpeke20Audio</code> and <code class="code">presetSpeke20Video</code>properties.</p>
                </dd>
-            </dl></div></td><td tabindex="-1"><p>July 21, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Synthetics">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::Synthetics::Group.</p><div class="variablelist">
+            </dl></div></td><td tabindex="-1"><p>July 21, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Evidently">New resource</a></p></td><td tabindex="-1"><p>The AWS::Evidently::Segment resource was added.</p><div class="variablelist">
+                     	
+                <dl>
+                        <dt><span class="term">
+                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_Evidently.html">Evidently resource type reference</a>
+                        </span></dt>
+                        <dd>
+                            <p>Use a segment to define a portion of your audience that share one or more characteristics.</p>
+                            <p>For more information, 
+                                see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html">
+                                    Use segments to focus your audience</a>.</p>
+                        </dd>
+                    </dl></div></td><td tabindex="-1"><p>July 21, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Synthetics">New resource</a></p></td><td tabindex="-1"><p>The following resource was added: AWS::Synthetics::Group.</p><div class="variablelist">
                 	
             <dl>
                   <dt><span class="term">
@@ -5651,19 +5745,7 @@
                         and automating your canaries, and you can also view aggregated run results and statistics 
                         for all canaries in a group.</p>
                   </dd>
-               </dl></div></td><td tabindex="-1"><p>July 21, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Evidently">New resource</a></p></td><td tabindex="-1"><p>The AWS::Evidently::Segment resource was added.</p><div class="variablelist">
-                     	
-                <dl>
-                        <dt><span class="term">
-                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_Evidently.html">Evidently resource type reference</a>
-                        </span></dt>
-                        <dd>
-                            <p>Use a segment to define a portion of your audience that share one or more characteristics.</p>
-                            <p>For more information, 
-                                see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html">
-                                    Use segments to focus your audience</a>.</p>
-                        </dd>
-                    </dl></div></td><td tabindex="-1"><p>July 21, 2022</p></td></tr><tr><td tabindex="-1"><p>Managing events with AWS CloudFormation and Amazon EventBridge</p></td><td tabindex="-1"><p>Receive notifications when specific AWS CloudFormation events such as object creation or
+               </dl></div></td><td tabindex="-1"><p>July 21, 2022</p></td></tr><tr><td tabindex="-1"><p>Managing events with AWS CloudFormation and Amazon EventBridge</p></td><td tabindex="-1"><p>Receive notifications when specific AWS CloudFormation events such as object creation or
                deletion occur in an AWS CloudFormation with EventBridge.</p><p>For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks-event-bridge.html">Managing
                      events with Amazon EventBridge</a>.</p></td><td tabindex="-1"><p>July 20, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_KMS">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <code class="code">AWS::KMS::Key</code>.</p><div class="variablelist">
            
@@ -6291,22 +6373,27 @@
                         pair.</p>
                   </dd>
                </dl></div></td><td tabindex="-1"><p>April 28, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resources</a></p></td><td tabindex="-1"><p>The following resource was updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a></p><div class="variablelist">
-      
-      
-    <dl>
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">ReplaceComputeEnvironment</code> property to specify whether the compute environment should
-        be replaced if an update is made that requires replacing the instances in the compute environment.</p>
-       <p>Use the <code class="code">UpdatePolicy</code> property to specify the infrastructure update policy for the compute
-        environment.</p>
-      </dd>
-      
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a> </span></dt>
-      <dd>
-       <p>Added a <code class="code">JobQueueArn</code> attribute to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html#aws-resource-batch-jobqueue-return-values">return values</a>.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>April 21, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Evidently">Updated resource</a></p></td><td tabindex="-1"><p>New parameters were added to AWS::Evidently::Experiment and 
+                
+                
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">ReplaceComputeEnvironment</code> property to specify
+                        whether the compute environment should be replaced if an update is made that
+                        requires replacing the instances in the compute environment.</p>
+                     <p>Use the <code class="code">UpdatePolicy</code> property to specify the infrastructure
+                        update policy for the compute environment.</p>
+                  </dd>
+                
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>
+                  </span></dt>
+                  <dd>
+                     <p>Added a <code class="code">JobQueueArn</code> attribute to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html#aws-resource-batch-jobqueue-return-values">return values</a>.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>April 21, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Evidently">Updated resource</a></p></td><td tabindex="-1"><p>New parameters were added to AWS::Evidently::Experiment and 
                 AWS::Evidently::Launch</p><div class="variablelist">
                      	
                 <dl>
@@ -6774,19 +6861,23 @@
               <p>Use the <code class="code">Accessor</code> to create a new accessor for use with Managed Blockchain Ethereum nodes.</p>              
             </dd>
           </dl></div></td><td tabindex="-1"><p>March 2, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>, and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a></p><div class="variablelist">
-      
-      
-    <dl>
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a> </span></dt>
-      <dd>
-       <p>Added a <code class="code">ComputeEnvironmentArn</code> attribute to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html#aws-resource-batch-computeenvironment-return-values">return values</a>.</p>
-      </dd>
-      
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a> </span></dt>
-      <dd>
-       <p>Added a <code class="code">JobQueueArn</code> attribute to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html#aws-resource-batch-jobqueue-return-values">return values</a>.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>February 24, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_AutoScaling">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::AutoScaling::WarmPool.</p><div class="variablelist">
+                
+                
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>
+                  </span></dt>
+                  <dd>
+                     <p>Added a <code class="code">ComputeEnvironmentArn</code> attribute to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html#aws-resource-batch-computeenvironment-return-values">return values</a>.</p>
+                  </dd>
+                
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a>
+                  </span></dt>
+                  <dd>
+                     <p>Added a <code class="code">JobQueueArn</code> attribute to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html#aws-resource-batch-jobqueue-return-values">return values</a>.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>February 24, 2022</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_AutoScaling">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::AutoScaling::WarmPool.</p><div class="variablelist">
            
         <dl>
             <dt><span class="term">
@@ -7513,7 +7604,26 @@
             <dd>
               <p>Defines a resiliency policy.</p>
             </dd>
-          </dl></div></td><td tabindex="-1"><p>December 3, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Connect">New resource</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::Connect::ContactFlow and
+          </dl></div></td><td tabindex="-1"><p>December 3, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Evidently">New resource</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::Evidently::Experiment, AWS::Evidently::Feature, 
+                AWS::Evidently::Launch, and AWS::Evidently::Project</p><div class="variablelist">
+                     	
+                <dl>
+                        <dt><span class="term">
+                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_Evidently.html">Evidently resource type reference</a>
+                        </span></dt>
+                        <dd>
+                            <p>Use Amazon CloudWatch Evidently to safely validate new features by serving them to a 
+                                specified percentage
+                                of your users while you roll out the feature. You can monitor the performance of the new feature
+                                to help you decide when to ramp up traffic to your users. This helps you 
+                                reduce risk and identify unintended consequences before you fully launch the feature.
+                                You can also conduct A/B experiments to make feature design decisions based on evidence
+                                and data.</p>
+                                <p>For more information, 
+                                    see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently.html">
+                                    Perform launches and A/B experiments with CloudWatch Evidently</a>.</p>
+                        </dd>
+                    </dl></div></td><td tabindex="-1"><p>December 3, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Connect">New resource</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::Connect::ContactFlow and
             AWS::Connect::ContactFlowModule</p><div class="variablelist">
                 
                 
@@ -7533,26 +7643,7 @@
                      <p>Use the <code class="code">AWS::Connect::ContactFlowModule</code> resource to create a
                         flow module.</p>
                   </dd>
-               </dl></div></td><td tabindex="-1"><p>December 3, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Evidently">New resource</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::Evidently::Experiment, AWS::Evidently::Feature, 
-                AWS::Evidently::Launch, and AWS::Evidently::Project</p><div class="variablelist">
-                     	
-                <dl>
-                        <dt><span class="term">
-                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_Evidently.html">Evidently resource type reference</a>
-                        </span></dt>
-                        <dd>
-                            <p>Use Amazon CloudWatch Evidently to safely validate new features by serving them to a 
-                                specified percentage
-                                of your users while you roll out the feature. You can monitor the performance of the new feature
-                                to help you decide when to ramp up traffic to your users. This helps you 
-                                reduce risk and identify unintended consequences before you fully launch the feature.
-                                You can also conduct A/B experiments to make feature design decisions based on evidence
-                                and data.</p>
-                                <p>For more information, 
-                                    see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently.html">
-                                    Perform launches and A/B experiments with CloudWatch Evidently</a>.</p>
-                        </dd>
-                    </dl></div></td><td tabindex="-1"><p>December 3, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_FSx">New resource</a></p></td><td tabindex="-1"><p>The following new resource was added: AWS::FSx::Snapshot</p><div class="variablelist">
+               </dl></div></td><td tabindex="-1"><p>December 3, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_FSx">New resource</a></p></td><td tabindex="-1"><p>The following new resource was added: AWS::FSx::Snapshot</p><div class="variablelist">
                      
                 <dl>
                         <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-snapshot.html">AWS::FSx::Snapshot</a></span></dt>
@@ -7753,29 +7844,35 @@
                             <p>Use the <code class="code">PositionFiltering</code> property to specify how 
                                 you want positions in your tracker to be filtered.</p>
                         </dd>
-                    </dl></div></td><td tabindex="-1"><p>November 12, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>,
-    and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a></p><div class="variablelist">
-      
-      
-      
-    <dl>
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">UnmanagedvCpus</code> property to specify the maximum number of vCPUs for an unmanaged
-        compute environment.</p>
-      </dd>
-      
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">SchedulingPriority</code> property to specify the scheduling priority for job
-        definition.</p>
-      </dd>
-      
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">SchedulingPolicyArn</code> property to specify the scheduling policy for a job queue.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>November 11, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_SageMaker">Updated resources</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::SageMaker::Endpoint</p><div class="variablelist">
+                    </dl></div></td><td tabindex="-1"><p>November 12, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>, and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a></p><div class="variablelist">
+                
+                
+                
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">UnmanagedvCpus</code> property to specify the maximum
+                        number of vCPUs for an unmanaged compute environment.</p>
+                  </dd>
+                
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">SchedulingPriority</code> property to specify the
+                        scheduling priority for job definition.</p>
+                  </dd>
+                
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">SchedulingPolicyArn</code> property to specify the
+                        scheduling policy for a job queue.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>November 11, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_SageMaker">Updated resources</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::SageMaker::Endpoint</p><div class="variablelist">
                      
                 <dl>
                         <dt><span class="term">
@@ -7826,13 +7923,16 @@
                                 value is false (the configuration is not reused)</p>
                         </dd>
                     </dl></div></td><td tabindex="-1"><p>November 11, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">New resources</a></p></td><td tabindex="-1"><p>The following resource was added: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-schedulingpolicy.html">AWS::Batch::SchedulingPolicy</a></p><div class="variablelist">
-      
-    <dl>
-      <dt><span class="term"> <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-schedulingpolicy.html">AWS::Batch::SchedulingPolicy</a> </span></dt>
-      <dd>
-       <p>Use the <code class="code">AWS::Batch::SchedulingPriority</code> resource to specify a scheduling policy.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>November 11, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_IoTWireless">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::IoTWireless::FuotaTask, AWS::IoTWireless::MulticastGroup</p><div class="variablelist">
+                
+            <dl>
+                  <dt><span class="term">
+                     <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-schedulingpolicy.html">AWS::Batch::SchedulingPolicy</a>
+                  </span></dt>
+                  <dd>
+                     <p>Use the <code class="code">AWS::Batch::SchedulingPriority</code> resource to specify a
+                        scheduling policy.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>November 11, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_IoTWireless">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::IoTWireless::FuotaTask, AWS::IoTWireless::MulticastGroup</p><div class="variablelist">
 					 
 					 
 				<dl>
@@ -10291,14 +10391,14 @@
                            Analyzing Log Data with CloudWatch Logs Insights</a>.</p>
                   </dd>
                </dl></div></td><td tabindex="-1"><p>April 1, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></p><div class="variablelist">
-      
-    <dl>
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
-      <dd>
-       <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-volumes.html">Volumes</a>
-        property type, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-volumes.html#cfn-batch-jobdefinition-volumes-efsvolumeconfiguration">EfsVolumeConfiguration</a> property to specify the Amazon EFS configuration for a job definition.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>March 31, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_LookoutMetrics">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::LookoutMetrics::Alert</p><div class="variablelist">
+                
+            <dl>
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
+                  <dd>
+                     <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-volumes.html">Volumes</a> property type, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-volumes.html#cfn-batch-jobdefinition-volumes-efsvolumeconfiguration">EfsVolumeConfiguration</a> property to specify the Amazon EFS
+                        configuration for a job definition.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>March 31, 2021</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_LookoutMetrics">New resources</a></p></td><td tabindex="-1"><p>The following resources were added: AWS::LookoutMetrics::Alert</p><div class="variablelist">
                    
                    
                <dl>
@@ -11959,34 +12059,36 @@
         group.</p>
       </dd>
      </dl></div></td><td tabindex="-1"><p>December 18, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></p><div class="variablelist">
-      
-      
-    <dl>
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
-      <dd>
-       <p>Use the <code class="code">PlatformCapabilities</code> property to specify whether the job requires <code class="code">EC2</code> or
-        <code class="code">FARGATE</code> resources.</p>
-       <p>Use the <code class="code">PropagateTags</code> property to specify whether to propagate tags from the job definition to
-        the corresponding Amazon ECS task.</p>
-       <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html">ContainerProperties</a> property type:</p>
-       <div class="itemizedlist">
-         
-         
-       <ul class="itemizedlist"><li class="listitem">
-         <p>Use the <code class="code">FargatePlatformConfiguration</code> property to specify the Fargate platform version to use
-          for jobs running on Fargate resources.</p>
-        </li><li class="listitem">
-         <p>Use the <code class="code">NetworkConfiguration</code> property to specify the network configuration for jobs running
-          on Fargate resources.</p>
-        </li></ul></div>
-      </dd>
-      
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
-      <dd>
-       <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html">ContainerProperties</a> property type, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-fargateplatformconfiguration">FargatePlatformConfiguration</a> property to define the version of the Fargate platform used for the
-        job.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>December 18, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_FSx">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::FSx::FileSystem</p><div class="variablelist">
+                
+                
+            <dl>
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
+                  <dd>
+                     <p>Use the <code class="code">PlatformCapabilities</code> property to specify whether the
+                        job requires <code class="code">EC2</code> or <code class="code">FARGATE</code> resources.</p>
+                     <p>Use the <code class="code">PropagateTags</code> property to specify whether to
+                        propagate tags from the job definition to the corresponding Amazon ECS
+                        task.</p>
+                     <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html">ContainerProperties</a> property type:</p>
+                     <div class="itemizedlist">
+                         
+                         
+                     <ul class="itemizedlist"><li class="listitem">
+                           <p>Use the <code class="code">FargatePlatformConfiguration</code> property to
+                              specify the Fargate platform version to use for jobs running on
+                              Fargate resources.</p>
+                        </li><li class="listitem">
+                           <p>Use the <code class="code">NetworkConfiguration</code> property to specify the
+                              network configuration for jobs running on Fargate resources.</p>
+                        </li></ul></div>
+                  </dd>
+                
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
+                  <dd>
+                     <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html">ContainerProperties</a> property type, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html#cfn-batch-jobdefinition-containerproperties-fargateplatformconfiguration">FargatePlatformConfiguration</a> property to define the version of
+                        the Fargate platform used for the job.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>December 18, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_FSx">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::FSx::FileSystem</p><div class="variablelist">
                      
                 <dl>
                         <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html">AWS::FSx::FileSystem</a></span></dt>
@@ -12626,14 +12728,15 @@
                      <p>The <code class="code">AWS::CodeArtifact::Repository</code> resource now supports tags.</p>
                   </dd>
                </dl></div></td><td tabindex="-1"><p>November 5, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></p><div class="variablelist">
-      
-    <dl>
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
-      <dd>
-       <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-retrystrategy.html">RetryStrategy</a> property type, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-retrystrategy.html#cfn-batch-jobdefinition-retrystrategy-evaluateonexit">EvaluateOnExit</a> property to specify a set of conditions to be met, and an action to take
-        (<code class="code">RETRY</code> or <code class="code">EXIT</code>) if all conditions are met.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>November 5, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_EC2">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::EC2::Route.</p><div class="variablelist">
+                
+            <dl>
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
+                  <dd>
+                     <p>In the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-retrystrategy.html">RetryStrategy</a> property type, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-retrystrategy.html#cfn-batch-jobdefinition-retrystrategy-evaluateonexit">EvaluateOnExit</a> property to specify a set of conditions to be
+                        met, and an action to take (<code class="code">RETRY</code> or <code class="code">EXIT</code>) if all
+                        conditions are met.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>November 5, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_EC2">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::EC2::Route.</p><div class="variablelist">
                 
             <dl>
                   <dt><span class="term">
@@ -12782,27 +12885,29 @@
                 whether newly launched instances are protected from termination by Amazon EC2 Auto
                 Scaling when scaling in.</p>
             </dd>
-          </dl></div></td><td tabindex="-1"><p>October 26, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>,
-    and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a>.</p><div class="variablelist">
-      
-      
-      
-    <dl>
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a></span></dt>
-      <dd>
-       <p>Use the <code class="code">Tags</code> property to specify tags for the compute environment.</p>
-      </dd>
-      
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
-      <dd>
-       <p>Use the <code class="code">Tags</code> property to specify tags for the job definition.</p>
-      </dd>
-      
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a></span></dt>
-      <dd>
-       <p>Use the <code class="code">Tags</code> property to specify tags for the job queue.</p>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>October 22, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_AppSync">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::AppSync::ApiKey.</p><div class="variablelist">
+          </dl></div></td><td tabindex="-1"><p>October 26, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resources</a></p></td><td tabindex="-1"><p>The following resources were updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a>, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>, and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a>.</p><div class="variablelist">
+                
+                
+                
+            <dl>
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-computeenvironment.html">AWS::Batch::ComputeEnvironment</a></span></dt>
+                  <dd>
+                     <p>Use the <code class="code">Tags</code> property to specify tags for the compute
+                        environment.</p>
+                  </dd>
+                
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a></span></dt>
+                  <dd>
+                     <p>Use the <code class="code">Tags</code> property to specify tags for the job
+                        definition.</p>
+                  </dd>
+                
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobqueue.html">AWS::Batch::JobQueue</a></span></dt>
+                  <dd>
+                     <p>Use the <code class="code">Tags</code> property to specify tags for the job
+                        queue.</p>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>October 22, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_AppSync">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::AppSync::ApiKey.</p><div class="variablelist">
                 
             <dl>
                   <dt><span class="term">
@@ -13027,94 +13132,98 @@
         creating a service.</p>
       </dd>
      </dl></div></td><td tabindex="-1"><p>October 1, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_Batch">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-batch-jobdefinition.html">AWS::Batch::JobDefinition</a>.</p><p>These property types were added.</p><div class="variablelist">
-      
-      
-      
-    <dl>
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-logconfiguration.html">LogConfiguration</a></span></dt>
-      <dd>
-       <p>Use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-logconfiguration.html">LogConfiguration</a> property type to specify the log configuration options to send to a custom log driver
-        for the container.</p>
-      </dd>
-      
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-secret.html">Secrets</a></span></dt>
-      <dd>
-       <p>Use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-secret.html">Secrets</a> property
-        type to specify a secret to expose to the container.</p>
-      </dd>
-      
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-tmpfs.html">Tmpfs</a></span></dt>
-      <dd>
-       <p>Use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-tmpfs.html">Tmpfs</a> property
-        type to specify the details of a <code class="code">tmpfs</code> mount.</p>
-      </dd>
-     </dl></div><p>These property types were updated.</p><div class="variablelist">
-      
-      
-    <dl>
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html">ContainerProperties</a></span></dt>
-      <dd>
-       <p>These properties were added.</p>
-       <div class="variablelist">
-         
-         
-         
-       <dl>
-         <dt><span class="term">ExecutionRoleArn</span></dt>
-         <dd>
-          <p>Specifies the execution role to be assumed for the job.</p>
-         </dd>
-         
-         <dt><span class="term">LogConfiguration</span></dt>
-         <dd>
-          <p>Specifies the log configuration for a custom log driver for the job.</p>
-         </dd>
-         
-         <dt><span class="term">Secrets</span></dt>
-         <dd>
-          <p>Specifies the secrets provided for the job.</p>
-         </dd>
-        </dl></div>
-      </dd>
-      
-      <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-linuxparameters.html">LinuxParameters</a></span></dt>
-      <dd>
-       <p>These properties were added.</p>
-       <div class="variablelist">
-         
-         
-         
-         
-         
-       <dl>
-         <dt><span class="term">InitProcessEnabled</span></dt>
-         <dd>
-          <p>Indicates that an init process should be enabled inside the container that forwards signals and reaps
-           processes.</p>
-         </dd>
-         
-         <dt><span class="term">MaxSwap</span></dt>
-         <dd>
-          <p>Specifies the total amount of swap memory (in MiB) a job can use.</p>
-         </dd>
-         
-         <dt><span class="term">SharedMemorySize</span></dt>
-         <dd>
-          <p>Specifies the size (in MiB) of the <code class="code">/dev/shm</code> volume. </p>
-         </dd>
-         
-         <dt><span class="term">Swappiness</span></dt>
-         <dd>
-          <p>Specifies the job container's memory swappiness behavior.</p>
-         </dd>
-         
-         <dt><span class="term">Tmpfs</span></dt>
-         <dd>
-          <p>Specifies the details of the job's <code class="code">tmpfs</code> mount.</p>
-         </dd>
-        </dl></div>
-      </dd>
-     </dl></div></td><td tabindex="-1"><p>October 1, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_CloudFront">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::CloudFront::CachePolicy.</p><div class="variablelist">
+                
+                
+                
+            <dl>
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-logconfiguration.html">LogConfiguration</a></span></dt>
+                  <dd>
+                     <p>Use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-logconfiguration.html">LogConfiguration</a> property type to specify the log configuration
+                        options to send to a custom log driver for the container.</p>
+                  </dd>
+                
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-secret.html">Secrets</a></span></dt>
+                  <dd>
+                     <p>Use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-secret.html">Secrets</a> property type to specify a secret to expose to the
+                        container.</p>
+                  </dd>
+                
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-tmpfs.html">Tmpfs</a></span></dt>
+                  <dd>
+                     <p>Use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-tmpfs.html">Tmpfs</a> property type to specify the details of a
+                           <code class="code">tmpfs</code> mount.</p>
+                  </dd>
+               </dl></div><p>These property types were updated.</p><div class="variablelist">
+                
+                
+            <dl>
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties.html">ContainerProperties</a></span></dt>
+                  <dd>
+                     <p>These properties were added.</p>
+                     <div class="variablelist">
+                         
+                         
+                         
+                     <dl>
+                           <dt><span class="term">ExecutionRoleArn</span></dt>
+                           <dd>
+                              <p>Specifies the execution role to be assumed for the job.</p>
+                           </dd>
+                         
+                           <dt><span class="term">LogConfiguration</span></dt>
+                           <dd>
+                              <p>Specifies the log configuration for a custom log driver for the
+                                 job.</p>
+                           </dd>
+                         
+                           <dt><span class="term">Secrets</span></dt>
+                           <dd>
+                              <p>Specifies the secrets provided for the job.</p>
+                           </dd>
+                        </dl></div>
+                  </dd>
+                
+                  <dt><span class="term"><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-batch-jobdefinition-containerproperties-linuxparameters.html">LinuxParameters</a></span></dt>
+                  <dd>
+                     <p>These properties were added.</p>
+                     <div class="variablelist">
+                         
+                         
+                         
+                         
+                         
+                     <dl>
+                           <dt><span class="term">InitProcessEnabled</span></dt>
+                           <dd>
+                              <p>Indicates that an init process should be enabled inside the
+                                 container that forwards signals and reaps processes.</p>
+                           </dd>
+                         
+                           <dt><span class="term">MaxSwap</span></dt>
+                           <dd>
+                              <p>Specifies the total amount of swap memory (in MiB) a job can
+                                 use.</p>
+                           </dd>
+                         
+                           <dt><span class="term">SharedMemorySize</span></dt>
+                           <dd>
+                              <p>Specifies the size (in MiB) of the <code class="code">/dev/shm</code> volume.
+                              </p>
+                           </dd>
+                         
+                           <dt><span class="term">Swappiness</span></dt>
+                           <dd>
+                              <p>Specifies the job container's memory swappiness behavior.</p>
+                           </dd>
+                         
+                           <dt><span class="term">Tmpfs</span></dt>
+                           <dd>
+                              <p>Specifies the details of the job's <code class="code">tmpfs</code>
+                                 mount.</p>
+                           </dd>
+                        </dl></div>
+                  </dd>
+               </dl></div></td><td tabindex="-1"><p>October 1, 2020</p></td></tr><tr><td tabindex="-1"><p><a href="./aws-template-resource-type-ref.html#AWS_CloudFront">Updated resource</a></p></td><td tabindex="-1"><p>The following resource was updated: AWS::CloudFront::CachePolicy.</p><div class="variablelist">
                      
                 <dl>
                         <dt><span class="term">
@@ -15085,7 +15194,7 @@
                   </span></dt>
                   <dd>
                      <p>Use the <code class="code">SyncType</code> property with <code class="code">SyncFromSource</code>
-                       to synchronize Systems Manager Explorer OpsItems and OpsData from AWS Organizations or from multiple AWS Regions.</p>
+                         to synchronize Systems Manager Explorer OpsItems and OpsData from AWS Organizations or from multiple AWS Regions.</p>
                   </dd>
                </dl></div></td><td tabindex="-1"><p>January 16, 2020</p></td></tr><tr><td tabindex="-1"><p>Updated resources</p></td><td tabindex="-1"><p>The following resources were updated: <code class="code">AWS::MSK::Cluster</code>,
       <code class="code">AWS::RDS::DBInstance</code>, and <code class="code">AWS::SSM::Document</code></p><div class="variablelist">
@@ -20685,7 +20794,7 @@
 
       <p>The following table describes important changes in each release of the AWS CloudFormation User Guide
          before May 2018.</p>
-      <div class="table-container"><div class="table-contents disable-scroll"><table id="w1341aac42b9b5"><thead>
+      <div class="table-container"><div class="table-contents disable-scroll"><table id="w1345aac42b9b5"><thead>
                <tr>
                   <th>Change</th>
                   <th>Release Date</th>

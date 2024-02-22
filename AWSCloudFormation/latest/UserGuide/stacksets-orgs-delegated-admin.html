@@ -92,28 +92,28 @@
                 <p>Open the AWS CLI.</p>
             </li><li>
                 <p>Run the <code class="code">register-delegated-administrator</code> command.</p>
-                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws organizations register-delegated-administrator \
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code>aws organizations register-delegated-administrator \
   --service-principal=member.org.stacksets.cloudformation.amazonaws.com \
   --account-id="<code class="replaceable">memberAccountId</code>"</code></pre>
             </li><li>
                 <p>Run the <code class="code">list-delegated-administrators</code> command to verify that the
                     specified member account is successfully registered as a delegated
                     administrator.</p>
-                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws organizations list-delegated-administrators \
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code>aws organizations list-delegated-administrators \
   --service-principal=member.org.stacksets.cloudformation.amazonaws.com</code></pre>
             </li></ol></div><p><b>To deregister a delegated administrator
             (AWS CLI)</b></p><div class="procedure"><ol><li>
                 <p>Open the AWS CLI.</p>
             </li><li>
                 <p>Run the <code class="code">deregister-delegated-administrator</code> command.</p>
-                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws organizations deregister-delegated-administrator \
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code>aws organizations deregister-delegated-administrator \
   --service-principal=member.org.stacksets.cloudformation.amazonaws.com \
   --account-id="<code class="replaceable">memberAccountId</code>"</code></pre>
             </li><li>
                 <p>Run the <code class="code">list-delegated-administrators</code> command to verify that the
                     specified member account is successfully deregistered as a delegated
                     administrator.</p>
-                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws organizations list-delegated-administrators \
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code>aws organizations list-delegated-administrators \
   --service-principal=member.org.stacksets.cloudformation.amazonaws.com</code></pre>
                 <p>You can register this account again at any time.</p>
             </li></ol></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stacksets-orgs-activate-trusted-access.html">Activate trusted

@@ -122,7 +122,9 @@
                     resources, <em>my-drifted-resource</em>. The response returns
                     information that confirms the resource has been modified, including details
                     about two of its properties whose values have been changed.</p>
-                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation detect-stack-resource-drift --stack-name <code class="replaceable">my-stack-with-resource-drift</code> --logical-resource-id <code class="replaceable">my-drifted-resource</code></code>
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation detect-stack-resource-drift -\
+    -stack-name <code class="replaceable">my-stack-with-resource-drift</code> \
+    --logical-resource-id <code class="replaceable">my-drifted-resource</code></code>
 <code class="computeroutput" copy="false"><span>{</span>
     "StackResourceDrift": <span>{</span>
         "StackId": "arn:aws:cloudformation:us-east-1:099908667365:stack/my-stack-with-resource-drift/489e5570-df85-11e7-a7d9-50example", 

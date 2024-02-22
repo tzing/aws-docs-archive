@@ -230,7 +230,7 @@
                   <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">      "myELB" : <span>{</span>
         "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
         "Properties" : <span>{</span>
-            "AvailabilityZones" : [ "<span><code class="code" copy="true">us-east-1a</code></span>" ],
+            "AvailabilityZones" : [ "<span>us-east-1a</span>" ],
             "Listeners" : [ <span>{</span>
                 "LoadBalancerPort" : "80",
                 "InstancePort" : "80",
@@ -264,7 +264,7 @@
   Type: AWS::ElasticLoadBalancing::LoadBalancer
   Properties:
     AvailabilityZones:
-    - "<span><code class="code" copy="true">us-east-1a</code></span>"
+    - "<span>us-east-1a</span>"
     Listeners:
     - LoadBalancerPort: '80'
       InstancePort: '80'

@@ -81,6 +81,7 @@
   "<a href="#cfn-ec2-spotfleet-instancerequirementsrequest-instancegenerations">InstanceGenerations</a>" : <code class="replaceable">[ String, ... ]</code>,
   "<a href="#cfn-ec2-spotfleet-instancerequirementsrequest-localstorage">LocalStorage</a>" : <code class="replaceable">String</code>,
   "<a href="#cfn-ec2-spotfleet-instancerequirementsrequest-localstoragetypes">LocalStorageTypes</a>" : <code class="replaceable">[ String, ... ]</code>,
+  "<a href="#cfn-ec2-spotfleet-instancerequirementsrequest-maxspotpriceaspercentageofoptimalondemandprice">MaxSpotPriceAsPercentageOfOptimalOnDemandPrice</a>" : <code class="replaceable">Integer</code>,
   "<a href="#cfn-ec2-spotfleet-instancerequirementsrequest-memorygibpervcpu">MemoryGiBPerVCpu</a>" : <code class="replaceable"><a href="./aws-properties-ec2-spotfleet-memorygibpervcpurequest.html">MemoryGiBPerVCpuRequest</a></code>,
   "<a href="#cfn-ec2-spotfleet-instancerequirementsrequest-memorymib">MemoryMiB</a>" : <code class="replaceable"><a href="./aws-properties-ec2-spotfleet-memorymibrequest.html">MemoryMiBRequest</a></code>,
   "<a href="#cfn-ec2-spotfleet-instancerequirementsrequest-networkbandwidthgbps">NetworkBandwidthGbps</a>" : <code class="replaceable"><a href="./aws-properties-ec2-spotfleet-networkbandwidthgbpsrequest.html">NetworkBandwidthGbpsRequest</a></code>,
@@ -116,6 +117,7 @@
   <a href="#cfn-ec2-spotfleet-instancerequirementsrequest-localstorage">LocalStorage</a>: <code class="replaceable">String</code>
   <a href="#cfn-ec2-spotfleet-instancerequirementsrequest-localstoragetypes">LocalStorageTypes</a>: <code class="replaceable">
     - String</code>
+  <a href="#cfn-ec2-spotfleet-instancerequirementsrequest-maxspotpriceaspercentageofoptimalondemandprice">MaxSpotPriceAsPercentageOfOptimalOnDemandPrice</a>: <code class="replaceable">Integer</code>
   <a href="#cfn-ec2-spotfleet-instancerequirementsrequest-memorygibpervcpu">MemoryGiBPerVCpu</a>: <code class="replaceable">
     <a href="./aws-properties-ec2-spotfleet-memorygibpervcpurequest.html">MemoryGiBPerVCpuRequest</a></code>
   <a href="#cfn-ec2-spotfleet-instancerequirementsrequest-memorymib">MemoryMiB</a>: <code class="replaceable">
@@ -334,7 +336,26 @@
             </li></ul></div>
          <p>Default: <code class="code">hdd</code> and <code class="code">ssd</code>
          </p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Allowed values</em>: <code class="code">hdd | ssd</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-ec2-spotfleet-instancerequirementsrequest-memorygibpervcpu"><span class="term"><code class="code">MemoryGiBPerVCpu</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Allowed values</em>: <code class="code">hdd | ssd</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-ec2-spotfleet-instancerequirementsrequest-maxspotpriceaspercentageofoptimalondemandprice"><span class="term"><code class="code">MaxSpotPriceAsPercentageOfOptimalOnDemandPrice</code></span></dt><dd>
+         <p>[Price protection] The price protection threshold for Spot Instances, as a percentage of an
+         identified On-Demand price. The identified On-Demand price is the price of the lowest
+         priced current generation C, M, or R instance type with your specified attributes. If no
+         current generation C, M, or R instance type matches your attributes, then the identified
+         price is from the lowest priced current generation instance types, and failing that, from
+         the lowest priced previous generation instance types that match your attributes. When Amazon EC2
+         selects instance types with your attributes, it will exclude instance types whose price
+         exceeds your specified threshold.</p>
+         <p>The parameter accepts an integer, which Amazon EC2 interprets as a percentage.</p>
+         <p>To indicate no price protection threshold, specify a high value, such as
+            <code class="code">999999</code>.</p>
+         <p>If you set <code class="code">DesiredCapacityType</code> to <code class="code">vcpu</code> or
+         <code class="code">memory-mib</code>, the price protection threshold is based on the per vCPU or per
+         memory price instead of the per instance price.</p>
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Only one of <code class="code">SpotMaxPricePercentageOverLowestPrice</code> or
+               <code class="code">MaxSpotPriceAsPercentageOfOptimalOnDemandPrice</code> can be specified. If you
+            don't specify either, then <code class="code">SpotMaxPricePercentageOverLowestPrice</code> is used
+            and the value for that parameter defaults to <code class="code">100</code>.</p></div></div>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-ec2-spotfleet-instancerequirementsrequest-memorygibpervcpu"><span class="term"><code class="code">MemoryGiBPerVCpu</code></span></dt><dd>
          <p>The minimum and maximum amount of memory per vCPU, in GiB.</p>
          <p>Default: No minimum or maximum limits</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-ec2-spotfleet-memorygibpervcpurequest.html">MemoryGiBPerVCpuRequest</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-ec2-spotfleet-instancerequirementsrequest-memorymib"><span class="term"><code class="code">MemoryMiB</code></span></dt><dd>

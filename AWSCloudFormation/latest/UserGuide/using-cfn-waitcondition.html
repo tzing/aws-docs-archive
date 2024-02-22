@@ -187,7 +187,7 @@ Add a CreationPolicy attribute to those resources, and use the cfn-signal helper
                     <p>A <code class="code">curl</code> command is one way to send a signal. The following example shows a
        <code class="code">curl</code> command line that signals success to a wait condition.</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">curl -T /tmp/a \
-  "https://cloudformation-waitcondition-test.s3.amazonaws.com/arn%3Aaws%3Acloudformation%3A<span><code class="code" copy="true">us-east-2</code></span>%3A034017226601%3Astack%2Fstack-gosar-20110427004224-test-stack-with-WaitCondition--VEYW%2Fe498ce60-70a1-11e0-81a7-5081d0136786%2FmyWaitConditionHandle?Expires=1303976584&amp;AWSAccessKeyId=AKIAIOSFODNN7EXAMPLE&amp;Signature=ik1twT6hpS4cgNAw7wyOoRejVoo%3D"</code></code></pre>
+  "https://cloudformation-waitcondition-test.s3.amazonaws.com/arn%3Aaws%3Acloudformation%3A<span>us-east-2</span>%3A034017226601%3Astack%2Fstack-gosar-20110427004224-test-stack-with-WaitCondition--VEYW%2Fe498ce60-70a1-11e0-81a7-5081d0136786%2FmyWaitConditionHandle?Expires=1303976584&amp;AWSAccessKeyId=AKIAIOSFODNN7EXAMPLE&amp;Signature=ik1twT6hpS4cgNAw7wyOoRejVoo%3D"</code></code></pre>
                     <p>where the file /tmp/a contains the following JSON structure:</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
 <span>{</span>
@@ -200,7 +200,7 @@ Add a CreationPolicy attribute to those resources, and use the cfn-signal helper
       it sends the JSON structure as a parameter on the command line.</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">curl -X PUT \
   -H 'Content-Type:' --data-binary '<span>{</span>"Status" : "SUCCESS","Reason" : "Configuration Complete","UniqueId" : "ID1234","Data" : "Application has completed configuration."}' \
-  "https://cloudformation-waitcondition-test.s3.amazonaws.com/arn%3Aaws%3Acloudformation%3A<span><code class="code" copy="true">us-east-2</code></span>%3A034017226601%3Astack%2Fstack-gosar-20110427004224-test-stack-with-WaitCondition--VEYW%2Fe498ce60-70a1-11e0-81a7-5081d0136786%2FmyWaitConditionHandle?Expires=1303976584&amp;AWSAccessKeyId=AKIAIOSFODNN7EXAMPLE&amp;Signature=ik1twT6hpS4cgNAw7wyOoRejVoo%3D"</code></code></pre>
+  "https://cloudformation-waitcondition-test.s3.amazonaws.com/arn%3Aaws%3Acloudformation%3A<span>us-east-2</span>%3A034017226601%3Astack%2Fstack-gosar-20110427004224-test-stack-with-WaitCondition--VEYW%2Fe498ce60-70a1-11e0-81a7-5081d0136786%2FmyWaitConditionHandle?Expires=1303976584&amp;AWSAccessKeyId=AKIAIOSFODNN7EXAMPLE&amp;Signature=ik1twT6hpS4cgNAw7wyOoRejVoo%3D"</code></code></pre>
                 </li></ol></div>
             <h3 id="using-cfn-waitcondition-signaljson">Wait condition signal JSON format</h3>
                 
@@ -231,8 +231,9 @@ Add a CreationPolicy attribute to those resources, and use the cfn-signal helper
                 <p><em><code class="code">Data</code></em> is any information that you want to send back with the
      signal. The <code class="code">Data</code> value can be accessed by calling the <a href="./intrinsic-function-reference-getatt.html">Fn::GetAtt function</a> within the template. For example, if you
      create the following output value for the wait condition <code class="code">mywaitcondition</code>, you can use the
-      <code class="code">aws cloudformation describe-stacks</code> command, <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStacks.html">DescribeStacks action</a>,
-     or Outputs tab of the CloudFormation console to view the <code class="code">Data</code> sent by valid signals sent to AWS CloudFormation: </p>
+      <code class="code">aws cloudformation describe-stacks</code> command, <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStacks.html"><code class="code">DescribeStacks</code></a> API
+     operation, or <b>Outputs</b> tab of the AWS CloudFormation console to view the <code class="code">Data</code> sent by valid
+     signals sent to AWS CloudFormation: </p>
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">
 "WaitConditionData" : <span>{</span>
   "Value" : <span>{</span> "Fn::GetAtt" : [ "mywaitcondition", "Data" ]},

@@ -183,7 +183,7 @@ Properties:
         "Properties": <span>{</span>
             "AlarmName": "HighResourceUsage",
             "AlarmRule": "(ALARM(HighCPUUsage) OR ALARM(HighMemoryUsage)) AND NOT ALARM(DeploymentInProgress)",
-            "AlarmActions": "arn:aws:sns:us-west-2:123456789012:my-sns-topic",
+            "AlarmActions": [ <span>{</span>"arn:aws:sns:us-west-2:123456789012:my-sns-topic"} },
             "AlarmDescription": "Indicates that the system resource usage is high while no known 
             deployment is in progress"
         },
@@ -236,8 +236,10 @@ Properties:
     Type: AWS::CloudWatch::CompositeAlarm
     Properties:
       AlarmName: HighResourceUsage
-      AlarmRule: (ALARM(HighCPUUsage) OR ALARM(HighMemoryUsage)) AND NOT ALARM(DeploymentInProgress)
-      AlarmActions: arn:aws:sns:us-west-2:123456789012:my-sns-topic
+      AlarmRule: !Sub "(ALARM($<span>{</span>HighCPUUsage}) OR ALARM($<span>{</span>HighMemoryUsage})) AND NOT ALARM($<span>{</span>DeploymentInProgress})"
+      AlarmActions: [
+         arn:aws:sns:us-west-2:123456789012:my-sns-topic
+      ]
       AlarmDescription: Indicates that the system resource usage is high while no known deployment is in progress
     DependsOn:
     - DeploymentInProgress

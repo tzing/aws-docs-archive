@@ -214,7 +214,7 @@ SecretKeyformyaccesskey:
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"myinstance" : <span>{</span>
    "Type" : "AWS::EC2::Instance",
    "Properties" : <span>{</span>
-      "AvailabilityZone" : "<span><code class="code" copy="true">us-east-1a</code></span>",
+      "AvailabilityZone" : "<span>us-east-1a</span>",
       "ImageId" : "ami-0ff8a91507f77f867",
       "UserData" : <span>{</span>
          "Fn::Base64" : <span>{</span>
@@ -244,7 +244,7 @@ SecretKeyformyaccesskey:
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">myinstance:
   Type: AWS::EC2::Instance
   Properties:
-    AvailabilityZone: "<span><code class="code" copy="true">us-east-1a</code></span>"
+    AvailabilityZone: "<span>us-east-1a</span>"
     ImageId: ami-0ff8a91507f77f867
     UserData:
       Fn::Base64: !Sub "ACCESS_KEY=$<span>{</span>myaccesskey}&amp;SECRET_KEY=$<span>{</span>myaccesskey.SecretAccessKey}"</code></pre>
@@ -545,7 +545,7 @@ SecretKeyformyaccesskey:
          } ]
       },
       "Queues" : [
-         "https://sqs.us-east-2<span><code class="code" copy="true">us-east-2</code></span>.amazonaws.com/123456789012/myexistingqueue",
+         "https://sqs.us-east-2<span>us-east-2</span>.amazonaws.com/123456789012/myexistingqueue",
          <span>{</span> "Ref" : "myqueue" }
       ]
    }
@@ -569,7 +569,7 @@ SecretKeyformyaccesskey:
         - sqs:SendMessage
         Resource: "*"
     Queues:
-    - https://sqs.<span><code class="code" copy="true">us-east-2</code></span>.amazonaws.com/123456789012/myexistingqueue
+    - https://sqs.<span>us-east-2</span>.amazonaws.com/123456789012/myexistingqueue
     - !Ref myqueue</code></pre>
       </div>
     
@@ -725,7 +725,7 @@ Resources:
          "Type": "AWS::AutoScaling::AutoScalingGroup",
          "Version": "2009-05-15",
          "Properties": <span>{</span>
-            "AvailabilityZones": [ "<span><code class="code" copy="true">us-east-1a</code></span>" ],
+            "AvailabilityZones": [ "<span>us-east-1a</span>" ],
             "LaunchConfigurationName": <span>{</span> "Ref": "myLCOne" },
             "MinSize": "0",
             "MaxSize": "0",
@@ -792,7 +792,7 @@ Resources:
     Version: '2009-05-15'
     Properties:
       AvailabilityZones:
-      - "<span><code class="code" copy="true">us-east-1a</code></span>"
+      - "<span>us-east-1a</span>"
       LaunchConfigurationName:
         !Ref myLCOne
       MinSize: '0'

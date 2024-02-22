@@ -224,12 +224,7 @@ Properties:
       When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the Amazon MQ broker ID. For example: </p><p>
       <code class="code">b-1234a5b6-78cd-901e-2fgh-3i45j6k178l9</code>
     </p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h3 id="aws-resource-amazonmq-broker-return-values-fn--getatt">Fn::GetAtt</h3><p>The <code class="code">Fn::GetAtt</code> intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.</p>
-<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-amazonmq-broker-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AmqpEndpoints-fn::getatt"><span class="term"><code class="code">AmqpEndpoints</code></span></dt><dd>
-    <p>The AMQP endpoints of each broker instance as a list of strings.</p>
-    <p>
-      <code class="code">amqp+ssl://b-4aada85d-a80c-4be0-9d30-e344a01b921e-1.mq.eu-central-amazonaws.com:5671</code>
-    </p>
-  </dd><dt id="Arn-fn::getatt"><span class="term"><code class="code">Arn</code></span></dt><dd>
+<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-amazonmq-broker-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="Arn-fn::getatt"><span class="term"><code class="code">Arn</code></span></dt><dd>
     <p>The Amazon Resource Name (ARN) of the Amazon MQ broker.</p>
     <p>
       <code class="code">arn:aws:mq:us-east-2:123456789012:broker:MyBroker:b-1234a5b6-78cd-901e-2fgh-3i45j6k178l9</code>
@@ -246,32 +241,7 @@ Properties:
     </p>
   </dd><dt id="Id-fn::getatt"><span class="term"><code class="code">Id</code></span></dt><dd>
                                     <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-                                 </dd><dt id="IpAddresses-fn::getatt"><span class="term"><code class="code">IpAddresses</code></span></dt><dd>
-    <p>The IP addresses of each broker instance as a list of strings. Does not apply to RabbitMQ brokers.</p>
-    <p>
-      <code class="code">['198.51.100.2', '203.0.113.9']</code>
-    </p>
-  </dd><dt id="MqttEndpoints-fn::getatt"><span class="term"><code class="code">MqttEndpoints</code></span></dt><dd>
-    <p>The MQTT endpoints of each broker instance as a list of strings.</p>
-    <p>
-      <code class="code">mqtt+ssl://b-4aada85d-a80c-4be0-9d30-e344a01b921e-1.mq.eu-central-amazonaws.com:8883</code>
-    </p>
-  </dd><dt id="OpenWireEndpoints-fn::getatt"><span class="term"><code class="code">OpenWireEndpoints</code></span></dt><dd>
-    <p>The OpenWire endpoints of each broker instance as a list of strings.</p>
-    <p>
-      <code class="code">ssl://b-4aada85d-a80c-4be0-9d30-e344a01b921e-1.mq.eu-central-amazonaws.com:61617</code>
-    </p>
-  </dd><dt id="StompEndpoints-fn::getatt"><span class="term"><code class="code">StompEndpoints</code></span></dt><dd>
-    <p>The STOMP endpoints of each broker instance as a list of strings.</p>
-    <p>
-      <code class="code">stomp+ssl://b-4aada85d-a80c-4be0-9d30-e344a01b921e-1.mq.eu-central-amazonaws.com:61614</code>
-    </p>
-  </dd><dt id="WssEndpoints-fn::getatt"><span class="term"><code class="code">WssEndpoints</code></span></dt><dd>
-    <p>The WSS endpoints of each broker instance as a list of strings.</p>
-    <p>
-      <code class="code">wss://b-4aada85d-a80c-4be0-9d30-e344a01b921e-1.mq.eu-central-amazonaws.com:61619</code>
-    </p>
-  </dd></dl></div><h2 id="aws-resource-amazonmq-broker--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-amazonmq-broker--examples--Basic_Amazon_MQ_Broker">Basic Amazon MQ Broker</a></li><li><a href="#aws-resource-amazonmq-broker--examples--Complex_Amazon_MQ_Broker">Complex Amazon MQ Broker</a></li></ul></div><h3 id="aws-resource-amazonmq-broker--examples--Basic_Amazon_MQ_Broker">Basic Amazon MQ Broker</h3><p>The following examples creates a basic Amazon MQ broker. The RabbitMQ example creates a broker with one administrative user,
+                                 </dd></dl></div><h2 id="aws-resource-amazonmq-broker--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-amazonmq-broker--examples--Basic_Amazon_MQ_Broker">Basic Amazon MQ Broker</a></li><li><a href="#aws-resource-amazonmq-broker--examples--Complex_Amazon_MQ_Broker">Complex Amazon MQ Broker</a></li></ul></div><h3 id="aws-resource-amazonmq-broker--examples--Basic_Amazon_MQ_Broker">Basic Amazon MQ Broker</h3><p>The following examples creates a basic Amazon MQ broker. The RabbitMQ example creates a broker with one administrative user,
           while the ActiveMQ example creates a broker with one user that belongs to a group.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-amazonmq-broker--examples--Basic_Amazon_MQ_Broker--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "Description": "Create a basic Amazon MQ for ActiveMQ broker",
   "Resources": <span>{</span>

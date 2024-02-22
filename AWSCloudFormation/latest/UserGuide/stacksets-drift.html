@@ -197,11 +197,11 @@
             <p>The following example initiates drift detection on the stack set
                     <code class="code">stack-set-drift-example</code>.</p>
 
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws cloudformation detect-stack-set-drift --stack-set-name stack-set-drift-example
-            
-<span>{</span>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation detect-stack-set-drift \
+    --stack-set-name stack-set-drift-example</code>
+<code class="computeroutput" copy="false"><span>{</span>
     "OperationId": "c36e44aa-3a83-411a-b503-cb611example"
-}</code></pre>
+}</code></code></pre>
         </li><li>
             <p>Because stack set drift detection operations can be a long-running operation, use
                     <code class="code">describe-stack-set-operation</code> to monitor the status of drift
@@ -214,7 +214,9 @@
                 sync , and drift detection for the remaining four stack instances is still in
                 progress. Because one instance has drifted, the drift status of the stack set itself
                 is now <code class="code">DRIFTED</code>.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="userinput">aws cloudformation describe-stack-set-operation --stack-set-name stack-set-drift-example --operation-id c36e44aa-3a83-411a-b503-cb611example</code>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation describe-stack-set-operation \
+    --stack-set-name stack-set-drift-example \
+    --operation-id c36e44aa-3a83-411a-b503-cb611example</code>
 <code class="computeroutput" copy="false">
 <span>{</span>
     "StackSetOperation": <span>{</span>
@@ -243,7 +245,9 @@
                 once the drift detection operation has completed. Two of the seven total stack
                 instances associated with this stack set have drifted, rendering the drift status of
                 the stack set itself as <code class="code">DRIFTED</code>.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="userinput">aws cloudformation describe-stack-set-operation --stack-set-name stack-set-drift-example --operation-id c36e44aa-3a83-411a-b503-cb611example</code>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation describe-stack-set-operation \
+    --stack-set-name stack-set-drift-example \
+    --operation-id c36e44aa-3a83-411a-b503-cb611example</code>
 <code class="computeroutput" copy="false">
 <span>{</span>
     "StackSetOperation": <span>{</span>
@@ -278,9 +282,9 @@
             <p>The <code class="code">describe-stack-set</code> command includes the same detailed drift
                 information returned by the <code class="code">describe-stack-set-operation</code>
                 command.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws cloudformation describe-stack-set --stack-set-name stack-set-drift-example
-
-            <span>{</span>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation describe-stack-set \
+    --stack-set-name stack-set-drift-example</code>
+<code class="computeroutput" copy="false"><span>{</span>
     "StackSet": <span>{</span>
         "Status": "ACTIVE",
         "Description": "Demonstration of drift detection on stack sets.",
@@ -309,16 +313,17 @@
         "StackSetId": "stack-set-drift-example:bd1f4017-d4f9-432e-a73f-8c22ebexample",
         "StackSetName": "stack-set-drift-example"
     }
-}</code></pre>
+}</code></code></pre>
             <p>You can use the <code class="code">list-stack-instances</code> command to return summary
                 information about the stack instances associated with a stack set, including the
                 drift status of each stack instance.</p>
             <p>In this example, executing <code class="code">list-stack-instances</code> on the example stack
                 set with the drift status filter set to <code class="code">DRIFTED</code> enables you to identify
                 which two stack instances have a drift status of <code class="code">DRIFTED</code>.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws cloudformation list-stack-instances --stack-set-name stack-set-drift-example --filters Name=DRIFT_STATUS,Values=DRIFTED
-
-<span>{</span>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation list-stack-instances \
+    --stack-set-name stack-set-drift-example \
+    --filters Name=DRIFT_STATUS,Values=DRIFTED</code>
+<code class="computeroutput" copy="false"><span>{</span>
 "Summaries": [
         <span>{</span>
 "StackId": "arn:aws:cloudformation:eu-west-1:123456789012:stack/StackSet-stack-set-drift-example-b0fb6083-60c0-4e39-af15-2f071e0db90c/0e4f0940-16d4-11ea-93d8-0641cexample",
@@ -344,13 +349,14 @@
         [additional stack instances omitted]
  
     ]
-}</code></pre>
+}</code></code></pre>
             <p>The <code class="code">describe-stack-instance</code> command also returns this information,
                 but for a single stack instance, as in the example below.</p>
 
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws cloudformation describe-stack-instance --stack-set-name stack-set-drift-example --stack-instance-account 012345678910 --stack-instance-region us-east-1
-            
-<span>{</span>
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation describe-stack-instance \
+    --stack-set-name stack-set-drift-example \
+    --stack-instance-account 012345678910 --stack-instance-region us-east-1</code>
+<code class="computeroutput" copy="false"><span>{</span>
     "StackInstance": <span>{</span>
         "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/StackSet-stack-set-drift-example-b7fde68e-e541-44c2-b33d-ef2e2988071a/008e6030-16d4-11ea-8090-12f89example",
         "Status": "CURRENT",
@@ -362,7 +368,7 @@
         "StackSetId": "stack-set-drift-example:bd1f4017-d4f9-432e-a73f-8c22eexample"
         "LastOperationId": "c36e44aa-3a83-411a-b503-cb611example"
     }
-}</code></pre>
+}</code></code></pre>
         </li><li>
             <p>Once you've identified which stack instances have drifted, you can use the
                 information about the stack instances that is returned by the
@@ -375,9 +381,14 @@
                 modified or deleted in the previous drift operation example. The request returns
                 information on the one resource that has been modified, including details about two
                 of its properties and their changed values. No resources have been deleted.</p>
-            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws cloudformation list-stack-instance-resource-drifts --stack-set-name my-stack-set-with-resource-drift --stack-instance-account 123456789012 --stack-instance-region us-east-1 --operation-id c36e44aa-3a83-411a-b503-cb611example --stack-instance-resource-drift-statuses MODIFIED DELETED
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation list-stack-instance-resource-drifts \
+    --stack-set-name my-stack-set-with-resource-drift \
+    --stack-instance-account 123456789012 \
+    --stack-instance-region us-east-1 \
+    --operation-id c36e44aa-3a83-411a-b503-cb611example \
+    --stack-instance-resource-drift-statuses MODIFIED DELETED</code>
 
-<span>{</span>
+<code class="computeroutput" copy="false"><span>{</span>
     "Summaries": [
         <span>{</span>
             "StackId": "arn:aws:cloudformation:us-east-1:123456789012:stack/my-stack-set-with-resource-drift/489e5570-df85-11e7-a7d9-50example",
@@ -402,7 +413,7 @@
             "LogicalResourceId": "Queue"
         }
     ]
-}</code></pre>
+}</code></code></pre>
         </li></ol></div>
         <h2 id="stacksets-drift-stop">Stopping drift detection on a stack set</h2>
         <p>Because drift detection on a stack set can be a long-running operation, there may be
@@ -427,6 +438,8 @@
                 <p>Use the <code class="code"><a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/stop-stack-set-operation.html">stop-stack-set-operation</a></code> command. You must supply both
                     the stack set name and the operation ID of the drift detection stack set
                     operation.</p>
-                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh ">aws cloudformation stop-stack-set-operation --stack-set-name stack-set-drift-example --operation-id 624af370-311a-11e8-b6b7-500cexample</code></pre>
+                <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="sh "><code class="prompt" copy="false">$ </code><code class="userinput">aws cloudformation stop-stack-set-operation \
+    --stack-set-name stack-set-drift-example \
+    --operation-id 624af370-311a-11e8-b6b7-500cexample</code></code></pre>
             </li></ul></div>
     <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stacksets-account-gating.html">Target account gates</div><div id="next" class="next-link" accesskey="n" href="./stacksets-import.html">Importing a stack into a stack set.</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/stacksets-drift.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/stacksets-drift.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

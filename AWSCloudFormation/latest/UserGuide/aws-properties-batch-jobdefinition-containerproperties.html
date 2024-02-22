@@ -61,6 +61,7 @@
   "<a href="#cfn-batch-jobdefinition-containerproperties-networkconfiguration">NetworkConfiguration</a>" : <code class="replaceable"><a href="./aws-properties-batch-jobdefinition-networkconfiguration.html">NetworkConfiguration</a></code>,
   "<a href="#cfn-batch-jobdefinition-containerproperties-privileged">Privileged</a>" : <code class="replaceable">Boolean</code>,
   "<a href="#cfn-batch-jobdefinition-containerproperties-readonlyrootfilesystem">ReadonlyRootFilesystem</a>" : <code class="replaceable">Boolean</code>,
+  "<a href="#cfn-batch-jobdefinition-containerproperties-repositorycredentials">RepositoryCredentials</a>" : <code class="replaceable"><a href="./aws-properties-batch-jobdefinition-repositorycredentials.html">RepositoryCredentials</a></code>,
   "<a href="#cfn-batch-jobdefinition-containerproperties-resourcerequirements">ResourceRequirements</a>" : <code class="replaceable">[ <a href="./aws-properties-batch-jobdefinition-resourcerequirement.html">ResourceRequirement</a>, ... ]</code>,
   "<a href="#cfn-batch-jobdefinition-containerproperties-runtimeplatform">RuntimePlatform</a>" : <code class="replaceable"><a href="./aws-properties-batch-jobdefinition-runtimeplatform.html">RuntimePlatform</a></code>,
   "<a href="#cfn-batch-jobdefinition-containerproperties-secrets">Secrets</a>" : <code class="replaceable">[ <a href="./aws-properties-batch-jobdefinition-secret.html">Secret</a>, ... ]</code>,
@@ -92,6 +93,8 @@
     <a href="./aws-properties-batch-jobdefinition-networkconfiguration.html">NetworkConfiguration</a></code>
   <a href="#cfn-batch-jobdefinition-containerproperties-privileged">Privileged</a>: <code class="replaceable">Boolean</code>
   <a href="#cfn-batch-jobdefinition-containerproperties-readonlyrootfilesystem">ReadonlyRootFilesystem</a>: <code class="replaceable">Boolean</code>
+  <a href="#cfn-batch-jobdefinition-containerproperties-repositorycredentials">RepositoryCredentials</a>: <code class="replaceable">
+    <a href="./aws-properties-batch-jobdefinition-repositorycredentials.html">RepositoryCredentials</a></code>
   <a href="#cfn-batch-jobdefinition-containerproperties-resourcerequirements">ResourceRequirements</a>: <code class="replaceable">
     - <a href="./aws-properties-batch-jobdefinition-resourcerequirement.html">ResourceRequirement</a></code>
   <a href="#cfn-batch-jobdefinition-containerproperties-runtimeplatform">RuntimePlatform</a>: <code class="replaceable">
@@ -229,7 +232,9 @@
    system. This parameter maps to <code class="code">ReadonlyRootfs</code> in the
    <a href="https://docs.docker.com/engine/api/v1.23/#create-a-container" rel="noopener noreferrer" target="_blank"><span>Create a container</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> section of the <a href="https://docs.docker.com/engine/api/v1.23/" rel="noopener noreferrer" target="_blank"><span>Docker Remote API</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> and the
     <code class="code">--read-only</code> option to <code class="code">docker run</code>.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-batch-jobdefinition-containerproperties-resourcerequirements"><span class="term"><code class="code">ResourceRequirements</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-batch-jobdefinition-containerproperties-repositorycredentials"><span class="term"><code class="code">RepositoryCredentials</code></span></dt><dd>
+         <p>The private repository authentication credentials to use.</p>
+      <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-batch-jobdefinition-repositorycredentials.html">RepositoryCredentials</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-batch-jobdefinition-containerproperties-resourcerequirements"><span class="term"><code class="code">ResourceRequirements</code></span></dt><dd>
          <p>The type and amount of resources to assign to a container. The supported resources include
     <code class="code">GPU</code>, <code class="code">MEMORY</code>, and <code class="code">VCPU</code>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-batch-jobdefinition-resourcerequirement.html">ResourceRequirement</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-batch-jobdefinition-containerproperties-runtimeplatform"><span class="term"><code class="code">RuntimePlatform</code></span></dt><dd>

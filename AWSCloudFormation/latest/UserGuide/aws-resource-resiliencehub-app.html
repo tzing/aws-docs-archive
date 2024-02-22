@@ -55,7 +55,7 @@
       "<a href="#cfn-resiliencehub-app-permissionmodel">PermissionModel</a>" : <code class="replaceable"><a href="./aws-properties-resiliencehub-app-permissionmodel.html">PermissionModel</a></code>,
       "<a href="#cfn-resiliencehub-app-resiliencypolicyarn">ResiliencyPolicyArn</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-resiliencehub-app-resourcemappings">ResourceMappings</a>" : <code class="replaceable">[ <a href="./aws-properties-resiliencehub-app-resourcemapping.html">ResourceMapping</a>, ... ]</code>,
-      "<a href="#cfn-resiliencehub-app-tags">Tags</a>" : <code class="replaceable">String</code>
+      "<a href="#cfn-resiliencehub-app-tags">Tags</a>" : <code class="replaceable"><span>{</span><code class="replaceable">Key</code>: <code class="replaceable">Value</code>, ...}</code>
     }
 }
 </code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h3 id="aws-resource-resiliencehub-app-syntax.yaml">YAML</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">Type: AWS::ResilienceHub::App
@@ -71,7 +71,8 @@ Properties:
   <a href="#cfn-resiliencehub-app-resiliencypolicyarn">ResiliencyPolicyArn</a>: <code class="replaceable">String</code>
   <a href="#cfn-resiliencehub-app-resourcemappings">ResourceMappings</a>: <code class="replaceable">
     - <a href="./aws-properties-resiliencehub-app-resourcemapping.html">ResourceMapping</a></code>
-  <a href="#cfn-resiliencehub-app-tags">Tags</a>: <code class="replaceable">String</code>
+  <a href="#cfn-resiliencehub-app-tags">Tags</a>: <code class="replaceable">
+    <code class="replaceable">Key</code>: <code class="replaceable">Value</code></code>
 </code></pre></div><h2 id="aws-resource-resiliencehub-app-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-resiliencehub-app-appassessmentschedule"><span class="term"><code class="code">AppAssessmentSchedule</code></span></dt><dd>
          <p>Assessment execution schedule with 'Daily' or 'Disabled' values. </p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">Disabled | Daily</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-resiliencehub-app-apptemplatebody"><span class="term"><code class="code">AppTemplateBody</code></span></dt><dd>
@@ -262,7 +263,7 @@ Properties:
   <p><em>Required</em>: Yes</p><p><em>Type</em>: Array of <a href="./aws-properties-resiliencehub-app-resourcemapping.html">ResourceMapping</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-resiliencehub-app-tags"><span class="term"><code class="code">Tags</code></span></dt><dd>
          <p>Tags assigned to the resource. A tag is a label that you assign to an AWS resource. 
 Each tag consists of a key/value pair.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Maximum</em>: <code class="code">256</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-resiliencehub-app-return-values">Return values</h2><h3 id="aws-resource-resiliencehub-app-return-values-ref">Ref</h3><p>The returned Amazon Resource Name (ARN) for the applcation.</p><h3 id="aws-resource-resiliencehub-app-return-values-fn--getatt">Fn::GetAtt</h3><p>The Amazon Resource Name (ARN) for the applcation.</p><h4 id="aws-resource-resiliencehub-app-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AppArn-fn::getatt"><span class="term"><code class="code">AppArn</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Object of String</p><p><em>Pattern</em>: <code class="code">.<span>{</span>1,128}</code></p><p><em>Maximum</em>: <code class="code">256</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-resiliencehub-app-return-values">Return values</h2><h3 id="aws-resource-resiliencehub-app-return-values-ref">Ref</h3><p>The returned Amazon Resource Name (ARN) for the applcation.</p><h3 id="aws-resource-resiliencehub-app-return-values-fn--getatt">Fn::GetAtt</h3><p>The Amazon Resource Name (ARN) for the applcation.</p><h4 id="aws-resource-resiliencehub-app-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AppArn-fn::getatt"><span class="term"><code class="code">AppArn</code></span></dt><dd>
     <p>The Amazon Resource Name (ARN) of the applcation.</p>
   </dd><dt id="DriftStatus-fn::getatt"><span class="term"><code class="code">DriftStatus</code></span></dt><dd>
          <p>Indicates if compliance drifts (deviations) were detected while running an assessment for

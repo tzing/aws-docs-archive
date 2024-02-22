@@ -139,14 +139,12 @@ Resources:
           
             <dt><span class="term">RetainExceptOnCreate</span></dt>
             <dd>
-               <p><code class="code">RetainExceptOnCreate</code> behaves like <code class="code">Retain</code> for stack operations,
-                  except for the stack operation that initially created the resource. If the stack operation that
-                  created the resource is rolled back, CloudFormation deletes the resource. For all other stack
-                  operations, such as stack deletion, CloudFormation retains the resource and its contents. The result
-                  is that new, empty, and unused resources are deleted, while in-use resources and their data are
-                  retained. Refer to the
-                  <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html">UpdateStack</a>
-                  API documentation to use this deletion policy as an API parameter without updating your template.</p>
+               <p><code class="code">RetainExceptOnCreate</code> behaves like <code class="code">Retain</code> for stack operations, except for
+      the stack operation that initially created the resource. If the stack operation that created the resource is
+      rolled back, CloudFormation deletes the resource. For all other stack operations, such as stack deletion, CloudFormation
+      retains the resource and its contents. The result is that new, empty, and unused resources are deleted, while
+      in-use resources and their data are retained. Refer to the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html"><code class="code">UpdateStack</code></a> API
+      documentation to use this deletion policy as an API parameter without updating your template.</p>
             </dd>
           
             <dt><span class="term">Snapshot</span></dt>

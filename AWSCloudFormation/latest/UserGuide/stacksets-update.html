@@ -151,14 +151,12 @@
                 command.</p>
             <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="text ">--call-as <code class="replaceable">DELEGATED_ADMIN</code></code></pre>
 
-            <div class="procedure"><p>Run the <code class="code">update-stack-set</code> AWS CLI command to make changes to your
-                    stack set. In this walkthrough, we are updating the value of the
-                        <code class="code">MaximumExecutionFrequency</code> parameter. For more information about
-                    the parameter names and values for creating or updating an AWS Config rule, see <a href="http://docs.aws.amazon.com/cli/latest/reference/configservice/put-config-rule.html">put-config-rule</a> in the AWS CLI reference. To change template
-                    parameter values, add the <code class="code">--parameters</code> parameter. For more
-                    information about what you can specify as a value for <code class="code">--parameters</code>,
-                    see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html">Parameter</a> in the AWS CloudFormation API Reference, and <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/update-stack.html"><code class="code">update-stack</code></a> in the <em>AWS CLI Command
-                        Reference</em>.</p><p>In the example command shown here, we are updating the stack set by using
+            <div class="procedure"><p>Run the <code class="code">update-stack-set</code> AWS CLI command to make changes to your stack set. In this
+     walkthrough, we are updating the value of the <code class="code">MaximumExecutionFrequency</code> parameter. For more
+     information about the parameter names and values for creating or updating an AWS Config rule, see <a href="http://docs.aws.amazon.com/cli/latest/reference/configservice/put-config-rule.html">put-config-rule</a> in the AWS CLI
+     reference. To change template parameter values, add the <code class="code">--parameters</code> parameter. For more information
+     about what you can specify as a value for <code class="code">--parameters</code>, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html"><code class="code">Parameter</code></a> in the AWS CloudFormation API
+     Reference, and <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/update-stack.html"><code class="code">update-stack</code></a> in the <em>AWS CLI Command Reference</em>.</p><p>In the example command shown here, we are updating the stack set by using
                         <code class="code">--parameters</code>; specifically, we change the default snapshot
                     delivery frequency for delivery channel configuration from
                         <b>TwentyFour_Hours</b> to <b>Twelve_Hours</b>.

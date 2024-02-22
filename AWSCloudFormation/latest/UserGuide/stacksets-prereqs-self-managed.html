@@ -94,10 +94,6 @@
                 </li><li>
                     <p>Create the necessary IAM service roles in your administrator and target
                         accounts to define the permissions you want.</p>
-                    <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>The role in your administrator account must be named
-                                <b>AWSCloudFormationStackSetAdministrationRole</b>.
-                            The role in each of your target accounts must be named
-                                <b>AWSCloudFormationStackSetExecutionRole</b>.</p></div></div>
                 </li></ol></div>
          
             <h2 id="stacksets-prereqs-accountsetup">Set up basic permissions for stack
@@ -124,24 +120,22 @@
                     the administrator account to perform stack set operations in all target
                     accounts</h6><ol><li>
                     <p>In the administrator account, create an IAM role named
-                            <b>AWSCloudFormationStackSetAdministrationRole</b>. The
-                        role must have this exact name. You can do this by creating a stack from the
-                        following AWS CloudFormation template, available online at <a href="https://s3.amazonaws.com/cloudformation-stackset-sample-templates-us-east-1/AWSCloudFormationStackSetAdministrationRole.yml" rel="noopener noreferrer" target="_blank"><span>https://s3.amazonaws.com/cloudformation-stackset-sample-templates-us-east-1/AWSCloudFormationStackSetAdministrationRole.yml</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.
-                        The role created by this template enables the following policy on your
-                        administrator account.</p>
+       <b>AWSCloudFormationStackSetAdministrationRole</b>. You
+      can do this by creating a stack from the following AWS CloudFormation template, available online at <a href="https://s3.amazonaws.com/cloudformation-stackset-sample-templates-us-east-1/AWSCloudFormationStackSetAdministrationRole.yml" rel="noopener noreferrer" target="_blank"><span>https://s3.amazonaws.com/cloudformation-stackset-sample-templates-us-east-1/AWSCloudFormationStackSetAdministrationRole.yml</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.
+      The role created by this template enables the following policy on your administrator account.</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Action": [
-                "sts:AssumeRole"
-            ],
-            "Resource": [
-                "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
-            ],
-            "Effect": "Allow"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Action": [
+        "sts:AssumeRole"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+      ],
+      "Effect": "Allow"
+    }
+  ]
 }</code></pre>
                     <p>The following trust relationship is created by the preceding
                         template.</p>
@@ -183,7 +177,8 @@
     }
   ]
 }</code></pre>
-                    <p>For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html#stacksets-opt-in-regions">Prerequisites for stack set operations</a>.</p>
+                    <p>For more information, see <a href="./stacksets-prereqs.html#stacksets-opt-in-regions">Performing stack set operations involving regions that are disabled by
+    default</a>.</p>
                 </li><li>
                     <p>In each target account, create a service role named
                             <b>AWSCloudFormationStackSetExecutionRole</b> that trusts
@@ -205,14 +200,14 @@
                         The role created by this template enables the following policy on a target
                         account.</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Effect": "Allow",
-            "Action": "*",
-            "Resource": "*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Effect": "Allow",
+      "Action": "*",
+      "Resource": "*"
+    }
+  ]
 }</code></pre>
                     <p>You must add the S3 service action and resources to
                             <code class="code">AWSCloudFormationStackSetExecutionRole</code> policy statement for
@@ -225,18 +220,17 @@
                         each target account. The following example shows a policy statement with the
                         required permissions for StackSets.</p>
                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Effect": "Allow",
-            "Action": 
-               [
-                 "cloudformation:*",
-                 "s3:*"
-               ],
-            "Resource": "*"
-        }
-      ]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Effect": "Allow",
+      "Action": [
+         "cloudformation:*",
+         "s3:*"
+      ],
+      "Resource": "*"
+    }
+  ]
 }</code></pre>
                     <p>The following trust relationship is created by the template. The
                         administrator account's ID is shown as
@@ -325,34 +319,34 @@
                         <p>Create an <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html">IAM service role</a> with a custom name, using the following
                             permissions policy:</p>
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Action": [
-                "sts:AssumeRole"
-            ],
-            "Resource": [
-                "arn:aws:iam::<code class="replaceable">target_account_id</code>:role/AWSCloudFormationStackSetExecutionRole"
-            ],
-            "Effect": "Allow"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Action": [
+        "sts:AssumeRole"
+      ],
+      "Resource": [
+        "arn:aws:iam::<code class="replaceable">target_account_id</code>:role/AWSCloudFormationStackSetExecutionRole"
+      ],
+      "Effect": "Allow"
+    }
+  ]
 }</code></pre>
                         <p>Or, if you want to specify all target accounts, use the following
                             permissions policy:</p>
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Action": [
-                "sts:AssumeRole"
-            ],
-            "Resource": [
-                "arn:aws:iam::<code class="replaceable">*</code>:role/AWSCloudFormationStackSetExecutionRole"
-            ],
-            "Effect": "Allow"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Action": [
+        "sts:AssumeRole"
+      ],
+      "Resource": [
+        "arn:aws:iam::<code class="replaceable">*</code>:role/AWSCloudFormationStackSetExecutionRole"
+      ],
+      "Effect": "Allow"
+    }
+  ]
 }</code></pre>
                         <p>You must provide the following trust policy when you create the role
                             to define the trust relationship:</p>
@@ -395,7 +389,8 @@
     }
   ]
 }</code></pre>
-                        <p>For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html#stacksets-opt-in-regions">Prerequisites for stack set operations</a>.</p>
+                        <p>For more information, see <a href="./stacksets-prereqs.html#stacksets-opt-in-regions">Performing stack set operations involving regions that are disabled by
+    default</a>.</p>
                     </li><li>
                         <p>In each target account, create a service role named
                                 <b>AWSCloudFormationStackSetExecutionRole</b> that
@@ -416,18 +411,17 @@
                                 <b>AWSCloudFormationStackSetExecutionRole</b>
                             permissions policy statement for each target account.</p>
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Effect": "Allow",
-            "Action": 
-               [
-                 "cloudformation:*",
-                 "s3:*"
-               ],
-            "Resource": "*"
-        }
-      ]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:*",
+        "s3:*"
+      ],
+      "Resource": "*"
+    }
+  ]
 }</code></pre>
                         <p>You must provide the following trust policy when you create the role
                             to define the trust relationship:</p>
@@ -454,15 +448,17 @@
                             to the administrator role the user needs to pass.</p>
 
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [<span>{</span>
-        "Effect": "Allow",
-        "Action": [
-            "iam:GetRole",
-            "iam:PassRole"
-        ],
-        "Resource": "arn:aws:iam::*:role/<code class="replaceable">customized_admin_role</code>"
-    }]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:PassRole"
+      ],
+      "Resource": "arn:aws:iam::*:role/<code class="replaceable">customized_admin_role</code>"
+    }
+  ]
 }</code></pre>
                     </li></ol></div>
              
@@ -512,26 +508,24 @@
                         <p>The following example provides the minimum permissions for stack sets,
                             along with permission to create Amazon DynamoDB tables.</p>
                         <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Effect": "Allow",
-            "Action":
-               [
-                 "cloudformation:*",
-                 "s3:*",
-               ],
-            "Resource": "*"
-        },
-  <span>{</span>
-            "Effect": "Allow",
-            "Action":
-               [
-                 "dynamoDb:createTable"
-  ],
-            "Resource": "*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:*",
+        "s3:*",
+      ],
+      "Resource": "*"
+    },
+    <span>{</span>
+      "Effect": "Allow",
+      "Action": [
+        "dynamoDb:createTable"
+      ],
+      "Resource": "*"
+    }
+  ]
 }</code></pre>
                         <p>You must provide the following trust policy when you create the role
                             to define the trust relationship:</p>
@@ -604,15 +598,13 @@
                     <code class="code">aws:SourceArn</code> value must use the same account ID when used in the
                 same policy statement.</p>
 
-            <p>The most effective way to protect against the confused deputy problem is to use
-                the <code class="code">aws:SourceArn</code> global condition context key with the full ARN of the
-                resource. If you don't know the full ARN of the resource or if you are specifying
-                multiple resources, use the <code class="code">aws:SourceArn</code> global context condition key
-                with wildcards (<code class="code">*</code>) for the unknown portions of the ARN. For example,
-                        <code class="code">arn:aws:<code class="replaceable">cloudformation</code>::<code class="replaceable">123456789012</code>:*</code>.
-                Whenever possible, use <code class="code">aws:SourceArn</code>, because it's more specific. Use
-                    <code class="code">aws:SourceAccount</code> only when you can't determine the correct ARN or
-                ARN pattern.</p>
+            <p>The most effective way to protect against the confused deputy problem is to use the
+     <code class="code">aws:SourceArn</code> global condition context key with the full ARN of the resource. If you don't know the
+    full ARN of the resource or if you are specifying multiple resources, use the <code class="code">aws:SourceArn</code> global
+    context condition key with wildcards (<code class="code">*</code>) for the unknown portions of the ARN. For example,
+      <code class="code">arn:aws:<code class="replaceable">cloudformation</code>::<code class="replaceable">123456789012</code>:*</code>.
+    Whenever possible, use <code class="code">aws:SourceArn</code>, because it's more specific. Use <code class="code">aws:SourceAccount</code>
+    only when you can't determine the correct ARN or ARN pattern.</p>
 
 
             <p>When StackSets assumes the <b>Administration</b> role in your
@@ -629,45 +621,45 @@
                         <code class="code">aws:SourceAccount</code> and <code class="code">aws:SourceArn</code> in your
                         <code class="code">AWSCloudFormationStackSetAdministrationRole</code> trust policy to
                     prevent confused deputy problems.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Effect": "Allow",
-            "Principal": <span>{</span>
-                "Service": "cloudformation.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole",
-            "Condition": <span>{</span>
-                "StringEquals": <span>{</span>
-                    "aws:SourceAccount": "<code class="replaceable">111122223333</code>"
-                },
-                "StringLike": <span>{</span>
-                    "aws:SourceArn": "arn:aws:cloudformation:*:<code class="replaceable">111122223333</code>:stackset/*"
-                }
-            }
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Effect": "Allow",
+      "Principal": <span>{</span>
+        "Service": "cloudformation.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": <span>{</span>
+        "StringEquals": <span>{</span>
+          "aws:SourceAccount": "<code class="replaceable">111122223333</code>"
+        },
+        "StringLike": <span>{</span>
+          "aws:SourceArn": "arn:aws:cloudformation:*:<code class="replaceable">111122223333</code>:stackset/*"
         }
-    ]
+      }
+    }
+  ]
 }</code></pre></div></div>
             <div class="example"><h6>Example StackSets ARNs</h6><div class="example-contents"><p>Specify your associated StackSets ARNs for finer control.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-    "Version": "2012-10-17",
-    "Statement": [
-        <span>{</span>
-            "Effect": "Allow",
-            "Principal": <span>{</span>
-                "Service": "cloudformation.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole",
-            "Condition": <span>{</span>
-                "StringEquals": <span>{</span>
-                    "aws:SourceAccount": "<code class="replaceable">111122223333</code>",
-                    "aws:SourceArn": [
-                        "arn:aws:cloudformation:<code class="replaceable">STACKSETS-REGION</code>:<code class="replaceable">111122223333</code>:stackset/<code class="replaceable">STACK-SET-ID-1</code>",
-                        "arn:aws:cloudformation:<code class="replaceable">STACKSETS-REGION</code>:<code class="replaceable">111122223333</code>:stackset/<code class="replaceable">STACK-SET-ID-2</code>",
-                     ]
-                }
-            }
+  "Version": "2012-10-17",
+  "Statement": [
+    <span>{</span>
+      "Effect": "Allow",
+      "Principal": <span>{</span>
+        "Service": "cloudformation.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": <span>{</span>
+        "StringEquals": <span>{</span>
+          "aws:SourceAccount": "<code class="replaceable">111122223333</code>",
+          "aws:SourceArn": [
+            "arn:aws:cloudformation:<code class="replaceable">STACKSETS-REGION</code>:<code class="replaceable">111122223333</code>:stackset/<code class="replaceable">STACK-SET-ID-1</code>",
+            "arn:aws:cloudformation:<code class="replaceable">STACKSETS-REGION</code>:<code class="replaceable">111122223333</code>:stackset/<code class="replaceable">STACK-SET-ID-2</code>",
+          ]
         }
-    ]
+      }
+    }
+  ]
 }</code></pre></div></div>
         <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./stacksets-prereqs.html">Prerequisites for stack set operations</div><div id="next" class="next-link" accesskey="n" href="./stacksets-orgs-activate-trusted-access.html">Activate trusted
                 access with AWS Organizations</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CloudFormation&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

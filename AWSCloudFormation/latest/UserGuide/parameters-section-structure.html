@@ -478,12 +478,14 @@ reference sensitive information that is stored and managed outside of CloudForma
         </dl></div>
      
    
-    <h2 id="aws-ssm-parameter-types">SSM parameter types</h2>
-    <p><code class="code">SSM</code> parameter types correspond to existing parameters in Systems Manager Parameter
-      Store. You specify a Systems Manager parameter key as the value of the <code class="code">SSM</code> parameter, and
-      AWS CloudFormation fetches the latest value from Parameter Store to use for the stack. For more information
-      about Systems Manager parameters, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html"> Systems Manager
-        Parameter Store</a> in the <em>AWS Systems Manager User Guide</em>.</p>
+   <h2 id="aws-ssm-parameter-types">SSM parameter types</h2>
+   <p>SSM parameter types correspond to existing parameters in Systems Manager Parameter Store. You specify a Systems Manager parameter
+   key as the value of the <code class="code">SSM</code> parameter, and AWS CloudFormation fetches the latest value from Parameter Store to use
+   for the stack. For SSM parameters stored in the same AWS account, enter the parameter name. For SSM parameters
+   shared by another AWS account, enter the full parameter ARN. For more information about Systems Manager parameters, see
+   <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-paramstore.html"> Systems Manager Parameter
+   Store</a> and <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html">Working with shared parameters</a>
+   in the <em>AWS Systems Manager User Guide</em>.</p>
     <p>You can also use the <code class="code">ssm</code> or <code class="code">ssm-secure</code> dynamic parameter pattern
       to specify parameter <em>values</em> in your template. For more information, see
         <a href="./dynamic-references.html">Using dynamic references to specify template

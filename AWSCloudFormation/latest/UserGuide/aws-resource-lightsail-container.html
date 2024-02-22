@@ -79,7 +79,7 @@ Properties:
       <p>An object that describes the configuration for the container service to access private
          container image repositories, such as Amazon Elastic Container Registry (Amazon ECR)
          private repositories.</p>
-      <p>For more information, see <a href="https://docs.aws.amazon.com/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access">Configuring access to an Amazon ECR private repository for an Amazon Lightsail
+      <p>For more information, see <a href="https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access">Configuring access to an Amazon ECR private repository for an Amazon Lightsail
          container service</a> in the <em>Amazon Lightsail Developer
             Guide</em>.</p>
    <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-lightsail-container-privateregistryaccess.html">PrivateRegistryAccess</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-lightsail-container-publicdomainnames"><span class="term"><code class="code">PublicDomainNames</code></span></dt><dd>
@@ -111,6 +111,8 @@ Properties:
 <p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-lightsail-container-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="ContainerArn-fn::getatt"><span class="term"><code class="code">ContainerArn</code></span></dt><dd>
       <p>The Amazon Resource Name (ARN) of the container.</p>
    </dd><dt id="PrincipalArn-fn::getatt"><span class="term"><code class="code">PrincipalArn</code></span></dt><dd>
+      <p>The principle Amazon Resource Name (ARN) of the role.</p>
+   </dd><dt id="PrivateRegistryAccess.EcrImagePullerRole.PrincipalArn-fn::getatt"><span class="term"><code class="code">PrivateRegistryAccess.EcrImagePullerRole.PrincipalArn</code></span></dt><dd>
       <p>The principle Amazon Resource Name (ARN) of the role.</p>
    </dd><dt id="Url-fn::getatt"><span class="term"><code class="code">Url</code></span></dt><dd>
       <p>The publicly accessible URL of the container service.</p>

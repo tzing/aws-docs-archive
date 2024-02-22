@@ -36,15 +36,16 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#stacksets-opt-in-regions">Performing stack set operations involving
-                regions that are disabled by default</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="stacksets-prereqs">Prerequisites for stack set operations</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Because stack sets perform stack operations across multiple accounts, before you can
-        create your first stack set you need the necessary permissions defined in your AWS
-        accounts.</p><p>To set up the required permissions for creating a stack set with <b>self-managed</b> permissions, see <a href="#stacksets-opt-in-regions">Performing stack set operations involving
-                regions that are disabled by default</a> and <a href="./stacksets-prereqs-self-managed.html">Grant self-managed permissions</a>.</p><p>To set up the required permissions for creating a stack set with <b>service-managed</b> permissions, see <a href="#stacksets-opt-in-regions">Performing stack set operations involving
-                regions that are disabled by default</a> and <a href="./stacksets-orgs-activate-trusted-access.html">Activate trusted access with
-                AWS Organizations</a>.</p>
-        <h2 id="stacksets-opt-in-regions">Performing stack set operations involving
-                regions that are disabled by default</h2>
+</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#stacksets-opt-in-regions">Performing stack set operations involving regions that are disabled by
+    default</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="stacksets-prereqs">Prerequisites for stack set operations</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Because stack sets perform stack operations across multiple accounts, before you can create your first stack set
+  you need the necessary permissions defined in your AWS accounts.</p><p>To set up the required permissions for creating a stack set with <b>self-managed</b>
+  permissions, see <a href="#stacksets-opt-in-regions">Performing stack set operations involving regions that are disabled by
+    default</a> and <a href="./stacksets-prereqs-self-managed.html">Grant self-managed permissions</a>.</p><p>To set up the required permissions for creating a stack set with <b>service-managed</b>
+  permissions, see <a href="#stacksets-opt-in-regions">Performing stack set operations involving regions that are disabled by
+    default</a> and <a href="./stacksets-orgs-activate-trusted-access.html">Activate trusted access with
+                AWS Organizations</a>.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Activating trusted access with AWS Organizations for AWS CloudFormation StackSets isn't currently supported in the China Beijing and Ningxia Regions.</p></div></div>
+  <h2 id="stacksets-opt-in-regions">Performing stack set operations involving regions that are disabled by
+    default</h2>
         <p>AWS Regions introduced after March 20, 2019, such as
             Asia Pacific (Hong Kong), are disabled by default. You must enable these Regions for your
             account(s) before you can use them. Because of this, consider the following before

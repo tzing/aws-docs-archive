@@ -43,6 +43,7 @@
       "<a href="#cfn-appsync-apicache-apicachingbehavior">ApiCachingBehavior</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-apicache-apiid">ApiId</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-apicache-atrestencryptionenabled">AtRestEncryptionEnabled</a>" : <code class="replaceable">Boolean</code>,
+      "<a href="#cfn-appsync-apicache-healthmetricsconfig">HealthMetricsConfig</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-apicache-transitencryptionenabled">TransitEncryptionEnabled</a>" : <code class="replaceable">Boolean</code>,
       "<a href="#cfn-appsync-apicache-ttl">Ttl</a>" : <code class="replaceable">Number</code>,
       "<a href="#cfn-appsync-apicache-type">Type</a>" : <code class="replaceable">String</code>
@@ -53,6 +54,7 @@ Properties:
   <a href="#cfn-appsync-apicache-apicachingbehavior">ApiCachingBehavior</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-apicache-apiid">ApiId</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-apicache-atrestencryptionenabled">AtRestEncryptionEnabled</a>: <code class="replaceable">Boolean</code>
+  <a href="#cfn-appsync-apicache-healthmetricsconfig">HealthMetricsConfig</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-apicache-transitencryptionenabled">TransitEncryptionEnabled</a>: <code class="replaceable">Boolean</code>
   <a href="#cfn-appsync-apicache-ttl">Ttl</a>: <code class="replaceable">Number</code>
   <a href="#cfn-appsync-apicache-type">Type</a>: <code class="replaceable">String</code>
@@ -73,7 +75,22 @@ Properties:
          <p>The GraphQL API ID.</p>
       <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-appsync-apicache-atrestencryptionenabled"><span class="term"><code class="code">AtRestEncryptionEnabled</code></span></dt><dd>
          <p>At-rest encryption flag for cache. You cannot update this setting after creation.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-apicache-transitencryptionenabled"><span class="term"><code class="code">TransitEncryptionEnabled</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-apicache-healthmetricsconfig"><span class="term"><code class="code">HealthMetricsConfig</code></span></dt><dd>
+      <p>Controls how cache health metrics will be emitted to CloudWatch. Cache health metrics include:</p>
+      <div class="itemizedlist">
+          
+          
+      <ul class="itemizedlist"><li class="listitem">
+            <p><b>NetworkBandwidthOutAllowanceExceeded</b>: The network packets dropped
+               because the throughput exceeded the aggregated bandwidth limit. This is useful for diagnosing bottlenecks
+               in a cache configuration.</p>
+         </li><li class="listitem">
+            <p><b>EngineCPUUtilization</b>: The CPU utilization (percentage) allocated to
+               the Redis process. This is useful for diagnosing bottlenecks in a cache configuration.</p>
+         </li></ul></div>
+      <p>Metrics will be recorded by API ID. You can set the value to <code class="code">ENABLED</code> or
+         <code class="code">DISABLED</code>.</p>
+   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-apicache-transitencryptionenabled"><span class="term"><code class="code">TransitEncryptionEnabled</code></span></dt><dd>
          <p>Transit encryption flag when connecting to cache. You cannot update this setting after creation.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-apicache-ttl"><span class="term"><code class="code">Ttl</code></span></dt><dd>
          <p>TTL in seconds for cache entries.</p>

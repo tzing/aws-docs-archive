@@ -90,14 +90,8 @@ Properties:
          returns the resource name, such as <code class="code">mystack-abc1d2efg3h4</code>. For more information
          about using the Ref function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html">Ref</a>.</p><h3 id="aws-resource-osis-pipeline-return-values-fn--getatt">Fn::GetAtt</h3><p>GetAtt returns a value for a specified attribute of this type. For more information, see
             <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html">Fn::GetAtt</a>. The following are the available attributes and sample return
-         values.</p><h4 id="aws-resource-osis-pipeline-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="IngestEndpointUrls-fn::getatt"><span class="term"><code class="code">IngestEndpointUrls</code></span></dt><dd>
-      <p>A list of the ingestion endpoints for the pipeline that you can send data to. Currently,
-      only a single ingestion endpoint is supported for a pipeline. For example,
-        <code class="code">my-pipeline-123456789012.us-east-1.osis.amazonaws.com</code>.</p>
-   </dd><dt id="PipelineArn-fn::getatt"><span class="term"><code class="code">PipelineArn</code></span></dt><dd>
+         values.</p><h4 id="aws-resource-osis-pipeline-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="PipelineArn-fn::getatt"><span class="term"><code class="code">PipelineArn</code></span></dt><dd>
       <p>The Amazon Resource Name (ARN) of the pipeline.</p>
-   </dd><dt id="VpcEndpoints-fn::getatt"><span class="term"><code class="code">VpcEndpoints</code></span></dt><dd>
-      <p>The VPC interface endpoints that have access to the pipeline.</p>
    </dd></dl></div><h2 id="aws-resource-osis-pipeline--examples">Examples</h2><h3 id="aws-resource-osis-pipeline--examples--Create_an_OpenSearch_Ingestion_pipeline">Create an OpenSearch Ingestion pipeline</h3><p>The following example creates an OpenSearch Ingestion pipeline running version 2.x
                of Data Prepper with log publishing enabled.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-osis-pipeline--examples--Create_an_OpenSearch_Ingestion_pipeline--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
    "Parameters": <span>{</span>

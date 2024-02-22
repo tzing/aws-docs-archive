@@ -47,22 +47,17 @@
          </p><p>Example JSON for a <code class="code">Method</code> field to match specification:</p><p>
             <code class="code"> "FieldToMatch": <span>{</span> "Method": <span>{</span> "Name": "DELETE" } }</code>
          </p><h2 id="aws-properties-wafv2-loggingconfiguration-fieldtomatch-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-properties-wafv2-loggingconfiguration-fieldtomatch-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
-  "<a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-jsonbody">JsonBody</a>" : <code class="replaceable"><a href="./aws-properties-wafv2-loggingconfiguration-jsonbody.html">JsonBody</a></code>,
   "<a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-method">Method</a>" : <code class="replaceable">Json</code>,
   "<a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-querystring">QueryString</a>" : <code class="replaceable">Json</code>,
   "<a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-singleheader">SingleHeader</a>" : <code class="replaceable"><a href="./aws-properties-wafv2-loggingconfiguration-singleheader.html">SingleHeader</a></code>,
   "<a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-uripath">UriPath</a>" : <code class="replaceable">Json</code>
 }
-</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h3 id="aws-properties-wafv2-loggingconfiguration-fieldtomatch-syntax.yaml">YAML</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">  <a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-jsonbody">JsonBody</a>: <code class="replaceable">
-    <a href="./aws-properties-wafv2-loggingconfiguration-jsonbody.html">JsonBody</a></code>
-  <a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-method">Method</a>: <code class="replaceable">Json</code>
+</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h3 id="aws-properties-wafv2-loggingconfiguration-fieldtomatch-syntax.yaml">YAML</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">  <a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-method">Method</a>: <code class="replaceable">Json</code>
   <a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-querystring">QueryString</a>: <code class="replaceable">Json</code>
   <a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-singleheader">SingleHeader</a>: <code class="replaceable">
     <a href="./aws-properties-wafv2-loggingconfiguration-singleheader.html">SingleHeader</a></code>
   <a href="#cfn-wafv2-loggingconfiguration-fieldtomatch-uripath">UriPath</a>: <code class="replaceable">Json</code>
-</code></pre></div><h2 id="aws-properties-wafv2-loggingconfiguration-fieldtomatch-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-wafv2-loggingconfiguration-fieldtomatch-jsonbody"><span class="term"><code class="code">JsonBody</code></span></dt><dd>
-         <p>Redact the request body JSON. </p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-wafv2-loggingconfiguration-jsonbody.html">JsonBody</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-wafv2-loggingconfiguration-fieldtomatch-method"><span class="term"><code class="code">Method</code></span></dt><dd>
+</code></pre></div><h2 id="aws-properties-wafv2-loggingconfiguration-fieldtomatch-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-wafv2-loggingconfiguration-fieldtomatch-method"><span class="term"><code class="code">Method</code></span></dt><dd>
          <p>Redact the indicated HTTP method. The method indicates the type of operation that the request is
          asking the origin to perform. </p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Json</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-wafv2-loggingconfiguration-fieldtomatch-querystring"><span class="term"><code class="code">QueryString</code></span></dt><dd>

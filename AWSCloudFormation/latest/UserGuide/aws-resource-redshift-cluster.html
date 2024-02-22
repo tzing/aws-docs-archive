@@ -502,21 +502,18 @@ Properties:
             <code class="code"><span>{</span> "Ref": "myCluster" }</code>
         </p><p>For the Amazon Redshift cluster <code class="code">myCluster</code>, <code class="code">Ref</code> returns the
             name of the cluster.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h3 id="aws-resource-redshift-cluster-return-values-fn--getatt">Fn::GetAtt</h3><p>The <code class="code">Fn::GetAtt</code> intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.</p>
-<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-redshift-cluster-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="Address-fn::getatt"><span class="term"><code class="code">Address</code></span></dt><dd><p>Property description not available.</p></dd><dt id="ClusterNamespaceArn-fn::getatt"><span class="term"><code class="code">ClusterNamespaceArn</code></span></dt><dd>
+<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-redshift-cluster-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="ClusterNamespaceArn-fn::getatt"><span class="term"><code class="code">ClusterNamespaceArn</code></span></dt><dd>
          <p>The namespace Amazon Resource Name (ARN) of the cluster.</p>
       </dd><dt id="DeferMaintenanceIdentifier-fn::getatt"><span class="term"><code class="code">DeferMaintenanceIdentifier</code></span></dt><dd>
         <p>A unique identifier for the maintenance window.</p>
+    </dd><dt id="Endpoint.Address-fn::getatt"><span class="term"><code class="code">Endpoint.Address</code></span></dt><dd>
+        <p>The connection endpoint for the Amazon Redshift cluster. For example:
+                <code class="code">examplecluster.cg034hpkmmjt.us-east-1.redshift.amazonaws.com</code>.</p>
+    </dd><dt id="Endpoint.Port-fn::getatt"><span class="term"><code class="code">Endpoint.Port</code></span></dt><dd>
+        <p>The port number on which the Amazon Redshift cluster accepts connections. For
+            example: <code class="code">5439</code>.</p>
     </dd><dt id="MasterPasswordSecretArn-fn::getatt"><span class="term"><code class="code">MasterPasswordSecretArn</code></span></dt><dd>
          <p>The Amazon Resource Name (ARN) for the cluster's admin user credentials secret.</p>
-      </dd><dt id="Port-fn::getatt"><span class="term"><code class="code">Port</code></span></dt><dd>
-         <p>The port number on which the cluster accepts incoming connections.</p>
-         <p>The cluster is accessible only via the JDBC and ODBC connection strings. Part of
-            the connection string requires the port on which the cluster will listen for incoming
-            connections.</p>
-         <p>Default: <code class="code">5439</code>
-         </p>
-         <p>Valid Values: <code class="code">1150-65535</code>
-         </p>
       </dd></dl></div><h2 id="aws-resource-redshift-cluster--examples">Examples</h2><p></p><h3 id="aws-resource-redshift-cluster--examples--Single-Node_Cluster">Single-Node Cluster</h3><p>The following example describes a single-node Redshift cluster. The master
                     user password is referenced from an input parameter that's in the same
                     template.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-redshift-cluster--examples--Single-Node_Cluster--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>

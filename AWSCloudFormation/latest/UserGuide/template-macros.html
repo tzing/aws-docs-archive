@@ -90,9 +90,9 @@
         includes the processed template content. After you review the change set, execute it to
         apply the changes.</p><div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>If your stack set template references one or more macros, you must create the stack set directly from the
    processed template, without first reviewing the resulting changes in a change set. To create or update the stack set
-   directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html">CreateStackSet</a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html">UpdateStackSet</a>
-   action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability. Before you create or update a stack set from a
-   template that references macros directly, be sure that you know what processing the macros performs.</p></div></div><div class="mediaobject">
+   directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html"><code class="code">CreateStackSet</code></a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html"><code class="code">UpdateStackSet</code></a> action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability. Before
+   you create or update a stack set from a template that references macros directly, be sure that you know what
+   processing the macros performs.</p></div></div><div class="mediaobject">
          
             
             <img src="/images/AWSCloudFormation/latest/UserGuide/images/template-macro-use.png" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="&#xA;            Use the Fn::Transform intrinsic function or the&#xA;                    Transform section of the template, to pass the template contents&#xA;                and associated parameters to the macro's underlying Lambda function, which returns&#xA;                the processed template contents.&#xA;        " style="max-width:100%" />
@@ -271,15 +271,14 @@
                         functions, and they're evaluated as usual.</p></li><li class="listitem"><p>StackSets doesn't currently support creating or updating stack sets with service-managed
                         permissions from templates that reference AWS CloudFormation macros.</p></li><li class="listitem"><p>If your stack set template references one or more macros, you must create or update the stack set directly from
       the processed template, without first reviewing the resulting changes in a change set. To create or update the
-      stack set directly, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html">CreateStackSet</a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html">UpdateStackSet</a>
-      action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability. Processing macros can add multiple
-      resources that you might not be aware of. Before you create or update a stack set from a template that references
-      macros directly, be sure that you know what processing the macros performs.</p></li><li class="listitem">
+      stack set directly, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html"><code class="code">CreateStackSet</code></a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html"><code class="code">UpdateStackSet</code></a> action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability.
+      Processing macros can add multiple resources that you might not be aware of. Before you create or update a stack
+      set from a template that references macros directly, be sure that you know what processing the macros
+      performs.</p></li><li class="listitem">
                     
                     <p>Change sets don't currently support nested stacks. If you want to create or update a stack
       using a template that references macros <em>and</em> contains nested stacks, you must create or update
-      the stack directly. To perform this, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html">CreateStack</a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html">UpdateStack</a> action
-      and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability.</p>
+      the stack directly. To perform this, use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html"><code class="code">CreateStack</code></a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html"><code class="code">UpdateStack</code></a> action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability.</p>
                 </li></ul></div>
          
         <div class="procedure"><h6>To create an AWS CloudFormation macro definition:</h6><ol><li>
@@ -396,16 +395,15 @@ AWSTemplateFormatVersion: 2010-09-09
                 the necessary capabilities to create IAM resources.</p>
             <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>If your stack set template references one or more macros, you must create the stack set directly
      from the processed template, without first reviewing the resulting changes in a change set. To create or update the
-     stack set directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html">CreateStackSet</a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html">UpdateStackSet</a>
-     action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability. Before you create or update a stack set from
-     a template that references macros directly, be sure that you know what processing the macros performs.</p></div></div>
+     stack set directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html"><code class="code">CreateStackSet</code></a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html"><code class="code">UpdateStackSet</code></a> action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability.
+     Before you create or update a stack set from a template that references macros directly, be sure that you know what
+     processing the macros performs.</p></div></div>
             <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>If you are comfortable creating or updating a stack directly from a processed template, without
      first reviewing the proposed changes in a change set, you can do so by specifying the
       <code class="code">CAPABILITY_AUTO_EXPAND</code> capability during a <code class="code">CreateStack</code> or <code class="code">UpdateStack</code>
      request. You should only create stacks directly from a stack template that contains macros if you know what
      processing the macro performs. You can't use change sets with stack set macros; you must update your stack set
-     directly.</p><p>For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html">CreateStack</a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html">UpdateStack</a> in the
-      <em>AWS CloudFormation API Reference</em>.</p></div></div>
+     directly.</p><p>For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html"><code class="code">CreateStack</code></a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html"><code class="code">UpdateStack</code></a> in the <em>AWS CloudFormation API Reference</em>.</p></div></div>
             <p>If you use the AWS CLI, you can use the <code class="code">package</code> and
                 <code class="code">deploy</code> commands to reduce the number of steps for launching
                 stacks from templates that reference macros. For more information, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html">Deploying Lambda-based
@@ -474,17 +472,17 @@ AWSTemplateFormatVersion: 2010-09-09
                 <p><a href="./using-cfn-updating-stacks-changesets-create.html">Create a change set</a> using the template.</p>
                 <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>If your stack set template references one or more macros, you must create the stack set
       directly from the processed template, without first reviewing the resulting changes in a change set. To create or
-      update the stack set directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html">CreateStackSet</a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html">UpdateStackSet</a>
-      action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability. Before you create or update a stack set
-      from a template that references macros directly, be sure that you know what processing the macros performs.</p></div></div>
+      update the stack set directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html"><code class="code">CreateStackSet</code></a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html"><code class="code">UpdateStackSet</code></a> action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability.
+      Before you create or update a stack set from a template that references macros directly, be sure that you know
+      what processing the macros performs.</p></div></div>
             </li><li>
                 <p>Review and <a href="./using-cfn-updating-stacks-changesets-execute.html">run the change
                         set</a>.</p>
                 <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>If your stack set template references one or more macros, you must create the stack set
       directly from the processed template, without first reviewing the resulting changes in a change set. To create or
-      update the stack set directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html">CreateStackSet</a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html">UpdateStackSet</a>
-      action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability. Before you create or update a stack set
-      from a template that references macros directly, be sure that you know what processing the macros performs.</p></div></div>
+      update the stack set directly, you must use the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html"><code class="code">CreateStackSet</code></a> or <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html"><code class="code">UpdateStackSet</code></a> action and specify the <code class="code">CAPABILITY_AUTO_EXPAND</code> capability.
+      Before you create or update a stack set from a template that references macros directly, be sure that you know
+      what processing the macros performs.</p></div></div>
             </li></ol></div>
 
      

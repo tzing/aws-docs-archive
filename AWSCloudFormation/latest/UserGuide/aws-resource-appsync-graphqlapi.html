@@ -44,6 +44,7 @@
       "<a href="#cfn-appsync-graphqlapi-additionalauthenticationproviders">AdditionalAuthenticationProviders</a>" : <code class="replaceable">[ <a href="./aws-properties-appsync-graphqlapi-additionalauthenticationprovider.html">AdditionalAuthenticationProvider</a>, ... ]</code>,
       "<a href="#cfn-appsync-graphqlapi-apitype">ApiType</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-graphqlapi-authenticationtype">AuthenticationType</a>" : <code class="replaceable">String</code>,
+      "<a href="#cfn-appsync-graphqlapi-enhancedmetricsconfig">EnhancedMetricsConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-graphqlapi-enhancedmetricsconfig.html">EnhancedMetricsConfig</a></code>,
       "<a href="#cfn-appsync-graphqlapi-environmentvariables">EnvironmentVariables</a>" : <code class="replaceable">Json</code>,
       "<a href="#cfn-appsync-graphqlapi-introspectionconfig">IntrospectionConfig</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-graphqlapi-lambdaauthorizerconfig">LambdaAuthorizerConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-graphqlapi-lambdaauthorizerconfig.html">LambdaAuthorizerConfig</a></code>,
@@ -66,6 +67,8 @@ Properties:
     - <a href="./aws-properties-appsync-graphqlapi-additionalauthenticationprovider.html">AdditionalAuthenticationProvider</a></code>
   <a href="#cfn-appsync-graphqlapi-apitype">ApiType</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-graphqlapi-authenticationtype">AuthenticationType</a>: <code class="replaceable">String</code>
+  <a href="#cfn-appsync-graphqlapi-enhancedmetricsconfig">EnhancedMetricsConfig</a>: <code class="replaceable">
+    <a href="./aws-properties-appsync-graphqlapi-enhancedmetricsconfig.html">EnhancedMetricsConfig</a></code>
   <a href="#cfn-appsync-graphqlapi-environmentvariables">EnvironmentVariables</a>: <code class="replaceable">Json</code>
   <a href="#cfn-appsync-graphqlapi-introspectionconfig">IntrospectionConfig</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-graphqlapi-lambdaauthorizerconfig">LambdaAuthorizerConfig</a>: <code class="replaceable">
@@ -98,7 +101,14 @@ Properties:
       <p>Security configuration for your GraphQL API. For allowed values (such as <code class="code">API_KEY</code>,
             <code class="code">AWS_IAM</code>, <code class="code">AMAZON_COGNITO_USER_POOLS</code>, <code class="code">OPENID_CONNECT</code>, or
             <code class="code">AWS_LAMBDA</code>), see <a href="https://docs.aws.amazon.com/appsync/latest/devguide/security.html">Security</a> in the <em>AWS AppSync Developer Guide</em>.</p>
-   <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-graphqlapi-environmentvariables"><span class="term"><code class="code">EnvironmentVariables</code></span></dt><dd>
+   <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-graphqlapi-enhancedmetricsconfig"><span class="term"><code class="code">EnhancedMetricsConfig</code></span></dt><dd>
+      <p>Enables and controls the enhanced metrics feature. Enhanced metrics emit granular data on API usage and
+         performance such as AppSync request and error counts, latency, and cache hits/misses. All enhanced metric data
+         is sent to your CloudWatch account, and you can configure the types of data that will be sent. </p>
+      <p>Enhanced metrics can be configured at the resolver, data source, and operation levels. For more information,
+         see <a href="https://docs.aws.amazon.com/appsync/latest/devguide/monitoring.html#cw-metrics">Monitoring and
+            logging</a> in the <em>AWS AppSync User Guide</em>.</p>
+   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-appsync-graphqlapi-enhancedmetricsconfig.html">EnhancedMetricsConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-graphqlapi-environmentvariables"><span class="term"><code class="code">EnvironmentVariables</code></span></dt><dd>
       <p>A map containing the list of resources with their properties and environment variables. For more
          information, see <a href="https://docs.aws.amazon.com/appsync/latest/devguide/environmental-variables.html">Environmental variables</a>.</p>
       <p><em>Pattern</em>: <code class="code">^[A-Za-z]+\\w*$\\</code></p>

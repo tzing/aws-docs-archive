@@ -128,10 +128,9 @@
        
         <dt><span class="term"><b>Capabilities</b></span></dt>
         <dd>
-          <p>For stacks that contain certain resources, explicit acknowledgment that AWS CloudFormation might
-            create or update those resources. For example, you must specify
-              <code class="code">CAPABILITY_IAM</code> if your stack template contains AWS Identity and Access Management (IAM)
-            resources. For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html">CreateStack request parameters</a>.</p>
+          <p>For stacks that contain certain resources, explicit acknowledgment that AWS CloudFormation might create or update
+      those resources. For example, you must specify <code class="code">CAPABILITY_IAM</code> if your stack template contains
+      AWS Identity and Access Management (IAM) resources. For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html"><code class="code">CreateStack</code></a> API operation  request parameters.</p>
           <p>If you have IAM resources in your stack template, you must specify this
             property.</p>
           <p>You can specify more than one capability.</p>
@@ -229,14 +228,13 @@
        
         <dt><span class="term"><code class="code">Capabilities</code></span></dt>
         <dd>
-          <p>For stacks that contain certain resources, explicit acknowledgment that AWS CloudFormation might
-            create or update those resources. For example, you must specify
-              <code class="code">CAPABILITY_IAM</code> if your stack template contains AWS Identity and Access Management (IAM)
-            resources. For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html">CreateStack request parameters</a>.</p>
+          <p>For stacks that contain certain resources, explicit acknowledgment that AWS CloudFormation might create or update
+      those resources. For example, you must specify <code class="code">CAPABILITY_IAM</code> if your stack template contains
+      AWS Identity and Access Management (IAM) resources. For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html"><code class="code">CreateStack</code></a> API operation  request parameters.</p>
           <p>This property is conditional. If you have IAM resources in your stack template,
             you must specify this property.</p>
-          <p>You can specify multiple capabilities. The following example adds the CAPABILITY_IAM
-            and CAPABILITY_AUTO_EXPAND properties to the template:</p>
+          <p>You can specify multiple capabilities. The following example adds the <code class="code">CAPABILITY_IAM</code> and
+       <code class="code">CAPABILITY_AUTO_EXPAND</code> properties to the template:</p>
           <awsdocs-tabs><dl style="display: none">
             <dt>YAML</dt><dd tab-id="yaml">
                 <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">configuration:

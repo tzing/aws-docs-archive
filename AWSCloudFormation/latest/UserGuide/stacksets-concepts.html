@@ -36,9 +36,9 @@
       }
     ]
 }
-</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#stacksets-concepts-accts">Administrator and target accounts</a><a href="#stacksets-concepts-stackset">AWS CloudFormation StackSets</a><a href="#stacksets-concepts-stackset-permission-models">Permission models for stack sets</a><a href="#stacksets-concepts-stackinstances">Stack instances</a><a href="#stacksets-concepts-ops">Stack set operations</a><a href="#stackset-ops-options">Stack set operation options</a><a href="#stackset-concepts-tags">Tags</a><a href="#stackset-status-codes">StackSet status codes</a><a href="#stack-instance-status-codes">Stack instance status codes</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="stacksets-concepts">StackSets concepts</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>When you use StackSets, you work with <em>stack sets</em>,
+</script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="Welcome.html">User Guide</a></div><div id="page-toc-src"><a href="#stacksets-concepts-accts">Administrator and target accounts</a><a href="#stacksets-concepts-stackset">AWS CloudFormation StackSets</a><a href="#stacksets-concepts-stackset-permission-models">Permission models for stack sets</a><a href="#stacksets-concepts-stackinstances">Stack instances</a><a href="#stacksets-concepts-ops">Stack set operations</a><a href="#stackset-ops-options">Stack set operation options</a><a href="#stackset-concepts-tags">Tags</a><a href="#stackset-status-codes">StackSets status codes</a><a href="#stack-instance-status-codes">Stack instance status codes</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="stacksets-concepts">StackSets concepts</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>When you use StackSets, you work with <em>stack sets</em>,
                 <em>stack instances</em>, and <em>stacks</em>.</p><div class="highlights" id="inline-topiclist"><h6>Topics</h6><ul><li><a href="#stacksets-concepts-accts">Administrator and target accounts</a></li><li><a href="#stacksets-concepts-stackset">AWS CloudFormation StackSets</a></li><li><a href="#stacksets-concepts-stackset-permission-models">Permission models
-                    for stack sets</a></li><li><a href="#stacksets-concepts-stackinstances">Stack instances</a></li><li><a href="#stacksets-concepts-ops">Stack set operations</a></li><li><a href="#stackset-ops-options">Stack set operation options</a></li><li><a href="#stackset-concepts-tags">Tags</a></li><li><a href="#stackset-status-codes">StackSet status codes</a></li><li><a href="#stack-instance-status-codes">Stack instance status codes</a></li></ul></div>
+                    for stack sets</a></li><li><a href="#stacksets-concepts-stackinstances">Stack instances</a></li><li><a href="#stacksets-concepts-ops">Stack set operations</a></li><li><a href="#stackset-ops-options">Stack set operation options</a></li><li><a href="#stackset-concepts-tags">Tags</a></li><li><a href="#stackset-status-codes">StackSets status codes</a></li><li><a href="#stack-instance-status-codes">Stack instance status codes</a></li></ul></div>
             <h2 id="stacksets-concepts-accts">Administrator and target accounts</h2>
 
             <p>An <em>administrator account</em> is the AWS account in which you
@@ -320,17 +320,17 @@
                     <b>+</b> to save the tag. You can delete tags that you are no
                 longer using by choosing the red <b>X</b> to the right of a
                 tag.</p>
-            <p>Tags that you apply to stack sets apply to all stacks, and the resources your
-                stacks that are create. You can also addTags at the stack-only level in CloudFormation,
-                but those tags might not show up in StackSets.</p>
+            <p>Tags that you apply to stack sets apply to all stacks, and to the resources that your stacks create.
+    You can also add tags at the stack-only level in CloudFormation, but those tags might not show up in
+    StackSets.</p>
             <p>Although StackSets doesn't add any system-defined tags, you shouldn't start
                 the key names of any tags with the string <code class="code">aws:</code>.</p>
          
-            <h2 id="stackset-status-codes">StackSet status codes</h2>
+            <h2 id="stackset-status-codes">StackSets status codes</h2>
 
             <p>AWS CloudFormation StackSets generates status codes for stack set operations.</p>
             <p>The following table describes status codes for stack set operations.</p>
-            <div class="table-container"><div class="table-contents"><table id="w1341aac27c13c21b7"><thead>
+            <div class="table-container"><div class="table-contents"><table id="w1345aac27c13c21b7"><thead>
                         <tr>
                             <th>Stack set operation status</th>
                             <th>Description</th>
@@ -381,14 +381,10 @@
                                      
                                      
                                 <ul class="itemizedlist"><li class="listitem">
-                                        <p>Moving an account from one organizational unit (OU),
-                                                <code class="code">OU1</code>, to another, <code class="code">OU2</code>,
-                                            triggers an automatic deployment. StackSets runs a
-                                            delete operation to remove the stack instance from the
-                                            target <code class="code">OU1</code> account in the target Region and
-                                            queues a create operation to add a stack instance to the
-                                            target <code class="code">OU2</code> account in the target
-                                            Region.</p>
+                                        <p>Moving an account from one organizational unit (OU), <code class="code">OU1</code>, to
+           another, <code class="code">OU2</code>, triggers an automatic deployment. StackSets runs a delete operation to remove
+           the stack instance from the target <code class="code">OU1</code> account in the target Region and queues a create
+           operation to add a stack instance to the target <code class="code">OU2</code> account in the target Region.</p>
                                     </li><li class="listitem">
                                         <p>Adding an account <code class="code">AccountA</code> to an OU
                                             triggers an automatic deployment. StackSets runs a
@@ -424,9 +420,8 @@
          
             <h2 id="stack-instance-status-codes">Stack instance status codes</h2>
             <p>AWS CloudFormation StackSets generates status codes for stack instances.</p>
-            <p>The following table describes status codes for stack instances within
-                StackSets.</p>
-            <div class="table-container"><div class="table-contents disable-scroll"><table id="w1341aac27c13c23b7"><thead>
+            <p>The following table describes status codes for stack instances within StackSets.</p>
+            <div class="table-container"><div class="table-contents disable-scroll"><table id="w1345aac27c13c23b7"><thead>
                         <tr>
                             <th>Stack instance status</th>
                             <th>Description</th>

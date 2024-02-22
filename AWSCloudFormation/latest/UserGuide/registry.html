@@ -223,13 +223,11 @@
                 <p>Configure AWS Config to record all resource types. For more information, see <a href="https://docs.aws.amazon.com/config/latest/developerguide/customresources.html">Record configurations for third-party resources</a> in the
                         <em>AWS Config Developer Guide</em>.</p>
                 <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>AWS Config doesn't support recording of private resources containing properties
-                        defined as both required <em>and</em> write-only.</p><p>By design, resource properties defined as write-only aren't returned in
-                        the schema used to create AWS Config configuration item. Because of this,
-                        including a property that's defined as both write-only and required will
-                        cause the configuration item creation to fail, as a required property will
-                        not be present. To view the schema that will be used to create the
-                        configuration item, you can review the <code class="code">schema</code> property of the
-                            <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html">DescribeType</a> action.</p></div></div>
+                        defined as both required <em>and</em> write-only.</p><p>By design, resource properties defined as write-only aren't returned in the schema used to
+      create AWS Config configuration item. Because of this, including a property that's defined as both write-only and
+      required will cause the configuration item creation to fail, as a required property will not be present. To view
+      the schema that will be used to create the configuration item, you can review the <code class="code">schema</code> property of
+      the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html"><code class="code">DescribeType</code></a> action.</p></div></div>
             </li></ul></div>
         <p>For more information about configuration items, see <a href="https://docs.aws.amazon.com/config/latest/developerguide/config-concepts.html#config-items">Configuration
                 items</a> in the <em>AWS Config Developer Guide</em>.</p>

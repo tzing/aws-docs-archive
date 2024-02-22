@@ -96,10 +96,6 @@ Properties:
 		<p>When the value of <code class="code">RuleType</code> is <code class="code">FORWARD</code>, the ID that Resolver assigned to the resolver rule 
 			when you created it, such as <code class="code">rslvr-rr-5328a0899aexample</code>. This value isn't applicable when <code class="code">RuleType</code> 
 			is <code class="code">SYSTEM</code>.</p>
-	</dd><dt id="TargetIps-fn::getatt"><span class="term"><code class="code">TargetIps</code></span></dt><dd>
-		<p>When the value of <code class="code">RuleType</code> is <code class="code">FORWARD</code>, the IP addresses that the outbound endpoint forwards 
-			DNS queries to, typically the IP addresses for DNS resolvers on your network. This value isn't applicable when 
-			<code class="code">RuleType</code> is <code class="code">SYSTEM</code>.</p>
 	</dd></dl></div><h2 id="aws-resource-route53resolver-resolverrule--examples">Examples</h2><p></p><h3 id="aws-resource-route53resolver-resolverrule--examples--Create_Resolver_rule">Create Resolver rule</h3><p>The following example creates an Amazon Route 53 outbound resolver rule.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-route53resolver-resolverrule--examples--Create_Resolver_rule--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "Type" : "AWS::Route53Resolver::ResolverRule",
   "Properties" : <span>{</span>

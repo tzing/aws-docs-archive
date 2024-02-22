@@ -50,6 +50,7 @@
       "<a href="#cfn-guardduty-member-detectorid">DetectorId</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-guardduty-member-disableemailnotification">DisableEmailNotification</a>" : <code class="replaceable">Boolean</code>,
       "<a href="#cfn-guardduty-member-email">Email</a>" : <code class="replaceable">String</code>,
+      "<a href="#cfn-guardduty-member-memberid">MemberId</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-guardduty-member-message">Message</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-guardduty-member-status">Status</a>" : <code class="replaceable">String</code>
     }
@@ -59,18 +60,22 @@ Properties:
   <a href="#cfn-guardduty-member-detectorid">DetectorId</a>: <code class="replaceable">String</code>
   <a href="#cfn-guardduty-member-disableemailnotification">DisableEmailNotification</a>: <code class="replaceable">Boolean</code>
   <a href="#cfn-guardduty-member-email">Email</a>: <code class="replaceable">String</code>
+  <a href="#cfn-guardduty-member-memberid">MemberId</a>: <code class="replaceable">String</code>
   <a href="#cfn-guardduty-member-message">Message</a>: <code class="replaceable">String</code>
   <a href="#cfn-guardduty-member-status">Status</a>: <code class="replaceable">String</code>
 </code></pre></div><h2 id="aws-resource-guardduty-member-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-guardduty-member-detectorid"><span class="term"><code class="code">DetectorId</code></span></dt><dd>
 
             <p>The ID of the detector associated with the GuardDuty service to add the member to.</p>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-guardduty-member-disableemailnotification"><span class="term"><code class="code">DisableEmailNotification</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-guardduty-member-disableemailnotification"><span class="term"><code class="code">DisableEmailNotification</code></span></dt><dd>
             <p>Specifies whether or not to disable email notification for the member account that
                   you invite.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-guardduty-member-email"><span class="term"><code class="code">Email</code></span></dt><dd>
 
             <p>The email address associated with the member account.</p>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-guardduty-member-message"><span class="term"><code class="code">Message</code></span></dt><dd>
+      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-guardduty-member-memberid"><span class="term"><code class="code">MemberId</code></span></dt><dd>
+            <p>The AWS account ID of the account to designate as a
+                  member.</p>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-guardduty-member-message"><span class="term"><code class="code">Message</code></span></dt><dd>
          <p>The invitation message that you want to send to the accounts that you're inviting to
       GuardDuty as members.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-guardduty-member-status"><span class="term"><code class="code">Status</code></span></dt><dd>
@@ -84,7 +89,7 @@ Properties:
                   member account is created and invited.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-guardduty-member-return-values">Return values</h2><h3 id="aws-resource-guardduty-member-return-values-ref">Ref</h3><p>
                   When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the unique ID of the GuardDuty member account, such as
-                  012345678901.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h3 id="aws-resource-guardduty-member-return-values-fn--getatt">Fn::GetAtt</h3><h4 id="aws-resource-guardduty-member-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="MemberId-fn::getatt"><span class="term"><code class="code">MemberId</code></span></dt><dd><p>Property description not available.</p></dd></dl></div><h2 id="aws-resource-guardduty-member--examples">Examples</h2><p></p><h3 id="aws-resource-guardduty-member--examples--Declare_a_Member_Resource">Declare a Member Resource</h3><p>The following example shows how to declare a GuardDuty
+                  012345678901.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h2 id="aws-resource-guardduty-member--examples">Examples</h2><p></p><h3 id="aws-resource-guardduty-member--examples--Declare_a_Member_Resource">Declare a Member Resource</h3><p>The following example shows how to declare a GuardDuty
                               <code class="code">Member</code> resource:</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-guardduty-member--examples--Declare_a_Member_Resource--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"GDmaster": <span>{</span>
     "Type": "AWS::GuardDuty::Member",
     "Properties": <span>{</span>

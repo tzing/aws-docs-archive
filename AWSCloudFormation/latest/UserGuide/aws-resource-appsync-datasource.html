@@ -46,6 +46,7 @@
       "<a href="#cfn-appsync-datasource-eventbridgeconfig">EventBridgeConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-datasource-eventbridgeconfig.html">EventBridgeConfig</a></code>,
       "<a href="#cfn-appsync-datasource-httpconfig">HttpConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-datasource-httpconfig.html">HttpConfig</a></code>,
       "<a href="#cfn-appsync-datasource-lambdaconfig">LambdaConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-datasource-lambdaconfig.html">LambdaConfig</a></code>,
+      "<a href="#cfn-appsync-datasource-metricsconfig">MetricsConfig</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-datasource-name">Name</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-datasource-opensearchserviceconfig">OpenSearchServiceConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-datasource-opensearchserviceconfig.html">OpenSearchServiceConfig</a></code>,
       "<a href="#cfn-appsync-datasource-relationaldatabaseconfig">RelationalDatabaseConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-datasource-relationaldatabaseconfig.html">RelationalDatabaseConfig</a></code>,
@@ -67,6 +68,7 @@ Properties:
     <a href="./aws-properties-appsync-datasource-httpconfig.html">HttpConfig</a></code>
   <a href="#cfn-appsync-datasource-lambdaconfig">LambdaConfig</a>: <code class="replaceable">
     <a href="./aws-properties-appsync-datasource-lambdaconfig.html">LambdaConfig</a></code>
+  <a href="#cfn-appsync-datasource-metricsconfig">MetricsConfig</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-datasource-name">Name</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-datasource-opensearchserviceconfig">OpenSearchServiceConfig</a>: <code class="replaceable">
     <a href="./aws-properties-appsync-datasource-opensearchserviceconfig.html">OpenSearchServiceConfig</a></code>
@@ -92,7 +94,14 @@ Properties:
    <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-appsync-datasource-httpconfig.html">HttpConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-datasource-lambdaconfig"><span class="term"><code class="code">LambdaConfig</code></span></dt><dd>
       <p>An ARN of a Lambda function in valid ARN format. This can be the ARN of a Lambda function that exists in the
          current account or in another account.</p>
-   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-appsync-datasource-lambdaconfig.html">LambdaConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-datasource-name"><span class="term"><code class="code">Name</code></span></dt><dd>
+   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-appsync-datasource-lambdaconfig.html">LambdaConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-datasource-metricsconfig"><span class="term"><code class="code">MetricsConfig</code></span></dt><dd>
+      <p>Enables or disables enhanced data source metrics for specified data sources. Note that
+         <code class="code">MetricsConfig</code> won't be used unless the <code class="code">dataSourceLevelMetricsBehavior</code> value is set
+         to <code class="code">PER_DATA_SOURCE_METRICS</code>. If the <code class="code">dataSourceLevelMetricsBehavior</code> is set to
+         <code class="code">FULL_REQUEST_DATA_SOURCE_METRICS</code> instead, <code class="code">MetricsConfig</code> will be ignored. However,
+         you can still set its value.</p>
+      <p><code class="code">MetricsConfig</code> can be <code class="code">ENABLED</code> or <code class="code">DISABLED</code>.</p>
+   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-datasource-name"><span class="term"><code class="code">Name</code></span></dt><dd>
       <p>Friendly name for you to identify your AppSync data source after creation.</p>
    <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-appsync-datasource-opensearchserviceconfig"><span class="term"><code class="code">OpenSearchServiceConfig</code></span></dt><dd>
       <p>AWS Region and Endpoints for an Amazon OpenSearch Service domain in your account.</p>

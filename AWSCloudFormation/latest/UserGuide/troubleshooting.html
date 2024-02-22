@@ -382,16 +382,13 @@
             <p>To continue rolling back an update, you can use the AWS CloudFormation console or AWS command
                 line interface (AWS CLI). For more information, see <a href="./using-cfn-updating-stacks-continueupdaterollback.html">Continue rolling back an
     update</a>.</p>
-            <p>If none of these solutions work, you can skip the resources that AWS CloudFormation can't
-                successfully roll back. For more information, see the <code class="code">ResourcesToSkip</code>
-                parameter for the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ContinueUpdateRollback.html">ContinueUpdateRollback</a> operation in the
-                    <em>AWS CloudFormation API Reference</em>. AWS CloudFormation sets the status of the specified
-                resources to <code class="code">UPDATE_COMPLETE</code> and continues to roll back the stack.
-                After the rollback is complete, the state of the skipped resources will be
-                inconsistent with the state of the resources in the stack template. Before you
-                perform another stack update, you must modify the resources or update the stack to
-                be consistent with each other. If you don't, subsequent stack updates might fail and
-                make your stack unrecoverable.</p>
+            <p>If none of these solutions work, you can skip the resources that AWS CloudFormation can't successfully roll back.
+    For more information, see the <code class="code">ResourcesToSkip</code> parameter for the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ContinueUpdateRollback.html"><code class="code">ContinueUpdateRollback</code></a> API operation in the
+     <em>AWS CloudFormation API Reference</em>. AWS CloudFormation sets the status of the specified resources to
+     <code class="code">UPDATE_COMPLETE</code> and continues to roll back the stack. After the rollback is complete, the state of the
+    skipped resources will be inconsistent with the state of the resources in the stack template. Before you perform
+    another stack update, you must modify the resources or update the stack to be consistent with each other. If you
+    don't, subsequent stack updates might fail and make your stack unrecoverable.</p>
          
          
             <h3 id="troubleshooting-errors-wait-condition-didnt-receive-the-required-number-of-signals">Wait condition didn't receive the required number of signals from an Amazon EC2

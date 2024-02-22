@@ -79,7 +79,7 @@
          <p>If you change the name of a <code class="code">Rule</code> after you create
            it and you want the rule's metric name to reflect the change, update the metric name in the rule's <code class="code">VisibilityConfig</code> settings. AWS WAF 
           doesn't automatically update the metric name when you update the rule name. </p>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[0-9A-Za-z_-]<span>{</span>1,128}$</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd><dt id="cfn-wafv2-rulegroup-rule-priority"><span class="term"><code class="code">Priority</code></span></dt><dd>
+      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[0-9A-Za-z_-]<span>{</span>1,128}$</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-wafv2-rulegroup-rule-priority"><span class="term"><code class="code">Priority</code></span></dt><dd>
          <p>If you define more than one <code class="code">Rule</code> in a <code class="code">WebACL</code>, AWS WAF
          evaluates each request against the <code class="code">Rules</code> in order based on the value of
             <code class="code">Priority</code>. AWS WAF processes rules with lower priority first. The priorities

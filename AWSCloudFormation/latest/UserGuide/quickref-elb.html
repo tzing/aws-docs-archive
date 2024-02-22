@@ -52,7 +52,7 @@
                       <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"MyLoadBalancer" : <span>{</span>
     "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
     "Properties" : <span>{</span>
-        "AvailabilityZones" : [ "<span><code class="code" copy="true">us-east-1a</code></span>" ],
+        "AvailabilityZones" : [ "<span>us-east-1a</span>" ],
         "Listeners" : [ <span>{</span>
             "LoadBalancerPort" : "80",
             "InstancePort" : "80",
@@ -67,7 +67,7 @@
   Type: AWS::ElasticLoadBalancing::LoadBalancer
   Properties:
     AvailabilityZones:
-    - "<span><code class="code" copy="true">us-east-1a</code></span>"
+    - "<span>us-east-1a</span>"
     Listeners:
     - LoadBalancerPort: '80'
       InstancePort: '80'
@@ -83,7 +83,7 @@
                       <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"MyLoadBalancer" : <span>{</span>
     "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
     "Properties" : <span>{</span>
-        "AvailabilityZones" : [ "<span><code class="code" copy="true">us-east-1a</code></span>" ],
+        "AvailabilityZones" : [ "<span>us-east-1a</span>" ],
         "Instances" : [
             <span>{</span> "Ref" : "<code class="replaceable">logical name of AWS::EC2::Instance resource 1</code>" },
             <span>{</span> "Ref" : "<code class="replaceable">logical name of AWS::EC2::Instance resource 2</code>" }
@@ -110,7 +110,7 @@
   Type: AWS::ElasticLoadBalancing::LoadBalancer
   Properties:
     AvailabilityZones:
-    - "<span><code class="code" copy="true">us-east-1a</code></span>"
+    - "<span>us-east-1a</span>"
     Instances:
     - Ref: <code class="replaceable">logical name of AWS::EC2::Instance resource 1</code>
     - Ref: <code class="replaceable">logical name of AWS::EC2::Instance resource 2</code>
