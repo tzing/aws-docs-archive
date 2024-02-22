@@ -83,13 +83,14 @@ jobs:
             --site-url "$site_url" \
             --docset-path 'redshift-${{ matrix.lang }}.docset' \
             --title '${{ matrix.title }}'
+          tar cvzf redshift-${{ matrix.lang }}.tgz redshift-${{ matrix.lang }}.docset
 
       - name: Upload artifact
         if: steps.commit-changes.outputs.changed == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: redshift-${{ matrix.lang }}
-          path: redshift-${{ matrix.lang }}.docset/
+          path: redshift-${{ matrix.lang }}.tgz
 
       - name: Report changes
         if: >

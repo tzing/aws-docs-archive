@@ -67,13 +67,14 @@ jobs:
             --site-url "$site_url" \
             --docset-path 'cloudformation-${{ matrix.lang }}.docset' \
             --title '${{ matrix.title }}'
+          tar cvzf cloudformation-${{ matrix.lang }}.tgz cloudformation-${{ matrix.lang }}.docset
 
       - name: Upload artifact
         if: steps.commit-changes.outputs.changed == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: cloudformation-${{ matrix.lang }}
-          path: cloudformation-${{ matrix.lang }}.docset/
+          path: cloudformation-${{ matrix.lang }}.tgz
 
       - name: Report changes
         if: >
