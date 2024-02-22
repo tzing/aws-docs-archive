@@ -97,8 +97,8 @@ Properties:
   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">255</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-amplify-app-autobranchcreationconfig"><span class="term"><code class="code">AutoBranchCreationConfig</code></span></dt><dd>
     <p> Sets the configuration for your automatic branch creation. </p>
   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-amplify-app-autobranchcreationconfig.html">AutoBranchCreationConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-amplify-app-basicauthconfig"><span class="term"><code class="code">BasicAuthConfig</code></span></dt><dd>
-         <p>The credentials for basic authorization for an Amplify app. You must base64-encode
-            the authorization credentials and provide them in the format
+         <p>The credentials for basic authorization for an Amplify app. You must base64-encode the
+            authorization credentials and provide them in the format
             <code class="code">user:password</code>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-amplify-app-basicauthconfig.html">BasicAuthConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-amplify-app-buildspec"><span class="term"><code class="code">BuildSpec</code></span></dt><dd>
     <p> The build specification (build spec) for an Amplify app. </p>
@@ -121,7 +121,10 @@ Properties:
       Git repository.</p>
   <p><em>Required</em>: No</p><p><em>Type</em>: Boolean</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-amplify-app-environmentvariables"><span class="term"><code class="code">EnvironmentVariables</code></span></dt><dd>
          <p>The environment variables map for an Amplify app. </p>
-         <p>For a list of the environment variables that are accessible to Amplify by default, see <a href="https://docs.aws.amazon.com/amplify/latest/userguide/amplify-console-environment-variables.html">Amplify Environment variables</a> in the <em>Amplify Hosting User Guide</em>.</p>
+         <p>For a list of the environment variables that are accessible to Amplify by default, see
+                <a href="https://docs.aws.amazon.com/amplify/latest/userguide/amplify-console-environment-variables.html">Amplify
+                Environment variables</a> in the <em>Amplify Hosting User
+            Guide</em>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of <a href="./aws-properties-amplify-app-environmentvariable.html">EnvironmentVariable</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-amplify-app-iamservicerole"><span class="term"><code class="code">IAMServiceRole</code></span></dt><dd>
     <p> The AWS Identity and Access Management (IAM) service role for the Amazon Resource Name (ARN) of the
       Amplify app. </p>
@@ -149,10 +152,10 @@ Properties:
     <p><em>Length Constraints:</em> Maximum length of 1000.</p>
     <p><em>Pattern:</em> (?s).*</p>
   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">(?s).*</code></p><p><em>Maximum</em>: <code class="code">1000</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-amplify-app-platform"><span class="term"><code class="code">Platform</code></span></dt><dd>
-         <p>The platform for the Amplify app. For a static app, set the platform type to <code class="code">WEB</code>.
-            For a dynamic server-side rendered (SSR) app, set the platform type to
-            <code class="code">WEB_COMPUTE</code>. For an app requiring Amplify Hosting's original SSR support only, set the platform type to
-            <code class="code">WEB_DYNAMIC</code>.</p>
+         <p>The platform for the Amplify app. For a static app, set the platform type to
+                <code class="code">WEB</code>. For a dynamic server-side rendered (SSR) app, set the platform
+            type to <code class="code">WEB_COMPUTE</code>. For an app requiring Amplify Hosting's original SSR
+            support only, set the platform type to <code class="code">WEB_DYNAMIC</code>.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">WEB | WEB_DYNAMIC | WEB_COMPUTE</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-amplify-app-repository"><span class="term"><code class="code">Repository</code></span></dt><dd>
     <p> The repository for an Amplify app. </p>
     <p><em>Pattern:</em> (?s).*</p>

@@ -55,9 +55,9 @@
   <a href="#cfn-codepipeline-pipeline-artifactstore-location">Location</a>: <code class="replaceable">String</code>
   <a href="#cfn-codepipeline-pipeline-artifactstore-type">Type</a>: <code class="replaceable">String</code>
 </code></pre></div><h2 id="aws-properties-codepipeline-pipeline-artifactstore-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-codepipeline-pipeline-artifactstore-encryptionkey"><span class="term"><code class="code">EncryptionKey</code></span></dt><dd>
-    <p>The encryption key used to encrypt the data in the artifact store, such as an AWS Key
-      Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.
-      To see an example artifact store encryption key field, see the example structure here: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html">AWS::CodePipeline::Pipeline</a>.</p>
+    <p>The encryption key used to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If this is undefined,
+      the default key for Amazon S3 is used. To see an example artifact store encryption key field,
+      see the example structure here: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html">AWS::CodePipeline::Pipeline</a>.</p>
   <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-codepipeline-pipeline-encryptionkey.html">EncryptionKey</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-codepipeline-pipeline-artifactstore-location"><span class="term"><code class="code">Location</code></span></dt><dd>
          <p>The S3 bucket used for storing the artifacts for a pipeline. You can specify the
             name of an S3 bucket but not a folder in the bucket. A folder to contain the pipeline

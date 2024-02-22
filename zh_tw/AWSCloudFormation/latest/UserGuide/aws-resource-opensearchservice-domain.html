@@ -171,10 +171,10 @@ Properties:
       returns the resource name, such as <code class="code">mystack-abc1d2efg3h4.</code> For more
       information about using the Ref function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html">Ref</a>.</p><h3 id="aws-resource-opensearchservice-domain-return-values-fn--getatt">Fn::GetAtt</h3><p>GetAtt returns a value for a specified attribute of this type. For more information, see
       <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html">Fn::GetAtt</a>. The following are the available attributes and sample return
-      values.</p><h4 id="aws-resource-opensearchservice-domain-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AnonymousAuthDisableDate-fn::getatt"><span class="term"><code class="code">AnonymousAuthDisableDate</code></span></dt><dd>
-         <p>Date and time when the migration period will be disabled. Only necessary when <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing">enabling
-    fine-grained access control on an existing domain</a>.</p>
-      </dd><dt id="Arn-fn::getatt"><span class="term"><code class="code">Arn</code></span></dt><dd>
+      values.</p><h4 id="aws-resource-opensearchservice-domain-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AdvancedSecurityOptions.AnonymousAuthDisableDate-fn::getatt"><span class="term"><code class="code">AdvancedSecurityOptions.AnonymousAuthDisableDate</code></span></dt><dd>
+    <p>Date and time when the migration period will be disabled. Only necessary when <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing">enabling
+      fine-grained access control on an existing domain</a>.</p>
+  </dd><dt id="Arn-fn::getatt"><span class="term"><code class="code">Arn</code></span></dt><dd>
     <p>The Amazon Resource Name (ARN) of the CloudFormation stack.</p>
   </dd><dt id="DomainArn-fn::getatt"><span class="term"><code class="code">DomainArn</code></span></dt><dd>
          <p>The Amazon Resource Name (ARN) of the domain. See <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/index.html">Identifiers for IAM Entities
@@ -183,19 +183,13 @@ Properties:
       </dd><dt id="DomainEndpoint-fn::getatt"><span class="term"><code class="code">DomainEndpoint</code></span></dt><dd>
     <p>The domain-specific endpoint used for requests to the OpenSearch APIs, such as
       <code class="code">search-mystack-1ab2cdefghij-ab1c2deckoyb3hofw7wpqa3cm.us-west-1.es.amazonaws.com</code>.</p>
-  </dd><dt id="DomainEndpoints-fn::getatt"><span class="term"><code class="code">DomainEndpoints</code></span></dt><dd>
-         <p>The key-value pair that exists if the OpenSearch Service domain uses VPC endpoints. Example
-    <code class="code">key, value</code>:
-    <code class="code">'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'</code>.</p>
-      </dd><dt id="DomainEndpointV2-fn::getatt"><span class="term"><code class="code">DomainEndpointV2</code></span></dt><dd>
+  </dd><dt id="DomainEndpointV2-fn::getatt"><span class="term"><code class="code">DomainEndpointV2</code></span></dt><dd>
          <p>If <code class="code">IPAddressType</code> to set to <code class="code">dualstack</code>, a version 2 domain endpoint is provisioned.
    This endpoint functions like a normal endpoint, except that it works with both IPv4 and IPv6 IP addresses.
    Normal endpoints work only with IPv4 IP addresses.
   </p>
       </dd><dt id="Id-fn::getatt"><span class="term"><code class="code">Id</code></span></dt><dd>
     <p>The resource ID. For example, <code class="code">123456789012/my-domain</code>.</p>
-  </dd><dt id="ServiceSoftwareOptions-fn::getatt"><span class="term"><code class="code">ServiceSoftwareOptions</code></span></dt><dd>
-    <p>The current status of the service software for a domain.</p>
   </dd></dl></div><h2 id="aws-resource-opensearchservice-domain--remarks">Remarks</h2><p>
         <em>Migrating stacks from Elasticsearch to OpenSearch</em>
       </p><div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>You can't directly update CloudFormation templates to use the

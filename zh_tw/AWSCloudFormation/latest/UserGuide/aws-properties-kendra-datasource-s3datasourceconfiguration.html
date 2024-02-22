@@ -43,10 +43,11 @@
     ]
 }
 </script></head><body><div id="main"><div style="display: none"></div><div id="breadcrumbs" class="breadcrumb"><a href="https://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/cloudformation/index.html">AWS CloudFormation</a><a href="AWS_Kendra.html">User Guide</a></div><div id="page-toc-src"><a href="#aws-properties-kendra-datasource-s3datasourceconfiguration-syntax">Syntax</a><a href="#aws-properties-kendra-datasource-s3datasourceconfiguration-properties">Properties</a></div><div id="page-filters" style="display:none"><filter label="All" id="All"></filter><filter label="JSON" id="JSON"></filter><filter label="YAML" id="YAML"></filter></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="aws-properties-kendra-datasource-s3datasourceconfiguration">AWS::Kendra::DataSource S3DataSourceConfiguration</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Provides the configuration information to connect to an Amazon S3
-            bucket.</p><div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><h6>Important</h6></div><div class="awsdocs-note-text"><p>
-               <code class="code">S3DataSourceConfiguration</code> is deprecated. Amazon VPC is not
-                supported if you configure your Amazon S3 connector with this method. Use
-                    <a href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_TemplateConfiguration.html">TemplateConfiguration</a> to configure your Amazon S3 connector instead. See <a href="https://docs.aws.amazon.com/kendra/latest/dg/ds-schemas.html#ds-s3-schema">Amazon S3 template schema</a> for more details.</p></div></div><h2 id="aws-properties-kendra-datasource-s3datasourceconfiguration-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-properties-kendra-datasource-s3datasourceconfiguration-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+            bucket.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Amazon Kendra now supports an upgraded Amazon S3 connector.</p><p>You must now use the <a href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_TemplateConfiguration.html">TemplateConfiguration</a> object instead of the 
+                <code class="code">S3DataSourceConfiguration</code> object to configure your connector.</p><p>Connectors configured using the older console and API architecture will continue to
+                function as configured. However, you won't be able to edit or update them. If you want
+                to edit or update your connector configuration, you must create a new connector.</p><p>We recommended migrating your connector workflow to the upgraded version. Support for 
+                connectors configured using the older architecture is scheduled to end by June 2024.</p></div></div><h2 id="aws-properties-kendra-datasource-s3datasourceconfiguration-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-properties-kendra-datasource-s3datasourceconfiguration-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "<a href="#cfn-kendra-datasource-s3datasourceconfiguration-accesscontrollistconfiguration">AccessControlListConfiguration</a>" : <code class="replaceable"><a href="./aws-properties-kendra-datasource-accesscontrollistconfiguration.html">AccessControlListConfiguration</a></code>,
   "<a href="#cfn-kendra-datasource-s3datasourceconfiguration-bucketname">BucketName</a>" : <code class="replaceable">String</code>,
   "<a href="#cfn-kendra-datasource-s3datasourceconfiguration-documentsmetadataconfiguration">DocumentsMetadataConfiguration</a>" : <code class="replaceable"><a href="./aws-properties-kendra-datasource-documentsmetadataconfiguration.html">DocumentsMetadataConfiguration</a></code>,
@@ -77,10 +78,10 @@
             file contains metadata about a single document.</p>
     <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-kendra-datasource-documentsmetadataconfiguration.html">DocumentsMetadataConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kendra-datasource-s3datasourceconfiguration-exclusionpatterns"><span class="term"><code class="code">ExclusionPatterns</code></span></dt><dd>
          <p>A list of glob patterns (patterns that can expand a wildcard pattern into a list of
-            path names that match the given pattern) for file names and file types that should not
-            be indexed. If a document that matches an inclusion prefix or inclusion pattern also
-            matches an exclusion pattern, the document is not indexed. Examples of glob patterns
-            include:</p>
+            path names that match the given pattern) for certain file names and file types to exclude 
+            from your index. If a document matches both an inclusion and exclusion prefix or pattern, 
+            the exclusion prefix takes precendence and the document is not indexed. Examples of glob 
+            patterns include:</p>
          <div class="itemizedlist">
              
              
@@ -109,43 +110,68 @@
                   <code class="code">**/!(*.module).ts</code> - All .ts files but not .module.ts</p>
             </li><li class="listitem">
                <p>
-                  <em>*.png , *.jpg</em> will exclude all PNG and JPEG image files
+                  <em>*.png , *.jpg</em> excludes all PNG and JPEG image files
                     in a directory (files with the extensions .png and .jpg).</p>
             </li><li class="listitem">
                <p>
-                  <em>*internal*</em> will exclude all files in a directory that
+                  <em>*internal*</em> excludes all files in a directory that
                     contain 'internal' in the file name, such as 'internal', 'internal_only',
                     'company_internal'.</p>
             </li><li class="listitem">
                <p>
-                  <em>**/*internal*</em> will exclude all internal-related files in
+                  <em>**/*internal*</em> excludes all internal-related files in
                     a directory and its subdirectories.</p>
             </li></ul></div>
          <p>For more examples, see <a href="https://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">Use of Exclude and
                 Include Filters</a> in the AWS CLI Command Reference.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">50 | 100</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kendra-datasource-s3datasourceconfiguration-inclusionpatterns"><span class="term"><code class="code">InclusionPatterns</code></span></dt><dd>
-         <p>A list of glob patterns for documents that should be indexed. If a document that
-            matches an inclusion pattern also matches an exclusion pattern, the document is not
-            indexed.</p>
-         <p>Some <a href="https://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">examples</a>
-            are:</p>
+         <p>A list of glob patterns (patterns that can expand a wildcard pattern into a list of
+            path names that match the given pattern) for certain file names and file types to include 
+            in your index. If a document matches both an inclusion and exclusion prefix or pattern, 
+            the exclusion prefix takes precendence and the document is not indexed. Examples of glob 
+            patterns include:</p>
          <div class="itemizedlist">
+             
+             
+             
+             
+             
              
              
              
          <ul class="itemizedlist"><li class="listitem">
                <p>
-                  <em>*.txt</em> will include all text files in a directory (files
-                    with the extension .txt).</p>
+                  <code class="code">/myapp/config/*</code> - All files inside config directory</p>
             </li><li class="listitem">
                <p>
-                  <em>**/*.txt</em> will include all text files in a directory and
-                    its subdirectories.</p>
+                  <code class="code">/**/*.png</code> - All .png files in all directories</p>
             </li><li class="listitem">
                <p>
-                  <em>*tax*</em> will include all files in a directory that contain
-                    'tax' in the file name, such as 'tax', 'taxes', 'income_tax'.</p>
+                  <code class="code">/**/*.<span>{</span>png,ico,md}</code> - All .png, .ico or .md files in all
+                    directories</p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">/myapp/src/**/*.ts</code> - All .ts files inside src directory (and all
+                    its subdirectories)</p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">**/!(*.module).ts</code> - All .ts files but not .module.ts</p>
+            </li><li class="listitem">
+               <p>
+                  <em>*.png , *.jpg</em> includes all PNG and JPEG image files
+                    in a directory (files with the extensions .png and .jpg).</p>
+            </li><li class="listitem">
+               <p>
+                  <em>*internal*</em> includes all files in a directory that
+                    contain 'internal' in the file name, such as 'internal', 'internal_only',
+                    'company_internal'.</p>
+            </li><li class="listitem">
+               <p>
+                  <em>**/*internal*</em> includes all internal-related files in
+                    a directory and its subdirectories.</p>
             </li></ul></div>
+         <p>For more examples, see <a href="https://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters">Use of Exclude and
+            Include Filters</a> in the AWS CLI Command Reference.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">50 | 100</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kendra-datasource-s3datasourceconfiguration-inclusionprefixes"><span class="term"><code class="code">InclusionPrefixes</code></span></dt><dd>
          <p>A list of S3 prefixes for the documents that should be included in the index.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">50 | 100</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./aws-properties-kendra-datasource-proxyconfiguration.html">ProxyConfiguration</div><div id="next" class="next-link" accesskey="n" href="./aws-properties-kendra-datasource-s3path.html">S3Path</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Kendra&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-properties-kendra-datasource-s3datasourceconfiguration.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=Kendra&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-properties-kendra-datasource-s3datasourceconfiguration.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

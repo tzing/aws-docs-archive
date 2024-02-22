@@ -83,11 +83,11 @@ Properties:
             (UTC).</p>
       </dd><dt id="IntegrationArn-fn::getatt"><span class="term"><code class="code">IntegrationArn</code></span></dt><dd>
         <p>The ARN of the integration.</p>
-    </dd></dl></div><h2 id="aws-resource-rds-integration--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-rds-integration--examples--"></a></li><li><a href="#aws-resource-rds-integration--examples--"></a></li></ul></div><h3 id="aws-resource-rds-integration--examples--"></h3><p>The following example creates an Amazon Aurora MySQL DB cluster, Redshift provisioned cluster, and
-                     a zero-ETL integration between the two clusters encrypted with AWS KMS key.
-                    For more information about working with Aurora zero-ETL integrations with Amazon Redshift, 
-                    see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.html"> Working with Aurora zero-ETL integrations with Amazon Redshift</a> 
-                    in the <em>Amazon Aurora User Guide</em>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-rds-integration--examples----json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>&#xD;
+    </dd></dl></div><h2 id="aws-resource-rds-integration--examples">Examples</h2><div class="highlights" id="inline-topiclist"><h6> </h6><ul><li><a href="#aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_an__owned_KMS_key">Creating a zero-ETL integration using an AWS owned KMS key</a></li><li><a href="#aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_a_customer_managed_KMS_key">Creating a zero-ETL integration using a customer managed KMS key</a></li></ul></div><h3 id="aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_an__owned_KMS_key">Creating a zero-ETL integration using an AWS owned KMS key</h3><p>The following example creates an Amazon Aurora MySQL DB cluster, Redshift provisioned cluster, and
+                     a zero-ETL integration between the two clusters encrypted with an AWS owned KMS key.
+                    For more information, 
+                    see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.html">Working with Aurora zero-ETL integrations with Amazon Redshift</a> 
+                    in the <em>Amazon Aurora User Guide</em>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_an__owned_KMS_key--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>&#xD;
     "Parameters": <span>{</span>&#xD;
         "Username": <span>{</span>&#xD;
             "Description": "Username for Aurora MySQL database access",&#xD;
@@ -283,7 +283,7 @@ Properties:
             }&#xD;
         }&#xD;
     }&#xD;
-}</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-rds-integration--examples----yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">Parameters:&#xD;
+}</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_an__owned_KMS_key--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">Parameters:&#xD;
   Username:&#xD;
     Description: Username for Aurora MySQL database access&#xD;
     Type: String&#xD;
@@ -390,11 +390,11 @@ Outputs:&#xD;
     Value: !GetAtt Integration.IntegrationName&#xD;
   IntegrationARN:&#xD;
     Description: Integration ARN&#xD;
-    Value: !Ref Integration</code></pre></div><h3 id="aws-resource-rds-integration--examples--"></h3><p>The following example creates an Amazon Aurora MySQL DB cluster, Redshift provisioned cluster, and
-                  a zero-ETL integration between the two clusters encrypted with the custom KMS key you define.
-                  For more information about working with Aurora zero-ETL integrations with Amazon Redshift, 
-                  see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.html"> Working with Aurora zero-ETL integrations with Amazon Redshift</a> 
-                  in the <em>Amazon Aurora User Guide</em>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-rds-integration--examples----json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>&#xD;
+    Value: !Ref Integration</code></pre></div><h3 id="aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_a_customer_managed_KMS_key">Creating a zero-ETL integration using a customer managed KMS key</h3><p>The following example creates an Amazon Aurora MySQL DB cluster, Redshift provisioned cluster, and
+                  a zero-ETL integration between the two clusters encrypted with the customer managed KMS.
+                  For more information, 
+                  see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.html">Working with Aurora zero-ETL integrations with Amazon Redshift</a> 
+                  in the <em>Amazon Aurora User Guide</em>.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_a_customer_managed_KMS_key--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>&#xD;
     "Parameters": <span>{</span>&#xD;
         "Username": <span>{</span>&#xD;
             "Description": "Username for Aurora MySQL database access",&#xD;
@@ -645,7 +645,7 @@ Outputs:&#xD;
             }&#xD;
         }&#xD;
     }&#xD;
-}</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-rds-integration--examples----yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">Parameters:&#xD;
+}</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-rds-integration--examples--Creating_a_zero-ETL_integration_using_a_customer_managed_KMS_key--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">Parameters:&#xD;
   Username:&#xD;
     Description: Username for Aurora MySQL database access&#xD;
     Type: String&#xD;

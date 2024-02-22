@@ -54,6 +54,7 @@
       "<a href="#cfn-appsync-resolver-fieldname">FieldName</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-resolver-kind">Kind</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-resolver-maxbatchsize">MaxBatchSize</a>" : <code class="replaceable">Integer</code>,
+      "<a href="#cfn-appsync-resolver-metricsconfig">MetricsConfig</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-resolver-pipelineconfig">PipelineConfig</a>" : <code class="replaceable"><a href="./aws-properties-appsync-resolver-pipelineconfig.html">PipelineConfig</a></code>,
       "<a href="#cfn-appsync-resolver-requestmappingtemplate">RequestMappingTemplate</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-appsync-resolver-requestmappingtemplates3location">RequestMappingTemplateS3Location</a>" : <code class="replaceable">String</code>,
@@ -75,6 +76,7 @@ Properties:
   <a href="#cfn-appsync-resolver-fieldname">FieldName</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-resolver-kind">Kind</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-resolver-maxbatchsize">MaxBatchSize</a>: <code class="replaceable">Integer</code>
+  <a href="#cfn-appsync-resolver-metricsconfig">MetricsConfig</a>: <code class="replaceable">String</code>
   <a href="#cfn-appsync-resolver-pipelineconfig">PipelineConfig</a>: <code class="replaceable">
     <a href="./aws-properties-appsync-resolver-pipelineconfig.html">PipelineConfig</a></code>
   <a href="#cfn-appsync-resolver-requestmappingtemplate">RequestMappingTemplate</a>: <code class="replaceable">String</code>
@@ -117,7 +119,13 @@ Properties:
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-resolver-maxbatchsize"><span class="term"><code class="code">MaxBatchSize</code></span></dt><dd>
       <p>The maximum number of resolver request inputs that will be sent to a single AWS Lambda
          function in a <code class="code">BatchInvoke</code> operation.</p>
-   <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-resolver-pipelineconfig"><span class="term"><code class="code">PipelineConfig</code></span></dt><dd>
+   <p><em>Required</em>: No</p><p><em>Type</em>: Integer</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-resolver-metricsconfig"><span class="term"><code class="code">MetricsConfig</code></span></dt><dd>
+      <p>Enables or disables enhanced resolver metrics for specified resolvers. Note that <code class="code">MetricsConfig</code>
+         won't be used unless the <code class="code">resolverLevelMetricsBehavior</code> value is set to
+            <code class="code">PER_RESOLVER_METRICS</code>. If the <code class="code">resolverLevelMetricsBehavior</code> is set to
+            <code class="code">FULL_REQUEST_RESOLVER_METRICS</code> instead, <code class="code">MetricsConfig</code> will be ignored. However, you
+         can still set its value.</p>
+   <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">ENABLED | DISABLED</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-resolver-pipelineconfig"><span class="term"><code class="code">PipelineConfig</code></span></dt><dd>
       <p>Functions linked with the pipeline resolver.</p>
    <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-appsync-resolver-pipelineconfig.html">PipelineConfig</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appsync-resolver-requestmappingtemplate"><span class="term"><code class="code">RequestMappingTemplate</code></span></dt><dd>
       <p>The request mapping template.</p>

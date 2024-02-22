@@ -177,10 +177,18 @@ Properties:
     </dd><dt id="CeleryExecutorQueue-fn::getatt"><span class="term"><code class="code">CeleryExecutorQueue</code></span></dt><dd>
         <p>The queue ARN for the environment's <a href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/celery.html" rel="noopener noreferrer" target="_blank"><span>Celery Executor</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>. Amazon MWAA uses a Celery Executor
             to distribute tasks across multiple workers. When you create an environment in a shared VPC, you must provide access to the Celery Executor queue from your VPC.</p>
-    </dd><dt id="CloudWatchLogGroupArn-fn::getatt"><span class="term"><code class="code">CloudWatchLogGroupArn</code></span></dt><dd>
-        <p>The ARN of the CloudWatch Logs group that log info is sent to.</p>
     </dd><dt id="DatabaseVpcEndpointService-fn::getatt"><span class="term"><code class="code">DatabaseVpcEndpointService</code></span></dt><dd>
         <p>The VPC endpoint for the environment's Amazon RDS database.</p>
+    </dd><dt id="LoggingConfiguration.DagProcessingLogs.CloudWatchLogGroupArn-fn::getatt"><span class="term"><code class="code">LoggingConfiguration.DagProcessingLogs.CloudWatchLogGroupArn</code></span></dt><dd>
+        <p>The ARN for the CloudWatch Logs group where the Apache Airflow DAG processing logs are published.</p>
+    </dd><dt id="LoggingConfiguration.SchedulerLogs.CloudWatchLogGroupArn-fn::getatt"><span class="term"><code class="code">LoggingConfiguration.SchedulerLogs.CloudWatchLogGroupArn</code></span></dt><dd>
+        <p>The ARN for the CloudWatch Logs group where the Apache Airflow Scheduler logs are published.</p>
+    </dd><dt id="LoggingConfiguration.TaskLogs.CloudWatchLogGroupArn-fn::getatt"><span class="term"><code class="code">LoggingConfiguration.TaskLogs.CloudWatchLogGroupArn</code></span></dt><dd>
+        <p>The ARN for the CloudWatch Logs group where the Apache Airflow task logs are published.</p>
+    </dd><dt id="LoggingConfiguration.WebserverLogs.CloudWatchLogGroupArn-fn::getatt"><span class="term"><code class="code">LoggingConfiguration.WebserverLogs.CloudWatchLogGroupArn</code></span></dt><dd>
+        <p>The ARN for the CloudWatch Logs group where the Apache Airflow Web server logs are published.</p>
+    </dd><dt id="LoggingConfiguration.WorkerLogs.CloudWatchLogGroupArn-fn::getatt"><span class="term"><code class="code">LoggingConfiguration.WorkerLogs.CloudWatchLogGroupArn</code></span></dt><dd>
+        <p>The ARN for the CloudWatch Logs group where the Apache Airflow Worker logs are published.</p>
     </dd><dt id="WebserverUrl-fn::getatt"><span class="term"><code class="code">WebserverUrl</code></span></dt><dd>
         <p>The URL of your Apache Airflow UI.</p>
     </dd><dt id="WebserverVpcEndpointService-fn::getatt"><span class="term"><code class="code">WebserverVpcEndpointService</code></span></dt><dd>

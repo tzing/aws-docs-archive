@@ -104,7 +104,7 @@
          <p>Specifies the security style for the volume. If a volume's security style is not specified, 
             it is automatically set to the root volume's security style. The security style determines the type of permissions 
             that FSx for ONTAP uses to control data access. For more information, see 
-            <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/managing-volumes.html#volume-security-style">Volume security style</a> 
+            <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-security-style">Volume security style</a> 
             in the <em>Amazon FSx for NetApp ONTAP User Guide</em>.
             Specify one of the following values:</p>
          <div class="itemizedlist">
@@ -124,16 +124,16 @@
                 accessing the data uses a Windows user as the service account.</p>
             </li><li class="listitem">
                <p>
-                  <code class="code">MIXED</code> if the file system is managed by both UNIX
-                and Windows administrators and users consist of both NFS and SMB clients.</p>
+                  <code class="code">MIXED</code> This is an advanced setting. For more information, see the topic 
+                <a href="https://docs.netapp.com/us-en/ontap/nfs-admin/security-styles-their-effects-concept.html" rel="noopener noreferrer" target="_blank"><span>What the security styles and their effects are</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> 
+                in the NetApp Documentation Center.</p>
             </li></ul></div>
+         <p>For more information, see <a href="https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-security-style.html">Volume security style</a> in the 
+        FSx for ONTAP User Guide.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Allowed values</em>: <code class="code">UNIX | NTFS | MIXED</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-volume-ontapconfiguration-sizeinbytes"><span class="term"><code class="code">SizeInBytes</code></span></dt><dd>
          <p>Specifies the configured size of the volume, in bytes.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-volume-ontapconfiguration-sizeinmegabytes"><span class="term"><code class="code">SizeInMegabytes</code></span></dt><dd>
-         <p>
-            <em>This property has been deprecated. Use <code class="code">SizeInBytes</code>.</em>
-         </p>
-         <p>Specifies the size of the volume, in megabytes (MB), that you are creating.</p>
+         <p>Use <code class="code">SizeInBytes</code> instead. Specifies the size of the volume, in megabytes (MB), that you are creating.</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">0</code></p><p><em>Maximum</em>: <code class="code">2147483647</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-volume-ontapconfiguration-snaplockconfiguration"><span class="term"><code class="code">SnaplockConfiguration</code></span></dt><dd>
          <p>The SnapLock configuration object for an FSx for ONTAP SnapLock volume. </p>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-fsx-volume-snaplockconfiguration.html">SnaplockConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-fsx-volume-ontapconfiguration-snapshotpolicy"><span class="term"><code class="code">SnapshotPolicy</code></span></dt><dd>

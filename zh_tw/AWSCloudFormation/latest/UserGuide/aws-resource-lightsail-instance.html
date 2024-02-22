@@ -121,31 +121,35 @@ Properties:
             instance varies. Amazon Linux and CentOS use <code class="code">yum</code>, Debian and Ubuntu use
                <code class="code">apt-get</code>, and FreeBSD uses <code class="code">pkg</code>.</p></div></div>
    <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd></dl></div><h2 id="aws-resource-lightsail-instance-return-values">Return values</h2><h3 id="aws-resource-lightsail-instance-return-values-ref">Ref</h3><p>When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns a unique identifier for this resource.</p><h3 id="aws-resource-lightsail-instance-return-values-fn--getatt">Fn::GetAtt</h3><p>The <code class="code">Fn::GetAtt</code> intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values.</p>
-<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-lightsail-instance-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="AvailabilityZone-fn::getatt"><span class="term"><code class="code">AvailabilityZone</code></span></dt><dd>
-         <p>The Availability Zone for the new Amazon EC2 instance.</p>
-      </dd><dt id="Code-fn::getatt"><span class="term"><code class="code">Code</code></span></dt><dd>
-         <p>The status code for the instance.</p>
-      </dd><dt id="CpuCount-fn::getatt"><span class="term"><code class="code">CpuCount</code></span></dt><dd>
-         <p>The number of vCPUs the instance has.</p>
-      </dd><dt id="GbPerMonthAllocated-fn::getatt"><span class="term"><code class="code">GbPerMonthAllocated</code></span></dt><dd><p>Property description not available.</p></dd><dt id="InstanceArn-fn::getatt"><span class="term"><code class="code">InstanceArn</code></span></dt><dd>
+<p>For more information about using the <code class="code">Fn::GetAtt</code> intrinsic function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"><code class="code">Fn::GetAtt</code></a>.</p><h4 id="aws-resource-lightsail-instance-return-values-fn--getatt-fn--getatt"></h4><div class="variablelist"><dl><dt id="Hardware.CpuCount-fn::getatt"><span class="term"><code class="code">Hardware.CpuCount</code></span></dt><dd>
+      <p>The number of vCPUs the instance has.</p>
+   </dd><dt id="Hardware.RamSizeInGb-fn::getatt"><span class="term"><code class="code">Hardware.RamSizeInGb</code></span></dt><dd>
+      <p>The amount of RAM in GB on the instance (for example, <code class="code">1.0</code>).</p>
+   </dd><dt id="InstanceArn-fn::getatt"><span class="term"><code class="code">InstanceArn</code></span></dt><dd>
       <p>The Amazon Resource Name (ARN) of the instance (for example,
             <code class="code">arn:aws:lightsail:us-east-2:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE</code>).</p>
    </dd><dt id="IsStaticIp-fn::getatt"><span class="term"><code class="code">IsStaticIp</code></span></dt><dd>
       <p>A Boolean value indicating whether the instance has a static IP assigned to it.</p>
-   </dd><dt id="Name-fn::getatt"><span class="term"><code class="code">Name</code></span></dt><dd>
-         <p>The name the user gave the instance (<code class="code">Amazon_Linux-1GB-Ohio-1</code>).</p>
-      </dd><dt id="PrivateIpAddress-fn::getatt"><span class="term"><code class="code">PrivateIpAddress</code></span></dt><dd>
+   </dd><dt id="Location.AvailabilityZone-fn::getatt"><span class="term"><code class="code">Location.AvailabilityZone</code></span></dt><dd>
+      <p>The AWS Region and Availability Zone where the instance is
+         located.</p>
+   </dd><dt id="Location.RegionName-fn::getatt"><span class="term"><code class="code">Location.RegionName</code></span></dt><dd>
+      <p>The AWS Region of the instance.</p>
+   </dd><dt id="Networking.MonthlyTransfer.GbPerMonthAllocated-fn::getatt"><span class="term"><code class="code">Networking.MonthlyTransfer.GbPerMonthAllocated</code></span></dt><dd>
+      <p>The amount of allocated monthly data transfer (in GB) for an instance.</p>
+   </dd><dt id="PrivateIpAddress-fn::getatt"><span class="term"><code class="code">PrivateIpAddress</code></span></dt><dd>
       <p>The private IP address of the instance.</p>
    </dd><dt id="PublicIpAddress-fn::getatt"><span class="term"><code class="code">PublicIpAddress</code></span></dt><dd>
       <p>The public IP address of the instance.</p>
-   </dd><dt id="RamSizeInGb-fn::getatt"><span class="term"><code class="code">RamSizeInGb</code></span></dt><dd>
-         <p>The amount of RAM in GB on the instance (<code class="code">1.0</code>).</p>
-      </dd><dt id="RegionName-fn::getatt"><span class="term"><code class="code">RegionName</code></span></dt><dd>
-         <p>The region name (<code class="code">us-east-2</code>).</p>
-      </dd><dt id="ResourceType-fn::getatt"><span class="term"><code class="code">ResourceType</code></span></dt><dd>
+   </dd><dt id="ResourceType-fn::getatt"><span class="term"><code class="code">ResourceType</code></span></dt><dd>
       <p>The resource type of the instance (for example, <code class="code">Instance</code>).</p>
    </dd><dt id="SshKeyName-fn::getatt"><span class="term"><code class="code">SshKeyName</code></span></dt><dd>
       <p>The name of the SSH key pair used by the instance.</p>
+   </dd><dt id="State.Code-fn::getatt"><span class="term"><code class="code">State.Code</code></span></dt><dd>
+      <p>The status code of the instance.</p>
+   </dd><dt id="State.Name-fn::getatt"><span class="term"><code class="code">State.Name</code></span></dt><dd>
+      <p>The state of the instance (for example, <code class="code">running</code> or
+         <code class="code">pending</code>).</p>
    </dd><dt id="SupportCode-fn::getatt"><span class="term"><code class="code">SupportCode</code></span></dt><dd>
       <p>The support code of the instance.</p>
       <p>Include this code in your email to support when you have questions about an instance or

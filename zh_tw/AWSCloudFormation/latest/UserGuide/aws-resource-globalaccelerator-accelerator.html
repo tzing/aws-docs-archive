@@ -91,10 +91,6 @@ Properties:
 	</dd><dt id="DualStackDnsName-fn::getatt"><span class="term"><code class="code">DualStackDnsName</code></span></dt><dd>
 		<p>The DNS name that Global Accelerator creates that points to a dual-stack accelerator's four 
 			static IP addresses: two IPv4 addresses and two IPv6 addresses.</p>
-	</dd><dt id="Ipv4Addresses-fn::getatt"><span class="term"><code class="code">Ipv4Addresses</code></span></dt><dd>
-		<p>The array of IPv4 addresses in the IP address set. An IP address set can have a maximum of two IP addresses.</p>
-	</dd><dt id="Ipv6Addresses-fn::getatt"><span class="term"><code class="code">Ipv6Addresses</code></span></dt><dd>	
-		<p>The array of IPv6 addresses in the IP address set. An IP address set can have a maximum of two IP addresses.</p>
 	</dd></dl></div><h2 id="aws-resource-globalaccelerator-accelerator--examples">Examples</h2><p></p><h3 id="aws-resource-globalaccelerator-accelerator--examples--Add_an_accelerator">Add an accelerator</h3><p>These are examples to specify an accelerator.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-globalaccelerator-accelerator--examples--Add_an_accelerator--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"Resources": <span>{</span>
     "Accelerator": <span>{</span>
         "Type": "AWS::GlobalAccelerator::Accelerator",

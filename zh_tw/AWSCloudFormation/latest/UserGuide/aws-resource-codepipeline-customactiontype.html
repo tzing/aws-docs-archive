@@ -40,8 +40,8 @@
       for activities that aren't included in the CodePipeline default actions, such as running an
       internally developed build process or a test suite. You can use these custom actions in the
       stage of a pipeline. For more information, see <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html">Create and Add a Custom
-        Action in AWS CodePipeline</a> in the <em>AWS CodePipeline User Guide</em>.
-    </p><h2 id="aws-resource-codepipeline-customactiontype-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-resource-codepipeline-customactiontype-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
+        Action in AWS CodePipeline</a> in the <em>AWS CodePipeline User
+        Guide</em>. </p><h2 id="aws-resource-codepipeline-customactiontype-syntax">Syntax</h2><p>To declare this entity in your AWS CloudFormation template, use the following syntax:</p><div id="JSON" name="JSON" class="section langfilter"><h3 id="aws-resource-codepipeline-customactiontype-syntax.json">JSON</h3><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
   "Type" : "AWS::CodePipeline::CustomActionType",
   "Properties" : <span>{</span>
       "<a href="#cfn-codepipeline-customactiontype-category">Category</a>" : <code class="replaceable">String</code>,
@@ -95,74 +95,25 @@ Properties:
       <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">[0-9A-Za-z_-]+</code></p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">9</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement">Replacement</a></p></dd></dl></div><h2 id="aws-resource-codepipeline-customactiontype-return-values">Return values</h2><h3 id="aws-resource-codepipeline-customactiontype-return-values-ref">Ref</h3><p>
       When you pass the logical ID of this resource to the intrinsic <code class="code">Ref</code> function, <code class="code">Ref</code> returns the custom action name, such as
       custo-MyCus-A1BCDEFGHIJ2.</p><p>For more information about using the <code class="code">Ref</code> function, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"><code class="code">Ref</code></a>.</p><h3 id="aws-resource-codepipeline-customactiontype-return-values-fn--getatt">Fn::GetAtt</h3><h2 id="aws-resource-codepipeline-customactiontype--examples">Examples</h2><p></p><h3 id="aws-resource-codepipeline-customactiontype--examples--Custom_Action_Type_Resource_Configuration">Custom Action Type Resource Configuration</h3><p>The following example is a custom build action that requires users to specify one
-          property: a project name.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-codepipeline-customactiontype--examples--Custom_Action_Type_Resource_Configuration--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"MyCustomActionType": <span>{</span> 
-  "Type": "AWS::CodePipeline::CustomActionType", 
-  "Properties": <span>{</span> 
-    "Category": "Build", 
-    "Provider": "My-Build-Provider-Name", 
-    "Version": <span>{</span> "Ref" : "Version" }, 
-    "ConfigurationProperties": [ 
-      <span>{</span>
-        "Description": "The name of the build project must be provided when this action is added to the pipeline.", 
-        "Key": "true", 
-        "Name": "MyProjectName", 
-        "Queryable": "false", 
-        "Required": "true", 
-        "Secret": "false", 
-        "Type": "String" 
-      } 
-    ], 
-    "InputArtifactDetails": <span>{</span> 
-      "MaximumCount": "1", 
-      "MinimumCount": "1" 
-    }, 
-    "OutputArtifactDetails": <span>{</span> 
-      "MaximumCount": <span>{</span> "Ref" : "MaximumCountForOutputArtifactDetails" }, 
-      "MinimumCount": "0" 
-    }, 
-    "Settings": <span>{</span>
-      "EntityUrlTemplate": "https://my-build-instance/job/<span>{</span>Config:ProjectName}/",
-      "ExecutionUrlTemplate": "https://my-build-instance/job/<span>{</span>Config:ProjectName}/lastSuccessfulBuild/<span>{</span>ExternalExecutionId}/"
-    },
-    "Tags": [
-      <span>{</span>
-        "Key": "Project",
-        "Value": "ProjectA"
-      },
-      <span>{</span>
-        "Key": "Team",
-        "Value": "Admins"
-      }
-    ]
-  } 
-}</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-codepipeline-customactiontype--examples--Custom_Action_Type_Resource_Configuration--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">MyCustomActionType: 
-  Type: AWS::CodePipeline::CustomActionType
-  Properties: 
-    Category: Build 
-    Provider: "My-Build-Provider-Name" 
-    Version: 
-      Ref: Version
-    ConfigurationProperties: 
-      - 
-        Description: "The name of the build project must be provided when this action is added to the pipeline." 
-        Key: true 
-        Name: MyProjectName 
-        Queryable: false
-        Required: true 
-        Secret: false 
-        Type: String 
-    InputArtifactDetails: 
-      MaximumCount: 1
-      MinimumCount: 1 
-    OutputArtifactDetails: 
-      MaximumCount: 
-        Ref: MaximumCountForOutputArtifactDetails 
-      MinimumCount: 0 
-    Settings: 
-      EntityUrlTemplate: "https://my-build-instance/job/<span>{</span>Config:ProjectName}/" 
-      ExecutionUrlTemplate: "https://my-build-instance/job/<span>{</span>Config:ProjectName}/lastSuccessfulBuild/<span>{</span>ExternalExecutionId}/"
-    Tags:
-      - Key: Project
-        Value: ProjectA
-      - Key: Team
-        Value: Admins</code></pre></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./AWS_CodePipeline.html">AWS CodePipeline</div><div id="next" class="next-link" accesskey="n" href="./aws-properties-codepipeline-customactiontype-artifactdetails.html">ArtifactDetails</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CodePipeline&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-customactiontype.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CodePipeline&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-customactiontype.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
+          property: a project name.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-codepipeline-customactiontype--examples--Custom_Action_Type_Resource_Configuration--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json ">"MyCustomActionType": <span>{</span> "Type":
+        "AWS::CodePipeline::CustomActionType", "Properties": <span>{</span> "Category": "Build", "Provider":
+        "My-Build-Provider-Name", "Version": <span>{</span> "Ref" : "Version" }, "ConfigurationProperties": [ <span>{</span>
+        "Description": "The name of the build project must be provided when this action is added to
+        the pipeline.", "Key": "true", "Name": "MyProjectName", "Queryable": "false", "Required":
+        "true", "Secret": "false", "Type": "String" } ], "InputArtifactDetails": <span>{</span> "MaximumCount":
+        "1", "MinimumCount": "1" }, "OutputArtifactDetails": <span>{</span> "MaximumCount": <span>{</span> "Ref" :
+        "MaximumCountForOutputArtifactDetails" }, "MinimumCount": "0" }, "Settings": <span>{</span>
+        "EntityUrlTemplate": "https://my-build-instance/job/<span>{</span>Config:ProjectName}/",
+        "ExecutionUrlTemplate":
+        "https://my-build-instance/job/<span>{</span>Config:ProjectName}/lastSuccessfulBuild/<span>{</span>ExternalExecutionId}/"
+        }, "Tags": [ <span>{</span> "Key": "Project", "Value": "ProjectA" }, <span>{</span> "Key": "Team", "Value": "Admins" }
+        ] } }</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-codepipeline-customactiontype--examples--Custom_Action_Type_Resource_Configuration--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">MyCustomActionType: Type: AWS::CodePipeline::CustomActionType
+        Properties: Category: Build Provider: "My-Build-Provider-Name" Version: Ref: Version
+        ConfigurationProperties: - Description: "The name of the build project must be provided when
+        this action is added to the pipeline." Key: true Name: MyProjectName Queryable: false
+        Required: true Secret: false Type: String InputArtifactDetails: MaximumCount: 1
+        MinimumCount: 1 OutputArtifactDetails: MaximumCount: Ref:
+        MaximumCountForOutputArtifactDetails MinimumCount: 0 Settings: EntityUrlTemplate:
+        "https://my-build-instance/job/<span>{</span>Config:ProjectName}/" ExecutionUrlTemplate:
+        "https://my-build-instance/job/<span>{</span>Config:ProjectName}/lastSuccessfulBuild/<span>{</span>ExternalExecutionId}/"
+        Tags: - Key: Project Value: ProjectA - Key: Team Value: Admins</code></pre></div><awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./AWS_CodePipeline.html">AWS CodePipeline</div><div id="next" class="next-link" accesskey="n" href="./aws-properties-codepipeline-customactiontype-artifactdetails.html">ArtifactDetails</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CodePipeline&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-customactiontype.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" rel="noopener noreferrer" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=CodePipeline&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-customactiontype.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

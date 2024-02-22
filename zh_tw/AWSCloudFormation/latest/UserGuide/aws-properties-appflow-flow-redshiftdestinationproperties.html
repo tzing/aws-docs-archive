@@ -57,7 +57,7 @@
 </code></pre></div><h2 id="aws-properties-appflow-flow-redshiftdestinationproperties-properties">Properties</h2><div class="variablelist"><dl><dt id="cfn-appflow-flow-redshiftdestinationproperties-bucketprefix"><span class="term"><code class="code">BucketPrefix</code></span></dt><dd>
          <p> The object key for the bucket in which Amazon AppFlow places the destination files.
     </p>
-      <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Maximum</em>: <code class="code">512</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appflow-flow-redshiftdestinationproperties-errorhandlingconfig"><span class="term"><code class="code">ErrorHandlingConfig</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Maximum</em>: <code class="code">512</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-appflow-flow-redshiftdestinationproperties-errorhandlingconfig"><span class="term"><code class="code">ErrorHandlingConfig</code></span></dt><dd>
          <p> The settings that determine how Amazon AppFlow handles an error when placing data in
       the Amazon Redshift destination. For example, this setting would determine if the flow
       should fail after one insertion error, or continue and attempt to insert every record

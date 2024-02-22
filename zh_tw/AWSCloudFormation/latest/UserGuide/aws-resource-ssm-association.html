@@ -60,7 +60,7 @@
       "<a href="#cfn-ssm-association-maxerrors">MaxErrors</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-ssm-association-name">Name</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-ssm-association-outputlocation">OutputLocation</a>" : <code class="replaceable"><a href="./aws-properties-ssm-association-instanceassociationoutputlocation.html">InstanceAssociationOutputLocation</a></code>,
-      "<a href="#cfn-ssm-association-parametervalues">ParameterValues</a>" : <code class="replaceable">[ String, ... ]</code>,
+      "<a href="#cfn-ssm-association-parameters">Parameters</a>" : <code class="replaceable">[ String, ... ]</code>,
       "<a href="#cfn-ssm-association-scheduleexpression">ScheduleExpression</a>" : <code class="replaceable">String</code>,
       "<a href="#cfn-ssm-association-scheduleoffset">ScheduleOffset</a>" : <code class="replaceable">Integer</code>,
       "<a href="#cfn-ssm-association-synccompliance">SyncCompliance</a>" : <code class="replaceable">String</code>,
@@ -83,7 +83,7 @@ Properties:
   <a href="#cfn-ssm-association-name">Name</a>: <code class="replaceable">String</code>
   <a href="#cfn-ssm-association-outputlocation">OutputLocation</a>: <code class="replaceable">
     <a href="./aws-properties-ssm-association-instanceassociationoutputlocation.html">InstanceAssociationOutputLocation</a></code>
-  <a href="#cfn-ssm-association-parametervalues">ParameterValues</a>: <code class="replaceable">
+  <a href="#cfn-ssm-association-parameters">Parameters</a>: <code class="replaceable">
     - String</code>
   <a href="#cfn-ssm-association-scheduleexpression">ScheduleExpression</a>: <code class="replaceable">String</code>
   <a href="#cfn-ssm-association-scheduleoffset">ScheduleOffset</a>: <code class="replaceable">Integer</code>
@@ -168,9 +168,9 @@ Properties:
   <p><em>Required</em>: Yes</p><p><em>Type</em>: String</p><p><em>Pattern</em>: <code class="code">^[a-zA-Z0-9_\-.:/]<span>{</span>3,200}$</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-outputlocation"><span class="term"><code class="code">OutputLocation</code></span></dt><dd>
          <p>An Amazon Simple Storage Service (Amazon S3) bucket where you want to store the output
    details of the request.</p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-ssm-association-instanceassociationoutputlocation.html">InstanceAssociationOutputLocation</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-parametervalues"><span class="term"><code class="code">ParameterValues</code></span></dt><dd>
-          <p>A description of the parameters for a document. </p>
-      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-scheduleexpression"><span class="term"><code class="code">ScheduleExpression</code></span></dt><dd>
+      <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-ssm-association-instanceassociationoutputlocation.html">InstanceAssociationOutputLocation</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-parameters"><span class="term"><code class="code">Parameters</code></span></dt><dd>
+         <p>The parameters for the runtime configuration of the document.</p>
+      <p><em>Required</em>: No</p><p><em>Type</em>: Array of String</p><p><em>Pattern</em>: <code class="code">.*<span>{</span>1,255}</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-scheduleexpression"><span class="term"><code class="code">ScheduleExpression</code></span></dt><dd>
          <p>A cron expression that specifies a schedule when the association runs. The schedule runs in
    Coordinated Universal Time (UTC).</p>
       <p><em>Required</em>: No</p><p><em>Type</em>: String</p><p><em>Minimum</em>: <code class="code">1</code></p><p><em>Maximum</em>: <code class="code">256</code></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-ssm-association-scheduleoffset"><span class="term"><code class="code">ScheduleOffset</code></span></dt><dd>
@@ -344,7 +344,7 @@ Resources:
                 },
                 "Targets": [
                     <span>{</span>
-                        "Key": "ParameterValues",
+                        "Key": "MyInstanceId",
                         "Values": [
                             "i-1234567890abcdef0"
                         ]
@@ -378,7 +378,7 @@ Resources:
         AutomationAssumeRole:
           - !GetAtt AutomationExecutionRole.Arn
       Targets:
-        - Key: ParameterValues
+        - Key: MyInstanceId
           Values:
             - i-1234567890abcdef0
       AutomationTargetParameterName: InstanceId</code></pre></div><h3 id="aws-resource-ssm-association--examples--Create_an_association_that_uses_rate_controls_and_sends_log_output_to_">Create an association that uses rate controls and sends log output to Amazon S3</h3><p>The following example creates an association that uses rate controls. The association
@@ -834,7 +834,7 @@ Outputs:
     }
 }</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">---
 Description: "Deploy single Amazon Linux 2 EC2 instance and install Nginx by a State Manager association"
-ParameterValues:
+Parameters:
   LatestAmiId:
     Type: 'AWS::SSM::Parameter::Value*&lt;AWS::EC2::Image::Id&gt;'
     Default: "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
@@ -918,7 +918,7 @@ Resources:
           OutputS3BucketName: !Ref SSMAssocLogs
           OutputS3KeyPrefix: 'logs/'
       # Parameters for the AWS-RunShellScript, in this case commands to install nginx
-      ParameterValues:
+      Parameters:
         commands: 
           - |
               sudo amazon-linux-extras install nginx1 -y
@@ -929,7 +929,7 @@ Outputs:
     Description: Public DNS for WebServer</code></pre></div><h3 id="aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script_with__Automation">Create an association that runs a bash script with Systems Manager Automation</h3><p>The following example creates an assocation that runs a bash script using State
           Manager and Automation with multiple steps. Target is based on tags.</p><div id="JSON" name="JSON" class="section langfilter"><h4 id="aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script_with__Automation--json">JSON</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="json "><span>{</span>
     "Description": "Deploy single Amazon Linux 2 EC2 instance",
-    "ParameterValues": <span>{</span>
+    "Parameters": <span>{</span>
         "LatestAmiId": <span>{</span>
             "Type": "AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;",
             "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
@@ -1167,7 +1167,7 @@ Outputs:
                     }
                 },
                 "AutomationTargetParameterName": "InstanceId",
-                "ParameterValues": <span>{</span>
+                "Parameters": <span>{</span>
                     "AutomationAssumeRole": [
                         "SSMExecutionRole.Arn"
                     ]
@@ -1191,7 +1191,7 @@ Outputs:
     }
 }</code></pre></div><div id="YAML" name="YAML" class="section langfilter"><h4 id="aws-resource-ssm-association--examples--Create_an_association_that_runs_a_bash_script_with__Automation--yaml">YAML</h4><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="yaml ">---
 Description: "Deploy single Amazon Linux 2 EC2 instance"
-ParameterValues:
+Parameters:
   LatestAmiId:
     Type: 'AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;'
     Default: "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
@@ -1358,7 +1358,7 @@ Resources:
           OutputS3BucketName: !Ref SSMAssocLogs
           OutputS3KeyPrefix: 'logs/'
       AutomationTargetParameterName: InstanceId
-      ParameterValues:
+      Parameters:
         AutomationAssumeRole:
           - !GetAtt 'SSMExecutionRole.Arn'
       Targets:

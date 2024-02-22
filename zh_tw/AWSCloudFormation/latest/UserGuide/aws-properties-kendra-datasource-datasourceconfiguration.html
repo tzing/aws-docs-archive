@@ -89,6 +89,11 @@
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-kendra-datasource-onedriveconfiguration.html">OneDriveConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kendra-datasource-datasourceconfiguration-s3configuration"><span class="term"><code class="code">S3Configuration</code></span></dt><dd>
          <p>Provides the configuration information to connect to an Amazon S3 bucket as your
       data source.</p>
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>Amazon Kendra now supports an upgraded Amazon S3 connector.</p><p>You must now use the <a href="https://docs.aws.amazon.com/kendra/latest/APIReference/API_TemplateConfiguration.html">TemplateConfiguration</a> object instead of the 
+        <code class="code">S3DataSourceConfiguration</code> object to configure your connector.</p><p>Connectors configured using the older console and API architecture will continue to
+        function as configured. However, you won't be able to edit or update them. If you want
+        to edit or update your connector configuration, you must create a new connector.</p><p>We recommended migrating your connector workflow to the upgraded version. Support for 
+        connectors configured using the older architecture is scheduled to end by June 2024.</p></div></div>
       <p><em>Required</em>: No</p><p><em>Type</em>: <a href="./aws-properties-kendra-datasource-s3datasourceconfiguration.html">S3DataSourceConfiguration</a></p><p><em>Update requires</em>: <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt">No interruption</a></p></dd><dt id="cfn-kendra-datasource-datasourceconfiguration-salesforceconfiguration"><span class="term"><code class="code">SalesforceConfiguration</code></span></dt><dd>
          <p>Provides the configuration information to connect to Salesforce as your data
       source.</p>
