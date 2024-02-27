@@ -247,7 +247,6 @@
                and <a href="./r_COPY_command_examples.html#copy-command-examples-manifest">Example: COPY from Amazon S3 using a manifest</a> in the COPY examples.</p>
           
       <h2 id="set-the-JDBC-fetch-size-parameter">Setting the JDBC fetch size parameter</h2>
-         
          <p>By default, the JDBC driver collects all the results for a query at one time. As a
             result, when you attempt to retrieve a large result set over a JDBC connection, you
             might encounter a client-side out-of-memory error. To enable your client to retrieve
@@ -260,7 +259,9 @@
             associated memory, until the client retrieves the entire result set or the query is
             canceled. When you tune the fetch size appropriately, those resources are released more
             quickly, making them available to other queries.</p>
-         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>If you need to extract large datasets, we recommend using an <a href="./r_UNLOAD.html">UNLOAD</a> statement to transfer the data to
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><h6>Note</h6></div><div class="awsdocs-note-text"><p>If you need to extract large datasets, we recommend using an 
+            <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html">UNLOAD</a> 
+            statement to transfer the data to
                Amazon S3. When you use UNLOAD, the compute nodes work in parallel to speed up the
                transfer of data.</p></div></div>
          <p>For more information about setting the JDBC fetch size parameter, go to <a href="https://jdbc.postgresql.org/documentation/query/#getting-results-based-on-a-cursor" rel="noopener noreferrer" target="_blank"><span>Getting results based on a cursor</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a> in the PostgreSQL documentation.</p>

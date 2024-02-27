@@ -156,7 +156,7 @@ IAM_ROLE <span>{</span> default | 'iam-role-arn' };</code></pre>
                     example defines a materialized view with JSON source data. Note 
                     that the following view validates the data is valid JSON source . Kinesis stream names are case sensitive 
                     and can contain both uppercase and lowercase letters. To ingest from streams with uppercase names, you can set the 
-                    configuration <code class="code">enable_case_sensitive_identifier</code> to <code class="code">true</code> at the cluster level. For more 
+                    configuration <code class="code">enable_case_sensitive_identifier</code> to <code class="code">true</code> at the database level. For more 
                     information, see <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_names.html">Names and identifiers</a> 
                     and <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_enable_case_sensitive_identifier.html">enable_case_sensitive_identifier</a>.</p>
                     
@@ -168,7 +168,7 @@ WHERE CAN_JSON_PARSE(kinesis_data);</code></pre>
                     <p>To turn on auto refresh, use <code class="code">AUTO REFRESH YES</code>. The default behavior is manual refresh.
                     </p>
                 <p>Metadata columns include the following:</p>
-                    <div class="table-container"><div class="table-contents"><table id="w323aac38c55c15c13b7c10"><thead>
+                    <div class="table-container"><div class="table-contents"><table id="w323aac38c55c13c13b7c10"><thead>
                                 <tr>
                                     <th>Metadata column</th>
                                     <th>Data type</th>

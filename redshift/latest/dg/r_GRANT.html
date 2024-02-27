@@ -138,7 +138,7 @@ GRANT <span>{</span> <span>{</span> CREATE | ALTER | DROP }  [, ...] | ALL [ PRI
             permission previously granted to them FOR the datashare can run this type of GRANT
             statement.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="nohighlight">GRANT USAGE
     ON DATASHARE <em>datashare_name</em>
-    TO NAMESPACE <em>'namespaceGUID'</em> [, ...] | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ] [, ...]</code></pre><p>The following is an example of how to grant usage of a datashare to a Lake Formation account.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>            
+    TO NAMESPACE <em>'namespaceGUID'</em> | ACCOUNT <em>'accountnumber'</em> [ VIA DATA CATALOG ]</code></pre><p>The following is an example of how to grant usage of a datashare to a Lake Formation account.</p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">GRANT USAGE ON DATASHARE salesshare TO ACCOUNT '123456789012' VIA DATA CATALOG;</code></pre>            
                <h6>Consumer-side datashare permissions</h6>
                <p>The following is the syntax for GRANT data-sharing usage permissions on a specific
             database or schema created from a datashare. </p><p>Further permissions required for consumers to access a database created from a datashare vary

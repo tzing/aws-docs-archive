@@ -51,9 +51,8 @@
                 An Amazon Redshift provisioned cluster or an Amazon Redshift Serverless workgroup is the stream consumer. A materialized view is the landing 
                 area for data read from the stream, which is processed as it arrives. For instance, JSON values can 
                 be consumed and mapped to the materialized view's data columns, using familiar SQL. When the materialized view is 
-                refreshed, Amazon Redshift compute nodes allocate each Kinesis data shard or Kafka partition to a compute 
-                slice. Each slice consumes data from the allocated shards until the view reaches parity with the <code class="code">SEQUENCE_NUMBER</code> for the Kinesis stream 
-                or last <code class="code">Offset</code> for the Kafka topic. Subsequent materialized 
+                refreshed,  Redshift consumes data from allocated Kinesis data shards or Kafka partitions until the view reaches parity with 
+                the <code class="code">SEQUENCE_NUMBER</code> for the Kinesis stream or last <code class="code">Offset</code> for the Kafka topic. Subsequent materialized 
                 view refreshes read data from the last <code class="code">SEQUENCE_NUMBER</code> of the 
                 previous refresh until it reaches parity with the stream or topic data.
             </p>
@@ -120,7 +119,7 @@
                         Availability
                         Zone
                         data-transfer cost. To avoid this, keep at least one Amazon MSK broker cluster node in the
-                        same AZ as your Amazon Redshift cluster. </p>
+                        same AZ as your Redshift provisioned cluster or workgroup. </p>
                     </li><li class="listitem">
                         <p><em>Refresh start location</em> -
                         After creating a materialized view, its initial refresh starts from 
@@ -178,13 +177,13 @@
                             from Kinesis Data Streams to a materialized view in a Redshift database.</p></li><li class="listitem"><p>You don't have to land streamed data in Amazon S3, because streaming ingestion data goes directly to the Redshift materialized 
                             view.</p></li><li class="listitem"><p>You don't have to write and run COPY commands because the data in the materialized view is refreshed 
                             directly from the stream. Loading data from Amazon S3 to Redshift isn't part of the process.</p></li></ul></div>
-                    <p>Note that streaming ingestion is limited to streams from Amazon Kinesis Data Streams and topics from Amazon MSK. For streaming from Kinesis Data Streams to sources other than Amazon Redshift, it's likely that you 
+                  <p>Note that streaming ingestion is limited to streams from Amazon Kinesis Data Streams and topics from Amazon MSK. For streaming from Kinesis Data Streams to targets other than Amazon Redshift, it's likely that you 
                         need a Firehose delivery stream. For more information, see <a href="https://docs.aws.amazon.com/firehose/latest/dev/basic-write.html">Sending Data to an Amazon Data Firehose Delivery Stream</a>.</p>
                  
              
                     <h2 id="materialized-view-streaming-ingestion-limitations">Limitations</h2>
                     
-                    <div class="table-container"><div class="table-contents"><table id="w323aac38c55c13b3"><thead>
+                    <div class="table-container"><div class="table-contents"><table id="w323aac38c55c11b3"><thead>
                                 <tr>
                                     <th>Feature or behavior </th>
                                     <th>Description </th>
